@@ -2,22 +2,13 @@
 
 import { motion } from "framer-motion";
 import {
-  Leaf,
-  Sparkles,
-  Clock,
-  Shield,
-  Heart,
-  Star,
-  ChevronRight,
   CheckCircle2,
-  AlertCircle,
+  UserCheck,
   Calendar,
   MapPin,
-  Award,
-  Users,
+  AlertCircle,
   Scissors,
-  Sparkle,
-  Flower2,
+  Droplets,
 } from "lucide-react";
 import {
   fadeInUp,
@@ -29,891 +20,983 @@ import {
 import FAQ from "../../components/FAQ";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
+import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
-const HairTransplantLanding = ({ locale = fallbackLng }: { locale?: string }) => {
+const HairTransplantLanding = ({
+  locale = fallbackLng,
+}: {
+  locale?: string;
+}) => {
   const { t } = useTranslation(locale, "hairTransplant");
+
+  const transformations = [
+    {
+      id: 1,
+      before: "/images/B&A-hair/B&A-hair-transplant1.webp",
+      after: "/images/B&A-hair/B&A-hair-transplant1.webp",
+    },
+    {
+      id: 2,
+      before: "/images/B&A-hair/B&A-hair-transplant2.webp",
+      after: "/images/B&A-hair/B&A-hair-transplant2.webp",
+    },
+    {
+      id: 3,
+      before: "/images/B&A-hair/B&A-hair-transplant3.webp",
+      after: "/images/B&A-hair/B&A-hair-transplant3.webp",
+    },
+  ];
+
+  const quickAnswers = [
+    {
+      question: "Is hair transplant permanent?",
+      answer:
+        "In many cases, yes, because donor hair is usually more resistant to hair loss.",
+    },
+    {
+      question: "Is it painful?",
+      answer:
+        "Most people feel pressure, not sharp pain, because local anaesthesia is used.",
+    },
+    {
+      question: "How long until results look 'done'?",
+      answer: "Full results often take 12 to 18 months.",
+    },
+    {
+      question: "How much does it cost in Malaysia?",
+      answer:
+        "Many clinics quote anywhere from about RM 5,500 to RM 30,000, depending on grafts and method.",
+    },
+  ];
+
+  const methods = [
+    {
+      name: "FUE (Follicular Unit Extraction)",
+      description:
+        "FUE removes follicles one by one, then places them where needed. It tends to leave tiny dot scars that are hard to notice.",
+      pros: [
+        "No long strip scar",
+        "Faster healing for many people",
+        "Works well for hairline and crown",
+      ],
+    },
+    {
+      name: "FUT (Follicular Unit Transplant)",
+      description:
+        "FUT removes a thin strip from the donor area, then separates grafts. It can leave a linear scar, which matters if you wear very short hair.",
+      pros: [
+        "Can be useful when many grafts are needed",
+        "May suit certain donor types and budgets",
+      ],
+    },
+    {
+      name: "DHI (Direct Hair Implantation)",
+      description:
+        "DHI is a placement style using an implanter tool in some clinics. Some clinics market it as no cuts and no stitches.",
+    },
+  ];
+
+  const treatableAreas = [
+    "Hairline: for shape, framing, and a younger look",
+    "Temples: to soften the 'corner recession'",
+    "Crown: for thinning that shows in photos",
+    "Beard and moustache: for patchy facial hair (case by case)",
+    "Eyebrows: less common, but possible in selected cases",
+  ];
+
+  const recoveryTimeline = [
+    {
+      period: "Days 1 to 7",
+      description:
+        "Scalp feels tight or sore. Swelling can happen. You learn gentle washing steps.",
+    },
+    {
+      period: "Days 8 to 14",
+      description:
+        "Scabs fall off gradually. Grafts become more secure over about two weeks.",
+    },
+    {
+      period: "Weeks 3 to 8",
+      description:
+        "Many people see shedding (shock loss). This can be scary, but it is often temporary.",
+    },
+    {
+      period: "Months 3 to 6",
+      description:
+        "New growth begins to show. Texture can look fine at first, then thickens.",
+    },
+    {
+      period: "Months 9 to 18",
+      description:
+        "Density improves. Hair looks more natural and blendable. Full results commonly show around 12 to 18 months.",
+    },
+  ];
+
+  const pros = [
+    "Uses your own hair, so it looks real",
+    "Can improve hairline shape and coverage",
+    "Often long-lasting when planned well",
+  ];
+
+  const cons = [
+    "Results take time",
+    "You may still lose native hair around the transplant",
+    "Some people need a second procedure later",
+    "Not everyone has enough donor supply for 'full density everywhere'",
+  ];
+
+  const risks = [
+    "Tight, achy scalp",
+    "Swelling",
+    "Temporary scabbing",
+    "Small scars (tiny with FUE, more visible with FUT)",
+    "Less common risks include infection or delayed healing",
+  ];
+
+  const whenToCallClinic = [
+    "Increasing pain after initial improvement",
+    "Pus, strong smell, or spreading redness",
+    "Fever, or feeling unwell",
+  ];
 
   const faqs = [
     {
-      q: t("faq.q1"),
-      a: t("faq.a1"),
+      q: "How much does a hair transplant cost in Malaysia?",
+      a: "Most clinics price based on grafts and method. Published ranges often start around the mid thousands in RM and can go much higher for larger sessions. Some KL providers list about RM 5,500 to RM 15,000 for many FUE cases, while others show ranges up to RM 30,000. A proper quote should follow an in-person assessment.",
     },
     {
-      q: t("faq.q2"),
-      a: t("faq.a2"),
+      q: "Is a hair transplant painful?",
+      a: "During the procedure, local anaesthesia is used, so sharp pain is not expected. You may still feel pressure or movement. After the procedure, the scalp can feel tight, achy, and swollen for a few days. Your clinic can guide safe pain relief and aftercare.",
     },
     {
-      q: t("faq.q3"),
-      a: t("faq.a3"),
+      q: "How long does it take to recover from a hair transplant?",
+      a: "Many people return to desk work within a few days, but visible healing takes longer. Clinics often advise avoiding heavy exercise for one to two weeks. Grafts tend to become more stable after about two weeks, so that early period matters a lot.",
+    },
+    {
+      q: "When will I see full results?",
+      a: "Hair transplant results are slow by design. You may see early growth by month three to six, then gradual thickening. Many guides for Malaysia timelines note full results often appear around 12 to 18 months.",
+    },
+    {
+      q: "Is shedding after a hair transplant normal?",
+      a: "Yes, shedding can happen and it often worries people. It is commonly linked to shock loss, where hair shafts shed while follicles rest before growing again. If shedding feels extreme or you see signs of infection, check with your clinic promptly.",
+    },
+    {
+      q: "Is a hair transplant permanent?",
+      a: "Transplanted follicles are usually taken from areas less affected by typical pattern hair loss. That is why results can be long-lasting. Still, native hair around the transplant can continue thinning, so some people need ongoing maintenance.",
+    },
+    {
+      q: "How many grafts do I need?",
+      a: "Graft count depends on your hair loss pattern, your donor density, and how dense you want the result to look. Some clinics provide sample ranges like 1,000, 2,000, or 3,000 plus graft plans, but only an assessment can confirm what is realistic for you.",
+    },
+    {
+      q: "What is better, FUE or FUT?",
+      a: "FUE is popular because it avoids a long strip scar and healing is often easier. FUT can be useful for some cases that need many grafts. The better option is the one that fits your donor area, hairstyle preference, and long-term plan.",
+    },
+    {
+      q: "What side effects should I expect?",
+      a: "Common short-term effects include swelling, tightness, and scabbing. Scarring can occur, but it varies by method and individual healing. Like any procedure, there is also a risk of infection, so hygiene and aftercare matter.",
+    },
+    {
+      q: "Can a hair transplant fail?",
+      a: "Most grafts survive when the plan is good and aftercare is followed, but outcomes can vary. Risk factors include poor donor selection, smoking, uncontrolled health issues, and poor post-op care. Your clinic should screen for these risks before treatment.",
+    },
+    {
+      q: "Can women get a hair transplant in Malaysia?",
+      a: "Yes, women can get hair transplants in Malaysia. The approach may differ from men's treatments, as female pattern hair loss often involves diffuse thinning rather than distinct bald areas. A thorough assessment is needed to determine if you're a suitable candidate.",
     },
   ];
+
   return (
-    <>
-      <main className="min-h-screen bg-linear-to-b from-light to-white font-['Inter',sans-serif]">
-        {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-20 left-10 w-72 h-72 rounded-full bg-wine blur-3xl"></div>
-            <div className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-rose blur-3xl"></div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-125 h-125 rounded-full bg-taupe blur-3xl opacity-30"></div>
-          </div>
-
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              animate="visible"
-              className="max-w-4xl mx-auto text-center"
-            >
-              <motion.div
-                variants={fadeInUp}
-                className="mb-6 inline-flex items-center gap-2 px-4 py-2 bg-cream rounded-full"
-              >
-                <Sparkles className="w-4 h-4 text-wine" />
-                <span className="text-sm font-medium text-brown">
-                  {t("hero.badge")}
-                </span>
-              </motion.div>
-
-              <motion.h2
-                variants={fadeInUp}
-                className="font-['Georgia',serif] text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
-              >
-                <span className="text-brown">{t("hero.title1")}</span>
-                <br />
-                <span className="bg-linear-to-r from-wine to-rose bg-clip-text text-transparent">
-                  {t("hero.title2")}
-                </span>
-              </motion.h2>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-xl text-brown mb-8 max-w-2xl mx-auto font-light"
-              >
-                {t("hero.desc")}
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg text-taupe mb-12 max-w-2xl mx-auto"
-              >
-                {t("hero.subdesc")}
-              </motion.p>
-
-              <motion.div
-                variants={fadeInUp}
-                className="flex flex-wrap gap-4 justify-center"
-              >
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group px-8 py-4 bg-linear-to-r from-wine to-rose text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2"
-                >
-                  {t("hero.bookBtn")}
-                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </motion.button>
-
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-white/80 backdrop-blur-sm border border-cream text-brown rounded-full font-semibold hover:bg-white transition-all duration-300"
-                >
-                  {t("hero.galleryBtn")}
-                </motion.button>
-              </motion.div>
-            </motion.div>
-          </div>
-
-          {/* Decorative Elements */}
-          <motion.div
-            animate={{
-              y: [0, -20, 0],
-              rotate: [0, 5, 0],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute bottom-10 left-10 opacity-20"
-          >
-            <Flower2 className="w-24 h-24 text-wine" />
+    <main className="bg-cream min-h-screen font-inter">
+      {/* Hero Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="relative overflow-hidden bg-linear-to-br from-cream to-light pt-20 pb-16 px-4"
+      >
+        <div className="absolute inset-0 bg-glass backdrop-blur-[2px]"></div>
+        <motion.div
+          variants={staggerContainer}
+          className="max-w-7xl mx-auto relative z-10"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h1 className="font-georgia text-5xl md:text-6xl lg:text-7xl text-brown mb-6">
+              Hair Transplant in Kuala Lumpur, Malaysia:
+              <span className="block text-wine text-4xl md:text-5xl lg:text-6xl mt-4">
+                A Realistic Guide for Better Hair Days
+              </span>
+            </h1>
+            <p className="text-2xl md:text-3xl text-rose font-light italic max-w-4xl mx-auto">
+              "A hair transplant is not just hair. It is confidence, restored."
+            </p>
+            <p className="text-taupe text-xl mt-6">
+              If your hairline keeps moving back, you are not alone. At Nexus
+              Clinic Kuala Lumpur, we help you plan results that look natural.
+            </p>
           </motion.div>
 
+          {/* Trust at a glance */}
           <motion.div
-            animate={{
-              y: [0, 20, 0],
-              rotate: [0, -5, 0],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute top-20 right-10 opacity-20"
+            variants={scaleIn}
+            className="grid md:grid-cols-3 gap-6 mt-12"
           >
-            <Leaf className="w-32 h-32 text-rose" />
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-cream">
+              <MapPin className="text-wine mb-4" size={32} />
+              <h3 className="font-georgia text-brown text-xl mb-2">
+                Prime Location
+              </h3>
+              <p className="text-taupe">
+                Clinic in the heart of Kuala Lumpur (Jalan Pinang, near KLCC)
+              </p>
+            </div>
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-cream">
+              <Calendar className="text-wine mb-4" size={32} />
+              <h3 className="font-georgia text-brown text-xl mb-2">
+                Established Since 2001
+              </h3>
+              <p className="text-taupe">
+                Two decades of aesthetic excellence and trusted care
+              </p>
+            </div>
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-cream">
+              <UserCheck className="text-wine mb-4" size={32} />
+              <h3 className="font-georgia text-brown text-xl mb-2">
+                Doctor-Led Consultations
+              </h3>
+              <p className="text-taupe">
+                Private, clear treatment planning with experienced doctors
+              </p>
+            </div>
           </motion.div>
-        </section>
+        </motion.div>
+      </motion.section>
 
-        {/* Trust at a Glance Section */}
-        <section className="py-20 bg-cream relative overflow-hidden">
-          <div className="absolute inset-0 bg-linear-to-r from-wine/5 to-rose/5"></div>
-
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-8"
-            >
+      {/* Quick Answers */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-16 px-4 bg-light"
+      >
+        <motion.div variants={staggerContainer} className="max-w-7xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown mb-12 text-center"
+          >
+            Quick Answers People Want First
+          </motion.h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {quickAnswers.map((item, index) => (
               <motion.div
-                variants={fadeInUp}
-                className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50"
+                key={index}
+                variants={fadeInLeft}
+                className="bg-white p-6 rounded-xl shadow-md border-l-4 border-wine"
               >
-                <div className="w-14 h-14 bg-linear-to-br from-wine to-rose rounded-xl flex items-center justify-center mb-6">
-                  <MapPin className="w-7 h-7 text-white" />
-                </div>
-                <h3 className="font-['Georgia',serif] text-xl font-bold text-brown mb-3">
-                  {t("trust.t1Title")}
+                <h3 className="font-georgia text-brown text-xl mb-3">
+                  {item.question}
                 </h3>
-                <p className="text-taupe">
-                  {t("trust.t1Desc")}
-                </p>
+                <p className="text-taupe">{item.answer}</p>
               </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </motion.section>
 
+      {/* Why Hair Loss Feels Personal */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-16 px-4 bg-cream"
+      >
+        <motion.div
+          variants={staggerContainer}
+          className="max-w-4xl mx-auto text-center"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown mb-8"
+          >
+            Why Hair Loss Feels So Personal
+          </motion.h2>
+          <motion.p
+            variants={fadeInUp}
+            className="text-taupe text-lg leading-relaxed"
+          >
+            Hair loss is not just a mirror problem. It shows up in photos. It
+            shows up under bright office lights. It can change how you feel
+            walking into a room.
+          </motion.p>
+          <motion.p
+            variants={fadeInUp}
+            className="text-taupe text-lg leading-relaxed mt-4"
+          >
+            Some people notice a slow thinning. Others see a sudden "M" shape
+            hairline, or a widening part line. The sooner you understand the
+            cause, the better your options.
+          </motion.p>
+        </motion.div>
+      </motion.section>
+
+      {/* What is a Hair Transplant */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-16 px-4 bg-light"
+      >
+        <motion.div variants={staggerContainer} className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div variants={fadeInLeft}>
+              <h2 className="font-georgia text-4xl text-brown mb-6">
+                What is a Hair Transplant, in Simple Words?
+              </h2>
+              <p className="text-taupe text-lg leading-relaxed mb-4">
+                A hair transplant moves your own hair follicles from a fuller
+                area to a thinner area. Most donor hair comes from the back or
+                sides of your scalp.
+              </p>
+              <p className="text-taupe text-lg leading-relaxed">
+                The goal is not "maximum hair." The goal is a natural hairline,
+                good coverage, and a plan that ages well.
+              </p>
+            </motion.div>
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="/images/hair/hair-transplant.webp"
+                  alt="Hair transplant consultation and planning"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-4 -right-4 bg-wine text-white p-4 rounded-lg">
+                <p className="font-semibold">Natural Results</p>
+                <p className="text-sm">That age well with you</p>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </motion.section>
+
+      {/* Hair Transplant Methods */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-16 px-4 bg-cream"
+      >
+        <motion.div variants={staggerContainer} className="max-w-7xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown mb-12 text-center"
+          >
+            Hair Transplant Methods in Malaysia (FUE vs FUT vs DHI)
+          </motion.h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {methods.map((method, index) => (
               <motion.div
-                variants={fadeInUp}
-                className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50"
-              >
-                <div className="w-14 h-14 bg-linear-to-br from-wine to-rose rounded-xl flex items-center justify-center mb-6">
-                  <Award className="w-7 h-7 text-white" />
-                </div>
-                <h3 className="font-['Georgia',serif] text-xl font-bold text-brown mb-3">
-                  {t("trust.t2Title")}
-                </h3>
-                <p className="text-taupe">
-                  {t("trust.t2Desc")}
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInUp}
-                className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50"
-              >
-                <div className="w-14 h-14 bg-linear-to-br from-wine to-rose rounded-xl flex items-center justify-center mb-6">
-                  <Users className="w-7 h-7 text-white" />
-                </div>
-                <h3 className="font-['Georgia',serif] text-xl font-bold text-brown mb-3">
-                  {t("trust.t3Title")}
-                </h3>
-                <p className="text-taupe">
-                  {t("trust.t3Desc")}
-                </p>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Quick Answers Section */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="max-w-4xl mx-auto"
-            >
-              <motion.h2
-                variants={fadeInUp}
-                className="font-['Georgia',serif] text-4xl font-bold text-center text-brown mb-4"
-              >
-                {t("quickAnswers.title")}
-              </motion.h2>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-center text-taupe mb-12"
-              >
-                {t("quickAnswers.desc")}
-              </motion.p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {[
-                  {
-                    icon: <Shield className="w-6 h-6 text-wine" />,
-                    question: t("quickAnswers.q1"),
-                    answer: t("quickAnswers.a1"),
-                  },
-                  {
-                    icon: <Heart className="w-6 h-6 text-wine" />,
-                    question: t("quickAnswers.q2"),
-                    answer: t("quickAnswers.a2"),
-                  },
-                  {
-                    icon: <Clock className="w-6 h-6 text-wine" />,
-                    question: t("quickAnswers.q3"),
-                    answer: t("quickAnswers.a3"),
-                  },
-                  {
-                    icon: <Sparkle className="w-6 h-6 text-wine" />,
-                    question: t("quickAnswers.q4"),
-                    answer: t("quickAnswers.a4"),
-                  },
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    variants={scaleIn}
-                    whileHover={{ y: -5 }}
-                    className="bg-linear-to-br from-cream to-white p-6 rounded-xl border border-cream hover:border-wine/20 transition-all duration-300"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 bg-white rounded-lg shadow-sm">
-                        {item.icon}
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-brown mb-2">
-                          {item.question}
-                        </h3>
-                        <p className="text-taupe text-sm">{item.answer}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Methods Comparison Section */}
-        <section className="py-20 bg-cream">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="max-w-6xl mx-auto"
-            >
-              <motion.h2
-                variants={fadeInUp}
-                className="font-['Georgia',serif] text-4xl font-bold text-center text-brown mb-4"
-              >
-                {t("methods.title")}
-              </motion.h2>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-center text-taupe mb-12"
-              >
-                {t("methods.desc")}
-              </motion.p>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {[
-                  {
-                    title: t("methods.fue"),
-                    fullTitle: t("methods.fueFullTitle"),
-                    description: t("methods.fueDesc"),
-                    benefits: [
-                      t("methods.fueBenefit1"),
-                      t("methods.fueBenefit2"),
-                      t("methods.fueBenefit3"),
-                    ],
-                    linear: "from-wine to-rose",
-                  },
-                  {
-                    title: t("methods.fut"),
-                    fullTitle: t("methods.futFullTitle"),
-                    description: t("methods.futDesc"),
-                    benefits: [
-                      t("methods.futBenefit1"),
-                      t("methods.futBenefit2"),
-                      t("methods.futBenefit3"),
-                    ],
-                    linear: "from-brown to-taupe",
-                  },
-                  {
-                    title: t("methods.dhi"),
-                    fullTitle: t("methods.dhiFullTitle"),
-                    description: t("methods.dhiDesc"),
-                    benefits: [
-                      t("methods.dhiBenefit1"),
-                      t("methods.dhiBenefit2"),
-                      t("methods.dhiBenefit3"),
-                    ],
-                    linear: "from-rose to-wine",
-                  },
-                ].map((method, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInUp}
-                    whileHover={{ y: -10 }}
-                    className="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500"
-                  >
-                    <div
-                      className={`absolute inset-0 bg-linear-to-br ${method.linear} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
-                    ></div>
-
-                    <div className="p-8">
-                      <h3 className="font-['Georgia',serif] text-3xl font-bold text-brown mb-2">
-                        {method.title}
-                      </h3>
-                      <p className="text-sm font-medium text-wine mb-4">
-                        {method.fullTitle}
-                      </p>
-                      <p className="text-taupe mb-6">{method.description}</p>
-
-                      <div className="space-y-3">
-                        {method.benefits.map((benefit, idx) => (
-                          <div key={idx} className="flex items-center gap-2">
-                            <CheckCircle2 className="w-5 h-5 text-wine shrink-0" />
-                            <span className="text-sm text-brown">
-                              {benefit}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="px-8 pb-8">
-                      <button className="text-wine font-semibold flex items-center gap-2 group/btn">
-                        {t("methods.learnMore")}
-                        <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                      </button>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-center text-brown mt-8 italic"
-              >
-                {t("methods.note")}
-              </motion.p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Who Is It For Section */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="max-w-6xl mx-auto"
-            >
-              <motion.h2
-                variants={fadeInUp}
-                className="font-['Georgia',serif] text-4xl font-bold text-center text-brown mb-4"
-              >
-                {t("whoFor.title")}
-              </motion.h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
-                {/* Good Candidates */}
-                <motion.div variants={fadeInLeft} className="space-y-6">
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className="w-12 h-12 bg-linear-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center">
-                      <CheckCircle2 className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="font-['Georgia',serif] text-2xl font-bold text-brown">
-                      {t("whoFor.goodTitle")}
-                    </h3>
-                  </div>
-
-                  <ul className="space-y-4">
-                    {[
-                      t("whoFor.good1"),
-                      t("whoFor.good2"),
-                      t("whoFor.good3"),
-                      t("whoFor.good4"),
-                    ].map((item, index) => (
-                      <motion.li
-                        key={index}
-                        variants={fadeInUp}
-                        className="flex items-start gap-3 group"
-                      >
-                        <div className="p-1 bg-green-100 rounded-full group-hover:scale-110 transition-transform">
-                          <CheckCircle2 className="w-4 h-4 text-green-600" />
-                        </div>
-                        <span className="text-brown">{item}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-8 p-6 bg-linear-to-br from-cream to-white rounded-xl">
-                    <h4 className="font-semibold text-brown mb-3">
-                      {t("whoFor.reasonsTitle")}
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {[
-                        t("whoFor.reason1"),
-                        t("whoFor.reason2"),
-                        t("whoFor.reason3"),
-                        t("whoFor.reason4"),
-                      ].map((tag, idx) => (
-                        <span
-                          key={idx}
-                          className="px-3 py-1 bg-white text-wine rounded-full text-sm shadow-sm"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Should Wait */}
-                <motion.div variants={fadeInRight} className="space-y-6">
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className="w-12 h-12 bg-linear-to-br from-wine to-rose rounded-xl flex items-center justify-center">
-                      <AlertCircle className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="font-['Georgia',serif] text-2xl font-bold text-brown">
-                      {t("whoFor.waitTitle")}
-                    </h3>
-                  </div>
-
-                  <ul className="space-y-4">
-                    {[
-                      t("whoFor.wait1"),
-                      t("whoFor.wait2"),
-                      t("whoFor.wait3"),
-                      t("whoFor.wait4"),
-                    ].map((item, index) => (
-                      <motion.li
-                        key={index}
-                        variants={fadeInUp}
-                        className="flex items-start gap-3 group"
-                      >
-                        <div className="p-1 bg-cream rounded-full group-hover:scale-110 transition-transform">
-                          <AlertCircle className="w-4 h-4 text-wine" />
-                        </div>
-                        <span className="text-brown">{item}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-
-                  <motion.div
-                    variants={scaleIn}
-                    className="mt-8 p-6 bg-linear-to-br from-wine/5 to-rose/5 rounded-xl border border-cream"
-                  >
-                    <p className="text-brown italic">
-                      {t("whoFor.waitNote")}
-                    </p>
-                  </motion.div>
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Areas We Treat */}
-        <section className="py-20 bg-cream">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="max-w-6xl mx-auto"
-            >
-              <motion.h2
-                variants={fadeInUp}
-                className="font-['Georgia',serif] text-4xl font-bold text-center text-brown mb-4"
-              >
-                {t("areas.title")}
-              </motion.h2>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-center text-taupe mb-12"
-              >
-                {t("areas.desc")}
-              </motion.p>
-
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                {[
-                  { icon: <Scissors className="w-6 h-6" />, label: t("areas.a1") },
-                  { icon: <Sparkles className="w-6 h-6" />, label: t("areas.a2") },
-                  { icon: <Leaf className="w-6 h-6" />, label: t("areas.a3") },
-                  { icon: <Flower2 className="w-6 h-6" />, label: t("areas.a4") },
-                  { icon: <Star className="w-6 h-6" />, label: t("areas.a5") },
-                  { icon: <Heart className="w-6 h-6" />, label: t("areas.a6") },
-                ].map((area, index) => (
-                  <motion.div
-                    key={index}
-                    variants={scaleIn}
-                    whileHover={{ scale: 1.05, rotate: 2 }}
-                    className="group bg-white p-6 rounded-xl text-center shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
-                  >
-                    <div className="w-12 h-12 mx-auto mb-3 bg-linear-to-br from-wine to-rose rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
-                      {area.icon}
-                    </div>
-                    <p className="font-medium text-brown">{area.label}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Patient Journey */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="max-w-5xl mx-auto"
-            >
-              <motion.h2
-                variants={fadeInUp}
-                className="font-['Georgia',serif] text-4xl font-bold text-center text-brown mb-12"
-              >
-                {t("journey.title")}
-              </motion.h2>
-
-              <div className="relative">
-                {/* Timeline Line */}
-                <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-linear-to-b from-wine via-rose to-taupe hidden md:block"></div>
-
-                <div className="space-y-8">
-                  {[
-                    {
-                      step: "01",
-                      title: t("journey.s1Title"),
-                      description: t("journey.s1Desc"),
-                      icon: <Users className="w-6 h-6" />,
-                    },
-                    {
-                      step: "02",
-                      title: t("journey.s2Title"),
-                      description: t("journey.s2Desc"),
-                      icon: <Scissors className="w-6 h-6" />,
-                    },
-                    {
-                      step: "03",
-                      title: t("journey.s3Title"),
-                      description: t("journey.s3Desc"),
-                      icon: <Sparkle className="w-6 h-6" />,
-                    },
-                    {
-                      step: "04",
-                      title: t("journey.s4Title"),
-                      description: t("journey.s4Desc"),
-                      icon: <Calendar className="w-6 h-6" />,
-                    },
-                    {
-                      step: "05",
-                      title: t("journey.s5Title"),
-                      description: t("journey.s5Desc"),
-                      icon: <Heart className="w-6 h-6" />,
-                    },
-                  ].map((item, index) => (
-                    <motion.div
-                      key={index}
-                      variants={fadeInLeft}
-                      whileHover={{ x: 10 }}
-                      className="relative flex flex-col md:flex-row gap-4 md:gap-8 group"
-                    >
-                      <div className="flex items-center gap-4 md:w-48">
-                        <div className="w-16 h-16 bg-linear-to-br from-wine to-rose rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
-                          {item.step}
-                        </div>
-                        <div className="md:hidden">
-                          <h3 className="font-semibold text-brown">
-                            {item.title}
-                          </h3>
-                        </div>
-                      </div>
-
-                      <div className="flex-1 bg-cream p-6 rounded-xl ml-0 md:ml-4">
-                        <h3 className="font-semibold text-brown mb-2 hidden md:block">
-                          {item.title}
-                        </h3>
-                        <p className="text-taupe">{item.description}</p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Recovery Timeline */}
-        <section className="py-20 bg-cream">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <motion.h2
-                variants={fadeInUp}
-                className="font-['Georgia',serif] text-4xl font-bold text-center text-brown mb-4"
-              >
-                {t("recovery.title")}
-              </motion.h2>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-center text-taupe mb-12"
-              >
-                {t("recovery.desc")}
-              </motion.p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-                {[
-                  {
-                    period: t("recovery.r1Period"),
-                    desc: t("recovery.r1Desc"),
-                  },
-                  {
-                    period: t("recovery.r2Period"),
-                    desc: t("recovery.r2Desc"),
-                  },
-                  {
-                    period: t("recovery.r3Period"),
-                    desc: t("recovery.r3Desc"),
-                  },
-                  {
-                    period: t("recovery.r4Period"),
-                    desc: t("recovery.r4Desc"),
-                  },
-                  {
-                    period: t("recovery.r5Period"),
-                    desc: t("recovery.r5Desc"),
-                  },
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    variants={scaleIn}
-                    whileHover={{ y: -5 }}
-                    className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 text-center"
-                  >
-                    <div className="w-12 h-12 mx-auto mb-4 bg-linear-to-br from-wine to-rose rounded-full flex items-center justify-center text-white font-bold">
-                      {index + 1}
-                    </div>
-                    <h3 className="font-semibold text-wine mb-2">
-                      {item.period}
-                    </h3>
-                    <p className="text-sm text-brown">{item.desc}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Pros & Cons */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="max-w-4xl mx-auto"
-            >
-              <motion.h2
-                variants={fadeInUp}
-                className="font-['Georgia',serif] text-4xl font-bold text-center text-brown mb-12"
-              >
-                {t("prosCons.title")}
-              </motion.h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Pros */}
-                <motion.div variants={fadeInLeft} className="space-y-4">
-                  <h3 className="text-2xl font-semibold text-green-600 mb-6">
-                    {t("prosCons.benefitsTitle")}
-                  </h3>
-                  {[
-                    t("prosCons.pro1"),
-                    t("prosCons.pro2"),
-                    t("prosCons.pro3"),
-                  ].map((item, index) => (
-                    <motion.div
-                      key={index}
-                      variants={fadeInUp}
-                      className="flex items-start gap-3 p-4 bg-linear-to-r from-green-50 to-transparent rounded-lg"
-                    >
-                      <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                      <span className="text-brown">{item}</span>
-                    </motion.div>
-                  ))}
-                </motion.div>
-
-                {/* Cons */}
-                <motion.div variants={fadeInRight} className="space-y-4">
-                  <h3 className="text-2xl font-semibold text-wine mb-6">
-                    {t("prosCons.limitsTitle")}
-                  </h3>
-                  {[
-                    t("prosCons.con1"),
-                    t("prosCons.con2"),
-                    t("prosCons.con3"),
-                    t("prosCons.con4"),
-                  ].map((item, index) => (
-                    <motion.div
-                      key={index}
-                      variants={fadeInUp}
-                      className="flex items-start gap-3 p-4 bg-linear-to-r from-cream to-transparent rounded-lg"
-                    >
-                      <AlertCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                      <span className="text-brown">{item}</span>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </div>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-center text-wine mt-8 italic font-medium"
-              >
-                {t("prosCons.note")}
-              </motion.p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Cost Section */}
-        <section className="py-20 bg-cream">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="max-w-4xl mx-auto"
-            >
-              <motion.h2
-                variants={fadeInUp}
-                className="font-['Georgia',serif] text-4xl font-bold text-center text-brown mb-4"
-              >
-                {t("cost.title")}
-              </motion.h2>
-
-              <motion.div
+                key={index}
                 variants={scaleIn}
-                className="bg-white p-8 rounded-2xl shadow-xl mb-8"
+                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
               >
-                <div className="text-center mb-8">
-                  <span className="text-5xl font-bold text-wine">{t("cost.low")}</span>
-                  <span className="text-taupe mx-4">{t("cost.to")}</span>
-                  <span className="text-5xl font-bold text-rose">
-                    {t("cost.high")}
-                  </span>
-                </div>
-
-                <p className="text-center text-brown mb-8">
-                  {t("cost.desc")}
-                </p>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="p-4 bg-cream rounded-lg">
-                    <h4 className="font-semibold text-brown mb-2">{t("cost.fueTitle")}</h4>
-                    <p className="text-wine">{t("cost.fueRange")}</p>
-                    <p className="text-sm text-taupe mt-1">
-                      {t("cost.fueNote")}
-                    </p>
-                  </div>
-
-                  <div className="p-4 bg-cream rounded-lg">
-                    <h4 className="font-semibold text-brown mb-2">{t("cost.graftTitle")}</h4>
-                    <p className="text-wine">{t("cost.graftRange")}</p>
-                    <p className="text-sm text-taupe mt-1">
-                      {t("cost.graftNote")}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-8 p-6 border border-cream rounded-xl">
-                  <h4 className="font-semibold text-brown mb-4">
-                    {t("cost.includesTitle")}
-                  </h4>
+                <Scissors className="text-wine mb-4" size={40} />
+                <h3 className="font-georgia text-brown text-2xl mb-4">
+                  {method.name}
+                </h3>
+                <p className="text-taupe mb-4">{method.description}</p>
+                {method.pros && (
                   <ul className="space-y-2">
-                    {[
-                      t("cost.inc1"),
-                      t("cost.inc2"),
-                      t("cost.inc3"),
-                      t("cost.inc4"),
-                    ].map((item, idx) => (
+                    {method.pros.map((pro, idx) => (
                       <li
                         key={idx}
-                        className="flex items-center gap-2 text-taupe"
+                        className="flex items-start gap-2 text-taupe"
                       >
-                        <CheckCircle2 className="w-4 h-4 text-wine" />
-                        {item}
+                        <CheckCircle2
+                          className="text-wine shrink-0 mt-1"
+                          size={18}
+                        />
+                        <span>{pro}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
+                )}
               </motion.div>
+            ))}
+          </div>
+          <motion.p
+            variants={fadeInUp}
+            className="text-center text-taupe mt-8 italic"
+          >
+            In real life, the "best" method depends on your hair loss pattern,
+            donor strength, and goals. Technique matters, but planning matters
+            more.
+          </motion.p>
+        </motion.div>
+      </motion.section>
+
+      {/* Who is Hair Transplant For */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-16 px-4 bg-light"
+      >
+        <motion.div variants={staggerContainer} className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12">
+            <motion.div variants={fadeInLeft}>
+              <h2 className="font-georgia text-4xl text-brown mb-6">
+                Who is Hair Transplant For?
+              </h2>
+              <div className="bg-white p-6 rounded-xl shadow-md mb-6">
+                <h3 className="font-georgia text-brown text-xl mb-4">
+                  Good candidates have:
+                </h3>
+                <ul className="space-y-3">
+                  {[
+                    "You have a stable hair loss pattern",
+                    "Your donor area is strong",
+                    "You want a long-term solution, not a short-term cover-up",
+                    "You understand results take time",
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-taupe">
+                      <CheckCircle2
+                        className="text-wine shrink-0 mt-1"
+                        size={18}
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="bg-white p-6 rounded-xl shadow-md">
+                <h3 className="font-georgia text-brown text-xl mb-4">
+                  Common reasons in KL:
+                </h3>
+                <ul className="space-y-2 text-taupe">
+                  <li>• Receding hairline</li>
+                  <li>• Crown thinning</li>
+                  <li>• Diffuse thinning that has a clear weak zone</li>
+                  <li>
+                    • Facial hair gaps, like beard or brows (in selected cases)
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+            <motion.div variants={fadeInRight}>
+              <div className="bg-rose bg-opacity-10 p-8 rounded-2xl border border-rose">
+                <h2 className="font-georgia text-3xl text-brown mb-6">
+                  Who Should Wait or Choose Another Treatment First?
+                </h2>
+                <ul className="space-y-4">
+                  {[
+                    "Hair loss is still very fast",
+                    "You have active scalp inflammation",
+                    "Donor hair is weak",
+                    "You expect instant density in a few weeks",
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-light">
+                      <AlertCircle
+                        className="text-light shrink-0 mt-1"
+                        size={18}
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-light mt-6">
+                  In these cases, you may do better starting with non-surgical
+                  options first (like PRP, medications, or laser), then re-check
+                  your progress.
+                </p>
+              </div>
             </motion.div>
           </div>
-        </section>
+        </motion.div>
+      </motion.section>
 
-        {/* FAQ Section */}
-        <FAQ data={faqs} />
-        {/* Final Note */}
-        <section className="py-20 bg-linear-to-br from-wine to-rose text-white">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="container mx-auto px-4 sm:px-6 lg:px-8 text-center"
+      {/* Areas We Can Treat */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-16 px-4 bg-cream"
+      >
+        <motion.div variants={staggerContainer} className="max-w-7xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown mb-12 text-center"
           >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-['Georgia',serif] text-4xl font-bold mb-6"
+            Areas We Can Treat (Not Just the Scalp)
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="text-center text-taupe mb-8">
+            Hair restoration is not one-size-fits-all. Many patients ask about
+            specific zones:
+          </motion.p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {treatableAreas.map((area, index) => (
+              <motion.div
+                key={index}
+                variants={scaleIn}
+                className="bg-white p-4 rounded-lg shadow border-l-4 border-wine"
+              >
+                <p className="text-brown">{area}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </motion.section>
+
+      {/* Patient Journey */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-16 px-4 bg-light"
+      >
+        <motion.div variants={staggerContainer} className="max-w-7xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown mb-12 text-center"
+          >
+            What Happens at Nexus Clinic Kuala Lumpur
+          </motion.h2>
+          <div className="grid md:grid-cols-5 gap-4">
+            {[
+              {
+                step: 1,
+                title: "Consultation and Scalp Check",
+                desc: "We talk about your hair loss story. We check your donor area, density, and scalp health. We also discuss your lifestyle, job, and downtime needs.",
+              },
+              {
+                step: 2,
+                title: "Hairline Design",
+                desc: "A good hairline should fit your age and features. Overly low hairlines can look unnatural later.",
+              },
+              {
+                step: 3,
+                title: "Graft Estimate and Plan",
+                desc: "Most clinics price by graft count or session. You should leave knowing what you are paying for.",
+              },
+              {
+                step: 4,
+                title: "Procedure Day",
+                desc: "Hair transplant is usually done with local anaesthesia. You may feel pressure, and some pulling sensation. Many patients bring music or podcasts.",
+              },
+              {
+                step: 5,
+                title: "Aftercare and Follow-ups",
+                desc: "Aftercare is where results are protected. You will get washing guidance and activity limits.",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                className="bg-white p-6 rounded-xl shadow-md"
+              >
+                <div className="w-10 h-10 bg-wine text-cream rounded-full flex items-center justify-center font-bold mb-4">
+                  {item.step}
+                </div>
+                <h3 className="font-georgia text-brown text-lg mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-taupe text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </motion.section>
+
+      {/* Recovery Timeline */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-16 px-4 bg-cream"
+      >
+        <motion.div variants={staggerContainer} className="max-w-7xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown mb-12 text-center"
+          >
+            Recovery Timeline (What You Will Actually See)
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="text-center text-taupe mb-8">
+            The first days can look intense. That is normal. Tiny scabs,
+            redness, and mild swelling are common.
+          </motion.p>
+          <div className="relative">
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-wine opacity-30"></div>
+            {recoveryTimeline.map((item, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInLeft}
+                className="relative pl-16 pb-8"
+              >
+                <div className="absolute left-4 w-8 h-8 bg-wine rounded-full flex items-center justify-center text-cream text-sm font-bold">
+                  {index + 1}
+                </div>
+                <div className="bg-white p-6 rounded-xl shadow-md">
+                  <h3 className="font-georgia text-brown text-xl mb-2">
+                    {item.period}
+                  </h3>
+                  <p className="text-taupe">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </motion.section>
+
+      <SectionBeforeAfter transformations={transformations} />
+
+      {/* Pros and Cons */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-16 px-4 bg-light"
+      >
+        <motion.div variants={staggerContainer} className="max-w-6xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown mb-12 text-center"
+          >
+            Pros and Cons (Honest View)
+          </motion.h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              variants={fadeInLeft}
+              className="bg-white p-8 rounded-2xl shadow-lg"
             >
-              {t("cta.title")}
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl mb-8 max-w-2xl mx-auto opacity-90"
+              <h3 className="font-georgia text-2xl text-wine mb-6 flex items-center gap-2">
+                <CheckCircle2 /> Benefits
+              </h3>
+              <ul className="space-y-3">
+                {pros.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-taupe">
+                    <CheckCircle2
+                      className="text-wine shrink-0 mt-1"
+                      size={18}
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+            <motion.div
+              variants={fadeInRight}
+              className="bg-white p-8 rounded-2xl shadow-lg"
             >
-              {t("cta.desc")}
-            </motion.p>
+              <h3 className="font-georgia text-2xl text-rose mb-6 flex items-center gap-2">
+                <AlertCircle /> Limitations
+              </h3>
+              <ul className="space-y-3">
+                {cons.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-taupe">
+                    <AlertCircle
+                      className="text-rose shrink-0 mt-1"
+                      size={18}
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+          <motion.p
+            variants={fadeInUp}
+            className="text-center text-taupe mt-8 italic"
+          >
+            A good clinic will say this clearly, before you commit.
+          </motion.p>
+        </motion.div>
+      </motion.section>
 
-            <motion.p variants={fadeInUp} className="text-lg mb-12">
-              <MapPin className="inline w-5 h-5 mr-2" />
-              {t("cta.address")}
-            </motion.p>
+      {/* Side Effects and Risks */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-16 px-4 bg-cream"
+      >
+        <motion.div variants={staggerContainer} className="max-w-7xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown mb-8 text-center"
+          >
+            Side Effects and Risks You Should Know
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="text-center text-taupe mb-8">
+            Hair transplant is generally safe, but it is still a procedure.
+            Common short-term effects can include:
+          </motion.p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              variants={fadeInLeft}
+              className="bg-white p-6 rounded-xl shadow-md"
+            >
+              <h3 className="font-georgia text-brown text-xl mb-4">
+                Common Short-term Effects
+              </h3>
+              <ul className="space-y-2">
+                {risks.map((risk, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-taupe">
+                    <span className="text-wine">•</span>
+                    <span>{risk}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+            <motion.div
+              variants={fadeInRight}
+              className="bg-rose bg-opacity-10 p-6 rounded-xl border border-rose"
+            >
+              <h3 className="font-georgia text-brown text-xl mb-4">
+                Call Your Clinic If You Notice
+              </h3>
+              <ul className="space-y-2">
+                {whenToCallClinic.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-light">
+                    <AlertCircle
+                      className="text-light shrink-0 mt-1"
+                      size={18}
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </motion.div>
+      </motion.section>
 
+      {/* Cost Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-16 px-4 bg-light"
+      >
+        <motion.div variants={staggerContainer} className="max-w-7xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown mb-8 text-center"
+          >
+            Hair Transplant Cost in Malaysia and Kuala Lumpur
+          </motion.h2>
+          <motion.div
+            variants={scaleIn}
+            className="bg-white p-8 rounded-2xl shadow-xl max-w-3xl mx-auto"
+          >
+            <p className="text-taupe mb-6">
+              Costs depend on grafts, method, and the clinic's team. In
+              Malaysia, many published price ranges sit around:
+            </p>
+            <ul className="space-y-4 mb-6">
+              <li className="flex items-center gap-3 text-brown">
+                <span className="w-3 h-3 bg-wine rounded-full"></span>
+                RM 5,500 to RM 15,000 for many FUE cases, with higher costs for
+                larger sessions
+              </li>
+              <li className="flex items-center gap-3 text-brown">
+                <span className="w-3 h-3 bg-wine rounded-full"></span>
+                Some clinics also show broader ranges, like RM 5,000 to RM
+                30,000
+              </li>
+            </ul>
+            <p className="text-taupe mb-4">
+              Some clinics price per graft, such as:
+            </p>
+            <p className="text-brown font-semibold mb-6">
+              FUE around RM 6 to RM 12 per graft, with DHI often higher
+            </p>
+            <div className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-brown text-xl mb-3">
+                A fair quote should explain what is included:
+              </h3>
+              <ul className="space-y-2 text-taupe">
+                <li>• Consultation and planning</li>
+                <li>• Procedure time and team support</li>
+                <li>• Aftercare visits and post-op instructions</li>
+                <li>• Any add-ons like PRP (if recommended)</li>
+              </ul>
+            </div>
+          </motion.div>
+        </motion.div>
+      </motion.section>
+
+      {/* Treatment Comparison */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-16 px-4 bg-cream"
+      >
+        <motion.div variants={staggerContainer} className="max-w-7xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown mb-12 text-center"
+          >
+            Hair Transplant vs PRP vs Medications
+          </motion.h2>
+          <div className="grid md:grid-cols-3 gap-8">
             <motion.div
               variants={scaleIn}
-              className="flex flex-wrap gap-4 justify-center"
+              className="bg-white p-6 rounded-xl shadow-lg"
             >
-              <button className="px-8 py-4 bg-white text-wine rounded-full font-semibold hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                {t("cta.bookBtn")}
-              </button>
-              <button className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-wine transition-all duration-300">
-                {t("cta.callBtn")}
-              </button>
+              <h3 className="font-georgia text-2xl text-wine mb-4">
+                Choose Transplant When:
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2 text-taupe">
+                  <CheckCircle2 className="text-wine shrink-0 mt-1" size={18} />
+                  <span>There is clear thinning or bald area</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe">
+                  <CheckCircle2 className="text-wine shrink-0 mt-1" size={18} />
+                  <span>You want hair where hair is already gone</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe">
+                  <CheckCircle2 className="text-wine shrink-0 mt-1" size={18} />
+                  <span>Donor supply is strong</span>
+                </li>
+              </ul>
             </motion.div>
+            <motion.div
+              variants={scaleIn}
+              className="bg-white p-6 rounded-xl shadow-lg"
+            >
+              <h3 className="font-georgia text-2xl text-rose mb-4">
+                Choose PRP or Medications When:
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2 text-taupe">
+                  <Droplets className="text-rose shrink-0 mt-1" size={18} />
+                  <span>Hair is thinning but still present</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe">
+                  <Droplets className="text-rose shrink-0 mt-1" size={18} />
+                  <span>You want to slow shedding and support growth</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe">
+                  <Droplets className="text-rose shrink-0 mt-1" size={18} />
+                  <span>You are not ready for a procedure</span>
+                </li>
+              </ul>
+            </motion.div>
+            <motion.div
+              variants={scaleIn}
+              className="bg-white p-6 rounded-xl shadow-lg col-span-full md:col-span-1"
+            >
+              <p className="text-taupe text-center italic">
+                Many people combine treatments for better long-term maintenance.
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </motion.section>
 
-            <motion.p variants={fadeInUp} className="text-sm opacity-70 mt-12">
-              {t("cta.disclaimer")}
-            </motion.p>
+      {/* How to Choose Right Clinic */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-16 px-4 bg-light"
+      >
+        <motion.div variants={staggerContainer} className="max-w-7xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown mb-8 text-center"
+          >
+            How to Choose the Right Hair Transplant Clinic in KL
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="text-center text-taupe mb-8">
+            When you search "hair transplant Kuala Lumpur," you will see clinics
+            highlight:
+          </motion.p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              variants={fadeInLeft}
+              className="bg-white p-6 rounded-xl shadow-md"
+            >
+              <h3 className="font-georgia text-brown text-xl mb-4">
+                What clinics highlight:
+              </h3>
+              <ul className="space-y-2 text-taupe">
+                <li>• Technique branding and graft survival claims</li>
+                <li>• Price ranges and package style quotes</li>
+                <li>• Aftercare rules and recovery guidance</li>
+              </ul>
+            </motion.div>
+            <motion.div
+              variants={fadeInRight}
+              className="bg-cream bg-opacity-10 p-6 rounded-xl border border-cream"
+            >
+              <h3 className="font-georgia text-brown text-xl mb-4">
+                Simple checklist that matters more:
+              </h3>
+              <ul className="space-y-2 text-taupe">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="text-wine shrink-0 mt-1" size={18} />
+                  <span>Clear, realistic planning (not only big promises)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="text-wine shrink-0 mt-1" size={18} />
+                  <span>Before and after photos that match your hair type</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="text-wine shrink-0 mt-1" size={18} />
+                  <span>Transparent pricing and what it includes</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="text-wine shrink-0 mt-1" size={18} />
+                  <span>Post-op support you can actually reach</span>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+        </motion.div>
+      </motion.section>
+
+      {/* FAQ Section */}
+      <FAQ data={faqs} />
+
+      {/* Final Note */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-16 px-4 bg-wine text-cream"
+      >
+        <motion.div
+          variants={staggerContainer}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <motion.h2 variants={fadeInUp} className="font-georgia text-4xl mb-6">
+            A Final Note
+          </motion.h2>
+          <motion.p
+            variants={fadeInUp}
+            className="text-xl mb-8 leading-relaxed"
+          >
+            A hair transplant can be life-changing, but only when it is planned
+            well. If you want a natural hairline and a realistic timeline, start
+            with a proper assessment.
+          </motion.p>
+          <motion.div
+            variants={scaleIn}
+            className="bg-cream text-brown p-8 rounded-2xl inline-block"
+          >
+            <p className="text-lg">
+              Nexus Clinic Kuala Lumpur is located near KLCC at Jalan Pinang.
+              This page is general information and does not replace medical
+              advice.
+            </p>
           </motion.div>
-        </section>
-      </main>
-    </>
+        </motion.div>
+      </motion.section>
+    </main>
   );
 };
 

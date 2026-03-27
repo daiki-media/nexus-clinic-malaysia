@@ -248,7 +248,7 @@ const SectionBeforeAfter = ({
   t,
 }: BeforeAfterFaceSectionProps) => {
   return (
-    <section className="py-24 bg-cream relative overflow-hidden">
+    <section className="py-24 bg-transparent relative overflow-hidden">
       {/* Background Decorations */}
       <motion.div
         animate={floatAnimation}

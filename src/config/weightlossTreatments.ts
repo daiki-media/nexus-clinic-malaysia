@@ -56,7 +56,7 @@ export const weightlossTreatmentsMetadata: TreatmentMetadata[] = [
   },
   {
     slug: 'glp-1-programme-malaysia',
-    component: 'GLP1',
+    component: 'GLP1LandingPage',
     title: 'GLP‑1 Weight Loss Programme Malaysia | KL Medical Plan',
     description: 'Achieve safe, effective weight loss with GLP‑1 program in Kuala Lumpur. Medical supervision ensures tailored care for lasting results. Book your appointment today.',
   },

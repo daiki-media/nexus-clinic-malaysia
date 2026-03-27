@@ -78,12 +78,8 @@ const HypothyroidLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 <h2 className="font-['Georgia'] text-4xl lg:text-5xl xl:text-6xl font-bold text-brown leading-tight mb-6">
                   {t("hero.title")}
                 </h2>
-                <p className="text-xl text-taupe mb-8">
-                  {t("hero.desc")}
-                </p>
-                <p className="text-lg text-rose mb-8">
-                  {t("hero.highlight")}
-                </p>
+                <p className="text-xl text-taupe mb-8">{t("hero.desc")}</p>
+                <p className="text-lg text-rose mb-8">{t("hero.highlight")}</p>
                 <div className="flex flex-wrap gap-4">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
@@ -146,19 +142,15 @@ const HypothyroidLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 <h2 className="font-['Georgia'] text-4xl font-bold text-brown mb-4">
                   {t("whatIs.title")}
                 </h2>
-                <p className="text-xl text-taupe mb-6">
-                  {t("whatIs.desc")}
-                </p>
-                <p className="text-lg text-brown">
-                  {t("whatIs.realLife")}
-                </p>
+                <p className="text-xl text-taupe mb-6">{t("whatIs.desc")}</p>
+                <p className="text-lg text-brown">{t("whatIs.realLife")}</p>
               </motion.div>
               <motion.div
                 variants={fadeInRight}
                 className="relative h-100 rounded-2xl overflow-hidden shadow-xl"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?q=80&w=2070&auto=format&fit=crop"
+                  src="/images/regenerative/hypothyroidism-treatment.webp"
                   alt="Thyroid gland anatomy illustration"
                   className="w-full h-full object-cover"
                 />
@@ -207,24 +199,24 @@ const HypothyroidLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 <h2 className="font-['Georgia'] text-4xl font-bold text-brown mb-4">
                   {t("symptoms.title")}
                 </h2>
-                <p className="text-xl text-taupe mb-6">
-                  {t("symptoms.desc")}
-                </p>
+                <p className="text-xl text-taupe mb-6">{t("symptoms.desc")}</p>
               </motion.div>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9"].map((key, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  whileHover={{ x: 5 }}
-                  className="flex items-center gap-3 bg-white p-4 rounded-lg shadow-sm"
-                >
-                  <div className="w-2 h-2 bg-wine rounded-full"></div>
-                  <p className="text-brown">{t(`symptoms.${key}`)}</p>
-                </motion.div>
-              ))}
+              {["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9"].map(
+                (key, index) => (
+                  <motion.div
+                    key={index}
+                    variants={fadeInUp}
+                    whileHover={{ x: 5 }}
+                    className="flex items-center gap-3 bg-white p-4 rounded-lg shadow-sm"
+                  >
+                    <div className="w-2 h-2 bg-wine rounded-full"></div>
+                    <p className="text-brown">{t(`symptoms.${key}`)}</p>
+                  </motion.div>
+                ),
+              )}
             </div>
             <motion.p
               variants={fadeInUp}
@@ -345,13 +337,17 @@ const HypothyroidLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                       <span className="text-brown">{t("diagnosis.test2")}</span>
                     </li>
                   </ul>
-                  <p className="text-taupe mt-4">{t("diagnosis.testsExplain")}</p>
+                  <p className="text-taupe mt-4">
+                    {t("diagnosis.testsExplain")}
+                  </p>
                   <div className="mt-6 p-4 bg-cream rounded-lg">
                     <h4 className="font-semibold text-wine mb-2">
                       {t("diagnosis.alsoNeedTitle")}
                     </h4>
                     <p className="text-brown">{t("diagnosis.alsoNeed1")}</p>
-                    <p className="text-brown mt-2">{t("diagnosis.alsoNeed2")}</p>
+                    <p className="text-brown mt-2">
+                      {t("diagnosis.alsoNeed2")}
+                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -361,7 +357,9 @@ const HypothyroidLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                   <h3 className="font-['Georgia'] text-2xl font-bold text-brown mb-6">
                     {t("diagnosis.subTitle")}
                   </h3>
-                  <p className="text-taupe mb-4">{t("diagnosis.subSubtitle")}</p>
+                  <p className="text-taupe mb-4">
+                    {t("diagnosis.subSubtitle")}
+                  </p>
                   <p className="text-brown mb-4">{t("diagnosis.subDesc1")}</p>
                   <p className="text-brown">{t("diagnosis.subDesc2")}</p>
                 </div>
@@ -448,21 +446,27 @@ const HypothyroidLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                     <h4 className="font-semibold text-brown text-sm mb-1">
                       {t("treatment.timeTitle")}
                     </h4>
-                    <p className="text-xs text-taupe">{t("treatment.timeDesc")}</p>
+                    <p className="text-xs text-taupe">
+                      {t("treatment.timeDesc")}
+                    </p>
                   </div>
                   <div className="text-center p-4 bg-cream rounded-xl">
                     <AlertCircle className="w-8 h-8 text-wine mx-auto mb-2" />
                     <h4 className="font-semibold text-brown text-sm mb-1">
                       {t("treatment.hiddenTitle")}
                     </h4>
-                    <p className="text-xs text-taupe">{t("treatment.hiddenDesc")}</p>
+                    <p className="text-xs text-taupe">
+                      {t("treatment.hiddenDesc")}
+                    </p>
                   </div>
                   <div className="text-center p-4 bg-cream rounded-xl col-span-2">
                     <Coffee className="w-8 h-8 text-wine mx-auto mb-2" />
                     <h4 className="font-semibold text-brown text-sm mb-1">
                       {t("treatment.klTitle")}
                     </h4>
-                    <p className="text-xs text-taupe">{t("treatment.klDesc")}</p>
+                    <p className="text-xs text-taupe">
+                      {t("treatment.klDesc")}
+                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -590,7 +594,9 @@ const HypothyroidLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 className="bg-cream p-6 rounded-xl"
               >
                 <DollarSign className="w-12 h-12 text-wine mb-4" />
-                <h3 className="font-semibold text-brown mb-2">{t("cost.c1Title")}</h3>
+                <h3 className="font-semibold text-brown mb-2">
+                  {t("cost.c1Title")}
+                </h3>
                 <p className="text-taupe">{t("cost.c1Desc")}</p>
               </motion.div>
 
@@ -599,7 +605,9 @@ const HypothyroidLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 className="bg-cream p-6 rounded-xl"
               >
                 <DollarSign className="w-12 h-12 text-wine mb-4" />
-                <h3 className="font-semibold text-brown mb-2">{t("cost.c2Title")}</h3>
+                <h3 className="font-semibold text-brown mb-2">
+                  {t("cost.c2Title")}
+                </h3>
                 <p className="text-taupe">{t("cost.c2Desc")}</p>
               </motion.div>
 
@@ -608,7 +616,9 @@ const HypothyroidLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 className="bg-cream p-6 rounded-xl"
               >
                 <Pill className="w-12 h-12 text-wine mb-4" />
-                <h3 className="font-semibold text-brown mb-2">{t("cost.c3Title")}</h3>
+                <h3 className="font-semibold text-brown mb-2">
+                  {t("cost.c3Title")}
+                </h3>
                 <p className="text-taupe">{t("cost.c3Desc")}</p>
               </motion.div>
             </div>
@@ -654,7 +664,9 @@ const HypothyroidLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 variants={fadeInLeft}
                 className="bg-white p-6 rounded-xl"
               >
-                <h3 className="font-semibold text-wine mb-2">{t("competitor.comp1Title")}</h3>
+                <h3 className="font-semibold text-wine mb-2">
+                  {t("competitor.comp1Title")}
+                </h3>
                 <p className="text-brown">{t("competitor.comp1Desc")}</p>
               </motion.div>
 
@@ -662,7 +674,9 @@ const HypothyroidLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 variants={fadeInRight}
                 className="bg-white p-6 rounded-xl"
               >
-                <h3 className="font-semibold text-wine mb-2">{t("competitor.comp2Title")}</h3>
+                <h3 className="font-semibold text-wine mb-2">
+                  {t("competitor.comp2Title")}
+                </h3>
                 <p className="text-brown">{t("competitor.comp2Desc")}</p>
               </motion.div>
 
@@ -670,7 +684,9 @@ const HypothyroidLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 variants={fadeInLeft}
                 className="bg-white p-6 rounded-xl"
               >
-                <h3 className="font-semibold text-wine mb-2">{t("competitor.comp3Title")}</h3>
+                <h3 className="font-semibold text-wine mb-2">
+                  {t("competitor.comp3Title")}
+                </h3>
                 <p className="text-brown">{t("competitor.comp3Desc")}</p>
               </motion.div>
 
@@ -678,7 +694,9 @@ const HypothyroidLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 variants={fadeInRight}
                 className="bg-white p-6 rounded-xl"
               >
-                <h3 className="font-semibold text-wine mb-2">{t("competitor.comp4Title")}</h3>
+                <h3 className="font-semibold text-wine mb-2">
+                  {t("competitor.comp4Title")}
+                </h3>
                 <p className="text-brown">{t("competitor.comp4Desc")}</p>
               </motion.div>
             </div>

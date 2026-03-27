@@ -767,7 +767,7 @@ export default function PageWegovyMalaysia({
         </motion.section>
 
         {/* Competitor Analysis Section */}
-        <motion.section
+        {/* <motion.section
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -852,7 +852,7 @@ export default function PageWegovyMalaysia({
               </div>
             </motion.div>
           </div>
-        </motion.section>
+        </motion.section> */}
 
         {/* FAQ Section */}
         <FAQ data={faqs} />
@@ -864,7 +864,7 @@ export default function PageWegovyMalaysia({
           whileInView="visible"
           className="py-24 bg-linear-to-br from-wine to-rose relative overflow-hidden"
         >
-          <div className="absolute inset-0 bg-[url('/api/placeholder/1920/1080')] opacity-10 mix-blend-overlay" />
+          <div className="absolute inset-0 bg-[url('/images/clinic/interior.png')] opacity-10 mix-blend-overlay" />
 
           <div className="container mx-auto px-4 md:px-6 relative z-10">
             <motion.div

@@ -2,29 +2,25 @@
 
 import { motion } from "framer-motion";
 import {
-  Scissors,
-  Clock,
+  CheckCircle2,
   Shield,
-  Heart,
   Sparkles,
-  Droplets,
-  Sun,
-  ChevronRight,
+  TrendingUp,
   Users,
   Calendar,
   MapPin,
-  CheckCircle2,
-  AlertCircle,
-  ArrowRight,
-  Quote,
-  Award,
+  ChevronRight,
+  Star,
+  Heart,
   Target,
+  Droplets,
+  Scissors,
+  Wind,
+  Leaf,
+  Zap,
   Activity,
   Thermometer,
-  Flower2,
-  Waves,
-  Wind,
-  Sparkle,
+  AlertCircle,
 } from "lucide-react";
 
 import {
@@ -36,747 +32,1059 @@ import {
 } from "../../lib/animations";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
+import FAQ from "@/src/components/FAQ";
+import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
 const FUEHairTransplant = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "fueHairTransplant");
 
-  return (
-    <>
-      <main className="min-h-screen bg-linear-to-b from-cream via-white to-cream font-['Inter',sans-serif] overflow-hidden">
-        {/* Hero Section */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden"
-        >
-          {/* Decorative Elements */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 0.1, scale: 1 }}
-            transition={{ duration: 1.5 }}
-            className="absolute top-20 left-10 w-64 h-64 rounded-full bg-wine blur-3xl"
-          />
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 0.1, scale: 1 }}
-            transition={{ duration: 1.5, delay: 0.3 }}
-            className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-rose blur-3xl"
-          />
+  const transformations = [
+    {
+      id: 1,
+      before: "/images/B&A-hair/B&A-fue-hair-transplant1.webp",
+      after: "/images/B&A-hair/B&A-fue-hair-transplant1.webp",
+    },
+    {
+      id: 2,
+      before: "/images/B&A-hair/B&A-fue-hair-transplant2.webp",
+      after: "/images/B&A-hair/B&A-fue-hair-transplant2.webp",
+    },
+    {
+      id: 3,
+      before: "/images/B&A-hair/B&A-fue-hair-transplant3.webp",
+      after: "/images/B&A-hair/B&A-fue-hair-transplant3.webp",
+    },
+  ];
 
-          <div className="relative max-w-7xl mx-auto text-center">
-            <motion.div
-              variants={fadeInUp}
-              className="mb-8 inline-flex items-center gap-2 px-4 py-2 bg-taupe/10 rounded-full backdrop-blur-sm border border-taupe/20"
-            >
-              <Sparkles className="w-4 h-4 text-wine" />
-              <span className="text-sm text-brown tracking-wide">
-                {t("hero.badge")}
+  const faqs = [
+    {
+      q: "How much does FUE hair transplant cost in Malaysia?",
+      a: "Prices vary mainly by graft count and clinic. Many Malaysia guides show FUE often sitting in the mid thousands RM and going higher for larger sessions. Always ask what is included.",
+    },
+    {
+      q: "Is FUE hair transplant painful?",
+      a: "Local anaesthesia is used, so sharp pain is usually controlled. Afterward, it is common to feel tightness, soreness, and mild swelling for a few days.",
+    },
+    {
+      q: "How long is recovery after FUE?",
+      a: "Many people return to desk work within a few days, but visible healing can take one to two weeks. The grafts need protection early on.",
+    },
+    {
+      q: "When can I wash my hair after FUE?",
+      a: "Many guides suggest waiting at least 24 hours, and washing gently within 48 hours, using the method you are taught. Avoid strong water pressure.",
+    },
+    {
+      q: "Why does transplanted hair shed after surgery?",
+      a: "Shedding can happen weeks after treatment. It often reflects the hair cycle and 'shock' to follicles. New growth usually returns gradually.",
+    },
+    {
+      q: "How long does an FUE hair transplant last?",
+      a: "Transplanted follicles are usually taken from areas that resist typical pattern hair loss. Many experts describe this as long-lasting, but maintenance matters.",
+    },
+    {
+      q: "Does FUE leave scars?",
+      a: "Yes, but they are usually tiny scars rather than one long scar. The NHS notes scarring can occur, and FUE commonly creates very small scars.",
+    },
+    {
+      q: "How many grafts do I need for my hairline?",
+      a: "It depends on your hairline shape, donor density, and the look you want. Donor hair is limited and must be used wisely.",
+    },
+    {
+      q: "Is FUE better than FUT?",
+      a: "FUE is often chosen to avoid a strip scar and support flexible hairstyles. FUT can still be useful. Your best option depends on donor area, budget, and goals.",
+    },
+    {
+      q: "Can an FUE hair transplant fail?",
+      a: "FUE is considered established when performed by trained professionals, but results can drop with poor donor selection, poor graft handling, smoking, or weak aftercare.",
+    },
+    {
+      q: "Is Malaysia a good place for FUE hair transplant?",
+      a: "Malaysia, especially Kuala Lumpur, has many hair restoration clinics. Your outcome depends more on planning and standards than the country alone.",
+    },
+    {
+      q: "What should I avoid after FUE?",
+      a: "Sleep with your head elevated and avoid rubbing or strong pressure on the grafts early on. Follow the washing method exactly.",
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-light font-inter">
+      {/* Hero Section */}
+      <motion.section
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        className="relative overflow-hidden bg-linear-to-br from-cream via-light to-rose/5"
+      >
+        <div className="absolute inset-0 bg-glass backdrop-blur-3xl" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+          <motion.div variants={staggerContainer} className="max-w-3xl">
+            <motion.div variants={fadeInUp} className="mb-6">
+              <span className="inline-flex items-center gap-2 bg-wine/10 text-wine px-4 py-2 rounded-full text-sm font-medium">
+                <Sparkles className="w-4 h-4" />
+                FUE Hair Transplant Kuala Lumpur
               </span>
             </motion.div>
 
-            <motion.h2
+            <motion.h1
               variants={fadeInUp}
-              className="font-['Georgia',serif] text-5xl md:text-7xl lg:text-8xl text-brown mb-8 leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-georgia text-brown mb-6 leading-tight"
             >
-              {t("hero.title1")}
-              <span className="block text-wine">{t("hero.title2")}</span>
-              {t("hero.title3")}
-            </motion.h2>
+              Your new hairline should look like{" "}
+              <span className="text-wine italic">it always belonged</span> to
+              you
+            </motion.h1>
 
             <motion.p
               variants={fadeInUp}
-              className="text-xl md:text-2xl text-taupe max-w-3xl mx-auto mb-12 font-light leading-relaxed"
+              className="text-lg text-taupe mb-8 max-w-2xl"
             >
-              {t("hero.desc")}
+              If your hair is thinning, you may feel older overnight. With FUE
+              hair transplant in Kuala Lumpur, you can rebuild a natural look,
+              step by step.
             </motion.p>
 
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative px-8 py-4 bg-wine text-white rounded-full overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <span className="relative z-10 flex items-center gap-2 text-lg">
-                  {t("hero.beginBtn")}
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-                <motion.div
-                  className="absolute inset-0 bg-rose"
-                  initial={{ x: "100%" }}
-                  whileHover={{ x: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border-2 border-wine text-wine rounded-full hover:bg-wine hover:text-white transition-all duration-300"
-              >
-                {t("hero.watchBtn")}
-              </motion.button>
+            <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
+              <button className="group bg-wine hover:bg-rose text-white px-8 py-4 rounded-full font-medium transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl">
+                Book Confidential Consultation
+                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button className="border-2 border-wine/30 text-brown hover:bg-cream px-8 py-4 rounded-full font-medium transition-all duration-300">
+                View Gallery
+              </button>
             </motion.div>
-          </div>
-
-          {/* Scroll Indicator */}
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-          >
-            <div className="w-6 h-10 border-2 border-wine rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-wine rounded-full mt-2" />
-            </div>
           </motion.div>
-        </motion.section>
+        </div>
+      </motion.section>
 
-        {/* Trust Badges */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="relative py-20 px-4 bg-white/50 backdrop-blur-sm"
-        >
-          <div className="max-w-7xl mx-auto">
+      {/* Trust At A Glance */}
+      <motion.section
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        className="bg-white py-16 border-y border-taupe/10"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            variants={staggerContainer}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            <motion.div variants={fadeInUp} className="flex items-center gap-4">
+              <div className="bg-wine/10 p-4 rounded-2xl">
+                <Calendar className="w-6 h-6 text-wine" />
+              </div>
+              <div>
+                <h3 className="font-georgia text-brown text-lg">
+                  Founded 2001
+                </h3>
+                <p className="text-taupe">
+                  Focus on confidential, professional care
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="flex items-center gap-4">
+              <div className="bg-wine/10 p-4 rounded-2xl">
+                <MapPin className="w-6 h-6 text-wine" />
+              </div>
+              <div>
+                <h3 className="font-georgia text-brown text-lg">
+                  Kuala Lumpur
+                </h3>
+                <p className="text-taupe">Wisma UOA II, Jalan Pinang</p>
+              </div>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="flex items-center gap-4">
+              <div className="bg-wine/10 p-4 rounded-2xl">
+                <Scissors className="w-6 h-6 text-wine" />
+              </div>
+              <div>
+                <h3 className="font-georgia text-brown text-lg">
+                  Hair Services
+                </h3>
+                <p className="text-taupe">
+                  Transplant & loss treatment options
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Quick Answers */}
+      <motion.section
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        className="py-20 bg-cream/30"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl md:text-4xl font-georgia text-brown mb-12 text-center"
+          >
+            Quick Answers{" "}
+            <span className="text-wine">(People Want These First)</span>
+          </motion.h2>
+
+          <motion.div
+            variants={staggerContainer}
+            className="grid md:grid-cols-2 gap-6"
+          >
             <motion.div
-              variants={fadeInUp}
-              className="grid grid-cols-1 md:grid-cols-3 gap-8"
+              variants={scaleIn}
+              className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-md transition-shadow"
             >
-              {[
-                {
-                  icon: Calendar,
-                  title: t("trust.t1Title"),
-                  desc: t("trust.t1Desc"),
-                },
-                {
-                  icon: MapPin,
-                  title: t("trust.t2Title"),
-                  desc: t("trust.t2Desc"),
-                },
-                {
-                  icon: Award,
-                  title: t("trust.t3Title"),
-                  desc: t("trust.t3Desc"),
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={scaleIn}
-                  whileHover={{ y: -5 }}
-                  className="group p-8 bg-cream rounded-3xl hover:bg-wine transition-all duration-500 cursor-pointer"
-                >
-                  <item.icon className="w-10 h-10 text-wine group-hover:text-white mb-4 transition-colors" />
-                  <h3 className="font-['Georgia',serif] text-2xl text-brown group-hover:text-white mb-2 transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-taupe group-hover:text-white/90 transition-colors">
-                    {item.desc}
-                  </p>
-                </motion.div>
-              ))}
+              <h3 className="font-georgia text-brown text-lg mb-2">
+                What is FUE?
+              </h3>
+              <p className="text-taupe">
+                It removes follicular units one by one using tiny punches, then
+                places them in thinning areas.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={scaleIn}
+              className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-md transition-shadow"
+            >
+              <h3 className="font-georgia text-brown text-lg mb-2">
+                Is it painful?
+              </h3>
+              <p className="text-taupe">
+                Local anaesthesia is used. You may feel pressure, then mild
+                soreness later.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={scaleIn}
+              className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-md transition-shadow"
+            >
+              <h3 className="font-georgia text-brown text-lg mb-2">
+                When will I see results?
+              </h3>
+              <p className="text-taupe">
+                Most visible change builds over months. Full results around 9 to
+                12 months or longer.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={scaleIn}
+              className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-md transition-shadow"
+            >
+              <h3 className="font-georgia text-brown text-lg mb-2">
+                Will there be scars?
+              </h3>
+              <p className="text-taupe">
+                FUE usually leaves many very tiny scars, not a long strip scar.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Why FUE with Image */}
+      <motion.section
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        className="py-20 bg-white"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div variants={fadeInLeft}>
+              <h2 className="text-3xl md:text-4xl font-georgia text-brown mb-6">
+                Why FUE is the most searched hair transplant option in Malaysia
+              </h2>
+              <p className="text-taupe mb-6">
+                People in Kuala Lumpur want results that look normal in real
+                life. Not just in before and after photos.
+              </p>
+              <ul className="space-y-4">
+                {[
+                  "It avoids a long strip scar on the back of the head",
+                  "Healing can be quicker for many patients",
+                  "It suits hairline work and detail areas, like temples",
+                  "Malaysia is known for strong medical services",
+                  "Kuala Lumpur has many established clinics for careful comparison",
+                ].map((item, index) => (
+                  <motion.li
+                    key={index}
+                    variants={fadeInUp}
+                    className="flex items-start gap-3"
+                  >
+                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
+                    <span className="text-brown">{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="absolute inset-0 bg-linear-to-tr from-wine/20 to-rose/20 rounded-3xl transform rotate-3" />
+              <img
+                src="/images/hair/fue-hair-transplant.webp"
+                alt="FUE Hair Transplant Consultation"
+                className="relative rounded-3xl shadow-2xl w-full h-auto object-cover"
+              />
+              <div className="absolute bottom-4 left-4 bg-glass backdrop-blur-md px-4 py-2 rounded-full">
+                <span className="text-brown text-sm font-medium">
+                  FUE Procedure Consultation
+                </span>
+              </div>
             </motion.div>
           </div>
-        </motion.section>
+        </div>
+      </motion.section>
 
-        {/* Quick Answers Section */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="relative py-32 px-4"
-        >
-          <div className="max-w-7xl mx-auto">
-            <motion.h2
-              variants={fadeInUp}
-              className="font-['Georgia',serif] text-4xl md:text-5xl text-brown mb-16 text-center"
-            >
-              {t("quickAnswers.title1")}{" "}
-              <span className="text-wine">{t("quickAnswers.title2")}</span>
-            </motion.h2>
+      {/* What is FUE */}
+      <motion.section
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        className="py-20 bg-cream/30"
+      >
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl md:text-4xl font-georgia text-brown mb-6"
+          >
+            What is an FUE hair transplant{" "}
+            <span className="text-wine">(simple explanation)</span>
+          </motion.h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {[
-                {
-                  icon: Scissors,
-                  q: t("quickAnswers.q1"),
-                  a: t("quickAnswers.a1"),
-                },
-                {
-                  icon: Heart,
-                  q: t("quickAnswers.q2"),
-                  a: t("quickAnswers.a2"),
-                },
-                {
-                  icon: Clock,
-                  q: t("quickAnswers.q3"),
-                  a: t("quickAnswers.a3"),
-                },
-                {
-                  icon: Shield,
-                  q: t("quickAnswers.q4"),
-                  a: t("quickAnswers.a4"),
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInLeft}
-                  whileHover={{ x: 10 }}
-                  className="group flex items-start gap-6 p-8 bg-white/70 backdrop-blur-sm rounded-3xl hover:bg-cream transition-all duration-300 border border-taupe/20"
-                >
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-wine rounded-full blur-lg opacity-0 group-hover:opacity-30 transition-opacity" />
-                    <item.icon className="relative w-8 h-8 text-wine group-hover:scale-110 transition-transform" />
+          <motion.p variants={fadeInUp} className="text-lg text-taupe mb-8">
+            FUE stands for follicular unit excision. It means your surgeon
+            removes tiny natural hair groupings, usually 1 to 4 hairs.
+          </motion.p>
+
+          <motion.div
+            variants={staggerContainer}
+            className="grid md:grid-cols-3 gap-6 mt-12"
+          >
+            <motion.div variants={scaleIn} className="bg-white p-6 rounded-3xl">
+              <div className="bg-wine/10 w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Target className="w-6 h-6 text-wine" />
+              </div>
+              <h3 className="font-georgia text-brown mb-2">Donor Area</h3>
+              <p className="text-taupe text-sm">
+                Grafts from back of scalp where hair is thicker longer
+              </p>
+            </motion.div>
+
+            <motion.div variants={scaleIn} className="bg-white p-6 rounded-3xl">
+              <div className="bg-wine/10 w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Droplets className="w-6 h-6 text-wine" />
+              </div>
+              <h3 className="font-georgia text-brown mb-2">Graft Placement</h3>
+              <p className="text-taupe text-sm">
+                Placed into thinning or bald areas with precision
+              </p>
+            </motion.div>
+
+            <motion.div variants={scaleIn} className="bg-white p-6 rounded-3xl">
+              <div className="bg-wine/10 w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Leaf className="w-6 h-6 text-wine" />
+              </div>
+              <h3 className="font-georgia text-brown mb-2">Natural Growth</h3>
+              <p className="text-taupe text-sm">
+                Once healed, transplanted follicles keep growing hair
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Competitor Insights */}
+      <motion.section
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        className="py-20 bg-white"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl md:text-4xl font-georgia text-brown mb-12 text-center"
+          >
+            What top-ranking FUE pages in KL focus on
+          </motion.h2>
+
+          <motion.div
+            variants={staggerContainer}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
+            {[
+              {
+                icon: <Shield className="w-6 h-6" />,
+                title: "No Linear Scar",
+                desc: "No strip scar, minimal downtime",
+              },
+              {
+                icon: <TrendingUp className="w-6 h-6" />,
+                title: "Cost Clarity",
+                desc: "Per-graft pricing explained",
+              },
+              {
+                icon: <Heart className="w-6 h-6" />,
+                title: "Aftercare Guidance",
+                desc: "Do's and don'ts for healing",
+              },
+              {
+                icon: <Sparkles className="w-6 h-6" />,
+                title: "Natural Hairline",
+                desc: "Direction, angles, long-term planning",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                variants={scaleIn}
+                className="bg-cream p-6 rounded-3xl text-center group hover:bg-wine transition-colors duration-300"
+              >
+                <div className="bg-white w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-wine/20">
+                  <div className="text-wine group-hover:text-white transition-colors">
+                    {item.icon}
                   </div>
-                  <div>
-                    <h3 className="font-['Georgia',serif] text-xl text-brown mb-2">
-                      {item.q}
-                    </h3>
-                    <p className="text-taupe leading-relaxed">{item.a}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Why FUE Section */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="relative py-32 px-4 bg-linear-to-br from-wine to-rose overflow-hidden"
-        >
-          {/* Decorative Elements */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl" />
-          </div>
-
-          <div className="relative max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <motion.div variants={fadeInLeft}>
-                <h2 className="font-['Georgia',serif] text-4xl md:text-5xl text-white mb-8">
-                  {t("whyFUE.title")}
-                </h2>
-
-                <p className="text-white/90 text-xl mb-12 leading-relaxed">
-                  {t("whyFUE.desc")}
+                </div>
+                <h3 className="font-georgia text-brown mb-2 group-hover:text-white transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-taupe text-sm group-hover:text-cream transition-colors">
+                  {item.desc}
                 </p>
+              </motion.div>
+            ))}
+          </motion.div>
 
-                <div className="space-y-6">
+          <motion.p
+            variants={fadeInUp}
+            className="text-center text-taupe mt-8 italic"
+          >
+            Marketing is everywhere. Your best filter is a clear plan, realistic
+            density goals, and strong aftercare.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Who is FUE For */}
+      <motion.section
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        className="py-20 bg-linear-to-br from-cream to-rose/5"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12">
+            <motion.div variants={fadeInLeft}>
+              <h2 className="text-3xl md:text-4xl font-georgia text-brown mb-6">
+                Who is FUE hair transplant for?
+              </h2>
+              <div className="space-y-4">
+                {[
+                  "Receding hairline",
+                  "Temple recession",
+                  "Crown thinning",
+                  "Pattern hair loss that has stabilized",
+                  "Scarring alopecia (stable)",
+                  "Hair loss after trauma or surgery",
+                  "Beard or eyebrow restoration",
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    variants={fadeInUp}
+                    className="flex items-center gap-3 bg-white/50 p-3 rounded-xl"
+                  >
+                    <CheckCircle2 className="w-5 h-5 text-wine" />
+                    <span className="text-brown">{item}</span>
+                  </motion.div>
+                ))}
+              </div>
+              <motion.p variants={fadeInUp} className="mt-6 text-taupe">
+                A key requirement is donor supply. If your donor area is weak,
+                the plan must change.
+              </motion.p>
+            </motion.div>
+
+            <motion.div variants={fadeInRight}>
+              <h2 className="text-3xl md:text-4xl font-georgia text-brown mb-6">
+                Who should pause?
+              </h2>
+              <div className="bg-white p-8 rounded-3xl shadow-xl">
+                <div className="space-y-4">
                   {[
-                    t("whyFUE.b1"),
-                    t("whyFUE.b2"),
-                    t("whyFUE.b3"),
-                    t("whyFUE.b4"),
+                    "You are shedding heavily right now",
+                    "Your scalp is inflamed or irritated",
+                    "Your expectations are 'full teenage density' in one session",
                   ].map((item, index) => (
                     <motion.div
                       key={index}
                       variants={fadeInUp}
-                      className="flex items-center gap-4"
+                      className="flex items-start gap-3"
                     >
-                      <div className="w-6 h-6 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                        <CheckCircle2 className="w-4 h-4 text-white" />
-                      </div>
-                      <span className="text-white/90 text-lg">{item}</span>
+                      <AlertCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
+                      <span className="text-brown">{item}</span>
                     </motion.div>
                   ))}
                 </div>
-              </motion.div>
+                <motion.p variants={fadeInUp} className="mt-6 text-taupe">
+                  Hair transplant is generally safe, but complications can
+                  happen. Medical screening and good technique reduce risk.
+                </motion.p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
 
-              <motion.div variants={fadeInRight} className="relative">
-                <div className="absolute inset-0 bg-white/10 backdrop-blur-3xl rounded-[40px] transform rotate-3" />
-                <div className="relative bg-white/20 backdrop-blur-md p-12 rounded-[40px] border border-white/30">
-                  <h3 className="font-['Georgia',serif] text-3xl text-white mb-6">
-                    {t("whyFUE.cardTitle")}
+      {/* FUE vs FUT vs DHI */}
+      <motion.section
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        className="py-20 bg-white"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl md:text-4xl font-georgia text-brown mb-12 text-center"
+          >
+            FUE vs FUT vs DHI{" "}
+            <span className="text-wine">(Quick Comparison)</span>
+          </motion.h2>
+
+          <motion.div
+            variants={staggerContainer}
+            className="grid md:grid-cols-3 gap-6"
+          >
+            {[
+              {
+                title: "FUE",
+                features: [
+                  "Individual graft removal",
+                  "Many very tiny scars, usually hard to notice",
+                ],
+              },
+              {
+                title: "FUT (strip)",
+                features: [
+                  "A strip is removed, then grafts are separated",
+                  "Can leave a single larger scar",
+                ],
+              },
+              {
+                title: "DHI",
+                features: [
+                  "Often marketed for precise placement",
+                  "Still needs proper extraction and planning",
+                  "Aftercare rules still matter a lot",
+                ],
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                variants={scaleIn}
+                className="bg-cream p-6 rounded-3xl"
+              >
+                <h3 className="text-2xl font-georgia text-wine mb-4">
+                  {item.title}
+                </h3>
+                <ul className="space-y-3">
+                  {item.features.map((feature, idx) => (
+                    <li key={idx} className="text-brown flex items-start gap-2">
+                      <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.p variants={fadeInUp} className="text-center text-taupe mt-8">
+            In real life, the "best" option is the one that fits your scalp,
+            donor, and goals.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Procedure Steps */}
+      <motion.section
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        className="py-20 bg-cream/30"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl md:text-4xl font-georgia text-brown mb-12 text-center"
+          >
+            What happens during an FUE procedure{" "}
+            <span className="text-wine">(step by step)</span>
+          </motion.h2>
+
+          <motion.div
+            variants={staggerContainer}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {[
+              {
+                icon: <Users className="w-6 h-6" />,
+                title: "Consultation",
+                desc: "Scalp assessment and hairline design",
+              },
+              {
+                icon: <Scissors className="w-6 h-6" />,
+                title: "Donor Preparation",
+                desc: "Trimming and local anaesthesia",
+              },
+              {
+                icon: <Zap className="w-6 h-6" />,
+                title: "Extraction",
+                desc: "Grafts removed one by one with micro punches",
+              },
+              {
+                icon: <Target className="w-6 h-6" />,
+                title: "Placement",
+                desc: "Tiny openings made to follow natural direction",
+              },
+              {
+                icon: <Heart className="w-6 h-6" />,
+                title: "Home Care Plan",
+                desc: "Washing instructions and activity limits",
+              },
+              {
+                icon: <Calendar className="w-6 h-6" />,
+                title: "Follow-up",
+                desc: "Regular check-ins to monitor progress",
+              },
+            ].map((step, index) => (
+              <motion.div
+                key={index}
+                variants={scaleIn}
+                className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-md transition-all"
+              >
+                <div className="bg-wine/10 w-12 h-12 rounded-2xl flex items-center justify-center mb-4">
+                  <div className="text-wine">{step.icon}</div>
+                </div>
+                <h3 className="font-georgia text-brown text-lg mb-2">
+                  {step.title}
+                </h3>
+                <p className="text-taupe text-sm">{step.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* How to Prepare */}
+      <motion.section
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        className="py-20 bg-white"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div variants={fadeInLeft}>
+              <h2 className="text-3xl md:text-4xl font-georgia text-brown mb-6">
+                How to prepare for your FUE hair transplant
+              </h2>
+              <p className="text-taupe mb-8">
+                A safe plan starts before procedure day.
+              </p>
+              <ul className="space-y-4">
+                {[
+                  "Share your medication list with the clinic",
+                  "Ask about smoking, alcohol, and supplements",
+                  "Plan 7 to 10 quiet days if possible",
+                ].map((item, index) => (
+                  <motion.li
+                    key={index}
+                    variants={fadeInUp}
+                    className="flex items-start gap-3 bg-cream p-4 rounded-xl"
+                  >
+                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
+                    <span className="text-brown">{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInRight}
+              className="bg-linear-to-br from-wine to-rose p-8 rounded-3xl text-white"
+            >
+              <h3 className="text-2xl font-georgia mb-4">
+                Preparation Checklist
+              </h3>
+              <div className="space-y-4">
+                {[
+                  "Stop blood thinners 2 weeks prior",
+                  "No alcohol 3 days before",
+                  "Arrange transportation",
+                  "Wash hair night before",
+                  "Wear button-down shirt",
+                ].map((item, index) => (
+                  <div key={index} className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-white rounded-full" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Recovery Timeline */}
+      <motion.section
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        className="py-20 bg-cream/30"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl md:text-4xl font-georgia text-brown mb-12 text-center"
+          >
+            Recovery Timeline{" "}
+            <span className="text-wine">(what most people actually feel)</span>
+          </motion.h2>
+
+          <motion.div variants={staggerContainer} className="relative">
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-wine/20 hidden md:block" />
+
+            {[
+              {
+                period: "First 3 days",
+                desc: "A tight, sore scalp is common. Swelling can happen.",
+                icon: <Thermometer className="w-5 h-5" />,
+              },
+              {
+                period: "Days 4 to 10",
+                desc: "Scabbing forms, then starts to fall. You must avoid picking.",
+                icon: <Activity className="w-5 h-5" />,
+              },
+              {
+                period: "Washing",
+                desc: "Gentle washing after first day or two. Follow clinic instructions.",
+                icon: <Droplets className="w-5 h-5" />,
+              },
+              {
+                period: "Weeks 3 to 8",
+                desc: "Shedding can happen. This is often part of the cycle.",
+                icon: <Wind className="w-5 h-5" />,
+              },
+              {
+                period: "Months 3 to 6",
+                desc: "New growth starts. May look fine at first, then thickens.",
+                icon: <Leaf className="w-5 h-5" />,
+              },
+              {
+                period: "Months 9 to 12+",
+                desc: "Most people see their main result in this window.",
+                icon: <Star className="w-5 h-5" />,
+              },
+            ].map((phase, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInLeft}
+                className="relative pl-16 md:pl-24 mb-8"
+              >
+                <div className="absolute left-0 top-0 bg-wine text-white p-3 rounded-2xl">
+                  {phase.icon}
+                </div>
+                <div className="bg-white p-6 rounded-3xl shadow-sm">
+                  <h3 className="font-georgia text-brown text-lg mb-2">
+                    {phase.period}
                   </h3>
-                  <p className="text-white/90 text-lg mb-6 leading-relaxed">
-                    {t("whyFUE.cardP1")}
-                  </p>
-                  <p className="text-white/90 text-lg leading-relaxed">
-                    {t("whyFUE.cardP2")}
-                  </p>
+                  <p className="text-taupe">{phase.desc}</p>
                 </div>
               </motion.div>
-            </div>
-          </div>
-        </motion.section>
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
 
-        {/* Procedure Section */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="relative py-32 px-4"
-        >
-          <div className="max-w-7xl mx-auto">
-            <motion.h2
-              variants={fadeInUp}
-              className="font-['Georgia',serif] text-4xl md:text-5xl text-brown mb-8 text-center"
-            >
-              {t("journey.title1")}{" "}
-              <span className="text-wine">{t("journey.title2")}</span>
-            </motion.h2>
+      <SectionBeforeAfter transformations={transformations} />
 
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl text-taupe text-center max-w-3xl mx-auto mb-16"
-            >
-              {t("journey.desc")}
-            </motion.p>
+      {/* Side Effects */}
+      <motion.section
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        className="py-20 bg-white"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12">
+            <motion.div variants={fadeInLeft}>
+              <h2 className="text-3xl md:text-4xl font-georgia text-brown mb-6">
+                Side effects and risks{" "}
+                <span className="text-wine">(honest and clear)</span>
+              </h2>
 
-            <div className="relative">
-              {/* Timeline Line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-linear-to-b from-wine via-rose to-taupe hidden lg:block" />
-
-              <div className="space-y-24">
+              <div className="space-y-4">
+                <h3 className="font-georgia text-lg text-brown">
+                  Common short-term effects:
+                </h3>
                 {[
-                  {
-                    step: "01",
-                    title: t("journey.s1Title"),
-                    desc: t("journey.s1Desc"),
-                    icon: Users,
-                    align: "left",
-                  },
-                  {
-                    step: "02",
-                    title: t("journey.s2Title"),
-                    desc: t("journey.s2Desc"),
-                    icon: Target,
-                    align: "right",
-                  },
-                  {
-                    step: "03",
-                    title: t("journey.s3Title"),
-                    desc: t("journey.s3Desc"),
-                    icon: Droplets,
-                    align: "left",
-                  },
-                  {
-                    step: "04",
-                    title: t("journey.s4Title"),
-                    desc: t("journey.s4Desc"),
-                    icon: Sparkles,
-                    align: "right",
-                  },
+                  "Tight, achy scalp",
+                  "Temporary scabbing",
+                  "Tiny scars, especially in the donor area",
                 ].map((item, index) => (
                   <motion.div
                     key={index}
-                    variants={index % 2 === 0 ? fadeInLeft : fadeInRight}
-                    className={`flex flex-col ${item.align === "right" ? "lg:items-end" : ""}`}
+                    variants={fadeInUp}
+                    className="flex items-center gap-3 bg-cream p-3 rounded-xl"
                   >
-                    <div
-                      className={`relative lg:w-1/2 ${item.align === "right" ? "lg:ml-auto" : ""}`}
-                    >
-                      <div className="bg-white/70 backdrop-blur-sm p-8 rounded-3xl border border-taupe/20 hover:shadow-xl transition-all duration-500 group">
-                        <div className="flex items-center gap-6 mb-4">
-                          <span className="text-4xl font-['Georgia',serif] text-wine opacity-30 group-hover:opacity-100 transition-opacity">
-                            {item.step}
-                          </span>
-                          <item.icon className="w-8 h-8 text-wine" />
-                        </div>
-                        <h3 className="font-['Georgia',serif] text-2xl text-brown mb-4">
-                          {item.title}
-                        </h3>
-                        <p className="text-taupe leading-relaxed">
-                          {item.desc}
-                        </p>
-                      </div>
-                    </div>
+                    <AlertCircle className="w-5 h-5 text-wine" />
+                    <span className="text-brown">{item}</span>
                   </motion.div>
                 ))}
               </div>
-            </div>
-          </div>
-        </motion.section>
+            </motion.div>
 
-        {/* Recovery Timeline */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="relative py-32 px-4 bg-cream"
-        >
-          <div className="max-w-7xl mx-auto">
-            <motion.h2
-              variants={fadeInUp}
-              className="font-['Georgia',serif] text-4xl md:text-5xl text-brown mb-16 text-center"
+            <motion.div
+              variants={fadeInRight}
+              className="bg-rose/5 p-8 rounded-3xl"
             >
-              {t("recovery.title1")}{" "}
-              <span className="text-wine">{t("recovery.title2")}</span>
-            </motion.h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  period: t("recovery.r1Period"),
-                  icon: Thermometer,
-                  desc: t("recovery.r1Desc"),
-                },
-                {
-                  period: t("recovery.r2Period"),
-                  icon: Wind,
-                  desc: t("recovery.r2Desc"),
-                },
-                {
-                  period: t("recovery.r3Period"),
-                  icon: Flower2,
-                  desc: t("recovery.r3Desc"),
-                },
-                {
-                  period: t("recovery.r4Period"),
-                  icon: Activity,
-                  desc: t("recovery.r4Desc"),
-                },
-                {
-                  period: t("recovery.r5Period"),
-                  icon: Sun,
-                  desc: t("recovery.r5Desc"),
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={scaleIn}
-                  whileHover={{ y: -10 }}
-                  className="group bg-white p-8 rounded-3xl hover:bg-wine transition-all duration-500 cursor-pointer"
-                >
-                  <div className="relative mb-6">
-                    <div className="absolute inset-0 bg-wine rounded-full blur-xl opacity-0 group-hover:opacity-30 transition-opacity" />
-                    <item.icon className="relative w-10 h-10 text-wine group-hover:text-white group-hover:scale-110 transition-all" />
-                  </div>
-                  <h3 className="font-['Georgia',serif] text-xl text-brown group-hover:text-white mb-3 transition-colors">
-                    {item.period}
-                  </h3>
-                  <p className="text-taupe group-hover:text-white/90 transition-colors text-sm leading-relaxed">
-                    {item.desc}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* FUE vs Others Comparison */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="relative py-32 px-4"
-        >
-          <div className="max-w-7xl mx-auto">
-            <motion.h2
-              variants={fadeInUp}
-              className="font-['Georgia',serif] text-4xl md:text-5xl text-brown mb-16 text-center"
-            >
-              {t("comparison.title1")}{" "}
-              <span className="text-wine">{t("comparison.title2")}</span>{" "}
-              {t("comparison.title3")}
-            </motion.h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                {
-                  method: t("comparison.fue"),
-                  desc: t("comparison.fueDesc"),
-                  feature: t("comparison.fueFeature"),
-                  icon: Sparkle,
-                },
-                {
-                  method: t("comparison.fut"),
-                  desc: t("comparison.futDesc"),
-                  feature: t("comparison.futFeature"),
-                  icon: Waves,
-                },
-                {
-                  method: t("comparison.dhi"),
-                  desc: t("comparison.dhiDesc"),
-                  feature: t("comparison.dhiFeature"),
-                  icon: Target,
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={scaleIn}
-                  whileHover={{ y: -10, rotateY: 5 }}
-                  className="group perspective"
-                >
-                  <div className="bg-white p-8 rounded-3xl border border-taupe/20 hover:border-wine transition-all duration-500 h-full">
-                    <item.icon className="w-12 h-12 text-wine mb-6 group-hover:scale-110 transition-transform" />
-                    <h3 className="font-['Georgia',serif] text-2xl text-brown mb-3">
-                      {item.method}
-                    </h3>
-                    <p className="text-taupe mb-4">{item.desc}</p>
-                    <p className="text-sm text-wine font-medium">
-                      {item.feature}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-center text-taupe mt-12 italic"
-            >
-              {t("comparison.note")}
-            </motion.p>
-          </div>
-        </motion.section>
-
-        {/* Cost Section */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="relative py-32 px-4 bg-linear-to-br from-brown to-wine overflow-hidden"
-        >
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl" />
-          </div>
-
-          <div className="relative max-w-7xl mx-auto">
-            <motion.h2
-              variants={fadeInUp}
-              className="font-['Georgia',serif] text-4xl md:text-5xl text-white mb-8 text-center"
-            >
-              {t("cost.title1")}{" "}
-              <span className="text-cream">{t("cost.title2")}</span>
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl text-white/90 text-center max-w-3xl mx-auto mb-16"
-            >
-              {t("cost.desc")}
-            </motion.p>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <motion.div variants={fadeInLeft} className="space-y-6">
-                <div className="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20">
-                  <h3 className="font-['Georgia',serif] text-2xl text-white mb-6">
-                    {t("cost.factorsTitle")}
-                  </h3>
-                  {[
-                    t("cost.f1"),
-                    t("cost.f2"),
-                    t("cost.f3"),
-                    t("cost.f4"),
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center gap-4 mb-4">
-                      <div className="w-2 h-2 bg-white rounded-full" />
-                      <span className="text-white/90">{item}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20">
-                  <h3 className="font-['Georgia',serif] text-2xl text-white mb-6">
-                    {t("cost.onlineTitle")}
-                  </h3>
-                  {[
-                    t("cost.o1"),
-                    t("cost.o2"),
-                    t("cost.o3"),
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center gap-4 mb-4">
-                      <Quote className="w-4 h-4 text-white" />
-                      <span className="text-white/90">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInRight}
-                className="bg-white p-8 rounded-3xl"
-              >
-                <h3 className="font-['Georgia',serif] text-2xl text-brown mb-6">
-                  {t("cost.adviceTitle")}
-                </h3>
-                <p className="text-taupe text-lg mb-8">
-                  {t("cost.adviceDesc")}
+              <h3 className="font-georgia text-2xl text-brown mb-4">
+                Possible complications
+              </h3>
+              <p className="text-taupe mb-4">
+                Infection and healing issues, although they are not common when
+                care is proper.
+              </p>
+              <div className="bg-white p-6 rounded-2xl border border-rose/20">
+                <p className="text-brown">
+                  <span className="font-bold text-wine">Important:</span> If
+                  pain increases after improving, or you see pus or fever,
+                  contact a clinician.
                 </p>
-                <div className="space-y-4">
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Cost Section */}
+      <motion.section
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        className="py-20 bg-linear-to-br from-cream to-rose/5"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl md:text-4xl font-georgia text-brown mb-12 text-center"
+          >
+            FUE hair transplant cost in Kuala Lumpur and Malaysia
+          </motion.h2>
+
+          <div className="grid lg:grid-cols-2 gap-12">
+            <motion.div variants={fadeInLeft} className="space-y-6">
+              <div className="bg-white p-6 rounded-3xl">
+                <h3 className="font-georgia text-lg text-wine mb-4">
+                  Cost depends on:
+                </h3>
+                <ul className="space-y-3">
                   {[
-                    t("cost.adv1"),
-                    t("cost.adv2"),
-                    t("cost.adv3"),
+                    "Number of grafts",
+                    "Clinic reputation and credentials",
+                    "City overhead (KL can be higher)",
+                    "Add-ons like PRP and medicines",
                   ].map((item, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-wine" />
-                      <span className="text-brown">{item}</span>
-                    </div>
+                    <li
+                      key={index}
+                      className="flex items-center gap-2 text-brown"
+                    >
+                      <ChevronRight className="w-4 h-4 text-wine" />
+                      {item}
+                    </li>
                   ))}
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
+                </ul>
+              </div>
 
-        {/* People Also Ask Section */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="relative py-32 px-4"
-        >
-          <div className="max-w-7xl mx-auto">
-            <motion.h2
-              variants={fadeInUp}
-              className="font-['Georgia',serif] text-4xl md:text-5xl text-brown mb-16 text-center"
-            >
-              {t("peopleAsk.title1")}{" "}
-              <span className="text-wine">{t("peopleAsk.title2")}</span>
-            </motion.h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                t("peopleAsk.q1"),
-                t("peopleAsk.q2"),
-                t("peopleAsk.q3"),
-                t("peopleAsk.q4"),
-                t("peopleAsk.q5"),
-                t("peopleAsk.q6"),
-                t("peopleAsk.q7"),
-                t("peopleAsk.q8"),
-                t("peopleAsk.q9"),
-                t("peopleAsk.q10"),
-                t("peopleAsk.q11"),
-                t("peopleAsk.q12"),
-              ].map((question, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  whileHover={{ x: 5 }}
-                  className="group flex items-center gap-4 p-6 bg-white/70 backdrop-blur-sm rounded-2xl border border-taupe/20 hover:bg-cream transition-all duration-300 cursor-pointer"
-                >
-                  <AlertCircle className="w-5 h-5 text-wine group-hover:scale-110 transition-transform" />
-                  <p className="text-brown flex-1">{question}</p>
-                  <ChevronRight className="w-5 h-5 text-taupe group-hover:text-wine group-hover:translate-x-1 transition-all" />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Nexus Clinic Approach */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="relative py-32 px-4 bg-cream overflow-hidden"
-        >
-          <div className="max-w-7xl mx-auto text-center">
-            <motion.div variants={scaleIn} className="inline-block mb-8">
-              <div className="relative">
-                <div className="absolute inset-0 bg-wine rounded-full blur-2xl opacity-30" />
-                <Heart className="relative w-16 h-16 text-wine" />
+              <div className="bg-white p-6 rounded-3xl">
+                <h3 className="font-georgia text-lg text-wine mb-4">
+                  What you may see online:
+                </h3>
+                <ul className="space-y-3">
+                  <li className="text-brown">
+                    • FUE ranges around RM 6,500 to RM 15,000
+                  </li>
+                  <li className="text-brown">• RM 6 to RM 12 per graft</li>
+                  <li className="text-brown">
+                    • Starting from RM 5,000 style pricing
+                  </li>
+                </ul>
               </div>
             </motion.div>
 
-            <motion.h2
-              variants={fadeInUp}
-              className="font-['Georgia',serif] text-4xl md:text-5xl text-brown mb-8"
-            >
-              {t("approach.title1")}{" "}
-              <span className="text-wine">{t("approach.title2")}</span>
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl text-taupe max-w-3xl mx-auto mb-12"
-            >
-              {t("approach.desc")}
-            </motion.p>
-
             <motion.div
-              variants={staggerContainer}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto"
+              variants={fadeInRight}
+              className="bg-wine text-white p-8 rounded-3xl"
             >
-              {[
-                t("approach.a1"),
-                t("approach.a2"),
-                t("approach.a3"),
-                t("approach.a4"),
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={scaleIn}
-                  whileHover={{ y: -5 }}
-                  className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all"
-                >
-                  <p className="text-brown">{item}</p>
-                </motion.div>
-              ))}
+              <h3 className="text-2xl font-georgia mb-4">A useful rule:</h3>
+              <p className="text-cream text-lg mb-6">
+                Do not compare price without comparing what is included.
+              </p>
+              <p className="text-cream">
+                Ask about doctor involvement, graft handling, and follow-up
+                support.
+              </p>
             </motion.div>
           </div>
-        </motion.section>
+        </div>
+      </motion.section>
 
-        {/* CTA Section */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="relative py-32 px-4 bg-light"
-        >
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div variants={scaleIn} className="relative mb-12 hidden">
-              <div className="absolute inset-0 bg-wine rounded-full blur-3xl opacity-20" />
-              <img
-                src="/api/placeholder/120/120"
-                alt="Nexus Clinic"
-                className="relative w-24 h-24 mx-auto rounded-full border-4 border-wine"
-              />
-            </motion.div>
+      {/* Areas FUE Can Treat */}
+      <motion.section
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        className="py-20 bg-white"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl md:text-4xl font-georgia text-brown mb-12 text-center"
+          >
+            Areas FUE can treat{" "}
+            <span className="text-wine">(common requests in KL)</span>
+          </motion.h2>
 
-            <motion.h2
-              variants={fadeInUp}
-              className="font-['Georgia',serif] text-4xl md:text-5xl text-brown mb-8"
-            >
-              {t("cta.title1")}{" "}
-              <span className="text-wine">{t("cta.title2")}</span>{" "}
-              {t("cta.title3")}
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-xl text-taupe mb-12">
-              {t("cta.desc")}
-            </motion.p>
-
-            <motion.div variants={fadeInUp}>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative px-12 py-5 bg-wine text-white rounded-full overflow-hidden shadow-2xl hover:shadow-wine/30 transition-shadow"
+          <motion.div
+            variants={staggerContainer}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {[
+              { area: "Hairline", desc: "framing the face" },
+              { area: "Temples", desc: "softening recession" },
+              { area: "Crown", desc: "reducing the visible 'spot'" },
+              {
+                area: "Top and mid-scalp",
+                desc: "adding coverage where hair is thin",
+              },
+              { area: "Beard", desc: "selected cases" },
+              { area: "Brows", desc: "selected cases" },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                variants={scaleIn}
+                className="bg-cream p-6 rounded-3xl text-center hover:bg-wine group transition-colors cursor-pointer"
               >
-                <span className="relative z-10 flex items-center gap-3 text-xl">
-                  {t("cta.bookBtn")}
-                  <Calendar className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-                </span>
-                <motion.div
-                  className="absolute inset-0 bg-linear-to-r from-rose to-wine"
-                  initial={{ x: "100%" }}
-                  whileHover={{ x: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.button>
-            </motion.div>
+                <h3 className="font-georgia text-lg text-brown mb-2 group-hover:text-white transition-colors">
+                  {item.area}
+                </h3>
+                <p className="text-taupe text-sm group-hover:text-cream transition-colors">
+                  {item.desc}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
 
-            <motion.div
-              variants={fadeInUp}
-              className="mt-8 flex items-center justify-center gap-4 text-taupe"
-            >
-              <MapPin className="w-4 h-4" />
-              <span>{t("cta.address")}</span>
-            </motion.div>
-          </div>
-        </motion.section>
-      </main>
-    </>
+      {/* Nexus Clinic Approach */}
+      <motion.section
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        className="py-20 bg-cream/30"
+      >
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl md:text-4xl font-georgia text-brown mb-6"
+          >
+            How Nexus Clinic Kuala Lumpur approaches the experience
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-lg text-taupe mb-8">
+            At Nexus Clinic Kuala Lumpur, the goal should be simple. Make the
+            plan feel safe, private, and realistic.
+          </motion.p>
+
+          <motion.div
+            variants={staggerContainer}
+            className="grid md:grid-cols-2 gap-6 mt-12"
+          >
+            {[
+              "A graft estimate range",
+              "A hairline design explanation",
+              "A downtime plan that fits your work life",
+              "A maintenance plan for existing hair",
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                variants={scaleIn}
+                className="bg-white p-4 rounded-2xl flex items-center gap-3"
+              >
+                <CheckCircle2 className="w-5 h-5 text-wine" />
+                <span className="text-brown text-left">{item}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* FAQ Section */}
+      <FAQ data={faqs} />
+
+      {/* CTA Section */}
+      <motion.section
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        className="py-20 bg-linear-to-br from-wine to-rose text-white"
+      >
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl md:text-4xl font-georgia mb-6"
+          >
+            Book a consultation at Nexus Clinic Kuala Lumpur
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-lg text-cream mb-8">
+            If you want a natural hairline, start with a calm consult. Ask for a
+            plan that matches your face, hair type, and future loss pattern.
+          </motion.p>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-white/10 backdrop-blur-sm p-6 rounded-3xl inline-block"
+          >
+            <p className="flex items-center gap-4 text-cream">
+              <MapPin className="w-5 h-5" />
+              Wisma UOA II, Jalan Pinang, Kuala Lumpur
+            </p>
+          </motion.div>
+        </div>
+      </motion.section>
+    </div>
   );
 };
 

@@ -42,14 +42,16 @@ import {
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 
-export default function EDTreatment({ locale = fallbackLng }: { locale?: string }) {
+export default function EDTreatment({
+  locale = fallbackLng,
+}: {
+  locale?: string;
+}) {
   const { t } = useTranslation(locale, "edTreatment");
 
   const images = {
-    doctorConsultation:
-      "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?q=80&w=2070&auto=format&fit=crop",
-    modernClinic:
-      "https://images.unsplash.com/photo-1631545796175-7e7c94e41a4b?q=80&w=2070&auto=format&fit=crop",
+    doctorConsultation: "/images/regenerative/ed-treatment.webp",
+    modernClinic: "/images/clinic/interior.png",
     medicalTeam:
       "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?q=80&w=2070&auto=format&fit=crop",
     healthyLifestyle:
@@ -84,12 +86,12 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
             ></div>
           </div>
 
-          <div className="container mx-auto px-4 z-10">
+          <div className="container mx-auto px-4 z-10 my-4 lg:my-0">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <motion.div variants={fadeInLeft} className="space-y-6">
                 <motion.div
                   variants={scaleIn}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
+                  className="lg:inline-flex hidden items-center gap-2 px-4 py-2 rounded-full"
                   style={{
                     background: "rgba(255, 255, 255, 0.7)",
                     backdropFilter: "blur(10px)",
@@ -97,9 +99,7 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                   }}
                 >
                   <HeartPulse className="w-4 h-4 text-wine" />
-                  <span className="text-sm text-brown">
-                    {t("hero.badge")}
-                  </span>
+                  <span className="text-sm text-brown">{t("hero.badge")}</span>
                 </motion.div>
 
                 <motion.h2
@@ -108,9 +108,7 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                   style={{ color: "#4B3A33" }}
                 >
                   {t("hero.title1")}
-                  <span className="block text-wine">
-                    {t("hero.title2")}
-                  </span>
+                  <span className="block text-wine">{t("hero.title2")}</span>
                 </motion.h2>
 
                 <motion.p
@@ -205,9 +203,7 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                     <h3 className="text-2xl font-serif font-semibold text-brown">
                       {t("hero.realityTitle")}
                     </h3>
-                    <p className="text-taupe">
-                      {t("hero.realityDesc")}
-                    </p>
+                    <p className="text-taupe">{t("hero.realityDesc")}</p>
                     <div
                       className="p-4 rounded-lg"
                       style={{ background: "rgba(140, 79, 88, 0.1)" }}
@@ -304,9 +300,7 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                 <p className="text-wine font-medium">
                   {t("whoFor.driversNote")}
                 </p>
-                <p className="text-brown mt-4">
-                  {t("whoFor.ageNote")}
-                </p>
+                <p className="text-brown mt-4">{t("whoFor.ageNote")}</p>
               </div>
             </motion.div>
           </div>
@@ -327,7 +321,9 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
               style={{ color: "#4B3A33" }}
             >
               {t("whyHappens.title")}{" "}
-              <span className="text-wine">{t("whyHappens.titleHighlight")}</span>
+              <span className="text-wine">
+                {t("whyHappens.titleHighlight")}
+              </span>
             </motion.h2>
 
             <motion.p
@@ -340,10 +336,26 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
             <div className="grid lg:grid-cols-2 gap-12">
               <motion.div variants={staggerContainer} className="space-y-6">
                 {[
-                  { icon: Heart, title: t("whyHappens.cause1Title"), desc: t("whyHappens.cause1Desc") },
-                  { icon: Stethoscope, title: t("whyHappens.cause2Title"), desc: t("whyHappens.cause2Desc") },
-                  { icon: TestTube, title: t("whyHappens.cause3Title"), desc: t("whyHappens.cause3Desc") },
-                  { icon: Brain, title: t("whyHappens.cause4Title"), desc: t("whyHappens.cause4Desc") },
+                  {
+                    icon: Heart,
+                    title: t("whyHappens.cause1Title"),
+                    desc: t("whyHappens.cause1Desc"),
+                  },
+                  {
+                    icon: Stethoscope,
+                    title: t("whyHappens.cause2Title"),
+                    desc: t("whyHappens.cause2Desc"),
+                  },
+                  {
+                    icon: TestTube,
+                    title: t("whyHappens.cause3Title"),
+                    desc: t("whyHappens.cause3Desc"),
+                  },
+                  {
+                    icon: Brain,
+                    title: t("whyHappens.cause4Title"),
+                    desc: t("whyHappens.cause4Desc"),
+                  },
                 ].map((item, index) => (
                   <motion.div
                     key={index}
@@ -432,7 +444,7 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
           style={{ background: "#FAF8F7" }}
         >
           <div className="container mx-auto px-4">
-            <div className="relative h-75 rounded-3xl overflow-hidden">
+            <div className="relative h-120 lg:h-96 rounded-3xl overflow-hidden">
               <img
                 src={images.medicalTeam}
                 alt="Professional medical team"
@@ -446,7 +458,7 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                 }}
               ></div>
 
-              <div className="absolute inset-0 flex items-center">
+              <div className="absolute inset-0 flex items-center p-4">
                 <div className="container mx-auto px-4">
                   <motion.div variants={fadeInLeft} className="max-w-2xl">
                     <h2 className="text-4xl font-serif font-bold text-white mb-6">
@@ -485,9 +497,7 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
               className="mt-8 p-6 rounded-xl max-w-3xl mx-auto text-center"
               style={{ background: "rgba(140, 79, 88, 0.05)" }}
             >
-              <p className="text-wine text-lg">
-                {t("assessment.nexusGoal")}
-              </p>
+              <p className="text-wine text-lg">{t("assessment.nexusGoal")}</p>
             </motion.div>
           </div>
         </motion.section>
@@ -507,7 +517,9 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
               style={{ color: "#4B3A33" }}
             >
               {t("treatmentOptions.title")}{" "}
-              <span className="text-wine">{t("treatmentOptions.titleHighlight")}</span>
+              <span className="text-wine">
+                {t("treatmentOptions.titleHighlight")}
+              </span>
             </motion.h2>
 
             <div className="grid lg:grid-cols-2 gap-12 mb-12">
@@ -525,9 +537,7 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                   <h3 className="text-2xl font-serif font-semibold text-brown mb-4">
                     {t("lifestyle.title")}
                   </h3>
-                  <p className="text-taupe mb-6">
-                    {t("lifestyle.desc")}
-                  </p>
+                  <p className="text-taupe mb-6">{t("lifestyle.desc")}</p>
                   <div className="grid grid-cols-2 gap-4">
                     {[
                       { icon: Moon, text: t("lifestyle.item1") },
@@ -545,9 +555,7 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                       </div>
                     ))}
                   </div>
-                  <p className="mt-4 text-wine">
-                    {t("lifestyle.note")}
-                  </p>
+                  <p className="mt-4 text-wine">{t("lifestyle.note")}</p>
                 </motion.div>
 
                 {/* Performance Anxiety */}
@@ -563,9 +571,7 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                   <h3 className="text-2xl font-serif font-semibold text-brown mb-4">
                     {t("anxiety.title")}
                   </h3>
-                  <p className="text-taupe">
-                    {t("anxiety.desc")}
-                  </p>
+                  <p className="text-taupe">{t("anxiety.desc")}</p>
                 </motion.div>
               </motion.div>
 
@@ -603,12 +609,8 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                 <h3 className="text-2xl font-serif font-semibold text-brown mb-4">
                   {t("tablets.title")}
                 </h3>
-                <p className="text-taupe mb-4">
-                  {t("tablets.desc1")}
-                </p>
-                <p className="text-brown mb-4">
-                  {t("tablets.desc2")}
-                </p>
+                <p className="text-taupe mb-4">{t("tablets.desc1")}</p>
+                <p className="text-brown mb-4">{t("tablets.desc2")}</p>
 
                 <div className="grid md:grid-cols-2 gap-6 mt-6">
                   <div>
@@ -616,8 +618,15 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                       {t("tablets.useTitle")}
                     </h4>
                     <ul className="space-y-2">
-                      {[t("tablets.use1"), t("tablets.use2"), t("tablets.use3")].map((item, index) => (
-                        <li key={index} className="flex items-start gap-2 text-sm text-brown">
+                      {[
+                        t("tablets.use1"),
+                        t("tablets.use2"),
+                        t("tablets.use3"),
+                      ].map((item, index) => (
+                        <li
+                          key={index}
+                          className="flex items-start gap-2 text-sm text-brown"
+                        >
                           <ArrowRight className="w-4 h-4 text-wine mt-1 shrink-0" />
                           {item}
                         </li>
@@ -656,9 +665,7 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                 <h3 className="text-2xl font-serif font-semibold text-brown mb-4">
                   {t("testosterone.title")}
                 </h3>
-                <p className="text-taupe">
-                  {t("testosterone.desc")}
-                </p>
+                <p className="text-taupe">{t("testosterone.desc")}</p>
               </motion.div>
 
               {/* Vacuum Devices */}
@@ -674,13 +681,20 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                 <h3 className="text-2xl font-serif font-semibold text-brown mb-4">
                   {t("vacuum.title")}
                 </h3>
-                <p className="text-taupe mb-4">
-                  {t("vacuum.desc")}
+                <p className="text-taupe mb-4">{t("vacuum.desc")}</p>
+                <p className="text-wine font-medium mb-2">
+                  {t("vacuum.bestForTitle")}
                 </p>
-                <p className="text-wine font-medium mb-2">{t("vacuum.bestForTitle")}</p>
                 <ul className="space-y-2">
-                  {[t("vacuum.bestFor1"), t("vacuum.bestFor2"), t("vacuum.bestFor3")].map((item, index) => (
-                    <li key={index} className="flex items-start gap-2 text-sm text-brown">
+                  {[
+                    t("vacuum.bestFor1"),
+                    t("vacuum.bestFor2"),
+                    t("vacuum.bestFor3"),
+                  ].map((item, index) => (
+                    <li
+                      key={index}
+                      className="flex items-start gap-2 text-sm text-brown"
+                    >
                       <CheckCircle2 className="w-4 h-4 text-wine mt-1 shrink-0" />
                       {item}
                     </li>
@@ -701,9 +715,7 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                 <h3 className="text-2xl font-serif font-semibold text-brown mb-4">
                   {t("injections.title")}
                 </h3>
-                <p className="text-taupe">
-                  {t("injections.desc")}
-                </p>
+                <p className="text-taupe">{t("injections.desc")}</p>
               </motion.div>
 
               {/* Shockwave Therapy */}
@@ -719,19 +731,22 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                 <h3 className="text-2xl font-serif font-semibold text-brown mb-4">
                   {t("shockwave.title")}
                 </h3>
-                <p className="text-taupe mb-4">
-                  {t("shockwave.desc")}
-                </p>
+                <p className="text-taupe mb-4">{t("shockwave.desc")}</p>
                 <p className="text-wine font-medium mb-2">
                   {t("shockwave.note")}
                 </p>
                 <ul className="space-y-2 mb-4">
-                  {[t("shockwave.point1"), t("shockwave.point2")].map((item, index) => (
-                    <li key={index} className="flex items-start gap-2 text-sm text-brown">
-                      <ArrowRight className="w-4 h-4 text-wine mt-1 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
+                  {[t("shockwave.point1"), t("shockwave.point2")].map(
+                    (item, index) => (
+                      <li
+                        key={index}
+                        className="flex items-start gap-2 text-sm text-brown"
+                      >
+                        <ArrowRight className="w-4 h-4 text-wine mt-1 shrink-0" />
+                        {item}
+                      </li>
+                    ),
+                  )}
                 </ul>
 
                 <div
@@ -765,9 +780,7 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                 <h3 className="text-2xl font-serif font-semibold text-brown mb-4">
                   {t("prp.title")}
                 </h3>
-                <p className="text-taupe mb-4">
-                  {t("prp.desc")}
-                </p>
+                <p className="text-taupe mb-4">{t("prp.desc")}</p>
 
                 <div
                   className="p-4 rounded-lg"
@@ -777,12 +790,17 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                     {t("prp.thinkingTitle")}
                   </h4>
                   <ul className="space-y-2">
-                    {[t("prp.think1"), t("prp.think2"), t("prp.think3")].map((item, index) => (
-                      <li key={index} className="flex items-start gap-2 text-sm text-brown">
-                        <ArrowRight className="w-4 h-4 text-wine mt-1 shrink-0" />
-                        {item}
-                      </li>
-                    ))}
+                    {[t("prp.think1"), t("prp.think2"), t("prp.think3")].map(
+                      (item, index) => (
+                        <li
+                          key={index}
+                          className="flex items-start gap-2 text-sm text-brown"
+                        >
+                          <ArrowRight className="w-4 h-4 text-wine mt-1 shrink-0" />
+                          {item}
+                        </li>
+                      ),
+                    )}
                   </ul>
                 </div>
               </motion.div>
@@ -800,9 +818,7 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                 <h3 className="text-2xl font-serif font-semibold text-brown mb-4">
                   {t("stemCell.title")}
                 </h3>
-                <p className="text-taupe mb-4">
-                  {t("stemCell.desc")}
-                </p>
+                <p className="text-taupe mb-4">{t("stemCell.desc")}</p>
 
                 <div
                   className="p-4 rounded-lg"
@@ -812,8 +828,15 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                     {t("stemCell.protectionTitle")}
                   </h4>
                   <ul className="space-y-2">
-                    {[t("stemCell.protect1"), t("stemCell.protect2"), t("stemCell.protect3")].map((item, index) => (
-                      <li key={index} className="flex items-start gap-2 text-sm text-brown">
+                    {[
+                      t("stemCell.protect1"),
+                      t("stemCell.protect2"),
+                      t("stemCell.protect3"),
+                    ].map((item, index) => (
+                      <li
+                        key={index}
+                        className="flex items-start gap-2 text-sm text-brown"
+                      >
                         <ArrowRight className="w-4 h-4 text-wine mt-1 shrink-0" />
                         {item}
                       </li>
@@ -835,9 +858,7 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                 <h3 className="text-2xl font-serif font-semibold text-brown mb-4">
                   {t("surgery.title")}
                 </h3>
-                <p className="text-taupe">
-                  {t("surgery.desc")}
-                </p>
+                <p className="text-taupe">{t("surgery.desc")}</p>
               </motion.div>
             </div>
           </div>
@@ -923,11 +944,15 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                 <div className="space-y-2">
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-green-600 mt-1 shrink-0" />
-                    <span className="text-sm text-brown">{t("proscons.tabletsPros")}</span>
+                    <span className="text-sm text-brown">
+                      {t("proscons.tabletsPros")}
+                    </span>
                   </div>
                   <div className="flex items-start gap-2">
                     <XCircle className="w-4 h-4 text-wine mt-1 shrink-0" />
-                    <span className="text-sm text-brown">{t("proscons.tabletsCons")}</span>
+                    <span className="text-sm text-brown">
+                      {t("proscons.tabletsCons")}
+                    </span>
                   </div>
                 </div>
               </motion.div>
@@ -949,11 +974,15 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                 <div className="space-y-2">
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-green-600 mt-1 shrink-0" />
-                    <span className="text-sm text-brown">{t("proscons.shockwavePros")}</span>
+                    <span className="text-sm text-brown">
+                      {t("proscons.shockwavePros")}
+                    </span>
                   </div>
                   <div className="flex items-start gap-2">
                     <XCircle className="w-4 h-4 text-wine mt-1 shrink-0" />
-                    <span className="text-sm text-brown">{t("proscons.shockwaveCons")}</span>
+                    <span className="text-sm text-brown">
+                      {t("proscons.shockwaveCons")}
+                    </span>
                   </div>
                 </div>
               </motion.div>
@@ -975,11 +1004,15 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                 <div className="space-y-2">
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-green-600 mt-1 shrink-0" />
-                    <span className="text-sm text-brown">{t("proscons.vacuumPros")}</span>
+                    <span className="text-sm text-brown">
+                      {t("proscons.vacuumPros")}
+                    </span>
                   </div>
                   <div className="flex items-start gap-2">
                     <XCircle className="w-4 h-4 text-wine mt-1 shrink-0" />
-                    <span className="text-sm text-brown">{t("proscons.vacuumCons")}</span>
+                    <span className="text-sm text-brown">
+                      {t("proscons.vacuumCons")}
+                    </span>
                   </div>
                 </div>
               </motion.div>
@@ -1001,11 +1034,15 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                 <div className="space-y-2">
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-green-600 mt-1 shrink-0" />
-                    <span className="text-sm text-brown">{t("proscons.injectionsPros")}</span>
+                    <span className="text-sm text-brown">
+                      {t("proscons.injectionsPros")}
+                    </span>
                   </div>
                   <div className="flex items-start gap-2">
                     <XCircle className="w-4 h-4 text-wine mt-1 shrink-0" />
-                    <span className="text-sm text-brown">{t("proscons.injectionsCons")}</span>
+                    <span className="text-sm text-brown">
+                      {t("proscons.injectionsCons")}
+                    </span>
                   </div>
                 </div>
               </motion.div>
@@ -1027,11 +1064,15 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                 <div className="space-y-2">
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-green-600 mt-1 shrink-0" />
-                    <span className="text-sm text-brown">{t("proscons.prpStemPros")}</span>
+                    <span className="text-sm text-brown">
+                      {t("proscons.prpStemPros")}
+                    </span>
                   </div>
                   <div className="flex items-start gap-2">
                     <XCircle className="w-4 h-4 text-wine mt-1 shrink-0" />
-                    <span className="text-sm text-brown">{t("proscons.prpStemCons")}</span>
+                    <span className="text-sm text-brown">
+                      {t("proscons.prpStemCons")}
+                    </span>
                   </div>
                 </div>
               </motion.div>
@@ -1069,10 +1110,29 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
               className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto"
             >
               {[
-                { title: t("cost.consultTitle"), price: t("cost.consultPrice"), icon: Stethoscope },
-                { title: t("cost.sildenafTitle"), price: t("cost.sildenafPrice"), note: t("cost.sildenafNote"), icon: Pill },
-                { title: t("cost.shockwaveTitle"), price: t("cost.shockwavePrice"), note: t("cost.shockwaveNote"), icon: Zap },
-                { title: t("cost.implantsTitle"), price: t("cost.implantsPrice"), note: t("cost.implantsNote"), icon: Syringe },
+                {
+                  title: t("cost.consultTitle"),
+                  price: t("cost.consultPrice"),
+                  icon: Stethoscope,
+                },
+                {
+                  title: t("cost.sildenafTitle"),
+                  price: t("cost.sildenafPrice"),
+                  note: t("cost.sildenafNote"),
+                  icon: Pill,
+                },
+                {
+                  title: t("cost.shockwaveTitle"),
+                  price: t("cost.shockwavePrice"),
+                  note: t("cost.shockwaveNote"),
+                  icon: Zap,
+                },
+                {
+                  title: t("cost.implantsTitle"),
+                  price: t("cost.implantsPrice"),
+                  note: t("cost.implantsNote"),
+                  icon: Syringe,
+                },
               ].map((item, index) => (
                 <motion.div
                   key={index}
@@ -1127,11 +1187,36 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
               className="grid md:grid-cols-2 lg:grid-cols-5 gap-4"
             >
               {[
-                { step: 1, title: t("process.step1Title"), desc: t("process.step1Desc"), icon: MessageCircle },
-                { step: 2, title: t("process.step2Title"), desc: t("process.step2Desc"), icon: Activity },
-                { step: 3, title: t("process.step3Title"), desc: t("process.step3Desc"), icon: TestTube },
-                { step: 4, title: t("process.step4Title"), desc: t("process.step4Desc"), icon: Calendar },
-                { step: 5, title: t("process.step5Title"), desc: t("process.step5Desc"), icon: Timer },
+                {
+                  step: 1,
+                  title: t("process.step1Title"),
+                  desc: t("process.step1Desc"),
+                  icon: MessageCircle,
+                },
+                {
+                  step: 2,
+                  title: t("process.step2Title"),
+                  desc: t("process.step2Desc"),
+                  icon: Activity,
+                },
+                {
+                  step: 3,
+                  title: t("process.step3Title"),
+                  desc: t("process.step3Desc"),
+                  icon: TestTube,
+                },
+                {
+                  step: 4,
+                  title: t("process.step4Title"),
+                  desc: t("process.step4Desc"),
+                  icon: Calendar,
+                },
+                {
+                  step: 5,
+                  title: t("process.step5Title"),
+                  desc: t("process.step5Desc"),
+                  icon: Timer,
+                },
               ].map((item, index) => (
                 <motion.div
                   key={index}
@@ -1177,7 +1262,9 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
               style={{ color: "#4B3A33" }}
             >
               {t("competitor.title")}{" "}
-              <span className="text-wine">{t("competitor.titleHighlight")}</span>
+              <span className="text-wine">
+                {t("competitor.titleHighlight")}
+              </span>
             </motion.h2>
 
             <motion.p
@@ -1325,9 +1412,7 @@ export default function EDTreatment({ locale = fallbackLng }: { locale?: string 
                   </div>
                 </div>
 
-                <p className="text-white/80 text-sm">
-                  {t("cta.address")}
-                </p>
+                <p className="text-white/80 text-sm">{t("cta.address")}</p>
               </motion.div>
             </motion.div>
           </div>

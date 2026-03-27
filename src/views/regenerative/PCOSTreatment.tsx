@@ -6,15 +6,13 @@ import {
   Droplets,
   Weight,
   Heart,
-  Shield,
-  Star,
   ChevronRight,
   Sparkles,
   Moon,
   Sun,
-  Users,
   MapPin,
   Award,
+  Phone,
 } from "lucide-react";
 import {
   staggerContainer,
@@ -30,876 +28,1279 @@ import { fallbackLng } from "@/src/i18n/settings";
 const PCOSPage = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "pcosTreatment");
 
-  const symptoms = [
-    { icon: Calendar, key: "s1" },
-    { icon: Droplets, key: "s2" },
-    { icon: Sparkles, key: "s3" },
-    { icon: Weight, key: "s4" },
-    { icon: Sun, key: "s5" },
-    { icon: Moon, key: "s6" },
-    { icon: Heart, key: "s7" },
-  ];
-
-  const treatmentSteps = [
-    {
-      phaseKey: "phase1",
-      descKey: "phase1Desc",
-    },
-    {
-      phaseKey: "phase2",
-      descKey: "phase2Desc",
-      optionKeys: ["phase2Opt1", "phase2Opt2", "phase2Opt3", "phase2Opt4", "phase2Opt5"],
-    },
-    {
-      phaseKey: "phase3",
-      descKey: "phase3Desc",
-    },
-  ];
-
-  const faqs = Array.from({ length: 14 }, (_, i) => ({
-    q: t(`faq.q${i + 1}`),
-    a: t(`faq.a${i + 1}`),
-  }));
-
   return (
-    <>
-      <main className="bg-light min-h-screen font-['Inter',sans-serif]">
-        {/* Hero Section */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={staggerContainer}
-          className="relative min-h-screen flex items-center justify-center overflow-hidden"
-          style={{ backgroundColor: "#F3EFEE" }}
-        >
-          <div className="absolute inset-0">
-            <img
-              src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2080&auto=format&fit=crop"
-              alt="Peaceful woman practicing self-care"
-              className="w-full h-full object-cover opacity-20"
-            />
-          </div>
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-wine filter blur-3xl"></div>
-            <div className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-rose filter blur-3xl"></div>
-          </div>
-
-          <div className="container mx-auto px-4 z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <motion.div variants={fadeInUp} className="mb-6">
-                <span className="inline-block px-4 py-2 bg-wine text-light rounded-full text-sm font-medium tracking-wide">
-                  {t("hero.badge")}
-                </span>
-              </motion.div>
-
-              <motion.h2
-                variants={fadeInUp}
-                className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
-                style={{ color: "#4B3A33", fontFamily: "Georgia, serif" }}
-              >
-                {t("hero.title1")}
-                <span className="block text-wine">{t("hero.title2")}</span>
-              </motion.h2>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto"
-                style={{ color: "#AC9990" }}
-              >
-                {t("hero.desc")}
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg mb-12 max-w-3xl mx-auto"
-                style={{ color: "#4B3A33" }}
-              >
-                {t("hero.longDesc")}
-              </motion.p>
-
-              <motion.div
-                variants={fadeInUp}
-                className="flex flex-col sm:flex-row gap-4 justify-center"
-              >
-                <button
-                  className="px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1"
-                  style={{ backgroundColor: "#8C4F58", color: "#FAF8F7" }}
-                >
-                  {t("hero.cta1")}
-                </button>
-                <button
-                  className="px-8 py-4 rounded-full text-lg font-medium border-2 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1"
-                  style={{ borderColor: "#8C4F58", color: "#8C4F58" }}
-                >
-                  {t("hero.cta2")}
-                </button>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Trust Section */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={staggerContainer}
-          className="py-20"
-          style={{ backgroundColor: "#FAF8F7" }}
-        >
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                {
-                  icon: Shield,
-                  title: t("trust.t1Title"),
-                  desc: t("trust.t1Desc"),
-                },
-                {
-                  icon: Users,
-                  title: t("trust.t2Title"),
-                  desc: t("trust.t2Desc"),
-                },
-                {
-                  icon: Award,
-                  title: t("trust.t3Title"),
-                  desc: t("trust.t3Desc"),
-                },
-                {
-                  icon: MapPin,
-                  title: t("trust.t4Title"),
-                  desc: t("trust.t4Desc"),
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={scaleIn}
-                  className="p-6 rounded-2xl backdrop-blur-sm transition-all duration-300 hover:shadow-xl"
-                  style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.7)",
-                    border: "1px solid rgba(172, 153, 144, 0.2)",
-                  }}
-                >
-                  <item.icon
-                    className="w-12 h-12 mb-4"
-                    style={{ color: "#8C4F58" }}
-                  />
-                  <h3
-                    className="text-xl font-bold mb-2"
-                    style={{ color: "#4B3A33" }}
-                  >
-                    {item.title}
-                  </h3>
-                  <p style={{ color: "#AC9990" }}>{item.desc}</p>
-                  {index === 3 && (
-                    <p className="mt-2 text-sm" style={{ color: "#8C4F58" }}>
-                      {t("trust.phone")}
-                    </p>
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* What Is PCOS Section with Image */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={staggerContainer}
-          className="py-20 relative overflow-hidden"
-          style={{ backgroundColor: "#F3EFEE" }}
-        >
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div variants={fadeInLeft}>
-                <h2
-                  className="text-4xl md:text-5xl font-bold mb-6"
-                  style={{ color: "#4B3A33", fontFamily: "Georgia, serif" }}
-                >
-                  {t("whatIs.title")}
-                  <span className="block text-wine">{t("whatIs.titleHighlight")}</span>
-                </h2>
-
-                <p className="text-lg mb-4" style={{ color: "#4B3A33" }}>
-                  {t("whatIs.desc1")}
-                </p>
-
-                <p className="text-lg italic" style={{ color: "#AC9990" }}>
-                  {t("whatIs.desc2")}
-                </p>
-
-                <p className="text-lg mt-4" style={{ color: "#8C4F58" }}>
-                  {t("whatIs.stat")}
-                </p>
-              </motion.div>
-
-              <motion.div variants={fadeInRight} className="relative">
-                <div className="absolute inset-0 bg-linear-to-r from-wine to-rose rounded-3xl opacity-20 blur-2xl"></div>
-                <img
-                  src="/images/treatment/face-scan.png"
-                  alt="Medical consultation for women's health"
-                  className="relative rounded-3xl shadow-2xl w-full h-100 object-cover"
-                />
-                <div
-                  className="absolute bottom-4 left-4 right-4 p-4 rounded-xl backdrop-blur-md"
-                  style={{ backgroundColor: "rgba(255, 255, 255, 0.9)" }}
-                >
-                  <p
-                    className="text-sm font-medium"
-                    style={{ color: "#4B3A33" }}
-                  >
-                    {t("whatIs.imageCaption")}
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Symptoms and Signs with Image */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={staggerContainer}
-          className="py-20"
-          style={{ backgroundColor: "#FAF8F7" }}
-        >
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div variants={fadeInLeft} className="order-2 lg:order-1">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-linear-to-r from-wine to-rose rounded-3xl opacity-20 blur-2xl"></div>
-                  <img
-                    src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80"
-                    alt="Woman experiencing PCOS symptoms"
-                    className="relative rounded-3xl shadow-2xl w-full h-125 object-cover"
-                  />
-                  <div className="absolute top-4 left-4 p-3 rounded-full bg-white/90 backdrop-blur-sm">
-                    <Heart className="w-6 h-6" style={{ color: "#8C4F58" }} />
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div variants={fadeInRight} className="order-1 lg:order-2">
-                <h2
-                  className="text-4xl md:text-5xl font-bold mb-6"
-                  style={{ color: "#4B3A33", fontFamily: "Georgia, serif" }}
-                >
-                  {t("symptoms.title")}
-                  <span className="block text-wine text-2xl mt-2">
-                    {t("symptoms.subtitle")}
-                  </span>
-                </h2>
-
-                <p className="mb-6 text-lg" style={{ color: "#AC9990" }}>
-                  {t("symptoms.desc")}
-                </p>
-
-                <div className="space-y-4">
-                  {symptoms.map((symptom, index) => (
-                    <div
-                      key={index}
-                      className="flex items-start gap-3 p-3 rounded-xl transition-all duration-300 hover:bg-white/50"
-                    >
-                      <symptom.icon
-                        className="w-6 h-6 mt-1 shrink-0"
-                        style={{ color: "#8C4F58" }}
-                      />
-                      <span style={{ color: "#4B3A33" }}>{t(`symptoms.${symptom.key}`)}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <p
-                  className="mt-6 italic p-4 rounded-xl"
-                  style={{ backgroundColor: "#F3EFEE", color: "#AC9990" }}
-                >
-                  {t("symptoms.mentalNote")}
-                </p>
-
-                <p
-                  className="mt-4 font-medium text-lg"
-                  style={{ color: "#8C4F58" }}
-                >
-                  {t("symptoms.empathy")}
-                </p>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Lifestyle Section with Image */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={staggerContainer}
-          className="py-20 relative overflow-hidden"
-          style={{ backgroundColor: "#F3EFEE" }}
-        >
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <motion.div variants={fadeInLeft}>
-                <h2
-                  className="text-4xl md:text-5xl font-bold mb-6"
-                  style={{ color: "#4B3A33", fontFamily: "Georgia, serif" }}
-                >
-                  {t("lifestyle.title")}
-                  <span className="block text-wine text-2xl mt-2">
-                    {t("lifestyle.subtitle")}
-                  </span>
-                </h2>
-
-                <p className="text-lg mb-4" style={{ color: "#4B3A33" }}>
-                  {t("lifestyle.desc")}
-                </p>
-
-                <p className="mb-6" style={{ color: "#AC9990" }}>
-                  {t("lifestyle.evidence")}
-                </p>
-
-                <h3
-                  className="text-2xl font-bold mb-4"
-                  style={{ color: "#4B3A33" }}
-                >
-                  {t("lifestyle.habitsTitle")}
-                </h3>
-
-                <div className="space-y-4">
-                  {["h1", "h2", "h3", "h4", "h5"].map((key, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-3 p-3 rounded-xl bg-white/30 backdrop-blur-sm"
-                    >
-                      <div className="w-8 h-8 rounded-full bg-wine/20 flex items-center justify-center">
-                        <ChevronRight
-                          className="w-5 h-5"
-                          style={{ color: "#8C4F58" }}
-                        />
-                      </div>
-                      <span style={{ color: "#4B3A33" }}>{t(`lifestyle.${key}`)}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <p
-                  className="mt-6 italic font-medium"
-                  style={{ color: "#8C4F58" }}
-                >
-                  {t("lifestyle.note")}
-                </p>
-              </motion.div>
-
-              <motion.div variants={fadeInRight} className="space-y-6">
-                <div className="relative h-64 rounded-2xl overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2070&auto=format&fit=crop"
-                    alt="Woman exercising outdoors in KL"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-brown to-transparent opacity-60"></div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <p className="text-lg font-bold">{t("lifestyle.imageTitle")}</p>
-                    <p className="text-sm">{t("lifestyle.imageDesc")}</p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div
-                    className="p-4 rounded-xl backdrop-blur-sm"
-                    style={{ backgroundColor: "rgba(255, 255, 255, 0.7)" }}
-                  >
-                    <h4 className="font-bold mb-2" style={{ color: "#4B3A33" }}>
-                      {t("lifestyle.step2Title")}
-                    </h4>
-                    <p className="text-sm" style={{ color: "#AC9990" }}>
-                      {t("lifestyle.step2Desc")}
-                    </p>
-                  </div>
-                  <div
-                    className="p-4 rounded-xl backdrop-blur-sm"
-                    style={{ backgroundColor: "rgba(255, 255, 255, 0.7)" }}
-                  >
-                    <h4 className="font-bold mb-2" style={{ color: "#4B3A33" }}>
-                      {t("lifestyle.step3Title")}
-                    </h4>
-                    <p className="text-sm" style={{ color: "#AC9990" }}>
-                      {t("lifestyle.step3Desc")}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Hair and Insulin Sections with Image */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={staggerContainer}
-          className="py-20"
-          style={{ backgroundColor: "#FAF8F7" }}
-        >
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <motion.div variants={fadeInLeft} className="space-y-6">
-                <div
-                  className="p-8 rounded-2xl"
-                  style={{ backgroundColor: "#F3EFEE" }}
-                >
-                  <h3
-                    className="text-3xl font-bold mb-4"
-                    style={{ color: "#4B3A33", fontFamily: "Georgia, serif" }}
-                  >
-                    {t("hair.title")}
-                    <span className="block text-xl text-wine mt-1">
-                      {t("hair.subtitle")}
-                    </span>
-                  </h3>
-
-                  <p className="mb-4" style={{ color: "#AC9990" }}>
-                    {t("hair.desc")}
-                  </p>
-
-                  <div className="relative h-48 rounded-xl overflow-hidden mb-4">
-                    <img
-                      src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2070&auto=format&fit=crop"
-                      alt="Laser hair removal treatment"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-
-                  <p className="font-medium mb-2" style={{ color: "#4B3A33" }}>
-                    {t("hair.optionsTitle")}
-                  </p>
-                  <ul className="list-disc list-inside space-y-2">
-                    <li style={{ color: "#4B3A33" }}>{t("hair.opt1")}</li>
-                    <li style={{ color: "#4B3A33" }}>{t("hair.opt2")}</li>
-                    <li style={{ color: "#4B3A33" }}>{t("hair.opt3")}</li>
-                  </ul>
-                </div>
-              </motion.div>
-
-              <motion.div variants={fadeInRight} className="space-y-6">
-                <div
-                  className="p-8 rounded-2xl"
-                  style={{ backgroundColor: "#F3EFEE" }}
-                >
-                  <h3
-                    className="text-3xl font-bold mb-4"
-                    style={{ color: "#4B3A33", fontFamily: "Georgia, serif" }}
-                  >
-                    {t("insulin.title")}
-                  </h3>
-
-                  <p className="mb-4" style={{ color: "#AC9990" }}>
-                    {t("insulin.desc")}
-                  </p>
-
-                  <div className="relative h-48 rounded-xl overflow-hidden mb-4">
-                    <img
-                      src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=2070&auto=format&fit=crop"
-                      alt="Healthy balanced meal for PCOS"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-
-                  <div className="mb-4">
-                    <p
-                      className="font-medium mb-2"
-                      style={{ color: "#4B3A33" }}
-                    >
-                      {t("insulin.metforminTitle")}
-                    </p>
-                    <p style={{ color: "#AC9990" }}>
-                      {t("insulin.metforminDesc")}
-                    </p>
-                  </div>
-
-                  <div>
-                    <p
-                      className="font-medium mb-2"
-                      style={{ color: "#4B3A33" }}
-                    >
-                      {t("insulin.glp1Title")}
-                    </p>
-                    <p style={{ color: "#AC9990" }}>
-                      {t("insulin.glp1Desc")}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Fertility Section with Image */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={staggerContainer}
-          className="py-20 relative overflow-hidden"
-          style={{ backgroundColor: "#F3EFEE" }}
-        >
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div variants={fadeInLeft}>
-                <h2
-                  className="text-4xl md:text-5xl font-bold mb-6"
-                  style={{ color: "#4B3A33", fontFamily: "Georgia, serif" }}
-                >
-                  {t("fertility.title")}
-                  <span className="block text-wine text-2xl">
-                    {t("fertility.subtitle")}
-                  </span>
-                </h2>
-
-                <p className="text-lg mb-4" style={{ color: "#4B3A33" }}>
-                  {t("fertility.desc")}
-                </p>
-
-                <div
-                  className="p-6 rounded-xl backdrop-blur-sm mb-4"
-                  style={{ backgroundColor: "rgba(255, 255, 255, 0.7)" }}
-                >
-                  <p
-                    className="font-bold text-lg mb-2"
-                    style={{ color: "#8C4F58" }}
-                  >
-                    {t("fertility.ovulationTitle")}
-                  </p>
-                  <p>
-                    {t("fertility.ovulationDesc")}
-                  </p>
-                </div>
-
-                <p className="font-medium mb-2" style={{ color: "#4B3A33" }}>
-                  {t("fertility.planTitle")}
-                </p>
-                <ul className="list-disc list-inside space-y-1">
-                  <li style={{ color: "#4B3A33" }}>{t("fertility.plan1")}</li>
-                  <li style={{ color: "#4B3A33" }}>{t("fertility.plan2")}</li>
-                  <li style={{ color: "#4B3A33" }}>{t("fertility.plan3")}</li>
-                </ul>
-              </motion.div>
-
-              <motion.div variants={fadeInRight} className="relative">
-                <div className="absolute inset-0 bg-linear-to-r from-wine to-rose rounded-3xl opacity-20 blur-2xl"></div>
-                <img
-                  src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80"
-                  alt="Happy couple expecting a baby"
-                  className="relative rounded-3xl shadow-2xl w-full h-100 object-cover"
-                />
-                <div className="absolute -bottom-6 -right-6 w-24 h-24 rounded-full bg-wine flex items-center justify-center text-white text-2xl font-bold">
-                  {t("fertility.hopeBadge")}
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Cost Section with Image */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={staggerContainer}
-          className="py-20"
-          style={{ backgroundColor: "#FAF8F7" }}
-        >
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div
-                variants={fadeInLeft}
-                className="relative order-2 lg:order-1"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=2070&auto=format&fit=crop"
-                  alt="Medical consultation at Nexus Clinic"
-                  className="rounded-3xl shadow-2xl w-full h-100 object-cover"
-                />
-                <div className="absolute -top-4 -left-4 p-4 rounded-xl bg-white shadow-xl">
-                  <p
-                    className="text-sm font-medium"
-                    style={{ color: "#8C4F58" }}
-                  >
-                    {t("cost.transparentBadge")}
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div variants={fadeInRight} className="order-1 lg:order-2">
-                <h2
-                  className="text-4xl md:text-5xl font-bold mb-6"
-                  style={{ color: "#4B3A33", fontFamily: "Georgia, serif" }}
-                >
-                  {t("cost.title")}
-                  <span className="block text-wine text-2xl">
-                    {t("cost.subtitle")}
-                  </span>
-                </h2>
-
-                <p className="text-lg mb-6" style={{ color: "#AC9990" }}>
-                  {t("cost.desc")}
-                </p>
-
-                <div
-                  className="p-6 rounded-xl mb-4"
-                  style={{ backgroundColor: "#F3EFEE" }}
-                >
-                  <p className="font-bold mb-3" style={{ color: "#4B3A33" }}>
-                    {t("cost.driversTitle")}
-                  </p>
-                  <ul className="space-y-2">
-                    {["d1", "d2", "d3", "d4", "d5"].map((key, i) => (
-                      <li key={i} className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-wine"></div>
-                        <span style={{ color: "#4B3A33" }}>{t(`cost.${key}`)}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="grid grid-cols-3 gap-3 mb-4">
-                  <div className="p-3 text-center rounded-xl bg-white">
-                    <p className="text-xs text-taupe">{t("cost.price1Label")}</p>
-                    <p className="text-lg font-bold text-wine">{t("cost.price1Value")}</p>
-                  </div>
-                  <div className="p-3 text-center rounded-xl bg-white">
-                    <p className="text-xs text-taupe">{t("cost.price2Label")}</p>
-                    <p className="text-lg font-bold text-wine">{t("cost.price2Value")}</p>
-                  </div>
-                  <div className="p-3 text-center rounded-xl bg-white">
-                    <p className="text-xs text-taupe">{t("cost.price3Label")}</p>
-                    <p className="text-lg font-bold text-wine">{t("cost.price3Value")}</p>
-                  </div>
-                </div>
-
-                <p className="text-sm italic" style={{ color: "#8C4F58" }}>
-                  {t("cost.disclaimer")}
-                </p>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Treatment Phases */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={staggerContainer}
-          className="py-20 relative overflow-hidden"
-          style={{ backgroundColor: "#F3EFEE" }}
-        >
-          <div className="container mx-auto px-4">
-            <motion.h2
+    <div className="bg-light font-inter overflow-x-hidden">
+      {/* Hero Section - ALL TEXT INCLUDED */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="relative min-h-screen flex items-center bg-linear-to-br from-cream via-light to-cream overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-[url('/api/placeholder/1920/1080')] opacity-5 bg-cover bg-center" />
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <motion.h1
               variants={fadeInUp}
-              className="text-4xl md:text-5xl font-bold text-center mb-12"
-              style={{ color: "#4B3A33", fontFamily: "Georgia, serif" }}
+              className="text-4xl md:text-6xl lg:text-7xl font-georgia text-brown mb-6 leading-tight"
             >
-              {t("phases.title")}
-              <span className="block text-wine">
-                {t("phases.titleHighlight")}
-              </span>
-            </motion.h2>
+              PCOS Treatment in Malaysia at{" "}
+              <span className="text-wine block">Nexus Clinic Kuala Lumpur</span>
+            </motion.h1>
 
             <motion.p
               variants={fadeInUp}
-              className="text-center text-lg mb-12"
-              style={{ color: "#AC9990" }}
+              className="text-xl md:text-2xl text-taupe mb-8 max-w-3xl italic"
             >
-              {t("phases.desc")}
+              PCOS is not "just irregular periods." It affects your skin,
+              weight, mood, and fertility. Let's treat the whole you.
             </motion.p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {treatmentSteps.map((step, index) => (
-                <motion.div
-                  key={index}
-                  variants={scaleIn}
-                  className="p-8 rounded-2xl backdrop-blur-sm transition-all duration-300 hover:shadow-xl"
-                  style={{ backgroundColor: "rgba(255, 255, 255, 0.7)" }}
-                >
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center mb-4"
-                    style={{ backgroundColor: "#8C4F58" }}
-                  >
-                    <span className="text-white font-bold text-xl">
-                      {index + 1}
-                    </span>
-                  </div>
-
-                  <h3
-                    className="text-xl font-bold mb-3"
-                    style={{ color: "#4B3A33" }}
-                  >
-                    {t(`phases.${step.phaseKey}`)}
-                  </h3>
-
-                  {step.optionKeys && (
-                    <div className="mb-3">
-                      <p
-                        className="font-medium mb-2"
-                        style={{ color: "#8C4F58" }}
-                      >
-                        {t("phases.phase2Goals")}
-                      </p>
-                      <ul className="list-disc list-inside space-y-1">
-                        {step.optionKeys.map((key, i) => (
-                          <li key={i} style={{ color: "#AC9990" }}>
-                            {t(`phases.${key}`)}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  <p style={{ color: "#4B3A33" }}>{t(`phases.${step.descKey}`)}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Competitor Snapshot */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={staggerContainer}
-          className="py-20"
-          style={{ backgroundColor: "#FAF8F7" }}
-        >
-          <div className="container mx-auto px-4">
-            <motion.h2
+            <motion.p
               variants={fadeInUp}
-              className="text-4xl md:text-5xl font-bold text-center mb-12"
-              style={{ color: "#4B3A33", fontFamily: "Georgia, serif" }}
+              className="text-lg text-brown/80 mb-12 max-w-2xl"
             >
-              {t("competitor.title")}
-            </motion.h2>
+              If your cycles are unpredictable, your acne will not calm down, or
+              your body feels like it is working against you, you are not being
+              dramatic. At Nexus Clinic Kuala Lumpur, we build a realistic PCOS
+              plan that fits your goals, your schedule, and your body.
+            </motion.p>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <motion.div
-                variants={fadeInLeft}
-                className="p-6 rounded-2xl"
-                style={{ backgroundColor: "#F3EFEE" }}
+            <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-wine text-light px-8 py-4 rounded-full font-semibold flex items-center gap-2 hover:bg-rose transition-all shadow-lg"
               >
-                <h3
-                  className="text-2xl font-bold mb-4"
-                  style={{ color: "#8C4F58" }}
-                >
-                  {t("competitor.card1Title")}
-                </h3>
-                <ul className="space-y-3">
-                  {["c1Item1", "c1Item2", "c1Item3", "c1Item4", "c1Item5"].map((key, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <ChevronRight
-                        className="w-5 h-5 mt-1 shrink-0"
-                        style={{ color: "#AC9990" }}
-                      />
-                      <span style={{ color: "#4B3A33" }}>{t(`competitor.${key}`)}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInRight}
-                className="p-6 rounded-2xl"
-                style={{ backgroundColor: "#F3EFEE" }}
-              >
-                <h3
-                  className="text-2xl font-bold mb-4"
-                  style={{ color: "#8C4F58" }}
-                >
-                  {t("competitor.card2Title")}
-                </h3>
-                <ul className="space-y-3">
-                  {["c2Item1", "c2Item2", "c2Item3", "c2Item4"].map((key, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <Star
-                        className="w-5 h-5 mt-1 shrink-0"
-                        style={{ color: "#8C4F58" }}
-                      />
-                      <span style={{ color: "#4B3A33" }}>{t(`competitor.${key}`)}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </div>
+                Start Your Journey <ChevronRight className="w-5 h-5" />
+              </motion.button>
+            </motion.div>
           </div>
-        </motion.section>
+        </div>
+      </motion.section>
 
-        {/* FAQ Section */}
-        <FAQ data={faqs} />
+      {/* Trust Section - ALL TEXT INCLUDED */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="py-16 bg-glass backdrop-blur-sm border-y border-cream"
+      >
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-6">
+            <motion.div
+              variants={scaleIn}
+              whileHover={{ y: -5 }}
+              className="bg-light p-6 rounded-2xl shadow-sm border border-cream"
+            >
+              <MapPin className="w-8 h-8 text-wine mb-4" />
+              <p className="text-brown text-sm">
+                Confidential, doctor-led consults in central Kuala Lumpur
+              </p>
+            </motion.div>
 
-        {/* CTA Section */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={staggerContainer}
-          className="py-20 relative overflow-hidden"
-          style={{ backgroundColor: "#8C4F58" }}
-        >
-          <div className="absolute inset-0">
-            <img
-              src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=2070&auto=format&fit=crop"
-              alt="Peaceful moment of self-care"
-              className="w-full h-full object-cover opacity-20"
-            />
+            <motion.div
+              variants={scaleIn}
+              whileHover={{ y: -5 }}
+              className="bg-light p-6 rounded-2xl shadow-sm border border-cream"
+            >
+              <Sparkles className="w-8 h-8 text-wine mb-4" />
+              <p className="text-brown text-sm">
+                PCOS support that covers symptoms you feel daily, including
+                weight and insulin resistance, acne, unwanted hair, and cycle
+                tracking
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={scaleIn}
+              whileHover={{ y: -5 }}
+              className="bg-light p-6 rounded-2xl shadow-sm border border-cream"
+            >
+              <Award className="w-8 h-8 text-wine mb-4" />
+              <p className="text-brown text-sm">
+                Evidence-based approach, guided by the 2023 International PCOS
+                Guideline (Rotterdam criteria and treatment pathways)
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={scaleIn}
+              whileHover={{ y: -5 }}
+              className="bg-light p-6 rounded-2xl shadow-sm border border-cream"
+            >
+              <Phone className="w-8 h-8 text-wine mb-4" />
+              <p className="text-brown text-sm">
+                Nexus Clinic Kuala Lumpur location (as listed online): LG 10,
+                Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala
+                Lumpur. Mobile: 016-7025699 / 03-21635699
+              </p>
+            </motion.div>
           </div>
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-white filter blur-3xl"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-white filter blur-3xl"></div>
+        </div>
+      </motion.section>
+
+      {/* What is PCOS Section with Image - ALL TEXT INCLUDED */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="py-20 bg-cream"
+      >
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div variants={fadeInLeft}>
+              <h2 className="text-4xl md:text-5xl font-georgia text-brown mb-6">
+                What Is PCOS{" "}
+                <span className="text-wine">(In Simple Words)</span>
+              </h2>
+              <p className="text-lg text-brown/80 mb-4 leading-relaxed">
+                PCOS (Polycystic Ovary Syndrome) is a common hormone condition
+                in women of reproductive age. It is linked to irregular
+                ovulation, higher androgens (male-type hormones), and sometimes
+                ovaries that look "polycystic" on ultrasound.
+              </p>
+              <p className="text-lg text-brown/80 leading-relaxed">
+                Important detail: PCOS does not always mean you have true cysts.
+                Many sources explain the ovaries may contain many small
+                follicles, and "cysts" is often a confusing word for patients.
+              </p>
+              <p className="text-lg text-brown/80 mt-4 font-semibold">
+                13% globally using Rotterdam criteria, and it may be higher in
+                some regions including South East Asia.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="absolute inset-0 bg-wine/10 rounded-3xl transform rotate-3" />
+              <img
+                src="/images/regenerative/pcos-treatment.webp"
+                alt="PCOS Treatment"
+                className="relative rounded-3xl shadow-xl w-full h-auto object-cover border-4 border-light"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Symptoms Section - ALL TEXT INCLUDED */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="py-20 bg-light"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl md:text-4xl font-georgia text-brown mb-4 text-center"
+          >
+            Signs and Symptoms That Make Women Search
+          </motion.h2>
+          <motion.p
+            variants={fadeInUp}
+            className="text-xl text-wine mb-12 text-center"
+          >
+            "PCOS Treatment Kuala Lumpur"
+          </motion.p>
+
+          <div className="space-y-4 max-w-4xl mx-auto">
+            <motion.p variants={fadeInUp} className="text-lg text-brown/80">
+              PCOS can look different from one woman to another. Common symptoms
+              include:
+            </motion.p>
+
+            <motion.ul variants={fadeInUp} className="space-y-3">
+              <li className="flex items-start gap-3 text-brown">
+                <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+                <span>
+                  Irregular periods (late, missed, or very long cycles)
+                </span>
+              </li>
+              <li className="flex items-start gap-3 text-brown">
+                <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+                <span>Acne and oily skin</span>
+              </li>
+              <li className="flex items-start gap-3 text-brown">
+                <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+                <span>Unwanted facial or body hair (hirsutism)</span>
+              </li>
+              <li className="flex items-start gap-3 text-brown">
+                <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+                <span>Weight gain or difficulty losing weight</span>
+              </li>
+              <li className="flex items-start gap-3 text-brown">
+                <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+                <span>Darkened skin patches (acanthosis nigricans)</span>
+              </li>
+              <li className="flex items-start gap-3 text-brown">
+                <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+                <span>Sleep issues, sometimes sleep apnoea</span>
+              </li>
+              <li className="flex items-start gap-3 text-brown">
+                <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+                <span>Fertility challenges</span>
+              </li>
+              <li className="flex items-start gap-3 text-brown">
+                <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+                <span>
+                  PCOS can also affect mental health. Some Malaysian hospital
+                  education pages mention depression, anxiety, and even
+                  disordered eating patterns in women with PCOS.
+                </span>
+              </li>
+            </motion.ul>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-center text-lg text-wine mt-8 font-semibold"
+            >
+              If you read that and thought "That is me," you deserve care that
+              takes it seriously.
+            </motion.p>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Causes Section - ALL TEXT INCLUDED */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="py-20 bg-cream"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl md:text-5xl font-georgia text-brown mb-8 text-center"
+          >
+            What Causes PCOS?
+          </motion.h2>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-center text-lg text-brown/80 mb-4 max-w-2xl mx-auto"
+          >
+            There is no single cause. PCOS is usually a mix of:
+          </motion.p>
+
+          <div className="space-y-4 max-w-3xl mx-auto mb-6">
+            <motion.div
+              variants={fadeInUp}
+              className="bg-light p-6 rounded-xl border-l-4 border-wine"
+            >
+              <h3 className="text-xl font-semibold text-brown mb-2">
+                Hormone imbalance
+              </h3>
+              <p className="text-brown/80">
+                (often higher androgens and disrupted ovulation)
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-light p-6 rounded-xl border-l-4 border-wine"
+            >
+              <h3 className="text-xl font-semibold text-brown mb-2">
+                Insulin resistance
+              </h3>
+              <p className="text-brown/80">
+                (your body needs more insulin to manage sugar, which can push
+                hormone imbalance and weight gain)
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-light p-6 rounded-xl border-l-4 border-wine"
+            >
+              <h3 className="text-xl font-semibold text-brown mb-2">
+                Genetics
+              </h3>
+              <p className="text-brown/80">(PCOS often runs in families)</p>
+            </motion.div>
           </div>
 
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-3xl mx-auto text-center">
-              <motion.h2
-                variants={fadeInUp}
-                className="text-4xl md:text-5xl font-bold mb-6 text-white"
-                style={{ fontFamily: "Georgia, serif" }}
-              >
-                {t("cta.title1")}
-                <span className="block text-cream">{t("cta.title2")}</span>
-              </motion.h2>
+          <motion.p
+            variants={fadeInUp}
+            className="text-center text-lg text-wine mt-8 font-semibold"
+          >
+            This is why "one miracle supplement" rarely fixes PCOS. It needs a
+            layered plan.
+          </motion.p>
+        </div>
+      </motion.section>
 
-              <motion.p
-                variants={fadeInUp}
-                className="text-xl mb-8 text-white/90"
-              >
-                {t("cta.desc")}
-              </motion.p>
+      {/* Diagnosis Section - ALL TEXT INCLUDED */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="py-20 bg-light"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl md:text-5xl font-georgia text-brown mb-8"
+          >
+            How PCOS Is Diagnosed{" "}
+            <span className="text-wine">(So You Don't Get Misdiagnosed)</span>
+          </motion.h2>
 
-              <motion.div variants={fadeInUp}>
-                <button
-                  className="px-10 py-5 rounded-full text-lg font-bold transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1"
-                  style={{ backgroundColor: "#FAF8F7", color: "#8C4F58" }}
-                >
-                  {t("cta.button")}
-                </button>
-              </motion.div>
+          <motion.p
+            variants={fadeInUp}
+            className="text-lg text-brown/80 mb-6 leading-relaxed"
+          >
+            The 2023 International PCOS Guideline recommends diagnosing PCOS
+            using revised Rotterdam criteria. In adults, diagnosis generally
+            requires two of three:
+          </motion.p>
 
-              <motion.p variants={fadeInUp} className="mt-6 text-white/80">
-                {t("cta.address")}
-              </motion.p>
-              <motion.p variants={fadeInUp} className="text-white/80">
-                {t("cta.phone")}
-              </motion.p>
-            </div>
+          <motion.ul variants={fadeInUp} className="space-y-3 mb-6">
+            <li className="flex items-start gap-3 text-brown">
+              <span className="text-wine font-bold">1.</span>
+              <span>clinical or biochemical hyperandrogenism</span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <span className="text-wine font-bold">2.</span>
+              <span>ovulatory dysfunction</span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <span className="text-wine font-bold">3.</span>
+              <span>polycystic ovaries on ultrasound</span>
+            </li>
+          </motion.ul>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80 mb-6">
+            The guideline also highlights excluding other causes like thyroid
+            disease, high prolactin, and non-classic congenital adrenal
+            hyperplasia (17-hydroxyprogesterone).
+          </motion.p>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-lg text-brown bg-cream p-8 rounded-xl border-l-4 border-wine"
+          >
+            A practical point that helps patients: if you have irregular cycles
+            plus strong signs of androgen excess, you may not always need every
+            test under the sun. The guideline focuses on accurate diagnosis
+            while avoiding over-testing, especially in adolescents.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Treatment Goal Section - ALL TEXT INCLUDED */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="py-20 bg-wine text-light"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl md:text-5xl font-georgia mb-8"
+          >
+            PCOS Treatment in Malaysia: The Real Goal
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-xl mb-12 max-w-3xl">
+            There is no "instant cure," but PCOS symptoms are treatable and many
+            women feel much better with the right approach.
+          </motion.p>
+
+          <motion.p variants={fadeInUp} className="text-lg mb-6">
+            At Nexus Clinic Kuala Lumpur, we talk about PCOS treatment as a
+            roadmap with 3 big targets:
+          </motion.p>
+
+          <motion.ul variants={fadeInUp} className="space-y-4 mb-6">
+            <li className="flex items-start gap-3">
+              <div className="w-2 h-2 bg-cream rounded-full mt-2" />
+              <span>1. Make your cycles safer and more predictable</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-2 h-2 bg-cream rounded-full mt-2" />
+              <span>2. Lower androgen effects like acne and unwanted hair</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-2 h-2 bg-cream rounded-full mt-2" />
+              <span>
+                3. Improve metabolic health (insulin resistance, weight, energy,
+                long-term risk)
+              </span>
+            </li>
+          </motion.ul>
+
+          <motion.p variants={fadeInUp} className="text-lg">
+            And if pregnancy is your goal, the roadmap shifts to fertility
+            support and ovulation.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Lifestyle Section - ALL TEXT INCLUDED */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="py-20 bg-cream"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl md:text-5xl font-georgia text-brown mb-6"
+          >
+            Step 1: Lifestyle That Actually Helps{" "}
+            <span className="text-wine">(Without Shame)</span>
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80 mb-4">
+            This is not about "just lose weight." It is about improving insulin
+            sensitivity and reducing hormone chaos.
+          </motion.p>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80 mb-4">
+            Even small changes can help. NHS guidance notes that in overweight
+            women, losing around 5% of body weight can lead to significant
+            improvement in PCOS. Malaysian hospital pages also highlight regular
+            exercise, a balanced diet, and weight management as core strategies.
+          </motion.p>
+
+          <motion.h3
+            variants={fadeInUp}
+            className="text-2xl font-georgia text-brown mb-6"
+          >
+            Simple, realistic KL-friendly habits:
+          </motion.h3>
+
+          <motion.ul variants={fadeInUp} className="space-y-3 mb-6">
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>Walk daily (start with 20 minutes)</span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>
+                Build muscle 2 to 3 times a week (home workouts count)
+              </span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>Prioritise protein and fibre in meals</span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>
+                Reduce sugary drinks and frequent desserts (not forever, just
+                less often)
+              </span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>
+                Sleep earlier when possible (PCOS and poor sleep feed each
+                other)
+              </span>
+            </li>
+          </motion.ul>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-center text-lg text-wine mt-8 font-semibold"
+          >
+            This is the base that makes medication work better, and makes
+            symptoms return less often.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Irregular Periods Section - ALL TEXT INCLUDED */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="py-20 bg-light"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl md:text-5xl font-georgia text-brown mb-6"
+          >
+            Step 2: Treatments for Irregular Periods
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-xl text-wine mb-8">
+            Many women want one thing first: "I just want my cycle to stop
+            scaring me."
+          </motion.p>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80 mb-4">
+            Common medical options include:
+          </motion.p>
+
+          <motion.ul variants={fadeInUp} className="space-y-3 mb-6">
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>
+                Combined oral contraceptive pills to regulate periods and reduce
+                androgen effects like hirsutism (commonly mentioned in Malaysian
+                hospital guidance)
+              </span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>
+                Other hormone options depending on your history and risk factors
+                (your doctor decides)
+              </span>
+            </li>
+          </motion.ul>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-lg text-brown/80 p-6 border-l-4 border-wine bg-cream/50"
+          >
+            Why this matters: long gaps without a period can increase risk of
+            womb lining issues in some women. This is one reason doctors treat
+            cycles, not just acne.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Acne Section - ALL TEXT INCLUDED */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="py-20 bg-cream"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl md:text-5xl font-georgia text-brown mb-6"
+          >
+            Step 3: PCOS Acne Treatment{" "}
+            <span className="text-wine">
+              (Skin That Feels Like Yours Again)
+            </span>
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80 mb-4">
+            Acne in PCOS is often driven by hormones, not "dirty skin." The 2023
+            guideline notes acne alone is a weaker predictor than hirsutism, but
+            it still matters in real life and can affect confidence.
+          </motion.p>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80 mb-4">
+            A good acne plan may include:
+          </motion.p>
+
+          <motion.ul variants={fadeInUp} className="space-y-3 mb-6">
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>Hormonal regulation (when appropriate)</span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>
+                Medical-grade skincare guidance (simple, not 10 products)
+              </span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>
+                In-clinic support for acne scars or texture if that's your
+                concern
+              </span>
+            </li>
+          </motion.ul>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80">
+            Nexus Clinic is known for aesthetic and laser treatments in Kuala
+            Lumpur, so many women choose to manage both the medical and visible
+            parts of PCOS in one journey.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Unwanted Hair Section - ALL TEXT INCLUDED */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="py-20 bg-light"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl md:text-5xl font-georgia text-brown mb-6"
+          >
+            Step 4: Unwanted Hair and Hair Thinning{" "}
+            <span className="text-wine">(Hirsutism and PCOS)</span>
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80 mb-4">
+            Unwanted facial hair is one of the most emotionally heavy PCOS
+            symptoms. The guideline even notes the psychosocial impact and
+            encourages clinicians to take patient reporting seriously.
+          </motion.p>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80 mb-4">
+            Treatment options include:
+          </motion.p>
+
+          <motion.ul variants={fadeInUp} className="space-y-4 mb-6">
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>Hormonal options (doctor-led)</span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>
+                Anti-androgens in selected patients, with strong contraception
+                guidance. The guideline notes anti-androgens can be considered
+                for hirsutism with effective contraception, and mentions
+                spironolactone (often 25 to 100 mg/day) appears to have lower
+                risks of adverse effects.
+              </span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>
+                Laser and light hair reduction. The guideline states mechanical
+                laser and light therapies should be considered for reducing
+                facial hirsutism and improving quality of life, and that more
+                sessions may be needed in PCOS.
+              </span>
+            </li>
+          </motion.ul>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-lg text-brown/80 p-6 bg-cream rounded-xl"
+          >
+            This is where an aesthetic clinic can be genuinely helpful, as long
+            as it is done by experienced professionals with proper counselling.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Insulin Resistance Section - ALL TEXT INCLUDED */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="py-20 bg-cream"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl md:text-5xl font-georgia text-brown mb-6"
+          >
+            Step 5: Insulin Resistance and Weight Support in PCOS
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80 mb-4">
+            Many women with PCOS feel like they eat less and still gain weight.
+            Insulin resistance can be part of that story. Malaysian hospital
+            guidance explicitly links PCOS risk factors with insulin resistance.
+          </motion.p>
+
+          <motion.h3
+            variants={fadeInUp}
+            className="text-2xl font-georgia text-wine mb-4"
+          >
+            Metformin
+          </motion.h3>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80 mb-6">
+            The 2023 guideline notes metformin can be used in certain PCOS
+            situations, including anovulatory infertility (with counselling that
+            other ovulation agents may be more effective), and it highlights
+            mild gastrointestinal side effects. It also notes metformin should
+            be considered over inositol for hirsutism and central adiposity,
+            with the trade-off of more GI side effects.
+          </motion.p>
+
+          <motion.h3
+            variants={fadeInUp}
+            className="text-2xl font-georgia text-wine mb-4"
+          >
+            Modern weight-loss medications
+          </motion.h3>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80">
+            Some specialist clinics in Kuala Lumpur discuss GLP-1 medications in
+            selected PCOS patients under medical care. This is not for everyone.
+            It depends on your BMI, insulin resistance, and health history.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Fertility Section - ALL TEXT INCLUDED */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="py-20 bg-light"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl md:text-5xl font-georgia text-brown mb-6"
+          >
+            Step 6: PCOS and Fertility{" "}
+            <span className="text-wine">(If You Want to Get Pregnant)</span>
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80 mb-4">
+            PCOS is one of the most common causes of infertility, but it is also
+            treatable. Women's Health (US HHS) states many women with PCOS can
+            still get pregnant, and treatment focuses on restoring ovulation.
+          </motion.p>
+
+          <motion.h3
+            variants={fadeInUp}
+            className="text-2xl font-georgia text-wine mb-4"
+          >
+            Ovulation induction
+          </motion.h3>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80 mb-4">
+            The 2023 guideline summary states:
+          </motion.p>
+
+          <motion.ul variants={fadeInUp} className="space-y-3 mb-6">
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>
+                Letrozole should be first-line pharmacological treatment for
+                ovulation induction in infertile anovulatory women with PCOS
+                (with no other infertility factors).
+              </span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>
+                It also outlines where clomiphene citrate and metformin may be
+                used, and the need to counsel about multiple pregnancy risk with
+                clomiphene.
+              </span>
+            </li>
+          </motion.ul>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80 mb-4">
+            If fertility is your goal, your plan may include:
+          </motion.p>
+
+          <motion.ul variants={fadeInUp} className="space-y-3 mb-6">
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>Cycle tracking and timed intercourse guidance</span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>Ovulation medications (doctor-prescribed)</span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>Referral to fertility specialists if needed</span>
+            </li>
+          </motion.ul>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-lg text-brown/80 p-6 bg-cream rounded-xl"
+          >
+            Nexus Clinic publishes fertility-related content and discusses that
+            fertility testing can reveal PCOS or hormone imbalance, which
+            supports the idea of a structured work-up rather than guessing.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Long-term Health Risks Section - ALL TEXT INCLUDED */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="py-20 bg-wine text-light"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl md:text-5xl font-georgia mb-8"
+          >
+            PCOS Long-Term Health Risks{" "}
+            <span className="text-cream">(Why Treating It Early Helps)</span>
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-xl mb-4">
+            PCOS is not only about periods and skin.
+          </motion.p>
+
+          <motion.p variants={fadeInUp} className="text-lg mb-4">
+            The guideline encourages awareness of long-term health, and many
+            clinical sources link PCOS with higher risk of insulin resistance,
+            type 2 diabetes, high blood pressure, and mental health concerns.
+          </motion.p>
+
+          <motion.p variants={fadeInUp} className="text-2xl font-georgia mt-6">
+            Treating PCOS early can reduce future stress, both medical and
+            emotional.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* What Treatment Looks Like Section - ALL TEXT INCLUDED */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="py-20 bg-cream"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl md:text-5xl font-georgia text-brown mb-12"
+          >
+            What PCOS Treatment Looks Like at Nexus Clinic Kuala Lumpur
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80 mb-8">
+            Think of your care in phases:
+          </motion.p>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-light p-8 rounded-2xl shadow-sm border-l-4 border-wine mb-6"
+          >
+            <span className="text-wine font-semibold text-xl">
+              Phase 1: Diagnosis and clarity
+            </span>
+            <p className="text-brown/80 mt-2">
+              You bring symptoms. We confirm what's going on using
+              guideline-based criteria and sensible testing.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-light p-8 rounded-2xl shadow-sm border-l-4 border-wine mb-6"
+          >
+            <span className="text-wine font-semibold text-xl">
+              Phase 2: Build your plan around your main goal
+            </span>
+            <p className="text-brown/80 mt-2">
+              Cycle control. Clearer skin. Hair reduction. Weight and insulin
+              resistance. Fertility support.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-light p-8 rounded-2xl shadow-sm border-l-4 border-wine"
+          >
+            <span className="text-wine font-semibold text-xl">
+              Phase 3: Track progress and adjust
+            </span>
+            <p className="text-brown/80 mt-2">
+              PCOS changes over time. Your plan should too.
+            </p>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Cost Section - ALL TEXT INCLUDED */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="py-20 bg-light"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl md:text-5xl font-georgia text-brown mb-6"
+          >
+            Cost of PCOS Treatment in Malaysia{" "}
+            <span className="text-wine">(Realistic, Not Guessy)</span>
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80 mb-4">
+            PCOS costs vary because PCOS is not one treatment.
+          </motion.p>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80 mb-4">
+            What usually drives cost:
+          </motion.p>
+
+          <motion.ul variants={fadeInUp} className="space-y-3 mb-6">
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>Consultation and follow-ups</span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>
+                Blood tests (hormones, glucose, lipids, thyroid, others if
+                needed)
+              </span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>Pelvic ultrasound when indicated</span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>Medications (varies widely)</span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>
+                Hair reduction or acne-scar treatments if you choose them
+              </span>
+            </li>
+          </motion.ul>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80 mb-4">
+            To give you a sense of market pricing in Malaysia, some providers
+            publish package prices:
+          </motion.p>
+
+          <motion.ul variants={fadeInUp} className="space-y-2 mb-6">
+            <li className="text-brown">
+              A KL provider lists a "Specialist PCOS Test and Ultrasound" from
+              MYR 138 (package listing)
+            </li>
+            <li className="text-brown">
+              MAHSA Specialist Hospital lists a PCOS screening O&G package at
+              RM480
+            </li>
+            <li className="text-brown">
+              Some hospital package pages list ultrasound abdomen and pelvis
+              around RM285 as an add-on screening price
+            </li>
+          </motion.ul>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-lg text-brown bg-cream p-6 rounded-xl font-semibold"
+          >
+            Your exact cost depends on what you actually need, not what a
+            package includes.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Competitor Snapshot - ALL TEXT INCLUDED */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="py-20 bg-cream"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl md:text-5xl font-georgia text-brown mb-8"
+          >
+            Competitor Snapshot: What Top PCOS Pages in Malaysia Do{" "}
+            <span className="text-wine">(And How We Improve It)</span>
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-lg text-brown/80 mb-4">
+            When you search "PCOS treatment Malaysia" or "PCOS treatment Kuala
+            Lumpur," top pages often include:
+          </motion.p>
+
+          <motion.ul variants={fadeInUp} className="space-y-3 mb-8">
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>
+                Pantai Hospitals: clear symptoms list, diagnosis approach (blood
+                tests and ultrasound), and a reminder that PCOS cannot be cured
+                but symptoms are treatable
+              </span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>
+                Gleneagles: similar hospital-style structure and mentions OCPs
+                for cycle regulation and hirsutism
+              </span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>
+                Prince Court / private women's health clinics: patient-friendly
+                education and encouragement to see an O&G specialist
+              </span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>
+                KL women specialist pages: practical weight-loss advice with
+                metformin and GLP-1 discussions under specialist care
+              </span>
+            </li>
+            <li className="flex items-start gap-3 text-brown">
+              <div className="w-2 h-2 bg-wine rounded-full mt-2" />
+              <span>
+                Fertility centres: PCOS and fertility FAQs, usually focused on
+                conception routes
+              </span>
+            </li>
+          </motion.ul>
+
+          <motion.h3
+            variants={fadeInUp}
+            className="text-2xl font-georgia text-wine mb-4"
+          >
+            Where Nexus Clinic KL content can win:
+          </motion.h3>
+
+          <motion.ul
+            variants={fadeInUp}
+            className="space-y-3 bg-wine text-light p-8 rounded-2xl"
+          >
+            <li className="flex items-start gap-3">
+              <div className="w-2 h-2 bg-cream rounded-full mt-2" />
+              <span>More human language, less "textbook"</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-2 h-2 bg-cream rounded-full mt-2" />
+              <span>
+                Clear symptom-based pathways (skin, hair, weight, fertility)
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-2 h-2 bg-cream rounded-full mt-2" />
+              <span>
+                Evidence-based choices (Rotterdam criteria, letrozole first-line
+                for ovulation induction)
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-2 h-2 bg-cream rounded-full mt-2" />
+              <span>
+                Aesthetic support that is actually guideline-aligned (laser and
+                light therapy for hirsutism)
+              </span>
+            </li>
+          </motion.ul>
+        </div>
+      </motion.section>
+
+      {/* FAQ Section - ALL 14 QUESTIONS AND ANSWERS INCLUDED */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="py-20 bg-light"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl md:text-5xl font-georgia text-brown mb-12 text-center"
+          >
+            Frequently Asked Questions
+          </motion.h2>
+
+          <div className="max-w-3xl mx-auto space-y-4">
+            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
+              <h3 className="text-lg font-semibold text-wine mb-2">
+                1) Can PCOS be cured permanently?
+              </h3>
+              <p className="text-brown/80">
+                PCOS usually cannot be "cured," but symptoms can be treated and
+                controlled long term.
+              </p>
+            </motion.div>
+
+            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
+              <h3 className="text-lg font-semibold text-wine mb-2">
+                2) What is the best treatment for PCOS?
+              </h3>
+              <p className="text-brown/80">
+                There is no single best treatment. The best plan depends on your
+                goal: cycle control, acne and hair, weight and insulin
+                resistance, or fertility. The international guideline recommends
+                tailored care based on symptoms and life stage.
+              </p>
+            </motion.div>
+
+            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
+              <h3 className="text-lg font-semibold text-wine mb-2">
+                3) Can I get pregnant if I have PCOS?
+              </h3>
+              <p className="text-brown/80">
+                Yes. Many women with PCOS can get pregnant, sometimes naturally
+                and sometimes with ovulation support.
+              </p>
+            </motion.div>
+
+            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
+              <h3 className="text-lg font-semibold text-wine mb-2">
+                4) What is the first-line fertility medication for PCOS?
+              </h3>
+              <p className="text-brown/80">
+                The 2023 International PCOS Guideline summary states letrozole
+                should be first-line for ovulation induction in infertile
+                anovulatory women with PCOS (with no other infertility factors).
+              </p>
+            </motion.div>
+
+            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
+              <h3 className="text-lg font-semibold text-wine mb-2">
+                5) How is PCOS diagnosed in adults?
+              </h3>
+              <p className="text-brown/80">
+                Diagnosis uses revised Rotterdam criteria, usually requiring two
+                of: hyperandrogenism, ovulatory dysfunction, or polycystic
+                ovaries on ultrasound, while excluding other conditions like
+                thyroid disease and high prolactin.
+              </p>
+            </motion.div>
+
+            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
+              <h3 className="text-lg font-semibold text-wine mb-2">
+                6) Do I need an ultrasound to confirm PCOS?
+              </h3>
+              <p className="text-brown/80">
+                Not always. The guideline notes diagnosis can often be made
+                based on clinical features, and ultrasound or AMH may be used in
+                adults depending on the diagnostic pathway.
+              </p>
+            </motion.div>
+
+            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
+              <h3 className="text-lg font-semibold text-wine mb-2">
+                7) Why do I gain weight so easily with PCOS?
+              </h3>
+              <p className="text-brown/80">
+                Insulin resistance is a common driver in PCOS. It can increase
+                hunger, cravings, and fat storage, and can worsen hormone
+                imbalance.
+              </p>
+            </motion.div>
+
+            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
+              <h3 className="text-lg font-semibold text-wine mb-2">
+                8) How much weight loss helps PCOS symptoms?
+              </h3>
+              <p className="text-brown/80">
+                Even modest changes can help. NHS guidance notes that around 5%
+                weight loss can significantly improve PCOS symptoms in
+                overweight women.
+              </p>
+            </motion.div>
+
+            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
+              <h3 className="text-lg font-semibold text-wine mb-2">
+                9) Does metformin help PCOS?
+              </h3>
+              <p className="text-brown/80">
+                Metformin may help in selected PCOS patients, especially where
+                insulin resistance or anovulatory infertility is involved, and
+                the guideline highlights counselling about GI side effects.
+              </p>
+            </motion.div>
+
+            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
+              <h3 className="text-lg font-semibold text-wine mb-2">
+                10) Is inositol better than metformin for PCOS?
+              </h3>
+              <p className="text-brown/80">
+                The guideline notes metformin should be considered over inositol
+                for hirsutism and central adiposity, and encourages women using
+                complementary therapies to tell their health professional.
+              </p>
+            </motion.div>
+
+            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
+              <h3 className="text-lg font-semibold text-wine mb-2">
+                11) What is the best treatment for unwanted facial hair in PCOS?
+              </h3>
+              <p className="text-brown/80">
+                Options include hormonal approaches and hair-reduction methods.
+                The guideline specifically states laser and light therapies
+                should be considered for facial hirsutism and quality of life,
+                and more sessions may be needed in PCOS.
+              </p>
+            </motion.div>
+
+            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
+              <h3 className="text-lg font-semibold text-wine mb-2">
+                12) Does PCOS cause acne?
+              </h3>
+              <p className="text-brown/80">
+                Yes, acne is a common symptom in PCOS. Malaysian hospital pages
+                list acne as a PCOS symptom, and the guideline recommends
+                assessing acne as part of hyperandrogenism review.
+              </p>
+            </motion.div>
+
+            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
+              <h3 className="text-lg font-semibold text-wine mb-2">
+                13) Should I worry about long-term health if I have PCOS?
+              </h3>
+              <p className="text-brown/80">
+                PCOS is linked with metabolic risks and mental health concerns,
+                so long-term monitoring and early lifestyle support matter.
+              </p>
+            </motion.div>
+
+            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
+              <h3 className="text-lg font-semibold text-wine mb-2">
+                14) Where can I get PCOS support in Kuala Lumpur?
+              </h3>
+              <p className="text-brown/80">
+                Many women start at hospitals and O&G clinics for diagnosis. If
+                your main concerns include weight, insulin resistance, acne, and
+                unwanted hair, Nexus Clinic Kuala Lumpur is centrally located at
+                Wisma UOA II, Jalan Pinang, with contact details listed online.
+              </p>
+            </motion.div>
           </div>
-        </motion.section>
-      </main>
-    </>
+        </div>
+      </motion.section>
+
+      {/* CTA Section - ALL TEXT INCLUDED */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="py-20 bg-wine text-light"
+      >
+        <div className="container mx-auto px-4 text-center">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl md:text-5xl font-georgia mb-6"
+          >
+            Start Your Journey to Clarity
+          </motion.h2>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-xl mb-8 max-w-2xl mx-auto"
+          >
+            If you are searching for PCOS treatment in Kuala Lumpur or PCOS
+            treatment in Malaysia, start with clarity. Not self-blame.
+          </motion.p>
+
+          <motion.button
+            variants={scaleIn}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-light text-wine px-10 py-4 rounded-full font-semibold text-lg hover:bg-cream transition-all shadow-xl"
+          >
+            Book Your Consultation Today
+          </motion.button>
+        </div>
+      </motion.section>
+    </div>
   );
 };
 

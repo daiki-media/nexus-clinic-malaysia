@@ -260,7 +260,7 @@ const ShockwaveLanding = () => {
             <motion.div variants={fadeInRight} className="relative">
               <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="/images/regenerative/embryonic.webp"
+                  src="/images/regenerative/shockwave-therapy.webp"
                   alt="Shockwave Therapy Procedure"
                   className="w-full h-full object-cover"
                 />

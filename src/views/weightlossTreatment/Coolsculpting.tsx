@@ -134,19 +134,43 @@ const CoolSculptingLanding = ({
   const faqs = [
     {
       q: "Does CoolSculpting really work?",
-      a: "Yes. Clinical studies show 20-25% fat reduction in treated areas after one session. Results are permanent as fat cells are eliminated naturally.",
+      a: "Yes. CoolSculpting permanently removes fat cells. Studies show up to 20 to 25 percent fat reduction in treated areas after one session.",
+    },
+    {
+      q: "How long does CoolSculpting last?",
+      a: "Results are long lasting. Fat cells removed during treatment do not return. Maintaining a healthy lifestyle helps preserve results.",
     },
     {
       q: "Is CoolSculpting painful?",
-      a: "Most patients feel intense cold and mild pressure initially, which subsides as the area becomes numb. Many read or relax during treatment.",
+      a: "Most patients feel cold and mild pressure. Discomfort is minimal and temporary.",
     },
     {
-      q: "How long do results last?",
-      a: "Results are permanent - treated fat cells are gone forever. Maintaining a stable weight ensures long-lasting outcomes.",
+      q: "How many sessions are needed?",
+      a: "Most patients need 1 to 3 sessions depending on fat amount and goals.",
+    },
+    {
+      q: "Is CoolSculpting safe?",
+      a: "Yes. CoolSculpting is FDA-cleared and widely used worldwide.",
+    },
+    {
+      q: "How much does CoolSculpting cost in Malaysia?",
+      a: "Average cost ranges from RM1,500 to RM4,000 per session depending on treatment area.",
     },
     {
       q: "When will I see results?",
-      a: "Initial changes appear in 4 weeks, with full results visible at 12 weeks as the body naturally eliminates frozen fat cells.",
+      a: "Initial results appear in 4 weeks. Full results appear in 12 weeks.",
+    },
+    {
+      q: "Can CoolSculpting reduce belly fat?",
+      a: "Yes. Abdomen is one of the most common treatment areas.",
+    },
+    {
+      q: "Is there downtime after CoolSculpting?",
+      a: "No. Most patients return to normal activities immediately.",
+    },
+    {
+      q: "Is CoolSculpting better than liposuction?",
+      a: "CoolSculpting is safer and non-surgical. Liposuction removes more fat but requires surgery.",
     },
   ];
 

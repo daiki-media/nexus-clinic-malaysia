@@ -9,135 +9,27 @@ import {
   scaleIn,
 } from "../../lib/animations";
 import {
-  ShieldCheck,
-  MapPin,
-  Stethoscope,
-  ChevronDown,
   Sparkles,
+  Shield,
   CheckCircle2,
-  AlertCircle,
-  ArrowRight,
-  Star,
-  Droplets,
-  Zap,
+  XCircle,
+  MapPin,
   Heart,
-  Activity,
+  ChevronRight,
+  Sparkles as SparklesIcon,
+  Shield as ShieldIcon,
 } from "lucide-react";
 import FAQ from "../../components/FAQ";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
-export default function AcneLandingPage({ locale = fallbackLng }: { locale?: string }) {
+export default function AcneLandingPage({
+  locale = fallbackLng,
+}: {
+  locale?: string;
+}) {
   const { t } = useTranslation(locale, "acneTreatment");
-
-  const trustItems = [
-    { icon: ShieldCheck, text: t("hero.trust1") },
-    { icon: Stethoscope, text: t("hero.trust2") },
-    { icon: MapPin, text: t("hero.trust3") },
-  ];
-
-  const acneTypes = [
-    {
-      number: "01",
-      title: t("acneTypes.type1Title"),
-      subtitle: t("acneTypes.type1Subtitle"),
-      desc: t("acneTypes.type1Desc"),
-      icon: Droplets,
-    },
-    {
-      number: "02",
-      title: t("acneTypes.type2Title"),
-      subtitle: t("acneTypes.type2Subtitle"),
-      desc: t("acneTypes.type2Desc"),
-      icon: Zap,
-    },
-    {
-      number: "03",
-      title: t("acneTypes.type3Title"),
-      subtitle: t("acneTypes.type3Subtitle"),
-      desc: t("acneTypes.type3Desc"),
-      icon: Activity,
-    },
-    {
-      number: "04",
-      title: t("acneTypes.type4Title"),
-      subtitle: t("acneTypes.type4Subtitle"),
-      desc: t("acneTypes.type4Desc"),
-      icon: Heart,
-    },
-    {
-      number: "05",
-      title: t("acneTypes.type5Title"),
-      subtitle: t("acneTypes.type5Subtitle"),
-      desc: t("acneTypes.type5Desc"),
-      icon: Sparkles,
-    },
-  ];
-
-  const treatmentPhases = [
-    {
-      phase: t("phases.phase1Label"),
-      title: t("phases.phase1Title"),
-      desc: t("phases.phase1Desc"),
-      duration: t("phases.phase1Duration"),
-    },
-    {
-      phase: t("phases.phase2Label"),
-      title: t("phases.phase2Title"),
-      desc: t("phases.phase2Desc"),
-      duration: t("phases.phase2Duration"),
-    },
-    {
-      phase: t("phases.phase3Label"),
-      title: t("phases.phase3Title"),
-      desc: t("phases.phase3Desc"),
-      duration: t("phases.phase3Duration"),
-    },
-  ];
-
-  const treatmentOptions = [
-    {
-      label: "A",
-      title: t("treatments.optATitle"),
-      items: [t("treatments.optAItem1"), t("treatments.optAItem2"), t("treatments.optAItem3")],
-      note: t("treatments.optANote"),
-    },
-    {
-      label: "B",
-      title: t("treatments.optBTitle"),
-      items: [t("treatments.optBItem1"), t("treatments.optBItem2"), t("treatments.optBItem3")],
-      note: t("treatments.optBNote"),
-    },
-    {
-      label: "C",
-      title: t("treatments.optCTitle"),
-      items: [t("treatments.optCItem1"), t("treatments.optCItem2"), t("treatments.optCItem3")],
-      note: t("treatments.optCNote"),
-    },
-  ];
-
-  const faqs = [
-    { q: t("faq.q1"), a: t("faq.a1") },
-    { q: t("faq.q2"), a: t("faq.a2") },
-    { q: t("faq.q3"), a: t("faq.a3") },
-    { q: t("faq.q4"), a: t("faq.a4") },
-    { q: t("faq.q5"), a: t("faq.a5") },
-  ];
-
-  const pros = [
-    t("prosCons.pro1"),
-    t("prosCons.pro2"),
-    t("prosCons.pro3"),
-    t("prosCons.pro4"),
-  ];
-
-  const cons = [
-    t("prosCons.con1"),
-    t("prosCons.con2"),
-    t("prosCons.con3"),
-  ];
-
 
   const transformations = [
     {
@@ -158,1102 +50,1280 @@ export default function AcneLandingPage({ locale = fallbackLng }: { locale?: str
   ];
 
   return (
-    <>
-      <main
-        className="min-h-screen overflow-x-hidden"
-        style={{
-          backgroundColor: "var(--color-light)",
-          color: "var(--color-brown)",
-          fontFamily: "var(--font-georgia)",
-        }}
+    <div className="w-full overflow-hidden bg-light">
+      {/* Hero Section - ALL TEXT INCLUDED */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="relative min-h-screen flex items-center justify-center bg-linear-to-b from-cream to-light"
       >
-        {/* ── DECORATIVE TEXTURE OVERLAY ── */}
-        <div
-          className="fixed inset-0 pointer-events-none z-0"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 15% 20%, rgba(140,79,88,0.06) 0%, transparent 50%), radial-gradient(circle at 85% 75%, rgba(172,153,144,0.08) 0%, transparent 50%)",
-          }}
-        />
+        <div className="absolute inset-0 bg-[url('/images/clinic/interior.png')] bg-cover bg-center opacity-5" />
 
-        {/* HERO SECTION */}
-        <section className="relative min-h-screen flex col justify-center px-6 md:px-16 lg:px-24 pt-20 pb-16">
-          {/* Decorative vertical line */}
-          <div
-            className="absolute hidden md:block left-6 md:left-16 top-0 h-full w-px opacity-20"
-            style={{
-              background:
-                "linear-gradient(to bottom, transparent, var(--color-wine), transparent)",
-            }}
-          />
+        <div className="relative container mx-auto px-4 py-20">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-8">
+              {/* Main Heading */}
+              <h1 className="font-georgia text-5xl lg:text-6xl text-brown leading-tight">
+                Acne Treatment in Kuala Lumpur That Finally Makes Sense for Your
+                Skin
+              </h1>
 
-          {/* Floating label */}
+              {/* Supporting Lines - EXACT TEXT */}
+              <div className="space-y-4">
+                <p className="text-xl text-taupe font-inter flex items-start gap-3">
+                  <Sparkles className="w-6 h-6 text-rose shrink-0 mt-1" />
+                  <span>
+                    Acne is not just "dirty pores". It is stress, hormones,
+                    heat, habits, and the wrong routine all mixing together.
+                  </span>
+                </p>
+                <p className="text-xl text-taupe font-inter flex items-start gap-3">
+                  <Heart className="w-6 h-6 text-rose shrink-0 mt-1" />
+                  <span>
+                    At Nexus Clinic KL, your plan starts with a doctor-led
+                    assessment, then we build a treatment path that fits your
+                    acne type, your skin tone, and your lifestyle.
+                  </span>
+                </p>
+              </div>
+
+              {/* Trust Strip - EXACT TEXT */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6">
+                <motion.div
+                  variants={scaleIn}
+                  className="flex items-center gap-3 bg-glass backdrop-blur-sm p-4 rounded-xl border border-taupe/20"
+                >
+                  <Shield className="w-5 h-5 text-wine" />
+                  <span className="text-sm font-inter text-brown">
+                    MOH registered and compliant, doctor-led care
+                  </span>
+                </motion.div>
+                <motion.div
+                  variants={scaleIn}
+                  className="flex items-center gap-3 bg-glass backdrop-blur-sm p-4 rounded-xl border border-taupe/20"
+                >
+                  <MapPin className="w-5 h-5 text-wine" />
+                  <span className="text-sm font-inter text-brown">
+                    KLCC location: Wisma UOA II, Jalan Pinang, Kuala Lumpur
+                  </span>
+                </motion.div>
+                <motion.div
+                  variants={scaleIn}
+                  className="flex items-center gap-3 bg-glass backdrop-blur-sm p-4 rounded-xl border border-taupe/20"
+                >
+                  <CheckCircle2 className="w-5 h-5 text-wine" />
+                  <span className="text-sm font-inter text-brown">
+                    Assessment first, not a sales pitch
+                  </span>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="/images/skin/acne-treatment.webp"
+                  alt="Acne consultation at Nexus Clinic KL"
+                  className="w-full h-auto object-cover"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-brown/50 to-transparent" />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Understanding Acne Section - ALL TEXT INCLUDED */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 bg-white"
+      >
+        <div className="container mx-auto px-4">
           <motion.div
             variants={fadeInUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="mb-8 items-center gap-3 hidden md:flex"
-          ></motion.div>
-
-          {/* h2 */}
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="max-w-5xl px-24 md:px-0"
+            className="max-w-3xl mx-auto text-center mb-12"
           >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl md:text-6xl lg:text-7xl leading-[1.1] font-normal mb-6"
-              style={{ color: "var(--color-brown)" }}
-            >
-              {t("hero.title1")}{" "}
-              <span className="italic" style={{ color: "var(--color-wine)" }}>
-                {t("hero.titleHighlight")}
-              </span>{" "}
-              {t("hero.title2")}
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-base md:text-lg max-w-2xl leading-relaxed mb-4"
-              style={{
-                color: "var(--color-taupe)",
-                fontFamily: "var(--font-inter)",
-              }}
-            >
-              {t("hero.desc1")}
-            </motion.p>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-base md:text-lg max-w-2xl leading-relaxed mb-12"
-              style={{
-                color: "var(--color-taupe)",
-                fontFamily: "var(--font-inter)",
-              }}
-            >
-              {t("hero.desc2Before")}{" "}
-              <span
-                style={{ color: "var(--color-brown)" }}
-                className="font-medium"
-              >
-                {t("hero.desc2Bold")}
-              </span>
-              {t("hero.desc2After")}
-            </motion.p>
-
-            {/* CTA Button */}
-            <motion.div
-              variants={fadeInUp}
-              className="flex col sm:row gap-4 mb-16"
-            >
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-3 px-8 py-4 text-sm tracking-widest uppercase"
-                style={{
-                  backgroundColor: "var(--color-wine)",
-                  color: "var(--color-cream)",
-                  fontFamily: "var(--font-inter)",
-                  letterSpacing: "0.15em",
-                }}
-              >
-                {t("hero.bookButton")}
-                <ArrowRight size={16} />
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-3 px-8 py-4 text-sm tracking-widest uppercase border"
-                style={{
-                  borderColor: "var(--color-taupe)",
-                  color: "var(--color-brown)",
-                  fontFamily: "var(--font-inter)",
-                  letterSpacing: "0.15em",
-                  backgroundColor: "transparent",
-                }}
-              >
-                {t("hero.learnMore")}
-                <ChevronDown size={16} />
-              </motion.button>
-            </motion.div>
-
-            {/* Trust Strip */}
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="flex wrap gap-6 md:gap-10"
-            >
-              {trustItems.map((item, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeInUp}
-                  className="flex items-center gap-2"
-                >
-                  <item.icon size={16} style={{ color: "var(--color-wine)" }} />
-                  <span
-                    className="text-xs tracking-wide"
-                    style={{
-                      color: "var(--color-taupe)",
-                      fontFamily: "var(--font-inter)",
-                    }}
-                  >
-                    {item.text}
-                  </span>
-                </motion.div>
-              ))}
-            </motion.div>
+            <h2 className="font-georgia text-4xl text-brown mb-6">
+              Acne in Malaysia can feel nonstop. You are not imagining it.
+            </h2>
           </motion.div>
 
-          {/* Decorative number */}
-          <div
-            className="absolute right-8 md:right-16 top-1/2 -translate-y-1/2 text-[12rem] md:text-[18rem] font-bold leading-none select-none pointer-events-none hidden lg:block"
-            style={{
-              color: "rgba(140,79,88,0.04)",
-              fontFamily: "var(--font-georgia)",
-            }}
-          >
-            01
-          </div>
-        </section>
-
-        {/* MALAYSIA CONTEXT SECTION */}
-        <section
-          className="relative py-20 md:py-28 px-6 md:px-16 lg:px-24"
-          style={{ backgroundColor: "var(--color-cream)" }}
-        >
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <motion.div
-              variants={fadeInLeft}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
+          <div className="max-w-4xl mx-auto space-y-6">
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg text-taupe font-inter"
             >
-              <div className="mb-6 flex items-center gap-3">
-                <div
-                  className="h-px w-8"
-                  style={{ backgroundColor: "var(--color-wine)" }}
-                />
-                <span
-                  className="text-xs tracking-[0.25em] uppercase"
-                  style={{
-                    color: "var(--color-wine)",
-                    fontFamily: "var(--font-inter)",
-                  }}
-                >
-                  {t("klReality.badge")}
-                </span>
-              </div>
-              <h2
-                className="text-3xl md:text-4xl lg:text-5xl leading-tight mb-6 font-normal"
-                style={{ color: "var(--color-brown)" }}
-              >
-                {t("klReality.title1")}{" "}
-                <span className="italic" style={{ color: "var(--color-wine)" }}>
-                  {t("klReality.titleHighlight")}
-                </span>{" "}
-                {t("klReality.title2")}
-              </h2>
-                <div className="relative rounded-3xl overflow-hidden shadow-xl mb-4">
-                 <img
-                   src="/images/skin/acne-treatment.webp"
-                   alt="acne-treatment"
-                   className="w-full h-auto"
-                 />
-                 <div className="absolute inset-0 bg-linear-to-t from-brown/40 to-transparent"></div>
-               </div>
-              <p
-                className="leading-relaxed mb-4 text-sm md:text-base"
-                style={{
-                  color: "var(--color-taupe)",
-                  fontFamily: "var(--font-inter)",
-                }}
-              >
-                {t("klReality.desc1")}
+              Kuala Lumpur is hot. It is humid. You sweat on the way to lunch,
+              you reapply sunscreen, you sit in aircon, then you step out again.
+              Your skin gets confused.
+            </motion.p>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg text-brown font-inter"
+            >
+              And acne is personal.
+            </motion.p>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg text-taupe font-inter"
+            >
+              Some people get small bumps that never fully go away. Some get
+              painful cystic acne along the jawline. Others get back acne that
+              flares every time they work out. Then there are the dark marks
+              that stay long after the pimple is gone.
+            </motion.p>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg text-taupe font-inter"
+            >
+              If you are reading this, you probably tried something already.
+              Maybe a cleanser that felt too harsh. Maybe a "miracle" serum that
+              worked for two weeks, then stopped. Maybe a facial that left you
+              red and tight, but the acne returned.
+            </motion.p>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg text-taupe font-inter"
+            >
+              At Nexus Clinic Kuala Lumpur, we keep it simple: identify what
+              type of acne you have, what is triggering it, and what your skin
+              can tolerate. Then we treat it with a plan you can actually
+              follow.
+            </motion.p>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* What Acne Really Is Section - ALL TEXT */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 bg-cream"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown text-center mb-12"
+          >
+            What acne really is (in plain words)
+          </motion.h2>
+
+          <div className="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-xl">
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg text-taupe font-inter mb-6"
+            >
+              Acne happens when pores get blocked with oil and dead skin. Then
+              bacteria and inflammation can join the party. The result can be:
+            </motion.p>
+
+            <motion.ul variants={fadeInUp} className="space-y-3 mb-6">
+              <li className="flex items-center gap-3 text-brown font-inter">
+                <ChevronRight className="w-5 h-5 text-rose" />
+                Blackheads and whiteheads
+              </li>
+              <li className="flex items-center gap-3 text-brown font-inter">
+                <ChevronRight className="w-5 h-5 text-rose" />
+                Red bumps
+              </li>
+              <li className="flex items-center gap-3 text-brown font-inter">
+                <ChevronRight className="w-5 h-5 text-rose" />
+                Pus-filled pimples
+              </li>
+              <li className="flex items-center gap-3 text-brown font-inter">
+                <ChevronRight className="w-5 h-5 text-rose" />
+                Deep painful lumps (nodules or cysts)
+              </li>
+            </motion.ul>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg text-taupe font-inter mb-4"
+            >
+              You cannot "scrub" cystic acne away. You also cannot solve every
+              acne problem with one facial.
+            </motion.p>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg text-taupe font-inter mb-4"
+            >
+              That is why proper acne treatment often combines:
+            </motion.p>
+
+            <motion.ul variants={fadeInUp} className="space-y-2 mb-4">
+              <li className="flex items-center gap-3 text-brown font-inter">
+                <ChevronRight className="w-5 h-5 text-wine" />
+                The right active ingredients
+              </li>
+              <li className="flex items-center gap-3 text-brown font-inter">
+                <ChevronRight className="w-5 h-5 text-wine" />
+                The right level of medical support (when needed)
+              </li>
+              <li className="flex items-center gap-3 text-brown font-inter">
+                <ChevronRight className="w-5 h-5 text-wine" />
+                Patience and consistency
+              </li>
+            </motion.ul>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg text-taupe font-inter bg-rose/10 p-4 rounded-lg"
+            >
+              NHS guidance is clear that many acne treatments take time, and it
+              can take weeks before you see improvement.
+            </motion.p>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Types of Acne Section - ALL TEXT */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 bg-white"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown text-center mb-16"
+          >
+            Types of acne we commonly see in Kuala Lumpur
+          </motion.h2>
+
+          <div className="space-y-8 max-w-4xl mx-auto">
+            {/* 1) Comedonal acne */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-2xl text-brown mb-3">
+                1) Comedonal acne (clogged pores)
+              </h3>
+              <p className="text-taupe font-inter">
+                This looks like tiny bumps, blackheads, and "texture" that never
+                feels smooth. Often worse with heavy makeup, oily skincare, or
+                humid days.
               </p>
             </motion.div>
 
+            {/* 2) Inflammatory acne */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-2xl text-brown mb-3">
+                2) Inflammatory acne (red, angry acne)
+              </h3>
+              <p className="text-taupe font-inter">
+                Red, inflamed bumps that can be tender to touch. Often requires
+                medical intervention.
+              </p>
+            </motion.div>
+
+            {/* 3) Hormonal acne */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-2xl text-brown mb-3">
+                3) Hormonal acne
+              </h3>
+              <p className="text-taupe font-inter">
+                Often shows up around the jawline and chin, especially in
+                adults. It can flare around cycles, stress, and sleep changes.
+              </p>
+            </motion.div>
+
+            {/* 4) Body acne */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-2xl text-brown mb-3">
+                4) Body acne (back, chest, shoulders)
+              </h3>
+              <p className="text-taupe font-inter">
+                Sweat, friction, tight clothing, backpacks, and gym habits can
+                all play a role.
+              </p>
+            </motion.div>
+
+            {/* 5) Acne with marks */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-2xl text-brown mb-3">
+                5) Acne with marks (PIH) and early scarring
+              </h3>
+              <p className="text-taupe font-inter">
+                Even when the acne calms down, you may be left with dark marks.
+                Treating acne early matters, because picking and ongoing
+                inflammation increases the risk of marks and scars.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Who Acne Treatment Is For - ALL TEXT */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 bg-cream"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown text-center mb-12"
+          >
+            Who acne treatment is for (and when you should not "wait it out")
+          </motion.h2>
+
+          <div className="max-w-3xl mx-auto space-y-6">
+            <motion.div variants={fadeInUp} className="bg-white p-6 rounded-xl">
+              <p className="text-brown font-inter">
+                Acne treatment at a doctor-led clinic is helpful if:
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white p-6 rounded-xl flex items-start gap-3"
+            >
+              <CheckCircle2 className="w-6 h-6 text-wine shrink-0 mt-1" />
+              <p className="text-brown font-inter">
+                You are tired of wasting money on products that do not match
+                your skin
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="bg-white p-6 rounded-xl">
+              <p className="text-brown font-inter">
+                If you have severe inflammation or deep painful acne, it is
+                worth seeing a qualified doctor rather than hoping it disappears
+                on its own. Erufu's KL guide also highlights "condition
+                recurrence" as one of the biggest concerns people raise.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="bg-white p-6 rounded-xl">
+              <p className="text-brown font-inter">
+                If you have severe inflammation or deep painful acne, it is
+                worth seeing a qualified doctor rather than hoping it disappears
+                on its own. Erufu's KL guide also highlights "condition
+                recurrence" as one of the biggest concerns people raise.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* What Happens at Nexus Clinic - ALL TEXT WITH IMAGE */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 bg-white"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown text-center mb-16"
+          >
+            What happens at Nexus Clinic KL (what you can expect)
+          </motion.h2>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-6">
+              <div className="bg-cream p-6 rounded-xl">
+                <h3 className="font-georgia text-xl text-brown mb-3">
+                  1. A clear acne diagnosis
+                </h3>
+                <p className="text-taupe font-inter">
+                  We look at your acne type, location (face vs body),
+                  inflammation level, and whether there are patterns that
+                  suggest hormones or irritation.
+                </p>
+              </div>
+
+              <div className="bg-cream p-6 rounded-xl">
+                <h3 className="font-georgia text-xl text-brown mb-3">
+                  2. A routine you can stick to
+                </h3>
+                <p className="text-taupe font-inter">
+                  Not a 9-step routine. Not 12 products. A realistic plan.
+                </p>
+              </div>
+
+              <div className="bg-cream p-6 rounded-xl">
+                <h3 className="font-georgia text-xl text-brown mb-3">
+                  3. Treatments that match your goals
+                </h3>
+                <p className="text-taupe font-inter">
+                  Some people want fewer breakouts fast. Others want fewer
+                  marks. Some want to stop cystic flare-ups. We choose based on
+                  your priorities and your skin tolerance.
+                </p>
+              </div>
+
+              <div className="bg-rose/10 p-6 rounded-xl">
+                <p className="text-brown font-georgia text-lg mb-4">
+                  You should leave knowing:
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-center gap-2 text-taupe font-inter">
+                    <ChevronRight className="w-4 h-4 text-wine" />
+                    What you likely have
+                  </li>
+                  <li className="flex items-center gap-2 text-taupe font-inter">
+                    <ChevronRight className="w-4 h-4 text-wine" />
+                    What is making it worse
+                  </li>
+                  <li className="flex items-center gap-2 text-taupe font-inter">
+                    <ChevronRight className="w-4 h-4 text-wine" />
+                    What the first 4 to 8 weeks will look like
+                  </li>
+                  <li className="flex items-center gap-2 text-taupe font-inter">
+                    <ChevronRight className="w-4 h-4 text-wine" />
+                    What to do if dryness or purging happens
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="/images/main/doctor-monitored-malaysia.webp"
+                  alt="Doctor consultation at Nexus Clinic KL"
+                  className="w-full h-auto object-cover"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-brown/30 to-transparent" />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Acne Treatment Options - ALL TEXT */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 bg-cream"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown text-center mb-16"
+          >
+            Acne treatment options in Malaysia (how we choose the right mix)
+          </motion.h2>
+
+          <div className="max-w-4xl mx-auto space-y-8">
+            {/* A) At-home acne care */}
+            <motion.div variants={fadeInUp} className="bg-white p-8 rounded-xl">
+              <h3 className="font-georgia text-2xl text-brown mb-4">
+                A) At-home acne care (the foundation)
+              </h3>
+              <p className="text-taupe font-inter mb-4">
+                Most prescription and clinic treatments work better when your
+                basic routine is steady.
+              </p>
+
+              <p className="text-brown font-inter mb-3">
+                Common ingredients that doctors use include:
+              </p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start gap-2 text-taupe font-inter">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
+                  Benzoyl peroxide (helps reduce acne bacteria and unclog pores)
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
+                  Retinoids (help stop pores from blocking)
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
+                  Acid-based options (like salicylic acid for oil and clogged
+                  pores)
+                </li>
+              </ul>
+
+              <div className="bg-rose/10 p-4 rounded-lg">
+                <p className="text-brown font-inter">
+                  A key point many people miss: if you switch products every
+                  week, your skin never adapts. NHS notes it can take around 6
+                  weeks to notice improvement, and some treatments take 2 to 3
+                  months to really start working.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* B) Prescription acne treatment */}
+            <motion.div variants={fadeInUp} className="bg-white p-8 rounded-xl">
+              <h3 className="font-georgia text-2xl text-brown mb-4">
+                B) Prescription acne treatment (when skincare is not enough)
+              </h3>
+              <p className="text-taupe font-inter mb-4">
+                Prescription acne medications work by reducing oil, swelling, or
+                bacterial infection, and results can take 4 to 8 weeks for many
+                prescription options.
+              </p>
+
+              <p className="text-brown font-inter mb-3">
+                Doctors may use combinations like:
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-taupe font-inter">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
+                  Topical treatment plus oral antibiotics for more severe acne
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
+                  Hormonal options for women when suitable (not for everyone)
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
+                  Isotretinoin for severe or stubborn acne under strict medical
+                  monitoring
+                </li>
+              </ul>
+            </motion.div>
+
+            {/* C) Isotretinoin */}
+            <motion.div variants={fadeInUp} className="bg-white p-8 rounded-xl">
+              <h3 className="font-georgia text-2xl text-brown mb-4">
+                C) Isotretinoin (for severe, scarring, or stubborn acne)
+              </h3>
+              <p className="text-taupe font-inter mb-4">
+                Isotretinoin is powerful, and it is not for casual use. It can
+                be highly effective, but it requires medical oversight and it
+                can come with dryness and other side effects.
+              </p>
+
+              <div className="bg-cream p-4 rounded-lg">
+                <p className="text-brown font-inter">
+                  Mayo Clinic notes improvement can continue after stopping
+                  isotretinoin and may take up to 6 months, and also that acne
+                  may seem to worsen early on for some people. (If you are
+                  pregnant or planning pregnancy, this is a critical discussion
+                  and must be handled under medical guidance.)
+                </p>
+              </div>
+            </motion.div>
+
+            {/* D) In-clinic treatments */}
+            <motion.div variants={fadeInUp} className="bg-white p-8 rounded-xl">
+              <h3 className="font-georgia text-2xl text-brown mb-4">
+                D) In-clinic treatments (to calm active acne and reduce
+                recurrence)
+              </h3>
+              <p className="text-taupe font-inter mb-4">
+                This is where many KL clinics compete, and where the right plan
+                can make a big difference.
+              </p>
+
+              <p className="text-brown font-inter mb-3">
+                Common clinic options in Kuala Lumpur include:
+              </p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start gap-2 text-taupe font-inter">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
+                  Chemical peels (helps unclog and reduce congestion)
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
+                  Microdermabrasion (selected cases, not for angry inflamed
+                  acne)
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
+                  Light and laser-based treatments (often used to reduce
+                  inflammation and support acne control)
+                </li>
+              </ul>
+
+              <div className="bg-rose/10 p-4 rounded-lg mb-4">
+                <p className="text-brown font-inter">
+                  Competitor example: Da Vinci explicitly promotes acne laser
+                  therapy and "yellow laser" for inflammation-focused acne
+                  treatment in KL.
+                </p>
+              </div>
+
+              <p className="text-brown font-inter mb-3">
+                At Nexus Clinic KL, your best option depends on:
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="flex items-center gap-2 text-taupe font-inter">
+                  <CheckCircle2 className="w-4 h-4 text-wine" />
+                  Your acne type (clogged vs inflamed vs cystic)
+                </div>
+                <div className="flex items-center gap-2 text-taupe font-inter">
+                  <CheckCircle2 className="w-4 h-4 text-wine" />
+                  Your skin sensitivity
+                </div>
+                <div className="flex items-center gap-2 text-taupe font-inter">
+                  <CheckCircle2 className="w-4 h-4 text-wine" />
+                  Your downtime tolerance
+                </div>
+                <div className="flex items-center gap-2 text-taupe font-inter">
+                  <CheckCircle2 className="w-4 h-4 text-wine" />
+                  Your budget
+                </div>
+                <div className="flex items-center gap-2 text-taupe font-inter">
+                  <CheckCircle2 className="w-4 h-4 text-wine" />
+                  Your history (what failed before)
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Areas We Treat - ALL TEXT */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 bg-white"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown text-center mb-6"
+          >
+            Areas we treat
+          </motion.h2>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-center text-taupe font-inter text-lg mb-8"
+          >
+            Acne is not only a face issue.
+          </motion.p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-3xl mx-auto">
+            <motion.div
+              variants={scaleIn}
+              className="bg-cream p-4 rounded-xl text-center"
+            >
+              <p className="text-brown font-inter">Forehead and T-zone</p>
+            </motion.div>
+            <motion.div
+              variants={scaleIn}
+              className="bg-cream p-4 rounded-xl text-center"
+            >
+              <p className="text-brown font-inter">Cheeks and jawline</p>
+            </motion.div>
+            <motion.div
+              variants={scaleIn}
+              className="bg-cream p-4 rounded-xl text-center"
+            >
+              <p className="text-brown font-inter">Chin and neck area</p>
+            </motion.div>
+            <motion.div
+              variants={scaleIn}
+              className="bg-cream p-4 rounded-xl text-center"
+            >
+              <p className="text-brown font-inter">Back and shoulders</p>
+            </motion.div>
+            <motion.div
+              variants={scaleIn}
+              className="bg-cream p-4 rounded-xl text-center"
+            >
+              <p className="text-brown font-inter">Chest</p>
+            </motion.div>
+          </div>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-center text-taupe font-inter mt-8 max-w-2xl mx-auto"
+          >
+            If your acne is mostly on the body, your plan often needs small
+            lifestyle tweaks too (shower timing, friction, sweat management),
+            not just products.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      <SectionBeforeAfter transformations={transformations} />
+
+      {/* Benefits and Limitations - ALL TEXT */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 bg-cream"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown text-center mb-12"
+          >
+            Benefits and real limitations (pros and cons)
+          </motion.h2>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Pros */}
+            <motion.div
+              variants={fadeInLeft}
+              className="bg-white p-8 rounded-xl"
+            >
+              <h3 className="font-georgia text-2xl text-wine mb-6">Pros</h3>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
+                  <span className="text-brown font-inter">
+                    A structured plan that stops random trial and error
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
+                  <span className="text-brown font-inter">
+                    Better control of breakouts and inflammation
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
+                  <span className="text-brown font-inter">
+                    Reduced chance of marks and scarring over time
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
+                  <span className="text-brown font-inter">
+                    Guidance on what to stop doing (often the biggest win)
+                  </span>
+                </li>
+              </ul>
+            </motion.div>
+
+            {/* Cons */}
             <motion.div
               variants={fadeInRight}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-4"
+              className="bg-white p-8 rounded-xl"
             >
-              {[
-                t("klReality.step1"),
-                t("klReality.step2"),
-                t("klReality.step3"),
-                t("klReality.step4"),
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeInUp}
-                  className="flex items-start gap-4 p-5"
-                  style={{
-                    backgroundColor: "var(--color-glass)",
-                    backdropFilter: "blur(8px)",
-                    border: "1px solid rgba(140,79,88,0.12)",
-                  }}
-                >
-                  <span
-                    className="text-xs font-medium mt-0.5"
-                    style={{
-                      color: "var(--color-wine)",
-                      fontFamily: "var(--font-inter)",
-                    }}
-                  >
-                    0{i + 1}
+              <h3 className="font-georgia text-2xl text-rose mb-6">
+                Cons and limitations
+              </h3>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
+                  <span className="text-brown font-inter">
+                    Acne rarely disappears overnight. Real change takes weeks.
                   </span>
-                  <span
-                    className="text-sm leading-relaxed"
-                    style={{
-                      color: "var(--color-brown)",
-                      fontFamily: "var(--font-inter)",
-                    }}
-                  >
-                    {item}
+                </li>
+                <li className="flex items-start gap-3">
+                  <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
+                  <span className="text-brown font-inter">
+                    Some treatments can cause early dryness, irritation, or
+                    "purging"
                   </span>
-                </motion.div>
-              ))}
-              <p
-                className="leading-relaxed text-sm md:text-base italic"
-                style={{
-                  color: "var(--color-taupe)",
-                  fontFamily: "var(--font-inter)",
-                }}
-              >
-                "{t("klReality.desc2")}"
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* ACNE TYPES SECTION */}
-        <section className="py-20 md:py-28 px-6 md:px-16 lg:px-24">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="mb-16"
-            >
-              <motion.div
-                variants={fadeInUp}
-                className="flex items-center gap-3 mb-6"
-              >
-                <div
-                  className="h-px w-8"
-                  style={{ backgroundColor: "var(--color-wine)" }}
-                />
-                <span
-                  className="text-xs tracking-[0.25em] uppercase"
-                  style={{
-                    color: "var(--color-wine)",
-                    fontFamily: "var(--font-inter)",
-                  }}
-                >
-                  {t("acneTypes.badge")}
-                </span>
-              </motion.div>
-              <motion.h2
-                variants={fadeInUp}
-                className="text-3xl md:text-5xl font-normal"
-                style={{ color: "var(--color-brown)" }}
-              >
-                {t("acneTypes.title1")}{" "}
-                <span className="italic" style={{ color: "var(--color-wine)" }}>
-                  {t("acneTypes.titleHighlight")}
-                </span>{" "}
-                {t("acneTypes.title2")}
-              </motion.h2>
-            </motion.div>
-
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              {acneTypes.map((type, i) => (
-                <motion.div
-                  key={i}
-                  variants={scaleIn}
-                  whileHover={{ y: -4 }}
-                  className="relative p-8 group"
-                  style={{
-                    backgroundColor:
-                      i === 0 ? "var(--color-wine)" : "var(--color-cream)",
-                    border:
-                      i !== 0 ? "1px solid rgba(172,153,144,0.25)" : "none",
-                  }}
-                >
-                  <div
-                    className="absolute top-4 right-6 text-5xl font-bold select-none"
-                    style={{
-                      color:
-                        i === 0
-                          ? "rgba(255,255,255,0.1)"
-                          : "rgba(140,79,88,0.06)",
-                      fontFamily: "var(--font-georgia)",
-                    }}
-                  >
-                    {type.number}
-                  </div>
-
-                  <type.icon
-                    size={20}
-                    className="mb-5"
-                    style={{
-                      color:
-                        i === 0 ? "rgba(243,239,238,0.7)" : "var(--color-wine)",
-                    }}
-                  />
-
-                  <h3
-                    className="text-xl font-normal mb-1"
-                    style={{
-                      color:
-                        i === 0 ? "var(--color-cream)" : "var(--color-brown)",
-                      fontFamily: "var(--font-georgia)",
-                    }}
-                  >
-                    {type.title}
-                  </h3>
-                  <p
-                    className="text-xs tracking-wider uppercase mb-4"
-                    style={{
-                      color:
-                        i === 0
-                          ? "rgba(243,239,238,0.6)"
-                          : "var(--color-taupe)",
-                      fontFamily: "var(--font-inter)",
-                    }}
-                  >
-                    {type.subtitle}
-                  </p>
-                  <p
-                    className="text-sm leading-relaxed"
-                    style={{
-                      color:
-                        i === 0
-                          ? "rgba(243,239,238,0.85)"
-                          : "var(--color-taupe)",
-                      fontFamily: "var(--font-inter)",
-                    }}
-                  >
-                    {type.desc}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* TREATMENT PROCESS — 3 PHASES */}
-        <section
-          className="py-20 md:py-28 px-6 md:px-16 lg:px-24"
-          style={{ backgroundColor: "var(--color-brown)" }}
-        >
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="mb-16"
-            >
-              <motion.div
-                variants={fadeInUp}
-                className="flex items-center gap-3 mb-6"
-              >
-                <div
-                  className="h-px w-8"
-                  style={{ backgroundColor: "var(--color-rose)" }}
-                />
-                <span
-                  className="text-xs tracking-[0.25em] uppercase"
-                  style={{
-                    color: "var(--color-rose)",
-                    fontFamily: "var(--font-inter)",
-                  }}
-                >
-                  {t("phases.badge")}
-                </span>
-              </motion.div>
-              <motion.h2
-                variants={fadeInUp}
-                className="text-3xl md:text-5xl font-normal"
-                style={{ color: "var(--color-cream)" }}
-              >
-                {t("phases.title1")}{" "}
-                <span className="italic" style={{ color: "var(--color-rose)" }}>
-                  {t("phases.titleHighlight")}
-                </span>
-              </motion.h2>
-            </motion.div>
-
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid md:grid-cols-3 gap-0 relative"
-            >
-              <div
-                className="absolute top-8 left-[16%] right-[16%] h-px hidden md:block"
-                style={{ backgroundColor: "rgba(172,153,144,0.2)" }}
-              />
-
-              {treatmentPhases.map((phase, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeInUp}
-                  className="relative p-8 md:p-10 text-center"
-                >
-                  <div
-                    className="w-16 h-16 mx-auto mb-8 flex items-center justify-center text-sm font-medium relative z-10"
-                    style={{
-                      border: `1px solid ${i === 1 ? "var(--color-rose)" : "rgba(172,153,144,0.3)"}`,
-                      color:
-                        i === 1 ? "var(--color-rose)" : "var(--color-taupe)",
-                      backgroundColor: "var(--color-brown)",
-                      fontFamily: "var(--font-inter)",
-                    }}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-
-                  <div
-                    className="text-xs tracking-[0.2em] uppercase mb-3"
-                    style={{
-                      color: "var(--color-rose)",
-                      fontFamily: "var(--font-inter)",
-                    }}
-                  >
-                    {phase.phase}
-                  </div>
-                  <h3
-                    className="text-xl md:text-2xl font-normal mb-4"
-                    style={{ color: "var(--color-cream)" }}
-                  >
-                    {phase.title}
-                  </h3>
-                  <p
-                    className="text-sm leading-relaxed mb-6"
-                    style={{
-                      color: "var(--color-taupe)",
-                      fontFamily: "var(--font-inter)",
-                    }}
-                  >
-                    {phase.desc}
-                  </p>
-                  <div
-                    className="inline-block px-3 py-1 text-xs tracking-widest uppercase"
-                    style={{
-                      border: "1px solid rgba(172,153,144,0.2)",
-                      color: "var(--color-taupe)",
-                      fontFamily: "var(--font-inter)",
-                    }}
-                  >
-                    {phase.duration}
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* TREATMENT OPTIONS */}
-        <section className="py-20 md:py-28 px-6 md:px-16 lg:px-24">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="mb-16"
-            >
-              <motion.div
-                variants={fadeInUp}
-                className="flex items-center gap-3 mb-6"
-              >
-                <div
-                  className="h-px w-8"
-                  style={{ backgroundColor: "var(--color-wine)" }}
-                />
-                <span
-                  className="text-xs tracking-[0.25em] uppercase"
-                  style={{
-                    color: "var(--color-wine)",
-                    fontFamily: "var(--font-inter)",
-                  }}
-                >
-                  {t("treatments.badge")}
-                </span>
-              </motion.div>
-              <motion.h2
-                variants={fadeInUp}
-                className="text-3xl md:text-5xl font-normal max-w-2xl"
-                style={{ color: "var(--color-brown)" }}
-              >
-                {t("treatments.title1")}{" "}
-                <span className="italic" style={{ color: "var(--color-wine)" }}>
-                  {t("treatments.titleHighlight")}
-                </span>
-              </motion.h2>
-            </motion.div>
-
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid md:grid-cols-3 gap-6"
-            >
-              {treatmentOptions.map((opt, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeInUp}
-                  whileHover={{ y: -4 }}
-                  className="p-8"
-                  style={{
-                    backgroundColor: "var(--color-cream)",
-                    border: "1px solid rgba(172,153,144,0.2)",
-                  }}
-                >
-                  <div
-                    className="w-10 h-10 flex items-center justify-center text-sm font-medium mb-6"
-                    style={{
-                      backgroundColor: "var(--color-wine)",
-                      color: "var(--color-cream)",
-                      fontFamily: "var(--font-georgia)",
-                    }}
-                  >
-                    {opt.label}
-                  </div>
-                  <h3
-                    className="text-lg font-normal mb-5"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    {opt.title}
-                  </h3>
-                  <div className="space-y-3 mb-6">
-                    {opt.items.map((item, j) => (
-                      <div key={j} className="flex items-start gap-3">
-                        <div
-                          className="w-1 h-1 rounded-full mt-2 shrink-0"
-                          style={{ backgroundColor: "var(--color-wine)" }}
-                        />
-                        <span
-                          className="text-sm"
-                          style={{
-                            color: "var(--color-taupe)",
-                            fontFamily: "var(--font-inter)",
-                          }}
-                        >
-                          {item}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                  <div
-                    className="pt-5 text-xs italic leading-relaxed"
-                    style={{
-                      borderTop: "1px solid rgba(172,153,144,0.2)",
-                      color: "var(--color-rose)",
-                      fontFamily: "var(--font-georgia)",
-                    }}
-                  >
-                    {opt.note}
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* BEFORE & AFTER */}
-        <SectionBeforeAfter transformations={transformations} />
-
-        {/* WHAT TO EXPECT AT NEXUS */}
-        <section
-          className="py-20 md:py-28 px-6 md:px-16 lg:px-24"
-          style={{ backgroundColor: "var(--color-cream)" }}
-        >
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-start">
-            <motion.div
-              variants={fadeInLeft}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div
-                  className="h-px w-8"
-                  style={{ backgroundColor: "var(--color-wine)" }}
-                />
-                <span
-                  className="text-xs tracking-[0.25em] uppercase"
-                  style={{
-                    color: "var(--color-wine)",
-                    fontFamily: "var(--font-inter)",
-                  }}
-                >
-                  {t("firstVisit.badge")}
-                </span>
-              </div>
-              <h2
-                className="text-3xl md:text-4xl lg:text-5xl font-normal leading-tight mb-8"
-                style={{ color: "var(--color-brown)" }}
-              >
-                {t("firstVisit.title1")}{" "}
-                <span className="italic" style={{ color: "var(--color-wine)" }}>
-                  {t("firstVisit.titleHighlight")}
-                </span>
-              </h2>
-              <p
-                className="text-sm md:text-base leading-relaxed mb-6"
-                style={{
-                  color: "var(--color-taupe)",
-                  fontFamily: "var(--font-inter)",
-                }}
-              >
-                {t("firstVisit.desc1")}
-              </p>
-              <p
-                className="text-sm md:text-base leading-relaxed"
-                style={{
-                  color: "var(--color-taupe)",
-                  fontFamily: "var(--font-inter)",
-                }}
-              >
-                {t("firstVisit.desc2")}
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-4"
-            >
-              {[
-                { step: "01", title: t("firstVisit.step1Title"), desc: t("firstVisit.step1Desc") },
-                { step: "02", title: t("firstVisit.step2Title"), desc: t("firstVisit.step2Desc") },
-                { step: "03", title: t("firstVisit.step3Title"), desc: t("firstVisit.step3Desc") },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeInUp}
-                  className="flex gap-5 p-6"
-                  style={{
-                    backgroundColor: "var(--color-light)",
-                    border: "1px solid rgba(172,153,144,0.15)",
-                  }}
-                >
-                  <span
-                    className="text-2xl font-normal opacity-20 shrink-0 leading-tight"
-                    style={{
-                      color: "var(--color-wine)",
-                      fontFamily: "var(--font-georgia)",
-                    }}
-                  >
-                    {item.step}
+                </li>
+                <li className="flex items-start gap-3">
+                  <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
+                  <span className="text-brown font-inter">
+                    You may need more than one approach (skincare plus procedure
+                    plus lifestyle)
                   </span>
-                  <div>
-                    <h4
-                      className="text-base mb-2"
-                      style={{
-                        color: "var(--color-brown)",
-                        fontFamily: "var(--font-georgia)",
-                      }}
-                    >
-                      {item.title}
-                    </h4>
-                    <p
-                      className="text-sm leading-relaxed"
-                      style={{
-                        color: "var(--color-taupe)",
-                        fontFamily: "var(--font-inter)",
-                      }}
-                    >
-                      {item.desc}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
+                </li>
+                <li className="flex items-start gap-3">
+                  <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
+                  <span className="text-brown font-inter">
+                    Severe acne can require longer treatment and closer
+                    monitoring
+                  </span>
+                </li>
+              </ul>
             </motion.div>
           </div>
-        </section>
+        </div>
+      </motion.section>
 
-        {/* PROS & CONS */}
-        <section className="py-20 md:py-28 px-6 md:px-16 lg:px-24">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="mb-14"
-            >
-              <motion.div
-                variants={fadeInUp}
-                className="flex items-center gap-3 mb-6"
-              >
-                <div
-                  className="h-px w-8"
-                  style={{ backgroundColor: "var(--color-wine)" }}
-                />
-                <span
-                  className="text-xs tracking-[0.25em] uppercase"
-                  style={{
-                    color: "var(--color-wine)",
-                    fontFamily: "var(--font-inter)",
-                  }}
-                >
-                  {t("prosCons.badge")}
-                </span>
-              </motion.div>
-              <motion.h2
-                variants={fadeInUp}
-                className="text-3xl md:text-5xl font-normal"
-                style={{ color: "var(--color-brown)" }}
-              >
-                {t("prosCons.title1")}{" "}
-                <span className="italic" style={{ color: "var(--color-wine)" }}>
-                  {t("prosCons.titleHighlight")}
-                </span>
-              </motion.h2>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-10">
-              <motion.div
-                variants={fadeInLeft}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                <div
-                  className="flex items-center gap-3 mb-8 pb-4"
-                  style={{ borderBottom: "1px solid rgba(172,153,144,0.2)" }}
-                >
-                  <CheckCircle2
-                    size={18}
-                    style={{ color: "var(--color-wine)" }}
-                  />
-                  <span
-                    className="text-sm tracking-wider uppercase"
-                    style={{
-                      color: "var(--color-brown)",
-                      fontFamily: "var(--font-inter)",
-                    }}
-                  >
-                    {t("prosCons.prosLabel")}
-                  </span>
-                </div>
-                <div className="space-y-5">
-                  {pros.map((item, i) => (
-                    <div key={i} className="flex items-start gap-4">
-                      <div
-                        className="w-5 h-5 flex items-center justify-center shrink-0 mt-0.5"
-                        style={{ backgroundColor: "rgba(140,79,88,0.1)" }}
-                      >
-                        <div
-                          className="w-1.5 h-1.5 rounded-full"
-                          style={{ backgroundColor: "var(--color-wine)" }}
-                        />
-                      </div>
-                      <p
-                        className="text-sm leading-relaxed"
-                        style={{
-                          color: "var(--color-taupe)",
-                          fontFamily: "var(--font-inter)",
-                        }}
-                      >
-                        {item}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInRight}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                <div
-                  className="flex items-center gap-3 mb-8 pb-4"
-                  style={{ borderBottom: "1px solid rgba(172,153,144,0.2)" }}
-                >
-                  <AlertCircle
-                    size={18}
-                    style={{ color: "var(--color-taupe)" }}
-                  />
-                  <span
-                    className="text-sm tracking-wider uppercase"
-                    style={{
-                      color: "var(--color-brown)",
-                      fontFamily: "var(--font-inter)",
-                    }}
-                  >
-                    {t("prosCons.consLabel")}
-                  </span>
-                </div>
-                <div className="space-y-5">
-                  {cons.map((item, i) => (
-                    <div key={i} className="flex items-start gap-4">
-                      <div
-                        className="w-5 h-5 flex items-center justify-center shrink-0 mt-0.5"
-                        style={{ backgroundColor: "rgba(172,153,144,0.1)" }}
-                      >
-                        <div
-                          className="w-1.5 h-1.5 rounded-full"
-                          style={{ backgroundColor: "var(--color-taupe)" }}
-                        />
-                      </div>
-                      <p
-                        className="text-sm leading-relaxed"
-                        style={{
-                          color: "var(--color-taupe)",
-                          fontFamily: "var(--font-inter)",
-                        }}
-                      >
-                        {item}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* TIMELINE */}
-        <section
-          className="py-20 md:py-28 px-6 md:px-16 lg:px-24"
-          style={{ backgroundColor: "var(--color-cream)" }}
-        >
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="mb-16"
-            >
-              <motion.div
-                variants={fadeInUp}
-                className="flex items-center gap-3 mb-6"
-              >
-                <div
-                  className="h-px w-8"
-                  style={{ backgroundColor: "var(--color-wine)" }}
-                />
-                <span
-                  className="text-xs tracking-[0.25em] uppercase"
-                  style={{
-                    color: "var(--color-wine)",
-                    fontFamily: "var(--font-inter)",
-                  }}
-                >
-                  {t("timeline.badge")}
-                </span>
-              </motion.div>
-              <motion.h2
-                variants={fadeInUp}
-                className="text-3xl md:text-5xl font-normal"
-                style={{ color: "var(--color-brown)" }}
-              >
-                {t("timeline.title1")}{" "}
-                <span className="italic" style={{ color: "var(--color-wine)" }}>
-                  {t("timeline.titleHighlight")}
-                </span>
-              </motion.h2>
-            </motion.div>
-
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-6"
-            >
-              {[
-                { duration: t("timeline.tl1Duration"), label: t("timeline.tl1Label"), source: t("timeline.tl1Source") },
-                { duration: t("timeline.tl2Duration"), label: t("timeline.tl2Label"), source: t("timeline.tl2Source") },
-                { duration: t("timeline.tl3Duration"), label: t("timeline.tl3Label"), source: t("timeline.tl3Source") },
-                { duration: t("timeline.tl4Duration"), label: t("timeline.tl4Label"), source: t("timeline.tl4Source") },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  variants={scaleIn}
-                  className="p-6 text-center"
-                  style={{
-                    backgroundColor: "var(--color-light)",
-                    border: "1px solid rgba(172,153,144,0.2)",
-                  }}
-                >
-                  <div
-                    className="text-2xl md:text-3xl mb-3 font-normal"
-                    style={{
-                      color: "var(--color-wine)",
-                      fontFamily: "var(--font-georgia)",
-                    }}
-                  >
-                    {item.duration}
-                  </div>
-                  <p
-                    className="text-xs leading-relaxed mb-3"
-                    style={{
-                      color: "var(--color-taupe)",
-                      fontFamily: "var(--font-inter)",
-                    }}
-                  >
-                    {item.label}
-                  </p>
-                  <span
-                    className="text-xs italic"
-                    style={{
-                      color: "var(--color-rose)",
-                      fontFamily: "var(--font-georgia)",
-                    }}
-                  >
-                    — {item.source}
-                  </span>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            <motion.p
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="mt-10 text-center text-sm italic"
-              style={{
-                color: "var(--color-taupe)",
-                fontFamily: "var(--font-georgia)",
-              }}
-            >
-              {t("timeline.warning")}
-            </motion.p>
-          </div>
-        </section>
-
-        {/* FAQ SECTION */}
-        <FAQ data={faqs} />
-
-        {/* FINAL CTA BANNER */}
-        <section
-          className="py-20 md:py-32 px-6 md:px-16 lg:px-24 relative overflow-hidden"
-          style={{ backgroundColor: "var(--color-wine)" }}
-        >
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 80% 50%, rgba(75,58,51,0.3) 0%, transparent 60%)",
-            }}
-          />
-
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-center relative z-10"
+      {/* Side Effects - ALL TEXT */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 bg-white"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown text-center mb-12"
           >
-            <motion.div
-              variants={fadeInUp}
-              className="flex items-center justify-center gap-3 mb-8"
-            >
-              <div
-                className="h-px w-8"
-                style={{ backgroundColor: "rgba(243,239,238,0.4)" }}
-              />
-              <Star size={12} style={{ color: "rgba(243,239,238,0.6)" }} />
-              <div
-                className="h-px w-8"
-                style={{ backgroundColor: "rgba(243,239,238,0.4)" }}
-              />
+            Side effects and downtime (what people worry about most)
+          </motion.h2>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-center text-taupe font-inter mb-8"
+          >
+            Here is what is normal, and what is not.
+          </motion.p>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {/* Topical treatments */}
+            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-4">
+                With topical acne treatments
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2 text-taupe font-inter">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
+                  Dryness, peeling, mild sting
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
+                  Temporary redness
+                </li>
+              </ul>
+              <p className="text-sm text-taupe font-inter mt-4">
+                NHS also notes skin irritation is a common side effect with
+                benzoyl peroxide, and it is often better to start slow and build
+                up.
+              </p>
             </motion.div>
 
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-5xl lg:text-6xl font-normal mb-6 leading-tight"
-              style={{ color: "var(--color-cream)" }}
-            >
-              {t("cta.title1")}{" "}
-              <span className="italic">{t("cta.title2")}</span>
-            </motion.h2>
+            {/* Prescription meds */}
+            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-4">
+                With prescription acne meds
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2 text-taupe font-inter">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
+                  Oral antibiotics can have side effects, and are usually
+                  combined with topical treatments for moderate to severe acne.
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
+                  Isotretinoin often causes dryness and needs careful
+                  monitoring.
+                </li>
+              </ul>
+            </motion.div>
 
-            <motion.p
-              variants={fadeInUp}
-              className="text-sm md:text-base mb-12 max-w-xl mx-auto leading-relaxed"
-              style={{
-                color: "rgba(243,239,238,0.7)",
-                fontFamily: "var(--font-inter)",
-              }}
-            >
-              {t("cta.description")}
+            {/* In-clinic care */}
+            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-4">
+                With peels, lasers, and in-clinic care
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2 text-taupe font-inter">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
+                  Mild redness for a short period
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
+                  Temporary sensitivity
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
+                  Aftercare matters a lot, especially sun protection
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-center text-brown font-inter mt-8 max-w-2xl mx-auto"
+          >
+            We always explain expected downtime and aftercare before you commit,
+            because "surprise peeling" is not a fun way to spend your week.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* How Long Treatment Takes - ALL TEXT */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 bg-cream"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown text-center mb-6"
+          >
+            How long does acne treatment take?
+          </motion.h2>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-center text-taupe font-inter max-w-3xl mx-auto mb-8"
+          >
+            This is one of the biggest "People Also Ask" topics, and the honest
+            answer is: it depends, but there are reliable timelines.
+          </motion.p>
+
+          <div className="space-y-4 max-w-3xl mx-auto">
+            <motion.div variants={fadeInUp} className="bg-white p-6 rounded-xl">
+              <p className="text-brown font-inter">
+                NHS guidance: you may notice improvement around 6 weeks, and
+                some treatments take 2 to 3 months to start working well.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="bg-white p-6 rounded-xl">
+              <p className="text-brown font-inter">
+                Mayo Clinic: many prescription acne treatments can take 4 to 8
+                weeks to show results.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="bg-white p-6 rounded-xl">
+              <p className="text-brown font-inter">
+                For benzoyl peroxide, NHS notes it can take about 4 weeks to
+                start working and up to 2 to 4 months for full effect.
+              </p>
+            </motion.div>
+          </div>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-center text-rose font-georgia text-xl mt-8"
+          >
+            If someone promises "clear skin in 3 days", be careful.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Cost Section - ALL TEXT */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 bg-white"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown text-center mb-6"
+          >
+            Acne treatment cost in Kuala Lumpur (realistic ranges)
+          </motion.h2>
+
+          <div className="max-w-3xl mx-auto space-y-6">
+            <motion.p variants={fadeInUp} className="text-taupe font-inter">
+              Prices vary a lot in KL because acne treatment can mean many
+              things. A simple acne facial is not the same as a doctor-led plan
+              with prescriptions and multi-session procedures.
             </motion.p>
 
-            <motion.div
-              variants={fadeInUp}
-              className="flex col sm:row gap-4 justify-center"
-            >
-              <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center justify-center gap-3 px-10 py-4 text-sm tracking-widest uppercase"
-                style={{
-                  backgroundColor: "var(--color-cream)",
-                  color: "var(--color-wine)",
-                  fontFamily: "var(--font-inter)",
-                  letterSpacing: "0.15em",
-                }}
-              >
-                {t("cta.button")}
-                <ArrowRight size={16} />
-              </motion.button>
+            <motion.p variants={fadeInUp} className="text-taupe font-inter">
+              What we can say from local KL pricing data:
+            </motion.p>
+
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <p className="text-brown font-inter">
+                - Erufu Care's KL guide highlights a wide market with many
+                clinics and includes patient-shared amounts paid such as MYR 600
+                for a first visit example, plus many clinic options and
+                treatment types.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <p className="text-brown font-inter">
+                - Many KL pages position acne laser and "medical facial" methods
+                as part of treatment packages.
+              </p>
             </motion.div>
 
             <motion.div
               variants={fadeInUp}
-              className="mt-12 flex wrap justify-center gap-8"
+              className="bg-rose/10 p-6 rounded-xl"
             >
-              {trustItems.map((item, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <item.icon
-                    size={14}
-                    style={{ color: "rgba(243,239,238,0.5)" }}
-                  />
-                  <span
-                    className="text-xs"
-                    style={{
-                      color: "rgba(243,239,238,0.6)",
-                      fontFamily: "var(--font-inter)",
-                    }}
-                  >
-                    {item.text}
-                  </span>
-                </div>
-              ))}
+              <p className="text-brown font-inter">
+                At Nexus Clinic KL, the best way to avoid overpaying is simple:
+                start with an assessment, get a staged plan (Phase 1: calm acne,
+                Phase 2: reduce marks, Phase 3: maintain), and only add
+                procedures when they make sense.
+              </p>
             </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Comparisons Section - ALL TEXT */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 bg-cream"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown text-center mb-12"
+          >
+            Acne treatment comparisons (so you can choose confidently)
+          </motion.h2>
+
+          <div className="space-y-6 max-w-4xl mx-auto">
+            {/* Acne clinic vs beauty facial */}
+            <motion.div variants={fadeInUp} className="bg-white p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-3">
+                Acne clinic vs beauty facial
+              </h3>
+              <p className="text-taupe font-inter">
+                A facial can help with surface oil and temporary glow. It
+                usually does not solve hormonal acne or cystic acne. Medical
+                treatment targets the causes, not just the surface.
+              </p>
+            </motion.div>
+
+            {/* Drugstore routine vs doctor-led plan */}
+            <motion.div variants={fadeInUp} className="bg-white p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-3">
+                Drugstore routine vs doctor-led plan
+              </h3>
+              <p className="text-taupe font-inter">
+                Drugstore options can help mild acne. But if you have recurring
+                inflamed acne, you may need prescription combinations and a
+                stronger strategy. NHS and Mayo both note these treatments take
+                time and are often combined for moderate to severe cases.
+              </p>
+            </motion.div>
+
+            {/* Laser-only approach vs combination approach */}
+            <motion.div variants={fadeInUp} className="bg-white p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-3">
+                Laser-only approach vs combination approach
+              </h3>
+              <p className="text-taupe font-inter">
+                Lasers can help, but acne is often best managed with a
+                combination plan: home routine plus medical guidance plus
+                selected procedures. Directory guides like Erufu list lasers and
+                peels as options, but also emphasise choosing based on your
+                condition and consultation.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Clearer Skin Plan */}
+          <motion.div
+            variants={fadeInUp}
+            className="mt-12 bg-white p-8 rounded-xl max-w-3xl mx-auto"
+          >
+            <h3 className="font-georgia text-2xl text-brown mb-4">
+              A simple "clearer skin" plan you can imagine
+            </h3>
+            <p className="text-brown font-inter mb-4">
+              Here is a realistic flow we often use:
+            </p>
+
+            <div className="space-y-4">
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-wine rounded-full flex items-center justify-center text-white font-bold shrink-0">
+                  1
+                </div>
+                <div>
+                  <p className="font-bold text-brown">
+                    Step 1: Calm the active acne
+                  </p>
+                  <p className="text-taupe font-inter">
+                    Reduce inflammation, stop new breakouts, simplify routine.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-rose rounded-full flex items-center justify-center text-white font-bold shrink-0">
+                  2
+                </div>
+                <div>
+                  <p className="font-bold text-brown">
+                    Step 2: Fade marks and protect the barrier
+                  </p>
+                  <p className="text-taupe font-inter">
+                    Once active acne slows down, we address PIH and uneven tone
+                    while keeping skin strong.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-brown rounded-full flex items-center justify-center text-white font-bold shrink-0">
+                  3
+                </div>
+                <div>
+                  <p className="font-bold text-brown">Step 3: Maintain</p>
+                  <p className="text-taupe font-inter">
+                    You do not need heavy products forever. You need the right
+                    habits and a maintenance routine you can repeat.
+                  </p>
+                </div>
+              </div>
+            </div>
           </motion.div>
-        </section>
-      </main>
-    </>
+        </div>
+      </motion.section>
+
+      {/* FAQ Section - ALL 10 QUESTIONS COMPLETE */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 bg-white"
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown text-center mb-12"
+          >
+            Frequently Asked Questions
+          </motion.h2>
+
+          <div className="max-w-3xl mx-auto space-y-6">
+            {/* Question 1 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-3">
+                1) What is the fastest way to get rid of pimples overnight?
+              </h3>
+              <p className="text-taupe font-inter">
+                You usually cannot "cure" a pimple overnight, but you can make
+                it look calmer by morning. Ice can reduce swelling, and spot
+                treatments like benzoyl peroxide can help in some cases. If the
+                pimple is deep and painful, do not squeeze it. That often leads
+                to longer healing and marks.
+              </p>
+            </motion.div>
+
+            {/* Question 2 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-3">
+                2) Can diet affect pimples?
+              </h3>
+              <p className="text-taupe font-inter">
+                Diet is not the only cause, but some people notice triggers.
+                Niva Bupa notes high-glycemic foods and dairy may trigger
+                breakouts in some people. If you suspect food triggers, keep it
+                simple: track patterns for 2 to 3 weeks, not just one day.
+              </p>
+            </motion.div>
+
+            {/* Question 3 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-3">
+                3) How long does acne treatment take to work?
+              </h3>
+              <p className="text-taupe font-inter">
+                Most treatments need time. NHS notes you may notice improvement
+                in about 6 weeks, and many treatments take 2 to 3 months to
+                start working well. Mayo also notes many prescription treatments
+                take 4 to 8 weeks to show results.
+              </p>
+            </motion.div>
+
+            {/* Question 4 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-3">
+                4) Why is my acne getting worse before it gets better?
+              </h3>
+              <p className="text-taupe font-inter">
+                Some active ingredients (especially retinoids) can cause a
+                temporary flare early on as clogged pores clear. This does not
+                mean the treatment is failing. It means you may need pacing,
+                moisturiser support, and the right frequency.
+              </p>
+            </motion.div>
+
+            {/* Question 5 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-3">
+                5) What is the best treatment for acne?
+              </h3>
+              <p className="text-taupe font-inter">
+                The "best" treatment depends on your acne type. NHS describes
+                treatment choices based on severity, including topical
+                combinations and oral antibiotics for more severe cases. For
+                severe or stubborn acne, isotretinoin may be considered under
+                medical supervision.
+              </p>
+            </motion.div>
+
+            {/* Question 6 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-3">
+                6) Does benzoyl peroxide actually work?
+              </h3>
+              <p className="text-taupe font-inter">
+                It can, especially for mild to moderate acne when used
+                consistently. NHS explains benzoyl peroxide attacks acne
+                bacteria and helps unclog pores, and it works best with regular
+                use.
+              </p>
+            </motion.div>
+
+            {/* Question 7 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-3">
+                7) How do I prevent dark marks after acne?
+              </h3>
+              <p className="text-taupe font-inter">
+                The biggest prevention is reducing inflammation early and not
+                picking. Marks fade faster when breakouts are controlled and
+                sunscreen habits are consistent.
+              </p>
+            </motion.div>
+
+            {/* Question 8 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-3">
+                8) Can I treat acne and sensitive skin at the same time?
+              </h3>
+              <p className="text-taupe font-inter">
+                Yes, but you need a gentler plan. Start slow, avoid harsh
+                scrubs, and focus on barrier support while introducing actives
+                gradually.
+              </p>
+            </motion.div>
+
+            {/* Question 9 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-3">
+                9) When should I see a doctor for acne?
+              </h3>
+              <p className="text-taupe font-inter">
+                If acne is painful, leaving marks, recurring, or affecting
+                confidence, do not wait. Directory guides for KL also show many
+                people worry about recurrence and ineffective home remedies,
+                which is often the sign you need a stronger plan.
+              </p>
+            </motion.div>
+
+            {/* Question 10 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-3">
+                10) Is acne laser treatment worth it?
+              </h3>
+              <p className="text-taupe font-inter">
+                Laser can help certain acne types, especially when inflammation
+                is a major issue, but it is usually best as part of a wider
+                plan. Many KL competitors promote laser options as part of their
+                acne method menu.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+    </div>
   );
 }

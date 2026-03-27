@@ -55,24 +55,43 @@ const MonopauseLanding = ({ locale = fallbackLng }: { locale?: string }) => {
   ];
 
   const symptoms = [
-    { icon: Thermometer, title: t("symptoms.s1Title"), desc: t("symptoms.s1Desc") },
+    {
+      icon: Thermometer,
+      title: t("symptoms.s1Title"),
+      desc: t("symptoms.s1Desc"),
+    },
     { icon: Moon, title: t("symptoms.s2Title"), desc: t("symptoms.s2Desc") },
-    { icon: Droplets, title: t("symptoms.s3Title"), desc: t("symptoms.s3Desc") },
+    {
+      icon: Droplets,
+      title: t("symptoms.s3Title"),
+      desc: t("symptoms.s3Desc"),
+    },
     { icon: Bone, title: t("symptoms.s4Title"), desc: t("symptoms.s4Desc") },
   ];
 
-  const methods = [
-    t("types.m1"),
-    t("types.m2"),
-    t("types.m3"),
-    t("types.m4"),
-  ];
+  const methods = [t("types.m1"), t("types.m2"), t("types.m3"), t("types.m4")];
 
   const consultSteps = [
-    { num: t("consultation.s1Num"), title: t("consultation.s1Title"), desc: t("consultation.s1Desc") },
-    { num: t("consultation.s2Num"), title: t("consultation.s2Title"), desc: t("consultation.s2Desc") },
-    { num: t("consultation.s3Num"), title: t("consultation.s3Title"), desc: t("consultation.s3Desc") },
-    { num: t("consultation.s4Num"), title: t("consultation.s4Title"), desc: t("consultation.s4Desc") },
+    {
+      num: t("consultation.s1Num"),
+      title: t("consultation.s1Title"),
+      desc: t("consultation.s1Desc"),
+    },
+    {
+      num: t("consultation.s2Num"),
+      title: t("consultation.s2Title"),
+      desc: t("consultation.s2Desc"),
+    },
+    {
+      num: t("consultation.s3Num"),
+      title: t("consultation.s3Title"),
+      desc: t("consultation.s3Desc"),
+    },
+    {
+      num: t("consultation.s4Num"),
+      title: t("consultation.s4Title"),
+      desc: t("consultation.s4Desc"),
+    },
   ];
 
   const goodCandidateItems = [
@@ -148,9 +167,7 @@ const MonopauseLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               <motion.div variants={fadeInLeft} className="space-y-8">
                 <div className="inline-flex items-center gap-2 bg-wine/10 backdrop-blur-sm px-4 py-2 rounded-full">
                   <Heart className="w-4 h-4 text-wine" />
-                  <span className="text-sm text-brown">
-                    {t("hero.badge")}
-                  </span>
+                  <span className="text-sm text-brown">{t("hero.badge")}</span>
                 </div>
 
                 <h2 className="font-['Georgia'] text-5xl lg:text-6xl text-brown leading-tight">
@@ -191,18 +208,22 @@ const MonopauseLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                   <div className="space-y-6">
                     <div className="flex items-center gap-4 pb-4 border-b border-cream">
                       <MapPin className="w-5 h-5 text-wine" />
-                      <span className="text-brown">
-                        {t("hero.address")}
-                      </span>
+                      <span className="text-brown">{t("hero.address")}</span>
                     </div>
 
                     <div className="grid gap-4">
                       {trustItems.map((item, idx) => {
                         const Icon = item.icon;
                         return (
-                          <motion.div key={idx} whileHover={{ x: 5 }} className="flex items-start gap-3">
+                          <motion.div
+                            key={idx}
+                            whileHover={{ x: 5 }}
+                            className="flex items-start gap-3"
+                          >
                             <Icon className="w-5 h-5 text-wine mt-1 shrink-0" />
-                            <span className="text-sm text-brown">{item.text}</span>
+                            <span className="text-sm text-brown">
+                              {item.text}
+                            </span>
                           </motion.div>
                         );
                       })}
@@ -226,28 +247,30 @@ const MonopauseLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               <motion.div variants={fadeInLeft}>
                 <h2 className="font-['Georgia'] text-4xl text-brown mb-6">
                   {t("understanding.title")}{" "}
-                  <span className="text-wine">{t("understanding.titleSpan")}</span>
+                  <span className="text-wine">
+                    {t("understanding.titleSpan")}
+                  </span>
                 </h2>
 
                 <div className="space-y-6">
                   <p className="text-lg text-brown leading-relaxed">
                     {t("understanding.p1")}
                   </p>
-                  <p className="text-taupe">
-                    {t("understanding.p2")}
-                  </p>
+                  <p className="text-taupe">{t("understanding.p2")}</p>
                 </div>
               </motion.div>
 
               <motion.div variants={fadeInRight} className="relative">
                 <div className="absolute inset-0 bg-linear-to-tr from-wine/20 to-transparent rounded-3xl" />
                 <img
-                  src="/images/clinic/support.png"
+                  src="/images/regenerative/menopause-hormone.webp"
                   alt="Women supporting each other"
                   className="rounded-3xl shadow-2xl w-full h-100 object-cover"
                 />
                 <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl">
-                  <p className="text-wine font-medium">{t("understanding.ageRange")}</p>
+                  <p className="text-wine font-medium">
+                    {t("understanding.ageRange")}
+                  </p>
                   <p className="text-sm text-taupe">
                     {t("understanding.ageLabel")}
                   </p>
@@ -333,9 +356,7 @@ const MonopauseLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               <p className="text-xl text-wine font-medium">
                 {t("symptoms.subtitle")}
               </p>
-              <p className="text-taupe mt-4">
-                {t("symptoms.note")}
-              </p>
+              <p className="text-taupe mt-4">{t("symptoms.note")}</p>
             </motion.div>
 
             <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
@@ -352,7 +373,9 @@ const MonopauseLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                       <div className="bg-wine w-12 h-12 rounded-xl flex items-center justify-center mb-4">
                         <Icon className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="font-['Georgia'] text-xl text-brown mb-2">{symptom.title}</h3>
+                      <h3 className="font-['Georgia'] text-xl text-brown mb-2">
+                        {symptom.title}
+                      </h3>
                       <p className="text-taupe text-sm">{symptom.desc}</p>
                     </motion.div>
                   );
@@ -400,18 +423,14 @@ const MonopauseLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                     <h3 className="font-['Georgia'] text-xl text-wine mb-2">
                       {t("types.oestrogenTitle")}
                     </h3>
-                    <p className="text-taupe">
-                      {t("types.oestrogenDesc")}
-                    </p>
+                    <p className="text-taupe">{t("types.oestrogenDesc")}</p>
                   </div>
 
                   <div className="bg-white p-6 rounded-2xl shadow-lg">
                     <h3 className="font-['Georgia'] text-xl text-rose mb-2">
                       {t("types.combinedTitle")}
                     </h3>
-                    <p className="text-taupe">
-                      {t("types.combinedDesc")}
-                    </p>
+                    <p className="text-taupe">{t("types.combinedDesc")}</p>
                   </div>
                 </div>
               </motion.div>
@@ -488,7 +507,9 @@ const MonopauseLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                         {step.num}
                       </div>
                       <div>
-                        <h3 className="font-['Georgia'] text-lg text-brown mb-1">{step.title}</h3>
+                        <h3 className="font-['Georgia'] text-lg text-brown mb-1">
+                          {step.title}
+                        </h3>
                         <p className="text-taupe text-sm">{step.desc}</p>
                       </div>
                     </motion.div>
@@ -504,7 +525,9 @@ const MonopauseLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 />
                 <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl">
                   <Stethoscope className="w-8 h-8 text-wine mb-2" />
-                  <p className="text-sm text-brown">{t("consultation.personalizedCare")}</p>
+                  <p className="text-sm text-brown">
+                    {t("consultation.personalizedCare")}
+                  </p>
                 </div>
               </motion.div>
             </div>
@@ -527,9 +550,7 @@ const MonopauseLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 <h2 className="font-['Georgia'] text-3xl text-brown mb-6">
                   {t("candidate.goodTitle")}
                 </h2>
-                <p className="text-taupe mb-6">
-                  {t("candidate.goodDesc")}
-                </p>
+                <p className="text-taupe mb-6">{t("candidate.goodDesc")}</p>
                 <ul className="space-y-4">
                   {goodCandidateItems.map((item, idx) => (
                     <motion.li
@@ -551,9 +572,7 @@ const MonopauseLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 <h2 className="font-['Georgia'] text-3xl text-brown mb-6">
                   {t("candidate.avoidTitle")}
                 </h2>
-                <p className="text-taupe mb-6">
-                  {t("candidate.avoidDesc")}
-                </p>
+                <p className="text-taupe mb-6">{t("candidate.avoidDesc")}</p>
                 <div className="bg-cream p-6 rounded-2xl">
                   <p className="font-medium text-brown mb-4">
                     {t("candidate.cautionTitle")}
@@ -605,7 +624,9 @@ const MonopauseLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                   whileHover={{ y: -5 }}
                   className="bg-cream p-6 rounded-2xl shadow-lg"
                 >
-                  <h3 className="font-['Georgia'] text-lg text-brown mb-3">{card.title}</h3>
+                  <h3 className="font-['Georgia'] text-lg text-brown mb-3">
+                    {card.title}
+                  </h3>
                   <p className="text-taupe text-sm">{card.desc}</p>
                 </motion.div>
               ))}
@@ -646,9 +667,7 @@ const MonopauseLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 <h3 className="font-['Georgia'] text-2xl text-wine mb-4">
                   {t("comparison.hrtTitle")}
                 </h3>
-                <p className="text-taupe mb-4">
-                  {t("comparison.hrtDesc")}
-                </p>
+                <p className="text-taupe mb-4">{t("comparison.hrtDesc")}</p>
                 <div className="space-y-3">
                   {hrtBenefits.map((item, idx) => (
                     <div key={idx} className="flex items-center gap-2">
@@ -666,9 +685,7 @@ const MonopauseLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 <h3 className="font-['Georgia'] text-2xl text-rose mb-4">
                   {t("comparison.nonHrtTitle")}
                 </h3>
-                <p className="text-taupe mb-4">
-                  {t("comparison.nonHrtDesc")}
-                </p>
+                <p className="text-taupe mb-4">{t("comparison.nonHrtDesc")}</p>
                 <div className="space-y-3">
                   {nonHrtBenefits.map((item, idx) => (
                     <div key={idx} className="flex items-center gap-2">

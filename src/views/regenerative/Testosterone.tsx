@@ -39,19 +39,37 @@ import React from "react";
 import FAQ from "../../components/FAQ";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
+import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
 const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "testosterone");
 
   const images = {
-    doctorConsultation:
-      "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    doctorConsultation: "/images/regenerative/testosterone-therapy.webp",
     labTesting:
       "https://images.unsplash.com/photo-1579154204601-01588f351e67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     clinicInterior:
       "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2091&q=80",
     patientCare: "/images/treatment/happy-patient.png",
   };
+
+  const transformations = [
+    {
+      id: 1,
+      before: "/images/B&A-regenerative/B&A-testosterone-therapy1.webp",
+      after: "/images/B&A-regenerative/B&A-testosterone-therapy1.webp",
+    },
+    {
+      id: 2,
+      before: "/images/B&A-regenerative/B&A-testosterone-therapy2.webp",
+      after: "/images/B&A-regenerative/B&A-testosterone-therapy2.webp",
+    },
+    {
+      id: 3,
+      before: "/images/B&A-regenerative/B&A-testosterone-therapy3.webp",
+      after: "/images/B&A-regenerative/B&A-testosterone-therapy3.webp",
+    },
+  ];
 
   const faqs = [
     { q: t("faq.q1"), a: t("faq.a1") },
@@ -279,9 +297,7 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               className="mt-8 p-6 rounded-2xl text-center"
               style={{ backgroundColor: "var(--color-wine)", opacity: 0.9 }}
             >
-              <p className="text-white italic">
-                {t("trust.quickNote")}
-              </p>
+              <p className="text-white italic">{t("trust.quickNote")}</p>
             </motion.div>
           </div>
         </motion.section>
@@ -311,21 +327,23 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                   {t("whatIs.desc")}
                 </p>
                 <ul className="space-y-3">
-                  {[t("whatIs.criteria1"), t("whatIs.criteria2")].map((item, index) => (
-                    <motion.li
-                      key={index}
-                      variants={fadeInUp}
-                      className="flex items-center gap-3"
-                    >
-                      <CheckCircle
-                        className="w-5 h-5"
-                        style={{ color: "var(--color-wine)" }}
-                      />
-                      <span style={{ color: "var(--color-brown)" }}>
-                        {item}
-                      </span>
-                    </motion.li>
-                  ))}
+                  {[t("whatIs.criteria1"), t("whatIs.criteria2")].map(
+                    (item, index) => (
+                      <motion.li
+                        key={index}
+                        variants={fadeInUp}
+                        className="flex items-center gap-3"
+                      >
+                        <CheckCircle
+                          className="w-5 h-5"
+                          style={{ color: "var(--color-wine)" }}
+                        />
+                        <span style={{ color: "var(--color-brown)" }}>
+                          {item}
+                        </span>
+                      </motion.li>
+                    ),
+                  )}
                 </ul>
                 <p
                   className="mt-6 text-lg"
@@ -757,6 +775,8 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
           </div>
         </motion.section>
 
+        <SectionBeforeAfter transformations={transformations} />
+
         {/* Risks Section */}
         <motion.section
           variants={staggerContainer}
@@ -1022,9 +1042,7 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               className="p-6 rounded-xl"
               style={{ backgroundColor: "var(--color-brown)" }}
             >
-              <p className="text-white text-center">
-                {t("cost.tip")}
-              </p>
+              <p className="text-white text-center">{t("cost.tip")}</p>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4">
                 {[
                   t("cost.tipItem1"),

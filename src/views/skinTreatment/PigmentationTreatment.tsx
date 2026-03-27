@@ -2,22 +2,21 @@
 
 import { motion } from "framer-motion";
 import {
-  Sparkles,
-  Shield,
-  Clock,
-  MapPin,
   Sun,
-  Droplets,
+  Sparkles,
+  CheckCircle2,
+  XCircle,
+  MapPin,
+  Award,
   ChevronRight,
-  Star,
   Heart,
+  Thermometer,
   Flower2,
-  Sparkle,
+  Layers,
   Target,
-  Calendar,
-  MessageCircle,
-  Quote,
+  AlertTriangle,
 } from "lucide-react";
+
 import {
   fadeInUp,
   staggerContainer,
@@ -32,151 +31,7 @@ import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 const PigmentationLanding = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "pigmentationTreatment");
 
-  const causes = [
-    {
-      icon: Sun,
-      title: t("whyMalaysia.cause1Title"),
-      desc: t("whyMalaysia.cause1Desc"),
-      color: "rose",
-    },
-    {
-      icon: Heart,
-      title: t("whyMalaysia.cause2Title"),
-      desc: t("whyMalaysia.cause2Desc"),
-      color: "wine",
-    },
-    {
-      icon: Droplets,
-      title: t("whyMalaysia.cause3Title"),
-      desc: t("whyMalaysia.cause3Desc"),
-      color: "taupe",
-    },
-    {
-      icon: Flower2,
-      title: t("whyMalaysia.cause4Title"),
-      desc: t("whyMalaysia.cause4Desc"),
-      color: "brown",
-    },
-  ];
-
-  const pigmentTypes = [
-    t("whatIs.type1"),
-    t("whatIs.type2"),
-    t("whatIs.type3"),
-    t("whatIs.type4"),
-  ];
-
-  const typeCards = [
-    {
-      title: t("types.type1Title"),
-      desc: t("types.type1Desc"),
-      color: "wine",
-      icon: Heart,
-    },
-    {
-      title: t("types.type2Title"),
-      desc: t("types.type2Desc"),
-      color: "rose",
-      icon: Sun,
-    },
-    {
-      title: t("types.type3Title"),
-      desc: t("types.type3Desc"),
-      color: "taupe",
-      icon: Sparkle,
-    },
-    {
-      title: t("types.type4Title"),
-      desc: t("types.type4Desc"),
-      color: "brown",
-      icon: Droplets,
-    },
-  ];
-
-  const goodFitItems = [
-    t("whoFor.fit1"),
-    t("whoFor.fit2"),
-    t("whoFor.fit3"),
-  ];
-
-  const pauseItems = [
-    t("whoFor.pause1"),
-    t("whoFor.pause2"),
-    t("whoFor.pause3"),
-  ];
-
-  const resultItems = [
-    t("results.result1"),
-    t("results.result2"),
-    t("results.result3"),
-  ];
-
-  const downtimeItems = [
-    t("results.downtime1"),
-    t("results.downtime2"),
-    t("results.downtime3"),
-  ];
-
-  const sideEffects = [
-    t("safety.effect1"),
-    t("safety.effect2"),
-    t("safety.effect3"),
-  ];
-
-  const treatmentAreas = [
-    t("areas.area1"),
-    t("areas.area2"),
-    t("areas.area3"),
-    t("areas.area4"),
-    t("areas.area5"),
-    t("areas.area6"),
-    t("areas.area7"),
-    t("areas.area8"),
-    t("areas.area9"),
-  ];
-
-  const faqItems = [
-    { q: t("faq.q1"), a: t("faq.a1") },
-    { q: t("faq.q2"), a: t("faq.a2") },
-    { q: t("faq.q3"), a: t("faq.a3") },
-    { q: t("faq.q4"), a: t("faq.a4") },
-    { q: t("faq.q5"), a: t("faq.a5") },
-  ];
-
-  const whyNexusItems = [
-    {
-      icon: Clock,
-      title: t("whyNexus.point1Title"),
-      desc: t("whyNexus.point1Desc"),
-    },
-    {
-      icon: MapPin,
-      title: t("whyNexus.point2Title"),
-      desc: t("whyNexus.point2Desc"),
-    },
-    {
-      icon: Sparkles,
-      title: t("whyNexus.point3Title"),
-      desc: t("whyNexus.point3Desc"),
-    },
-    {
-      icon: Heart,
-      title: t("whyNexus.point4Title"),
-      desc: t("whyNexus.point4Desc"),
-    },
-    {
-      icon: Shield,
-      title: t("whyNexus.point5Title"),
-      desc: t("whyNexus.point5Desc"),
-    },
-    {
-      icon: Star,
-      title: t("whyNexus.point6Title"),
-      desc: t("whyNexus.point6Desc"),
-    },
-  ];
-
-    const transformations = [
+  const transformations = [
     {
       id: 1,
       before: "/images/B&A-skin/B&A-pigmentation-treatment1.webp",
@@ -195,886 +50,1381 @@ const PigmentationLanding = ({ locale = fallbackLng }: { locale?: string }) => {
   ];
 
   return (
-    <>
-      <main className="w-full bg-light font-['Inter',sans-serif] overflow-hidden">
-        {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-0 right-0 w-2/3 h-2/3 bg-linear-to-br from-cream to-transparent opacity-60 rounded-bl-[100px]" />
-            <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-linear-to-tr from-taupe to-transparent opacity-20 rounded-tr-[100px]" />
-            {/* Decorative elements */}
-            <div className="absolute top-20 left-10 text-wine opacity-20">
-              <Sparkle size={60} />
-            </div>
-            <div className="absolute bottom-40 right-20 text-rose opacity-20">
-              <Flower2 size={80} />
+    <div className="w-full overflow-hidden bg-light">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <motion.div
+          className="absolute inset-0 bg-cover bg-center opacity-10"
+          style={{ backgroundImage: "url('/images/clinic/interior.png')" }}
+          initial={{ scale: 1.2 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 20 }}
+        />
+
+        <div className="container mx-auto px-4 py-20 relative z-10">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+            className="max-w-4xl mx-auto text-center"
+          >
+            <motion.h1
+              variants={fadeInUp}
+              className="font-georgia text-5xl md:text-7xl text-brown mb-6 leading-tight"
+            >
+              Stop chasing "brightening."
+              <br />
+              <span className="text-wine">Start treating the cause</span>
+              <br />
+              of your dark spots.
+            </motion.h1>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-taupe text-lg md:text-xl mb-12 max-w-2xl mx-auto font-inter"
+            >
+              Pigmentation is frustrating because it keeps changing with sun,
+              stress, and hormones. At Nexus Clinic Kuala Lumpur, we build a
+              personalised plan that targets your pigment type, not just your
+              skin tone.
+            </motion.p>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter mb-8"
+            >
+              You will know what is realistic, what needs consistency, and what
+              will keep coming back if you skip aftercare.
+            </motion.p>
+          </motion.div>
+        </div>
+
+        {/* Trust Strip */}
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          className="absolute bottom-0 left-0 right-0 bg-glass backdrop-blur-md border-t border-cream py-4"
+        >
+          <div className="container mx-auto px-4">
+            <div className="flex flex-wrap justify-center gap-8 text-sm text-brown font-inter">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-rose" />
+                <span>
+                  Established in 2001 and based in the heart of KL's Golden
+                  Triangle.
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-rose" />
+                <span>
+                  Clinic location: LG 10, Lower Ground Floor, Wisma UOA II,
+                  Jalan Pinang, 50450 Kuala Lumpur.
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-rose" />
+                <span>
+                  Pigmentation care can include laser therapy, chemical peels,
+                  and topical treatments, depending on your skin and pigment
+                  pattern.
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Target className="w-4 h-4 text-rose" />
+                <span>
+                  Advanced options include MedLite C6 ND:YAG laser and
+                  pigment-focused approaches like pico laser and Dermamelan
+                  (when suitable).
+                </span>
+              </div>
             </div>
           </div>
+        </motion.div>
+      </section>
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={staggerContainer}
-              className="grid lg:grid-cols-2 gap-12 items-center"
+      {/* Why Malaysia Section */}
+      <section className="py-24 bg-cream">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="max-w-4xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl text-brown mb-8 text-center"
             >
-              <motion.div variants={fadeInLeft} className="space-y-8">
-                <div className="inline-flex items-center space-x-2 bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full border border-cream">
-                  <Shield className="w-4 h-4 text-wine" />
-                  <span className="text-sm text-brown">
-                    {t("hero.badge")}
-                  </span>
-                </div>
+              If you live in Malaysia, here is why pigmentation feels extra
+              stubborn
+            </motion.h2>
 
-                <h2 className="font-['Georgia',serif] text-5xl lg:text-6xl text-brown leading-tight">
-                  {t("hero.title1")}
-                  <span className="block text-wine relative">
-                    {t("hero.title2")}
-                    <motion.span
-                      className="absolute -bottom-2 left-0 w-full h-0.5 bg-taupe"
-                      initial={{ width: 0 }}
-                      animate={{ width: "100%" }}
-                      transition={{ delay: 1, duration: 1 }}
-                    />
-                  </span>
-                  {t("hero.title3")}
-                </h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-taupe font-inter text-lg mb-6 text-center"
+            >
+              Pigmentation does not just show up. It builds. You notice it one
+              day in harsh lighting, then it starts "sticking" in photos.
+              Foundation looks patchy. Your skin tone feels uneven even when
+              your skin is otherwise healthy.
+            </motion.p>
 
-                <p className="text-xl text-taupe leading-relaxed">
-                  {t("hero.desc")}
-                </p>
+            <motion.p
+              variants={fadeInUp}
+              className="text-taupe font-inter text-lg mb-8 text-center"
+            >
+              In Malaysia, a few things make pigment flare-ups common:
+            </motion.p>
 
-                <motion.div variants={scaleIn} className="flex wrap gap-4">
-                  <button className="group bg-wine text-white px-8 py-4 rounded-full hover:bg-rose transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2">
-                    <span>{t("hero.button")}</span>
-                    <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                  <button className="border-2 border-wine text-wine px-8 py-4 rounded-full hover:bg-cream transition-all duration-300">
-                    {t("hero.learnMore")}
-                  </button>
-                </motion.div>
-
-                {/* Location Badge */}
-                <motion.div
-                  variants={fadeInUp}
-                  className="flex items-center space-x-2 text-brown bg-white/50 backdrop-blur-sm p-4 rounded-2xl border border-cream"
+            <motion.div
+              variants={fadeInUp}
+              className="grid grid-cols-2 md:grid-cols-4 gap-6"
+            >
+              {[
+                { icon: Sun, text: "Sun exposure (even short daily exposure)" },
+                { icon: Heart, text: "Hormonal shifts" },
+                {
+                  icon: Thermometer,
+                  text: "Skin inflammation (acne, irritation, aggressive skincare)",
+                },
+                { icon: Flower2, text: "Genetics and ageing" },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-light rounded-2xl p-6 text-center shadow-lg"
                 >
-                  <MapPin className="w-5 h-5 text-wine" />
-                  <span>
-                    {t("hero.address")}
-                  </span>
-                </motion.div>
-              </motion.div>
-
-              <motion.div variants={fadeInRight} className="relative">
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                  <img
-                    src="/images/skin/pigmentation-treatment.webp"
-                    alt="pigmentation treatment"
-                    className="w-full h-auto"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-brown/20 to-transparent" />
-
-                  {/* Floating Cards */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.5, duration: 0.5 }}
-                    className="absolute bottom-6 left-6 right-6 bg-white/70 backdrop-blur-md p-4 rounded-2xl border border-white/50"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <div className="bg-wine rounded-full p-2">
-                        <Sparkles className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-brown font-medium">
-                          {t("hero.floatingTitle")}
-                        </p>
-                        <p className="text-xs text-taupe">
-                          {t("hero.floatingDesc")}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
+                  <item.icon className="w-8 h-8 text-rose mx-auto mb-3" />
+                  <p className="text-brown font-inter text-sm">{item.text}</p>
                 </div>
-              </motion.div>
+              ))}
             </motion.div>
-          </div>
-        </section>
 
-        {/* Why Malaysia Section */}
-        <section className="relative py-24 bg-cream">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.p
+              variants={fadeInUp}
+              className="text-taupe font-inter mt-6 text-center"
+            >
+              These causes are commonly discussed by Malaysian skin resources
+              too, especially sun exposure and hormones.
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* What Section with Single Image */}
+      <section className="py-24 bg-light">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div
+              variants={fadeInLeft}
               initial="hidden"
               whileInView="visible"
-              variants={staggerContainer}
-              className="space-y-16"
             >
-              <motion.div
-                variants={fadeInUp}
-                className="text-center max-w-3xl mx-auto"
-              >
-                <div className="inline-flex items-center justify-center space-x-2 mb-4">
-                  <Sun className="w-6 h-6 text-wine" />
-                  <span className="text-wine font-medium">
-                    {t("whyMalaysia.badge")}
-                  </span>
-                </div>
-                <h2 className="font-['Georgia',serif] text-4xl text-brown mb-4">
-                  {t("whyMalaysia.title")}
-                </h2>
-                <p className="text-lg text-taupe">
-                  {t("whyMalaysia.desc")}
+              <h2 className="font-georgia text-4xl text-brown mb-6">
+                What pigmentation actually is (in simple words)
+              </h2>
+              <p className="text-taupe font-inter text-lg mb-4">
+                Pigmentation happens when your skin produces extra melanin (the
+                pigment that gives skin its colour). Sometimes the pigment is on
+                the surface. Sometimes it sits deeper. That depth matters,
+                because it changes what will work best.
+              </p>
+              <p className="text-brown font-inter">
+                That is why one person improves fast with a peel, while another
+                needs lasers and long-term maintenance.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInRight}
+              initial="hidden"
+              whileInView="visible"
+              className="relative"
+            >
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <img
+                  src="/images/skin/pigmentation-treatment.webp"
+                  alt="Skin pigmentation analysis at Nexus Clinic Kuala Lumpur"
+                  className="w-full h-auto"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-brown/50 to-transparent" />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Types of Pigmentation */}
+      <section className="py-24 bg-cream">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="max-w-6xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl text-brown mb-4 text-center"
+            >
+              Types of pigmentation we commonly see in Kuala Lumpur
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-taupe font-inter text-center mb-8"
+            >
+              Not all "dark spots" are the same. Most patients have more than
+              one type.
+            </motion.p>
+
+            <motion.div
+              variants={fadeInUp}
+              className="grid md:grid-cols-2 gap-6"
+            >
+              <div className="bg-light rounded-2xl p-8 shadow-lg">
+                <h3 className="font-georgia text-xl text-brown mb-3">
+                  Melasma (patchy, hormonal pigment)
+                </h3>
+                <p className="text-taupe font-inter mb-3">
+                  Usually looks like brown or greyish patches on cheeks,
+                  forehead, or upper lip. It often comes and goes, and it can be
+                  triggered by sun and hormones. Many clinics highlight that
+                  melasma is persistent and needs careful planning.
                 </p>
-              </motion.div>
+              </div>
 
-              <motion.div
-                variants={staggerContainer}
-                className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
-              >
-                {causes.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    variants={scaleIn}
-                    whileHover={{ y: -5, transition: { duration: 0.3 } }}
-                    className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all border border-cream"
-                  >
-                    <div
-                      className={`bg-${item.color}/10 w-14 h-14 rounded-xl flex items-center justify-center mb-4`}
-                    >
-                      <item.icon className={`w-7 h-7 text-${item.color}`} />
-                    </div>
-                    <h3 className="text-xl font-semibold text-brown mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-taupe">{item.desc}</p>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* What is Pigmentation Section */}
-        <section className="relative py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={staggerContainer}
-              className="grid lg:grid-cols-2 gap-12 items-center"
-            >
-              <motion.div variants={fadeInLeft} className="space-y-6">
-                <h2 className="font-['Georgia',serif] text-4xl text-brown">
-                  {t("whatIs.title")}
-                  <span className="block text-wine text-2xl mt-2">
-                    {t("whatIs.subtitle")}
-                  </span>
-                </h2>
-
-                <p className="text-lg text-taupe leading-relaxed">
-                  {t("whatIs.desc")}
+              <div className="bg-light rounded-2xl p-8 shadow-lg">
+                <h3 className="font-georgia text-xl text-brown mb-3">
+                  Sunspots and age spots
+                </h3>
+                <p className="text-taupe font-inter mb-3">
+                  More common as we age or after years of UV exposure. They can
+                  appear as small, defined brown spots.
                 </p>
+              </div>
 
-                <div className="bg-cream p-6 rounded-2xl border-l-4 border-wine">
-                  <p className="text-brown italic">
-                    {t("whatIs.quote")}
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div variants={fadeInRight} className="relative">
-                <div className="grid grid-cols-2 gap-4">
-                  {pigmentTypes.map((type, index) => (
-                    <motion.div
-                      key={index}
-                      whileHover={{ scale: 1.02 }}
-                      className="bg-white p-4 rounded-xl shadow-md border border-cream"
-                    >
-                      <div className="w-full h-2 bg-linear-to-r from-taupe to-wine rounded-full mb-3" />
-                      <p className="text-brown font-medium">{type}</p>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Decorative */}
-                <div className="absolute -z-10 -top-6 -right-6 w-32 h-32 bg-cream rounded-full opacity-50" />
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Types of Pigmentation */}
-        <section className="relative py-24 bg-linear-to-b from-white to-cream">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={staggerContainer}
-              className="space-y-12"
-            >
-              <motion.div variants={fadeInUp} className="text-center">
-                <h2 className="font-['Georgia',serif] text-4xl text-brown mb-4">
-                  {t("types.title")}
-                </h2>
-                <p className="text-lg text-taupe">
-                  {t("types.desc")}
+              <div className="bg-light rounded-2xl p-8 shadow-lg">
+                <h3 className="font-georgia text-xl text-brown mb-3">
+                  Freckles
+                </h3>
+                <p className="text-taupe font-inter mb-3">
+                  Often genetic and more visible after sun exposure. They can be
+                  treated, but they may return if you do not protect from sun.
                 </p>
-              </motion.div>
+              </div>
 
-              <motion.div
-                variants={staggerContainer}
-                className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
-              >
-                {typeCards.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    variants={scaleIn}
-                    whileHover={{ y: -5 }}
-                    className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all"
-                  >
-                    <div
-                      className={`bg-${item.color}/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4`}
-                    >
-                      <item.icon className={`w-6 h-6`} />
-                    </div>
-                    <h3 className="text-xl font-semibold text-brown mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-taupe text-sm">{item.desc}</p>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              {/* Warning Box */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-white p-6 rounded-2xl border-2 border-wine shadow-lg max-w-3xl mx-auto"
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="bg-wine rounded-full p-2 shrink-0">
-                    <Shield className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-brown mb-2">
-                      {t("types.warningTitle")}
-                    </h4>
-                    <p className="text-taupe">
-                      {t("types.warningDesc")}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
+              <div className="bg-light rounded-2xl p-8 shadow-lg">
+                <h3 className="font-georgia text-xl text-brown mb-3">
+                  Post-inflammatory hyperpigmentation (PIH)
+                </h3>
+                <p className="text-taupe font-inter mb-3">
+                  Dark marks after acne, rash, scratching, or harsh products.
+                  PIH is very common in Asian skin and can worsen if skin is
+                  irritated again.
+                </p>
+              </div>
             </motion.div>
-          </div>
-        </section>
 
-        {/* Who It's For */}
-        <section className="relative py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={staggerContainer}
-              className="grid lg:grid-cols-2 gap-12"
+              variants={fadeInUp}
+              className="mt-8 bg-wine/10 border border-wine/20 rounded-2xl p-6"
             >
-              {/* Good Fit */}
+              <div className="flex items-start gap-4">
+                <AlertTriangle className="w-6 h-6 text-wine shrink-0 mt-1" />
+                <p className="text-brown font-inter">
+                  <span className="font-bold">
+                    "Is it pigmentation or something else?"
+                  </span>{" "}
+                  If a spot is changing fast, bleeding, ulcerating, or looks
+                  very different from other spots, do not treat it like cosmetic
+                  pigmentation. Get it assessed medically first.
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Who It's For */}
+      <section className="py-24 bg-light">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="max-w-4xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl text-brown mb-12 text-center"
+            >
+              Who pigmentation treatment is for (and who should pause)
+            </motion.h2>
+
+            <div className="grid md:grid-cols-2 gap-8">
               <motion.div
                 variants={fadeInLeft}
-                className="bg-white p-8 rounded-3xl shadow-xl border border-cream"
+                className="bg-cream rounded-2xl p-8"
               >
-                <div className="bg-rose/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                  <Star className="w-8 h-8 text-rose" />
-                </div>
-                <h3 className="font-['Georgia',serif] text-2xl text-brown mb-4">
-                  {t("whoFor.goodFitTitle")}
+                <h3 className="font-georgia text-2xl text-brown mb-6 flex items-center gap-2">
+                  <CheckCircle2 className="text-wine" />
+                  You are likely a good fit if:
                 </h3>
                 <ul className="space-y-4">
-                  {goodFitItems.map((item, index) => (
-                    <motion.li
-                      key={index}
-                      variants={fadeInUp}
-                      className="flex items-start space-x-3"
-                    >
-                      <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-1" />
-                      <span className="text-taupe">{item}</span>
-                    </motion.li>
-                  ))}
+                  <li className="flex items-start gap-3 text-brown font-inter">
+                    <ChevronRight className="w-5 h-5 text-rose shrink-0 mt-1" />
+                    <span>
+                      You have dark spots, melasma patches, uneven tone, or
+                      stubborn marks that do not fade
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3 text-brown font-inter">
+                    <ChevronRight className="w-5 h-5 text-rose shrink-0 mt-1" />
+                    <span>Your pigment gets worse after sun exposure</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-brown font-inter">
+                    <ChevronRight className="w-5 h-5 text-rose shrink-0 mt-1" />
+                    <span>
+                      You want a plan that balances results with skin safety
+                    </span>
+                  </li>
                 </ul>
               </motion.div>
 
-              {/* Pause */}
               <motion.div
                 variants={fadeInRight}
-                className="bg-cream p-8 rounded-3xl shadow-xl border border-taupe"
+                className="bg-cream rounded-2xl p-8"
               >
-                <div className="bg-wine/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                  <Clock className="w-8 h-8 text-wine" />
-                </div>
-                <h3 className="font-['Georgia',serif] text-2xl text-brown mb-4">
-                  {t("whoFor.pauseTitle")}
+                <h3 className="font-georgia text-2xl text-brown mb-6 flex items-center gap-2">
+                  <XCircle className="text-wine" />
+                  You may need to pause or adjust if:
                 </h3>
                 <ul className="space-y-4">
-                  {pauseItems.map((item, index) => (
-                    <motion.li
-                      key={index}
-                      variants={fadeInUp}
-                      className="flex items-start space-x-3"
-                    >
-                      <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-1" />
-                      <span className="text-taupe">{item}</span>
-                    </motion.li>
-                  ))}
+                  <li className="flex items-start gap-3 text-brown font-inter">
+                    <ChevronRight className="w-5 h-5 text-rose shrink-0 mt-1" />
+                    <span>
+                      Your skin is actively inflamed (eczema flare, severe acne,
+                      irritated barrier)
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3 text-brown font-inter">
+                    <ChevronRight className="w-5 h-5 text-rose shrink-0 mt-1" />
+                    <span>
+                      You are pregnant or breastfeeding (many pigment treatments
+                      are postponed)
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3 text-brown font-inter">
+                    <ChevronRight className="w-5 h-5 text-rose shrink-0 mt-1" />
+                    <span>
+                      You are using strong prescriptions without guidance (we
+                      may time treatments around them)
+                    </span>
+                  </li>
                 </ul>
               </motion.div>
-            </motion.div>
-          </div>
-        </section>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* Treatment Options */}
-        <section className="relative py-24 bg-brown text-white">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-64 h-64 bg-wine rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-rose rounded-full blur-3xl" />
-          </div>
+      {/* Treatment Philosophy */}
+      <section className="py-24 bg-wine text-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto px-4 text-center"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl mb-12"
+          >
+            Our Treatment Philosophy
+          </motion.h2>
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={staggerContainer}
-              className="space-y-16"
+          <motion.div
+            variants={fadeInUp}
+            className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-8"
+          >
+            <div className="text-center">
+              <div className="text-5xl font-georgia mb-4 opacity-50">01</div>
+              <h3 className="text-2xl font-georgia mb-2">Break down</h3>
+              <p className="text-cream/80 font-inter">
+                existing pigment safely
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-georgia mb-4 opacity-50">02</div>
+              <h3 className="text-2xl font-georgia mb-2">Stop</h3>
+              <p className="text-cream/80 font-inter">
+                pigment from re-forming with medical-grade homecare and
+                lifestyle steps
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-georgia mb-4 opacity-50">03</div>
+              <h3 className="text-2xl font-georgia mb-2">Maintain</h3>
+              <p className="text-cream/80 font-inter">
+                results so you do not bounce back after your last session
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-cream/90 font-inter max-w-3xl mx-auto"
+          >
+            Nexus Clinic also publishes guidance for Asian skin tones when
+            comparing lasers and chemical peels, which matters in Malaysia
+            because pigment risk and sensitivity can be different in Asian skin.
+          </motion.p>
+        </motion.div>
+      </section>
+
+      {/* Treatments Available */}
+      <section className="py-24 bg-light">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="max-w-4xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl text-brown mb-4 text-center"
             >
-              <motion.div
-                variants={fadeInUp}
-                className="text-center max-w-3xl mx-auto"
-              >
-                <h2 className="font-['Georgia',serif] text-4xl mb-4">
-                  {t("treatments.title")}
-                </h2>
-                <p className="text-lg text-taupe">
-                  {t("treatments.desc")}
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={staggerContainer}
-                className="grid md:grid-cols-2 gap-8"
-              >
-                {/* Laser */}
-                <motion.div
-                  variants={scaleIn}
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20"
-                >
-                  <div className="bg-wine w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                    <Target className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="font-['Georgia',serif] text-2xl mb-4">
-                    {t("treatments.t1Title")}
-                  </h3>
-                  <p className="text-taupe mb-4">
-                    {t("treatments.t1Desc")}
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-center space-x-2 text-sm">
-                      <ChevronRight className="w-4 h-4 text-wine" />
-                      <span>{t("treatments.t1Point1")}</span>
-                    </li>
-                    <li className="flex items-center space-x-2 text-sm">
-                      <ChevronRight className="w-4 h-4 text-wine" />
-                      <span>{t("treatments.t1Point2")}</span>
-                    </li>
-                  </ul>
-                </motion.div>
-
-                {/* Chemical Peels */}
-                <motion.div
-                  variants={scaleIn}
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20"
-                >
-                  <div className="bg-rose w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                    <Droplets className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="font-['Georgia',serif] text-2xl mb-4">
-                    {t("treatments.t2Title")}
-                  </h3>
-                  <p className="text-taupe mb-4">
-                    {t("treatments.t2Desc")}
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-center space-x-2 text-sm">
-                      <ChevronRight className="w-4 h-4 text-wine" />
-                      <span>{t("treatments.t2Point1")}</span>
-                    </li>
-                    <li className="flex items-center space-x-2 text-sm">
-                      <ChevronRight className="w-4 h-4 text-wine" />
-                      <span>{t("treatments.t2Point2")}</span>
-                    </li>
-                  </ul>
-                </motion.div>
-
-                {/* Topical */}
-                <motion.div
-                  variants={scaleIn}
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20"
-                >
-                  <div className="bg-taupe w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                    <Sparkles className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="font-['Georgia',serif] text-2xl mb-4">
-                    {t("treatments.t3Title")}
-                  </h3>
-                  <p className="text-taupe mb-4">
-                    {t("treatments.t3Desc")}
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-center space-x-2 text-sm">
-                      <ChevronRight className="w-4 h-4 text-wine" />
-                      <span>{t("treatments.t3Point1")}</span>
-                    </li>
-                    <li className="flex items-center space-x-2 text-sm">
-                      <ChevronRight className="w-4 h-4 text-wine" />
-                      <span>{t("treatments.t3Point2")}</span>
-                    </li>
-                  </ul>
-                </motion.div>
-
-                {/* Dermamelan */}
-                <motion.div
-                  variants={scaleIn}
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20"
-                >
-                  <div className="bg-wine w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                    <Flower2 className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="font-['Georgia',serif] text-2xl mb-4">
-                    {t("treatments.t4Title")}
-                  </h3>
-                  <p className="text-taupe mb-4">
-                    {t("treatments.t4Desc")}
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-center space-x-2 text-sm">
-                      <ChevronRight className="w-4 h-4 text-wine" />
-                      <span>{t("treatments.t4Point1")}</span>
-                    </li>
-                    <li className="flex items-center space-x-2 text-sm">
-                      <ChevronRight className="w-4 h-4 text-wine" />
-                      <span>{t("treatments.t4Point2")}</span>
-                    </li>
-                  </ul>
-                </motion.div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Laser vs Peel */}
-        <section className="relative py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={staggerContainer}
-              className="space-y-12"
+              Pigmentation treatments available at Nexus Clinic Kuala Lumpur
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-taupe font-inter text-center mb-8"
             >
-              <motion.div variants={fadeInUp} className="text-center">
-                <h2 className="font-['Georgia',serif] text-4xl text-brown mb-4">
-                  {t("laserVsPeel.title")}
-                </h2>
-                <p className="text-lg text-taupe">
-                  {t("laserVsPeel.subtitle")}
-                </p>
-              </motion.div>
+              (and what they are best for)
+            </motion.p>
 
-              <motion.div
-                variants={staggerContainer}
-                className="grid lg:grid-cols-2 gap-8"
-              >
-                <motion.div
-                  variants={fadeInLeft}
-                  className="bg-white p-8 rounded-3xl shadow-xl border border-cream"
-                >
-                  <div className="bg-wine w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                    <Target className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-semibold text-brown mb-4">
-                    {t("laserVsPeel.laserTitle")}
-                  </h3>
-                  <p className="text-taupe mb-6">
-                    {t("laserVsPeel.laserDesc")}
+            <motion.div variants={fadeInUp} className="space-y-6">
+              {/* 1) Pigmentation lasers */}
+              <div className="bg-cream rounded-2xl p-8 shadow-lg">
+                <h3 className="font-georgia text-2xl text-brown mb-4">
+                  1) Pigmentation lasers (target pigment clusters)
+                </h3>
+                <p className="text-taupe font-inter mb-3">
+                  Laser is often chosen when spots are stubborn, deeper, or
+                  well-defined.
+                </p>
+                <p className="text-taupe font-inter mb-3">
+                  Nexus Clinic's pigmentation services include laser therapy as
+                  one of the core options.
+                </p>
+
+                <div className="mt-4 p-4 bg-light rounded-xl">
+                  <h4 className="font-georgia text-xl text-brown mb-2">
+                    MedLite C6 ND:YAG laser
+                  </h4>
+                  <p className="text-taupe font-inter mb-2">
+                    This is a non-ablative laser commonly used for pigmentation
+                    issues. Nexus Clinic highlights MedLite C6 ND:YAG as a tool
+                    used for treating various pigmentation concerns.
                   </p>
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-wine rounded-full" />
-                      <span className="text-sm text-brown">
-                        {t("laserVsPeel.laserPoint1")}
-                      </span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-wine rounded-full" />
-                      <span className="text-sm text-brown">
-                        {t("laserVsPeel.laserPoint2")}
-                      </span>
-                    </div>
-                  </div>
-                </motion.div>
+                  <p className="font-bold text-brown mt-2">Best for:</p>
+                  <ul className="list-disc pl-5 text-taupe font-inter">
+                    <li>
+                      Dark spots and uneven tone concerns where ND:YAG settings
+                      are suitable
+                    </li>
+                    <li>
+                      Patients who want pigment targeting with controlled
+                      downtime
+                    </li>
+                  </ul>
+                </div>
 
-                <motion.div
-                  variants={fadeInRight}
-                  className="bg-white p-8 rounded-3xl shadow-xl border border-cream"
-                >
-                  <div className="bg-rose w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                    <Droplets className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-semibold text-brown mb-4">
-                    {t("laserVsPeel.peelTitle")}
-                  </h3>
-                  <p className="text-taupe mb-6">
-                    {t("laserVsPeel.peelDesc")}
+                <div className="mt-4 p-4 bg-light rounded-xl">
+                  <h4 className="font-georgia text-xl text-brown mb-2">
+                    Pico laser for pigmentation
+                  </h4>
+                  <p className="text-taupe font-inter mb-2">
+                    Pico lasers use ultra-short pulses. Many Malaysian clinics
+                    position pico laser as a modern option for pigment, with
+                    lower heat impact compared to older systems.
                   </p>
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-rose rounded-full" />
-                      <span className="text-sm text-brown">
-                        {t("laserVsPeel.peelPoint1")}
-                      </span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-rose rounded-full" />
-                      <span className="text-sm text-brown">
-                        {t("laserVsPeel.peelPoint2")}
-                      </span>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
+                  <p className="text-taupe font-inter mb-2">
+                    Nexus Clinic also features pico laser as an advanced
+                    solution for pigmentation and skin concerns.
+                  </p>
+                  <p className="font-bold text-brown mt-2">Best for (often):</p>
+                  <ul className="list-disc pl-5 text-taupe font-inter">
+                    <li>Freckles, sunspots, certain pigment clusters</li>
+                    <li>
+                      Patients who want minimal downtime and gradual brightening
+                    </li>
+                  </ul>
+                  <p className="text-taupe font-inter mt-2 text-sm">
+                    Also, Malaysian sources describe pico laser as using very
+                    short pulses to break down melanin particles, with a focus
+                    on suitability for Asian skin when used correctly.
+                  </p>
+                </div>
+              </div>
 
-              <motion.div
-                variants={scaleIn}
-                className="bg-cream p-8 rounded-3xl text-center"
-              >
-                <p className="text-lg text-brown font-medium">
-                  {t("laserVsPeel.comboNote")}
+              {/* 2) Chemical peels */}
+              <div className="bg-cream rounded-2xl p-8 shadow-lg">
+                <h3 className="font-georgia text-2xl text-brown mb-4">
+                  2) Chemical peels (surface refresh and tone improvement)
+                </h3>
+                <p className="text-taupe font-inter mb-3">
+                  Peels can help if your pigment is more superficial, or if your
+                  main issue is dullness plus uneven tone.
                 </p>
-                <p className="text-taupe mt-2">
-                  {t("laserVsPeel.guideNote")}
+                <p className="text-taupe font-inter mb-3">
+                  Nexus Clinic lists chemical peels as one of the advanced
+                  options for pigmentation and age spots.
                 </p>
-              </motion.div>
+                <p className="font-bold text-brown mt-2">Best for:</p>
+                <ul className="list-disc pl-5 text-taupe font-inter">
+                  <li>Post-acne marks that sit more on the surface</li>
+                  <li>Dull skin with mild pigmentation</li>
+                  <li>
+                    People who want a simpler step before moving to devices
+                  </li>
+                </ul>
+              </div>
+
+              {/* 3) Topical treatments */}
+              <div className="bg-cream rounded-2xl p-8 shadow-lg">
+                <h3 className="font-georgia text-2xl text-brown mb-4">
+                  3) Topical pigmentation treatments (the "keep it from coming
+                  back" step)
+                </h3>
+                <p className="text-taupe font-inter mb-3">
+                  Topical treatments matter. They reduce pigment production and
+                  support maintenance. Nexus Clinic includes topical treatments
+                  as part of pigmentation care.
+                </p>
+                <p className="text-wine font-bold mt-4">
+                  This is where a lot of people fail. They spend money on a few
+                  sessions, then go back to random skincare. Pigment returns.
+                  They think the treatment "did not work." It did, but
+                  maintenance was missing.
+                </p>
+              </div>
+
+              {/* 4) Dermamelan */}
+              <div className="bg-cream rounded-2xl p-8 shadow-lg">
+                <h3 className="font-georgia text-2xl text-brown mb-4">
+                  4) Dermamelan depigmentation program
+                </h3>
+                <p className="text-taupe font-inter mb-3">
+                  Dermamelan is a professional depigmentation treatment designed
+                  to reduce pigmentation and dark spots, and it is featured by
+                  Nexus Clinic as a pigmentation option in Malaysia.
+                </p>
+                <p className="font-bold text-brown mt-2">Best for:</p>
+                <ul className="list-disc pl-5 text-taupe font-inter">
+                  <li>
+                    Stubborn pigmentation and melasma-type patterns in suitable
+                    candidates
+                  </li>
+                  <li>
+                    Patients who can follow a structured homecare program
+                    carefully
+                  </li>
+                </ul>
+              </div>
             </motion.div>
-          </div>
-        </section>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* BEFORE AFTER */}
-        <SectionBeforeAfter transformations={transformations}/>
-
-        {/* Results & Downtime */}
-        <section className="relative py-24 bg-cream">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={staggerContainer}
-              className="grid lg:grid-cols-2 gap-12"
+      {/* Laser vs Peel */}
+      <section className="py-24 bg-cream">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="max-w-4xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl text-brown mb-6 text-center"
             >
-              <motion.div variants={fadeInLeft} className="space-y-8">
-                <h2 className="font-['Georgia',serif] text-4xl text-brown">
-                  {t("results.title")}
-                  <span className="block text-wine text-2xl mt-2">
-                    {t("results.subtitle")}
+              Laser vs chemical peel in Malaysia: which one should you choose?
+            </motion.h2>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-taupe font-inter text-center mb-4"
+            >
+              This is one of the most common questions in KL.
+            </motion.p>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-taupe font-inter text-center mb-8"
+            >
+              Nexus Clinic has an in-depth guide comparing pigmentation laser
+              and chemical peel for Asian skin tones, including benefits,
+              downtime, risks, and cost considerations.
+            </motion.p>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-light rounded-2xl p-8 shadow-lg"
+            >
+              <p className="text-brown font-inter mb-4 font-bold">
+                A practical way to think about it:
+              </p>
+              <ul className="space-y-4 text-brown font-inter">
+                <li className="flex items-start gap-2">
+                  <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-1" />
+                  <span>
+                    Laser is often better for defined spots or deeper pigment,
+                    when properly selected and performed.
                   </span>
-                </h2>
-
-                <div className="space-y-4">
-                  {resultItems.map((item, index) => (
-                    <motion.div
-                      key={index}
-                      variants={fadeInUp}
-                      className="flex items-start space-x-3"
-                    >
-                      <div className="bg-wine rounded-full p-1 mt-1">
-                        <ChevronRight className="w-4 h-4 text-white" />
-                      </div>
-                      <p className="text-taupe">{item}</p>
-                    </motion.div>
-                  ))}
-                </div>
-
-                <div className="bg-white p-6 rounded-2xl border-l-4 border-wine">
-                  <p className="text-brown italic">
-                    {t("results.melasmaNote")}
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div variants={fadeInRight} className="space-y-8">
-                <h2 className="font-['Georgia',serif] text-4xl text-brown">
-                  {t("results.downtimeTitle")}
-                </h2>
-
-                <div className="bg-white p-6 rounded-2xl shadow-lg">
-                  <ul className="space-y-4">
-                    {downtimeItems.map((item, index) => (
-                      <motion.li
-                        key={index}
-                        variants={fadeInUp}
-                        className="flex items-center space-x-3"
-                      >
-                        <Calendar className="w-5 h-5 text-wine" />
-                        <span className="text-brown">{item}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                  <p className="mt-4 text-sm text-taupe">
-                    {t("results.downtimeNote")}
-                  </p>
-                </div>
-              </motion.div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-1" />
+                  <span>
+                    Peels can be great for surface pigment, dullness, and tone,
+                    especially if your barrier is sensitive.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-1" />
+                  <span>
+                    Many patients do best with a combination plan, not a single
+                    method.
+                  </span>
+                </li>
+              </ul>
             </motion.div>
-          </div>
-        </section>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* Safety & Risks */}
-        <section className="relative py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Results Section */}
+      <section className="py-24 bg-light">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="max-w-4xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl text-brown mb-8 text-center"
+            >
+              What results can you expect (the honest version)
+            </motion.h2>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-taupe font-inter text-lg mb-6 text-center"
+            >
+              Pigmentation usually improves in layers.
+            </motion.p>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter mb-4"
+            >
+              You may see:
+            </motion.p>
+
+            <motion.div variants={fadeInUp} className="space-y-3 mb-6">
+              <p className="text-taupe font-inter">
+                • Faster brightening in the first few weeks if pigment is
+                superficial
+              </p>
+              <p className="text-taupe font-inter">
+                • Gradual improvement over months for deeper pigment or melasma
+                patterns
+              </p>
+              <p className="text-taupe font-inter">
+                • Best long-term results when you treat and maintain together
+              </p>
+            </motion.div>
+
             <motion.div
+              variants={fadeInUp}
+              className="bg-wine/10 border border-wine/20 rounded-2xl p-6"
+            >
+              <p className="text-brown font-inter">
+                Melasma, in particular, can be long-term. One Malaysian clinic
+                notes melasma may fade slightly, but it often persists without
+                professional treatment, and it needs careful management.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      <SectionBeforeAfter transformations={transformations} />
+
+      {/* Downtime & Side Effects */}
+      <section className="py-24 bg-cream">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <motion.div
+              variants={fadeInLeft}
               initial="hidden"
               whileInView="visible"
-              variants={staggerContainer}
-              className="max-w-4xl mx-auto text-center space-y-8"
             >
-              <motion.div variants={fadeInUp}>
-                <Shield className="w-16 h-16 text-wine mx-auto mb-4" />
-                <h2 className="font-['Georgia',serif] text-4xl text-brown mb-4">
-                  {t("safety.title")}
-                </h2>
-                <p className="text-lg text-taupe">{t("safety.subtitle")}</p>
-              </motion.div>
-
-              <motion.div
-                variants={scaleIn}
-                className="bg-white p-8 rounded-3xl shadow-xl border border-cream"
-              >
-                <p className="text-brown mb-6">
-                  {t("safety.desc")}
-                </p>
-
-                <div className="grid md:grid-cols-3 gap-4 mb-8">
-                  {sideEffects.map((item, index) => (
-                    <div key={index} className="bg-cream p-4 rounded-xl">
-                      <p className="text-sm text-brown">{item}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="bg-wine text-white p-6 rounded-2xl">
-                  <p className="font-medium">
-                    {t("safety.safetyNote")}
-                  </p>
-                </div>
-              </motion.div>
+              <h2 className="font-georgia text-3xl text-brown mb-6">
+                Downtime: what it feels like in real life
+              </h2>
+              <p className="text-taupe font-inter mb-4">
+                Downtime depends on treatment intensity and your skin response.
+              </p>
+              <p className="text-brown font-inter mb-3">
+                You might experience:
+              </p>
+              <ul className="space-y-2 text-taupe font-inter">
+                <li>• Mild redness and warmth</li>
+                <li>• Temporary darkening of spots before they fade</li>
+                <li>
+                  • Light flaking or dryness if a peel or depigmentation program
+                  is used
+                </li>
+              </ul>
+              <p className="text-brown font-inter mt-4">
+                If you have events coming up, we plan around them. Pigmentation
+                treatment is not just medical, it is lifestyle timing too.
+              </p>
             </motion.div>
-          </div>
-        </section>
 
-        {/* Treatment Areas */}
-        <section className="relative py-24 bg-cream">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
+              variants={fadeInRight}
               initial="hidden"
               whileInView="visible"
-              variants={staggerContainer}
-              className="space-y-12"
             >
-              <motion.div variants={fadeInUp} className="text-center">
-                <h2 className="font-['Georgia',serif] text-4xl text-brown mb-4">
-                  {t("areas.title")}
-                </h2>
-                <p className="text-lg text-taupe">
-                  {t("areas.desc")}
+              <h2 className="font-georgia text-3xl text-brown mb-6">
+                Side effects and risks (and how we reduce them)
+              </h2>
+              <p className="text-taupe font-inter mb-4">
+                Most side effects are temporary, but pigmentation treatments
+                need respect, especially for Asian skin.
+              </p>
+              <p className="text-brown font-inter mb-3">
+                Common possibilities:
+              </p>
+              <ul className="space-y-2 text-taupe font-inter mb-4">
+                <li>• Redness, swelling, sensitivity</li>
+                <li>• Temporary dryness and flaking</li>
+                <li>
+                  • Post-inflammatory hyperpigmentation (PIH) if skin is
+                  irritated or over-treated
+                </li>
+              </ul>
+              <p className="text-taupe font-inter mb-4">
+                Clinics often highlight that using suitable settings and proper
+                care helps reduce pigment rebound and post-treatment
+                hyperpigmentation risk.
+              </p>
+              <div className="mt-4 p-4 bg-wine/10 rounded-xl">
+                <p className="text-brown font-inter font-semibold">
+                  Your safest decision is simple: do not chase aggressive
+                  settings because you want faster results. Pigmentation loves
+                  inflammation.
                 </p>
-              </motion.div>
-
-              <motion.div
-                variants={staggerContainer}
-                className="grid grid-cols-2 md:grid-cols-4 gap-4"
-              >
-                {treatmentAreas.map((area, index) => (
-                  <motion.div
-                    key={index}
-                    variants={scaleIn}
-                    whileHover={{ scale: 1.05 }}
-                    className="bg-white p-4 rounded-xl shadow-md text-center border border-taupe/20"
-                  >
-                    <p className="text-brown font-medium">{area}</p>
-                  </motion.div>
-                ))}
-              </motion.div>
+              </div>
             </motion.div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Cost Section */}
-        <section className="relative py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={staggerContainer}
-              className="space-y-12"
+      {/* Treatment Areas */}
+      <section className="py-24 bg-light">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="max-w-4xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl text-brown mb-4 text-center"
             >
-              <motion.div
-                variants={fadeInUp}
-                className="text-center max-w-3xl mx-auto"
-              >
-                <h2 className="font-['Georgia',serif] text-4xl text-brown mb-4">
-                  {t("cost.title")}
-                </h2>
-                <p className="text-lg text-taupe">
-                  {t("cost.desc")}
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={staggerContainer}
-                className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
-              >
-                <motion.div
-                  variants={scaleIn}
-                  className="bg-white p-6 rounded-2xl shadow-lg border border-cream"
+              Areas we can treat
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-taupe font-inter text-center mb-8"
+            >
+              Pigmentation is not only on the cheeks.
+            </motion.p>
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter mb-4"
+            >
+              Common treatment areas include:
+            </motion.p>
+            <motion.div
+              variants={fadeInUp}
+              className="grid grid-cols-2 md:grid-cols-4 gap-3"
+            >
+              {[
+                "Forehead",
+                "Cheeks",
+                "Upper lip",
+                "Nose and side of face",
+                "Chin and jawline",
+                "Neck (selected cases)",
+                "Hands (sunspots and age spots)",
+              ].map((area, index) => (
+                <div
+                  key={index}
+                  className="bg-cream p-3 rounded-lg text-brown font-inter text-center"
                 >
-                  <p className="text-2xl font-semibold text-wine mb-2">
-                    {t("cost.laserPrice")}
-                  </p>
-                  <p className="text-taupe">{t("cost.laserLabel")}</p>
-                  <p className="text-xs text-brown mt-2">
-                    {t("cost.laserNote")}
-                  </p>
-                </motion.div>
+                  {area}
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
 
-                <motion.div
-                  variants={scaleIn}
-                  className="bg-white p-6 rounded-2xl shadow-lg border border-cream"
-                >
-                  <p className="text-2xl font-semibold text-rose mb-2">
-                    {t("cost.picoPrice")}
-                  </p>
-                  <p className="text-taupe">{t("cost.picoLabel")}</p>
-                  <p className="text-xs text-brown mt-2">
-                    {t("cost.picoNote")}
-                  </p>
-                </motion.div>
+      {/* Cost Section */}
+      <section className="py-24 bg-cream">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="max-w-4xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl text-brown mb-6 text-center"
+            >
+              Cost of pigmentation treatment in Kuala Lumpur and Malaysia
+            </motion.h2>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-taupe font-inter text-center mb-4"
+            >
+              Pricing varies because pigmentation varies.
+            </motion.p>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter mb-3"
+            >
+              Your cost depends on:
+            </motion.p>
+
+            <motion.ul
+              variants={fadeInUp}
+              className="list-disc pl-5 text-taupe font-inter mb-6"
+            >
+              <li>Pigment type (melasma vs sunspots vs PIH)</li>
+              <li>Depth and coverage area</li>
+              <li>
+                Technology used (laser type, peel type, depigmentation program)
+              </li>
+              <li>Number of sessions needed</li>
+            </motion.ul>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-taupe font-inter mb-4"
+            >
+              To give you real market context in Malaysia, some clinics publicly
+              share price ranges:
+            </motion.p>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-light rounded-2xl p-6 shadow-lg mb-4"
+            >
+              <p className="text-brown font-inter">
+                One KL clinic lists laser pigmentation costs around RM500 to
+                RM1,000, depending on sessions and area size.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-light rounded-2xl p-6 shadow-lg mb-4"
+            >
+              <p className="text-brown font-inter">
+                A Malaysia clinic blog lists pigmentation removal pico laser
+                estimates around RM400 to RM900 per session (varies by clinic
+                and device).
+              </p>
+            </motion.div>
+
+            <motion.p variants={fadeInUp} className="text-taupe font-inter">
+              Treat these as general benchmarks, not fixed pricing. The right
+              plan is the one that works for your pigment and does not trigger
+              rebound.
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Competitor Analysis Section */}
+      {/* <section className="py-24 bg-light">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="max-w-4xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl text-brown mb-6 text-center"
+            >
+              Top competitors ranking on Google
+            </motion.h2>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-taupe font-inter text-center mb-6"
+            >
+              (what they do well, and where Nexus can win)
+            </motion.p>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter mb-4"
+            >
+              When reviewing pages that commonly appear for searches like
+              "pigmentation treatment Kuala Lumpur", "hyperpigmentation
+              treatment KL", and "melasma treatment Malaysia," a few competitors
+              show up frequently.
+            </motion.p>
+
+            <motion.h3
+              variants={fadeInUp}
+              className="font-georgia text-2xl text-brown mb-3"
+            >
+              Competitors that commonly appear in KL and Malaysia searches
+            </motion.h3>
+
+            <motion.ul
+              variants={fadeInUp}
+              className="list-disc pl-5 text-taupe font-inter mb-6"
+            >
+              <li>
+                Erufu Care ranks strongly because it aggregates clinics,
+                reviews, and "best clinics" lists for hyperpigmentation and
+                melasma in Kuala Lumpur.
+              </li>
+              <li>
+                Dr Chong Clinic ranks with educational blog content and
+                FAQ-style answers for hyperpigmentation and melasma.
+              </li>
+              <li>
+                Sliq Clinic ranks with a clinic page focused on pigment
+                treatment, strong authority signals (MOH registration,
+                LCP-certified doctors), and a clear list of devices and
+                approach.
+              </li>
+              <li>
+                Da Vinci Clinic ranks with pigment removal positioning around
+                pico laser and strong service-page SEO.
+              </li>
+              <li>
+                Clique Clinic ranks for melasma with a "multimodality" approach
+                narrative and device-based positioning.
+              </li>
+            </motion.ul>
+
+            <motion.h3
+              variants={fadeInUp}
+              className="font-georgia text-2xl text-brown mb-3"
+            >
+              What top-ranking competitor pages do well
+            </motion.h3>
+
+            <motion.ul
+              variants={fadeInUp}
+              className="list-disc pl-5 text-taupe font-inter mb-6"
+            >
+              <li>
+                They speak directly to the fear: "Will it get worse?" "Is it
+                safe?"
+              </li>
+              <li>
+                They name the problem clearly: melasma, freckles, sunspots, PIH
+              </li>
+              <li>
+                They lean into combinations: laser plus skincare plus
+                maintenance
+              </li>
+              <li>They provide price anchors or ranges to reduce hesitation</li>
+              <li>
+                They publish lots of FAQs, which helps capture People Also Ask
+                traffic
+              </li>
+            </motion.ul>
+
+            <motion.h3
+              variants={fadeInUp}
+              className="font-georgia text-2xl text-brown mb-3"
+            >
+              How this page helps Nexus Clinic Kuala Lumpur compete
+            </motion.h3>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter mb-3"
+            >
+              Nexus already has strong building blocks:
+            </motion.p>
+
+            <motion.ul
+              variants={fadeInUp}
+              className="list-disc pl-5 text-taupe font-inter mb-6"
+            >
+              <li>A KL location advantage with clear address signals</li>
+              <li>Long-standing clinic credibility since 2001</li>
+              <li>
+                Multiple pigmentation solutions including lasers, peels,
+                topicals, Dermamelan, and pico laser content
+              </li>
+              <li>
+                Educational content that is actually relevant to Asian skin
+                tones
+              </li>
+            </motion.ul>
+
+            <motion.p variants={fadeInUp} className="text-brown font-inter">
+              What will push rankings further is consistent, patient-focused
+              copy, strong internal linking, clear FAQs, and visible local
+              intent signals.
+            </motion.p>
+          </motion.div>
+        </div>
+      </section> */}
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-cream">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="max-w-4xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl text-brown mb-8 text-center"
+            >
+              People Also Ask style FAQs (Malaysia and Kuala Lumpur)
+            </motion.h2>
+
+            <div className="space-y-6">
+              <motion.div
+                variants={fadeInUp}
+                className="bg-light rounded-xl p-6"
+              >
+                <h3 className="font-georgia text-xl text-brown mb-3">
+                  What causes pigmentation on the face?
+                </h3>
+                <p className="text-taupe font-inter">
+                  Pigmentation can come from sun exposure, hormonal changes,
+                  genetics, ageing, and skin injury or inflammation. In
+                  Malaysia, sun exposure and inflammation from acne or
+                  irritation are common triggers. The key is identifying your
+                  pigment pattern first, because melasma behaves differently
+                  from sunspots or post-acne marks. Once we know the trigger,
+                  treatment becomes easier to choose and safer to plan.
+                </p>
               </motion.div>
 
               <motion.div
                 variants={fadeInUp}
-                className="bg-cream p-6 rounded-2xl text-center max-w-3xl mx-auto"
+                className="bg-light rounded-xl p-6"
               >
-                <p className="text-brown">
-                  {t("cost.disclaimer")}
-                </p>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* FAQ Section */}
-        <section className="relative py-24 bg-brown text-white">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-64 h-64 bg-wine rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-rose rounded-full blur-3xl" />
-          </div>
-
-          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={staggerContainer}
-              className="space-y-12"
-            >
-              <motion.div variants={fadeInUp} className="text-center">
-                <MessageCircle className="w-16 h-16 text-taupe mx-auto mb-4" />
-                <h2 className="font-['Georgia',serif] text-4xl mb-4">
-                  {t("faq.title")}
-                </h2>
-                <p className="text-lg text-taupe">
-                  {t("faq.desc")}
+                <h3 className="font-georgia text-xl text-brown mb-3">
+                  Can pigmentation be removed permanently?
+                </h3>
+                <p className="text-taupe font-inter">
+                  Some pigmentation can fade for a long time, but "permanent" is
+                  tricky, especially if the trigger is still present. Many
+                  clinics note that relying only on topical products can be
+                  limiting, while treatments like laser and chemical peels can
+                  improve the chance of longer-lasting results. Maintenance is
+                  the difference-maker. Without sun protection and the right
+                  homecare, pigment can return.
                 </p>
               </motion.div>
 
-              <motion.div variants={staggerContainer} className="space-y-4">
-                {faqItems.map((faq, index) => (
-                  <motion.details
-                    key={index}
-                    variants={fadeInUp}
-                    className="group bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20 cursor-pointer"
-                  >
-                    <summary className="flex items-center justify-between text-lg font-medium">
-                      {faq.q}
-                      <ChevronRight className="w-5 h-5 group-open:rotate-90 transition-transform" />
-                    </summary>
-                    <p className="mt-4 text-taupe">{faq.a}</p>
-                  </motion.details>
-                ))}
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Why Nexus */}
-        <section className="relative py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={staggerContainer}
-              className="space-y-12"
-            >
               <motion.div
                 variants={fadeInUp}
-                className="text-center max-w-3xl mx-auto"
+                className="bg-light rounded-xl p-6"
               >
-                <Quote className="w-16 h-16 text-wine mx-auto mb-4" />
-                <h2 className="font-['Georgia',serif] text-4xl text-brown mb-4">
-                  {t("whyNexus.title")}
-                </h2>
-                <p className="text-lg text-taupe">
-                  {t("whyNexus.desc")}
+                <h3 className="font-georgia text-xl text-brown mb-3">
+                  What is the best treatment for pigmentation in Malaysia?
+                </h3>
+                <p className="text-taupe font-inter">
+                  It depends on the type and depth of pigment. Malaysian clinics
+                  commonly discuss options like pico laser, Q-switched laser,
+                  IPL, and chemical peels for hyperpigmentation concerns. A plan
+                  is "best" when it improves pigment without triggering rebound
+                  or irritation, especially for Asian skin tones. That is why
+                  assessment matters before choosing a device.
                 </p>
               </motion.div>
 
               <motion.div
-                variants={staggerContainer}
-                className="grid md:grid-cols-3 gap-6"
+                variants={fadeInUp}
+                className="bg-light rounded-xl p-6"
               >
-                {whyNexusItems.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    variants={scaleIn}
-                    whileHover={{ y: -5 }}
-                    className="bg-white p-6 rounded-2xl shadow-lg border border-cream text-center"
-                  >
-                    <div className="bg-wine/10 w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4">
-                      <item.icon className="w-7 h-7 text-wine" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-brown mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-taupe">{item.desc}</p>
-                  </motion.div>
-                ))}
+                <h3 className="font-georgia text-xl text-brown mb-3">
+                  Is laser treatment safe for melasma?
+                </h3>
+                <p className="text-taupe font-inter">
+                  Laser can be safe when performed by trained doctors using
+                  appropriate technology and settings, but melasma needs extra
+                  care. Some clinics specifically note that aggressive laser
+                  approaches can worsen pigmentation if not used carefully. If
+                  your melasma is hormonal and reactive, the plan often includes
+                  strict sun protection and maintenance, not only laser
+                  sessions.
+                </p>
               </motion.div>
-            </motion.div>
-          </div>
-        </section>
-      </main>
-    </>
+
+              <motion.div
+                variants={fadeInUp}
+                className="bg-light rounded-xl p-6"
+              >
+                <h3 className="font-georgia text-xl text-brown mb-3">
+                  Can melasma go away on its own?
+                </h3>
+                <p className="text-taupe font-inter">
+                  Melasma may fade slightly over time in some cases, especially
+                  if it was triggered by pregnancy, but many people find it
+                  persists without treatment. The more sun exposure and heat
+                  exposure you get, the more it tends to linger. A proper
+                  melasma plan usually focuses on control and long-term
+                  management, not a quick "one time" fix.
+                </p>
+              </motion.div>
+
+              <motion.div
+                variants={fadeInUp}
+                className="bg-light rounded-xl p-6"
+              >
+                <h3 className="font-georgia text-xl text-brown mb-3">
+                  Are pigmentation treatments safe?
+                </h3>
+                <p className="text-taupe font-inter">
+                  Most pigmentation treatments are safe when performed by
+                  experienced medical professionals using suitable techniques
+                  for your skin type. Clinics commonly emphasise tailored
+                  treatment selection and appropriate aftercare to reduce
+                  unwanted side effects. The biggest risk usually comes from
+                  over-treating or mixing too many harsh steps at the same time.
+                </p>
+              </motion.div>
+
+              <motion.div
+                variants={fadeInUp}
+                className="bg-light rounded-xl p-6"
+              >
+                <h3 className="font-georgia text-xl text-brown mb-3">
+                  How many sessions will I need for pigmentation removal?
+                </h3>
+                <p className="text-taupe font-inter">
+                  There is no single number. Some people see visible improvement
+                  after a few sessions, while deeper or recurring pigment
+                  patterns take more time. Many KL clinics mention that multiple
+                  sessions are typical for pico laser style pigment programs,
+                  often in a multi-session plan depending on severity. Your
+                  lifestyle also matters. Sun exposure can slow progress.
+                </p>
+              </motion.div>
+
+              <motion.div
+                variants={fadeInUp}
+                className="bg-light rounded-xl p-6"
+              >
+                <h3 className="font-georgia text-xl text-brown mb-3">
+                  How much does pigmentation laser treatment cost in Kuala
+                  Lumpur?
+                </h3>
+                <p className="text-taupe font-inter">
+                  Costs vary by clinic, device, and area size. Some KL clinics
+                  list laser pigmentation costs around RM500 to RM1,000
+                  depending on sessions and treatment area, while other Malaysia
+                  price guides estimate pico laser pigment sessions around RM400
+                  to RM900. Treat these as ranges only. A proper quote depends
+                  on your pigment map.
+                </p>
+              </motion.div>
+
+              <motion.div
+                variants={fadeInUp}
+                className="bg-light rounded-xl p-6"
+              >
+                <h3 className="font-georgia text-xl text-brown mb-3">
+                  What are the most popular treatments for hyperpigmentation in
+                  Kuala Lumpur?
+                </h3>
+                <p className="text-taupe font-inter">
+                  Commonly mentioned options include Q-switched lasers, pico
+                  lasers, IPL, and customised chemical peels. The "popular"
+                  option is not always the best for you. For example, melasma
+                  may need a more cautious approach than sunspots. That is why
+                  doctors usually assess pigment type before recommending a
+                  device.
+                </p>
+              </motion.div>
+
+              <motion.div
+                variants={fadeInUp}
+                className="bg-light rounded-xl p-6"
+              >
+                <h3 className="font-georgia text-xl text-brown mb-3">
+                  What is the difference between melasma and hyperpigmentation?
+                </h3>
+                <p className="text-taupe font-inter">
+                  Hyperpigmentation is a broad term for darkening of skin.
+                  Melasma is a specific type that often appears as patches and
+                  is commonly linked with hormonal triggers and sun sensitivity.
+                  Many educational resources explain that different pigment
+                  conditions need different strategies, and that is why
+                  diagnosis matters before treatment.
+                </p>
+              </motion.div>
+
+              <motion.div
+                variants={fadeInUp}
+                className="bg-light rounded-xl p-6"
+              >
+                <h3 className="font-georgia text-xl text-brown mb-3">
+                  Is pico laser good for pigmentation?
+                </h3>
+                <p className="text-taupe font-inter">
+                  Many Malaysian clinics describe pico laser as effective for
+                  pigment concerns because it uses ultra-short pulses to break
+                  down melanin particles, often with minimal downtime when used
+                  appropriately. That said, your pigment type still matters. A
+                  good outcome comes from matching the right laser approach to
+                  your pigment pattern and your skin tone.
+                </p>
+              </motion.div>
+
+              <motion.div
+                variants={fadeInUp}
+                className="bg-light rounded-xl p-6"
+              >
+                <h3 className="font-georgia text-xl text-brown mb-3">
+                  What should I do after pigmentation treatment?
+                </h3>
+                <p className="text-taupe font-inter">
+                  Aftercare is not optional. Keep your routine gentle, avoid
+                  heat and harsh actives for the first few days, and commit to
+                  daily sunscreen. Many clinics include post-treatment care
+                  guidance as part of safe pigmentation management, especially
+                  to reduce rebound pigment or irritation. If you treat pigment
+                  but keep getting UV exposure without protection, results will
+                  not hold.
+                </p>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Why Choose Nexus */}
+      <section className="py-24 bg-wine text-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto px-4"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl mb-8 text-center"
+          >
+            Why choose Nexus Clinic Kuala Lumpur for pigmentation?
+          </motion.h2>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-xl mb-8 text-center max-w-2xl mx-auto"
+          >
+            Because you do not just want lighter spots. You want stable skin
+            that stays calm.
+          </motion.p>
+
+          <motion.div
+            variants={fadeInUp}
+            className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto text-center"
+          >
+            <div>
+              <Award className="w-12 h-12 mx-auto mb-4 text-rose" />
+              <p className="font-inter">
+                A long-established clinic in KL, founded in 2001
+              </p>
+            </div>
+            <div>
+              <MapPin className="w-12 h-12 mx-auto mb-4 text-rose" />
+              <p className="font-inter">
+                Easy KL access at Wisma UOA II, Jalan Pinang
+              </p>
+            </div>
+            <div>
+              <Layers className="w-12 h-12 mx-auto mb-4 text-rose" />
+              <p className="font-inter">
+                Multiple pigmentation pathways, not one "signature laser" for
+                everyone
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-center mt-8 text-cream/90 font-inter"
+          >
+            Practical education for Asian skin tones, including when to choose
+            laser vs peel
+          </motion.p>
+        </motion.div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-24 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto px-4 text-center max-w-3xl"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl text-brown mb-6"
+          >
+            Ready to start treating the cause?
+          </motion.h2>
+          <motion.p
+            variants={fadeInUp}
+            className="text-taupe font-inter text-lg mb-8"
+          >
+            You will know what is realistic, what needs consistency, and what
+            will keep coming back if you skip aftercare.
+          </motion.p>
+          <motion.button
+            variants={scaleIn}
+            className="bg-wine text-light px-12 py-4 rounded-full font-inter text-lg hover:bg-rose transition-all duration-300 shadow-xl hover:shadow-2xl"
+          >
+            Book Your Consultation
+          </motion.button>
+        </motion.div>
+      </section>
+    </div>
   );
 };
 

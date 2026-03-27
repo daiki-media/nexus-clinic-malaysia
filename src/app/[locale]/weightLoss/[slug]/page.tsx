@@ -13,10 +13,13 @@ import Wegovy from "@/src/views/weightlossTreatment/PageWegovyMalaysia";
 import DoctorMonitored from "@/src/views/weightlossTreatment/DoctorMonitored";
 import HCGWeightLoss from "@/src/views/weightlossTreatment/HCG";
 import Duromine from "@/src/views/weightlossTreatment/Duromine";
-import GLP from "@/src/views/weightlossTreatment/GLP";
 import Zepbound from "@/src/views/weightlossTreatment/ZepBound";
 // import IVDrip from "@/src/views/weightlossTreatment/IVDrip";
 import Default from "@/src/views/weightlossTreatment/Default";
+import PageOzempicMalaysia from "@/src/views/weightlossTreatment/PageOzempicMalaysia";
+import GLP1LandingPage from "@/src/views/weightlossTreatment/GLP";
+import SimaglutideLanding from "@/src/views/weightlossTreatment/SimaglutideInjection";
+import TirzepatideLanding from "@/src/views/weightlossTreatment/Tirzepatide";
 
 const components: Record<string, React.ComponentType<{ locale: string }>> = {
   CoolSculpting,
@@ -27,9 +30,12 @@ const components: Record<string, React.ComponentType<{ locale: string }>> = {
   DoctorMonitored,
   HCGWeightLoss,
   Duromine,
-  GLP,
   Zepbound,
-//   IVDrip,
+  PageOzempicMalaysia,
+  GLP1LandingPage,
+  SimaglutideLanding,
+  TirzepatideLanding,
+  //   IVDrip,
 };
 
 export async function generateStaticParams() {
@@ -42,20 +48,21 @@ export async function generateStaticParams() {
   return paths;
 }
 
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ locale: string; slug: string }> 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const treatment = weightlossTreatmentsMetadata.find(t => t.slug === slug);
-  
+  const treatment = weightlossTreatmentsMetadata.find((t) => t.slug === slug);
+
   if (!treatment) return {};
-  
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://nexusclinic.my';
-  const url = locale === 'en' 
-    ? `${baseUrl}/weight-loss/${slug}` 
-    : `${baseUrl}/${locale}/weight-loss/${slug}`;
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://nexusclinic.my";
+  const url =
+    locale === "en"
+      ? `${baseUrl}/weightLoss/${slug}`
+      : `${baseUrl}/${locale}/weightLoss/${slug}`;
 
   return {
     title: treatment.title,
@@ -65,8 +72,8 @@ export async function generateMetadata({
       title: treatment.title,
       description: treatment.description,
       url,
-      siteName: 'Nexus Clinic',
-      type: 'website',
+      siteName: "Nexus Clinic",
+      type: "website",
     },
     robots: {
       index: true,
@@ -75,17 +82,17 @@ export async function generateMetadata({
   };
 }
 
-export default async function WeightLossTreatmentPage({ 
-  params 
-}: { 
-  params: Promise<{ locale: string; slug: string }> 
+export default async function WeightLossTreatmentPage({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  
-  const treatment = weightlossTreatmentsMetadata.find(t => t.slug === slug);
+
+  const treatment = weightlossTreatmentsMetadata.find((t) => t.slug === slug);
   if (!treatment) return <Default locale={locale} />;
-  
+
   const Component = components[treatment.component] || Default;
-  
+
   return <Component locale={locale} />;
 }

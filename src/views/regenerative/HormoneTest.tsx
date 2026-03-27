@@ -33,7 +33,11 @@ import FAQ from "../../components/FAQ";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 
-export default function HormoneTestLanding({ locale = fallbackLng }: { locale?: string }) {
+export default function HormoneTestLanding({
+  locale = fallbackLng,
+}: {
+  locale?: string;
+}) {
   const { t } = useTranslation(locale, "hormoneTest");
 
   const faqs = [
@@ -77,17 +81,54 @@ export default function HormoneTestLanding({ locale = fallbackLng }: { locale?: 
   ];
 
   const tests = [
-    { icon: Thermometer, name: t("tests.t1Name"), sub: t("tests.t1Sub"), desc: t("tests.t1Desc") },
-    { icon: Flower2, name: t("tests.t2Name"), sub: t("tests.t2Sub"), desc: t("tests.t2Desc") },
-    { icon: Flame, name: t("tests.t3Name"), sub: t("tests.t3Sub"), desc: t("tests.t3Desc") },
-    { icon: Activity, name: t("tests.t4Name"), sub: t("tests.t4Sub"), desc: t("tests.t4Desc") },
-    { icon: Brain, name: t("tests.t5Name"), sub: t("tests.t5Sub"), desc: t("tests.t5Desc") },
+    {
+      icon: Thermometer,
+      name: t("tests.t1Name"),
+      sub: t("tests.t1Sub"),
+      desc: t("tests.t1Desc"),
+    },
+    {
+      icon: Flower2,
+      name: t("tests.t2Name"),
+      sub: t("tests.t2Sub"),
+      desc: t("tests.t2Desc"),
+    },
+    {
+      icon: Flame,
+      name: t("tests.t3Name"),
+      sub: t("tests.t3Sub"),
+      desc: t("tests.t3Desc"),
+    },
+    {
+      icon: Activity,
+      name: t("tests.t4Name"),
+      sub: t("tests.t4Sub"),
+      desc: t("tests.t4Desc"),
+    },
+    {
+      icon: Brain,
+      name: t("tests.t5Name"),
+      sub: t("tests.t5Sub"),
+      desc: t("tests.t5Desc"),
+    },
   ];
 
   const timingCards = [
-    { icon: Calendar, title: t("bestTime.womenTimingTitle"), desc: t("bestTime.womenTimingDesc") },
-    { icon: Droplet, title: t("bestTime.progesteroneTitle"), desc: t("bestTime.progesteroneDesc") },
-    { icon: Sun, title: t("bestTime.menTimingTitle"), desc: t("bestTime.menTimingDesc") },
+    {
+      icon: Calendar,
+      title: t("bestTime.womenTimingTitle"),
+      desc: t("bestTime.womenTimingDesc"),
+    },
+    {
+      icon: Droplet,
+      title: t("bestTime.progesteroneTitle"),
+      desc: t("bestTime.progesteroneDesc"),
+    },
+    {
+      icon: Sun,
+      title: t("bestTime.menTimingTitle"),
+      desc: t("bestTime.menTimingDesc"),
+    },
   ];
 
   const resultFactors = [
@@ -105,18 +146,9 @@ export default function HormoneTestLanding({ locale = fallbackLng }: { locale?: 
     t("preparation.tip3"),
   ];
 
-  const budgetItems = [
-    t("cost.b1"),
-    t("cost.b2"),
-    t("cost.b3"),
-    t("cost.b4"),
-  ];
+  const budgetItems = [t("cost.b1"), t("cost.b2"), t("cost.b3"), t("cost.b4")];
 
-  const nexusStandout = [
-    t("market.n1"),
-    t("market.n2"),
-    t("market.n3"),
-  ];
+  const nexusStandout = [t("market.n1"), t("market.n2"), t("market.n3")];
 
   return (
     <>
@@ -169,9 +201,7 @@ export default function HormoneTestLanding({ locale = fallbackLng }: { locale?: 
               >
                 {t("hero.title1")}
                 <br />
-                <span className="text-cream">
-                  {t("hero.title2")}
-                </span>
+                <span className="text-cream">{t("hero.title2")}</span>
                 <br />
                 {t("hero.title3")}
               </motion.h2>
@@ -240,9 +270,7 @@ export default function HormoneTestLanding({ locale = fallbackLng }: { locale?: 
                 >
                   <div className="flex items-start gap-4">
                     <AlertCircle className="w-6 h-6 text-wine shrink-0 mt-1" />
-                    <p className="text-brown">
-                      {t("whatIs.note")}
-                    </p>
+                    <p className="text-brown">{t("whatIs.note")}</p>
                   </div>
                 </motion.div>
               </motion.div>
@@ -255,7 +283,7 @@ export default function HormoneTestLanding({ locale = fallbackLng }: { locale?: 
               >
                 <div className="absolute inset-0 bg-linear-to-tr from-wine/20 to-transparent rounded-3xl" />
                 <img
-                  src="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                  src="/images/regenerative/hormone-test.webp"
                   alt="Blood test tubes in laboratory"
                   className="rounded-3xl shadow-2xl w-full h-auto object-cover"
                 />
@@ -354,9 +382,7 @@ export default function HormoneTestLanding({ locale = fallbackLng }: { locale?: 
                     className="rounded-3xl shadow-2xl w-full h-auto object-cover"
                   />
                   <div className="mt-6 bg-wine/5 p-6 rounded-2xl border border-wine/20">
-                    <p className="text-brown text-sm">
-                      {t("reasons.edNote")}
-                    </p>
+                    <p className="text-brown text-sm">{t("reasons.edNote")}</p>
                   </div>
                 </div>
               </motion.div>
@@ -438,9 +464,7 @@ export default function HormoneTestLanding({ locale = fallbackLng }: { locale?: 
                   <h2 className="font-['Georgia',serif] text-4xl md:text-5xl text-brown mb-4">
                     {t("bestTime.title")}
                   </h2>
-                  <p className="text-taupe text-lg">
-                    {t("bestTime.subtitle")}
-                  </p>
+                  <p className="text-taupe text-lg">{t("bestTime.subtitle")}</p>
                 </motion.div>
 
                 <div className="space-y-6">
@@ -501,9 +525,7 @@ export default function HormoneTestLanding({ locale = fallbackLng }: { locale?: 
                 <h2 className="font-['Georgia',serif] text-4xl md:text-5xl text-brown mb-4">
                   {t("preparation.title")}
                 </h2>
-                <p className="text-taupe">
-                  {t("preparation.subtitle")}
-                </p>
+                <p className="text-taupe">{t("preparation.subtitle")}</p>
               </motion.div>
 
               <div className="space-y-6">
@@ -640,9 +662,7 @@ export default function HormoneTestLanding({ locale = fallbackLng }: { locale?: 
                 variants={fadeInUp}
                 className="bg-cream p-8 rounded-3xl shadow-xl mb-8"
               >
-                <p className="text-brown mb-6">
-                  {t("cost.intro")}
-                </p>
+                <p className="text-brown mb-6">{t("cost.intro")}</p>
 
                 <h3 className="font-['Georgia',serif] text-xl text-brown mb-4">
                   {t("cost.pantaiTitle")}
@@ -740,9 +760,7 @@ export default function HormoneTestLanding({ locale = fallbackLng }: { locale?: 
                   <h3 className="font-['Georgia',serif] text-lg text-brown mb-2">
                     {t("market.m1Title")}
                   </h3>
-                  <p className="text-brown text-sm">
-                    {t("market.m1Desc")}
-                  </p>
+                  <p className="text-brown text-sm">{t("market.m1Desc")}</p>
                 </motion.div>
 
                 <motion.div
@@ -753,9 +771,7 @@ export default function HormoneTestLanding({ locale = fallbackLng }: { locale?: 
                   <h3 className="font-['Georgia',serif] text-lg text-brown mb-2">
                     {t("market.m2Title")}
                   </h3>
-                  <p className="text-brown text-sm">
-                    {t("market.m2Desc")}
-                  </p>
+                  <p className="text-brown text-sm">{t("market.m2Desc")}</p>
                 </motion.div>
 
                 <motion.div
@@ -766,9 +782,7 @@ export default function HormoneTestLanding({ locale = fallbackLng }: { locale?: 
                   <h3 className="font-['Georgia',serif] text-lg text-brown mb-2">
                     {t("market.m3Title")}
                   </h3>
-                  <p className="text-brown text-sm">
-                    {t("market.m3Desc")}
-                  </p>
+                  <p className="text-brown text-sm">{t("market.m3Desc")}</p>
                 </motion.div>
               </div>
 

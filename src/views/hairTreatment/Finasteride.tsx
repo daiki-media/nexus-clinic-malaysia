@@ -4,23 +4,15 @@ import { motion } from "framer-motion";
 import {
   Shield,
   Clock,
-  Droplets,
   AlertCircle,
-  CheckCircle2,
+  CheckCircle,
   XCircle,
-  ArrowRight,
-  Calendar,
-  MapPin,
-  Users,
-  Sparkles,
-  Target,
+  Activity,
+  Droplet,
   Brain,
   Heart,
-  Activity,
-  Pill,
-  FlaskConical,
-  Scale,
-  Gem,
+  Calendar,
+  MapPin,
 } from "lucide-react";
 
 import {
@@ -34,11 +26,7 @@ import FAQ from "../../components/FAQ";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 
-const FinasterideLanding = ({
-  locale = fallbackLng,
-}: {
-  locale?: string;
-}) => {
+const FinasterideLanding = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "finasteride");
 
   const faqs = [
@@ -49,598 +37,1203 @@ const FinasterideLanding = ({
     { q: t("faq.q5"), a: t("faq.a5") },
   ];
 
+  const transformations = [
+    {
+      id: 1,
+      before: "/images/B&A-hair/B&A-fue-hair-transplant1.webp",
+      after: "/images/B&A-hair/B&A-fue-hair-transplant1.webp",
+    },
+    {
+      id: 2,
+      before: "/images/B&A-hair/B&A-fue-hair-transplant2.webp",
+      after: "/images/B&A-hair/B&A-fue-hair-transplant2.webp",
+    },
+    {
+      id: 3,
+      before: "/images/B&A-hair/B&A-fue-hair-transplant3.webp",
+      after: "/images/B&A-hair/B&A-fue-hair-transplant3.webp",
+    },
+  ];
+
   return (
-    <>
-      <main className="min-h-screen bg-cream font-[--font-inter] overflow-hidden">
-        {/* Hero Section */}
-        <motion.section
-          variants={staggerContainer}
+    <div className="min-h-screen bg-cream font-inter">
+      {/* Hero Section - Page 1 */}
+      <section className="relative overflow-hidden bg-linear-to-b from-wine/5 to-cream py-20 lg:py-28">
+        <motion.div
           initial="hidden"
-          whileInView="visible"
-          className="relative min-h-screen flex items-center"
-        >
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-wine rounded-full filter blur-3xl" />
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-rose rounded-full filter blur-3xl" />
-          </div>
-
-          <div className="container mx-auto px-4 md:px-8 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <motion.div variants={fadeInLeft} className="space-y-8">
-                <div className="inline-flex items-center gap-2 bg-glass backdrop-blur-sm px-4 py-2 rounded-full border border-taupe/20">
-                  <Gem className="w-4 h-4 text-wine" />
-                  <span className="text-sm text-brown">
-                    {t("hero.badge")}
-                  </span>
-                </div>
-
-                <h2 className="font-[--font-georgia] text-5xl md:text-7xl text-brown leading-tight">
-                  {t("hero.title1")}
-                  <span className="block text-wine">{t("hero.title2")}</span>
-                </h2>
-
-                <p className="text-xl text-taupe max-w-lg">
-                  {t("hero.desc")}
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="group bg-wine text-white px-8 py-4 rounded-full text-lg font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-shadow"
-                  >
-                    {t("hero.bookBtn")}
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </motion.button>
-
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="border-2 border-wine text-wine px-8 py-4 rounded-full text-lg font-semibold hover:bg-wine hover:text-white transition-colors"
-                  >
-                    {t("hero.learnBtn")}
-                  </motion.button>
-                </div>
-
-                {/* Trust Indicators */}
-                <div className="grid grid-cols-3 gap-4 pt-8">
-                  {[
-                    { icon: Shield, text: t("hero.trust1") },
-                    { icon: MapPin, text: t("hero.trust2") },
-                    { icon: Users, text: t("hero.trust3") },
-                  ].map((item, index) => (
-                    <motion.div
-                      key={index}
-                      variants={scaleIn}
-                      className="flex flex-col items-center text-center space-y-2"
-                    >
-                      <item.icon className="w-6 h-6 text-rose" />
-                      <span className="text-sm text-brown">{item.text}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInRight}
-                className="relative hidden lg:block"
-              >
-                <div className="relative w-full h-150 rounded-3xl overflow-hidden shadow-2xl">
-                  <img
-                    src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80"
-                    alt="Nexus Clinic KL Interior"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-brown/50 to-transparent" />
-                </div>
-
-                {/* Floating Card */}
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ repeat: Infinity, duration: 3 }}
-                  className="absolute -bottom-10 -left-10 bg-glass backdrop-blur-md p-6 rounded-2xl shadow-xl border border-white/20"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-wine rounded-full flex items-center justify-center">
-                      <Pill className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-brown">{t("hero.startingFrom")}</p>
-                      <p className="text-2xl font-bold text-wine">
-                        {t("hero.price")}
-                        <span className="text-sm font-normal text-taupe">
-                          {t("hero.perMonth")}
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* How Finasteride Works */}
-        <motion.section
+          animate="visible"
           variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 bg-[--color-light] relative"
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
         >
-          <div className="container mx-auto px-4 md:px-8">
-            <motion.div
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.h1
               variants={fadeInUp}
-              className="text-center max-w-3xl mx-auto mb-16"
+              className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown mb-6 leading-tight"
             >
-              <h2 className="font-[--font-georgia] text-4xl md:text-5xl text-brown mb-6">
-                {t("howItWorks.title")}
-              </h2>
-              <p className="text-xl text-taupe">
-                {t("howItWorks.desc")}
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: Droplets,
-                  title: t("howItWorks.h1Title"),
-                  description: t("howItWorks.h1Desc"),
-                },
-                {
-                  icon: Target,
-                  title: t("howItWorks.h2Title"),
-                  description: t("howItWorks.h2Desc"),
-                },
-                {
-                  icon: Sparkles,
-                  title: t("howItWorks.h3Title"),
-                  description: t("howItWorks.h3Desc"),
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={scaleIn}
-                  whileHover={{ y: -10 }}
-                  className="bg-white/50 backdrop-blur-sm p-8 rounded-3xl border border-taupe/10 hover:border-wine/30 transition-all"
-                >
-                  <div className="w-16 h-16 bg-wine/10 rounded-2xl flex items-center justify-center mb-6">
-                    <item.icon className="w-8 h-8 text-wine" />
-                  </div>
-                  <h3 className="text-2xl font-[--font-georgia] text-brown mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-taupe">{item.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Timeline Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 bg-cream"
-        >
-          <div className="container mx-auto px-4 md:px-8">
-            <motion.div
-              variants={fadeInUp}
-              className="text-center max-w-3xl mx-auto mb-16"
-            >
-              <h2 className="font-[--font-georgia] text-4xl md:text-5xl text-brown mb-6">
-                {t("timeline.title")}
-              </h2>
-              <p className="text-xl text-taupe">
-                {t("timeline.desc")}
-              </p>
-            </motion.div>
-
-            <div className="relative">
-              {/* Timeline Line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-linear-to-b from-wine to-rose hidden lg:block" />
-
-              <div className="space-y-12 lg:space-y-0">
-                {[
-                  {
-                    time: t("timeline.t1Time"),
-                    title: t("timeline.t1Title"),
-                    description: t("timeline.t1Desc"),
-                    icon: Clock,
-                    position: "left",
-                  },
-                  {
-                    time: t("timeline.t2Time"),
-                    title: t("timeline.t2Title"),
-                    description: t("timeline.t2Desc"),
-                    icon: Activity,
-                    position: "right",
-                  },
-                  {
-                    time: t("timeline.t3Time"),
-                    title: t("timeline.t3Title"),
-                    description: t("timeline.t3Desc"),
-                    icon: Calendar,
-                    position: "left",
-                  },
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInUp}
-                    className={`flex flex-col ${item.position === "right" ? "lg:items-end" : ""}`}
-                  >
-                    <div
-                      className={`lg:w-1/2 ${item.position === "right" ? "lg:ml-auto" : ""}`}
-                    >
-                      <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-shadow relative">
-                        {/* Timeline Dot */}
-                        <div
-                          className="absolute top-1/2 -translate-y-1/2 hidden lg:block w-4 h-4 bg-wine rounded-full
-                        ${item.position === 'left' ? '-right-8' : '-left-8'}"
-                        />
-
-                        <div className="flex items-center gap-4 mb-4">
-                          <div className="w-12 h-12 bg-wine/10 rounded-xl flex items-center justify-center">
-                            <item.icon className="w-6 h-6 text-wine" />
-                          </div>
-                          <span className="text-sm font-semibold text-wine">
-                            {item.time}
-                          </span>
-                        </div>
-                        <h3 className="text-2xl font-[--font-georgia] text-brown mb-2">
-                          {item.title}
-                        </h3>
-                        <p className="text-taupe">{item.description}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Good Fit / Not Good Fit */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 bg-[--color-light]"
-        >
-          <div className="container mx-auto px-4 md:px-8">
-            <motion.div
-              variants={fadeInUp}
-              className="text-center max-w-3xl mx-auto mb-16"
-            >
-              <h2 className="font-[--font-georgia] text-4xl md:text-5xl text-brown mb-6">
-                {t("fit.title")}
-              </h2>
-              <p className="text-xl text-taupe">
-                {t("fit.desc")}
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Good Fit */}
-              <motion.div
-                variants={scaleIn}
-                whileHover={{ scale: 1.02 }}
-                className="bg-white p-8 rounded-3xl shadow-lg border-2 border-green-100"
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                    <CheckCircle2 className="w-6 h-6 text-green-600" />
-                  </div>
-                  <h3 className="text-2xl font-[--font-georgia] text-brown">
-                    {t("fit.goodTitle")}
-                  </h3>
-                </div>
-                <ul className="space-y-4">
-                  {[
-                    t("fit.g1"),
-                    t("fit.g2"),
-                    t("fit.g3"),
-                    t("fit.g4"),
-                  ].map((text, index) => (
-                    <motion.li
-                      key={index}
-                      variants={fadeInLeft}
-                      className="flex items-start gap-3"
-                    >
-                      <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-1" />
-                      <span className="text-brown">{text}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              {/* Not Good Fit */}
-              <motion.div
-                variants={scaleIn}
-                whileHover={{ scale: 1.02 }}
-                className="bg-white p-8 rounded-3xl shadow-lg border-2 border-red-100"
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
-                    <XCircle className="w-6 h-6 text-red-600" />
-                  </div>
-                  <h3 className="text-2xl font-[--font-georgia] text-brown">
-                    {t("fit.notTitle")}
-                  </h3>
-                </div>
-                <ul className="space-y-4">
-                  {[
-                    t("fit.n1"),
-                    t("fit.n2"),
-                    t("fit.n3"),
-                    t("fit.n4"),
-                  ].map((text, index) => (
-                    <motion.li
-                      key={index}
-                      variants={fadeInRight}
-                      className="flex items-start gap-3"
-                    >
-                      <XCircle className="w-5 h-5 text-red-600 shrink-0 mt-1" />
-                      <span className="text-brown">{text}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Side Effects & Safety */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 bg-cream"
-        >
-          <div className="container mx-auto px-4 md:px-8">
-            <motion.div
-              variants={fadeInUp}
-              className="text-center max-w-3xl mx-auto mb-16"
-            >
-              <div className="inline-flex items-center gap-2 bg-wine/10 px-4 py-2 rounded-full mb-4">
-                <Heart className="w-4 h-4 text-wine" />
-                <span className="text-sm text-brown">{t("safety.badge")}</span>
-              </div>
-              <h2 className="font-[--font-georgia] text-4xl md:text-5xl text-brown mb-6">
-                {t("safety.title")}
-              </h2>
-              <p className="text-xl text-taupe">
-                {t("safety.desc")}
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {[
-                {
-                  icon: Activity,
-                  title: t("safety.se1Title"),
-                  description: t("safety.se1Desc"),
-                },
-                {
-                  icon: Brain,
-                  title: t("safety.se2Title"),
-                  description: t("safety.se2Desc"),
-                },
-                {
-                  icon: FlaskConical,
-                  title: t("safety.se3Title"),
-                  description: t("safety.se3Desc"),
-                },
-                {
-                  icon: AlertCircle,
-                  title: t("safety.se4Title"),
-                  description: t("safety.se4Desc"),
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={scaleIn}
-                  whileHover={{ y: -5 }}
-                  className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-taupe/20"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-wine/10 rounded-xl flex items-center justify-center shrink-0">
-                      <item.icon className="w-6 h-6 text-wine" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-brown mb-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-sm text-taupe">{item.description}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="mt-8 p-6 bg-glass backdrop-blur-sm rounded-2xl border border-wine/20 max-w-4xl mx-auto"
-            >
-              <div className="flex items-start gap-4">
-                <Scale className="w-6 h-6 text-wine shrink-0 mt-1" />
-                <p className="text-sm text-brown">
-                  <span className="font-semibold">{t("safety.noteLabel")}</span>{" "}
-                  {t("safety.noteText")}
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* Cost Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 bg-[--color-light]"
-        >
-          <div className="container mx-auto px-4 md:px-8">
-            <motion.div
-              variants={fadeInUp}
-              className="text-center max-w-3xl mx-auto mb-16"
-            >
-              <h2 className="font-[--font-georgia] text-4xl md:text-5xl text-brown mb-6">
-                {t("cost.title")}
-              </h2>
-              <p className="text-xl text-taupe">{t("cost.desc")}</p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {[
-                {
-                  title: t("cost.p1Title"),
-                  price: t("cost.p1Price"),
-                  period: t("cost.p1Period"),
-                  features: [
-                    t("cost.p1F1"),
-                    t("cost.p1F2"),
-                    t("cost.p1F3"),
-                  ],
-                  popular: false,
-                },
-                {
-                  title: t("cost.p2Title"),
-                  price: t("cost.p2Price"),
-                  period: t("cost.p2Period"),
-                  features: [
-                    t("cost.p2F1"),
-                    t("cost.p2F2"),
-                    t("cost.p2F3"),
-                  ],
-                  popular: true,
-                },
-                {
-                  title: t("cost.p3Title"),
-                  price: t("cost.p3Price"),
-                  period: t("cost.p3Period"),
-                  features: [
-                    t("cost.p3F1"),
-                    t("cost.p3F2"),
-                    t("cost.p3F3"),
-                  ],
-                  popular: false,
-                },
-              ].map((plan, index) => (
-                <motion.div
-                  key={index}
-                  variants={scaleIn}
-                  whileHover={{ y: -10 }}
-                  className={`relative bg-white rounded-3xl p-8 shadow-lg ${
-                    plan.popular
-                      ? "border-2 border-wine scale-105"
-                      : "border border-taupe/20"
-                  }`}
-                >
-                  {plan.popular && (
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-wine text-white px-4 py-1 rounded-full text-sm">
-                      {t("cost.popular")}
-                    </div>
-                  )}
-                  <h3 className="text-xl font-[--font-georgia] text-brown mb-4">
-                    {plan.title}
-                  </h3>
-                  <div className="mb-6">
-                    <span className="text-4xl font-bold text-wine">
-                      {plan.price}
-                    </span>
-                    <span className="text-taupe">/{plan.period}</span>
-                  </div>
-                  <ul className="space-y-3 mb-8">
-                    {plan.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-rose" />
-                        <span className="text-sm text-brown">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`w-full py-3 rounded-full font-semibold transition-colors ${
-                      plan.popular
-                        ? "bg-wine text-white hover:bg-rose"
-                        : "border-2 border-wine text-wine hover:bg-wine hover:text-white"
-                    }`}
-                  >
-                    {t("cost.selectBtn")}
-                  </motion.button>
-                </motion.div>
-              ))}
-            </div>
+              Stop the DHT.{" "}
+              <span className="text-wine">Slow the shedding.</span>
+              <br />
+              Keep the hair you still have.
+            </motion.h1>
 
             <motion.p
               variants={fadeInUp}
-              className="text-center text-sm text-taupe mt-8"
+              className="text-lg md:text-xl text-taupe mb-8 max-w-2xl mx-auto"
             >
-              {t("cost.priceNote")}
+              Finasteride is a doctor prescribed treatment for male pattern hair
+              loss. It helps protect your crown and mid scalp as thinning
+              starts.
             </motion.p>
-          </div>
-        </motion.section>
 
-        {/* FAQ Section */}
-        <FAQ data={faqs} />
-
-        {/* CTA Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 bg-linear-to-br from-wine to-rose relative overflow-hidden"
-        >
-          {/* Decorative Elements */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full filter blur-3xl" />
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full filter blur-3xl" />
-          </div>
-
-          <div className="container mx-auto px-4 md:px-8 relative z-10">
             <motion.div
               variants={fadeInUp}
-              className="text-center max-w-3xl mx-auto text-white"
+              className="bg-glass backdrop-blur-sm rounded-2xl p-8 border border-white/20 shadow-xl"
             >
-              <h2 className="font-[--font-georgia] text-4xl md:text-5xl mb-6">
-                {t("cta.title")}
-              </h2>
-              <p className="text-xl mb-8 text-white/90">
-                {t("cta.desc")}
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-white text-wine px-8 py-4 rounded-full text-lg font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-shadow"
-                >
-                  {t("cta.bookBtn")}
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-wine transition-colors"
-                >
-                  {t("cta.locationBtn")}
-                </motion.button>
-              </div>
-
-              <div className="mt-12 flex items-center justify-center gap-2 text-white/80">
-                <MapPin className="w-5 h-5" />
-                <span>{t("cta.address")}</span>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+                <div className="flex items-start space-x-3">
+                  <Shield className="w-5 h-5 text-rose shrink-0 mt-1" />
+                  <span className="text-sm text-brown">
+                    Doctor led hair loss assessment and prescription planning
+                  </span>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
+                  <span className="text-sm text-brown">
+                    Evidence based options, often paired with minoxidil when
+                    suitable
+                  </span>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <MapPin className="w-5 h-5 text-rose shrink-0 mt-1" />
+                  <span className="text-sm text-brown">
+                    KLCC location at Wisma UOA II, Jalan Pinang
+                  </span>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <AlertCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
+                  <span className="text-sm text-brown">
+                    Clear guidance on side effects and safety checks
+                  </span>
+                </div>
               </div>
             </motion.div>
           </div>
-        </motion.section>
-      </main>
-    </>
+        </motion.div>
+      </section>
+
+      {/* What is Finasteride Section - WITH IMAGE - Page 1 */}
+      <section className="py-16 bg-light">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeInLeft}
+              viewport={{ once: true }}
+            >
+              <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-6">
+                Quick answer:{" "}
+                <span className="text-wine">
+                  What is finasteride for hair loss?
+                </span>
+              </h2>
+              <p className="text-brown/80 text-lg leading-relaxed">
+                Finasteride is a once daily tablet used for male pattern hair
+                loss. It works by lowering DHT, a hormone linked to follicle
+                shrinkage in androgenetic alopecia. Many men see slower hair
+                loss. Some also see regrowth over time.
+              </p>
+              <p className="text-brown/80 text-lg leading-relaxed mt-4">
+                At Nexus Clinic Kuala Lumpur, finasteride is usually considered
+                when your pattern looks hormonal and genetic, especially around
+                the crown or mid scalp.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeInRight}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="/api/placeholder/600/400"
+                  alt="Medical consultation for hair loss"
+                  className="w-full h-auto object-cover"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-brown/30 to-transparent"></div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Hair Thinning Happens - Page 1 */}
+      <section className="py-16 bg-cream">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={staggerContainer}
+          viewport={{ once: true }}
+          className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl text-brown mb-8 text-center"
+          >
+            Why hair thinning happens{" "}
+            <span className="text-wine">(in simple terms)</span>
+          </motion.h2>
+          <motion.p
+            variants={fadeInUp}
+            className="text-brown/80 text-lg leading-relaxed"
+          >
+            If your hairline is creeping back or your crown is opening up, it is
+            often male pattern hair loss. The follicles slowly shrink. Hair
+            becomes finer. Growth cycles get shorter. Over time, those hairs
+            stop showing up.
+          </motion.p>
+        </motion.div>
+      </section>
+
+      {/* How Finasteride Works - Page 2 */}
+      <section className="py-16 bg-light">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={staggerContainer}
+            viewport={{ once: true }}
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-3xl text-brown mb-6"
+            >
+              How <span className="text-wine">finasteride works</span>
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown/80 text-lg leading-relaxed mb-4"
+            >
+              Finasteride blocks an enzyme called 5 alpha reductase. This
+              reduces DHT levels. Less DHT means less miniaturisation of
+              sensitive follicles.
+            </motion.p>
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown/80 text-lg leading-relaxed"
+            >
+              That matters because most men do not lose hair evenly. They lose
+              it in a pattern. Finasteride is designed for that pattern.
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Who Finasteride Is For - Page 2 */}
+      <section className="py-16 bg-cream">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            variants={fadeInUp}
+            viewport={{ once: true }}
+            className="font-georgia text-3xl text-brown mb-12 text-center"
+          >
+            Who finasteride is for{" "}
+            <span className="text-wine">(and who it is not for)</span>
+          </motion.h2>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-light rounded-2xl p-8 border border-rose/20"
+            >
+              <h3 className="text-xl font-georgia text-wine mb-4 flex items-center">
+                <CheckCircle className="w-6 h-6 mr-2" />
+                Good fit for finasteride
+              </h3>
+              <p className="text-brown/80 mb-3">
+                Finasteride may be a good option if:
+              </p>
+              <ul className="space-y-3 text-brown/80">
+                <li className="flex items-start">
+                  <span className="text-wine mr-2">•</span>
+                  You have male pattern hair loss (temples, crown, mid scalp)
+                </li>
+                <li className="flex items-start">
+                  <span className="text-wine mr-2">•</span>
+                  You are in early to moderate stages and want to slow it down
+                </li>
+                <li className="flex items-start">
+                  <span className="text-wine mr-2">•</span>
+                  You can take a daily tablet consistently
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-light rounded-2xl p-8 border border-rose/20"
+            >
+              <h3 className="text-xl font-georgia text-rose mb-4 flex items-center">
+                <XCircle className="w-6 h-6 mr-2" />
+                Not a good fit (or needs extra caution)
+              </h3>
+              <ul className="space-y-3 text-brown/80">
+                <li className="flex items-start">
+                  <span className="text-rose mr-2">•</span>
+                  Finasteride is not for women or children.
+                </li>
+                <li className="flex items-start">
+                  <span className="text-rose mr-2">•</span>
+                  It is also not the first answer for patchy bald spots (like
+                  alopecia areata) or sudden shedding from stress or illness.
+                  That needs a proper diagnosis first.
+                </li>
+                <li className="flex items-start">
+                  <span className="text-rose mr-2">•</span>
+                  Pregnancy safety matters. Pregnant women should not handle
+                  crushed or broken finasteride tablets due to risk to a male
+                  fetus.
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Results Timeline - Pages 2-3 */}
+      <section className="py-16 bg-light">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            variants={fadeInUp}
+            viewport={{ once: true }}
+            className="font-georgia text-3xl text-brown mb-12 text-center"
+          >
+            What results to expect{" "}
+            <span className="text-wine">(timeline you can plan around)</span>
+          </motion.h2>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-cream rounded-xl p-6 border border-taupe/20"
+            >
+              <Clock className="w-8 h-8 text-wine mb-4" />
+              <h3 className="font-georgia text-xl text-brown mb-2">
+                Weeks 1 to 8
+              </h3>
+              <p className="text-brown/70 text-sm">
+                You may not see visible change yet. That is normal. Hair growth
+                is slow.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-cream rounded-xl p-6 border border-taupe/20"
+            >
+              <Activity className="w-8 h-8 text-wine mb-4" />
+              <h3 className="font-georgia text-xl text-brown mb-2">
+                Month 3 to 6
+              </h3>
+              <p className="text-brown/70 text-sm">
+                Many people start noticing less shedding or small improvements.
+                NHS guidance notes that for hair loss, improvement is often seen
+                after 3 to 6 months.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-cream rounded-xl p-6 border border-taupe/20"
+            >
+              <Calendar className="w-8 h-8 text-wine mb-4" />
+              <h3 className="font-georgia text-xl text-brown mb-2">
+                Month 9 to 12
+              </h3>
+              <p className="text-brown/70 text-sm">
+                This is where results are easier to judge. Many clinicians ask
+                patients to assess at around a year, not a few weeks.
+              </p>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={fadeInUp}
+            viewport={{ once: true }}
+            className="text-center text-brown/80 italic bg-cream p-6 rounded-xl max-w-2xl mx-auto border border-taupe/20"
+          >
+            <p className="font-semibold mb-2">If you stop finasteride</p>
+            <p>
+              If you stop finasteride, the benefit gradually fades and hair loss
+              usually resumes.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* How to Take Finasteride - Page 3 */}
+      <section className="py-16 bg-cream">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={staggerContainer}
+            viewport={{ once: true }}
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-3xl text-brown mb-6"
+            >
+              How to take finasteride{" "}
+              <span className="text-wine">(simple routine)</span>
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown/80 text-lg mb-4"
+            >
+              For hair loss, the usual dose is 1mg once daily. Take it at
+              roughly the same time each day. Swallow the tablet whole. Do not
+              crush or break it.
+            </motion.p>
+            <motion.p variants={fadeInUp} className="text-brown/80 text-lg">
+              At Nexus Clinic KL, the right plan depends on your pattern, family
+              history, and goals. Some patients also add minoxidil or in clinic
+              therapies when suitable.
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Side Effects and Safety - Pages 3-4 */}
+      <section className="py-16 bg-light">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            variants={fadeInUp}
+            viewport={{ once: true }}
+            className="font-georgia text-3xl text-brown mb-8 text-center"
+          >
+            Side effects and safety{" "}
+            <span className="text-wine">(talked about honestly)</span>
+          </motion.h2>
+
+          <motion.p
+            initial="hidden"
+            whileInView="visible"
+            variants={fadeInUp}
+            viewport={{ once: true }}
+            className="text-center text-brown/80 mb-8 max-w-2xl mx-auto"
+          >
+            Most men take finasteride without major issues. But side effects can
+            happen. The key is awareness and early action.
+          </motion.p>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-cream rounded-xl p-6 border border-taupe/20"
+            >
+              <Heart className="w-6 h-6 text-wine mb-3" />
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                Sexual side effects
+              </h3>
+              <p className="text-brown/70 text-sm">
+                In the FDA label for Propecia (finasteride 1mg), common adverse
+                reactions reported include decreased libido, erectile
+                dysfunction, and ejaculation disorder.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-cream rounded-xl p-6 border border-taupe/20"
+            >
+              <Brain className="w-6 h-6 text-wine mb-3" />
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                Mood changes and mental health
+              </h3>
+              <p className="text-brown/70 text-sm">
+                UK regulators advise men taking finasteride to watch for
+                psychiatric side effects. They advise stopping finasteride 1mg
+                for hair loss if depression or suicidal thoughts occur and
+                contacting a doctor promptly.
+              </p>
+              <p className="text-brown/70 text-sm mt-2">
+                The EMA has also described measures to reduce the risk of
+                suicidal thoughts and highlights that reports were mainly with
+                1mg tablets used for androgenic alopecia.
+              </p>
+              <p className="text-brown/70 text-sm mt-2">
+                NHS guidance similarly notes low mood and advises stopping right
+                away if taking it for hair loss and you feel depressed, and
+                telling close people so they can notice mood changes.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-cream rounded-xl p-6 border border-taupe/20"
+            >
+              <AlertCircle className="w-6 h-6 text-wine mb-3" />
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                Do side effects ever persist?
+              </h3>
+              <p className="text-brown/70 text-sm">
+                The UK drug safety update warns that sexual side effects may
+                persist after stopping in some cases and recommends monitoring.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-cream rounded-xl p-6 border border-taupe/20"
+            >
+              <Droplet className="w-6 h-6 text-wine mb-3" />
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                Breast changes
+              </h3>
+              <p className="text-brown/70 text-sm">
+                Seek medical advice if you notice breast lumps, pain, swelling,
+                or nipple discharge. NHS lists these as warning signs.
+              </p>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={fadeInUp}
+            viewport={{ once: true }}
+            className="bg-wine/10 rounded-xl p-6 border border-wine/20 max-w-4xl mx-auto"
+          >
+            <p className="text-brown/80">
+              If you have a history of depression, anxiety, or sexual health
+              concerns, mention it at your consult. The safest plan is a
+              tailored one.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Oral vs Topical Finasteride - Page 4 */}
+      <section className="py-16 bg-cream">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={staggerContainer}
+            viewport={{ once: true }}
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-3xl text-brown mb-6"
+            >
+              Oral vs topical finasteride{" "}
+              <span className="text-wine">(what to know in 2026)</span>
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown/80 text-lg mb-4"
+            >
+              Oral finasteride is the standard, well studied option for male
+              pattern hair loss.
+            </motion.p>
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown/80 text-lg mb-4"
+            >
+              Topical finasteride exists, but many products are compounded. The
+              FDA issued an alert about potential risks with compounded topical
+              finasteride and noted that these are not FDA approved.
+            </motion.p>
+            <motion.p variants={fadeInUp} className="text-brown/80 text-lg">
+              If you are considering topical versions, ask exactly what
+              formulation it is, how it is made, and what safety counselling is
+              provided.
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Finasteride vs Minoxidil - Page 4 */}
+      <section className="py-16 bg-light">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={staggerContainer}
+            viewport={{ once: true }}
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-3xl text-brown mb-6"
+            >
+              Finasteride vs minoxidil{" "}
+              <span className="text-wine">(and why many men combine both)</span>
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown/80 text-lg mb-4"
+            >
+              A simple way to think about it:
+            </motion.p>
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown/80 text-lg mb-4"
+            >
+              Finasteride helps protect hair by reducing DHT driven
+              miniaturisation. Minoxidil helps stimulate growth and can improve
+              thickness.
+            </motion.p>
+            <motion.p variants={fadeInUp} className="text-brown/80 text-lg">
+              The American Academy of Dermatology lists finasteride as FDA
+              approved for male pattern hair loss and explains it can slow hair
+              loss and stimulate new growth when taken as directed.
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Finasteride vs Dutasteride - Pages 4-5 */}
+      <section className="py-16 bg-cream">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={staggerContainer}
+            viewport={{ once: true }}
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-3xl text-brown mb-6"
+            >
+              Finasteride vs dutasteride{" "}
+              <span className="text-wine">(quick comparison)</span>
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown/80 text-lg mb-4"
+            >
+              Both reduce DHT, but dutasteride targets a broader set of enzymes
+              and is often discussed as stronger. It is not always the first
+              choice for hair loss.
+            </motion.p>
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown/80 text-lg mb-4"
+            >
+              The EMA review on suicidal thoughts covered both finasteride and
+              dutasteride, but the confirmed link to suicidal ideation was for
+              finasteride, with risk warnings strengthened.
+            </motion.p>
+            <motion.p variants={fadeInUp} className="text-brown/80 text-lg">
+              If you are hearing about dutasteride online, do not switch on your
+              own. Talk to a doctor first.
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Areas Finasteride Can Help - Page 5 */}
+      <section className="py-16 bg-light">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={staggerContainer}
+            viewport={{ once: true }}
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-3xl text-brown mb-6"
+            >
+              Areas finasteride can help most
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown/80 text-lg mb-4"
+            >
+              Finasteride tends to be most helpful for the crown and mid scalp.
+              Clinical trial data also shows benefit in the anterior or mid
+              scalp area in men taking 1 mg daily.
+            </motion.p>
+            <motion.p variants={fadeInUp} className="text-brown/80 text-lg">
+              Hairline regrowth can happen, but results vary. The earlier you
+              start, the better the odds of keeping what you have.
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Competitor Insights - Pages 5-6 */}
+      <section className="py-16 bg-cream">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            variants={fadeInUp}
+            viewport={{ once: true }}
+            className="font-georgia text-3xl text-brown mb-8 text-center"
+          >
+            What top clinics in Kuala Lumpur are doing{" "}
+            <span className="text-wine">(competitor insights)</span>
+          </motion.h2>
+
+          <div className="space-y-4 max-w-4xl mx-auto mb-8">
+            <motion.p
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeInUp}
+              viewport={{ once: true }}
+              className="text-brown/80"
+            >
+              When we review high ranking hair loss providers in KL, a few
+              patterns show up:
+            </motion.p>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeInUp}
+              viewport={{ once: true }}
+              className="bg-light rounded-xl p-6 border border-taupe/20"
+            >
+              <p className="text-brown/80">
+                1. Combination plans are common. Clinic Cleo highlights
+                finasteride as a first line option and often pairs it with
+                topical minoxidil, oral minoxidil, and add ons like mesotherapy.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeInUp}
+              viewport={{ once: true }}
+              className="bg-light rounded-xl p-6 border border-taupe/20"
+            >
+              <p className="text-brown/80">
+                2. Pricing is shown as per box or per month. Premier Clinic
+                lists finasteride at around RM240 per box and also promotes
+                bundled hair loss solutions starting from a lower entry price
+                point.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeInUp}
+              viewport={{ once: true }}
+              className="bg-light rounded-xl p-6 border border-taupe/20"
+            >
+              <p className="text-brown/80">
+                3. Authority signals matter. GLOJAS positions itself around
+                evidence based care and specialist credibility, and it
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeInUp}
+              viewport={{ once: true }}
+              className="bg-light rounded-xl p-6 border border-taupe/20"
+            >
+              <p className="text-brown/80">
+                4. People want cost ranges before they book. Clique Clinic gives
+                a helpful benchmark and notes finasteride can be roughly RM100
+                to RM300 per month depending on plan and provider.
+              </p>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={fadeInUp}
+            viewport={{ once: true }}
+            className="bg-wine/10 rounded-xl p-6 border border-wine/20 max-w-4xl mx-auto"
+          >
+            <p className="text-brown font-semibold mb-2">
+              How Nexus Clinic KL responds:
+            </p>
+            <p className="text-brown/80">
+              focus on proper diagnosis first, then match you to the simplest
+              plan that can actually be followed. Medication is often part of a
+              wider hair strategy, not a one off pill.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Cost Section - Page 6 */}
+      <section className="py-16 bg-light">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={staggerContainer}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-3xl text-brown mb-6"
+            >
+              Finasteride cost in Malaysia{" "}
+              <span className="text-wine">(what affects the price)</span>
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown/80 text-lg mb-4"
+            >
+              Prices vary by brand, supply, and whether it is bundled with
+              consults.
+            </motion.p>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-cream rounded-xl p-6 border border-taupe/20 mb-6"
+            >
+              <h3 className="font-georgia text-lg text-wine mb-3">
+                Here are real local reference points:
+              </h3>
+              <ul className="space-y-2 text-brown/80">
+                <li>
+                  • DoctorOnCall lists a generic finasteride 1 mg product
+                  (Finapecia 30 tablets) around RM94.12.
+                </li>
+                <li>
+                  • Some branded options are higher, for example Propecia
+                  listings can be around RM206 for a box size shown online.
+                </li>
+                <li>
+                  • Some KL clinics state finasteride around RM240 per box.
+                </li>
+                <li>
+                  • A practical estimate used by a KL provider is about RM100 to
+                  RM300 per month.
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-cream rounded-xl p-6 border border-taupe/20"
+            >
+              <h3 className="font-georgia text-lg text-wine mb-3">
+                What changes the cost for you:
+              </h3>
+              <ul className="space-y-2 text-brown/80">
+                <li>• Brand vs generic</li>
+                <li>• Monthly vs multi month supply</li>
+                <li>
+                  • Whether you add minoxidil, PRP, or other in clinic therapies
+                </li>
+                <li>• Whether follow ups and monitoring are included</li>
+              </ul>
+              <p className="mt-4 text-brown/80">
+                At Nexus Clinic Kuala Lumpur, you can ask for a clear plan with
+                expected monthly costs before you commit.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* What to Expect at Nexus - Pages 6-7 */}
+      <section className="py-16 bg-cream">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={staggerContainer}
+            viewport={{ once: true }}
+            className="bg-light rounded-2xl p-8 border border-taupe/20"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-3xl text-brown mb-6"
+            >
+              What to expect at{" "}
+              <span className="text-wine">Nexus Clinic KL</span>
+            </motion.h2>
+
+            <motion.div variants={fadeInUp} className="space-y-4">
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-1" />
+                <span className="text-brown/80">
+                  A short chat about your hair history and goals
+                </span>
+              </div>
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-1" />
+                <span className="text-brown/80">
+                  Scalp and hair assessment to confirm the cause
+                </span>
+              </div>
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-1" />
+                <span className="text-brown/80">
+                  A treatment plan that fits your routine, budget, and risk
+                  comfort
+                </span>
+              </div>
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-1" />
+                <span className="text-brown/80">
+                  Guidance on what to track for results over 3 to 12 months
+                </span>
+              </div>
+            </motion.div>
+
+            <motion.p variants={fadeInUp} className="mt-6 text-brown/80">
+              Location note: Nexus Clinic is at Wisma UOA II, Jalan Pinang,
+              Kuala Lumpur.
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Important Medical Notes - Page 7 */}
+      <section className="py-16 bg-light">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={staggerContainer}
+            viewport={{ once: true }}
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-3xl text-brown mb-6"
+            >
+              Important medical notes{" "}
+              <span className="text-wine">(small section, big value)</span>
+            </motion.h2>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-cream rounded-xl p-6 border border-taupe/20 mb-4"
+            >
+              <h3 className="font-georgia text-lg text-wine mb-2">
+                Tell your doctor about PSA testing
+              </h3>
+              <p className="text-brown/80">
+                Finasteride can lower PSA levels. If you do PSA tests, tell your
+                healthcare provider you are taking it so results are interpreted
+                correctly.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-cream rounded-xl p-6 border border-taupe/20"
+            >
+              <h3 className="font-georgia text-lg text-wine mb-2">
+                Blood donation
+              </h3>
+              <p className="text-brown/80">
+                Some blood services defer donors who have taken finasteride
+                recently, due to pregnancy related risk if blood is given to a
+                pregnant recipient.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ Section - Pages 7-9 */}
+      <section className="py-16 bg-cream">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            variants={fadeInUp}
+            viewport={{ once: true }}
+            className="font-georgia text-3xl text-brown mb-12 text-center"
+          >
+            PAA style FAQs about finasteride for hair loss{" "}
+            <span className="text-wine">(Malaysia)</span>
+          </motion.h2>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-light rounded-xl p-6 border border-taupe/20"
+            >
+              <h3 className="font-georgia text-lg text-wine mb-2">
+                Does finasteride regrow hair or just stop hair loss?
+              </h3>
+              <p className="text-brown/70 text-sm">
+                It can do both. Many men see slower hair loss. Some see new
+                growth. Results vary by stage and consistency.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-light rounded-xl p-6 border border-taupe/20"
+            >
+              <h3 className="font-georgia text-lg text-wine mb-2">
+                How long does finasteride take to work for hair loss?
+              </h3>
+              <p className="text-brown/70 text-sm">
+                Most people need 3 to 6 months to notice improvement. A full
+                assessment often needs closer to 12 months.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-light rounded-xl p-6 border border-taupe/20"
+            >
+              <h3 className="font-georgia text-lg text-wine mb-2">
+                What happens if I stop taking finasteride?
+              </h3>
+              <p className="text-brown/70 text-sm">
+                The benefit does not last forever. Hair loss usually returns
+                over time after stopping.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-light rounded-xl p-6 border border-taupe/20"
+            >
+              <h3 className="font-georgia text-lg text-wine mb-2">
+                Is finasteride safe to take long term?
+              </h3>
+              <p className="text-brown/70 text-sm">
+                Many people use it for months or years. Long term use should
+                still include monitoring for side effects.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-light rounded-xl p-6 border border-taupe/20"
+            >
+              <h3 className="font-georgia text-lg text-wine mb-2">
+                Can finasteride cause erectile dysfunction?
+              </h3>
+              <p className="text-brown/70 text-sm">
+                It can in some users. The FDA label lists erectile dysfunction
+                among common adverse reactions. If it happens, speak to your
+                doctor.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-light rounded-xl p-6 border border-taupe/20"
+            >
+              <h3 className="font-georgia text-lg text-wine mb-2">
+                Can finasteride cause depression or anxiety?
+              </h3>
+              <p className="text-brown/70 text-sm">
+                Mood changes have been reported. Regulators advise vigilance and
+                to stop finasteride 1 mg for hair loss if depression or suicidal
+                thoughts occur.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-light rounded-xl p-6 border border-taupe/20"
+            >
+              <h3 className="font-georgia text-lg text-wine mb-2">
+                Is finasteride better than minoxidil?
+              </h3>
+              <p className="text-brown/70 text-sm">
+                They work differently. Finasteride targets DHT. Minoxidil
+                stimulates growth and thickness. Many men use both for better
+                coverage.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-light rounded-xl p-6 border border-taupe/20"
+            >
+              <h3 className="font-georgia text-lg text-wine mb-2">
+                Can women take finasteride for hair loss?
+              </h3>
+              <p className="text-brown/70 text-sm">
+                Finasteride is not indicated for women and has important
+                pregnancy related risks. A doctor should guide any alternative
+                options for female hair loss.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-light rounded-xl p-6 border border-taupe/20"
+            >
+              <h3 className="font-georgia text-lg text-wine mb-2">
+                Should I choose oral or topical finasteride?
+              </h3>
+              <p className="text-brown/70 text-sm">
+                Oral finasteride is the best studied option. Be cautious with
+                compounded topical versions, as the FDA has raised safety
+                concerns and they are not FDA approved.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-light rounded-xl p-6 border border-taupe/20"
+            >
+              <h3 className="font-georgia text-lg text-wine mb-2">
+                Does finasteride affect fertility?
+              </h3>
+              <p className="text-brown/70 text-sm">
+                Some studies report changes in semen parameters in certain men,
+                often improving after stopping. If you are trying to conceive,
+                discuss it before starting.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-light rounded-xl p-6 border border-taupe/20"
+            >
+              <h3 className="font-georgia text-lg text-wine mb-2">
+                What age should you start finasteride?
+              </h3>
+              <p className="text-brown/70 text-sm">
+                There is no single best age. It is usually considered for adult
+                men once male pattern hair loss is clear. Earlier treatment
+                often helps you keep more hair. A doctor can confirm your
+                diagnosis first.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={scaleIn}
+              viewport={{ once: true }}
+              className="bg-light rounded-xl p-6 border border-taupe/20"
+            >
+              <h3 className="font-georgia text-lg text-wine mb-2">
+                How much does finasteride cost in Malaysia?
+              </h3>
+              <p className="text-brown/70 text-sm">
+                It varies. Local references show about RM94 for some generics,
+                while branded options and clinic supplied boxes can be higher.
+                Many clinics quote roughly RM100 to RM300 per month depending on
+                plan.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA - Page 9 */}
+      <section className="py-20 bg-linear-to-r from-wine to-rose text-light">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={staggerContainer}
+          viewport={{ once: true }}
+          className="container mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl md:text-4xl mb-6"
+          >
+            Ready to treat hair loss with a plan that fits real life?
+          </motion.h2>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-lg mb-8 max-w-2xl mx-auto opacity-90"
+          >
+            If you are seeing thinning in the crown or mid scalp, do not wait
+            until it is obvious in photos. A short medical consult can tell you
+            what type of hair loss you have, and whether finasteride makes sense
+            for you.
+          </motion.p>
+
+          <motion.div variants={fadeInUp} className="space-y-2">
+            <p className="text-xl font-semibold">Nexus Clinic Kuala Lumpur</p>
+            <p className="opacity-90">Wisma UOA II, Jalan Pinang, KLCC area</p>
+          </motion.div>
+        </motion.div>
+      </section>
+    </div>
   );
 };
 

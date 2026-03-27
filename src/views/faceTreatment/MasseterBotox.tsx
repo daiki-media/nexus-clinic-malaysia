@@ -2,16 +2,21 @@
 
 import { motion } from "framer-motion";
 import {
-  Sparkles,
-  Shield,
-  Clock,
-  Heart,
   ChevronRight,
-  Droplets,
-  Brain,
-  Award,
-  MapPin,
+  Shield,
+  Heart,
+  Activity,
+  AlertCircle,
   CheckCircle2,
+  XCircle,
+  MapPin,
+  Sparkles,
+  Brain,
+  Bone,
+  Layers,
+  Sun,
+  Award,
+  Droplets,
 } from "lucide-react";
 
 import {
@@ -28,541 +33,1053 @@ import { fallbackLng } from "@/src/i18n/settings";
 const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "masseterBotox");
 
-  const faqs = [
-    { q: t("faq.q1"), a: t("faq.a1") },
-    { q: t("faq.q2"), a: t("faq.a2") },
-    { q: t("faq.q3"), a: t("faq.a3") },
-    { q: t("faq.q4"), a: t("faq.a4") },
-    { q: t("faq.q5"), a: t("faq.a5") },
-  ];
-
-  const trustBadges = [
-    { icon: Shield, text: t("hero.trust1") },
-    { icon: Heart, text: t("hero.trust2") },
-    { icon: MapPin, text: t("hero.trust3") },
-    { icon: Award, text: t("hero.trust4") },
-  ];
-
-  const summaryPoints = [t("summary.point1"), t("summary.point2")];
-
-  const wideReasons = [t("summary.wide1"), t("summary.wide2"), t("summary.wide3"), t("summary.wide4")];
-
-  const bestForCards = [
-    { icon: Droplets, title: t("bestFor.card1Title"), description: t("bestFor.card1Desc"), color: "from-wine to-rose" },
-    { icon: Brain, title: t("bestFor.card2Title"), description: t("bestFor.card2Desc"), color: "from-rose to-taupe" },
-    { icon: Heart, title: t("bestFor.card3Title"), description: t("bestFor.card3Desc"), color: "from-taupe to-brown" },
-  ];
-
-  const timelineItems = [
-    { time: t("timeline.time1"), desc: t("timeline.time1Desc") },
-    { time: t("timeline.time2"), desc: t("timeline.time2Desc") },
-    { time: t("timeline.time3"), desc: t("timeline.time3Desc") },
-    { time: t("timeline.time4"), desc: t("timeline.time4Desc") },
-  ];
-
-  const priceItems = [
-    { label: t("pricing.price1Label"), value: t("pricing.price1Value") },
-    { label: t("pricing.price2Label"), value: t("pricing.price2Value") },
-    { label: t("pricing.price3Label"), value: t("pricing.price3Value") },
-  ];
-
-  const comparisons = [
-    { title: t("compare.comp1Title"), botox: t("compare.comp1Botox"), alt: t("compare.comp1Alt"), note: t("compare.comp1Note") },
-    { title: t("compare.comp2Title"), botox: t("compare.comp2Botox"), alt: t("compare.comp2Alt"), note: t("compare.comp2Note") },
-    { title: t("compare.comp3Title"), botox: t("compare.comp3Botox"), alt: t("compare.comp3Alt"), note: t("compare.comp3Note") },
-    { title: t("compare.comp4Title"), botox: t("compare.comp4Botox"), alt: t("compare.comp4Alt"), note: t("compare.comp4Note") },
-  ];
-
   return (
-    <>
-      <main className="bg-light font-[--font-inter] overflow-hidden">
-        {/* Hero Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8"
-          style={{
-            background: `linear-linear(135deg, var(--color-cream) 0%, var(--color-light) 100%)`,
-          }}
-        >
-          {/* Decorative Elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            <motion.div
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.1, 0.15, 0.1],
-              }}
-              transition={{ duration: 8, repeat: Infinity }}
-              className="absolute -top-1/2 -right-1/2 w-full h-full rounded-full bg-rose opacity-10 blur-3xl"
-            />
-            <motion.div
-              animate={{
-                scale: [1, 1.1, 1],
-                opacity: [0.1, 0.2, 0.1],
-              }}
-              transition={{ duration: 10, repeat: Infinity }}
-              className="absolute -bottom-1/2 -left-1/2 w-full h-full rounded-full bg-wine opacity-10 blur-3xl"
-            />
-          </div>
+    <div className="min-h-screen bg-light font-inter">
+      {/* Hero Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer}
+        className="relative overflow-hidden bg-cream py-20 px-4 md:px-8 lg:px-16"
+      >
+        <div className="absolute top-20 right-20 w-64 h-64 bg-rose/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-20 w-72 h-72 bg-wine/10 rounded-full blur-3xl" />
 
-          <div className="relative max-w-7xl mx-auto text-center">
-            <motion.div variants={fadeInUp} className="mb-6">
-              <span className="inline-flex items-center px-4 py-2 rounded-full bg-glass backdrop-blur-sm border border-taupe/20 text-brown text-sm font-medium">
-                <Sparkles className="w-4 h-4 mr-2 text-wine" />
-                {t("hero.badge")}
-              </span>
-            </motion.div>
-
-            <motion.h2
-              variants={fadeInUp}
-              className="font-[--font-georgia] text-5xl sm:text-6xl lg:text-7xl text-brown mb-6 leading-tight"
-            >
-              {t("hero.title1")}
-              <br />
-              <span className="text-wine">{t("hero.title2")}</span>
-              <br />{t("hero.title3")}
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl text-taupe max-w-2xl mx-auto mb-10"
-            >
-              {t("hero.desc")}
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group px-8 py-4 bg-wine text-white rounded-full font-medium text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center"
-              >
-                {t("hero.cta1")}
-                <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-glass backdrop-blur-sm border border-taupe/30 text-brown rounded-full font-medium text-lg hover:bg-white transition-all duration-300"
-              >
-                {t("hero.cta2")}
-              </motion.button>
-            </motion.div>
-
-            {/* Trust Badges */}
-            <motion.div
-              variants={fadeInUp}
-              className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-16 border-t border-taupe/20"
-            >
-              {trustBadges.map((item, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ y: -5 }}
-                  className="flex flex-col items-center text-center"
-                >
-                  <div className="w-12 h-12 rounded-full bg-wine/10 flex items-center justify-center mb-3">
-                    <item.icon className="w-6 h-6 text-wine" />
-                  </div>
-                  <p className="text-sm text-brown font-medium">{item.text}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* Quick Summary Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 px-4 sm:px-6 lg:px-8 bg-white"
-        >
-          <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <motion.div variants={fadeInLeft}>
-                <span className="text-wine font-medium mb-4 block">
-                  {t("summary.badge")}
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-6">
+              <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-taupe/20">
+                <Sparkles className="w-4 h-4 text-wine" />
+                <span className="text-sm text-brown font-medium">
+                  Nexus Clinic Kuala Lumpur
                 </span>
-                <h2 className="font-[--font-georgia] text-4xl text-brown mb-6">
-                  {t("summary.title")}
-                </h2>
-                <p className="text-lg text-taupe mb-8 leading-relaxed">
-                  {t("summary.desc")}
-                </p>
-
-                <div className="space-y-6">
-                  {summaryPoints.map((item, index) => (
-                    <motion.div
-                      key={index}
-                      whileHover={{ x: 10 }}
-                      className="flex items-start gap-4"
-                    >
-                      <div className="w-8 h-8 rounded-full bg-wine/10 flex items-center justify-center shrink-0 mt-1">
-                        <CheckCircle2 className="w-5 h-5 text-wine" />
-                      </div>
-                      <p className="text-brown text-lg">{item}</p>
-                    </motion.div>
-                  ))}
-                </div>
-
-                <motion.div
-                  variants={scaleIn}
-                  className="mt-10 p-6 bg-[--color-cream] rounded-2xl"
-                >
-                  <div className="flex items-center gap-4">
-                    <Clock className="w-8 h-8 text-wine" />
-                    <div>
-                      <p className="font-medium text-brown">
-                        {t("summary.quickTitle")}
-                      </p>
-                      <p className="text-taupe">
-                        {t("summary.quickDesc")}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-
-              <motion.div variants={fadeInRight} className="relative">
-                <div className="relative z-10 bg-linear-to-br from-wine to-rose p-1 rounded-3xl">
-                  <div className="bg-white rounded-3xl p-8">
-                    <h3 className="font-[--font-georgia] text-2xl text-brown mb-6">
-                      {t("summary.wideTitle")}
-                    </h3>
-                    <div className="space-y-4">
-                      {wideReasons.map((item, index) => (
-                        <motion.div
-                          key={index}
-                          whileHover={{ scale: 1.02 }}
-                          className="p-4 bg-[--color-cream] rounded-xl"
-                        >
-                          <p className="text-brown">{item}</p>
-                        </motion.div>
-                      ))}
-                    </div>
-                    <p className="mt-6 text-taupe text-sm italic">
-                      {t("summary.wideNote")}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Decorative Element */}
-                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-rose opacity-20 rounded-full blur-2xl" />
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Best For Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 px-4 sm:px-6 lg:px-8 bg-[--color-cream]"
-        >
-          <div className="max-w-7xl mx-auto">
-            <motion.div variants={fadeInUp} className="text-center mb-16">
-              <span className="text-wine font-medium mb-4 block">
-                {t("bestFor.badge")}
-              </span>
-              <h2 className="font-[--font-georgia] text-4xl text-brown mb-6">
-                {t("bestFor.title")}
-              </h2>
-            </motion.div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {bestForCards.map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={scaleIn}
-                  whileHover={{ y: -10 }}
-                  className="group relative"
-                >
-                  <div
-                    className={`absolute inset-0 bg-linear-to-br ${item.color} opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity duration-500`}
-                  />
-                  <div className="relative bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div
-                      className={`w-16 h-16 rounded-2xl bg-linear-to-br ${item.color} bg-opacity-10 flex items-center justify-center mb-6`}
-                    >
-                      <item.icon className="w-8 h-8 text-light" />
-                    </div>
-                    <h3 className="font-[--font-georgia] text-2xl text-brown mb-4">
-                      {item.title}
-                    </h3>
-                    <p className="text-taupe leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Timeline Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 px-4 sm:px-6 lg:px-8 bg-white"
-        >
-          <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <motion.div variants={fadeInLeft}>
-                <span className="text-wine font-medium mb-4 block">
-                  {t("timeline.badge")}
-                </span>
-                <h2 className="font-[--font-georgia] text-4xl text-brown mb-6">
-                  {t("timeline.title")}
-                </h2>
-                <p className="text-lg text-taupe mb-8">
-                  {t("timeline.desc")}
-                </p>
-
-                <div className="space-y-6">
-                  {timelineItems.map((item, index) => (
-                    <motion.div
-                      key={index}
-                      whileHover={{ x: 10 }}
-                      className="flex items-start gap-4"
-                    >
-                      <div className="w-12 h-12 rounded-full bg-wine flex items-center justify-center shrink-0 text-white font-medium">
-                        {index + 1}
-                      </div>
-                      <div>
-                        <p className="font-[--font-georgia] text-xl text-brown mb-1">
-                          {item.time}
-                        </p>
-                        <p className="text-taupe">{item.desc}</p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-
-              <motion.div variants={fadeInRight} className="relative">
-                <div className="relative z-10 bg-[--color-cream] p-8 rounded-3xl">
-                  <h3 className="font-[--font-georgia] text-2xl text-brown mb-6">
-                    {t("timeline.expTitle")}
-                  </h3>
-                  <p className="text-taupe mb-6 leading-relaxed">
-                    {t("timeline.expDesc")}
-                  </p>
-                  <div className="p-6 bg-white rounded-2xl">
-                    <p className="text-brown italic">
-                      {t("timeline.expQuote")}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Decorative Elements */}
-                <div className="absolute top-1/2 -left-6 w-24 h-24 bg-wine opacity-10 rounded-full blur-2xl" />
-                <div className="absolute bottom-0 right-0 w-32 h-32 bg-rose opacity-10 rounded-full blur-2xl" />
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Units & Pricing Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 px-4 sm:px-6 lg:px-8 bg-[--color-cream]"
-        >
-          <div className="max-w-7xl mx-auto">
-            <motion.div variants={fadeInUp} className="text-center mb-16">
-              <span className="text-wine font-medium mb-4 block">
-                {t("pricing.badge")}
-              </span>
-              <h2 className="font-[--font-georgia] text-4xl text-brown mb-6">
-                {t("pricing.title")}
-              </h2>
-            </motion.div>
-
-            <div className="grid lg:grid-cols-2 gap-8">
-              <motion.div
-                variants={fadeInLeft}
-                className="bg-white p-8 rounded-3xl shadow-lg"
-              >
-                <h3 className="font-[--font-georgia] text-2xl text-brown mb-6">
-                  {t("pricing.unitsTitle")}
-                </h3>
-                <p className="text-taupe mb-6">
-                  {t("pricing.unitsDesc")}
-                </p>
-                <div className="p-6 bg-[--color-cream] rounded-2xl">
-                  <p className="text-3xl font-[--font-georgia] text-wine mb-2">
-                    {t("pricing.unitsValue")}
-                  </p>
-                  <p className="text-taupe">
-                    {t("pricing.unitsNote")}
-                  </p>
-                </div>
-                <p className="mt-4 text-sm text-taupe italic">
-                  {t("pricing.unitsDisclaimer")}
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInRight}
-                className="bg-white p-8 rounded-3xl shadow-lg"
-              >
-                <h3 className="font-[--font-georgia] text-2xl text-brown mb-6">
-                  {t("pricing.priceTitle")}
-                </h3>
-                <p className="text-taupe mb-6">
-                  {t("pricing.priceDesc")}
-                </p>
-
-                <div className="space-y-4 mb-6">
-                  {priceItems.map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex justify-between items-center py-2 border-b border-taupe/10"
-                    >
-                      <span className="text-brown">{item.label}</span>
-                      <span className="font-[--font-georgia] text-wine text-xl">
-                        {item.value}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                <p className="text-sm text-taupe italic">
-                  {t("pricing.priceNote")}
-                </p>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Comparison Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 px-4 sm:px-6 lg:px-8 bg-white"
-        >
-          <div className="max-w-7xl mx-auto">
-            <motion.div variants={fadeInUp} className="text-center mb-16">
-              <span className="text-wine font-medium mb-4 block">
-                {t("compare.badge")}
-              </span>
-              <h2 className="font-[--font-georgia] text-4xl text-brown mb-6">
-                {t("compare.title")}
-              </h2>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {comparisons.map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={scaleIn}
-                  whileHover={{ y: -5 }}
-                  className="p-6 bg-[--color-cream] rounded-2xl"
-                >
-                  <h3 className="font-[--font-georgia] text-xl text-brown mb-4">
-                    {item.title}
-                  </h3>
-                  <div className="space-y-3 mb-4">
-                    <p className="flex items-start gap-2">
-                      <span className="text-wine font-medium">{t("compare.botoxLabel")}</span>
-                      <span className="text-taupe">{item.botox}</span>
-                    </p>
-                    <p className="flex items-start gap-2">
-                      <span className="text-wine font-medium">
-                        {t("compare.altLabel")}
-                      </span>
-                      <span className="text-taupe">{item.alt}</span>
-                    </p>
-                  </div>
-                  <p className="text-sm text-brown italic bg-white p-3 rounded-xl">
-                    {item.note}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* FAQs Section */}
-        <FAQ data={faqs} />
-
-        {/* CTA Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden"
-        >
-          {/* Decorative Background */}
-          <div className="absolute inset-0">
-            <motion.div
-              animate={{
-                scale: [1, 1.2, 1],
-                rotate: [0, 90, 0],
-              }}
-              transition={{ duration: 20, repeat: Infinity }}
-              className="absolute -top-1/2 -right-1/2 w-full h-full bg-linear-to-br from-wine/5 to-rose/5 rounded-full"
-            />
-          </div>
-
-          <div className="relative max-w-4xl mx-auto text-center">
-            <motion.div variants={fadeInUp}>
-              <span className="inline-flex items-center px-4 py-2 rounded-full bg-wine/10 text-wine text-sm font-medium mb-6">
-                <Heart className="w-4 h-4 mr-2" />
-                {t("cta.badge")}
-              </span>
-            </motion.div>
-
-            <motion.h2
-              variants={fadeInUp}
-              className="font-[--font-georgia] text-4xl md:text-5xl text-brown mb-6"
-            >
-              {t("cta.title")}
-              <br />
-              <span className="text-wine">{t("cta.titleHighlight")}</span>
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-xl text-taupe mb-10">
-              {t("cta.desc")}
-            </motion.p>
-
-            <motion.div variants={fadeInUp}>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group px-10 py-5 bg-wine text-white rounded-full font-medium text-xl shadow-2xl hover:shadow-3xl transition-all duration-300 inline-flex items-center"
-              >
-                {t("cta.button")}
-                <ChevronRight className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="mt-12 flex items-center justify-center gap-8 text-sm text-taupe"
-            >
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-wine" />
-                <span>{t("cta.location1")}</span>
               </div>
-              <div className="w-1 h-1 rounded-full bg-taupe" />
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-wine" />
-                <span>{t("cta.location2")}</span>
+
+              <h1 className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight">
+                Masseter Botox in
+                <span className="block text-wine mt-2">
+                  Kuala Lumpur, Malaysia
+                </span>
+              </h1>
+
+              <p className="text-xl text-taupe leading-relaxed">
+                A softer jawline. A quieter jaw. A more relaxed face.
+              </p>
+
+              <p className="text-brown/80 text-lg">
+                Masseter Botox helps slim a square jaw caused by muscle bulk. It
+                can also ease jaw tension from clenching and teeth grinding.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="absolute inset-0 bg-linear-to-br from-wine/20 to-rose/20 rounded-3xl transform rotate-3" />
+              <div className="relative p-8 rounded-3xl shadow-2xl border border-taupe/20 backdrop-blur-sm bg-white/90">
+                <h3 className="font-georgia text-2xl text-brown mb-6">
+                  Trust at a glance (Nexus Clinic KL)
+                </h3>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                    <span className="text-brown">
+                      Doctor-led facial assessment and dosing plan
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                    <span className="text-brown">
+                      Natural-looking contouring, not an "overdone" jaw
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                    <span className="text-brown">
+                      Central KL location (Wisma UOA II, Jalan Pinang)
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                    <span className="text-brown">
+                      Botox and facial injectables are core services at Nexus
+                      Clinic
+                    </span>
+                  </li>
+                </ul>
               </div>
             </motion.div>
           </div>
-        </motion.section>
-      </main>
-    </>
+        </div>
+      </motion.section>
+
+      {/* Quick Summary Section */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        className="py-16 px-4 md:px-8 lg:px-16 bg-white"
+      >
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            variants={fadeInUp}
+            className="bg-linear-to-br from-cream to-light p-8 md:p-12 rounded-3xl border border-taupe/20"
+          >
+            <h2 className="font-georgia text-3xl text-brown mb-6">
+              Quick summary: what Masseter Botox does
+            </h2>
+            <p className="text-lg text-brown/80 leading-relaxed mb-6">
+              Masseter Botox is a treatment where botulinum toxin is injected
+              into the masseter muscles, the strong chewing muscles at the sides
+              of your jaw. When these muscles relax, two things can happen:
+            </p>
+            <div className="space-y-4 mb-6">
+              <div className="bg-white/60 backdrop-blur-sm p-6 rounded-xl">
+                <p className="text-brown">
+                  1. Your jaw looks slimmer if the width came mainly from muscle
+                  size.
+                </p>
+              </div>
+              <div className="bg-white/60 backdrop-blur-sm p-6 rounded-xl">
+                <p className="text-brown">
+                  2. Your jaw feels less tight if you clench, grind, or wake up
+                  with soreness.
+                </p>
+              </div>
+            </div>
+            <p className="text-brown/80">
+              This is a quick in-clinic treatment. It typically takes about 10
+              to 15 minutes. Most people return to normal routines the same day.
+            </p>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Why Section */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        className="py-16 px-4 md:px-8 lg:px-16 bg-cream"
+      >
+        <div className="max-w-6xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl text-brown mb-8"
+          >
+            Why your jaw looks "wide" (and why this matters)
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-brown/80 mb-6">
+            A wide lower face is not always "fat." In KL, a lot of people have a
+            strong jawline for one of these reasons:
+          </motion.p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div className="bg-white/60 backdrop-blur-sm p-6 rounded-2xl">
+              <Activity className="w-8 h-8 text-wine mb-3" />
+              <p className="text-brown">
+                Masseter hypertrophy (muscle bulk) from clenching or frequent
+                chewing
+              </p>
+            </div>
+            <div className="bg-white/60 backdrop-blur-sm p-6 rounded-2xl">
+              <Bone className="w-8 h-8 text-wine mb-3" />
+              <p className="text-brown">
+                Jaw bone structure (the mandibular angle is naturally prominent)
+              </p>
+            </div>
+            <div className="bg-white/60 backdrop-blur-sm p-6 rounded-2xl">
+              <Layers className="w-8 h-8 text-wine mb-3" />
+              <p className="text-brown">A mix of both</p>
+            </div>
+            <div className="bg-white/60 backdrop-blur-sm p-6 rounded-2xl">
+              <Sun className="w-8 h-8 text-wine mb-3" />
+              <p className="text-brown">
+                Lower face volume changes with age (skin laxity and shifting
+                volume can change the look of the jawline)
+              </p>
+            </div>
+          </div>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-brown/80 bg-white p-6 rounded-2xl"
+          >
+            Masseter Botox works best when muscle bulk is a major cause. If bone
+            structure is the main reason, Botox may still soften the look, but
+            the change can be more subtle. This is why a proper assessment
+            matters.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* What Section with Image */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        className="py-16 px-4 md:px-8 lg:px-16 bg-white"
+      >
+        <div className="max-w-6xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl text-brown mb-8"
+          >
+            What Masseter Botox is best for
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-brown/80 mb-6">
+            At Nexus Clinic Kuala Lumpur, masseter Botox is commonly chosen for:
+          </motion.p>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <div className="space-y-6">
+              <div className="bg-cream/50 p-6 rounded-xl border-l-4 border-wine">
+                <h3 className="font-georgia text-lg text-brown mb-2">
+                  1) Jaw slimming for a square jaw
+                </h3>
+                <p className="text-taupe">
+                  When the masseter muscle is overactive, it can make the lower
+                  face look wider. Relaxing it can create a softer, more tapered
+                  contour over time.
+                </p>
+              </div>
+
+              <div className="bg-cream/50 p-6 rounded-xl border-l-4 border-wine">
+                <h3 className="font-georgia text-lg text-brown mb-2">
+                  2) Teeth grinding and jaw clenching
+                </h3>
+                <p className="text-taupe">
+                  Botox can reduce the force of clenching or grinding by calming
+                  the muscle. Many patients describe fewer "tight jaw" mornings
+                  and less jaw fatigue.
+                </p>
+              </div>
+
+              <div className="bg-cream/50 p-6 rounded-xl border-l-4 border-wine">
+                <h3 className="font-georgia text-lg text-brown mb-2">
+                  3) TMJ-related jaw tension (supportive option)
+                </h3>
+                <p className="text-taupe">
+                  Some providers use Botox as a supportive treatment for jaw
+                  pain and TMD symptoms by reducing muscle overwork. It can
+                  help, but it may not fix the root cause for everyone.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="absolute inset-0 bg-linear-to-br from-wine/20 to-rose/20 rounded-3xl transform -rotate-3" />
+              <img
+                src="/images/skin/acne-treatment.webp"
+                alt="Professional facial assessment at Nexus Clinic"
+                className="relative rounded-3xl shadow-2xl w-full h-125 object-cover"
+              />
+              <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm p-4 rounded-xl">
+                <p className="text-brown text-sm">
+                  Doctor-led facial assessment at Nexus Clinic KL
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* How it Works Section */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        className="py-16 px-4 md:px-8 lg:px-16 bg-cream"
+      >
+        <div className="max-w-4xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl text-brown mb-6"
+          >
+            How Masseter Botox works (simple explanation)
+          </motion.h2>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-brown/80 text-lg leading-relaxed"
+          >
+            Botulinum toxin works by blocking nerve signals to the injected
+            muscle. The muscle relaxes and cannot contract as strongly. When the
+            masseter stops overworking, it can gradually reduce in size, which
+            can slim the jawline.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Results Section */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        className="py-16 px-4 md:px-8 lg:px-16 bg-white"
+      >
+        <div className="max-w-4xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl text-brown mb-6"
+          >
+            What results look like (and when you see them)
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-brown/80 mb-4">
+            Masseter Botox is not a "one-night" change. It's gradual, and that
+            is actually a good thing because it looks natural.
+          </motion.p>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-cream p-6 rounded-xl mb-4"
+          >
+            <h3 className="font-georgia text-xl text-brown mb-3">
+              Typical timeline
+            </h3>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-2">
+                <ChevronRight className="w-4 h-4 text-wine mt-1" />
+                <span className="text-brown">
+                  First changes in tension: within days to 2 weeks
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <ChevronRight className="w-4 h-4 text-wine mt-1" />
+                <span className="text-brown">
+                  Visible slimming: often starts 1 to 2 weeks, becomes clearer
+                  at 4 to 6 weeks
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <ChevronRight className="w-4 h-4 text-wine mt-1" />
+                <span className="text-brown">
+                  How long it lasts: commonly around 3 to 6 months, depending on
+                  muscle strength and metabolism
+                </span>
+              </li>
+            </ul>
+          </motion.div>
+
+          <motion.p variants={fadeInUp} className="text-brown/80">
+            If you are doing it mainly for facial contouring, photos help. Most
+            people only notice the full difference when they compare before and
+            after.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Treatment Experience */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        className="py-16 px-4 md:px-8 lg:px-16 bg-cream"
+      >
+        <div className="max-w-4xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl text-brown mb-6"
+          >
+            What the treatment feels like
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-brown/80 mb-4">
+            Most patients describe it as quick and manageable. You may feel
+            small pinches and slight pressure. Some people choose numbing cream,
+            especially if they are nervous, but many do not need it.
+          </motion.p>
+
+          <motion.p variants={fadeInUp} className="text-brown/80">
+            The most common "after" feeling is mild tenderness at the injection
+            points for a short time.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Units Section */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        className="py-16 px-4 md:px-8 lg:px-16 bg-white"
+      >
+        <div className="max-w-4xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl text-brown mb-6"
+          >
+            How many units do you need?
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-brown/80 mb-4">
+            Units depend on your masseter size, facial shape goals, and whether
+            you want help for grinding.
+          </motion.p>
+
+          <motion.p variants={fadeInUp} className="text-brown/80 mb-4">
+            A common range reported by clinics is about 20 to 50 units per side,
+            and some people need more or less based on muscle strength.
+          </motion.p>
+
+          <motion.p variants={fadeInUp} className="text-brown/80">
+            At Nexus Clinic KL, your plan should be based on your face, not a
+            one-size template.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Aftercare Section */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        className="py-16 px-4 md:px-8 lg:px-16 bg-cream"
+      >
+        <div className="max-w-4xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl text-brown mb-6"
+          >
+            Aftercare (important for safety and results)
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-brown/80 mb-4">
+            Good aftercare helps reduce bruising and lowers the risk of the
+            product spreading into nearby muscles.
+          </motion.p>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-white p-6 rounded-xl mb-4"
+          >
+            <p className="text-brown font-medium mb-3">
+              For the first 24 hours, it's usually advised to avoid:
+            </p>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-2">
+                <XCircle className="w-4 h-4 text-wine mt-1" />
+                <span className="text-brown">
+                  Rubbing or pressing the treated area
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <XCircle className="w-4 h-4 text-wine mt-1" />
+                <span className="text-brown">Intense exercise</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <XCircle className="w-4 h-4 text-wine mt-1" />
+                <span className="text-brown">
+                  Actions that may increase spread risk (like heavy massaging)
+                </span>
+              </li>
+            </ul>
+          </motion.div>
+
+          <motion.p variants={fadeInUp} className="text-brown/80">
+            If you have a big event coming up, book early. Bruising is not
+            common for everyone, but it can happen.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Side Effects Section */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        className="py-16 px-4 md:px-8 lg:px-16 bg-white"
+      >
+        <div className="max-w-4xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl text-brown mb-6"
+          >
+            Side effects and risks (honest, not scary)
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-brown/80 mb-4">
+            Most side effects are mild and temporary, such as:
+          </motion.p>
+
+          <motion.ul
+            variants={fadeInUp}
+            className="list-disc pl-6 mb-4 space-y-1 text-brown/80"
+          >
+            <li>Small bumps, redness, or swelling at injection sites</li>
+            <li>Mild bruising</li>
+            <li>Temporary jaw fatigue or chewing weakness</li>
+            <li>Mild asymmetry if dosing is uneven</li>
+          </motion.ul>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-rose/10 p-6 rounded-xl mb-4 border border-rose/30"
+          >
+            <p className="text-brown font-medium mb-2">Important note:</p>
+            <p className="text-brown/80">
+              masseter Botox requires precise placement. Done poorly, it can
+              affect nearby muscles and change your smile or bite feel
+              temporarily. This is why experience matters.
+            </p>
+          </motion.div>
+
+          <motion.p variants={fadeInUp} className="text-brown/80">
+            Also, for some people who do Botox only to slim the face, there can
+            be a risk of skin laxity or a "looser" look if the muscle reduces a
+            lot and the skin does not tighten the same way. A careful plan can
+            reduce this risk, and sometimes it is addressed with other
+            treatments if needed.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Who Should Avoid */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        className="py-16 px-4 md:px-8 lg:px-16 bg-cream"
+      >
+        <div className="max-w-4xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl text-brown mb-6"
+          >
+            Who should avoid Masseter Botox
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-brown/80 mb-4">
+            You may not be a good candidate if you:
+          </motion.p>
+
+          <motion.ul
+            variants={fadeInUp}
+            className="list-disc pl-6 mb-4 space-y-1 text-brown/80"
+          >
+            <li>Are pregnant or breastfeeding</li>
+            <li>Have certain neuromuscular conditions</li>
+            <li>Have known allergies to botulinum toxin products</li>
+          </motion.ul>
+
+          <motion.p variants={fadeInUp} className="text-brown/80">
+            A medical consultation is the right place to discuss your history
+            and safety.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Cost Section */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        className="py-16 px-4 md:px-8 lg:px-16 bg-white"
+      >
+        <div className="max-w-4xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl text-brown mb-6"
+          >
+            Cost of Masseter Botox in Kuala Lumpur and Malaysia
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-brown/80 mb-4">
+            Pricing depends on the brand used, units needed, and clinic
+            expertise.
+          </motion.p>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-cream p-6 rounded-xl mb-4"
+          >
+            <h3 className="font-georgia text-xl text-brown mb-3">
+              Common KL and Malaysia price references
+            </h3>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-2">
+                <ChevronRight className="w-4 h-4 text-wine mt-1" />
+                <span className="text-brown">
+                  Many clinics price Botox by unit, often around RM30 to RM50
+                  per unit
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <ChevronRight className="w-4 h-4 text-wine mt-1" />
+                <span className="text-brown">
+                  Masseter jaw slimming commonly requires higher units, so total
+                  costs vary
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <ChevronRight className="w-4 h-4 text-wine mt-1" />
+                <span className="text-brown">
+                  Some Malaysia clinic references place masseter Botox around
+                  RM1,200 to RM2,000 on average
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <ChevronRight className="w-4 h-4 text-wine mt-1" />
+                <span className="text-brown">
+                  Nexus Clinic's KL Botox materials list jaw slimming (masseter)
+                  pricing in the RM1,500 to RM2,500 range
+                </span>
+              </li>
+            </ul>
+          </motion.div>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-cream p-6 rounded-xl mb-4"
+          >
+            <h3 className="font-georgia text-xl text-brown mb-3">
+              What changes the cost
+            </h3>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-2">
+                <ChevronRight className="w-4 h-4 text-wine mt-1" />
+                <span className="text-brown">
+                  Your muscle size (stronger muscle, higher units)
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <ChevronRight className="w-4 h-4 text-wine mt-1" />
+                <span className="text-brown">
+                  Your goal (pain relief vs contouring vs both)
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <ChevronRight className="w-4 h-4 text-wine mt-1" />
+                <span className="text-brown">
+                  Your desired look (subtle softening vs stronger V-shape
+                  change)
+                </span>
+              </li>
+            </ul>
+          </motion.div>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-rose/10 p-6 rounded-xl border border-rose/30"
+          >
+            <p className="text-brown flex items-start gap-2">
+              <AlertCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+              <span>
+                If you see "too cheap to be true" promos, be careful. Some
+                clinics warn against unlicensed settings and suspiciously low
+                prices.
+              </span>
+            </p>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Comparisons Section */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        className="py-16 px-4 md:px-8 lg:px-16 bg-cream"
+      >
+        <div className="max-w-4xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl text-brown mb-6"
+          >
+            Masseter Botox vs other face treatments (what's better for you?)
+          </motion.h2>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-white p-6 rounded-xl mb-4"
+          >
+            <h3 className="font-georgia text-xl text-brown mb-3">
+              Masseter Botox vs Jawline Filler
+            </h3>
+            <ul className="space-y-2 mb-3">
+              <li className="flex items-start gap-2">
+                <span className="text-wine font-medium">•</span>
+                <span className="text-brown">
+                  Botox: relaxes muscle, reduces bulk over time
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-wine font-medium">•</span>
+                <span className="text-brown">
+                  Filler: adds structure and definition instantly, useful for
+                  jawline contour, asymmetry, or age-related volume loss
+                </span>
+              </li>
+            </ul>
+            <p className="text-brown/80">
+              If your jaw looks wide mainly from muscle, Botox is usually the
+              first choice. If your jaw looks undefined from volume loss or sag,
+              filler may help more, or a combination may be best.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-white p-6 rounded-xl mb-4"
+          >
+            <h3 className="font-georgia text-xl text-brown mb-3">
+              Masseter Botox vs HIFU
+            </h3>
+            <ul className="space-y-2 mb-3">
+              <li className="flex items-start gap-2">
+                <span className="text-wine font-medium">•</span>
+                <span className="text-brown">
+                  Botox: changes muscle activity and bulk
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-wine font-medium">•</span>
+                <span className="text-brown">
+                  HIFU: focuses on lifting and tightening skin layers
+                </span>
+              </li>
+            </ul>
+            <p className="text-brown/80">
+              If the main issue is muscle bulk, HIFU alone will not "shrink" the
+              masseter.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-white p-6 rounded-xl mb-4"
+          >
+            <h3 className="font-georgia text-xl text-brown mb-3">
+              Masseter Botox vs surgery
+            </h3>
+            <p className="text-brown/80 mb-2">
+              Botox is non-surgical and temporary. Surgery is permanent and more
+              invasive. Most people in KL choose Botox first because it is lower
+              commitment and has minimal downtime.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-white p-6 rounded-xl mb-4"
+          >
+            <h3 className="font-georgia text-xl text-brown mb-3">
+              For teeth grinding: Botox vs night guard
+            </h3>
+            <p className="text-brown/80">
+              A night guard protects teeth. Botox can reduce muscle force. Some
+              people use both, depending on severity and dental advice.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-white p-6 rounded-xl mb-4"
+          >
+            <h3 className="font-georgia text-xl text-brown mb-3">
+              Combination options for a balanced V-shape
+            </h3>
+            <p className="text-brown/80 mb-2">
+              A V-shape is not only about slimming the jaw. The chin and
+              lower-face proportions matter too.
+            </p>
+            <p className="text-brown/80 mb-2">
+              Some clinics commonly pair jaw Botox (masseter) with chin filler
+              for better facial balance, especially when the chin is short or
+              retruded.
+            </p>
+            <p className="text-brown/80">
+              At Nexus Clinic Kuala Lumpur, the best plan should match your
+              features. Not a trend.
+            </p>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Why Nexus Clinic */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        className="py-16 px-4 md:px-8 lg:px-16 bg-cream"
+      >
+        <div className="max-w-4xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl text-brown mb-4"
+          >
+            Why Nexus Clinic Kuala Lumpur
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-brown/80 text-lg mb-6">
+            You are not just buying "units." You are trusting someone with your
+            face.
+          </motion.p>
+
+          <motion.div variants={fadeInUp} className="bg-white p-8 rounded-3xl">
+            <h3 className="font-georgia text-2xl text-brown mb-4">
+              What to expect at Nexus Clinic KL
+            </h3>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                <span className="text-brown">
+                  A personalised assessment: jaw muscle size, bite pattern,
+                  symmetry
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                <span className="text-brown">
+                  A plan that aims for a softer, balanced look
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                <span className="text-brown">
+                  Clear advice on what Botox can do, and what it cannot
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                <span className="text-brown">
+                  A clinic location in central Kuala Lumpur (Wisma UOA II, Jalan
+                  Pinang)
+                </span>
+              </li>
+            </ul>
+
+            <div className="mt-6 pt-6 border-t border-taupe/20">
+              <p className="text-brown font-medium">
+                Visit Nexus Clinic Kuala Lumpur
+              </p>
+              <p className="text-taupe">
+                LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450
+                Kuala Lumpur
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* FAQ Section */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        className="py-16 px-4 md:px-8 lg:px-16 bg-white"
+      >
+        <div className="max-w-4xl mx-auto">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl text-brown mb-8"
+          >
+            FAQs (People Also Ask style)
+          </motion.h2>
+
+          <div className="space-y-4">
+            {/* FAQ 1 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                1) How long does masseter Botox last?
+              </h3>
+              <p className="text-taupe">
+                Most people see results for about 3 to 6 months. Stronger
+                muscles may wear off faster at first.
+              </p>
+            </motion.div>
+
+            {/* FAQ 2 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                2) How soon will I see results from masseter Botox?
+              </h3>
+              <p className="text-taupe">
+                Some people feel less tension within days. Visible jaw slimming
+                usually becomes clearer around 4 to 6 weeks.
+              </p>
+            </motion.div>
+
+            {/* FAQ 3 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                3) How many units of Botox do I need for masseter reduction?
+              </h3>
+              <p className="text-taupe">
+                It depends on your muscle size and goals. Many clinics cite
+                ranges like 20 to 50 units per side. Your doctor should decide
+                after assessment.
+              </p>
+            </motion.div>
+
+            {/* FAQ 4 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                4) How much does masseter Botox cost in Malaysia?
+              </h3>
+              <p className="text-taupe">
+                Prices vary by units and clinic. Malaysia references commonly
+                place masseter Botox around RM1,200 to RM2,000, while Nexus KL
+                lists jaw slimming (masseter) around RM1,500 to RM2,500.
+              </p>
+            </motion.div>
+
+            {/* FAQ 5 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                5) Does masseter Botox help teeth grinding (bruxism)?
+              </h3>
+              <p className="text-taupe">
+                It can reduce the force of grinding and clenching by relaxing
+                the masseter muscle. Some people feel fewer jaw tension symptoms
+                after treatment.
+              </p>
+            </motion.div>
+
+            {/* FAQ 6 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                6) Can Botox help TMJ pain?
+              </h3>
+              <p className="text-taupe">
+                Botox may help some people by reducing muscle overwork, but it
+                is usually considered a supportive option and results vary.
+              </p>
+            </motion.div>
+
+            {/* FAQ 7 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                7) Does masseter Botox hurt?
+              </h3>
+              <p className="text-taupe">
+                Most patients describe small pinches and mild pressure.
+                Discomfort is usually brief.
+              </p>
+            </motion.div>
+
+            {/* FAQ 8 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                8) Will I have trouble chewing after masseter Botox?
+              </h3>
+              <p className="text-taupe">
+                Some people notice temporary chewing weakness or jaw fatigue,
+                especially in the early phase. It typically settles as you
+                adapt.
+              </p>
+            </motion.div>
+
+            {/* FAQ 9 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                9) Will masseter Botox make my face sag?
+              </h3>
+              <p className="text-taupe">
+                It can, in some cases, especially if the goal is aggressive
+                cosmetic slimming and the skin has less elasticity. A careful
+                plan and realistic goals reduce the risk.
+              </p>
+            </motion.div>
+
+            {/* FAQ 10 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                10) Is masseter Botox permanent?
+              </h3>
+              <p className="text-taupe">
+                No. Botox effects wear off as nerve signaling returns. Most
+                people maintain results with repeat sessions.
+              </p>
+            </motion.div>
+
+            {/* FAQ 11 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                11) What should I avoid after masseter Botox?
+              </h3>
+              <p className="text-taupe">
+                Avoid rubbing the area and intense exercise for about 24 hours.
+                This helps reduce the chance of product spread and bruising.
+              </p>
+            </motion.div>
+
+            {/* FAQ 12 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                12) Is masseter Botox FDA-approved for jaw slimming?
+              </h3>
+              <p className="text-taupe">
+                Masseter injections are commonly performed, but cosmetic jaw
+                slimming is often discussed as an off-label use in US-focused
+                guidance. In Malaysia, always choose a qualified medical
+                provider and get a proper consultation.
+              </p>
+            </motion.div>
+
+            {/* FAQ 13 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                13) Can men do masseter Botox?
+              </h3>
+              <p className="text-taupe">
+                Yes. Men often request it for jaw tension, grinding, or to
+                soften a bulky lower face. The dosing approach may differ based
+                on muscle strength.
+              </p>
+            </motion.div>
+
+            {/* FAQ 14 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                14) How often should I repeat masseter Botox?
+              </h3>
+              <p className="text-taupe">
+                Many people repeat every 3 to 6 months, especially early on.
+                Over time, some can extend intervals if the muscle reduces in
+                activity and bulk.
+              </p>
+            </motion.div>
+
+            {/* FAQ 15 */}
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                15) Is masseter Botox better than jawline filler?
+              </h3>
+              <p className="text-taupe">
+                They solve different problems. Botox reduces muscle bulk. Filler
+                adds structure and definition. The best option depends on
+                whether your concern is muscle, bone shape, or age-related
+                volume loss.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Final CTA */}
+      <motion.section
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        className="py-20 px-4 md:px-8 lg:px-16 bg-linear-to-br from-wine to-rose"
+      >
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl md:text-4xl text-white mb-6"
+          >
+            Ready for a softer jawline and a calmer jaw?
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="text-white/90 text-lg mb-8">
+            If you want Masseter Botox in Kuala Lumpur, book a consultation at
+            Nexus Clinic Kuala Lumpur to get a plan based on your face shape,
+            muscle strength, and goals.
+          </motion.p>
+        </div>
+      </motion.section>
+    </div>
   );
 };
 

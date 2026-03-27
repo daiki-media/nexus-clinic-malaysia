@@ -2,19 +2,16 @@
 
 import { motion } from "framer-motion";
 import {
-  Heart,
-  AlertCircle,
-  CheckCircle,
-  XCircle,
   Shield,
-  Phone,
+  AlertCircle,
   MapPin,
-  Activity,
+  ChevronRight,
   Droplets,
   Microscope,
-  Users,
-  ChevronRight,
+  AlertTriangle,
   Sparkles,
+  Target,
+  FileCheck,
 } from "lucide-react";
 import {
   fadeInUp,
@@ -26,9 +23,29 @@ import {
 import FAQ from "../../components/FAQ";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
+import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
 const StemCellLanding = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "stemCell");
+
+  const transformations = [
+    {
+      id: 1,
+      before: "/images/B&A-regenerative/B&A-stem-cell-therapy1.webp",
+      after: "/images/B&A-regenerative/B&A-stem-cell-therapy1.webp",
+    },
+    {
+      id: 2,
+      before: "/images/B&A-regenerative/B&A-stem-cell-therapy2.webp",
+      after: "/images/B&A-regenerative/B&A-stem-cell-therapy2.webp",
+    },
+    {
+      id: 3,
+      before: "/images/B&A-regenerative/B&A-stem-cell-therapy3.webp",
+      after: "/images/B&A-regenerative/B&A-stem-cell-therapy3.webp",
+    },
+  ];
+
   const faqs = [
     {
       q: "What is stem cell therapy?",
@@ -80,949 +97,1180 @@ const StemCellLanding = ({ locale = fallbackLng }: { locale?: string }) => {
     },
   ];
   return (
-    <>
-      <main className="min-h-screen bg-linear-to-b from-light to-white overflow-hidden">
-        {/* Hero Section with Background Image */}
-        <motion.section
+    <div className="bg-light font-inter">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        <div className="absolute inset-0 bg-linear-to-br from-cream via-light to-rose/10" />
+
+        <div className="absolute top-20 right-0 w-96 h-96 bg-wine/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-0 w-96 h-96 bg-rose/5 rounded-full blur-3xl" />
+
+        <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8"
+          className="container mx-auto px-6 relative z-10"
         >
-          {/* Background Image dengan overlay */}
-          <div className="absolute inset-0 z-0">
-            <img
-              src={"/images/clinic/interior.png"}
-              alt="Stem Cell Therapy"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-linear-to-r from-light via-light/90 to-transparent"></div>
-          </div>
-
-          <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-5 z-1"></div>
-
-          <div className="relative z-10 max-w-7xl mx-auto text-center">
-            <motion.div variants={fadeInUp} className="mb-8">
-              <span className="inline-flex items-center px-4 py-2 rounded-full bg-wine/10 text-wine font-serif text-sm mb-6 backdrop-blur-sm">
-                <Sparkles className="w-4 h-4 mr-2" />
-                Regenerative Medicine Excellence in KLCC
+          <div className="max-w-4xl">
+            <motion.div variants={fadeInUp} className="mb-6">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-glass backdrop-blur-sm rounded-full text-brown border border-taupe/20">
+                <Shield className="w-4 h-4 text-wine" />
+                Nexus Clinic Kuala Lumpur
               </span>
             </motion.div>
 
-            <motion.h2
+            <motion.h1
               variants={fadeInUp}
-              className="font-serif text-5xl md:text-7xl font-bold mb-6"
-              style={{ color: "var(--color-brown)" }}
+              className="text-5xl md:text-7xl font-georgia text-brown mb-6 leading-tight"
             >
-              When your body feels "stuck,"
-              <br />
-              <span style={{ color: "var(--color-wine)" }}>
-                regenerative care
-              </span>{" "}
-              can feel like hope.
-            </motion.h2>
+              Stem Cell Therapy in Malaysia
+              <span className="block text-wine mt-2">
+                at Nexus Clinic Kuala Lumpur
+              </span>
+            </motion.h1>
 
             <motion.p
               variants={fadeInUp}
-              className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto font-light"
-              style={{ color: "var(--color-taupe)" }}
+              className="text-xl md:text-2xl text-taupe mb-8 leading-relaxed"
             >
-              It should also feel safe.
+              When your body feels "stuck," regenerative care can feel like
+              hope. It should also feel safe.
             </motion.p>
 
             <motion.div
               variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="bg-glass backdrop-blur-sm border border-cream rounded-2xl p-6 md:p-8 max-w-2xl"
             >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-full font-medium text-white shadow-lg"
-                style={{ backgroundColor: "var(--color-wine)" }}
-              >
-                Schedule Private Consultation
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-full font-medium border-2 bg-white/80 backdrop-blur-sm"
-                style={{
-                  borderColor: "var(--color-rose)",
-                  color: "var(--color-brown)",
-                }}
-              >
-                Understand Your Options
-              </motion.button>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="mt-16 p-6 rounded-2xl"
-              style={{
-                backgroundColor: "var(--color-glass)",
-                backdropFilter: "blur(10px)",
-                border: "1px solid var(--color-taupe)/20",
-              }}
-            >
-              <p className="text-sm" style={{ color: "var(--color-brown)" }}>
-                <span className="font-semibold">
-                  📍 Nexus Clinic Kuala Lumpur
-                </span>{" "}
-                — LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450
-                Kuala Lumpur
-                <br />
-                <span className="inline-flex items-center mt-2 gap-2">
-                  <Phone
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-wine)" }}
-                  />{" "}
-                  016-7025699 / 03-21635699
-                </span>
+              <p className="text-brown/80 text-lg leading-relaxed">
+                Stem cell therapy is one of the most searched treatments in
+                Kuala Lumpur right now. But the smartest first step is not
+                booking a package. It is understanding what's proven, what's
+                still experimental, and what a responsible clinic should do
+                before treating you.
               </p>
             </motion.div>
           </div>
-        </motion.section>
+        </motion.div>
+      </section>
 
-        {/* Trust Section dengan Image Card */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="py-20 px-4 sm:px-6 lg:px-8 relative"
-        >
-          <div className="max-w-7xl mx-auto">
-            <motion.div variants={fadeInUp} className="text-center mb-16">
-              <h2
-                className="font-serif text-4xl md:text-5xl font-bold mb-6"
-                style={{ color: "var(--color-brown)" }}
-              >
-                Patient-First, Safety-Focused
-              </h2>
-              <p
-                className="text-lg max-w-3xl mx-auto"
-                style={{ color: "var(--color-taupe)" }}
-              >
-                Where Malaysia's MOH guidelines meet international standards of
-                care
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {/* Medical Team Image Card */}
-              <motion.div
-                variants={scaleIn}
-                className="relative rounded-2xl overflow-hidden group cursor-pointer h-64"
-              >
-                <img
-                  src={
-                    "https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=2070&auto=format&fit=crop"
-                  }
-                  alt="Medical team at Nexus Clinic"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-linear(to top, var(--color-brown), transparent)",
-                  }}
-                ></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <h3 className="font-serif text-xl font-bold mb-2">
-                    Expert Team
-                  </h3>
-                  <p className="text-sm text-cream">
-                    Specialized in regenerative medicine
-                  </p>
-                </div>
-              </motion.div>
-
-              {[
-                {
-                  icon: <MapPin className="w-8 h-8" />,
-                  title: "Central KL Location",
-                  desc: "KLCC area — Wisma UOA II, Jalan Pinang",
-                },
-                {
-                  icon: <Users className="w-8 h-8" />,
-                  title: "Private Consultations",
-                  desc: "Patient-first approach with complete privacy",
-                },
-                {
-                  icon: <Shield className="w-8 h-8" />,
-                  title: "MOH-Aligned",
-                  desc: "Following Malaysia's guidelines for stem cell therapy",
-                },
-              ].map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  variants={scaleIn}
-                  whileHover={{ y: -10 }}
-                  className="p-8 rounded-2xl text-center group cursor-pointer"
-                  style={{
-                    backgroundColor: "var(--color-cream)",
-                    transition: "all 0.3s ease",
-                  }}
-                >
-                  <div
-                    className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform"
-                    style={{
-                      backgroundColor: "var(--color-wine)/10",
-                      color: "var(--color-wine)",
-                    }}
-                  >
-                    {item.icon}
-                  </div>
-                  <h3
-                    className="font-serif text-xl font-bold mb-3"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    {item.title}
-                  </h3>
-                  <p style={{ color: "var(--color-taupe)" }}>{item.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="mt-12 p-6 rounded-xl border-l-4"
-              style={{
-                borderLeftColor: "var(--color-wine)",
-                backgroundColor: "var(--color-glass)",
-              }}
-            >
-              <p
-                className="text-sm italic"
-                style={{ color: "var(--color-brown)" }}
-              >
-                "Malaysia's MOH guideline notes that hematopoietic and cord
-                blood stem cell transplant are the most established forms of
-                stem cell therapy, while many other stem cell applications are
-                considered experimental and require proper oversight."
-              </p>
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* What Is Stem Cell Therapy - with Image Split */}
-        <motion.section
+      {/* Trust Section - ALL CONTENT INCLUDED */}
+      <section className="py-20 bg-cream">
+        <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="py-20 px-4 sm:px-6 lg:px-8 relative"
-          style={{ backgroundColor: "var(--color-brown)" }}
+          className="container mx-auto px-6"
         >
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0 bg-[url('/cells-pattern.svg')] bg-repeat opacity-20"></div>
-          </div>
+          <motion.div variants={fadeInUp} className="text-center mb-16">
+            <h2 className="text-4xl font-georgia text-brown mb-4">
+              Trust Section
+            </h2>
+          </motion.div>
 
-          <div className="max-w-7xl mx-auto relative z-10">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <motion.div variants={fadeInLeft}>
-                <span
-                  className="text-sm uppercase tracking-wider"
-                  style={{ color: "var(--color-cream)" }}
-                >
-                  Foundation Knowledge
-                </span>
-                <h2 className="font-serif text-4xl md:text-5xl font-bold mt-4 mb-6 text-white">
-                  What Is Stem Cell Therapy?
-                </h2>
-                <p
-                  className="text-lg leading-relaxed"
-                  style={{ color: "var(--color-cream)" }}
-                >
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <motion.div
+              variants={fadeInLeft}
+              className="bg-white rounded-2xl p-6 shadow-lg border border-cream"
+            >
+              <div className="flex items-start gap-4">
+                <MapPin className="w-6 h-6 text-wine shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-georgia text-brown text-xl mb-2">
+                    Central Kuala Lumpur location
+                  </h3>
+                  <p className="text-taupe mb-3">
+                    (KLCC area) Nexus Clinic Kuala Lumpur, LG 10, Lower Ground
+                    Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur.
+                    Mobile: 016-7025699 / 03-21635699
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInRight}
+              className="bg-white rounded-2xl p-6 shadow-lg border border-cream"
+            >
+              <div className="flex items-start gap-4">
+                <FileCheck className="w-6 h-6 text-wine shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-georgia text-brown text-xl mb-2">
+                    Patient-first and private consultations
+                  </h3>
+                  <p className="text-taupe mb-3">
+                    Safety and compliance mindset: Malaysia's MOH guideline
+                    notes that hematopoietic and cord blood stem cell transplant
+                    are the most established forms of stem cell therapy, while
+                    many other stem cell applications are considered
+                    experimental and require proper oversight.
+                  </p>
+                  <p className="text-taupe">
+                    Nexus Clinic states MOH-aligned procedures in its
+                    disease-specific stem cell content (example: Parkinson's
+                    page).
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* What Section - with image - ALL CONTENT INCLUDED */}
+      <section className="py-20 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto px-6"
+        >
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div variants={fadeInLeft}>
+              <h2 className="text-4xl font-georgia text-brown mb-6">
+                What Is Stem Cell Therapy (Simple Explanation)
+              </h2>
+              <div className="prose prose-lg text-taupe">
+                <p className="text-lg leading-relaxed">
                   Stem cells are special cells that can self-renew and can
                   mature into other cell types. Stem cell therapy is any
                   treatment that uses stem cells, or cells derived from them, to
                   repair or replace damaged cells or tissues.
                 </p>
-                <div
-                  className="mt-8 p-6 rounded-xl"
-                  style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-                >
-                  <p className="font-medium text-white">
-                    That sounds powerful, and it can be. But it is also why stem
-                    cell treatment needs stricter rules than most "wellness"
-                    services.
-                  </p>
-                </div>
-              </motion.div>
+                <p className="text-lg leading-relaxed mt-4 font-medium text-brown">
+                  That sounds powerful, and it can be. But it is also why stem
+                  cell treatment needs stricter rules than most "wellness"
+                  services.
+                </p>
+              </div>
+            </motion.div>
 
-              <motion.div variants={fadeInRight} className="relative">
-                {/* Stem Cells Image */}
-                <div className="rounded-3xl overflow-hidden shadow-2xl">
-                  <img
-                    src={"/images/regenerative/what-is-stem-cell.webp"}
-                    alt="Microscopic view of stem cells"
-                    className="w-full h-100 object-cover"
-                  />
-                </div>
-
-                {/* Overlay Card */}
-                <div
-                  className="absolute -bottom-6 -left-6 p-6 rounded-2xl backdrop-blur-md"
-                  style={{ backgroundColor: "var(--color-glass)" }}
-                >
-                  <h3
-                    className="font-serif text-lg font-bold mb-2"
-                    style={{ color: "var(--color-wine)" }}
-                  >
-                    The Most Important Truth
-                  </h3>
-                  <p
-                    className="text-sm mb-2"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    Not all "stem cell therapy" is the same.
-                  </p>
-                  <div className="space-y-1">
-                    {[
-                      "HSC transplant is most established",
-                      "Other uses are experimental",
-                      "Xenotransplantation prohibited",
-                    ].map((item, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center gap-1 text-xs"
-                      >
-                        <CheckCircle
-                          className="w-3 h-3"
-                          style={{ color: "var(--color-rose)" }}
-                        />
-                        <span style={{ color: "var(--color-taupe)" }}>
-                          {item}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </div>
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="absolute inset-0 bg-linear-to-br from-wine/20 to-rose/20 rounded-3xl blur-2xl" />
+              <img
+                src="/images/regenerative/stem-cell-therapy.webp"
+                alt="Stem cell therapy microscopic view"
+                className="relative z-10 rounded-3xl shadow-2xl w-full object-cover"
+              />
+            </motion.div>
           </div>
-        </motion.section>
+        </motion.div>
+      </section>
 
-        {/* Types of Stem Cells with Image Gallery */}
-        <motion.section
+      {/* Most Important Truth - ALL CONTENT INCLUDED */}
+      <section className="py-20 bg-cream">
+        <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="py-20 px-4 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "var(--color-cream)" }}
+          className="container mx-auto px-6 max-w-4xl"
         >
-          <div className="max-w-7xl mx-auto">
-            <motion.div variants={fadeInUp} className="text-center mb-16">
-              <h2
-                className="font-serif text-4xl md:text-5xl font-bold mb-4"
-                style={{ color: "var(--color-brown)" }}
-              >
-                Types of Stem Cells in Malaysia
+          <motion.div
+            variants={scaleIn}
+            className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-rose/20"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <AlertCircle className="w-8 h-8 text-wine" />
+              <h2 className="text-3xl font-georgia text-brown">
+                The Most Important Truth
               </h2>
-              <p className="text-lg" style={{ color: "var(--color-taupe)" }}>
-                Understanding the terminology clinics use
+            </div>
+            <p className="text-xl text-wine mb-6 font-medium">
+              (Before You Spend Money)
+            </p>
+
+            <p className="text-brown text-lg mb-4 font-medium">
+              Not all "stem cell therapy" is the same.
+            </p>
+
+            <div className="space-y-4 text-taupe">
+              <p>
+                The International Society for Stem Cell Research (ISSCR) makes
+                this very clear: proven stem cell treatments are still limited,
+                mainly to blood and immune disorders treated via blood stem cell
+                transplantation. Many other uses are still experimental and may
+                not be proven safe or effective.
+              </p>
+
+              <p className="font-medium text-brown">
+                Malaysia's Ministry of Health guideline also states:
+              </p>
+
+              <ul className="list-disc pl-6 space-y-2">
+                <li>
+                  Hematopoietic stem cell and cord blood transplant are the most
+                  established forms of therapy
+                </li>
+                <li>
+                  Other stem cells (including embryonic and somatic) are
+                  considered experimental
+                </li>
+                <li>
+                  Animal cell therapies (xenotransplantation) are prohibited
+                </li>
+              </ul>
+
+              <p className="bg-rose/5 p-4 rounded-xl italic">
+                So when clinics market stem cells for many unrelated diseases,
+                your best move is to ask: "Is this an established indication, or
+                experimental care that should be inside a regulated clinical
+                pathway?"
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Types of Stem Cells - ALL CONTENT INCLUDED */}
+      <section className="py-20 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto px-6"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl font-georgia text-brown text-center mb-4"
+          >
+            Types of Stem Cells You'll Hear About in Malaysia
+          </motion.h2>
+          <motion.p
+            variants={fadeInUp}
+            className="text-center text-taupe mb-12"
+          >
+            Here are the terms clinics use, explained in normal language:
+          </motion.p>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <motion.div
+              variants={scaleIn}
+              className="bg-cream rounded-2xl p-6 hover:shadow-xl transition-shadow"
+            >
+              <div className="w-12 h-12 bg-wine/10 rounded-lg flex items-center justify-center mb-4">
+                <Droplets className="w-6 h-6 text-wine" />
+              </div>
+              <h3 className="font-georgia text-xl text-brown mb-3">
+                1) Hematopoietic Stem Cells (HSCs)
+              </h3>
+              <p className="text-taupe">
+                These are "blood-forming" stem cells used in bone marrow or
+                blood stem cell transplantation. This is the best-established
+                form of stem cell therapy globally and is referenced as
+                established by both ISSCR and Malaysian guidance.
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              {/* HSCs */}
-              <motion.div
-                variants={scaleIn}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src="/images/regenerative/hematopoietic-stem-cells.webp"
-                    alt="Hematopoietic stem cells"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-8">
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center mb-6 -mt-12 bg-white shadow-lg"
-                    style={{ color: "var(--color-wine)" }}
-                  >
-                    <Droplets
-                      className="w-6 h-6"
-                      style={{ color: "var(--color-wine)" }}
-                    />
-                  </div>
-                  <h3
-                    className="font-serif text-xl font-bold mb-3"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    Hematopoietic Stem Cells (HSCs)
-                  </h3>
-                  <p
-                    className="text-sm mb-4"
-                    style={{ color: "var(--color-taupe)" }}
-                  >
-                    "Blood-forming" stem cells used in bone marrow or blood stem
-                    cell transplantation. This is the best-established form
-                    globally.
-                  </p>
-                  <div
-                    className="p-4 rounded-lg"
-                    style={{ backgroundColor: "var(--color-cream)" }}
-                  >
-                    <span
-                      className="text-xs font-semibold"
-                      style={{ color: "var(--color-wine)" }}
-                    >
-                      ✓ Established by ISSCR & Malaysian guidance
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* MSCs */}
-              <motion.div
-                variants={scaleIn}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src="/images/regenerative/mysenchymal-stem-cell.webp"
-                    alt="Mesenchymal stem cells in lab"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-8">
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center mb-6 -mt-12 bg-white shadow-lg"
-                    style={{ color: "var(--color-rose)" }}
-                  >
-                    <Microscope
-                      className="w-6 h-6"
-                      style={{ color: "var(--color-rose)" }}
-                    />
-                  </div>
-                  <h3
-                    className="font-serif text-xl font-bold mb-3"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    Mesenchymal Stem Cells (MSCs)
-                  </h3>
-                  <p
-                    className="text-sm mb-4"
-                    style={{ color: "var(--color-taupe)" }}
-                  >
-                    Often discussed for inflammation and tissue repair. Many KL
-                    providers focus on MSC therapy, frequently from umbilical
-                    cord Wharton's Jelly.
-                  </p>
-                  <div
-                    className="p-4 rounded-lg"
-                    style={{ backgroundColor: "var(--color-cream)" }}
-                  >
-                    <span
-                      className="text-xs"
-                      style={{ color: "var(--color-brown)" }}
-                    >
-                      ⚠️ Evolving area — ISSCR warns against routine commercial
-                      use
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Embryonic & iPS */}
-              <motion.div
-                variants={scaleIn}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src="/images/regenerative/embryonic.webp"
-                    alt="DNA research"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-8">
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center mb-6 -mt-12 bg-white shadow-lg"
-                    style={{ color: "var(--color-taupe)" }}
-                  >
-                    <Activity
-                      className="w-6 h-6"
-                      style={{ color: "var(--color-taupe)" }}
-                    />
-                  </div>
-                  <h3
-                    className="font-serif text-xl font-bold mb-3"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    Embryonic & iPS Cells
-                  </h3>
-                  <p
-                    className="text-sm mb-4"
-                    style={{ color: "var(--color-taupe)" }}
-                  >
-                    Exist in scientific research and some clinical trials
-                    globally. Not "routine clinic services."
-                  </p>
-                  <div
-                    className="p-4 rounded-lg"
-                    style={{ backgroundColor: "var(--color-cream)" }}
-                  >
-                    <span
-                      className="text-xs"
-                      style={{ color: "var(--color-brown)" }}
-                    >
-                      ⚠️ Malaysia treats embryonic stem cell therapy as
-                      experimental
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Proven vs Experimental with Image */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="py-20 px-4 sm:px-6 lg:px-8"
-        >
-          <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              {/* Left side - Text content */}
-              <motion.div variants={fadeInLeft}>
-                <div
-                  className="rounded-3xl p-8 relative overflow-hidden"
-                  style={{ backgroundColor: "var(--color-wine)" }}
-                >
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
-                  <h3 className="font-serif text-3xl font-bold text-white mb-6">
-                    What's Proven Today
-                  </h3>
-                  <div className="space-y-4">
-                    <div className="bg-white/10 rounded-xl p-4">
-                      <p className="text-white">
-                        "Best-established stem cell treatments are blood and
-                        immune disorders and loss of bone marrow function,
-                        treated with blood stem cell transplantation."
-                      </p>
-                    </div>
-                    <p className="text-white/80 text-sm">
-                      Malaysia's guideline aligns: hematopoietic and cord blood
-                      stem cell transplantation are the most established.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Right side - Image with overlay text */}
-              <motion.div variants={fadeInRight} className="relative">
-                <img
-                  src={"/images/regenerative/hematopoietic-stem-cells2.webp"}
-                  alt="Medical research laboratory"
-                  className="rounded-3xl w-full h-100 object-cover"
-                />
-                <div
-                  className="absolute bottom-6 left-6 right-6 p-6 rounded-2xl backdrop-blur-md"
-                  style={{ backgroundColor: "var(--color-glass)" }}
-                >
-                  <div className="flex items-center gap-2 mb-3">
-                    <AlertCircle
-                      className="w-5 h-5"
-                      style={{ color: "var(--color-rose)" }}
-                    />
-                    <h4
-                      className="font-serif font-bold"
-                      style={{ color: "var(--color-brown)" }}
-                    >
-                      Being Studied (Mixed Evidence)
-                    </h4>
-                  </div>
-                  <p
-                    className="text-sm mb-3"
-                    style={{ color: "var(--color-taupe)" }}
-                  >
-                    Joints, autoimmune, neuro, metabolic — areas of active
-                    research
-                  </p>
-                  <p className="text-xs italic">
-                    ISSCR warns: unproven interventions need well-regulated
-                    trials
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Nexus Clinic Approach with Image */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="py-20 px-4 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "var(--color-cream)" }}
-        >
-          <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              <motion.div variants={fadeInLeft}>
-                <h2
-                  className="font-serif text-4xl md:text-5xl font-bold mb-4"
-                  style={{ color: "var(--color-brown)" }}
-                >
-                  The Nexus Clinic Approach
-                </h2>
-                <p className="text-lg" style={{ color: "var(--color-taupe)" }}>
-                  Patient-safe mindset, structured journey, MOH-aligned
-                  procedures
-                </p>
-              </motion.div>
-              <motion.div variants={fadeInRight} className="relative">
-                <img
-                  src={"/images/clinic/consultation.png"}
-                  alt="Private consultation at Nexus Clinic"
-                  className="rounded-2xl shadow-xl w-full h-64 object-cover"
-                />
-                <div
-                  className="absolute -bottom-4 -left-4 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-md"
-                  style={{
-                    backgroundColor: "var(--color-wine)",
-                    color: "white",
-                  }}
-                >
-                  Private & Confidential
-                </div>
-              </motion.div>
-            </div>
-
-            <div className="grid md:grid-cols-4 gap-6">
-              {[
-                {
-                  step: 1,
-                  title: "Consultation & Screening",
-                  desc: "We start with what you feel, what you've tried, and your actual diagnosis.",
-                },
-                {
-                  step: 2,
-                  title: "Clear Classification",
-                  desc: "Established indication? Investigational? Or redirect to standard care.",
-                },
-                {
-                  step: 3,
-                  title: "Informed Consent",
-                  desc: "Clearly state if treatment is unproven, explain risks and alternatives.",
-                },
-                {
-                  step: 4,
-                  title: "Delivery & Monitoring",
-                  desc: "IV infusion or local injection with proper follow-up plan.",
-                },
-              ].map((item, idx) => (
-                <motion.div key={idx} variants={scaleIn} className="relative">
-                  <div className="bg-white rounded-2xl p-6 shadow-lg h-full">
-                    <div
-                      className="w-10 h-10 rounded-full flex items-center justify-center mb-4 font-bold text-white"
-                      style={{ backgroundColor: "var(--color-wine)" }}
-                    >
-                      {item.step}
-                    </div>
-                    <h3
-                      className="font-serif text-lg font-bold mb-2"
-                      style={{ color: "var(--color-brown)" }}
-                    >
-                      {item.title}
-                    </h3>
-                    <p
-                      className="text-sm"
-                      style={{ color: "var(--color-taupe)" }}
-                    >
-                      {item.desc}
-                    </p>
-                  </div>
-                  {idx < 3 && (
-                    <ChevronRight className="hidden md:block absolute -right-3 top-1/2 transform -translate-y-1/2 text-rose" />
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Patient Care Image Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="relative h-125 overflow-hidden"
-        >
-          <img
-            src={"/images/clinic/patient-care.png"}
-            alt="Patient care at Nexus Clinic"
-            className="w-full h-full object-cover"
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-linear(to right, var(--color-brown), transparent)",
-            }}
-          ></div>
-          <div className="absolute inset-0 flex items-center">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-              <motion.div variants={fadeInLeft} className="max-w-xl text-white">
-                <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">
-                  Your Safety Is Our Priority
-                </h2>
-                <p className="text-xl mb-8 text-cream">
-                  Every patient journey is unique, structured, and
-                  evidence-based.
-                </p>
-                <div className="flex gap-4">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold">1000+</div>
-                    <div className="text-sm text-cream">Patients Treated</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold">15+</div>
-                    <div className="text-sm text-cream">Years Experience</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold">100%</div>
-                    <div className="text-sm text-cream">MOH Compliant</div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Benefits & Risks with Image */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="py-20 px-4 sm:px-6 lg:px-8"
-        >
-          <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12">
-              {/* Benefits */}
-              <motion.div variants={fadeInLeft}>
-                <div
-                  className="rounded-3xl p-8"
-                  style={{ backgroundColor: "var(--color-cream)" }}
-                >
-                  <Heart
-                    className="w-12 h-12 mb-6"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <h3
-                    className="font-serif text-3xl font-bold mb-6"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    Benefits People Hope For
-                  </h3>
-                  <ul className="space-y-4">
-                    {[
-                      "Less pain",
-                      "Better movement",
-                      "Better energy",
-                      "Improved function",
-                      "Slower progression of chronic condition",
-                    ].map((item, idx) => (
-                      <li key={idx} className="flex items-center gap-3">
-                        <CheckCircle
-                          className="w-5 h-5"
-                          style={{ color: "var(--color-wine)" }}
-                        />
-                        <span style={{ color: "var(--color-brown)" }}>
-                          {item}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-8 p-4 rounded-lg bg-white">
-                    <p className="text-sm italic">
-                      Look for measurable outcomes (pain score, walking
-                      distance, blood markers). Set realistic timeline, plan
-                      follow-up, not "one shot and done."
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Risks with Image */}
-              <motion.div variants={fadeInRight}>
-                <div className="rounded-3xl overflow-hidden mb-6">
-                  <img
-                    src="/images/regenerative/benefits-people-hope.webp"
-                    alt="Medical consultation discussing risks"
-                    className="w-full h-48 object-cover"
-                  />
-                </div>
-                <div
-                  className="rounded-3xl p-8 border-2"
-                  style={{ borderColor: "var(--color-wine)" }}
-                >
-                  <AlertCircle
-                    className="w-12 h-12 mb-6"
-                    style={{ color: "var(--color-wine)" }}
-                  />
-                  <h3
-                    className="font-serif text-3xl font-bold mb-6"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    Risks & Why Safety Matters
-                  </h3>
-                  <p
-                    className="mb-4 font-medium"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    Stem cells are not vitamins. They are living materials. That
-                    brings real risk.
-                  </p>
-                  <div className="space-y-3 mb-6">
-                    {[
-                      "Infection",
-                      "Immune reactions",
-                      "Fever and inflammatory reactions",
-                      "Clotting risk",
-                      "Unknown long-term effects",
-                      "Financial harm from repeated unproven sessions",
-                    ].map((risk, idx) => (
-                      <div key={idx} className="flex items-start gap-2">
-                        <XCircle
-                          className="w-4 h-4 mt-1 shrink-0"
-                          style={{ color: "var(--color-wine)" }}
-                        />
-                        <span
-                          className="text-sm"
-                          style={{ color: "var(--color-taupe)" }}
-                        >
-                          {risk}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Clinic Location Image */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="relative h-100 overflow-hidden"
-        >
-          <img
-            src={"/images/clinic/interior.png"}
-            alt="Nexus Clinic interior"
-            className="w-full h-full object-cover"
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-linear(to left, var(--color-wine), transparent)",
-            }}
-          ></div>
-          <div className="absolute inset-0 flex items-center justify-end">
             <motion.div
-              variants={fadeInRight}
-              className="max-w-xl text-white text-right p-8"
+              variants={scaleIn}
+              className="bg-cream rounded-2xl p-6 hover:shadow-xl transition-shadow"
             >
-              <h2 className="font-serif text-4xl font-bold mb-4">
-                Visit Us at KLCC
-              </h2>
-              <p className="text-lg mb-6">Wisma UOA II, Jalan Pinang</p>
-              <div className="flex justify-end gap-4">
-                <div className="text-center bg-white/20 backdrop-blur-sm p-4 rounded-2xl">
-                  <Phone className="w-6 h-6 mx-auto mb-2" />
-                  <p className="text-sm">016-7025699</p>
-                </div>
-                <div className="text-center bg-white/20 backdrop-blur-sm p-4 rounded-2xl">
-                  <MapPin className="w-6 h-6 mx-auto mb-2" />
-                  <p className="text-sm">LG 10</p>
-                </div>
+              <div className="w-12 h-12 bg-rose/10 rounded-lg flex items-center justify-center mb-4">
+                <Microscope className="w-6 h-6 text-rose" />
               </div>
+              <h3 className="font-georgia text-xl text-brown mb-3">
+                2) Mesenchymal Stem Cells (MSCs)
+              </h3>
+              <p className="text-taupe">
+                These are often discussed in regenerative medicine for
+                inflammation and tissue repair. Many KL providers focus on MSC
+                therapy and frequently mention sources like umbilical cord
+                Wharton's Jelly. Important: MSC use for many conditions is still
+                an evolving area, and the ISSCR warns against routine commercial
+                use of unproven stem cell interventions.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={scaleIn}
+              className="bg-cream rounded-2xl p-6 hover:shadow-xl transition-shadow"
+            >
+              <div className="w-12 h-12 bg-taupe/10 rounded-lg flex items-center justify-center mb-4">
+                <Sparkles className="w-6 h-6 text-taupe" />
+              </div>
+              <h3 className="font-georgia text-xl text-brown mb-3">
+                3) Embryonic stem cells and iPS cells
+              </h3>
+              <p className="text-taupe">
+                These exist in scientific research and some clinical trials
+                globally, but they are not "routine clinic services." Malaysia's
+                guideline treats embryonic stem cell therapy as experimental.
+              </p>
             </motion.div>
           </div>
-        </motion.section>
+        </motion.div>
+      </section>
 
-        {/* FAQ Section */}
-        <FAQ data={faqs} />
-
-        {/* Final CTA with Image Background */}
-        <motion.section
+      {/* Cell Sources - ALL CONTENT INCLUDED */}
+      <section className="py-20 bg-cream">
+        <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
+          className="container mx-auto px-6 max-w-4xl"
         >
-          <div className="absolute inset-0 z-0">
-            <img
-              src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2070&auto=format&fit=crop"
-              alt="Modern medical facility"
-              className="w-full h-full object-cover"
-            />
-            <div
-              className="absolute inset-0"
-              style={{ backgroundColor: "var(--color-wine)", opacity: 0.9 }}
-            ></div>
-          </div>
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl font-georgia text-brown text-center mb-8"
+          >
+            Where Do the Cells Come From?
+          </motion.h2>
 
-          <div className="relative z-10 max-w-4xl mx-auto text-center text-white">
+          <motion.div
+            variants={fadeInUp}
+            className="bg-white rounded-2xl p-8 shadow-lg"
+          >
+            <p className="text-taupe mb-6">
+              Different clinics may use different sources. Common sources
+              mentioned by Malaysian providers include:
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-4 mb-6">
+              <div className="bg-rose/5 p-4 rounded-lg text-center">
+                <p className="font-medium text-brown">Umbilical cord</p>
+                <p className="text-sm text-taupe">(Wharton's Jelly)</p>
+              </div>
+              <div className="bg-rose/5 p-4 rounded-lg text-center">
+                <p className="font-medium text-brown">Adipose</p>
+                <p className="text-sm text-taupe">(fat tissue)</p>
+              </div>
+              <div className="bg-rose/5 p-4 rounded-lg text-center">
+                <p className="font-medium text-brown">
+                  Bone marrow or cord blood
+                </p>
+                <p className="text-sm text-taupe">
+                  (especially for established blood-related transplants)
+                </p>
+              </div>
+            </div>
+
+            <p className="text-brown font-medium mb-3">
+              A responsible provider should be transparent about:
+            </p>
+            <ul className="list-disc pl-6 space-y-2 text-taupe">
+              <li>the source</li>
+              <li>how the cells are processed</li>
+              <li>quality controls</li>
+              <li>what regulations or ethics oversight apply</li>
+            </ul>
+            <p className="mt-4 text-taupe">
+              Malaysia's guideline highlights quality and regulatory
+              expectations, including oversight and standards for labs and
+              imported products.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Proven For Section - ALL CONTENT INCLUDED */}
+      <section className="py-20 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto px-6"
+        >
+          <div className="max-w-4xl mx-auto">
             <motion.h2
               variants={fadeInUp}
-              className="font-serif text-4xl md:text-5xl font-bold mb-6"
+              className="text-4xl font-georgia text-brown text-center mb-8"
             >
-              Start with Clarity
+              What Stem Cell Therapy Is Proven For (Today)
             </motion.h2>
-            <motion.p variants={fadeInUp} className="text-xl mb-12 text-cream">
+
+            <motion.div
+              variants={scaleIn}
+              className="bg-white rounded-2xl p-8 shadow-lg border border-green-200"
+            >
+              <p className="text-taupe mb-4">
+                If we keep it honest and evidence-led, proven applications are
+                still a short list.
+              </p>
+              <p className="text-brown">
+                ISSCR states the best-established stem cell treatments are blood
+                and immune disorders and loss of bone marrow function, treated
+                with blood stem cell transplantation. Malaysia's guideline
+                aligns by presenting hematopoietic and cord blood stem cell
+                transplantation as the most established.
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Being Studied For - ALL CONTENT INCLUDED */}
+      <section className="py-20 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto px-6"
+        >
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              variants={fadeInUp}
+              className="text-4xl font-georgia text-brown text-center mb-4"
+            >
+              What Stem Cell Therapy Is Being Studied For
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-center text-rose text-xl mb-8"
+            >
+              (High Interest, Mixed Evidence)
+            </motion.p>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-taupe text-center mb-8"
+            >
+              This is where most online search happens: joints, autoimmune,
+              neuro, metabolic health, "anti-aging."
+            </motion.p>
+
+            <motion.div
+              variants={scaleIn}
+              className="bg-white rounded-2xl p-8 shadow-lg border border-rose/30"
+            >
+              <p className="text-taupe mb-4">
+                Many KL providers market MSC-based therapies for a wide range of
+                concerns:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-taupe mb-4">
+                <li>
+                  MRC Clinic lists areas like diabetes, neurological conditions,
+                  and skin health
+                </li>
+                <li>
+                  Cell & Co highlights applications such as heart and kidney
+                  disease on its site
+                </li>
+                <li>
+                  Some clinics describe pricing by source and delivery method
+                  (IV vs local injection)
+                </li>
+              </ul>
+
+              <p className="font-medium text-brown mt-6 mb-2">
+                Here's the careful way to interpret this:
+              </p>
+              <p className="text-taupe">
+                Here's the careful way to interpret this:These are areas of
+                active research and clinical interest, but not all claims are
+                equally proven. The ISSCR specifically warns that unproven stem
+                cell interventions are widely marketed without sufficient
+                evidence and should be limited to well-regulated trials or
+                tightly governed medical innovation.
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Nexus Clinic Approach - ALL CONTENT INCLUDED */}
+      <section className="py-20 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto px-6 max-w-4xl"
+        >
+          <motion.div
+            variants={scaleIn}
+            className="bg-wine/5 rounded-3xl p-8 md:p-12 border border-wine/20"
+          >
+            <h2 className="text-3xl font-georgia text-brown mb-6 flex items-center gap-3">
+              <Target className="w-8 h-8 text-wine" />
+              How Nexus Clinic Approaches Stem Cell Therapy (Patient-Safe
+              Mindset)
+            </h2>
+
+            <p className="text-taupe mb-4">
+              Because "stem cell therapy" is a broad term, Nexus Clinic's goal
+              should be to keep your journey structured.
+            </p>
+
+            <p className="text-taupe mb-6">
+              Nexus Clinic publishes disease-specific stem cell content and
+              states MOH-aligned procedures (example shown on its Parkinson's
+              stem cell page).
+            </p>
+
+            <h3 className="font-georgia text-xl text-brown mb-4">
+              A responsible patient pathway typically includes:
+            </h3>
+
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-wine rounded-full flex items-center justify-center text-white text-sm shrink-0">
+                  1
+                </div>
+                <div>
+                  <p className="font-medium text-brown">
+                    Consultation and medical screening
+                  </p>
+                  <p className="text-taupe">
+                    We start with what you feel, what you've tried, and what
+                    your diagnosis actually is. Then we check whether
+                    regenerative therapy is even reasonable for your case.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-wine rounded-full flex items-center justify-center text-white text-sm shrink-0">
+                  2
+                </div>
+                <div>
+                  <p className="font-medium text-brown">
+                    Clear classification of your case
+                  </p>
+                  <div className="mt-2 space-y-1 text-taupe">
+                    <p>• Established indication</p>
+                    <p>• Investigational or experimental pathway</p>
+                    <p>
+                      • Not suitable, and you should be redirected to standard
+                      care
+                    </p>
+                  </div>
+                  <p className="text-taupe mt-2">
+                    This is critical because Malaysia's guideline treats many
+                    non-HSCT uses as experimental.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-wine rounded-full flex items-center justify-center text-white text-sm shrink-0">
+                  3
+                </div>
+                <div>
+                  <p className="font-medium text-brown">
+                    Informed consent that is actually informed
+                  </p>
+                  <p className="text-taupe">
+                    ISSCR explains consent should clearly state the treatment is
+                    unproven when it is experimental, and it should explain
+                    risks, alternatives, and follow-up expectations.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-wine rounded-full flex items-center justify-center text-white text-sm shrink-0">
+                  4
+                </div>
+                <div>
+                  <p className="font-medium text-brown">
+                    Delivery method and monitoring
+                  </p>
+                  <p className="text-taupe">
+                    Clinics often use IV infusion or local injection depending
+                    on the goal. You should also have a follow-up plan, because
+                    long-term safety is part of the question.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      <SectionBeforeAfter transformations={transformations} />
+
+      {/* Benefits People Hope For - ALL CONTENT INCLUDED */}
+      <section className="py-20 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto px-6 max-w-4xl"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl font-georgia text-brown text-center mb-4"
+          >
+            Benefits People Hope For
+          </motion.h2>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-center text-taupe text-lg mb-4"
+          >
+            (And How to Think About Outcomes)
+          </motion.p>
+
+          <motion.p variants={fadeInUp} className="text-center text-brown mb-8">
+            Most people search "stem cell therapy Malaysia" because they want:
+          </motion.p>
+
+          <motion.div
+            variants={fadeInUp}
+            className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8"
+          >
+            {[
+              "less pain",
+              "better movement",
+              "better energy",
+              "improved function",
+              "slower progression of a chronic condition",
+            ].map((benefit, idx) => (
+              <div
+                key={idx}
+                className="bg-white p-4 rounded-lg text-center text-brown text-sm shadow-md"
+              >
+                {benefit}
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.p variants={fadeInUp} className="text-taupe mb-3">
+            These are understandable goals.
+          </motion.p>
+
+          <motion.div
+            variants={scaleIn}
+            className="bg-white rounded-2xl p-8 shadow-lg"
+          >
+            <p className="text-brown font-medium mb-3">
+              The safest way to set expectations is:
+            </p>
+            <ul className="list-disc pl-6 space-y-2 text-taupe">
+              <li>
+                look for measurable outcomes (pain score, walking distance,
+                blood markers where relevant)
+              </li>
+              <li>set a realistic timeline</li>
+              <li>plan for follow-up, not "one shot and done"</li>
+            </ul>
+            <p className="mt-4 text-rose italic">
+              Be cautious with promises that sound too perfect. ISSCR warns that
+              testimonials can be misleading, especially when proper clinical
+              research is missing.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Risks Section - ALL CONTENT INCLUDED */}
+      <section className="py-20 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto px-6 max-w-4xl"
+        >
+          <motion.div
+            variants={scaleIn}
+            className="bg-white rounded-3xl p-8 md:p-12 border border-rose/30"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <AlertTriangle className="w-8 h-8 text-rose" />
+              <h2 className="text-3xl font-georgia text-brown">
+                Risks, Side Effects, and Why Safety Matters
+              </h2>
+            </div>
+
+            <p className="text-lg text-brown mb-4">
+              Stem cells are not vitamins. They are living materials. That
+              brings real risk.
+            </p>
+
+            <p className="text-taupe mb-6">
+              FDA warns there is broad marketing of unapproved regenerative
+              medicine products and reports of serious harms like infections,
+              tumor formation, and blindness from unapproved products. ISSCR
+              also stresses long-term safety is often unknown and careful
+              monitoring is important.
+            </p>
+
+            <h3 className="font-georgia text-xl text-brown mb-3">
+              Possible risks (varies by product and route)
+            </h3>
+            <ul className="grid md:grid-cols-2 gap-3 list-disc pl-6 text-taupe">
+              <li>Infection</li>
+              <li>Immune reactions</li>
+              <li>Fever and inflammatory reactions</li>
+              <li>Clotting risk (in some contexts)</li>
+              <li>Unknown long-term effects</li>
+              <li>Financial harm from repeated unproven sessions</li>
+            </ul>
+
+            <p className="mt-6 text-brown font-medium text-lg">
+              This is why we push one principle: clarity first, treatment
+              second.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Cost Section - ALL CONTENT INCLUDED */}
+      <section className="py-20 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto px-6"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="text-4xl font-georgia text-brown mb-4">
+              Cost of Stem Cell Therapy in Malaysia
+            </h2>
+            <p className="text-taupe text-xl">(Realistic Range)</p>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto space-y-6">
+            <motion.p variants={fadeInUp} className="text-taupe">
+              Pricing varies widely in Kuala Lumpur depending on:
+            </motion.p>
+
+            <motion.div
+              variants={fadeInUp}
+              className="grid grid-cols-2 md:grid-cols-5 gap-3"
+            >
+              {[
+                "cell source",
+                "lab processing",
+                "number of cells",
+                "delivery route (IV vs local injection)",
+                "condition and number of sessions",
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white p-3 rounded-lg text-center text-brown text-sm shadow"
+                >
+                  {item}
+                </div>
+              ))}
+            </motion.div>
+
+            <motion.div
+              variants={scaleIn}
+              className="bg-white rounded-2xl p-6 shadow-lg"
+            >
+              <p className="text-taupe mb-3">
+                Examples from Malaysian clinic-style pages:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-taupe">
+                <li>
+                  Sheen Clinic notes a session can cost RM6,000 or more,
+                  depending on source and IV vs local injection
+                </li>
+                <li>
+                  Some medical travel sites and local blogs quote much higher
+                  ranges, especially for complex conditions (often tens of
+                  thousands of ringgit)
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-rose/5 p-6 rounded-xl"
+            >
+              <p className="text-brown font-medium">
+                Best practice: ask for an itemised quote that separates consult,
+                screening, lab processing, delivery, and follow-ups. If a clinic
+                will not itemise, that is a red flag.
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Comparison Section - ALL CONTENT INCLUDED */}
+      <section className="py-20 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto px-6 max-w-5xl"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl font-georgia text-brown text-center mb-12"
+          >
+            Stem Cells vs PRP vs Exosomes (Quick Comparison)
+          </motion.h2>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <motion.div
+              variants={scaleIn}
+              className="bg-white rounded-2xl p-6 shadow-lg"
+            >
+              <h3 className="font-georgia text-xl text-brown mb-3">
+                PRP (Platelet Rich Plasma)
+              </h3>
+              <p className="text-taupe">
+                PRP uses your own blood platelets to support healing signals. It
+                is commonly used in aesthetic and hair contexts. It is not "stem
+                cells."
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={scaleIn}
+              className="bg-white rounded-2xl p-6 shadow-lg border border-rose/30"
+            >
+              <h3 className="font-georgia text-xl text-rose mb-3">Exosomes</h3>
+              <p className="text-taupe">
+                Exosomes are often marketed as regenerative, but the FDA
+                includes exosomes in its warning list of widely marketed
+                unapproved regenerative products. If a clinic sells exosome
+                therapy as guaranteed, ask for regulatory clarity and evidence.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={scaleIn}
+              className="bg-white rounded-2xl p-6 shadow-lg border border-wine/30"
+            >
+              <h3 className="font-georgia text-xl text-wine mb-3">
+                Stem cells
+              </h3>
+              <p className="text-taupe">
+                Stem cells are more complex and need stronger oversight and
+                better proof, especially outside established transplant
+                indications.
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Competitor Analysis - ALL CONTENT INCLUDED */}
+      <section className="py-20 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto px-6 max-w-4xl"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl font-georgia text-brown text-center mb-8"
+          >
+            How Nexus Clinic KL content should outperform competitors
+          </motion.h2>
+
+          <motion.div
+            variants={scaleIn}
+            className="bg-white rounded-2xl p-8 shadow-lg space-y-6"
+          >
+            <div>
+              <p className="text-brown font-medium mb-2">
+                1. Umbilical cord Wharton's Jelly MSC positioning + quality
+                claims
+              </p>
+              <p className="text-taupe">
+                MRC Clinic highlights Wharton's Jelly source and mentions
+                standards such as cGMP and ISO compliance.
+              </p>
+            </div>
+
+            <div>
+              <p className="text-brown font-medium mb-2">
+                2. Wide-condition marketing (heart, kidney, neuro, skin)
+              </p>
+              <p className="text-taupe">
+                Cell & Co promotes MSC therapy with sections on heart and kidney
+                diseases.
+              </p>
+            </div>
+
+            <div>
+              <p className="text-brown font-medium mb-2">
+                3. Price anchoring by session and delivery method
+              </p>
+              <p className="text-taupe">
+                Sheen Clinic states pricing depends on source and whether IV or
+                local injection is used.
+              </p>
+            </div>
+
+            <div>
+              <p className="text-brown font-medium mb-2">
+                4. Medical tourism framing
+              </p>
+              <p className="text-taupe">
+                Some competitors position Kuala Lumpur as a regenerative
+                medicine destination.
+              </p>
+            </div>
+
+            <div className="border-t border-cream pt-6 mt-6">
+              <p className="text-brown font-medium mb-3">
+                How Nexus Clinic KL content should outperform competitors:
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-1" />
+                  <span className="text-taupe">
+                    Be clearer about what is established vs experimental in
+                    Malaysia
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-1" />
+                  <span className="text-taupe">
+                    Put patient safety and informed consent upfront, not at the
+                    bottom
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-1" />
+                  <span className="text-taupe">
+                    Avoid "treats everything" language, because ISSCR warns
+                    against that pattern
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* FAQ Section - ALL CONTENT INCLUDED */}
+      <section className="py-20 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto px-6 max-w-4xl"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl font-georgia text-brown text-center mb-12"
+          >
+            FAQs (People Also Ask Style)
+          </motion.h2>
+
+          <div className="space-y-4">
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white rounded-xl p-6 shadow-md"
+            >
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                1) What is stem cell therapy?
+              </h3>
+              <p className="text-taupe">
+                A treatment that uses stem cells, or cells derived from them, to
+                repair or replace damaged cells or tissues.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white rounded-xl p-6 shadow-md"
+            >
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                2) What conditions are stem cell treatments proven for?
+              </h3>
+              <p className="text-taupe">
+                Blood and immune disorders and loss of bone marrow function,
+                treated with blood stem cell transplantation, as established by
+                ISSCR and Malaysia's MOH.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white rounded-xl p-6 shadow-md"
+            >
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                3) Is stem cell therapy approved in Malaysia?
+              </h3>
+              <p className="text-taupe">
+                Malaysia's MOH guideline notes hematopoietic and cord blood stem
+                cell transplantation are the most established forms, while many
+                other stem cell uses are considered experimental and require
+                ethics oversight.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white rounded-xl p-6 shadow-md"
+            >
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                4) Why do some clinics offer stem cells for many diseases?
+              </h3>
+              <p className="text-taupe">
+                Many clinics market broad applications, but ISSCR warns that
+                unproven interventions are widely commercialised without
+                sufficient evidence and should be limited to regulated trials or
+                tightly governed medical innovation.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white rounded-xl p-6 shadow-md"
+            >
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                5) Is stem cell therapy safe?
+              </h3>
+              <p className="text-taupe">
+                No medical treatment is risk-free. ISSCR stresses long-term
+                safety can be uncertain and follow-up is important.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white rounded-xl p-6 shadow-md"
+            >
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                6) What are the side effects or risks?
+              </h3>
+              <p className="text-taupe">
+                Risks can include infection, immune reactions, and unknown
+                long-term effects. The FDA reports serious harms from unapproved
+                regenerative products, including infections, tumor formation,
+                and blindness.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white rounded-xl p-6 shadow-md"
+            >
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                7) How many sessions do I need?
+              </h3>
+              <p className="text-taupe">
+                It depends on the condition, route, and protocol. Be cautious if
+                someone promises a fixed number for everyone. ISSCR flags "one
+                cell for many diseases" style marketing as a warning sign.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white rounded-xl p-6 shadow-md"
+            >
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                8) How long does it take to see results?
+              </h3>
+              <p className="text-taupe">
+                Timelines vary and depend on what outcome you measure. A good
+                clinic will define measurable goals and follow-up points rather
+                than promising "instant change."
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white rounded-xl p-6 shadow-md"
+            >
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                9) How much does stem cell therapy cost in Kuala Lumpur?
+              </h3>
+              <p className="text-taupe">
+                Some Malaysia clinic pages state sessions can start around
+                RM6,000+, while other providers quote much higher ranges
+                depending on complexity. Always request an itemised quote.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white rounded-xl p-6 shadow-md"
+            >
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                10) Where do the stem cells come from?
+              </h3>
+              <p className="text-taupe">
+                Common sources include cord tissue (Wharton's Jelly) and adipose
+                tissue, depending on the provider and protocol.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white rounded-xl p-6 shadow-md"
+            >
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                11) What should I ask a clinic before I book?
+              </h3>
+              <p className="text-taupe">
+                ISSCR suggests asking for scientific evidence, ethics oversight
+                (IRB), and regulatory compliance, and being cautious of claims
+                based mainly on testimonials.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white rounded-xl p-6 shadow-md"
+            >
+              <h3 className="font-georgia text-lg text-brown mb-2">
+                12) Are exosome treatments the same as stem cell therapy?
+              </h3>
+              <p className="text-taupe">
+                No. The FDA includes exosomes among unapproved regenerative
+                products that are broadly marketed without approval.
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* CTA Section - ALL CONTENT INCLUDED */}
+      <section className="py-20 bg-wine relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/api/placeholder/1200/800')] opacity-10 mix-blend-overlay" />
+
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto px-6 relative z-10"
+        >
+          <motion.div
+            variants={scaleIn}
+            className="max-w-3xl mx-auto text-center bg-wine backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/20"
+          >
+            <h2 className="text-3xl md:text-4xl font-georgia text-white mb-6">
+              CTA (Website-ready)
+            </h2>
+
+            <p className="text-white/90 text-lg mb-8 leading-relaxed">
               If you're searching for stem cell therapy in Malaysia or
               regenerative medicine in Kuala Lumpur, start with a private
               consult focused on your diagnosis, your risks, and what is
               realistically achievable.
-            </motion.p>
+            </p>
 
-            <motion.div variants={fadeInUp} className="space-y-4">
-              <div className="p-6 rounded-2xl bg-white/10 backdrop-blur-sm max-w-md mx-auto">
-                <p className="font-serif text-lg mb-2">
-                  Nexus Clinic Kuala Lumpur
-                </p>
-                <p className="text-sm text-cream mb-4">
-                  LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450
-                  Kuala Lumpur
-                </p>
-                <div className="flex items-center justify-center gap-4">
-                  <Phone className="w-5 h-5" />
-                  <span>016-7025699 / 03-21635699</span>
-                </div>
-              </div>
-
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white rounded-full font-medium text-lg shadow-xl"
-                style={{ color: "var(--color-wine)" }}
-              >
-                Schedule Your Private Consultation
-              </motion.button>
-            </motion.div>
-          </div>
-        </motion.section>
-      </main>
-    </>
+            <div className="space-y-4">
+              <p className="text-white font-georgia text-xl">
+                Nexus Clinic Kuala Lumpur
+              </p>
+              <p className="text-white/80">
+                LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450
+                Kuala Lumpur
+              </p>
+              <p className="text-white text-lg">
+                Mobile: 016-7025699 / 03-21635699
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
+    </div>
   );
 };
 

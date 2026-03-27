@@ -268,7 +268,7 @@ const OShotLanding = () => {
               <div className="absolute inset-0 bg-linear-to-br from-wine to-rose opacity-10 rounded-3xl transform -rotate-3" />
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="/images/regenerative/embryonic.webp"
+                  src="/images/regenerative/o-shot.webp"
                   alt="O-Shot Procedure at Nexus Clinic"
                   className="w-full h-auto object-cover"
                 />

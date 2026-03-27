@@ -14,13 +14,14 @@ import MoleRemoval from "@/src/views/skinTreatment/MoleRemoval";
 import PicoLaser from "@/src/views/skinTreatment/PicoLaser";
 import DarkEyeCircleTreatment from "@/src/views/skinTreatment/DarkEyeCircleTreatment";
 import SkinWhitening from "@/src/views/skinTreatment/SkinWhitening";
-// import EczemaTreatment from "@/src/views/skinTreatment/EczemaTreatment";
+import EczemaTreatment from "@/src/views/skinTreatment/Eczema";
 import KeloidTreatment from "@/src/views/skinTreatment/KeloidTreatment";
 import RosaceaTreatment from "@/src/views/skinTreatment/RosaceaTreatment";
-// import StretchMarkRemoval from "@/src/views/skinTreatment/StretchMarkRemoval";
 import LaserHairRemoval from "@/src/views/skinTreatment/LaserHairRemoval";
 import TattooRemoval from "@/src/views/skinTreatment/TattooRemoval";
 import Default from "@/src/views/skinTreatment/Default";
+import Hydrafacial from "@/src/views/skinTreatment/Hrdrafracial";
+import StretchMarkRemoval from "@/src/views/skinTreatment/StretchMarkTreatment";
 
 const components: Record<string, React.ComponentType<{ locale: string }>> = {
   AcneTreatment,
@@ -28,14 +29,14 @@ const components: Record<string, React.ComponentType<{ locale: string }>> = {
   PigmentationTreatment,
   MelasmaTreatment,
   MoleRemoval,
-//   Hydrafacial,
+  Hydrafacial,
   PicoLaser,
   DarkEyeCircleTreatment,
   SkinWhitening,
-//   EczemaTreatment,
+  EczemaTreatment,
   KeloidTreatment,
   RosaceaTreatment,
-//   StretchMarkRemoval,
+  StretchMarkRemoval,
   LaserHairRemoval,
   TattooRemoval,
 };
@@ -50,20 +51,21 @@ export async function generateStaticParams() {
   return paths;
 }
 
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ locale: string; slug: string }> 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const treatment = skinTreatmentsMetadata.find(t => t.slug === slug);
-  
+  const treatment = skinTreatmentsMetadata.find((t) => t.slug === slug);
+
   if (!treatment) return {};
-  
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://nexusclinic.my';
-  const url = locale === 'en' 
-    ? `${baseUrl}/skin/${slug}` 
-    : `${baseUrl}/${locale}/skin/${slug}`;
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://nexusclinic.my";
+  const url =
+    locale === "en"
+      ? `${baseUrl}/skin/${slug}`
+      : `${baseUrl}/${locale}/skin/${slug}`;
 
   return {
     title: treatment.title,
@@ -73,22 +75,22 @@ export async function generateMetadata({
       title: treatment.title,
       description: treatment.description,
       url,
-      siteName: 'Nexus Clinic',
+      siteName: "Nexus Clinic",
     },
   };
 }
 
-export default async function SkinTreatmentPage({ 
-  params 
-}: { 
-  params: Promise<{ locale: string; slug: string }> 
+export default async function SkinTreatmentPage({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  
-  const treatment = skinTreatmentsMetadata.find(t => t.slug === slug);
+
+  const treatment = skinTreatmentsMetadata.find((t) => t.slug === slug);
   if (!treatment) return <Default locale={locale} />;
-  
+
   const Component = components[treatment.component] || Default;
-  
+
   return <Component locale={locale} />;
 }

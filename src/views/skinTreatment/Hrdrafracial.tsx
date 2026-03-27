@@ -3,24 +3,21 @@
 // HydraFacialLandingPage.jsx
 import { motion } from "framer-motion";
 import {
-  Sparkles,
   Droplets,
+  Sparkles,
   Shield,
   Clock,
+  Wind,
+  CheckCircle2,
+  Heart,
   MapPin,
   ChevronRight,
-  Sun,
-  Wind,
-  Thermometer,
-  Heart,
-  Star,
-  CheckCircle2,
-  AlertCircle,
-  User,
-  Airplay,
-  Leaf,
-  Sparkle,
+  Droplet,
+  Eye,
+  Feather,
+  ThermometerSun,
 } from "lucide-react";
+
 import {
   fadeInUp,
   staggerContainer,
@@ -32,11 +29,14 @@ import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
-const HydraFacialLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
+const HydraFacialLandingPage = ({
+  locale = fallbackLng,
+}: {
+  locale?: string;
+}) => {
   const { t } = useTranslation(locale, "hydrafacial");
 
-
-   const transformations = [
+  const transformations = [
     {
       id: 1,
       before: "/images/B&A-skin/B&A-hydrafacial1.webp",
@@ -55,970 +55,1046 @@ const HydraFacialLandingPage = ({ locale = fallbackLng }: { locale?: string }) =
   ];
 
   return (
-    <>
-      <main className="w-full overflow-hidden bg-light">
-        {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-rose/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-wine/10 rounded-full blur-3xl" />
-          </div>
+    <div className="w-full bg-light overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-rose/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-wine/10 rounded-full blur-3xl" />
+        </div>
 
-          <div className="relative max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left Content */}
-              <motion.div
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                className="space-y-8"
-              >
-                <motion.div variants={fadeInUp} className="space-y-4">
-                  <span className="inline-flex items-center gap-2 text-wine font-inter text-sm tracking-wider">
-                    <Sparkles size={18} />
-                    {t("hero.badge")}
-                  </span>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto max-w-6xl relative z-10"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-6">
+              <h1 className="font-georgia text-4xl lg:text-5xl xl:text-6xl text-brown leading-tight">
+                Your clean-skin reset in Kuala Lumpur,
+                <span className="text-wine block">
+                  without the "facial drama"
+                </span>
+              </h1>
 
-                  <h2 className="font-georgia text-5xl lg:text-5xl text-brown leading-tight">
-                    {t("hero.title1")}
-                    <span className="text-wine">
-                      {" "}
-                      {t("hero.title2")}
-                    </span>
-                  </h2>
+              <p className="text-lg text-taupe leading-relaxed max-w-lg">
+                Deep cleanse. Gentle suction. Fresh hydration. You walk out
+                looking rested, not red. Made for Malaysia's heat, humidity, and
+                city-life buildup that sits in your pores.
+              </p>
+            </motion.div>
 
-                  <p className="text-lg text-taupe font-inter leading-relaxed">
-                    {t("hero.desc")}
-                  </p>
-                </motion.div>
-
-                {/* Trust Strip */}
-                <motion.div
-                  variants={fadeInUp}
-                  className="bg-cream rounded-2xl p-6 border border-rose/20 backdrop-blur-sm"
-                  style={{ backgroundColor: "var(--color-glass)" }}
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-wine/10 flex items-center justify-center">
-                        <Shield className="text-wine" size={20} />
-                      </div>
-                      <span className="text-sm text-brown font-inter">
-                        {t("hero.trust1")}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-wine/10 flex items-center justify-center">
-                        <MapPin className="text-wine" size={20} />
-                      </div>
-                      <span className="text-sm text-brown font-inter">
-                        {t("hero.trust2")}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-wine/10 flex items-center justify-center">
-                        <Clock className="text-wine" size={20} />
-                      </div>
-                      <span className="text-sm text-brown font-inter">
-                        {t("hero.trust3")}
-                      </span>
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.div variants={fadeInUp} className="flex wrap gap-4">
-                  <button className="group bg-wine text-white px-8 py-4 rounded-full font-inter text-sm hover:bg-brown transition-all duration-300 flex items-center gap-2">
-                    {t("hero.bookBtn")}
-                    <ChevronRight
-                      size={18}
-                      className="group-hover:translate-x-1 transition-transform"
-                    />
-                  </button>
-                  <button className="border border-taupe text-brown px-8 py-4 rounded-full font-inter text-sm hover:bg-cream transition-all">
-                    {t("hero.priceBtn")}
-                  </button>
-                </motion.div>
-              </motion.div>
-
-              {/* Right Image/Visual */}
-              <motion.div
-                variants={fadeInRight}
-                initial="hidden"
-                whileInView="visible"
-                className="relative"
-              >
-                <div className="relative rounded-3xl overflow-hidden">
-                  <img
-                    src="/images/skin/hydrafacial.webp"
-                    alt="HydraFacial treatment"
-                    className="w-full h-auto rounded-3xl"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-brown/20 to-transparent" />
-
-                  {/* Floating Cards */}
-                  <motion.div
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 4, repeat: Infinity }}
-                    className="absolute top-8 left-8 bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-xl"
-                  >
-                    <div className="flex items-center gap-2">
-                      <Thermometer className="text-wine" size={20} />
-                      <span className="text-sm font-inter text-brown">
-                        {t("hero.floatingCard1")}
-                      </span>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ duration: 4.5, repeat: Infinity }}
-                    className="absolute bottom-8 right-8 bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-xl"
-                  >
-                    <div className="flex items-center gap-2">
-                      <Droplets className="text-wine" size={20} />
-                      <span className="text-sm font-inter text-brown">
-                        {t("hero.floatingCard2")}
-                      </span>
-                    </div>
-                  </motion.div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* If Your Skin Could Talk Section */}
-        <section className="py-24 px-4 bg-cream">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              className="grid lg:grid-cols-2 gap-16 items-center"
-            >
-              <motion.div variants={fadeInLeft} className="relative">
-                <div className="absolute -top-10 -left-10 w-32 h-32 bg-rose/20 rounded-full blur-2xl" />
-                <h2 className="font-georgia text-4xl lg:text-5xl text-brown mb-6 relative">
-                  {t("skinTalk.title1")}
-                  <br />
-                  <span className="text-wine">{t("skinTalk.title2")}</span>
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="relative z-10 bg-linear-to-br from-cream to-light p-8 rounded-3xl shadow-xl border border-white/50 backdrop-blur-sm">
+                <h2 className="font-georgia text-2xl text-brown mb-6">
+                  Trust Nexus Clinic Kuala Lumpur
                 </h2>
-
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {[
                     {
-                      icon: Sun,
-                      text: t("skinTalk.issue1"),
+                      icon: Shield,
+                      text: "MOH-registered clinic and doctor-led planning",
                     },
-                    { icon: Wind, text: t("skinTalk.issue2") },
                     {
-                      icon: Droplets,
-                      text: t("skinTalk.issue3"),
+                      icon: MapPin,
+                      text: "Central KL location: Wisma UOA II, Jalan Pinang",
+                    },
+                    {
+                      icon: Clock,
+                      text: "Hydrafacial Deep Cleanse: downtime none, typically done monthly",
+                    },
+                    {
+                      icon: Eye,
+                      text: "Transparent starting price listed for Hydrafacial Deep Cleanse",
                     },
                   ].map((item, index) => (
                     <motion.div
                       key={index}
-                      variants={fadeInUp}
-                      className="flex items-start gap-4"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.2 + index * 0.1 }}
+                      className="flex items-start gap-3"
                     >
-                      <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center">
-                        <item.icon className="text-wine" size={24} />
-                      </div>
-                      <p className="text-taupe font-inter text-lg">
-                        {item.text}
-                      </p>
+                      <item.icon className="w-5 h-5 text-wine shrink-0 mt-1" />
+                      <span className="text-brown">{item.text}</span>
                     </motion.div>
                   ))}
                 </div>
+              </div>
 
-                <motion.p
-                  variants={fadeInUp}
-                  className="mt-8 text-brown font-inter text-lg leading-relaxed"
-                >
-                  {t("skinTalk.desc")}
-                </motion.p>
-              </motion.div>
-
-              <motion.div variants={fadeInRight} className="relative">
-                <div className="bg-white rounded-3xl p-8 shadow-2xl">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-16 h-16 rounded-full bg-wine/10 flex items-center justify-center">
-                      <Heart className="text-wine" size={32} />
-                    </div>
-                    <div>
-                      <h3 className="font-georgia text-2xl text-brown">
-                        {t("skinTalk.doctorTitle")}
-                      </h3>
-                      <p className="text-taupe">{t("skinTalk.doctorSubtitle")}</p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    {[
-                      t("skinTalk.doctorPoint1"),
-                      t("skinTalk.doctorPoint2"),
-                      t("skinTalk.doctorPoint3"),
-                    ].map((text, index) => (
-                      <div key={index} className="flex items-center gap-3">
-                        <CheckCircle2 className="text-wine" size={20} />
-                        <span className="text-brown font-inter">{text}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
+              {/* Decorative Elements */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-rose/20 rounded-full blur-2xl" />
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-wine/20 rounded-full blur-2xl" />
             </motion.div>
           </div>
-        </section>
+        </motion.div>
+      </section>
 
-        {/* What Is HydraFacial Section */}
-        <section className="py-24 px-4">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              className="text-center mb-16"
-            >
-              <motion.span
-                variants={fadeInUp}
-                className="text-wine font-inter text-sm tracking-wider mb-4 block"
-              >
-                {t("whatIs.badge")}
-              </motion.span>
-              <motion.h2
-                variants={fadeInUp}
-                className="font-georgia text-4xl lg:text-5xl text-brown mb-6"
-              >
-                {t("whatIs.title")}
-              </motion.h2>
-              <motion.p
-                variants={fadeInUp}
-                className="text-xl text-taupe max-w-3xl mx-auto"
-              >
-                {t("whatIs.desc")}
-              </motion.p>
+      {/* Introduction Section - ALL TEXT INCLUDED */}
+      <section className="py-20 px-4 bg-cream/50">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto max-w-4xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-6">
+              If your skin could talk, it would ask for this
+            </h2>
+            <p className="text-lg text-taupe max-w-2xl mx-auto">
+              Kuala Lumpur life is intense on skin. Heat. Sweat. Sunscreen.
+              Air-conditioning. Daily commuting. Add makeup, and suddenly your
+              pores feel "full" even when you cleanse properly.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-glass backdrop-blur-sm p-8 md:p-12 rounded-3xl border border-white/50 shadow-lg"
+          >
+            <div className="space-y-6">
+              <div>
+                <h3 className="font-georgia text-2xl text-wine mb-3">
+                  A hydra facial is for that exact moment.
+                </h3>
+                <p className="text-brown leading-relaxed">
+                  It's not a random pamper session. It's a practical reset that
+                  cleans, clears, and hydrates in one go. Most people notice the
+                  glow fast. The better part is how smooth your skin feels the
+                  next day.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-georgia text-2xl text-wine mb-3">
+                  At Nexus Clinic Kuala Lumpur, we keep it simple.
+                </h3>
+                <p className="text-brown leading-relaxed">
+                  We assess your skin, then choose a plan that matches your
+                  sensitivity level, your breakouts, and your schedule. We do
+                  not push what you don't need. That doctor-first approach is
+                  part of how Nexus Clinic positions its care.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* What is HydraFacial Section with Image - ALL TEXT INCLUDED */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto max-w-6xl"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-6">
+              <h2 className="font-georgia text-3xl md:text-4xl text-brown">
+                What is a hydra facial{" "}
+                <span className="text-wine">(HydraFacial-style treatment)</span>
+              </h2>
+
+              <p className="text-lg text-taupe leading-relaxed">
+                A hydra facial is a non-invasive, multi-step facial that
+                typically combines cleansing, exfoliation, gentle extraction
+                (using suction), and hydration with skin serums. Many clinics
+                describe it as a single session that covers several skin goals
+                at once.
+              </p>
+
+              <div className="bg-cream p-6 rounded-2xl border-l-4 border-wine">
+                <p className="text-brown italic">
+                  "Think of it like this: A regular facial may feel relaxing. A
+                  hydra facial feels relaxing and looks like you did something
+                  'real' for your pores."
+                </p>
+              </div>
+
+              <p className="text-brown">
+                At Nexus Clinic KL, the listing describes it as gentle deep
+                cleansing and hydration for all skin types, with no downtime and
+                a monthly rhythm for maintenance.
+              </p>
             </motion.div>
 
-            <div className="grid lg:grid-cols-4 gap-6">
-              {[
-                {
-                  step: t("whatIs.step1Num"),
-                  title: t("whatIs.step1Title"),
-                  desc: t("whatIs.step1Desc"),
-                  color: "wine",
-                },
-                {
-                  step: t("whatIs.step2Num"),
-                  title: t("whatIs.step2Title"),
-                  desc: t("whatIs.step2Desc"),
-                  color: "rose",
-                },
-                {
-                  step: t("whatIs.step3Num"),
-                  title: t("whatIs.step3Title"),
-                  desc: t("whatIs.step3Desc"),
-                  color: "taupe",
-                },
-                {
-                  step: t("whatIs.step4Num"),
-                  title: t("whatIs.step4Title"),
-                  desc: t("whatIs.step4Desc"),
-                  color: "brown",
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={scaleIn}
-                  whileHover={{ y: -10 }}
-                  className="group relative bg-light rounded-2xl p-8 border border-rose/20 hover:border-wine transition-all"
-                >
-                  <div
-                    className={` text-${item.color} absolute top-4 right-4 text-6xl font-georgia opacity-10 group-hover:opacity-20 transition-opacity`}
-                  >
-                    {item.step}
-                  </div>
-                  <h3 className="font-georgia text-2xl text-brown mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-taupe font-inter">{item.desc}</p>
-                </motion.div>
-              ))}
+            <motion.div variants={fadeInRight} className="relative">
+              {/* Image Container - Single Image */}
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <img
+                  src="/images/skin/hydrafacial.webp"
+                  alt="HydraFacial treatment at Nexus Clinic KL"
+                  className="w-full h-auto object-cover"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-brown/20 to-transparent" />
+              </div>
+
+              {/* Decorative Elements */}
+              <div className="absolute -top-4 -right-4 w-32 h-32 bg-wine/10 rounded-full blur-2xl -z-10" />
+              <div className="absolute -bottom-4 -left-4 w-40 h-40 bg-rose/10 rounded-full blur-2xl -z-10" />
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Why Popular in Malaysia - ALL TEXT INCLUDED */}
+      <section className="py-20 px-4 bg-cream/30">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto max-w-4xl"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl md:text-4xl text-brown text-center mb-12"
+          >
+            Why it's popular in{" "}
+            <span className="text-wine">Malaysia (especially KL)</span>
+          </motion.h2>
+
+          <motion.div variants={fadeInUp} className="space-y-6">
+            <p className="text-lg text-brown">Because it fits real life.</p>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-white/50">
+                <Clock className="w-8 h-8 text-wine mb-3" />
+                <p className="text-brown">You can do it during a busy week.</p>
+              </div>
+              <div className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-white/50">
+                <ThermometerSun className="w-8 h-8 text-wine mb-3" />
+                <p className="text-brown">
+                  It works well when your face feels congested from humidity.
+                </p>
+              </div>
+              <div className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-white/50">
+                <Sparkles className="w-8 h-8 text-wine mb-3" />
+                <p className="text-brown">
+                  It can be a smart pre-event glow option because there's
+                  typically no downtime.
+                </p>
+              </div>
+              <div className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-white/50">
+                <Heart className="w-8 h-8 text-wine mb-3" />
+                <p className="text-brown">
+                  And for many Malaysian skin tones, people worry about
+                  irritation or marks after treatments.
+                </p>
+              </div>
             </div>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-center text-taupe bg-cream p-4 rounded-xl"
+            >
+              Nexus Clinic's own guidance notes that when performed properly at
+              a reputable clinic, treatments like HydraFacial can be safe for
+              darker skin types, while aggressive options should be chosen
+              cautiously.
+            </motion.p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* What It Helps With - ALL TEXT INCLUDED */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl md:text-4xl text-brown text-center mb-4"
+          >
+            What it helps with{" "}
+            <span className="text-wine">(in plain words)</span>
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-center text-taupe mb-8">
+            A hydra facial can be a great fit if you're dealing with:
+          </motion.p>
+
+          <motion.div
+            variants={fadeInUp}
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          >
+            {[
+              "Oily skin and visible blackheads",
+              "Rough texture and dullness",
+              "Dehydrated skin that still looks 'shiny'",
+              "Enlarged-looking pores",
+              "Uneven tone from daily sun exposure",
+              "'Tired face' before a big event",
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.02 }}
+                className="bg-cream p-4 rounded-xl flex items-start gap-3 border border-white/50"
+              >
+                <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
+                <span className="text-brown">{item}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.p variants={fadeInUp} className="text-center text-taupe mt-6">
+            Many clinics position it for concerns like uneven tone, congestion,
+            and dehydration, and highlight its step-by-step structure (cleanse,
+            extract, hydrate).
+          </motion.p>
+        </motion.div>
+      </section>
+
+      {/* Treatment Steps - ALL TEXT INCLUDED */}
+      <section className="py-20 px-4 bg-cream/50">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto max-w-5xl"
+        >
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                step: "1",
+                title: "Cleanse + gentle exfoliation",
+                icon: Droplets,
+              },
+              {
+                step: "2",
+                title: "Extraction using painless, gentle suction",
+                icon: Wind,
+              },
+              {
+                step: "3",
+                title: "Hydration infusion with nourishing serums",
+                icon: Droplet,
+              },
+              {
+                step: "4",
+                title: "Optional finishing steps depending on your skin goals",
+                icon: Feather,
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                variants={scaleIn}
+                whileHover={{ y: -5 }}
+                className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-white/50"
+              >
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center mb-4">
+                  <item.icon className="w-6 h-6 text-wine" />
+                </div>
+                <div className="text-2xl font-bold text-wine/30 mb-2">
+                  {item.step}.
+                </div>
+                <h3 className="font-georgia text-lg text-brown">
+                  {item.title}
+                </h3>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div variants={fadeInUp} className="mt-8 space-y-4">
+            <p className="text-brown text-center">
+              You'll see this exact "cleanse, extract, hydrate" style breakdown
+              across top-ranking clinic pages.
+            </p>
+            <p className="text-brown text-center bg-cream p-4 rounded-xl">
+              What it feels like: cool, wet, and smooth. Not scratchy. Not
+              painful. Many clinics specifically say it's generally comfortable.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Who It's For - ALL TEXT INCLUDED */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl md:text-4xl text-brown text-center mb-12"
+          >
+            Who it's for{" "}
+            <span className="text-wine">(and who should pause first)</span>
+          </motion.h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div variants={fadeInLeft} className="space-y-4">
+              <h3 className="font-georgia text-2xl text-wine">Great for:</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2 text-brown">
+                  <span className="text-wine">•</span>
+                  Students, office professionals, and frequent travelers
+                </li>
+                <li className="flex items-start gap-2 text-brown">
+                  <span className="text-wine">•</span>
+                  People who wear makeup often
+                </li>
+                <li className="flex items-start gap-2 text-brown">
+                  <span className="text-wine">•</span>
+                  Men who want cleaner pores without a complicated routine
+                  (HydraFacial is commonly marketed for both men and women)
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div variants={fadeInRight} className="space-y-4">
+              <h3 className="font-georgia text-2xl text-rose">
+                Pause and ask first if:
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2 text-brown">
+                  <span className="text-rose">•</span>
+                  You have an active skin infection, open wound, or cold sore
+                  flare
+                </li>
+                <li className="flex items-start gap-2 text-brown">
+                  <span className="text-rose">•</span>
+                  Your skin is sunburnt
+                </li>
+                <li className="flex items-start gap-2 text-brown">
+                  <span className="text-rose">•</span>
+                  You recently did strong peels, lasers, or started strong
+                  prescription products
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+
+          <motion.p
+            variants={fadeInUp}
+            className="mt-8 text-center text-taupe italic"
+          >
+            A proper consultation matters because not every "glow treatment" is
+            safe for every skin condition. Nexus Clinic's model is
+            assessment-first, then plan.
+          </motion.p>
+        </motion.div>
+      </section>
+
+      {/* How Treatment Works - ALL TEXT INCLUDED */}
+      <section className="py-20 px-4 bg-cream/30">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto max-w-4xl"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl md:text-4xl text-brown text-center mb-8"
+          >
+            How the treatment works{" "}
+            <span className="text-wine">(what happens in the room)</span>
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-center text-taupe mb-8">
+            Different clinics describe steps slightly differently, but the usual
+            flow looks like this:
+          </motion.p>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-glass backdrop-blur-sm p-8 rounded-3xl border border-white/50"
+          >
+            <ol className="space-y-4">
+              <li className="flex items-start gap-3 text-brown">
+                <span className="w-6 h-6 bg-wine text-light rounded-full flex items-center justify-center shrink-0 mt-1">
+                  1
+                </span>
+                Cleanse + gentle exfoliation
+              </li>
+              <li className="flex items-start gap-3 text-brown">
+                <span className="w-6 h-6 bg-wine text-light rounded-full flex items-center justify-center shrink-0 mt-1">
+                  2
+                </span>
+                Extraction using painless, gentle suction
+              </li>
+              <li className="flex items-start gap-3 text-brown">
+                <span className="w-6 h-6 bg-wine text-light rounded-full flex items-center justify-center shrink-0 mt-1">
+                  3
+                </span>
+                Hydration infusion with nourishing serums
+              </li>
+              <li className="flex items-start gap-3 text-brown">
+                <span className="w-6 h-6 bg-wine text-light rounded-full flex items-center justify-center shrink-0 mt-1">
+                  4
+                </span>
+                Optional finishing steps depending on your skin goals
+              </li>
+            </ol>
+
+            <p className="mt-6 text-brown italic">
+              You'll see this exact "cleanse, extract, hydrate" style breakdown
+              across top-ranking clinic pages.
+            </p>
+
+            <p className="mt-4 text-brown">
+              What it feels like: cool, wet, and smooth. Not scratchy. Not
+              painful. Many clinics specifically say it's generally comfortable.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Results Section - ALL TEXT INCLUDED */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto max-w-4xl"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl md:text-4xl text-brown text-center mb-4"
+          >
+            What results can you expect{" "}
+            <span className="text-wine">(and how long do they last)?</span>
+          </motion.h2>
+
+          <motion.div variants={fadeInUp} className="bg-cream p-8 rounded-3xl">
+            <p className="text-brown mb-4">You'll usually notice:</p>
+
+            <ul className="space-y-2 mb-6">
+              <li className="flex items-start gap-2 text-brown">
+                <CheckCircle2 className="w-5 h-5 text-wine shrink-0" />
+                Cleaner-looking pores
+              </li>
+              <li className="flex items-start gap-2 text-brown">
+                <CheckCircle2 className="w-5 h-5 text-wine shrink-0" />
+                Softer texture
+              </li>
+              <li className="flex items-start gap-2 text-brown">
+                <CheckCircle2 className="w-5 h-5 text-wine shrink-0" />
+                Better hydration and glow
+              </li>
+            </ul>
+
+            <p className="text-brown mb-4">
+              A lot of people love how their skin looks immediately after.
+              Editorial skincare sources also describe the "instant glow" effect
+              and minimal downtime as a key reason it stays popular.
+            </p>
+
+            <div className="mt-4 p-4 bg-light rounded-xl">
+              <p className="text-taupe">
+                <span className="font-semibold text-brown">
+                  How long it lasts:
+                </span>{" "}
+                it varies with skincare, sun exposure, and how oily your skin
+                is. Many clinics recommend doing it monthly for maintenance.
+                Nexus Clinic's hydrafacial listing also suggests a monthly
+                cadence.
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      <SectionBeforeAfter transformations={transformations} />
+
+      {/* Pros & Cons - ALL TEXT INCLUDED */}
+      <section className="py-20 px-4 bg-cream/30">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl md:text-4xl text-brown text-center mb-12"
+          >
+            Pros and cons <span className="text-wine">(honest version)</span>
+          </motion.h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div variants={fadeInLeft} className="space-y-4">
+              <h3 className="font-georgia text-2xl text-wine">Pros</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2 text-brown">
+                  <span className="text-wine">•</span>
+                  No real downtime for most people
+                </li>
+                <li className="flex items-start gap-2 text-brown">
+                  <span className="text-wine">•</span>
+                  Good "first treatment" if you're nervous about stronger
+                  procedures
+                </li>
+                <li className="flex items-start gap-2 text-brown">
+                  <span className="text-wine">•</span>
+                  Can be customized based on your main concern
+                </li>
+                <li className="flex items-start gap-2 text-brown">
+                  <span className="text-wine">•</span>
+                  Works nicely in Malaysia's climate where pores clog easily
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div variants={fadeInRight} className="space-y-4">
+              <h3 className="font-georgia text-2xl text-rose">Cons</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2 text-brown">
+                  <span className="text-rose">•</span>
+                  Results are not permanent, it's a maintenance-style treatment
+                </li>
+                <li className="flex items-start gap-2 text-brown">
+                  <span className="text-rose">•</span>
+                  If you want to treat deep acne scars or heavy pigmentation,
+                  you may need other options too
+                </li>
+                <li className="flex items-start gap-2 text-brown">
+                  <span className="text-rose">•</span>
+                  Some people may get temporary redness or mild sensitivity
+                  afterward
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Side Effects & Safety - ALL TEXT INCLUDED */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto max-w-4xl"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl md:text-4xl text-brown text-center mb-4"
+          >
+            Side effects and safety{" "}
+            <span className="text-wine">(what's normal, what's not)</span>
+          </motion.h2>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-glass backdrop-blur-sm p-8 rounded-3xl border border-white/50"
+          >
+            <p className="text-brown mb-4">Common and usually short-lived:</p>
+            <ul className="list-disc pl-5 mb-6 text-brown space-y-1">
+              <li>Mild redness</li>
+              <li>Slight tingling</li>
+              <li>Temporary sensitivity</li>
+            </ul>
+
+            <p className="text-brown mb-2">
+              This is widely described as minimal for most people.
+            </p>
+
+            <p className="text-brown mb-4">Less common but possible:</p>
+            <ul className="list-disc pl-5 mb-6 text-brown">
+              <li>
+                Mild puffiness or breakouts for a small number of people,
+                especially if your skin is reactive or congested
+              </li>
+            </ul>
+
+            <div className="mt-4 p-4 bg-cream rounded-xl">
+              <p className="text-taupe">
+                If you have very sensitive skin or you are prone to
+                post-inflammatory pigmentation, the safest approach is careful
+                settings and professional handling, not aggressive "stronger is
+                better" logic.
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Pricing Section - ALL TEXT INCLUDED */}
+      <section className="py-20 px-4 bg-cream/30">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto max-w-4xl"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl md:text-4xl text-brown text-center mb-4"
+          >
+            Hydra facial cost in{" "}
+            <span className="text-wine">Malaysia (and Kuala Lumpur)</span>
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-center text-taupe mb-8">
+            Hydra facial pricing in Malaysia varies based on clinic, brand
+            device, boosters, and whether it's bundled.
+          </motion.p>
+
+          <motion.div variants={fadeInUp} className="space-y-6">
+            <div className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-white/50">
+              <p className="text-brown">
+                Some KL/Malaysia clinics describe average HydraFacial ranges
+                around RM600-RM800 per session (varies by type and add-ons).
+              </p>
+            </div>
+
+            <div className="bg-wine/5 p-6 rounded-2xl border-2 border-wine">
+              <p className="text-brown font-semibold">
+                At Nexus Clinic Kuala Lumpur, the Hydrafacial Deep Cleanse is
+                listed at RM350, with no downtime and a monthly rhythm.
+              </p>
+            </div>
+
+            <div className="bg-cream p-6 rounded-2xl">
+              <p className="text-brown">
+                If you're comparing prices, do this one thing: compare what's
+                included. Some "cheap hydra facial" promos exclude boosters or
+                use different machines. A consultation clarifies what you're
+                actually booking.
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Treatment Comparisons - ALL TEXT INCLUDED */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl md:text-4xl text-brown text-center mb-12"
+          >
+            Hydra facial vs other treatments{" "}
+            <span className="text-wine">(simple comparisons)</span>
+          </motion.h2>
+
+          <div className="space-y-6">
+            <motion.div
+              variants={fadeInUp}
+              className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-white/50"
+            >
+              <h3 className="font-georgia text-xl text-wine mb-2">
+                Hydra facial vs classic facial
+              </h3>
+              <p className="text-brown">
+                A classic facial may focus more on massage and surface
+                cleansing. A hydra facial is built around device-based
+                cleansing, suction extraction, and serum infusion.
+              </p>
+            </motion.div>
 
             <motion.div
               variants={fadeInUp}
-              className="mt-12 bg-cream rounded-3xl p-8 text-center"
+              className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-white/50"
             >
-              <p className="text-brown font-inter text-lg italic">
-                {t("whatIs.quote")}
+              <h3 className="font-georgia text-xl text-wine mb-2">
+                Hydra facial vs microdermabrasion
+              </h3>
+              <p className="text-brown">
+                HydraFacial brand materials emphasize Vortex-Fusion style
+                cleansing and infusion and position it differently from
+                microdermabrasion. In plain terms: microdermabrasion can feel
+                "drier" and more abrasive, while hydra facial is often described
+                as gentler because hydration happens during the process.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-white/50"
+            >
+              <h3 className="font-georgia text-xl text-wine mb-2">
+                Hydra facial vs chemical peel
+              </h3>
+              <p className="text-brown">
+                Peels can be powerful for tone, acne marks, and texture, but
+                they can come with visible peeling and more downtime depending
+                on strength. Nexus Clinic's content also positions peels as a
+                separate category for issues like acne scars and pigmentation.
+                Hydra facial is usually the calmer choice when you want glow
+                without downtime.
               </p>
             </motion.div>
           </div>
-        </section>
 
-        {/* Why It's Popular in KL Section */}
-        <section className="py-24 px-4 bg-cream">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              className="grid lg:grid-cols-2 gap-12 items-center"
-            >
-              <motion.div variants={fadeInLeft}>
-                <h2 className="font-georgia text-4xl lg:text-5xl text-brown mb-6">
-                  {t("whyKL.title1")}
-                  <br />
-                  <span className="text-wine">{t("whyKL.title2")}</span>
-                </h2>
-
-                <div className="space-y-6">
-                  {[
-                    t("whyKL.reason1"),
-                    t("whyKL.reason2"),
-                    t("whyKL.reason3"),
-                    t("whyKL.reason4"),
-                  ].map((text, index) => (
-                    <motion.div
-                      key={index}
-                      variants={fadeInUp}
-                      className="flex items-center gap-4"
-                    >
-                      <div className="w-8 h-8 rounded-full bg-wine flex items-center justify-center text-white text-sm">
-                        {index + 1}
-                      </div>
-                      <p className="text-brown font-inter text-lg">{text}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-
-              <motion.div variants={fadeInRight} className="relative">
-                <div className="bg-white rounded-3xl p-8 shadow-xl">
-                  <h3 className="font-georgia text-2xl text-brown mb-6">
-                    {t("whyKL.helpsTitle")}
-                  </h3>
-                  <div className="space-y-4">
-                    {[
-                      t("whyKL.helps1"),
-                      t("whyKL.helps2"),
-                      t("whyKL.helps3"),
-                      t("whyKL.helps4"),
-                      t("whyKL.helps5"),
-                      t("whyKL.helps6"),
-                    ].map((item, index) => (
-                      <motion.div
-                        key={index}
-                        variants={fadeInUp}
-                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-cream transition-all"
-                      >
-                        <Star className="text-wine" size={16} />
-                        <span className="text-brown font-inter">{item}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Who It's For Section */}
-        <section className="py-24 px-4">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              className="text-center mb-16"
-            >
-              <motion.h2
-                variants={fadeInUp}
-                className="font-georgia text-4xl lg:text-5xl text-brown mb-6"
-              >
-                {t("whoFor.title")}
-              </motion.h2>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                {
-                  icon: <User className="text-wine" size={24} />,
-                  title: t("whoFor.person1Title"),
-                  desc: t("whoFor.person1Desc"),
-                },
-                {
-                  icon: <Heart className="text-wine" size={24} />,
-                  title: t("whoFor.person2Title"),
-                  desc: t("whoFor.person2Desc"),
-                },
-                {
-                  icon: <User className="text-wine" size={24} />,
-                  title: t("whoFor.person3Title"),
-                  desc: t("whoFor.person3Desc"),
-                },
-                {
-                  icon: <Airplay className="text-wine" size={24} />,
-                  title: t("whoFor.person4Title"),
-                  desc: t("whoFor.person4Desc"),
-                },
-                {
-                  icon: <Leaf className="text-wine" size={24} />,
-                  title: t("whoFor.person5Title"),
-                  desc: t("whoFor.person5Desc"),
-                },
-                {
-                  icon: <Sparkle className="text-wine" size={24} />,
-                  title: t("whoFor.person6Title"),
-                  desc: t("whoFor.person6Desc"),
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={scaleIn}
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-light rounded-2xl p-8 border border-rose/10 hover:border-wine/30 transition-all"
-                >
-                  <div className="text-4xl mb-4">{item.icon}</div>
-                  <h3 className="font-georgia text-xl text-brown mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-taupe font-inter">{item.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Pause Section */}
-            <motion.div
-              variants={fadeInUp}
-              className="mt-12 bg-wine/5 rounded-3xl p-8 border border-wine/20"
-            >
-              <div className="flex items-start gap-4">
-                <AlertCircle className="text-wine shrink-0" size={24} />
-                <div>
-                  <h4 className="font-georgia text-xl text-brown mb-3">
-                    {t("whoFor.pauseTitle")}
-                  </h4>
-                  <ul className="grid md:grid-cols-2 gap-3">
-                    {[
-                      t("whoFor.pause1"),
-                      t("whoFor.pause2"),
-                      t("whoFor.pause3"),
-                      t("whoFor.pause4"),
-                    ].map((item, index) => (
-                      <li
-                        key={index}
-                        className="flex items-center gap-2 text-taupe font-inter"
-                      >
-                        <span className="w-1 h-1 rounded-full bg-wine" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Results & Timeline Section */}
-        <section className="py-24 px-4 bg-cream">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              className="grid lg:grid-cols-2 gap-12 items-center"
-            >
-              <motion.div variants={fadeInLeft}>
-                <h2 className="font-georgia text-4xl lg:text-5xl text-brown mb-6">
-                  {t("results.title")}
-                </h2>
-
-                <div className="space-y-6">
-                  <motion.div
-                    variants={fadeInUp}
-                    className="bg-white rounded-2xl p-6"
-                  >
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 rounded-full bg-wine/10 flex items-center justify-center">
-                        <Sparkles className="text-wine" size={20} />
-                      </div>
-                      <h3 className="font-georgia text-xl text-brown">
-                        {t("results.immediateTitle")}
-                      </h3>
-                    </div>
-                    <p className="text-taupe font-inter ml-12">
-                      {t("results.immediateDesc")}
-                    </p>
-                  </motion.div>
-
-                  <motion.div
-                    variants={fadeInUp}
-                    className="bg-white rounded-2xl p-6"
-                  >
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 rounded-full bg-wine/10 flex items-center justify-center">
-                        <Clock className="text-wine" size={20} />
-                      </div>
-                      <h3 className="font-georgia text-xl text-brown">
-                        {t("results.lastTitle")}
-                      </h3>
-                    </div>
-                    <p className="text-taupe font-inter ml-12">
-                      {t("results.lastDesc")}
-                    </p>
-                  </motion.div>
-                </div>
-              </motion.div>
-
-              <motion.div variants={fadeInRight} className="relative">
-                <div className="bg-wine rounded-3xl p-8 text-white">
-                  <h3 className="font-georgia text-2xl mb-6">{t("results.rhythmTitle")}</h3>
-                  <div className="space-y-4">
-                    {[
-                      t("results.rhythm1"),
-                      t("results.rhythm2"),
-                      t("results.rhythm3"),
-                    ].map((text, index) => (
-                      <div key={index} className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-                          {index + 1}
-                        </div>
-                        <span className="font-inter">{text}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        <SectionBeforeAfter transformations={transformations} />
-
-        {/* Pros & Cons Section */}
-        <section className="py-24 px-4">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              className="text-center mb-16"
-            >
-              <motion.h2
-                variants={fadeInUp}
-                className="font-georgia text-4xl lg:text-5xl text-brown mb-6"
-              >
-                {t("prosCons.title")}
-              </motion.h2>
-              <motion.p variants={fadeInUp} className="text-taupe text-lg">
-                {t("prosCons.desc")}
-              </motion.p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Pros */}
-              <motion.div variants={fadeInLeft} className="space-y-4">
-                <h3 className="font-georgia text-2xl text-wine mb-6">{t("prosCons.prosTitle")}</h3>
-                {[
-                  t("prosCons.pro1"),
-                  t("prosCons.pro2"),
-                  t("prosCons.pro3"),
-                  t("prosCons.pro4"),
-                  t("prosCons.pro5"),
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInUp}
-                    className="flex items-start gap-3 p-4 bg-cream rounded-xl"
-                  >
-                    <CheckCircle2 className="text-wine shrink-0" size={20} />
-                    <span className="text-brown font-inter">{item}</span>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              {/* Cons */}
-              <motion.div variants={fadeInRight} className="space-y-4">
-                <h3 className="font-georgia text-2xl text-brown mb-6">{t("prosCons.consTitle")}</h3>
-                {[
-                  t("prosCons.con1"),
-                  t("prosCons.con2"),
-                  t("prosCons.con3"),
-                  t("prosCons.con4"),
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInUp}
-                    className="flex items-start gap-3 p-4 bg-cream rounded-xl"
-                  >
-                    <AlertCircle className="text-taupe shrink-0" size={20} />
-                    <span className="text-brown font-inter">{item}</span>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Side Effects Section */}
-        <section className="py-24 px-4 bg-cream">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              className="max-w-3xl mx-auto text-center mb-12"
-            >
-              <motion.h2
-                variants={fadeInUp}
-                className="font-georgia text-4xl lg:text-5xl text-brown mb-6"
-              >
-                {t("sideEffects.title")}
-              </motion.h2>
-              <motion.p variants={fadeInUp} className="text-taupe text-lg">
-                {t("sideEffects.desc")}
-              </motion.p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <motion.div
-                variants={fadeInLeft}
-                className="bg-white rounded-2xl p-8"
-              >
-                <h3 className="font-georgia text-xl text-wine mb-4">
-                  {t("sideEffects.commonTitle")}
-                </h3>
-                <ul className="space-y-3">
-                  {[
-                    t("sideEffects.common1"),
-                    t("sideEffects.common2"),
-                    t("sideEffects.common3"),
-                  ].map((item, index) => (
-                    <li
-                      key={index}
-                      className="flex items-center gap-2 text-brown"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-wine" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInRight}
-                className="bg-white rounded-2xl p-8"
-              >
-                <h3 className="font-georgia text-xl text-brown mb-4">
-                  {t("sideEffects.lessCommonTitle")}
-                </h3>
-                <ul className="space-y-3">
-                  {[
-                    t("sideEffects.lessCommon1"),
-                    t("sideEffects.lessCommon2"),
-                    t("sideEffects.lessCommon3"),
-                  ].map((item, index) => (
-                    <li
-                      key={index}
-                      className="flex items-center gap-2 text-brown"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-taupe" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Cost Section */}
-        <section className="py-24 px-4">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              className="grid lg:grid-cols-2 gap-12 items-center"
-            >
-              <motion.div variants={fadeInLeft}>
-                <h2 className="font-georgia text-4xl lg:text-5xl text-brown mb-6">
-                  {t("cost.title1")}
-                  <br />
-                  <span className="text-wine">{t("cost.title2")}</span>
-                </h2>
-
-                <div className="space-y-6">
-                  <motion.div
-                    variants={fadeInUp}
-                    className="bg-cream rounded-2xl p-8"
-                  >
-                    <div className="text-3xl font-georgia text-wine mb-2">
-                      {t("cost.price")}
-                    </div>
-                    <p className="text-taupe font-inter">
-                      {t("cost.priceDesc")}
-                    </p>
-                    <p className="text-sm text-brown mt-2">
-                      {t("cost.priceNote")}
-                    </p>
-                  </motion.div>
-
-                  <motion.p
-                    variants={fadeInUp}
-                    className="text-taupe font-inter"
-                  >
-                    {t("cost.marketRange")}
-                  </motion.p>
-                </div>
-              </motion.div>
-
-              <motion.div variants={fadeInRight} className="relative">
-                <div className="bg-brown rounded-3xl p-8 text-white">
-                  <h3 className="font-georgia text-2xl mb-4">
-                    {t("cost.affectsTitle")}
-                  </h3>
-                  <ul className="space-y-3">
-                    {[
-                      t("cost.affects1"),
-                      t("cost.affects2"),
-                      t("cost.affects3"),
-                      t("cost.affects4"),
-                    ].map((item, index) => (
-                      <li key={index} className="flex items-center gap-2">
-                        <ChevronRight size={16} />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="mt-6 text-sm opacity-80">
-                    {t("cost.affectsNote")}
-                  </p>
-                </div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Comparison Section */}
-        <section className="py-24 px-4 bg-cream">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              className="text-center mb-16"
-            >
-              <motion.h2
-                variants={fadeInUp}
-                className="font-georgia text-4xl lg:text-5xl text-brown mb-6"
-              >
-                {t("comparison.title")}
-              </motion.h2>
-            </motion.div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                {
-                  title: t("comparison.comp1Title"),
-                  points: [
-                    t("comparison.comp1Point1"),
-                    t("comparison.comp1Point2"),
-                    t("comparison.comp1Point3"),
-                  ],
-                },
-                {
-                  title: t("comparison.comp2Title"),
-                  points: [
-                    t("comparison.comp2Point1"),
-                    t("comparison.comp2Point2"),
-                    t("comparison.comp2Point3"),
-                  ],
-                },
-                {
-                  title: t("comparison.comp3Title"),
-                  points: [
-                    t("comparison.comp3Point1"),
-                    t("comparison.comp3Point2"),
-                    t("comparison.comp3Point3"),
-                  ],
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={scaleIn}
-                  className="bg-white rounded-2xl p-8 shadow-lg"
-                >
-                  <h3 className="font-georgia text-2xl text-wine mb-6">
-                    {item.title}
-                  </h3>
-                  <ul className="space-y-3">
-                    {item.points.map((point, i) => (
-                      <li key={i} className="flex items-start gap-2 text-brown">
-                        <span className="text-wine">•</span>
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Preparation & Aftercare */}
-        <section className="py-24 px-4">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              className="grid lg:grid-cols-2 gap-8"
-            >
-              <motion.div
-                variants={fadeInLeft}
-                className="bg-cream rounded-3xl p-8"
-              >
-                <h3 className="font-georgia text-3xl text-brown mb-6">
-                  {t("prepAftercare.prepTitle")}
-                </h3>
-                <ul className="space-y-4">
-                  {[
-                    t("prepAftercare.prep1"),
-                    t("prepAftercare.prep2"),
-                    t("prepAftercare.prep3"),
-                    t("prepAftercare.prep4"),
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <CheckCircle2 className="text-wine shrink-0" size={20} />
-                      <span className="text-brown font-inter">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInRight}
-                className="bg-wine rounded-3xl p-8 text-white"
-              >
-                <h3 className="font-georgia text-3xl mb-6">
-                  {t("prepAftercare.afterTitle")}
-                </h3>
-                <ul className="space-y-4">
-                  {[
-                    t("prepAftercare.after1"),
-                    t("prepAftercare.after2"),
-                    t("prepAftercare.after3"),
-                    t("prepAftercare.after4"),
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <CheckCircle2
-                        className="text-white/80 shrink-0"
-                        size={20}
-                      />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-6 text-sm opacity-80">
-                  {t("prepAftercare.afterNote")}
-                </p>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* FAQ Section */}
-        <section className="py-24 px-4 bg-cream">
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              className="text-center mb-12"
-            >
-              <motion.h2
-                variants={fadeInUp}
-                className="font-georgia text-4xl lg:text-5xl text-brown mb-6"
-              >
-                {t("faq.title")}
-              </motion.h2>
-            </motion.div>
-
-            <div className="space-y-4">
-              {[
-                { q: t("faq.q1"), a: t("faq.a1") },
-                { q: t("faq.q2"), a: t("faq.a2") },
-                { q: t("faq.q3"), a: t("faq.a3") },
-                { q: t("faq.q4"), a: t("faq.a4") },
-                { q: t("faq.q5"), a: t("faq.a5") },
-                { q: t("faq.q6"), a: t("faq.a6") },
-                { q: t("faq.q7"), a: t("faq.a7") },
-                { q: t("faq.q8"), a: t("faq.a8") },
-              ].map((faq, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  className="bg-white rounded-2xl overflow-hidden"
-                >
-                  <details className="group">
-                    <summary className="flex justify-between items-center p-6 cursor-pointer list-none">
-                      <span className="font-georgia text-lg text-brown">
-                        {faq.q}
-                      </span>
-                      <ChevronRight
-                        className="text-wine group-open:rotate-90 transition-transform"
-                        size={20}
-                      />
-                    </summary>
-                    <div className="px-6 pb-6">
-                      <p className="text-taupe font-inter">{faq.a}</p>
-                    </div>
-                  </details>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Final CTA */}
-        <section className="py-24 px-4">
-          <motion.div
-            variants={scaleIn}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-3xl mx-auto text-center"
-          >
-            <h2 className="font-georgia text-4xl lg:text-5xl text-brown mb-6">
-              {t("cta.title1")}
-              <br />
-              <span className="text-wine">{t("cta.title2")}</span>
-            </h2>
-
-            <p className="text-xl text-taupe font-inter mb-8">
-              {t("cta.desc1")}
-              <br />{t("cta.desc2")}
+          <motion.div variants={fadeInUp} className="mt-8 space-y-4">
+            <h3 className="font-georgia text-2xl text-brown text-center">
+              Areas you can treat
+            </h3>
+            <p className="text-brown text-center">
+              Most people do the face. Some clinics also market neck and
+              decolletage options, and even other areas depending on device tips
+              and protocols.
             </p>
-
-            <button className="group bg-wine text-white px-12 py-5 rounded-full font-inter text-lg hover:bg-brown transition-all duration-300 inline-flex items-center gap-3">
-              {t("cta.bookBtn")}
-              <ChevronRight
-                size={20}
-                className="group-hover:translate-x-1 transition-transform"
-              />
-            </button>
-
-            <p className="mt-6 text-sm text-taupe">
-              {t("cta.address")}
+            <p className="text-taupe text-center">
+              At Nexus Clinic KL, your doctor will guide what's suitable for
+              your goals and skin condition.
             </p>
           </motion.div>
-        </section>
-      </main>
-    </>
+        </motion.div>
+      </section>
+
+      {/* Preparation - ALL TEXT INCLUDED */}
+      <section className="py-20 px-4 bg-cream/30">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto max-w-4xl"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl md:text-4xl text-brown text-center mb-4"
+          >
+            How to prepare{" "}
+            <span className="text-wine">(so you get a better glow)</span>
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-center text-taupe mb-8">
+            Here's a simple approach that aligns with widely shared prep advice:
+          </motion.p>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-glass backdrop-blur-sm p-8 rounded-3xl border border-white/50"
+          >
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3 text-brown">
+                <span className="text-wine">•</span>
+                Pause strong actives like retinoids and exfoliating acids a few
+                days before if your skin is easily irritated
+              </li>
+              <li className="flex items-start gap-3 text-brown">
+                <span className="text-wine">•</span>
+                Avoid heavy sun exposure right before your session
+              </li>
+              <li className="flex items-start gap-3 text-brown">
+                <span className="text-wine">•</span>
+                Tell the doctor if you recently had injectables, lasers, or are
+                using prescription acne meds
+              </li>
+            </ul>
+
+            <p className="mt-6 text-taupe">
+              If you're unsure, just bring photos of your skincare products or
+              list them. It makes the consult easier.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Aftercare - ALL TEXT INCLUDED */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto max-w-4xl"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl md:text-4xl text-brown text-center mb-4"
+          >
+            Aftercare{" "}
+            <span className="text-wine">
+              (easy rules for the next 24-48 hours)
+            </span>
+          </motion.h2>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-glass backdrop-blur-sm p-8 rounded-3xl border border-white/50"
+          >
+            <p className="text-brown mb-4">Most aftercare is common sense:</p>
+
+            <ul className="space-y-3 mb-6">
+              <li className="flex items-start gap-2 text-brown">
+                <CheckCircle2 className="w-5 h-5 text-wine shrink-0" />
+                Keep it gentle
+              </li>
+              <li className="flex items-start gap-2 text-brown">
+                <CheckCircle2 className="w-5 h-5 text-wine shrink-0" />
+                Avoid aggressive exfoliation right away
+              </li>
+              <li className="flex items-start gap-2 text-brown">
+                <CheckCircle2 className="w-5 h-5 text-wine shrink-0" />
+                Use sunscreen daily
+              </li>
+            </ul>
+
+            <p className="text-taupe">
+              Nexus Clinic also emphasizes simple daily care, including gentle
+              cleansing, moisturiser, and SPF 50 as a basic routine in
+              Malaysia's climate.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Why Nexus Clinic - ALL TEXT INCLUDED */}
+      <section className="py-20 px-4 bg-cream/50">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto max-w-4xl"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl md:text-4xl text-brown text-center mb-8"
+          >
+            Why Nexus Clinic Kuala Lumpur{" "}
+            <span className="text-wine">for hydra facial</span>
+          </motion.h2>
+
+          <motion.div
+            variants={fadeInUp}
+            className="bg-glass backdrop-blur-sm p-8 rounded-3xl border border-white/50 space-y-4"
+          >
+            <p className="text-lg text-brown">
+              Because it's not treated like a one-size service.
+            </p>
+
+            <p className="text-brown">
+              Nexus Clinic positions itself as a medical aesthetic clinic, not a
+              beauty salon, with doctor-led assessment, MOH-registered
+              standards, and evidence-based planning.
+            </p>
+
+            <p className="text-brown">
+              If you want the "clean glow" but you're worried about sensitivity,
+              uneven tone, or getting irritated easily, that clinical planning
+              matters.
+            </p>
+
+            <div className="mt-4 p-4 bg-cream rounded-xl">
+              <p className="text-brown">
+                <span className="font-semibold">Location and contact:</span>{" "}
+                Nexus Clinic Kuala Lumpur is listed at LG 10, Lower Ground
+                Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur.
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* FAQ Section - ALL QUESTIONS INCLUDED */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto max-w-3xl"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl md:text-4xl text-brown text-center mb-4"
+          >
+            People Also Ask
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-center text-taupe mb-8">
+            (real FAQ themes users search)
+          </motion.p>
+
+          <div className="space-y-4">
+            {[
+              {
+                q: "What is a HydraFacial treatment?",
+                a: "It's a non-invasive facial that combines cleansing, exfoliation, extraction, and hydration in one session using a device and serums.",
+              },
+              {
+                q: "Is HydraFacial suitable for all skin types?",
+                a: "Many clinics say yes, including sensitive skin, because it can be adjusted to your skin needs. If you have an active skin issue, it's best to check first.",
+              },
+              {
+                q: "Is HydraFacial painful?",
+                a: "Most people describe it as comfortable, with gentle suction rather than squeezing.",
+              },
+              {
+                q: "How long does a HydraFacial session take?",
+                a: "A common clinic estimate is around 1 hour to 1.5 hours, depending on your plan and add-ons.",
+              },
+              {
+                q: "Are there any side effects?",
+                a: "Usually mild redness or tingling that settles quickly. Rarely, some people can experience temporary sensitivity or breakouts.",
+              },
+              {
+                q: "How many sessions do I need?",
+                a: "You can see improvement after one session, but many clinics recommend doing it monthly for ongoing results. Nexus Clinic's listing also aligns with a monthly schedule.",
+              },
+              {
+                q: "Can HydraFacial help with oily skin and blackheads?",
+                a: "Many clinics specifically market it for congestion because suction helps lift oil and debris from pores without squeezing.",
+              },
+              {
+                q: "Is there downtime after HydraFacial?",
+                a: "Most clinics describe no downtime and you can return to normal activities right away. Nexus Clinic also lists downtime as none for Hydrafacial Deep Cleanse.",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                className="bg-cream p-4 rounded-xl border border-white/50"
+              >
+                <h3 className="font-georgia text-lg text-brown mb-2">
+                  {item.q}
+                </h3>
+                <p className="text-taupe">{item.a}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* CTA Section - ALL TEXT INCLUDED */}
+      <section className="py-20 px-4 bg-wine">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto max-w-3xl text-center"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-3xl md:text-4xl text-light mb-6"
+          >
+            CTA section (close)
+          </motion.h2>
+
+          <motion.p variants={fadeInUp} className="text-lg text-cream/90 mb-8">
+            If your skin feels clogged, dull, or just tired from KL heat, a
+            Hydrafacial Deep Cleanse at Nexus Clinic Kuala Lumpur is a clean
+            place to start. It's simple. It's gentle. It fits real schedules.
+          </motion.p>
+
+          <motion.button
+            variants={scaleIn}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-light text-wine px-8 py-4 rounded-full font-medium text-lg inline-flex items-center gap-2 hover:bg-cream transition-colors"
+          >
+            Book Your Consultation
+            <ChevronRight className="w-5 h-5" />
+          </motion.button>
+        </motion.div>
+      </section>
+    </div>
   );
 };
 

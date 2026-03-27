@@ -173,7 +173,7 @@ const PShotLanding = () => {
             <motion.div variants={fadeInLeft} className="relative">
               <div className="absolute -top-4 -left-4 w-24 h-24 bg-cream rounded-full"></div>
               <img
-                src="/images/regenerative/embryonic.webp"
+                src="/images/regenerative/p-shot.webp"
                 alt="P-Shot procedure explanation"
                 className="rounded-2xl shadow-xl relative z-10 border-4 border-white"
               />

@@ -1,27 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Sparkles,
-  TrendingUp,
-  AlertCircle,
-  CheckCircle2,
-  XCircle,
-  Target,
-  Calendar,
-  DollarSign,
-  MessageCircle,
-  Award,
-  FileText,
-  Droplets,
-  Syringe,
-  CalendarClock,
-  Activity,
-  ShieldCheck,
-  Info,
-  Minus,
-  Plus,
-} from "lucide-react";
+import { Shield, Award, UserCheck, BadgeCheck, ArrowRight } from "lucide-react";
 
 import {
   fadeInUp,
@@ -33,12 +13,9 @@ import {
 import FAQ from "../../components/FAQ";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
+import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
-const ExosomeLanding = ({
-  locale = fallbackLng,
-}: {
-  locale?: string;
-}) => {
+const ExosomeLanding = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "exosomeHair");
 
   const faqs = [
@@ -49,733 +26,1135 @@ const ExosomeLanding = ({
     { q: t("faq.q5"), a: t("faq.a5") },
   ];
 
+  const transformations = [
+    {
+      id: 1,
+      before: "/images/B&A-hair/B&A-exesome-hair-treatment1.webp",
+      after: "/images/B&A-hair/B&A-exesome-hair-treatment1.webp",
+    },
+    {
+      id: 2,
+      before: "/images/B&A-hair/B&A-exesome-hair-treatment2.webp",
+      after: "/images/B&A-hair/B&A-exesome-hair-treatment2.webp",
+    },
+    {
+      id: 3,
+      before: "/images/B&A-hair/B&A-exesome-hair-treatment3.webp",
+      after: "/images/B&A-hair/B&A-exesome-hair-treatment3.webp",
+    },
+  ];
+
   return (
-    <>
-      <main className="min-h-screen bg-linear-to-b from-light to-white">
-        {/* Hero Section */}
-        <motion.section
+    <div className="w-full overflow-hidden bg-light">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-rose/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-wine/10 rounded-full blur-3xl" />
+        </div>
+
+        <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="relative overflow-hidden bg-linear-to-br from-cream via-white to-light"
+          className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
         >
-          <div className="absolute inset-0 bg-[url('/pattern-bg.png')] opacity-5" />
-          <div className="container mx-auto px-4 py-20 lg:py-32">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <motion.div variants={fadeInLeft} className="space-y-8">
-                <motion.div
-                  variants={scaleIn}
-                  className="inline-flex items-center gap-2 bg-wine/10 px-4 py-2 rounded-full"
-                >
-                  <Sparkles className="w-5 h-5 text-wine" />
-                  <span className="text-sm font-medium text-wine font-inter">
-                    {t("hero.badge")}
-                  </span>
-                </motion.div>
-
-                <h2 className="font-georgia text-5xl lg:text-7xl text-brown leading-tight">
-                  {t("hero.title1")}
-                  <span className="block text-wine">{t("hero.title2")}</span>
-                  {t("hero.title3")}
-                </h2>
-
-                <p className="text-lg text-taupe font-inter leading-relaxed">
-                  {t("hero.desc")}
-                </p>
-
-                <motion.div
-                  variants={fadeInUp}
-                  className="flex flex-wrap gap-4"
-                >
-                  <button className="group relative overflow-hidden bg-wine text-white px-8 py-4 rounded-full font-inter font-medium hover:shadow-xl transition-all duration-300">
-                    <span className="relative z-10">{t("hero.startBtn")}</span>
-                    <div className="absolute inset-0 bg-rose transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
-                  </button>
-                  <button className="border-2 border-wine text-wine px-8 py-4 rounded-full font-inter font-medium hover:bg-wine hover:text-white transition-all duration-300">
-                    {t("hero.learnBtn")}
-                  </button>
-                </motion.div>
-              </motion.div>
-
-              <motion.div variants={fadeInRight} className="relative">
-                <div className="relative z-10 bg-white/30 backdrop-blur-lg rounded-3xl p-8 shadow-2xl border border-white/50">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Award className="w-8 h-8 text-wine" />
-                    <h3 className="font-georgia text-2xl text-brown">
-                      {t("hero.trustTitle")}
-                    </h3>
-                  </div>
-                  <ul className="space-y-4">
-                    {[
-                      t("hero.t1"),
-                      t("hero.t2"),
-                      t("hero.t3"),
-                      t("hero.t4"),
-                    ].map((item, i) => (
-                      <motion.li
-                        key={i}
-                        variants={fadeInLeft}
-                        custom={i}
-                        className="flex items-center gap-3 text-brown"
-                      >
-                        <CheckCircle2 className="w-5 h-5 text-wine shrink-0" />
-                        <span className="font-inter">{item}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Understanding Hair Loss Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 bg-white"
-        >
-          <div className="container mx-auto px-4">
-            <motion.div
-              variants={fadeInUp}
-              className="max-w-3xl mx-auto text-center mb-16"
-            >
-              <h2 className="font-georgia text-4xl lg:text-5xl text-brown mb-6">
-                {t("understanding.title1")}
-                <span className="text-wine"> {t("understanding.title2")}</span>
-              </h2>
-              <p className="text-lg text-taupe font-inter">
-                {t("understanding.desc")}
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-3 gap-8 mt-16">
-              {[
-                {
-                  icon: Droplets,
-                  title: t("understanding.c1Title"),
-                  desc: t("understanding.c1Desc"),
-                },
-                {
-                  icon: Activity,
-                  title: t("understanding.c2Title"),
-                  desc: t("understanding.c2Desc"),
-                },
-                {
-                  icon: Target,
-                  title: t("understanding.c3Title"),
-                  desc: t("understanding.c3Desc"),
-                },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  variants={scaleIn}
-                  whileHover={{ y: -10 }}
-                  className="group bg-linear-to-br from-cream to-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300"
-                >
-                  <div className="w-16 h-16 bg-wine/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <item.icon className="w-8 h-8 text-wine" />
-                  </div>
-                  <h3 className="font-georgia text-xl text-brown mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-taupe font-inter">{item.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* What are Exosomes */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 bg-linear-to-br from-cream to-white"
-        >
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <motion.div variants={fadeInLeft} className="space-y-6">
-                <h2 className="font-georgia text-4xl lg:text-5xl text-brown">
-                  {t("whatIs.title")}
-                  <span className="block text-wine text-2xl mt-2">
-                    {t("whatIs.subtitle")}
-                  </span>
-                </h2>
-                <p className="text-lg text-taupe font-inter leading-relaxed">
-                  {t("whatIs.desc")}
-                </p>
-                <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 border border-white">
-                  <h3 className="font-georgia text-brown text-xl mb-4">
-                    {t("whatIs.helpTitle")}
-                  </h3>
-                  <ul className="space-y-3">
-                    {[
-                      t("whatIs.h1"),
-                      t("whatIs.h2"),
-                      t("whatIs.h3"),
-                    ].map((item, i) => (
-                      <li
-                        key={i}
-                        className="flex items-center gap-2 text-brown"
-                      >
-                        <Plus className="w-4 h-4 text-wine" />
-                        <span className="font-inter">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="flex items-start gap-3 p-4 bg-amber-50 rounded-xl">
-                  <Info className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-                  <p className="text-sm text-amber-700 font-inter">
-                    {t("whatIs.notice")}
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInRight}
-                className="grid grid-cols-2 gap-6"
-              >
-                <div className="space-y-6">
-                  <div className="bg-white p-6 rounded-2xl shadow-xl">
-                    <ShieldCheck className="w-10 h-10 text-wine mb-3" />
-                    <h4 className="font-georgia text-brown mb-2">
-                      {t("whatIs.card1Title")}
-                    </h4>
-                    <p className="text-sm text-taupe">
-                      {t("whatIs.card1Desc")}
-                    </p>
-                  </div>
-                  <div className="bg-wine p-6 rounded-2xl shadow-xl text-white">
-                    <Calendar className="w-10 h-10 mb-3" />
-                    <h4 className="font-georgia mb-2">{t("whatIs.card2Title")}</h4>
-                    <p className="text-sm opacity-90">
-                      {t("whatIs.card2Desc")}
-                    </p>
-                  </div>
-                </div>
-                <div className="space-y-6 mt-12">
-                  <div className="bg-white p-6 rounded-2xl shadow-xl">
-                    <Syringe className="w-10 h-10 text-wine mb-3" />
-                    <h4 className="font-georgia text-brown mb-2">
-                      {t("whatIs.card3Title")}
-                    </h4>
-                    <p className="text-sm text-taupe">{t("whatIs.card3Desc")}</p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Research & Evidence */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 bg-white"
-        >
-          <div className="container mx-auto px-4">
-            <motion.div
-              variants={fadeInUp}
-              className="max-w-3xl mx-auto text-center mb-16"
-            >
-              <h2 className="font-georgia text-4xl lg:text-5xl text-brown mb-6">
-                {t("research.title1")}
-                <span className="text-wine"> {t("research.title2")}</span>
-              </h2>
-              <p className="text-lg text-taupe font-inter">
-                {t("research.desc")}
-              </p>
-            </motion.div>
-
-            <div className="grid lg:grid-cols-2 gap-8">
-              {[
-                {
-                  year: t("research.r1Year"),
-                  title: t("research.r1Title"),
-                  desc: t("research.r1Desc"),
-                  icon: FileText,
-                },
-                {
-                  year: t("research.r2Year"),
-                  title: t("research.r2Title"),
-                  desc: t("research.r2Desc"),
-                  icon: TrendingUp,
-                },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeInLeft}
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-linear-to-br from-cream to-white p-8 rounded-3xl shadow-xl"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-wine rounded-xl flex items-center justify-center shrink-0">
-                      <item.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <span className="text-sm text-wine font-semibold">
-                        {item.year}
-                      </span>
-                      <h3 className="font-georgia text-xl text-brown mb-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-taupe font-inter">{item.desc}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Safety & Regulation */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 bg-linear-to-br from-brown to-wine text-white"
-        >
-          <div className="container mx-auto px-4">
-            <motion.div variants={fadeInUp} className="max-w-4xl mx-auto">
-              <h2 className="font-georgia text-4xl lg:text-5xl mb-8">
-                {t("safety.title")}
-                <span className="block text-cream text-xl mt-2 font-inter">
-                  {t("safety.subtitle")}
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div variants={fadeInUp} className="mb-6">
+              <span className="inline-flex items-center gap-2 bg-glass backdrop-blur-sm px-4 py-2 rounded-full border border-taupe/20">
+                <Shield className="w-4 h-4 text-wine" />
+                <span className="text-sm text-brown font-georgia">
+                  MOH registered, doctor-led clinic in Kuala Lumpur
                 </span>
-              </h2>
+              </span>
+            </motion.div>
 
-              <div className="space-y-6">
-                {[
-                  t("safety.s1"),
-                  t("safety.s2"),
-                  t("safety.s3"),
-                ].map((item, i) => (
-                  <motion.div
-                    key={i}
-                    variants={fadeInLeft}
-                    className="flex items-start gap-4 bg-white/10 backdrop-blur-sm p-6 rounded-2xl"
-                  >
-                    <AlertCircle className="w-6 h-6 shrink-0" />
-                    <p className="font-inter">{item}</p>
-                  </motion.div>
-                ))}
-              </div>
+            <motion.h1
+              variants={fadeInUp}
+              className="font-georgia text-5xl md:text-7xl font-bold text-brown mb-6 leading-tight"
+            >
+              Bring Back Thicker Hair
+              <span className="block text-wine">Without Surgery</span>
+            </motion.h1>
 
-              <motion.div
-                variants={scaleIn}
-                className="mt-8 p-6 bg-cream text-brown rounded-2xl"
-              >
-                <h3 className="font-georgia text-xl mb-3">
-                  {t("safety.adviceTitle")}
-                </h3>
-                <p className="font-inter">
-                  {t("safety.adviceDesc")}
+            <motion.p
+              variants={fadeInUp}
+              className="text-xl md:text-2xl text-taupe mb-8 max-w-2xl mx-auto font-inter"
+            >
+              Exosome hair treatment supports your scalp and weak follicles with
+              regenerative signals. It is a modern option for early thinning in
+              Kuala Lumpur and across Malaysia.
+            </motion.p>
+
+            <motion.div
+              variants={fadeInUp}
+              className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 text-left"
+            >
+              <div className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-taupe/20">
+                <Award className="w-8 h-8 text-wine mb-3" />
+                <p className="text-sm text-brown font-georgia">
+                  MOH registered, doctor-led clinic in Kuala Lumpur
                 </p>
-              </motion.div>
+              </div>
+              <div className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-taupe/20">
+                <UserCheck className="w-8 h-8 text-wine mb-3" />
+                <p className="text-sm text-brown font-georgia">
+                  Hair thinning is assessed as a medical issue, not just a
+                  cosmetic one
+                </p>
+              </div>
+              <div className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-taupe/20">
+                <BadgeCheck className="w-8 h-8 text-wine mb-3" />
+                <p className="text-sm text-brown font-georgia">
+                  Clear advice on expected outcomes, downtime, and alternatives.
+                  Options to combine with PRP and other hair loss treatments
+                  when suitable
+                </p>
+              </div>
             </motion.div>
           </div>
-        </motion.section>
+        </motion.div>
+      </section>
 
-        {/* Who is it for */}
-        <motion.section
+      {/* If hair loss is hurting your confidence */}
+      <section className="py-20 bg-cream">
+        <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="py-24 bg-white"
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
         >
-          <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl md:text-5xl font-bold text-brown mb-8 text-center"
+            >
+              If hair loss is hurting your confidence, you are not alone
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg text-taupe font-inter leading-relaxed mb-4"
+            >
+              Hair loss is not just "vanity". It changes how you feel in photos.
+              It changes how you style your hair. It can make you avoid bright
+              lighting.
+            </motion.p>
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg text-taupe font-inter leading-relaxed mb-4"
+            >
+              In KL, we see this every day. Stress, hormones, genetics, and
+              scalp inflammation can all play a role. The good news is that many
+              cases can be improved when follicles are still alive.
+            </motion.p>
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg text-wine font-georgia font-semibold"
+            >
+              That is where exosome hair treatment comes in.
+            </motion.p>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* What is exosome hair treatment with image */}
+      <section className="py-20 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div variants={fadeInLeft}>
+              <h2 className="font-georgia text-4xl font-bold text-brown mb-6">
+                What is exosome hair treatment{" "}
+                <span className="text-wine">(in simple words)</span>
+              </h2>
+              <p className="text-taupe font-inter text-lg leading-relaxed mb-4">
+                Exosomes are tiny "message carriers" released by cells. They
+                carry signals like proteins and genetic instructions that can
+                influence how other cells behave.
+              </p>
+              <p className="text-taupe font-inter text-lg leading-relaxed mb-4">
+                In hair restoration, exosome-based products are marketed to:
+              </p>
+              <ul className="list-disc pl-6 mb-4 text-taupe font-inter text-lg">
+                <li>support scalp repair and recovery</li>
+                <li>reduce inflammation signals in the scalp</li>
+                <li>encourage healthier follicle activity over time</li>
+              </ul>
+              <p className="text-rose font-inter text-sm italic border-l-4 border-rose pl-4 py-2 bg-rose/5">
+                Important note: exosome therapies are still evolving. Evidence
+                is growing, but regulation and product quality vary widely.
+              </p>
+            </motion.div>
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <img
+                  src="/images/hair/exesome-hair-treatment.webp"
+                  alt="Scalp analysis and treatment"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Quick competitor scan */}
+      <section className="py-20 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl font-bold text-brown text-center mb-12"
+            >
+              A quick competitor scan (what top pages in Malaysia emphasize)
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-taupe font-inter text-lg mb-8 text-center"
+            >
+              When you search "exosome hair loss injection Kuala Lumpur" you
+              will notice the top-ranking clinic pages usually do a few things
+              well:
+            </motion.p>
+            <motion.ol
+              variants={fadeInUp}
+              className="list-decimal pl-6 space-y-3 mb-6 text-brown font-inter text-lg"
+            >
+              <li>
+                They keep it non-surgical and simple (fast sessions, minimal
+                downtime)
+              </li>
+              <li>
+                They describe exosomes as stem cell-derived cell messengers and
+                highlight growth factors and repair signals
+              </li>
+              <li>
+                They set a timeline like "results in 3 to 6 months" and mention
+                combining with PRP
+              </li>
+              <li>
+                Some show public pricing. One KL clinic page quotes from around
+                RM 8,000 per session onwards (varies by case).
+              </li>
+            </motion.ol>
+            <motion.p
+              variants={fadeInUp}
+              className="text-rose font-georgia text-lg italic bg-rose/5 p-6 rounded-xl"
+            >
+              At Nexus Clinic KL, we keep the same clarity, but we add something
+              many pages skip: honest guidance on evidence, product quality, and
+              what is realistic for your stage of hair loss.
+            </motion.p>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Does it really work */}
+      <section className="py-20 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl font-bold text-brown text-center mb-8"
+            >
+              Does exosome hair treatment really work for hair loss?
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-xl text-wine font-georgia text-center mb-8"
+            >
+              Research is promising, but it is not "magic".
+            </motion.p>
+
             <motion.div
               variants={fadeInUp}
-              className="max-w-3xl mx-auto text-center mb-16"
+              className="bg-cream p-6 rounded-xl border border-taupe/20 mb-4"
             >
-              <h2 className="font-georgia text-4xl lg:text-5xl text-brown">
-                {t("whoFor.title")}
-              </h2>
+              <p className="text-brown font-inter">
+                A 2025 systematic review on exosomes and hair regeneration
+                reported consistent improvements in measures like hair density
+                and thickness across multiple clinical studies, while still
+                noting this is an emerging field.
+              </p>
             </motion.div>
 
-            <div className="grid lg:grid-cols-2 gap-8">
-              <motion.div
-                variants={fadeInLeft}
-                className="bg-linear-to-br from-green-50 to-white p-8 rounded-3xl shadow-xl"
-              >
-                <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
-                  <CheckCircle2 className="w-6 h-6 text-green-600" />
-                </div>
-                <h3 className="font-georgia text-2xl text-brown mb-6">
-                  {t("whoFor.idealTitle")}
-                </h3>
-                <ul className="space-y-4">
-                  {[
-                    t("whoFor.i1"),
-                    t("whoFor.i2"),
-                    t("whoFor.i3"),
-                    t("whoFor.i4"),
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3">
-                      <Plus className="w-4 h-4 text-green-600" />
-                      <span className="font-inter text-brown">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
+            <motion.div
+              variants={fadeInUp}
+              className="bg-cream p-6 rounded-xl border border-taupe/20 mb-6"
+            >
+              <p className="text-brown font-inter">
+                Another 2025 review compared exosome therapy with PRP and
+                minoxidil for androgenetic alopecia and discusses exosomes as an
+                emerging option with patient-centered outcomes and safety
+                considerations.
+              </p>
+            </motion.div>
 
-              <motion.div
-                variants={fadeInRight}
-                className="bg-linear-to-br from-rose-50 to-white p-8 rounded-3xl shadow-xl"
-              >
-                <div className="w-12 h-12 bg-rose-500/20 rounded-xl flex items-center justify-center mb-6">
-                  <XCircle className="w-6 h-6 text-rose-600" />
-                </div>
-                <h3 className="font-georgia text-2xl text-brown mb-6">
-                  {t("whoFor.notTitle")}
-                </h3>
-                <ul className="space-y-4">
-                  {[
-                    t("whoFor.n1"),
-                    t("whoFor.n2"),
-                    t("whoFor.n3"),
-                    t("whoFor.n4"),
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3">
-                      <Minus className="w-4 h-4 text-rose-600" />
-                      <span className="font-inter text-brown">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </div>
+            <motion.p
+              variants={fadeInUp}
+              className="text-rose font-georgia text-lg border-l-4 border-rose pl-4 py-2"
+            >
+              What this means in real life: If you have thinning hair,
+              miniaturised follicles, or early pattern loss, you may see
+              benefit. If the area is fully bald and shiny, results are usually
+              limited.
+            </motion.p>
+          </div>
+        </motion.div>
+      </section>
 
-            {/* Target Areas */}
-            <motion.div variants={fadeInUp} className="mt-16">
-              <h3 className="font-georgia text-2xl text-center text-brown mb-8">
-                {t("whoFor.areasTitle")}
+      {/* Safety and regulation */}
+      <section className="py-20 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl font-bold text-brown text-center mb-4"
+            >
+              Safety and regulation{" "}
+              <span className="text-wine">(please read this)</span>
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-xl text-wine font-georgia text-center mb-8"
+            >
+              This matters more than marketing.
+            </motion.p>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-light p-6 rounded-xl mb-4"
+            >
+              <p className="text-brown font-inter">
+                The U.S. FDA has warned there are no FDA-approved exosome
+                products, and it cautions consumers about clinics selling
+                unapproved regenerative medicine products, including exosomes.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-light p-6 rounded-xl mb-4"
+            >
+              <p className="text-brown font-inter">
+                The International Society for Extracellular Vesicles (ISEV) also
+                provides patient safety information and highlights uncertainties
+                and the importance of evidence and quality control.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-light p-6 rounded-xl mb-8"
+            >
+              <p className="text-brown font-inter">
+                A 2024 paper on regulation explains why injected exosome
+                products often lack official approvals, including issues like
+                variability, impurities, and unclear mechanisms, which makes
+                quality control difficult.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-rose/10 p-6 rounded-xl border-2 border-rose/20"
+            >
+              <h3 className="font-georgia text-2xl font-bold text-brown mb-4">
+                What you should do in Malaysia:
               </h3>
-              <div className="flex flex-wrap justify-center gap-4">
-                {[
-                  t("whoFor.a1"),
-                  t("whoFor.a2"),
-                  t("whoFor.a3"),
-                  t("whoFor.a4"),
-                ].map((area, i) => (
-                  <motion.span
-                    key={i}
-                    whileHover={{ scale: 1.05 }}
-                    className="px-6 py-3 bg-cream text-brown rounded-full font-inter shadow-md hover:shadow-lg transition-all"
-                  >
-                    {area}
-                  </motion.span>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* Procedure Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 bg-linear-to-br from-cream to-white"
-        >
-          <div className="container mx-auto px-4">
-            <motion.div
-              variants={fadeInUp}
-              className="max-w-3xl mx-auto text-center mb-16"
-            >
-              <h2 className="font-georgia text-4xl lg:text-5xl text-brown mb-6">
-                {t("procedure.title")}
-                <span className="block text-wine text-2xl mt-2">
-                  {t("procedure.subtitle")}
-                </span>
-              </h2>
-            </motion.div>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <motion.div variants={fadeInLeft} className="space-y-4">
-                {[
-                  {
-                    step: "01",
-                    title: t("procedure.s1Title"),
-                    desc: t("procedure.s1Desc"),
-                  },
-                  {
-                    step: "02",
-                    title: t("procedure.s2Title"),
-                    desc: t("procedure.s2Desc"),
-                  },
-                  {
-                    step: "03",
-                    title: t("procedure.s3Title"),
-                    desc: t("procedure.s3Desc"),
-                  },
-                  {
-                    step: "04",
-                    title: t("procedure.s4Title"),
-                    desc: t("procedure.s4Desc"),
-                  },
-                ].map((item, i) => (
-                  <motion.div
-                    key={i}
-                    whileHover={{ x: 10 }}
-                    className="flex items-start gap-6 bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all"
-                  >
-                    <span className="font-georgia text-3xl text-wine opacity-30">
-                      {item.step}
-                    </span>
-                    <div>
-                      <h3 className="font-georgia text-xl text-brown mb-1">
-                        {item.title}
-                      </h3>
-                      <p className="text-taupe font-inter">{item.desc}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              <motion.div
-                variants={fadeInRight}
-                className="bg-white p-8 rounded-3xl shadow-2xl"
-              >
-                <CalendarClock className="w-12 h-12 text-wine mb-4" />
-                <h3 className="font-georgia text-2xl text-brown mb-4">
-                  {t("procedure.sessionTitle")}
-                </h3>
-                <p className="text-lg text-taupe mb-6">
-                  {t("procedure.sessionTime")}
-                </p>
-                <div className="space-y-4">
-                  <h4 className="font-georgia text-brown">{t("procedure.deliveryTitle")}</h4>
-                  <ul className="space-y-2">
-                    <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-wine rounded-full" />
-                      <span className="font-inter">{t("procedure.d1")}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-wine rounded-full" />
-                      <span className="font-inter">{t("procedure.d2")}</span>
-                    </li>
-                  </ul>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Results Timeline */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 bg-white"
-        >
-          <div className="container mx-auto px-4">
-            <motion.div
-              variants={fadeInUp}
-              className="max-w-3xl mx-auto text-center mb-16"
-            >
-              <h2 className="font-georgia text-4xl lg:text-5xl text-brown mb-6">
-                {t("timeline.title")}
-                <span className="block text-wine text-xl mt-2 font-inter">
-                  {t("timeline.subtitle")}
-                </span>
-              </h2>
-            </motion.div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  period: t("timeline.r1Period"),
-                  desc: t("timeline.r1Desc"),
-                  icon: Activity,
-                },
-                {
-                  period: t("timeline.r2Period"),
-                  desc: t("timeline.r2Desc"),
-                  icon: TrendingUp,
-                },
-                {
-                  period: t("timeline.r3Period"),
-                  desc: t("timeline.r3Desc"),
-                  icon: Sparkles,
-                },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  variants={scaleIn}
-                  whileHover={{ y: -10 }}
-                  className="text-center p-8 bg-linear-to-b from-cream to-white rounded-3xl shadow-xl"
-                >
-                  <div className="w-16 h-16 bg-wine/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <item.icon className="w-8 h-8 text-wine" />
-                  </div>
-                  <h3 className="font-georgia text-2xl text-wine mb-2">
-                    {item.period}
-                  </h3>
-                  <p className="text-taupe font-inter">{item.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Comparison Table */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 bg-linear-to-br from-cream to-white"
-        >
-          <div className="container mx-auto px-4">
-            <motion.div
-              variants={fadeInUp}
-              className="max-w-3xl mx-auto text-center mb-16"
-            >
-              <h2 className="font-georgia text-4xl lg:text-5xl text-brown">
-                {t("comparison.title")}
-              </h2>
-            </motion.div>
-
-            <div className="overflow-x-auto">
-              <table className="w-full bg-white rounded-3xl shadow-2xl overflow-hidden">
-                <thead className="bg-wine text-white">
-                  <tr>
-                    <th className="px-6 py-4 text-left font-georgia">{t("comparison.thOption")}</th>
-                    <th className="px-6 py-4 text-left font-georgia">{t("comparison.thBest")}</th>
-                    <th className="px-6 py-4 text-left font-georgia">{t("comparison.thDowntime")}</th>
-                    <th className="px-6 py-4 text-left font-georgia">{t("comparison.thWhat")}</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-cream">
-                  {[
-                    [t("comparison.r1c1"), t("comparison.r1c2"), t("comparison.r1c3"), t("comparison.r1c4")],
-                    [t("comparison.r2c1"), t("comparison.r2c2"), t("comparison.r2c3"), t("comparison.r2c4")],
-                    [t("comparison.r3c1"), t("comparison.r3c2"), t("comparison.r3c3"), t("comparison.r3c4")],
-                    [t("comparison.r4c1"), t("comparison.r4c2"), t("comparison.r4c3"), t("comparison.r4c4")],
-                    [t("comparison.r5c1"), t("comparison.r5c2"), t("comparison.r5c3"), t("comparison.r5c4")],
-                  ].map((row, i) => (
-                    <motion.tr
-                      key={i}
-                      whileHover={{
-                        backgroundColor: "rgba(140, 79, 88, 0.05)",
-                      }}
-                      className="transition-colors"
-                    >
-                      {row.map((cell, j) => (
-                        <td key={j} className="px-6 py-4 font-inter text-brown">
-                          {cell}
-                        </td>
-                      ))}
-                    </motion.tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Cost Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 bg-white"
-        >
-          <div className="container mx-auto px-4">
-            <motion.div
-              variants={fadeInUp}
-              className="max-w-3xl mx-auto text-center mb-16"
-            >
-              <h2 className="font-georgia text-4xl lg:text-5xl text-brown mb-6">
-                {t("cost.title")}
-              </h2>
-            </motion.div>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-start">
-              <motion.div variants={fadeInLeft} className="space-y-6">
-                <div className="bg-cream p-8 rounded-3xl">
-                  <DollarSign className="w-12 h-12 text-wine mb-4" />
-                  <h3 className="font-georgia text-2xl text-brown mb-4">
-                    {t("cost.factorsTitle")}
-                  </h3>
-                  <ul className="space-y-3">
-                    {[
-                      t("cost.f1"),
-                      t("cost.f2"),
-                      t("cost.f3"),
-                      t("cost.f4"),
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-wine rounded-full" />
-                        <span className="font-inter text-brown">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="p-6 border border-wine rounded-2xl">
-                  <p className="text-sm text-taupe mb-2">{t("cost.startingFrom")}</p>
-                  <p className="font-georgia text-4xl text-wine">
-                    {t("cost.price")}
-                    <span className="text-lg text-taupe">{t("cost.perSession")}</span>
-                  </p>
-                  <p className="text-xs text-taupe mt-2">
-                    {t("cost.priceNote")}
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInRight}
-                className="bg-linear-to-br from-wine to-rose text-white p-8 rounded-3xl shadow-2xl"
-              >
-                <h3 className="font-georgia text-2xl mb-6">
-                  {t("cost.approachTitle")}
-                </h3>
-                <p className="font-inter text-white/90 mb-6">
-                  {t("cost.approachDesc")}
-                </p>
-                <button className="w-full bg-white text-wine py-4 rounded-xl font-inter font-semibold hover:shadow-xl transition-all">
-                  {t("cost.bookBtn")}
-                </button>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* FAQ Section */}
-        <FAQ data={faqs} />
-
-        {/* CTA Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 bg-linear-to-br from-brown to-wine text-white"
-        >
-          <div className="container mx-auto px-4 text-center">
-            <motion.div variants={fadeInUp} className="max-w-3xl mx-auto">
-              <MessageCircle className="w-16 h-16 mx-auto mb-8 opacity-75" />
-              <h2 className="font-georgia text-4xl lg:text-5xl mb-6">
-                {t("cta.title")}
-              </h2>
-              <p className="text-xl font-inter text-white/90 mb-8">
-                {t("cta.desc")}
+              <p className="text-brown font-inter text-lg">
+                Choose a doctor-led clinic. Ask about product source and
+                documentation. Avoid places that promise guaranteed regrowth or
+                "permanent cure".
               </p>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-wine px-12 py-5 rounded-full font-inter font-semibold text-lg shadow-2xl hover:shadow-3xl transition-all"
-              >
-                {t("cta.scheduleBtn")}
-              </motion.button>
             </motion.div>
           </div>
-        </motion.section>
-      </main>
-    </>
+        </motion.div>
+      </section>
+
+      {/* Who is exosome hair treatment for */}
+      <section className="py-20 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="max-w-5xl mx-auto">
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl font-bold text-brown text-center mb-12"
+            >
+              Who is exosome hair treatment for?
+            </motion.h2>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter text-lg mb-6"
+            >
+              Exosome therapy tends to suit people who:
+            </motion.p>
+
+            <motion.ul
+              variants={fadeInUp}
+              className="list-disc pl-6 space-y-2 mb-8 text-brown font-inter text-lg"
+            >
+              <li>notice widening part lines or crown thinning</li>
+              <li>have early male pattern or female pattern hair loss</li>
+              <li>
+                have more shedding after stress, illness, or postpartum changes
+              </li>
+              <li>want a non-surgical option and can commit to follow-up</li>
+            </motion.ul>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter text-lg mb-4"
+            >
+              It may not be ideal if you have:
+            </motion.p>
+
+            <motion.ul
+              variants={fadeInUp}
+              className="list-disc pl-6 space-y-2 mb-12 text-brown font-inter text-lg"
+            >
+              <li>active scalp infection or uncontrolled scalp dermatitis</li>
+              <li>
+                bleeding disorders or medication issues (your doctor will screen
+                this)
+              </li>
+              <li>severe baldness where follicles are no longer active</li>
+            </motion.ul>
+
+            <motion.div variants={fadeInUp}>
+              <h3 className="font-georgia text-2xl font-bold text-brown mb-4">
+                Areas we can target
+              </h3>
+              <p className="text-brown font-inter mb-4">
+                Exosome hair treatment can be planned for:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-brown font-inter text-lg">
+                <li>hairline and temples</li>
+                <li>crown and vertex</li>
+                <li>diffuse thinning across the top</li>
+                <li>general scalp health support</li>
+              </ul>
+              <p className="text-taupe font-inter mt-4">
+                Your pattern matters. So does your diagnosis. That is why
+                consultation is step one.
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* How it's done */}
+      <section className="py-20 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl font-bold text-brown text-center mb-8"
+            >
+              How exosome hair treatment is done (what to expect)
+            </motion.h2>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter text-lg mb-4"
+            >
+              Most clinics deliver exosomes in one of two ways:
+            </motion.p>
+
+            <motion.ol
+              variants={fadeInUp}
+              className="list-decimal pl-6 space-y-2 mb-6 text-brown font-inter text-lg"
+            >
+              <li>Scalp micro-infusion or microneedling delivery</li>
+              <li>Targeted scalp injections</li>
+            </motion.ol>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter text-lg mb-6"
+            >
+              Top clinic pages in Malaysia commonly describe a process like:
+              consult, scalp prep, delivery, then a regeneration period over
+              months.
+            </motion.p>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter text-lg mb-4"
+            >
+              A typical visit usually includes:
+            </motion.p>
+
+            <motion.ol
+              variants={fadeInUp}
+              className="list-decimal pl-6 space-y-2 mb-6 text-brown font-inter text-lg"
+            >
+              <li>scalp assessment and history review</li>
+              <li>cleansing and optional numbing</li>
+              <li>controlled delivery to thinning zones</li>
+              <li>aftercare instructions (simple but important)</li>
+            </motion.ol>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter text-lg"
+            >
+              Sessions are often around 60 to 90 minutes on many clinic
+              protocols.
+            </motion.p>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Results timeline */}
+      <section className="py-20 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl font-bold text-brown text-center mb-4"
+            >
+              Results timeline (what is realistic)
+            </motion.h2>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter text-lg text-center mb-8"
+            >
+              Most people want to know, "When will I see hair growth?"
+            </motion.p>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter text-lg mb-6"
+            >
+              A common timeline shared by leading clinic pages is:
+            </motion.p>
+
+            <motion.ul
+              variants={fadeInUp}
+              className="list-disc pl-6 space-y-3 mb-6 text-brown font-inter text-lg"
+            >
+              <li>2 to 4 weeks: scalp feels healthier, shedding may reduce</li>
+              <li>1 to 3 months: early thickening, improved density signals</li>
+              <li>
+                3 to 6 months: more visible improvement in coverage and
+                thickness
+              </li>
+            </motion.ul>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-rose font-georgia italic"
+            >
+              Results vary. Hair biology is slow. That is normal.
+            </motion.p>
+          </div>
+        </motion.div>
+      </section>
+
+      <SectionBeforeAfter transformations={transformations} />
+
+      {/* Pros and cons */}
+      <section className="py-20 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl font-bold text-brown text-center mb-12"
+            >
+              Pros and cons (honest view)
+            </motion.h2>
+
+            <motion.div variants={fadeInUp} className="mb-8">
+              <h3 className="font-georgia text-2xl font-bold text-green-600 mb-4">
+                Benefits
+              </h3>
+              <ul className="list-disc pl-6 space-y-2 text-brown font-inter text-lg">
+                <li>non-surgical approach</li>
+                <li>minimal downtime for most people</li>
+                <li>
+                  can be combined with PRP, medication, or device-based support
+                </li>
+                <li>
+                  aims to improve scalp environment, not just cover the problem
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div variants={fadeInUp}>
+              <h3 className="font-georgia text-2xl font-bold text-rose mb-4">
+                Downsides
+              </h3>
+              <ul className="list-disc pl-6 space-y-2 text-brown font-inter text-lg">
+                <li>product quality can vary, so clinic choice matters</li>
+                <li>
+                  it can be expensive (price depends on extent and protocol)
+                </li>
+                <li>evidence is growing, but not "settled science" yet</li>
+                <li>not ideal for fully bald areas</li>
+              </ul>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Side effects and downtime */}
+      <section className="py-20 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl font-bold text-brown text-center mb-8"
+            >
+              Side effects and downtime
+            </motion.h2>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter text-lg mb-4"
+            >
+              Most reported side effects are mild and short-lived:
+            </motion.p>
+
+            <motion.ul
+              variants={fadeInUp}
+              className="list-disc pl-6 space-y-2 mb-6 text-brown font-inter text-lg"
+            >
+              <li>redness, swelling, tenderness</li>
+              <li>small bumps at injection points</li>
+              <li>mild headache or scalp tightness</li>
+            </motion.ul>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter text-lg mb-2"
+            >
+              Rare risks (your doctor should discuss these):
+            </motion.p>
+
+            <motion.ul
+              variants={fadeInUp}
+              className="list-disc pl-6 space-y-2 mb-6 text-brown font-inter text-lg"
+            >
+              <li>infection if hygiene is poor</li>
+              <li>allergic reactions depending on product additives</li>
+              <li>flare of scalp inflammation in sensitive patients</li>
+            </motion.ul>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-rose font-georgia italic"
+            >
+              This is why doctor-led assessment and clean protocol matter.
+            </motion.p>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Comparison table */}
+      <section className="py-20 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl font-bold text-brown text-center mb-12"
+          >
+            Exosome vs PRP vs mesotherapy vs transplant (simple comparison)
+          </motion.h2>
+
+          <motion.div variants={fadeInUp} className="overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="bg-wine">
+                  <th className="p-4 text-left text-light font-georgia">
+                    Option
+                  </th>
+                  <th className="p-4 text-left text-light font-georgia">
+                    Best for
+                  </th>
+                  <th className="p-4 text-left text-light font-georgia">
+                    Downtime
+                  </th>
+                  <th className="p-4 text-left text-light font-georgia">
+                    What it does
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-taupe/20">
+                <tr className="bg-cream/50">
+                  <td className="p-4 text-brown font-inter">
+                    Exosome hair treatment
+                  </td>
+                  <td className="p-4 text-brown font-inter">
+                    early to moderate thinning
+                  </td>
+                  <td className="p-4 text-brown font-inter">low</td>
+                  <td className="p-4 text-brown font-inter">
+                    aims to support regeneration signals over time
+                  </td>
+                </tr>
+                <tr className="bg-cream/50">
+                  <td className="p-4 text-brown font-inter">PRP for hair</td>
+                  <td className="p-4 text-brown font-inter">
+                    shedding + thinning
+                  </td>
+                  <td className="p-4 text-brown font-inter">low</td>
+                  <td className="p-4 text-brown font-inter">
+                    uses your own platelets and growth factors
+                  </td>
+                </tr>
+                <tr className="bg-cream/50">
+                  <td className="p-4 text-brown font-inter">
+                    Hair mesotherapy
+                  </td>
+                  <td className="p-4 text-brown font-inter">
+                    scalp support + early thinning
+                  </td>
+                  <td className="p-4 text-brown font-inter">low</td>
+                  <td className="p-4 text-brown font-inter">
+                    nutrients and scalp stimulation
+                  </td>
+                </tr>
+                <tr className="bg-cream/50">
+                  <td className="p-4 text-brown font-inter">
+                    Medication (minoxidil, others)
+                  </td>
+                  <td className="p-4 text-brown font-inter">
+                    pattern loss support
+                  </td>
+                  <td className="p-4 text-brown font-inter">none</td>
+                  <td className="p-4 text-brown font-inter">
+                    helps maintain and stimulate follicles
+                  </td>
+                </tr>
+                <tr className="bg-cream/50">
+                  <td className="p-4 text-brown font-inter">Hair transplant</td>
+                  <td className="p-4 text-brown font-inter">
+                    advanced loss with donor hair
+                  </td>
+                  <td className="p-4 text-brown font-inter">higher</td>
+                  <td className="p-4 text-brown font-inter">
+                    moves follicles to bald areas
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </motion.div>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-brown font-inter text-lg mt-6"
+          >
+            Exosomes are often positioned as a regenerative option, while
+            transplants are for structure and coverage when hair is already
+            gone.
+          </motion.p>
+        </motion.div>
+      </section>
+
+      {/* Cost */}
+      <section className="py-20 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl font-bold text-brown text-center mb-8"
+            >
+              Cost of exosome hair treatment in Kuala Lumpur and Malaysia
+            </motion.h2>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter text-lg mb-4"
+            >
+              Pricing depends on:
+            </motion.p>
+
+            <motion.ul
+              variants={fadeInUp}
+              className="list-disc pl-6 space-y-2 mb-6 text-brown font-inter text-lg"
+            >
+              <li>how large the area is (hairline vs full top)</li>
+              <li>how many sessions are planned</li>
+              <li>the brand and quality of the exosome product</li>
+              <li>whether you combine PRP, microneedling, or other steps</li>
+            </motion.ul>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter text-lg mb-4"
+            >
+              Public pricing is not always listed. One KL clinic page states
+              exosome hair loss therapy from RM 8,000 onwards per session,
+              depending on treatment extent.
+            </motion.p>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-rose font-georgia italic mb-6"
+            >
+              At Nexus Clinic KL, we recommend budgeting only after an
+              assessment. You should pay for a plan, not a promise.
+            </motion.p>
+
+            <motion.h3
+              variants={fadeInUp}
+              className="font-georgia text-2xl font-bold text-brown mb-4"
+            >
+              How many sessions do you need?
+            </motion.h3>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter text-lg"
+            >
+              Some clinic protocols describe one or two sessions, depending on
+              severity, with improvements showing over months. Other protocols
+              may recommend a series, then maintenance.
+            </motion.p>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Nexus approach */}
+      <section className="py-20 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl font-bold text-brown text-center mb-8"
+            >
+              The Nexus Clinic KL approach (what makes the plan feel "human")
+            </motion.h2>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-brown font-inter text-lg text-center mb-8"
+            >
+              We keep it simple and practical.
+            </motion.p>
+
+            <motion.div variants={fadeInUp} className="mb-6">
+              <h3 className="font-georgia text-2xl font-bold text-wine mb-2">
+                Step 1: Diagnose first
+              </h3>
+              <p className="text-brown font-inter text-lg">
+                Hair thinning can be genetic, hormonal, inflammatory, or mixed.
+                We start with assessment so you do not waste money on the wrong
+                method.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="mb-6">
+              <h3 className="font-georgia text-2xl font-bold text-wine mb-2">
+                Step 2: Choose the right mix
+              </h3>
+              <p className="text-brown font-inter text-lg">
+                Many people do better with a combined plan, not one single
+                treatment. Nexus Clinic already supports multiple hair options
+                like PRP and hair mesotherapy, which can complement regenerative
+                strategies when suitable.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp}>
+              <h3 className="font-georgia text-2xl font-bold text-wine mb-2">
+                Step 3: Track changes over time
+              </h3>
+              <p className="text-brown font-inter text-lg">
+                We set a realistic timeline. We adjust if needed. No pressure,
+                no rushed upsell. That is part of being diagnosis-driven.
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Aftercare */}
+      <section className="py-20 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl font-bold text-brown text-center mb-8"
+            >
+              Aftercare tips (small habits that protect your results)
+            </motion.h2>
+
+            <motion.h3
+              variants={fadeInUp}
+              className="font-georgia text-2xl font-bold text-rose mb-4"
+            >
+              For the first 24 to 48 hours:
+            </motion.h3>
+
+            <motion.ul
+              variants={fadeInUp}
+              className="list-disc pl-6 space-y-2 mb-6 text-brown font-inter text-lg"
+            >
+              <li>avoid heavy sweating and intense workouts</li>
+              <li>avoid sauna and very hot showers</li>
+              <li>do not scratch the scalp</li>
+              <li>follow washing instructions from your doctor</li>
+            </motion.ul>
+
+            <motion.h3
+              variants={fadeInUp}
+              className="font-georgia text-2xl font-bold text-rose mb-4"
+            >
+              For the next few weeks:
+            </motion.h3>
+
+            <motion.ul
+              variants={fadeInUp}
+              className="list-disc pl-6 space-y-2 text-brown font-inter text-lg"
+            >
+              <li>keep stress lower where possible</li>
+              <li>sleep well and support nutrition</li>
+              <li>stay consistent if you are also using PRP or medication</li>
+            </motion.ul>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="font-georgia text-4xl font-bold text-brown text-center mb-12"
+          >
+            FAQs (real "People Also Ask" style)
+          </motion.h2>
+
+          <div className="max-w-3xl mx-auto space-y-6">
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl">
+              <h3 className="font-georgia text-xl font-bold text-brown mb-2">
+                Is exosome hair treatment safe?
+              </h3>
+              <p className="text-taupe font-inter">
+                It can be safe when done in a medical setting with proper
+                product quality and hygiene. But the field still has
+                uncertainties, and quality varies by supplier.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl">
+              <h3 className="font-georgia text-xl font-bold text-brown mb-2">
+                Is exosome therapy FDA approved for hair loss?
+              </h3>
+              <p className="text-taupe font-inter">
+                No. The FDA has stated there are no FDA-approved exosome
+                products and has issued safety communications about unapproved
+                exosome products.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl">
+              <h3 className="font-georgia text-xl font-bold text-brown mb-2">
+                How long does exosome hair treatment take to work?
+              </h3>
+              <p className="text-taupe font-inter">
+                Many clinic protocols describe visible improvement over 3 to 6
+                months, with earlier changes like reduced shedding sometimes
+                appearing sooner.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl">
+              <h3 className="font-georgia text-xl font-bold text-brown mb-2">
+                How many sessions of exosome hair treatment do I need?
+              </h3>
+              <p className="text-taupe font-inter">
+                Some Malaysia clinic protocols state one to two sessions may be
+                used depending on hair loss severity, while others plan a
+                series. Your doctor should tailor this.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl">
+              <h3 className="font-georgia text-xl font-bold text-brown mb-2">
+                Does exosome hair treatment work for male pattern baldness?
+              </h3>
+              <p className="text-taupe font-inter">
+                It may help in androgenetic alopecia when follicles are still
+                active, and research reviews report improvements in density and
+                thickness across studies. Outcomes still vary by stage.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl">
+              <h3 className="font-georgia text-xl font-bold text-brown mb-2">
+                Is exosome hair treatment better than PRP?
+              </h3>
+              <p className="text-taupe font-inter">
+                Not always. Some people respond well to PRP, some prefer
+                exosomes, and many clinics combine approaches. Evidence is still
+                developing, so the best choice depends on your diagnosis and
+                scalp condition.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl">
+              <h3 className="font-georgia text-xl font-bold text-brown mb-2">
+                What are the side effects of exosome injections for hair?
+              </h3>
+              <p className="text-taupe font-inter">
+                Common effects include mild redness, swelling, and tenderness at
+                the scalp. Serious issues are uncommon but possible, especially
+                if product quality or hygiene is poor.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl">
+              <h3 className="font-georgia text-xl font-bold text-brown mb-2">
+                Is there downtime after exosome hair treatment?
+              </h3>
+              <p className="text-taupe font-inter">
+                Most clinics describe minimal downtime. Many people return to
+                normal routines quickly, with basic aftercare for a day or two.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl">
+              <h3 className="font-georgia text-xl font-bold text-brown mb-2">
+                Can women do exosome hair treatment?
+              </h3>
+              <p className="text-taupe font-inter">
+                Yes. Many protocols are marketed for both men and women with
+                thinning hair or shedding, especially in early stages.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl">
+              <h3 className="font-georgia text-xl font-bold text-brown mb-2">
+                Can I combine exosome hair treatment with PRP or laser therapy?
+              </h3>
+              <p className="text-taupe font-inter">
+                Yes, many clinics explicitly state it can be combined with PRP
+                and other hair loss solutions for enhanced outcomes.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl">
+              <h3 className="font-georgia text-xl font-bold text-brown mb-2">
+                How much does exosome hair treatment cost in Kuala Lumpur?
+              </h3>
+              <p className="text-taupe font-inter">
+                Pricing depends on coverage area and protocol. Some KL clinic
+                pages publicly quote from around RM 8,000 per session onwards,
+                but costs vary widely.
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-20 bg-wine">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl md:text-5xl font-bold text-light mb-6"
+            >
+              Ready to talk to a doctor in KL?
+            </motion.h2>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-xl text-cream mb-8 font-inter"
+            >
+              If you want a plan that fits your hair loss stage, start with an
+              assessment at Nexus Clinic Kuala Lumpur. We will explain what you
+              actually need, what you can skip, and what results are realistic.
+            </motion.p>
+
+            <motion.button
+              variants={fadeInUp}
+              className="group bg-light text-wine px-8 py-4 rounded-full font-inter font-semibold hover:bg-cream transition-all duration-300 flex items-center gap-2 mx-auto shadow-lg"
+            >
+              Start Your Assessment
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
+          </div>
+        </motion.div>
+      </section>
+    </div>
   );
 };
 

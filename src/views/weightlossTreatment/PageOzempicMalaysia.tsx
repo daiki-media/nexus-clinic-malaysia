@@ -37,19 +37,55 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
     },
     {
       q: "How much weight can you lose on Ozempic?",
-      a: "Results vary. In obesity trials using semaglutide 2.4 mg, average weight loss was about 14.9% at 68 weeks with lifestyle support.",
+      a: "Results vary. In obesity trials using semaglutide 2.4 mg (Wegovy dosing), average weight loss was about 14.9% at 68 weeks with lifestyle support. Your doctor will explain what is realistic for your body and your plan.",
+    },
+    {
+      q: "How fast does Ozempic work for weight loss?",
+      a: "Many people notice appetite changes within the first month. Weight loss is often more visible by weeks 8 to 12, especially when food and activity habits improve alongside treatment.",
     },
     {
       q: "What happens when you stop Ozempic?",
-      a: "Weight regain is common if you stop without a maintenance plan. Studies show many people regain a meaningful portion of lost weight after stopping.",
+      a: "Weight regain is common if you stop without a maintenance plan. Studies show many people regain a meaningful portion of lost weight after stopping semaglutide. That is why a long-term strategy matters.",
     },
     {
-      q: "Can Ozempic cause 'Ozempic face'?",
-      a: "Rapid weight loss can reduce facial volume in some people. The best prevention is steady loss, good protein intake, and doctor-guided pacing.",
+      q: "Is Ozempic safe?",
+      a: "It can be safe for the right patient under medical supervision, but it has risks and contraindications. A doctor must screen you properly and monitor side effects.",
+    },
+    {
+      q: "What are the most common side effects?",
+      a: "Nausea, constipation, diarrhea, stomach upset, and reduced appetite are common, especially early on or after dose increases.",
+    },
+    {
+      q: "Who should avoid Ozempic?",
+      a: "People with a personal or family history of medullary thyroid cancer or MEN2 should avoid it. Pregnancy planning also needs medical guidance. Your doctor will review all risks with you.",
+    },
+    {
+      q: "Can Ozempic cause “Ozempic face”?",
+      a: "Rapid weight loss can reduce facial volume in some people, with or without Ozempic. The best prevention is steady loss, good protein intake, and doctor-guided pacing.",
+    },
+    {
+      q: "Can I take Ozempic if I have PCOS?",
+      a: "Some people with PCOS may benefit from GLP-1 based weight management, but it depends on your health profile and goals. A doctor should assess you, especially if you are trying to conceive.",
+    },
+    {
+      q: "Can I drink alcohol while on Ozempic?",
+      a: "Moderation is important. Alcohol can worsen stomach side effects and affect blood sugar control. Discuss your habits honestly during consultation.",
     },
     {
       q: "Is Ozempic available in Malaysia, and how do I avoid fake products?",
-      a: "Use licensed providers and check product registration status through NPRA tools. Avoid unverified online sellers and suspicious 'cheap pens.'",
+      a: "Use licensed providers and check product registration status through NPRA tools and MOH guidance. Avoid unverified online sellers and suspicious “cheap pens.”",
+    },
+    {
+      q: "How much does Ozempic cost in Kuala Lumpur?",
+      a: "At Nexus Clinic KL, Ozempic is listed from RM1,800 per pen, with package options after consultation.",
+    },
+    {
+      q: "Ozempic or fat freezing, which is better?",
+      a: "If you want overall weight loss and appetite control, Ozempic may help. If you are already near your goal weight and want to reduce one stubborn area, fat freezing may fit better. Many patients choose based on body goals, budget, and timeline.",
+    },
+    {
+      q: "Do I need diet and exercise if I start Ozempic?",
+      a: "Yes. Ozempic helps appetite, but long-term success comes from food quality, protein, steps, sleep, and stress. Think “support tool,” not “magic fix.”",
     },
   ];
 
