@@ -1,0 +1,271 @@
+{
+  "hero": {
+    "title": "Best Dermal Filler in Kuala Lumpur for Natural Volume ",
+    "title2": " and Expert Contouring",
+    "description": "Your face changes before you notice it. Volume thins, leading to a saggy appearance over time. Lines settle in. The shape that used to hold itself starts to shift. Most people spend years on skincare products hoping to fix something that skincare cannot reach. Dermal filler works at the structural level where volume loss actually happens.",
+    "experience": "We have completed over 5,000 facial filler procedures using technique built for Southeast Asian facial anatomy. Every treatment plan is built around your face, your goals and your timeline.",
+    "cta": "Book Your Free Dermal Filler Consultation at Nexus Clinic KL to explore how fillers help enhance your appearance."
+  },
+  "treatmentAtGlance": {
+    "title": "Dermal Filler Treatment at a Glance",
+    "clinicStatement": "At Nexus Clinic Kuala Lumpur, our award-winning injectors and aesthetic doctors use clinically proven hyaluronic acid fillers to restore, contour and rebalance your face. No surgery. No general anaesthesia. Results that look like you on your best day rather than someone who has had work done.",
+    "items": [
+      { "label": "Treatment Types", "value": "Face, lips, cheeks, chin, jawline, nose, tear troughs, under-eye" },
+      { "label": "Session Time", "value": "20 to 45 minutes depending on treatment area, perfect for those seeking quick enhancements in Bukit Jalil" },
+      { "label": "Downtime", "value": "Minimal. Most patients resume normal activities the same day" },
+      { "label": "Results", "value": "Visible immediately. Fully settled within 7 to 14 days" },
+      { "label": "Longevity", "value": "6 to 24 months depending on product and area treated" },
+      { "label": "Reversible", "value": "Yes. Hyaluronic acid fillers are fully dissolvable with hyaluronidase" },
+      { "label": "Anaesthesia", "value": "Topical numbing cream. Some products contain built-in lidocaine" },
+      { "label": "Suitable For", "value": "Volume loss, wrinkles, asymmetry, structural enhancement, contouring" }
+    ],
+    "cta": "Speak to a Doctor About Your Goals | Book a Free Assessment"
+  },
+  "howItWorks": {
+    "title": "Dermal Filler | How It Restores Structure and Volume",
+    "description": "Dermal filler is a gel-based injectable placed beneath the skin to restore lost volume, smooth lines and reshape facial contours. Most fillers used in clinical settings today are made from hyaluronic acid, a substance the body already produces naturally. HA attracts and holds moisture, integrates smoothly with surrounding tissue and dissolves completely if needed.",
+    "levels": {
+      "title": "The treatment works on two levels:",
+      "first": "First, it replaces physical volume in areas where fat, muscle or bone have diminished over time, helping to smoothen the skin.",
+      "second": "Second, it creates structural support that lifts and redefines facial contours from beneath. The result is a face that looks rested and proportioned, not frozen or filled, giving you a youthful look."
+    },
+    "statistics": "According to the International Society of Aesthetic Plastic Surgery (ISAPS) 2024 Global Statistics Report, hyaluronic acid filler injections ranked as the second most performed non-surgical cosmetic procedure worldwide, with Southeast Asia recording one of the fastest regional growth rates at 31% over two years.",
+    "cta": "Find Out If Dermal Filler Is Right for You | Book a Free Consultation"
+  },
+  "faceAreas": {
+    "title": "Face Areas Treated with Dermal Filler at Nexus Clinic KL",
+    "description": "Dermal filler is a versatile treatment that can enhance facial features and provide youthful, natural-looking results. At Nexus Clinic KL, we treat the following areas as standalone appointments or as part of a combined facial plan to address lines and wrinkles effectively.",
+    "areas": [
+      {
+        "name": "Lip Filler",
+        "description": "Adds volume, definition, and symmetry to the lips, enhancing your natural beauty. Whether the goal is subtle fullness or a more structured shape, lip filler is tailored to your anatomy and your preference. Overfilled lips are a technique problem, not a filler problem, and can be avoided with proper training.",
+        "cta": "Learn more about lip filler in Malaysia at Nexus Clinic KL."
+      },
+      {
+        "name": "Cheek Filler",
+        "description": "Restores the midface volume that thins with age. Lifted cheeks create a ripple effect across the face, improving the appearance of nasolabial folds, under-eye hollows and overall facial structure without touching those areas directly.",
+        "cta": "Read more about cheek filler in Malaysia and expected outcomes."
+      },
+      {
+        "name": "Chin Filler",
+        "description": "Projects the chin forward to balance the lower face and improve the side profile. The most common reason patients feel their nose looks too large is that the chin is underprojected, not that the nose is actually oversized.",
+        "cta": "Explore ways to enhance your natural beauty. Chin filler in Malaysia can help you achieve a more youthful look."
+      },
+      {
+        "name": "Jawline Filler",
+        "description": "Defines the jawline and creates clean angularity in the lower face. Results differ significantly from threading or skin tightening because the correction is structural rather than superficial.",
+        "cta": "Read about jawline filler in Malaysia including procedure steps and pricing."
+      },
+      {
+        "name": "Nose Filler",
+        "description": "Smooths dorsal humps, refines the tip and improves profile symmetry without surgery. Results are immediate, reversible and carry none of the risks or recovery time associated with rhinoplasty."
+      },
+      {
+        "name": "Tear Trough and Under-Eye Filler",
+        "description": "Fills the hollow that forms between the lower eyelid and the cheek, enhancing skin texture. This is one of the most technically demanding filler areas and requires a doctor with specific training in periorbital anatomy.",
+        "cta": "Discover tear trough filler in Malaysia and whether it suits your concern."
+      },
+      {
+        "name": "Nasolabial Fold and Line Softening",
+        "description": "Reduces the depth of smile lines, marionette lines and other static facial lines caused by volume loss beneath the skin. Filler placed at the structural level achieves more natural results than surface-level treatment alone."
+      }
+    ],
+    "cta": "Book a Consultation to Map Your Treatment Areas | Free Assessment Available to evaluate your skin texture and discuss potential filler options."
+  },
+  "products": {
+    "title": "Dermal Filler Products Used at Nexus Clinic KL",
+    "description": "Every dermal filler used at Nexus Clinic KL is MOH-approved and sourced from internationally recognised brands, ensuring safe and effective treatment for dark circles and sagging skin. The specific product chosen for your treatment is determined by the area being treated, the degree of correction needed and the result you want to achieve.",
+    "tableColumns": ["Product", "Type", "Best Area", "Longevity"],
+    "products": [
+      { "name": "Juvedenz Voluma", "type": "High-density HA", "bestArea": "Cheeks, chin, and jawline", "longevity": "12 to 18 months" },
+      { "name": "Juvedenz Volbella", "type": "Soft HA", "bestArea": "Lips, fine lines", "longevity": "12 to 18 months" },
+      { "name": "Juvedenz Volure", "type": "Medium HA", "bestArea": "Nasolabial folds, mid-face", "longevity": "12 to 18 months" },
+      { "name": "Juvedenz Volux", "type": "Firm HA", "bestArea": "Jawline definition", "longevity": "18 to 24 months" },
+      { "name": "Restylane Lyft", "type": "Firm HA", "bestArea": "Cheeks, chin, and hands", "longevity": "12 to 18 months" },
+      { "name": "Restylane Kysse", "type": "Flexible HA", "bestArea": "Lips, lip lines", "longevity": "6 to 12 months" },
+      { "name": "Restylane Fynesse", "type": "Fine HA", "bestArea": "Superficial lines, under-eye", "longevity": "6 to 12 months" },
+      { "name": "Belotero Balance", "type": "Soft integrating HA", "bestArea": "Tear troughs, fine lines", "longevity": "6 to 12 months" },
+      { "name": "Belotero Volume", "type": "Cohesive HA", "bestArea": "Cheeks, chin", "longevity": "12 to 18 months" },
+      { "name": "Radiesse", "type": "CaHA biostimulator", "bestArea": "Jawline, chin, and hands", "longevity": "12 to 24 months" }
+    ],
+    "statistics": "Allergan/AbbVie Malaysia reported in 2023 that the Juvedenz range remains the most prescribed dermal filler brand in Malaysia, reflecting both clinician confidence in product consistency and patient preference for predictable, long-lasting results.",
+    "cta": "Ask a Doctor About the Right Product for Your Face | Book a Free Consultation"
+  },
+  "whyNexus": {
+    "title": "Nexus Clinic KL | Award-Winning Aesthetic Doctors for Dermal Filler",
+    "description": "There are many aesthetic clinics offering dermal filler in Kuala Lumpur. The products available across most of them are nearly identical. The skill, experience and philosophy of the injectors placing those products are not.",
+    "differentiators": [
+      "Over 5,000 facial filler procedures completed by licensed aesthetic doctors",
+      "15 or more years of combined aesthetic medicine experience across our clinical team",
+      "Specialist training in Southeast Asian facial anatomy and injection technique",
+      "Award-winning injectors recognised for safe, natural and precise outcomes with hyaluronic acid-based dermal fillers",
+      "Anatomy-first approach: the right amount in the right place always outperforms excess volume",
+      "Honest consultations: if filler is not the right solution for your concern, you will be told before committing",
+      "Full aftercare support and structured follow-up included as standard",
+      "MOH-approved products used for every treatment without exception",
+      "Serving patients across Kuala Lumpur, Petaling Jaya, Bangsar, KLCC, Ampang, Mont Kiara and throughout Malaysia"
+    ],
+    "cta": "Book Your Consultation at Nexus Clinic KL to explore your options for botox and fillers that can enhance your facial contours. | Award-Winning Injectors"
+  },
+  "procedure": {
+    "title": "The Dermal Filler Procedure at Nexus Clinic KL",
+    "steps": [
+      {
+        "title": "Step 1 | Full Facial Assessment",
+        "description": "Your doctor reviews your face in full, not just the area of concern, to ensure a comprehensive approach to minimise the effects of the ageing process. Volume loss in one area affects the appearance of surrounding areas. The assessment covers your entire facial structure, proportion, and what is causing the concern you came in with, allowing the doctor of medicine to tailor a youthful treatment plan."
+      },
+      {
+        "title": "Step 2 | Personalised Treatment Plan",
+        "description": "Exact placement, product and volume are mapped for your anatomy before anything begins. You will know the full plan, including which filler is being used, how much and why, before a single needle is picked up. No surprises."
+      },
+      {
+        "title": "Step 3 | Numbing and Precise Injection",
+        "description": "Topical numbing cream is applied first. Most Juvedenz and Restylane products also contain built-in lidocaine for added comfort during injection. Filler is placed at precise anatomical points using fine needles or a cannula depending on the area and technique required. Sessions take 20 to 45 minutes."
+      },
+      {
+        "title": "Step 4 | Review and Aftercare",
+        "description": "Results are reviewed immediately after treatment, including dermal fillers. Your doctor explains what to expect as the filler settles over 7 to 14 days, provides full aftercare instructions and confirms the follow-up schedule."
+      }
+    ],
+    "cta": "Ready to Book | Secure Your Appointment at Nexus Clinic KL"
+  },
+  "pricing": {
+    "title": "Dermal Filler Cost in Malaysia | Transparent 2026 Pricing",
+    "description": "Dermal filler pricing in Malaysia varies based on the treatment area, product used, volume required and the level of correction. At Nexus Clinic KL, we use clinically approved hyaluronic acid-based fillers such as Juvederm, Belotero and other medical-grade options.",
+    "tableColumns": ["Treatment Area", "Typical Volume", "Price Range (2026)"],
+    "prices": [
+      { "area": "Lips", "volume": "0.5 to 1 ml", "price": "RM 1800 to RM 2600" },
+      { "area": "Cheeks", "volume": "1 to 2 ml", "price": "RM 2400 to RM 3000+" },
+      { "area": "Chin", "volume": "0.5 to 1.5 ml", "price": "RM 2400 to RM 3000+" },
+      { "area": "Jawline", "volume": "1 to 3 ml", "price": "RM 2500 to RM 3500+" },
+      { "area": "Nose (non-surgical)", "volume": "0.5 to 1 ml", "price": "RM 2200 to RM 3000" },
+      { "area": "Under-eye / Tear trough", "volume": "0.5 to 1 ml", "price": "RM 2200 to RM 2600" },
+      { "area": "Nasolabial folds", "volume": "1 to 2 ml", "price": "RM 2200 to RM 3000" },
+      { "area": "Full face plan", "volume": "3 to 6 ml", "price": "RM 6000 to RM 9000+" }
+    ],
+    "note": "All prices are confirmed after consultation based on your facial structure, goals and doctor recommendation. No treatment is performed without full transparency and approval.",
+    "factors": {
+      "title": "Factors That Affect Your Dermal Filler Price",
+      "items": [
+        "Filler brand and grade: Premium products such as Juvedenz Voluma, Volux and Restylane Lyft carry a higher cost than standard HA options. The difference reflects structural performance, longevity and clinical consistency",
+        "Volume required: A subtle correction needs less product than a full structural correction. Your doctor confirms the exact volume at consultation",
+        "Number of treatment areas: A single area costs less than a combined facial plan. Treating multiple areas in one session is often more cost-efficient than separate appointments, allowing you to suit your needs effectively",
+        "Complexity of correction: Asymmetry correction, structural rebuilding, and combined treatments require more precise planning and are priced accordingly, especially when considering collagen production",
+        "Biostimulatory products: Radiesse costs more than standard HA fillers and is priced separately due to its dual volume and collagen stimulation mechanism"
+      ]
+    },
+    "transparencyNote": "At Nexus Clinic KL, pricing is transparent. You receive a confirmed quote after your consultation. There are no hidden fees and no pressure to proceed with anything discussed, allowing you to make informed decisions about your medical aesthetic treatments.",
+    "cta": "Get Your Personalised Quote | Book a Free Consultation at Nexus Clinic KL"
+  },
+  "advantagesLimitations": {
+    "advantages": {
+      "title": "Advantages",
+      "items": [
+        "No surgery, no stitches, no scarring, no general anaesthesia required",
+        "Visible improvement immediately after treatment",
+        "Fully reversible for all hyaluronic acid based products",
+        "Temporary results allow you to experience the improvement before committing to anything permanent",
+        "Minimal downtime. Most patients return to normal activities the same day",
+        "Wide range of treatable areas in a single session",
+        "Natural looking results when the correct technique and volume are used",
+        "Customisable to your anatomy and your specific goal"
+      ]
+    },
+    "limitations": {
+      "title": "Limitations",
+      "items": [
+        "Results are not permanent. Maintenance treatments are needed every 6 to 24 months depending on product and area",
+        "Injector skill and clinical judgement matter significantly. Wrong placement or excess volume produces an unnatural result",
+        "Radiesse and other biostimulatory fillers are not reversible and require thorough patient assessment",
+        "Not suitable for patients with active skin infections, autoimmune conditions or those who are pregnant or breastfeeding",
+        "Mild bruising or swelling may occasionally be visible for a few days after treatment"
+      ]
+    }
+  },
+  "sideEffects": {
+    "title": "Dermal Filler Side Effects | Temporary, Rare and Manageable",
+    "common": {
+      "title": "Common temporary effects",
+      "items": [
+        "Mild swelling at the injection site, typically resolving within 2 to 5 days, is a common temporary effect after injecting dermal fillers",
+        "Light bruising, uncommon but possible, usually fading within 5 to 7 days",
+        "Tenderness or sensitivity in the treated area for 24 to 48 hours",
+        "Mild redness immediately after treatment, settling within a few hours"
+      ]
+    },
+    "rare": {
+      "title": "Rare Risks",
+      "items": [
+        "Nodules or lumpiness can occur if filler is injected beneath the skin at the wrong depth or if the technique is incorrect",
+        "Infection at the injection site, extremely rare when sterile technique is followed",
+        "Allergic or hypersensitivity reaction, very rare with HA-based products",
+        "Vascular occlusion, a serious but rare complication requiring immediate management by a trained injector familiar with fillers help"
+      ]
+    },
+    "safetyNote": "All dermal filler at Nexus Clinic KL is performed by licensed medical doctors trained in advanced facial anatomy and emergency complication management. Full medical history reviewed before any treatment is confirmed."
+  },
+  "aftercare": {
+    "title": "Dermal Filler Aftercare Instructions",
+    "items": [
+      "Avoid pressing, rubbing or massaging treated areas for at least 48 hours",
+      "Avoid sleeping face-down for the first two nights",
+      "Skip intense exercise for the first 24 hours",
+      "Stay away from saunas, steam rooms and prolonged heat exposure for 48 hours",
+      "Avoid alcohol for the first 24 hours to reduce bruising and swelling",
+      "Do not book facial massages or skin treatments for at least two weeks after your appointment",
+      "Give the filler 7 to 14 days to fully settle before assessing the final result"
+    ],
+    "note": "Most patients see no visible signs of treatment within 48 hours. Results refine and settle over the first two weeks as any minor swelling resolves completely."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions About Dermal Filler in Malaysia",
+    "items": [
+      {
+        "question": "How long does dermal filler last in Malaysia?",
+        "answer": "Longevity depends on the product and the area treated. Lip filler typically lasts 6 to 12 months. Cheek, chin and jawline filler lasts 12 to 18 months with Juvedenz Voluma and similar products. Radiesse can last 12 to 24 months. Your doctor will confirm the expected duration for your specific treatment at consultation."
+      },
+      {
+        "question": "How much does dermal filler cost in Malaysia in 2026?",
+        "answer": "Most dermal filler treatments at Nexus Clinic KL typically range between RM 1800 to RM 3000 per area, depending on the product and volume used. Full face treatments can range from RM 6000 to RM 9000 or more for advanced anti-ageing plans."
+      },
+      {
+        "question": "Is dermal filler painful?",
+        "answer": "Most patients describe the experience as mild pressure rather than pain, especially when using medical aesthetic treatments to enhance facial features. Topical numbing cream is applied before treatment begins to enhance comfort during the injection of hyaluronic acid-based fillers. Most filler products used at Nexus Clinic KL also contain built-in lidocaine for additional comfort. Treatments take 20 to 45 minutes and the majority of patients are surprised by how manageable the process is."
+      },
+      {
+        "question": "Can dermal filler results be reversed?",
+        "answer": "Hyaluronic acid dermal fillers are fully dissolvable with hyaluronidase, making them a flexible option for those concerned about the ageing process and skin texture. If you are unhappy with the result or experience a complication, the filler can be completely removed. This reversibility is a key safety advantage of HA fillers and the main reason first-time patients prefer them. Radiesse is not reversible and is selected only after thorough patient assessment."
+      },
+      {
+        "question": "Will dermal filler look natural when used to minimise the signs of ageing?",
+        "answer": "With the correct technique and appropriate volume, results look like natural structural improvement rather than obvious augmentation, enhancing elasticity and reducing lines and wrinkles. The most common cause of an unnatural result is overfilling, not the filler itself. Nexus Clinic KL uses a restrained, anatomy-first approach where the right amount placed correctly always produces a better outcome than more volume placed carelessly."
+      },
+      {
+        "question": "How many sessions of dermal filler are needed?",
+        "answer": "Most patients achieve their desired result in a single session. For more significant corrections or patients rebuilding volume gradually over time, a staged approach across two sessions spaced 4 to 6 weeks apart may be recommended. Your doctor will advise based on your anatomy and goals at consultation, ensuring the best use of treatments in Malaysia."
+      },
+      {
+        "question": "Can dermal filler be combined with other treatments?",
+        "answer": "Yes. Dermal filler is frequently combined with anti-wrinkle injections, skin boosters or other facial treatments as part of a broader rejuvenation plan. Combining treatments in the same session is possible and often more cost-efficient than separate appointments. Your doctor will recommend which combination best serves your specific concern."
+      },
+      {
+        "question": "How soon are dermal filler results visible?",
+        "answer": "Improvement is visible immediately after treatment. Mild swelling over the first 24 to 48 hours may temporarily soften the appearance before the filler fully settles. Final results are typically clear within 7 to 14 days. Most patients see their best outcome within two weeks."
+      },
+      {
+        "question": "Who is not suitable for dermal filler?",
+        "answer": "Dermal filler is not suitable for patients who are pregnant or breastfeeding, have active skin infections in the treatment area, have a known allergy to hyaluronic acid or lidocaine, or who have autoimmune conditions that may affect healing. A full medical assessment at consultation determines suitability for each individual, including the use of hyaluronic acid-based dermal fillers."
+      },
+      {
+        "question": "Is dermal filler safe in Malaysia, especially with biocompatible options available?",
+        "answer": "Dermal filler is a safe, clinically proven treatment when performed by a licensed medical doctor using MOH-approved products in a proper clinical environment. The most significant risk factors are injector skill and product quality rather than the treatment itself. At Nexus Clinic KL, all procedures are performed by qualified aesthetic doctors trained in facial anatomy and complication management."
+      }
+    ]
+  },
+  "finalCta": {
+    "title": "Book the Best Dermal Filler in Kuala Lumpur at Nexus Clinic KL",
+    "description": "One consultation is all it takes to get a clear picture of what dermal filler can do for your face, which areas to address, which products to use and what to expect from the result. No pressure. No upselling. Just an honest clinical assessment and a transparent plan confirmed before you commit to anything, including the use of fillers to address acne scars.",
+    "experience": "Over 5,000 filler procedures. Award-winning injectors. A result that looks like you at your very best.",
+    "cta": "Book Your Free Consultation Now | Limited Slots Available This Week"
+  }
+}
