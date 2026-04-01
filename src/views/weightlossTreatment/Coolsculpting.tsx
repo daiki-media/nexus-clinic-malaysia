@@ -39,7 +39,7 @@ const CoolSculptingLanding = ({
 }: {
   locale?: string;
 }) => {
-  const { t } = useTranslation(locale, "coolsculpting");
+  const { t } = useTranslation(locale, "weightLoss/coolsculpting");
   const benefits = [
     {
       icon: (

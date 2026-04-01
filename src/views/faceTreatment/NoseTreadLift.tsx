@@ -29,7 +29,7 @@ import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 
 const NoseThreadLiftLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "noseThreadLift");
+  const { t } = useTranslation(locale, "face/noseThreadLift");
 
   const faqs = [
     { q: t("faq.q1"), a: t("faq.a1") },

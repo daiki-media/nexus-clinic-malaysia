@@ -33,7 +33,7 @@ import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 
 const FatFreezingLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "fatFreezing");
+  const { t } = useTranslation(locale, "weightLoss/fatFreezing");
 
   const transformations = [
     {

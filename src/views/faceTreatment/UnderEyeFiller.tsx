@@ -1,1458 +1,928 @@
 "use client";
 import { motion } from "framer-motion";
 import {
-  Clock,
-  Shield,
   Sparkles,
-  AlertCircle,
-  CheckCircle2,
-  XCircle,
+  Award,
   MapPin,
   Calendar,
-  Award,
-  Info,
-  ChevronRight,
-  Eye,
-  PiggyBank,
-  FileText,
-  MessageCircle,
-  Target,
-  Activity,
-  Droplet,
-  Zap,
-  AlertTriangle,
-  ThumbsUp,
-  HelpCircle,
-  MapPinned,
-  Building,
+  CheckCircle,
   Syringe,
-  AlertOctagon,
+  Clock,
+  Heart,
+  Shield,
+  ArrowRight,
+  AlertCircle,
+  Activity,
+  Zap,
+  Eye,
+  AlertTriangle,
+  Droplet,
+  TrendingUp,
+  User,
+  Sun,
+  Wind,
+  Droplets,
+  Smile,
 } from "lucide-react";
-
 import {
-  fadeInUp,
   staggerContainer,
   fadeInLeft,
   fadeInRight,
+  fadeInUp,
   scaleIn,
 } from "../../lib/animations";
+import FAQ from "../../components/FAQ";
+import Whatsapp from "../../components/Whatsapp";
+import Image from "next/image";
 
-interface underEyeFillerProps {
+interface UnderEyeFillerProps {
   locale: string;
 }
 
-export default function UnderEyeFiller({ locale }: underEyeFillerProps) {
+export default function UnderEyeFiller({ locale }: UnderEyeFillerProps) {
+  const agingTimeline = [
+    {
+      range: "Mid to late 20s",
+      structural: "Orbital fat compartments begin thinning gradually. Tear trough ligament starts to become more visible. Cheek support is still largely intact",
+      noticeable: "Slight hollowing under the eyes that worsens with tiredness, dehydration or illness. You look fine on a good day but noticeably tired on a bad one",
+    },
+    {
+      range: "Early to mid 30s",
+      structural: "Orbital fat continues to thin. Cheek fat pad begins to descend. The lid-cheek junction deepens. Bone density in the orbital rim begins to reduce subtly",
+      noticeable: "The hollow is visible most of the time, not just when tired. Dark shadows appear in photos. Eye creams stop making a visible difference",
+    },
+    {
+      range: "Mid 30s to 40s",
+      structural: "Significant orbital fat loss. Cheek descent pulls support away from the lower eyelid. The tear trough groove deepens noticeably",
+      noticeable: "Persistent shadowing and dark circles. Looking tired despite adequate sleep. A sunken, aged appearance under the eyes that concealer struggles to cover",
+    },
+    {
+      range: "40s and beyond",
+      structural: "Compound volume loss across the orbital area, midface and temples. Skin thins, making vessels more visible beneath. The tear trough groove is deep and settled",
+      noticeable: "The under-eye concern is now multi-layered: structural hollowing, skin thinning, vascular visibility and possibly some pigmentation all contributing simultaneously",
+    },
+  ];
+
+  const treatmentComparison = [
+    {
+      treatment: "Under Eye Filler (HA)",
+      bestFor: "Hollow tear trough causing shadow and sunken appearance",
+      howItWorks: "Fills structural groove from within. Immediate correction of hollow contour",
+      sessions: "1 session. Top-up every 9 to 15 months",
+    },
+    {
+      treatment: "Rejuran or Plinest PN",
+      bestFor: "Thin under-eye skin, vascular blue circles, mild hollowing",
+      howItWorks: "Polynucleotides thicken and repair under-eye skin. Improves vascular visibility",
+      sessions: "3 to 4 sessions. Results build gradually",
+    },
+    {
+      treatment: "Juvelook",
+      bestFor: "Mild under-eye hollowing combined with skin quality concerns",
+      howItWorks: "PDLLA stimulates collagen and HA hydrates. Gradual improvement in both hollow and skin",
+      sessions: "3 to 4 sessions over 6 to 8 weeks",
+    },
+    {
+      treatment: "NCTF 135HA",
+      bestFor: "Dull, fatigued, nutrition-depleted under-eye skin",
+      howItWorks: "59-ingredient skin nourishment blend. Improves radiance and reduces fine lines",
+      sessions: "4 sessions. Maintenance every 3 to 6 months",
+    },
+    {
+      treatment: "Pico Laser",
+      bestFor: "Brown pigmented dark circles from melanin excess",
+      howItWorks: "Breaks down pigment in under-eye skin. Brightens the tone of the skin surface",
+      sessions: "3 to 5 sessions. Maintenance 1 to 2 times per year",
+    },
+    {
+      treatment: "Combination approach",
+      bestFor: "Multiple causes contributing simultaneously",
+      howItWorks: "Filler for structure, PN or skin booster for skin quality, laser for pigmentation if present",
+      sessions: "Staged plan over 4 to 8 weeks",
+    },
+  ];
+
+  const fillerProducts = [
+    {
+      name: "Belotero Balance",
+      description: "Specifically formulated for integration into thin, delicate tissue. Low hygroscopic profile minimises water attraction and swelling under the eyelid.",
+      bestFor: "Most widely used and well-tolerated under-eye filler product in Malaysia",
+    },
+    {
+      name: "Teosyal Redensity 2",
+      description: "Dedicated periorbital filler containing hyaluronic acid combined with amino acids, vitamins and minerals. Designed specifically for tear trough placement.",
+      bestFor: "Provides structural correction alongside skin quality improvement",
+    },
+    {
+      name: "Juvederm Volbella",
+      description: "Softest product in the Juvederm range. Used for patients with very thin under-eye skin where even mild hygroscopic activity would create visible swelling.",
+      bestFor: "Gentle and natural in this zone",
+    },
+  ];
+
+  const pricingTiers = [
+    { treatment: "Under-eye filler (tear trough correction)", volume: "0.5 to 1 ml", price: "RM 2,200 – RM 2,600" },
+    { treatment: "Under-eye + midface support (cheek balancing)", volume: "Customised", price: "RM 3,000 – RM 5,000+" },
+  ];
+
+  const faqData = [
+    { q: "What is the difference between under eye filler and tear trough filler?", a: "They are the same treatment referred to by two different names. Under eye filler is the consumer-friendly term most patients use when searching. Tear trough filler is the clinical term used by aesthetic doctors. The tear trough is the anatomical name for the hollow groove between the lower eyelid and the upper cheek. Both terms describe the same procedure: placing soft HA filler in this groove to restore volume and reduce the shadow it creates." },
+    { q: "How long does under eye filler last in Malaysia?", a: "Under eye filler typically lasts 9 to 15 months. The under-eye area has minimal muscle movement, which means filler metabolises more slowly here than in high-movement areas like the lips. Soft products like Belotero Balance often persist for over a year in many patients. Your doctor will advise on expected longevity based on the product used and your individual metabolism." },
+    { q: "How much does under eye filler cost in Malaysia in 2026?", a: "Under-eye filler at Nexus Clinic KL typically ranges from RM 2,200 to RM 2,600 per session depending on the product used and the level of correction required. Combination treatments involving under-eye and midface support, such as cheek enhancement, generally range from RM 3,000 to RM 5,000+ depending on the volume and areas treated. All pricing is confirmed after consultation to ensure safe and personalised treatment planning." },
+    { q: "Will under eye filler remove my dark circles?", a: "If your dark circles are caused by hollow shadows from a sunken under-eye, filler significantly reduces or eliminates the appearance of dark circles by filling the hollow and removing the shadow. If your dark circles are caused by brown pigmentation or visible blood vessels through thin skin, filler improves the appearance partially but does not address the root cause. Many patients benefit from a combination of filler for structure and a skin treatment for skin quality." },
+    { q: "Is under eye filler safe?", a: "Under eye filler is safe when performed by a trained medical doctor using the correct product and technique in a proper clinical setting. The under-eye area carries specific risks including the Tyndall effect from superficial placement and rare vascular complications. Both are manageable with the right product selection, deep cannula technique and emergency protocols in place. At Nexus Clinic KL, all under-eye filler treatments follow these protocols without exception." },
+    { q: "How much filler is needed for the under eyes?", a: "Most patients need 0.3 to 0.8ml per side. This is one of the lowest-volume areas on the face and it should remain so. More than 0.8ml per side in a single under-eye session is rarely appropriate and increases the risk of puffiness, migration, and the Tyndall effect. A conservative first session with a top-up if needed at two weeks is always safer than starting with high volumes." },
+    { q: "Can I get under eye filler if I have eye bags?", a: "It depends on the nature of the eye bag. If the puffiness is caused by fat herniation, meaning a visible bulge beneath the eye, adding filler may worsen the appearance by adding volume to an already protruding area. If the eye bag is largely a shadow caused by the hollow below a mild protrusion, filling the hollow can significantly improve the appearance by reducing contrast. The doctor assesses this at consultation." },
+    { q: "Can I combine under eye filler with other treatments?", a: "Yes. Under eye filler combines well with cheek filler for patients where midface descent is contributing to the hollow, skin booster treatments for improving under-eye skin quality alongside structural correction, and Pico laser for pigmentation-based dark circles. Combining these treatments produces a more complete result than filler alone when multiple causes are present." },
+    { q: "How soon can I wear eye make-up after under eye filler?", a: "You can apply eye make-up gently from the day after treatment. Avoid pressing, rubbing or applying heavy creams near the injection site for 48 hours. Remove eye make-up gently during this period, patting rather than wiping. Normal eye make-up application can resume fully after 48 hours." },
+    { q: "Who is not suitable for under eye filler?", a: "Under eye filler is not suitable for patients who are pregnant or breastfeeding, have an active skin infection near the treatment area, have very thin under-eye skin prone to the Tyndall effect, have significant fat herniation as the primary eye bag concern, have a known allergy to HA or lidocaine, or have had large volumes of non-HA filler placed under the eyes previously that have not been dissolved. A full assessment at consultation confirms suitability." },
+  ];
+
   return (
-    <div className="min-h-screen bg-light font-inter">
+    <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <motion.section
-        className="relative overflow-hidden bg-linear-to-br from-cream to-light py-20 px-4"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-wine opacity-5 rounded-l-[100px] transform rotate-12"></div>
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-6">
-              <motion.div
-                variants={scaleIn}
-                className="inline-flex items-center px-4 py-2 bg-wine bg-opacity-10 rounded-full"
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
+        
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="container mx-auto max-w-6xl relative z-10"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-8">
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
+                <Sparkles className="w-4 h-4 text-wine" />
+                <span className="text-sm font-inter text-wine font-medium">Natural Under-Eye Rejuvenation</span>
+              </motion.div>
+              
+              <motion.h1
+                variants={fadeInUp}
+                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
               >
-                <Sparkles className="w-4 h-4 text-light mr-2" />
-                <span className="text-light font-medium text-sm">
-                  Under Eye Filler in Kuala Lumpur, Malaysia | Nexus Clinic
-                  Kuala Lumpur
-                </span>
+                Natural Under Eye Filler in Malaysia for{" "}
+                <span className="text-wine italic">Eyes That Look Rested, Bright and Years Younger</span>
+              </motion.h1>
+
+              <motion.p
+                variants={fadeInUp}
+                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
+              >
+                You know the feeling. You slept a full night. You drank enough water. You tried every eye cream on the market. 
+                And you still look tired. The dark hollows and shadows beneath your eyes tell a different story.
+              </motion.p>
+
+              <motion.p
+                variants={fadeInUp}
+                className="text-brown font-inter"
+              >
+                Under eye filler at Nexus Clinic Kuala Lumpur treats the structural reason your eyes look the way they do. 
+                A hollow groove forms beneath the eye as orbital volume depletes, and the shadow this groove casts is what reads as tiredness, dark circles and age.
+              </motion.p>
+
+              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
+                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  The Real Reason Eye Creams Stop Working
+                </p>
+                <p className="text-taupe font-inter text-sm mt-1">
+                  The hollow under your eyes is not a surface concern. It is a structural one. No topical product can penetrate deep enough to fill a structural hollow.
+                </p>
               </motion.div>
 
-              <h1 className="text-5xl lg:text-6xl font-bold font-georgia text-brown leading-tight">
-                Stop looking tired{" "}
-                <span className="text-wine">when you are not.</span>
-              </h1>
-
-              <p className="text-xl text-taupe leading-relaxed">
-                Under eye filler smooths hollows that create shadows and "dark
-                circles" in photos. At Nexus Clinic Kuala Lumpur, we aim for
-                natural correction that still looks like you.
-              </p>
+              <motion.div 
+                variants={fadeInLeft} 
+                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
+              >
+                <motion.button
+                  variants={fadeInUp}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  Book free consultation
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+                <Whatsapp message="Hi, I'm interested in under eye filler at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
+              </motion.div>
             </motion.div>
 
             <motion.div variants={fadeInRight} className="relative">
-              <div className="absolute inset-0 bg-linear-to-r from-wine to-rose rounded-3xl opacity-20 blur-3xl"></div>
-              <img
-                src="/images/skin/acne-treatment.webp"
-                alt="Under eye filler treatment at Nexus Clinic"
-                className="relative z-10 rounded-3xl shadow-2xl w-full object-cover aspect-square"
-              />
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
+                <Image
+                  src="/images/face/Under Eye Filler.png"
+                  alt="Nexus Clinic Kuala Lumpur - Under Eye Filler Treatment"
+                  fill
+                  className="object-cover"
 
-      {/* Trust Strip */}
-      <motion.section
-        className="py-12 px-4 bg-white border-y border-taupe border-opacity-20"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            <motion.div
-              variants={fadeInUp}
-              className="flex items-center space-x-3 p-4 bg-cream rounded-xl hover:bg-taupe hover:bg-opacity-10 transition-all"
-            >
-              <Calendar className="w-6 h-6 text-wine shrink-0" />
-              <span className="text-sm text-brown">
-                Established since 2001 (DoctorOnCall listing)
-              </span>
-            </motion.div>
-            <motion.div
-              variants={fadeInUp}
-              className="flex items-center space-x-3 p-4 bg-cream rounded-xl hover:bg-taupe hover:bg-opacity-10 transition-all"
-            >
-              <MapPin className="w-6 h-6 text-wine shrink-0" />
-              <span className="text-sm text-brown">
-                Located at LG 10, Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur
-                (Nexus Aesthetic site)
-              </span>
-            </motion.div>
-            <motion.div
-              variants={fadeInUp}
-              className="flex items-center space-x-3 p-4 bg-cream rounded-xl hover:bg-taupe hover:bg-opacity-10 transition-all"
-            >
-              <MapPinned className="w-6 h-6 text-wine shrink-0" />
-              <span className="text-sm text-brown">
-                In KL's Golden Triangle area (DoctorOnCall listing)
-              </span>
-            </motion.div>
-            <motion.div
-              variants={fadeInUp}
-              className="flex items-center space-x-3 p-4 bg-cream rounded-xl hover:bg-taupe hover:bg-opacity-10 transition-all"
-            >
-              <Building className="w-6 h-6 text-wine shrink-0" />
-              <span className="text-sm text-brown">
-                Aesthetic clinic offering non-surgical treatments and advanced
-                laser services (DoctorOnCall listing)
-              </span>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Intro Section - A quick, real talk intro */}
-      <motion.section
-        className="py-20 px-4 bg-white"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-      >
-        <div className="max-w-4xl mx-auto">
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="text-4xl font-bold font-georgia text-brown mb-4">
-              A quick, real talk intro
-            </h2>
-            <p className="text-xl text-taupe">
-              not all "dark circles" are the same
-            </p>
-          </motion.div>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg text-brown mb-8 leading-relaxed"
-          >
-            Many people search under eye filler Malaysia because they look
-            tired, even after good sleep. But the under-eye area can look dark
-            for different reasons.
-          </motion.p>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg font-medium text-wine mb-6"
-          >
-            Here are the most common ones:
-          </motion.p>
-
-          <div className="space-y-6">
-            <motion.div
-              variants={scaleIn}
-              className="p-6 bg-cream rounded-2xl hover:shadow-xl transition-all"
-            >
-              <div className="flex items-start space-x-4">
-                <div className="p-3 bg-white rounded-xl">
-                  <Eye className="w-6 h-6 text-wine" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-brown mb-2">
-                    1. Hollowing (shadowing)
-                  </h3>
-                  <p className="text-taupe">
-                    A dip under the eye creates a shadow. This is where under
-                    eye filler can help the most.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="p-6 bg-cream rounded-2xl hover:shadow-xl transition-all"
-            >
-              <div className="flex items-start space-x-4">
-                <div className="p-3 bg-white rounded-xl">
-                  <AlertCircle className="w-6 h-6 text-wine" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-brown mb-2">
-                    2. Eye bags or swelling
-                  </h3>
-                  <p className="text-taupe">
-                    If your issue is mainly a bulge or fluid retention, filler
-                    may not be the best first option.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="p-6 bg-cream rounded-2xl hover:shadow-xl transition-all"
-            >
-              <div className="flex items-start space-x-4">
-                <div className="p-3 bg-white rounded-xl">
-                  <Droplet className="w-6 h-6 text-wine" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-brown mb-2">3. Pigmentation</h3>
-                  <p className="text-taupe">
-                    Some under-eye darkness is skin pigment. Filler does not
-                    "erase" pigment. Many clinics recommend lasers, peels, or
-                    other treatments for pigment-based dark circles. (Erufu Care
-                    overview)
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="p-6 bg-cream rounded-2xl hover:shadow-xl transition-all"
-            >
-              <div className="flex items-start space-x-4">
-                <div className="p-3 bg-white rounded-xl">
-                  <Activity className="w-6 h-6 text-wine" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-brown mb-2">
-                    4. Thin skin with visible vessels
-                  </h3>
-                  <p className="text-taupe">
-                    You can see bluish tones because the skin is thin. Sometimes
-                    filler helps by improving contour, but it depends.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          <motion.p
-            variants={fadeInUp}
-            className="mt-8 p-6 bg-wine bg-opacity-5 rounded-2xl text-light border-l-4 border-wine font-medium"
-          >
-            At Nexus Clinic Kuala Lumpur, the goal is to identify your cause
-            first. That way, the treatment actually matches the problem.
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* What is Under Eye Filler */}
-      <motion.section
-        className="py-20 px-4 bg-cream"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-6">
-              <h2 className="text-4xl font-bold font-georgia text-brown mb-6">
-                What is under eye filler?
-              </h2>
-              <p className="text-lg text-brown leading-relaxed">
-                Under eye filler is a dermal filler treatment used to improve
-                the look of under-eye hollowness and the shadowing that comes
-                with it. In medical terms, this is often described as improving
-                infraorbital hollowing.
-              </p>
-              <p className="text-lg text-brown leading-relaxed">
-                Most under-eye treatments use hyaluronic acid (HA) filler,
-                because it can create soft-looking volume and is commonly used
-                in facial contouring. Dermal fillers, in general, are used to
-                add volume and improve facial contours.{" "}
-                <span className="text-taupe">(Cleveland Clinic)</span>
-              </p>
-
-              <div className="p-6 bg-white rounded-2xl">
-                <h3 className="font-bold text-brown mb-4 flex items-center">
-                  <Shield className="w-5 h-5 text-wine mr-2" />
-                  Is under-eye filler "FDA approved"?
-                </h3>
-                <p className="text-brown mb-4">
-                  It depends on the filler product and the exact indication.
-                </p>
-                <p className="text-brown mb-4">
-                  The FDA has a specific approval for JUVEDERM VOLBELLA XC for
-                  infraorbital hollowing in adults over 21. (FDA device page) At
-                  the same time, the FDA also warns that injecting around the
-                  eyes (periorbital area) is an unapproved use for many dermal
-                  fillers, and approved indications vary by product. (FDA dermal
-                  filler safety page)
-                </p>
-                <p className="text-rose font-medium">
-                  So the right way to think about it is: under-eye filler is a
-                  medical procedure, product choice matters, and technique
-                  matters even more.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="space-y-6">
-              <div className="relative">
-                <img
-                  src="/images/skin/acne-treatment.webp"
-                  alt="Under eye filler procedure"
-                  className="rounded-2xl shadow-xl w-full object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
               </div>
-
-              <div className="p-6 bg-white rounded-2xl">
-                <h3 className="font-bold text-brown mb-4">
-                  Tear trough filler vs under eye filler: what is the
-                  difference?
-                </h3>
-                <p className="text-brown mb-3">
-                  People use these terms interchangeably, but they are slightly
-                  different.
-                </p>
-                <p className="text-brown">
-                  Tear trough filler targets the groove that runs from the inner
-                  corner of the eye downward (the tear trough). Under eye filler
-                  is broader. It can include tear trough correction plus support
-                  around the under-eye to cheek transition, depending on your
-                  anatomy.
-                </p>
-                <p className="text-taupe mt-3">
-                  Many clinics describe tear trough as the main hollow area, and
-                  under-eye correction as a wider rejuvenation plan. (Dr Jane
-                  Clinic page)
-                </p>
+              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
+                <p className="font-inter font-bold text-brown">✨ Brighter Eyes</p>
+                <p className="font-inter text-sm text-taupe">Natural results • 20-30 minutes</p>
               </div>
             </motion.div>
           </div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
 
-      {/* Who is under eye filler best for? */}
-      <motion.section
-        className="py-20 px-4 bg-white"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-      >
-        <div className="max-w-6xl mx-auto">
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="text-4xl font-bold font-georgia text-brown mb-4">
-              Who is under eye filler best for?
-            </h2>
-          </motion.div>
+      {/* Trust Section */}
+      <section className="py-12 px-4 bg-light">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-taupe/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <Award className="w-6 h-6 text-wine" />
+                </div>
+                <h2 className="font-georgia text-2xl md:text-3xl text-brown">Trust at a glance</h2>
+              </div>
+              <div className="hidden sm:block w-px h-8 bg-taupe/20" />
+              <p className="text-taupe font-inter text-sm">Nexus Clinic Kuala Lumpur — Excellence in Aesthetic Medicine</p>
+            </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <motion.div variants={fadeInLeft} className="space-y-4">
-              <div className="p-6 bg-green-50 rounded-2xl border-2 border-green-200">
-                <h3 className="text-xl font-bold text-brown mb-4 flex items-center">
-                  <CheckCircle2 className="w-6 h-6 text-green-600 mr-2" />
-                  You may be a good candidate if you have:
-                </h3>
-                <ul className="space-y-4">
-                  <li className="flex items-start space-x-3">
-                    <ChevronRight className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                    <span className="text-brown">
-                      Under-eye hollows that create shadows
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <ChevronRight className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                    <span className="text-brown">
-                      A "tired look" that shows up strongly in photos
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <ChevronRight className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                    <span className="text-brown">
-                      Mild under-eye lines caused by volume loss
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <ChevronRight className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                    <span className="text-brown">
-                      Good skin quality with minimal swelling tendency
-                    </span>
-                  </li>
-                </ul>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-4 border-y border-taupe/10">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Award className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Established</p>
+                  <p className="font-georgia text-brown font-bold text-lg">2001</p>
+                  <p className="font-inter text-taupe text-xs">Over 20 years of excellence</p>
+                </div>
               </div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="space-y-4">
-              <div className="p-6 bg-red-50 rounded-2xl border-2 border-red-200">
-                <h3 className="text-xl font-bold text-brown mb-4 flex items-center">
-                  <XCircle className="w-6 h-6 text-red-600 mr-2" />
-                  You may not be the best candidate if you have:
-                </h3>
-                <ul className="space-y-4">
-                  <li className="flex items-start space-x-3">
-                    <XCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
-                    <span className="text-brown">
-                      Prominent eye bags or festoons (puffy swelling pockets)
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <XCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
-                    <span className="text-brown">
-                      Very thin skin where filler may show easily
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <XCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
-                    <span className="text-brown">
-                      Strong pigmentation as the main issue (a combined plan is
-                      often needed) (Erufu Care overview)
-                    </span>
-                  </li>
-                </ul>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Location</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Wisma UOA II, Jalan Pinang</p>
+                  <p className="font-inter text-taupe text-xs">KLCC, 50450 Kuala Lumpur</p>
+                </div>
               </div>
-
-              <motion.p
-                variants={scaleIn}
-                className="p-4 bg-cream rounded-xl text-taupe italic"
-              >
-                A proper assessment is important because under-eye filler should
-                be conservative. This is one area where "more" does not mean
-                "better."
-              </motion.p>
-            </motion.div>
-          </div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="mt-12 p-8 bg-cream rounded-2xl"
-          >
-            <h3 className="text-2xl font-bold font-georgia text-brown mb-6">
-              Areas that can be treated around the eyes
-            </h3>
-            <p className="text-brown mb-6">
-              A good under-eye plan is not always "inject under the eye and
-              done." Depending on your facial structure, your doctor may
-              consider:
-            </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-              <div className="p-4 bg-white rounded-lg text-center text-brown font-medium shadow-sm">
-                Tear trough hollow
-              </div>
-              <div className="p-4 bg-white rounded-lg text-center text-brown font-medium shadow-sm">
-                Under-eye to cheek transition (lid-cheek junction)
-              </div>
-              <div className="p-4 bg-white rounded-lg text-center text-brown font-medium shadow-sm">
-                Mid-cheek support (because cheeks hold up the under-eye
-                visually)
-              </div>
-              <div className="p-4 bg-white rounded-lg text-center text-brown font-medium shadow-sm">
-                Fine-tuning one side to restore symmetry
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Opening Hours</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Monday - Saturday</p>
+                  <p className="font-inter text-taupe text-xs">9:00am – 6:00pm | Closed Sundays & PH</p>
+                </div>
               </div>
             </div>
-            <p className="text-center text-rose font-medium text-lg">
-              The best result is subtle. You look rested, not different.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
 
-      {/* Treatment Experience - What the treatment feels like */}
-      <motion.section
-        className="py-20 px-4 bg-cream"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-      >
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <motion.div variants={fadeInLeft} className="space-y-6">
-              <h2 className="text-4xl font-bold font-georgia text-brown mb-6">
-                What the treatment feels like and how long it takes
-              </h2>
-              <p className="text-lg text-brown">
-                Most under-eye filler sessions are quick, often done within a
-                single visit. Many providers use numbing and gentle technique.
-              </p>
-
-              <p className="text-brown font-medium">
-                What you can usually expect:
-              </p>
-
-              <div className="space-y-4">
-                <motion.div
-                  variants={fadeInUp}
-                  className="flex items-start space-x-4 p-4 bg-white rounded-xl"
-                >
-                  <div className="p-3 bg-wine rounded-lg">
-                    <FileText className="w-5 h-5 text-white" />
+            <div className="mt-6 pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Shield className="w-4 h-4 text-wine" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-brown">
-                      Consultation first:
-                    </h3>
-                    <p className="text-taupe">
-                      photos, facial assessment, goal-setting
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeInUp}
-                  className="flex items-start space-x-4 p-4 bg-white rounded-xl"
-                >
-                  <div className="p-3 bg-wine rounded-lg">
-                    <Syringe className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-brown">Treatment:</h3>
-                    <p className="text-taupe">small amounts placed carefully</p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeInUp}
-                  className="flex items-start space-x-4 p-4 bg-white rounded-xl"
-                >
-                  <div className="p-3 bg-wine rounded-lg">
-                    <MessageCircle className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-brown">Review advice:</h3>
-                    <p className="text-taupe">
-                      aftercare steps and what is normal versus not normal
-                    </p>
-                  </div>
-                </motion.div>
-              </div>
-
-              <p className="text-taupe">
-                Clinics commonly describe under-eye filler downtime as minimal,
-                with possible mild swelling or bruising for a few days. (Dr Jane
-                Clinic under-eye filler page)
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="space-y-6">
-              <div className="p-6 bg-white rounded-2xl">
-                <h3 className="text-2xl font-bold text-brown mb-6 flex items-center">
-                  <Clock className="w-6 h-6 text-wine mr-2" />
-                  Results timeline: when you will look "normal" again
-                </h3>
-                <p className="text-brown mb-4">
-                  Most people see improvement quickly, but the under-eye area is
-                  sensitive, so it can look slightly swollen at first.
-                </p>
-                <p className="text-brown font-medium mb-4">
-                  A realistic timeline:
-                </p>
-                <div className="space-y-4">
-                  <div className="flex items-start border-b border-cream pb-3">
-                    <span className="font-bold text-wine w-28">Same day:</span>
-                    <span className="text-brown">
-                      visible improvement, possible puffiness
-                    </span>
-                  </div>
-                  <div className="flex items-start border-b border-cream pb-3">
-                    <span className="font-bold text-wine w-28">
-                      Day 2 to 4:
-                    </span>
-                    <span className="text-brown">
-                      swelling reduces for many people
-                    </span>
-                  </div>
-                  <div className="flex items-start border-b border-cream pb-3">
-                    <span className="font-bold text-wine w-28">
-                      Around a week:
-                    </span>
-                    <span className="text-brown">
-                      usually looks more settled
-                    </span>
-                  </div>
-                  <div className="flex items-start border-b border-cream pb-3">
-                    <span className="font-bold text-wine w-28">
-                      A few weeks:
-                    </span>
-                    <span className="text-brown">
-                      final refinement becomes clearer (your doctor will guide
-                      you)
-                    </span>
+                    <p className="font-inter font-semibold text-brown text-sm">Cannula Technique</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Single entry point, minimised bruising</p>
                   </div>
                 </div>
-                <p className="text-taupe mt-4">
-                  Many clinics describe noticeable improvement immediately and
-                  settling over the next few days. (Dr Jane Clinic under-eye
-                  filler page)
-                </p>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Eye className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">Tyndall Effect Prevention</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Deep placement, low-hygroscopic products</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">Low-Volume Discipline</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">0.3-0.8ml per side for natural results</p>
+                  </div>
+                </div>
               </div>
-
-              <div className="p-6 bg-white rounded-2xl">
-                <h3 className="text-2xl font-bold text-brown mb-4">
-                  How long does under eye filler last?
-                </h3>
-                <p className="text-brown mb-4">
-                  Longevity varies with product, technique, and your metabolism.
-                  In Malaysia clinic guides, you often see under-eye filler
-                  lasting up to 12 months or around 9 to 12 months depending on
-                  the case. (Dr Jane Clinic under-eye filler page; Sheen Clinic
-                  tear trough guide)
-                </p>
-                <p className="text-rose font-medium">
-                  If you want a long-lasting plan, the best approach is
-                  maintenance at sensible intervals, not overfilling in one
-                  sitting.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Pros and Cons */}
-      <motion.section
-        className="py-20 px-4 bg-white"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-      >
-        <div className="max-w-6xl mx-auto">
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="text-4xl font-bold font-georgia text-brown mb-4">
-              Pros and cons (honest and simple)
-            </h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <motion.div variants={fadeInLeft} className="space-y-4">
-              <div className="p-6 bg-green-50 rounded-2xl border-2 border-green-200">
-                <h3 className="text-2xl font-bold text-brown mb-6 flex items-center">
-                  <ThumbsUp className="w-6 h-6 text-green-600 mr-2" />
-                  Pros
-                </h3>
-                <ul className="space-y-4">
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                    <span className="text-brown">
-                      Non-surgical improvement for hollows and shadowing
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                    <span className="text-brown">
-                      Quick procedure, often minimal downtime (Dr Jane Clinic
-                      under-eye filler page)
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                    <span className="text-brown">
-                      Can make you look more rested and less "drawn" in photos
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                    <span className="text-brown">
-                      Dermal fillers are widely used for facial contour and
-                      volume restoration (Cleveland Clinic)
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="space-y-4">
-              <div className="p-6 bg-red-50 rounded-2xl border-2 border-red-200">
-                <h3 className="text-2xl font-bold text-brown mb-6 flex items-center">
-                  <AlertTriangle className="w-6 h-6 text-red-600 mr-2" />
-                  Cons
-                </h3>
-                <ul className="space-y-4">
-                  <li className="flex items-start space-x-3">
-                    <XCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
-                    <span className="text-brown">
-                      Not ideal if pigmentation is the main issue (Erufu Care
-                      overview)
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <XCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
-                    <span className="text-brown">
-                      Risk of puffiness if overfilled
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <XCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
-                    <span className="text-brown">Results are temporary</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <XCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
-                    <span className="text-brown">
-                      Under-eye work requires higher precision than many other
-                      facial areas
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Side Effects and Risks */}
-      <motion.section
-        className="py-20 px-4 bg-cream"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-      >
-        <div className="max-w-4xl mx-auto">
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="text-4xl font-bold font-georgia text-brown mb-4">
-              Side effects and risks you should know
-            </h2>
-          </motion.div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-white rounded-2xl p-8 mb-8"
-          >
-            <p className="text-brown mb-6">
-              Most side effects are mild and temporary, such as swelling,
-              redness, bruising, and tenderness. (Cleveland Clinic)
-            </p>
-
-            <h3 className="text-xl font-bold text-brown mb-4">
-              Under-eye specific risks (more common concerns)
-            </h3>
-            <p className="text-brown mb-6">
-              Moorfields (UK eye hospital group) highlights key risks for
-              under-eye filler, including issues like discolouration and
-              swelling, and explains why some patients may be better suited to
-              surgical options. (Moorfields)
-            </p>
-
-            <div className="p-6 bg-red-50 rounded-xl border-2 border-red-200 mb-6">
-              <h4 className="text-xl font-bold text-brown mb-4 flex items-center">
-                <AlertOctagon className="w-6 h-6 text-red-600 mr-2" />
-                Rare but serious risks
-              </h4>
-              <p className="text-brown mb-4">
-                This is important: fillers carry a small but real risk of
-                serious complications, including vascular events that can affect
-                vision.
-              </p>
-              <p className="text-brown">
-                A professional guideline from the Royal Australian and New
-                Zealand College of Ophthalmologists notes that fillers carry a
-                small but definite risk of severe adverse effects including
-                blindness, and stresses informed consent and urgency if symptoms
-                occur. (RANZCO guideline PDF)
-              </p>
             </div>
+          </div>
+        </motion.div>
+      </section>
 
-            <div className="p-6 bg-yellow-50 rounded-xl border-2 border-yellow-200">
-              <h4 className="text-xl font-bold text-brown mb-4 flex items-center">
-                <Zap className="w-6 h-6 text-yellow-600 mr-2" />
-                Get urgent medical help if you experience:
-              </h4>
+      {/* Treatment Overview Section */}
+      <section className="py-16 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">Under Eye Filler Treatment at a Glance</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">Everything you need to know</p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Syringe, label: "Treatment", value: "Soft HA filler for under-eye hollows" },
+              { icon: Clock, label: "Session Time", value: "20 to 30 minutes" },
+              { icon: Heart, label: "Downtime", value: "Minimal, 3-7 days" },
+              { icon: Zap, label: "Results", value: "Immediate, final at 7-14 days" },
+            ].map((item, idx) => (
+              <div key={idx} className="bg-light p-5 rounded-xl border border-taupe/10 shadow-sm">
+                <item.icon className="w-8 h-8 text-wine mb-3" />
+                <p className="font-inter text-sm text-taupe">{item.label}</p>
+                <p className="font-georgia text-md text-brown font-semibold">{item.value}</p>
+              </div>
+            ))}
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 rounded-2xl p-6 border border-wine/10">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div>
+                <p className="font-inter text-sm text-taupe">Also Known As</p>
+                <p className="font-georgia text-brown font-semibold">Tear trough filler, periorbital filler</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Longevity</p>
+                <p className="font-georgia text-brown font-semibold">9 to 15 months</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Reversible</p>
+                <p className="font-georgia text-brown font-semibold">Yes. Fully dissolvable with hyaluronidase</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Volume Used</p>
+                <p className="font-georgia text-brown font-semibold">0.3 to 0.8ml per side</p>
+              </div>
+            </div>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-8">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor About Your Under-Eye Concern | Free Assessment
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Aging Timeline Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">How the Under-Eye Area Changes Over Time</h2>
+            <p className="text-taupe font-inter">The aging timeline</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Age Range</th>
+                  <th className="p-4 text-left font-georgia">What Is Happening Structurally</th>
+                  <th className="p-4 text-left font-georgia">What You Notice</th>
+                 </tr>
+              </thead>
+              <tbody>
+                {agingTimeline.map((stage, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{stage.range}</td>
+                    <td className="p-4 text-taupe font-inter">{stage.structural}</td>
+                    <td className="p-4 text-taupe font-inter">{stage.noticeable}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-brown font-inter text-sm">
+              The best time to address under-eye hollowing is when you first notice it. A smaller volume of filler placed at an earlier stage produces a more natural result and requires less correction over time.
+            </p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Find Out What Stage Your Under-Eye Is At | Free Assessment
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Treatment Comparison Table */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Under Eye Filler, Skin Booster or Laser</h2>
+            <p className="text-taupe font-inter">Choosing the right treatment for your concern</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Treatment</th>
+                  <th className="p-4 text-left font-georgia">Best Under-Eye Concern</th>
+                  <th className="p-4 text-left font-georgia">How It Works</th>
+                  <th className="p-4 text-left font-georgia">Sessions Needed</th>
+                </tr>
+              </thead>
+              <tbody>
+                {treatmentComparison.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.treatment}</td>
+                    <td className="p-4 text-taupe font-inter">{item.bestFor}</td>
+                    <td className="p-4 text-taupe font-inter">{item.howItWorks}</td>
+                    <td className="p-4 text-taupe font-inter">{item.sessions}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-brown font-inter text-sm">
+              Most patients benefit from a combination of two approaches. Filler for the structural hollow is the most common starting point, often paired with a skin booster to address skin quality in the same zone.
+            </p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Get the Right Treatment Plan for Your Under-Eyes
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* What Patients Experience Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">What Under Eye Filler Patients Actually Experience</h2>
+            <p className="text-taupe font-inter">At Nexus Clinic KL</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <motion.div variants={fadeInUp} className="bg-cream p-5 rounded-xl border border-taupe/10">
+              <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center mb-4">
+                <Heart className="w-6 h-6 text-wine" />
+              </div>
+              <h3 className="font-georgia text-lg text-brown mb-2">Pain and Comfort</h3>
+              <p className="text-taupe font-inter text-sm">
+                Topical numbing cream is applied for 15-20 minutes. Most products contain built-in lidocaine. 
+                Patients describe pressure and occasional mild stinging rather than pain.
+              </p>
+            </motion.div>
+            
+            <motion.div variants={fadeInUp} className="bg-cream p-5 rounded-xl border border-taupe/10">
+              <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center mb-4">
+                <Zap className="w-6 h-6 text-wine" />
+              </div>
+              <h3 className="font-georgia text-lg text-brown mb-2">The Immediate Result</h3>
+              <p className="text-taupe font-inter text-sm">
+                You will see improvement immediately. Some swelling is normal, most noticeable in the first 48 hours. 
+                Do not assess final result before 14 days.
+              </p>
+            </motion.div>
+            
+            <motion.div variants={fadeInUp} className="bg-cream p-5 rounded-xl border border-taupe/10">
+              <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center mb-4">
+                <CheckCircle className="w-6 h-6 text-wine" />
+              </div>
+              <h3 className="font-georgia text-lg text-brown mb-2">Natural vs Overdone</h3>
+              <p className="text-taupe font-inter text-sm">
+                The correct volume is 0.3 to 0.8ml per side. Starting light and adding is always safer than starting heavy and dissolving.
+              </p>
+            </motion.div>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 text-center">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Book Your Under Eye Filler Appointment
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Filler Products Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Filler Products Used for Under Eye Treatment</h2>
+            <p className="text-taupe font-inter">At Nexus Clinic KL</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {fillerProducts.map((product, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="bg-light p-6 rounded-xl border border-taupe/20 hover:shadow-lg transition-shadow">
+                <h3 className="font-georgia text-xl text-brown mb-2">{product.name}</h3>
+                <p className="text-taupe font-inter text-sm mb-3">{product.description}</p>
+                <div className="mt-3 pt-3 border-t border-taupe/10">
+                  <p className="text-wine font-inter text-xs font-semibold">✓ {product.bestFor}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-taupe text-sm">
+              According to the International Society of Aesthetic Plastic Surgery 2024 Global Statistics Report, 
+              under-eye and periorbital treatments ranked as the third most searched aesthetic concern in Southeast Asia, 
+              with filler being the most requested non-surgical option.
+            </p>
+            <p className="text-taupe text-xs mt-1">[ISAPS Global Statistics Report 2024]</p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Ask Which Product Is Right for Your Under-Eyes
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Procedure Steps Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The Under Eye Filler Procedure at Nexus Clinic KL</h2>
+            <p className="text-taupe font-inter">Step by step</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { step: "01", title: "Consultation and Diagnosis", desc: "Doctor examines whether concern is structural hollowing, pigmentation, or fat herniation. Only structural hollow responds well to filler." },
+              { step: "02", title: "Treatment Plan Confirmation", desc: "Product, volume, and placement confirmed. Most patients need 0.3-0.8ml per side." },
+              { step: "03", title: "Numbing and Cannula Injection", desc: "Topical numbing applied. Single-entry cannula technique deposits filler through one access point. 15-20 minutes." },
+              { step: "04", title: "Immediate Review and Aftercare", desc: "Result reviewed from multiple angles. Full aftercare provided. Two-week follow-up scheduled." },
+            ].map((item, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="text-center">
+                <div className="w-14 h-14 bg-wine rounded-full flex items-center justify-center text-light font-georgia text-xl mx-auto mb-4 shadow-md">
+                  {item.step}
+                </div>
+                <h3 className="font-georgia text-lg text-brown mb-2 font-semibold">{item.title}</h3>
+                <p className="text-taupe font-inter text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-10">
+            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+              Book Your Under Eye Filler Appointment
+              <ArrowRight className="w-5 h-5" />
+            </button>
+            <p className="text-taupe text-sm mt-3">Same-day results at Nexus Clinic KL</p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-4xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Under Eye Filler Price in Malaysia</h2>
+            <p className="text-taupe font-inter">2026 Pricing at Nexus Clinic KL</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Treatment</th>
+                  <th className="p-4 text-left font-georgia">Typical Volume</th>
+                  <th className="p-4 text-left font-georgia">Price Range (2026)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pricingTiers.map((tier, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10">
+                    <td className="p-4 font-inter text-brown">{tier.treatment}</td>
+                    <td className="p-4 font-inter text-taupe">{tier.volume}</td>
+                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr className="bg-wine/5">
+                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
+                    * All treatments are customised based on your under-eye condition. Final pricing confirmed during consultation.
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Get Your Under Eye Filler Quote
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Longevity Reality Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">Under Eye Filler Longevity Reality</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">What to expect and what influences your results</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-stretch">
+            {/* Factors Affecting Longevity Card */}
+            <motion.div
+              variants={fadeInLeft}
+              className="bg-cream p-8 rounded-2xl border border-taupe/20 shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <TrendingUp className="w-6 h-6 text-wine" />
+                </div>
+                <h3 className="font-georgia text-2xl text-brown">Factors Affecting Longevity</h3>
+              </div>
               <ul className="space-y-4">
-                <li className="flex items-start space-x-3">
-                  <AlertTriangle className="w-5 h-5 text-yellow-600 shrink-0 mt-0.5" />
-                  <span className="text-brown font-medium">
-                    Severe worsening pain
-                  </span>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <AlertTriangle className="w-5 h-5 text-yellow-600 shrink-0 mt-0.5" />
-                  <span className="text-brown font-medium">
-                    Skin turning pale, grey, or blotchy
-                  </span>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <AlertTriangle className="w-5 h-5 text-yellow-600 shrink-0 mt-0.5" />
-                  <span className="text-brown font-medium">
-                    Any vision change, eye pain, drooping eyelid, severe
-                    headache
-                  </span>
-                </li>
+                {[
+                  "Filler brand and formulation: Soft, low-hygroscopic products designed for periorbital area",
+                  "Individual metabolism: Faster metabolism breaks down filler more quickly",
+                  "Lifestyle factors: UV exposure, sleep quality, and skincare routine",
+                  "Initial volume: Conservative volumes provide natural results",
+                  "Cheek support: Proper midface foundation extends under-eye result",
+                ].map((factor, idx) => (
+                  <li key={idx} className="flex items-start gap-3 text-taupe font-inter text-sm">
+                    <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                    <span>{factor}</span>
+                  </li>
+                ))}
               </ul>
-              <p className="mt-6 text-rose font-bold text-lg">
-                This is why choosing a reputable clinic in Kuala Lumpur matters
-                more than chasing the lowest price.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Cost Section */}
-      <motion.section
-        className="py-20 px-4 bg-white"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-      >
-        <div className="max-w-4xl mx-auto">
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="text-4xl font-bold font-georgia text-brown mb-4">
-              Under eye filler cost in Malaysia and Kuala Lumpur
-            </h2>
-            <p className="text-taupe">
-              Prices vary based on clinic location, injector experience, and the
-              brand used.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-cream rounded-2xl p-8 mb-8"
-          >
-            <p className="text-brown font-medium mb-6">
-              Here are real Malaysia-based price references you will commonly
-              see:
-            </p>
-
-            <div className="space-y-4 mb-8">
-              <div className="p-4 bg-white rounded-xl flex items-start space-x-3">
-                <PiggyBank className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Tear trough (under-eye) filler often listed around RM 1,500 to
-                  RM 2,200 per 1ml, with some cases needing 1 to 2 syringes.
-                  (NextMed Clinic price guide)
-                </span>
+              <div className="mt-8 p-4 bg-wine/5 rounded-xl">
+                <p className="text-brown font-inter text-sm text-center">
+                  Most patients schedule maintenance top-ups between 12 and 15 months to maintain optimal results.
+                </p>
               </div>
-              <div className="p-4 bg-white rounded-xl flex items-start space-x-3">
-                <PiggyBank className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  KL dermal filler pricing is commonly cited around RM 1,800 to
-                  RM 3,000 per syringe in clinic guides. (Dr Jane Clinic pricing
-                  guide)
-                </span>
-              </div>
-              <div className="p-4 bg-white rounded-xl flex items-start space-x-3">
-                <PiggyBank className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Some clinics cite tear trough starting around RM 1,800 to RM
-                  2,500 depending on severity and product. (Sheen Clinic)
-                </span>
-              </div>
-            </div>
-
-            <h3 className="text-xl font-bold text-brown mb-4">
-              What changes the total cost
-            </h3>
-            <ul className="space-y-3 mb-6">
-              <li className="flex items-start space-x-3">
-                <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                <span className="text-brown">How deep your hollows are</span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                <span className="text-brown">
-                  Whether both sides need equal correction
-                </span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                <span className="text-brown">
-                  Product type (some are designed to be softer for delicate
-                  areas)
-                </span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                <span className="text-brown">
-                  Whether your plan includes cheek support or combination
-                  treatments
-                </span>
-              </li>
-            </ul>
-
-            <p className="text-rose font-medium p-4 bg-white rounded-xl text-lg">
-              At Nexus Clinic Kuala Lumpur, a proper assessment is the safest
-              way to estimate total cost because under-eye correction should be
-              customised, not guessed.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Under eye filler vs other treatments */}
-      <motion.section
-        className="py-20 px-4 bg-cream"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-      >
-        <div className="max-w-6xl mx-auto">
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="text-4xl font-bold font-georgia text-brown mb-4">
-              Under eye filler vs other treatments
-            </h2>
-            <p className="text-taupe">(what to choose and why)</p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <motion.div
-              variants={scaleIn}
-              className="p-6 bg-white rounded-2xl hover:shadow-xl transition-all"
-            >
-              <h3 className="text-xl font-bold text-wine mb-3">
-                Under eye filler vs eye cream
-              </h3>
-              <p className="text-brown">
-                Eye creams can improve hydration and texture. They cannot
-                rebuild lost volume in a hollow.
-              </p>
             </motion.div>
 
+            {/* Longevity Range Card */}
             <motion.div
-              variants={scaleIn}
-              className="p-6 bg-white rounded-2xl hover:shadow-xl transition-all"
+              variants={fadeInRight}
+              className="bg-gradient-to-br from-wine to-rose p-8 rounded-2xl text-white shadow-xl hover:shadow-2xl transition-shadow"
             >
-              <h3 className="text-xl font-bold text-wine mb-3">
-                Under eye filler vs laser
-              </h3>
-              <p className="text-brown">
-                Lasers can help pigment-related darkness and skin quality. They
-                do not replace volume. Many patients with mixed concerns do best
-                with a combined plan. (Erufu Care overview)
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="p-6 bg-white rounded-2xl hover:shadow-xl transition-all"
-            >
-              <h3 className="text-xl font-bold text-wine mb-3">
-                Under eye filler vs PRP
-              </h3>
-              <p className="text-brown">
-                PRP can help skin quality for some patients, but it does not
-                create the same structural correction as filler.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="p-6 bg-white rounded-2xl hover:shadow-xl transition-all"
-            >
-              <h3 className="text-xl font-bold text-wine mb-3">
-                Under eye filler vs surgery
-              </h3>
-              <p className="text-brown">
-                If you have strong eye bags or significant skin laxity, surgery
-                may be the better long-term option. Moorfields discusses why
-                surgery might be more suitable in certain under-eye cases.
-                (Moorfields)
-              </p>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                  <Clock className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="font-georgia text-2xl font-bold">Under Eye Filler Longevity</h3>
+              </div>
+              
+              <div className="space-y-8">
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Minimum</span>
+                    <span className="font-georgia text-2xl font-bold text-white">9 months</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "50%" }}
+                      transition={{ duration: 1, delay: 0.2 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Fast metabolism, first-time patients</p>
+                </div>
+                
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Average</span>
+                    <span className="font-georgia text-2xl font-bold text-white">12 months</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "67%" }}
+                      transition={{ duration: 1, delay: 0.4 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Most patients with standard metabolism</p>
+                </div>
+                
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Maximum</span>
+                    <span className="font-georgia text-2xl font-bold text-white">15+ months</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "83%" }}
+                      transition={{ duration: 1, delay: 0.6 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Optimal product, good cheek support, ideal metabolism</p>
+                </div>
+              </div>
+              
+              <div className="mt-8 pt-4 border-t border-white/20">
+                <p className="text-white/80 text-sm text-center">
+                  Results vary by product brand, individual metabolism, and cheek support.
+                </p>
+              </div>
             </motion.div>
           </div>
-        </div>
-      </motion.section>
 
-      {/* Competitor Analysis */}
-      <motion.section
-        className="py-20 px-4 bg-white"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-      >
-        <div className="max-w-4xl mx-auto">
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="text-4xl font-bold font-georgia text-brown mb-4">
-              What top competitors in Malaysia are doing, and what they often
-              miss
-            </h2>
-          </motion.div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-cream rounded-2xl p-8 mb-8"
-          >
-            <p className="text-brown mb-6">
-              When you search "under eye filler Kuala Lumpur" or "tear trough
-              filler Malaysia," you commonly see a mix of:
-            </p>
-
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-start space-x-3">
-                <Info className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                <span className="text-brown">
-                  Clinic pages (for example, Dr Jane Clinic, Dr Chong Clinic,
-                  Premier Clinic) (Dr Jane under-eye filler page; Dr Chong blog;
-                  Premier Clinic filler page)
-                </span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <Info className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                <span className="text-brown">
-                  Aggregators and directories that list clinics and reviews
-                  (Erufu Care) (Erufu Care tear trough listing)
-                </span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <Info className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                <span className="text-brown">
-                  Price guides that give broad ranges (like NextMed's pricing
-                  article) (NextMed price guide)
-                </span>
-              </li>
-            </ul>
-
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="p-6 bg-green-50 rounded-xl">
-                <h3 className="text-xl font-bold text-brown mb-4 flex items-center">
-                  <CheckCircle2 className="w-5 h-5 text-green-600 mr-2" />
-                  What they do well
-                </h3>
-                <ul className="space-y-4">
-                  <li className="flex items-start space-x-2">
-                    <ThumbsUp className="w-4 h-4 text-green-600 shrink-0 mt-1" />
-                    <span className="text-brown text-sm">
-                      They explain who under-eye filler is for and what it can
-                      improve (Dr Jane under-eye filler page)
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <ThumbsUp className="w-4 h-4 text-green-600 shrink-0 mt-1" />
-                    <span className="text-brown text-sm">
-                      They reassure about minimal downtime and common side
-                      effects (Dr Jane under-eye filler page)
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <ThumbsUp className="w-4 h-4 text-green-600 shrink-0 mt-1" />
-                    <span className="text-brown text-sm">
-                      They publish pricing ranges that help users plan a budget
-                      (Dr Jane pricing guide; NextMed price guide)
-                    </span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="p-6 bg-red-50 rounded-xl">
-                <h3 className="text-xl font-bold text-brown mb-4 flex items-center">
-                  <AlertCircle className="w-5 h-5 text-red-600 mr-2" />
-                  What many pages still miss (real pain points people search)
-                </h3>
-                <ul className="space-y-4">
-                  <li className="flex items-start space-x-2">
-                    <XCircle className="w-4 h-4 text-red-600 shrink-0 mt-1" />
-                    <span className="text-brown text-sm">
-                      A clear explanation of shadow vs pigment and when filler
-                      will not solve "dark circles" (Erufu Care overview)
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <XCircle className="w-4 h-4 text-red-600 shrink-0 mt-1" />
-                    <span className="text-brown text-sm">
-                      A simple but serious safety section explaining warning
-                      signs and urgency (RANZCO guideline PDF)
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <XCircle className="w-4 h-4 text-red-600 shrink-0 mt-1" />
-                    <span className="text-brown text-sm">
-                      What causes "puffy filler" and why conservative dosing
-                      matters
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <XCircle className="w-4 h-4 text-red-600 shrink-0 mt-1" />
-                    <span className="text-brown text-sm">
-                      A realistic healing timeline, not just "no downtime"
-                      claims
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <XCircle className="w-4 h-4 text-red-600 shrink-0 mt-1" />
-                    <span className="text-brown text-sm">
-                      How to choose a provider beyond "best clinic" marketing
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <p className="text-rose font-bold p-4 bg-white rounded-xl text-center text-lg">
-              This is where Nexus Clinic Kuala Lumpur aims to be clearer: honest
-              suitability, conservative planning, and patient confidence.
+          <motion.div variants={fadeInUp} className="mt-8 text-center">
+            <p className="text-taupe font-inter text-sm">
+              ✨ Regular maintenance every 12-15 months helps maintain your refreshed under-eye appearance
             </p>
           </motion.div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
 
-      {/* Why Choose Nexus Clinic */}
-      <motion.section
-        className="py-20 px-4 bg-wine text-white"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-      >
-        <div className="max-w-6xl mx-auto text-center">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-bold font-georgia mb-12"
-          >
-            Why choose Nexus Clinic Kuala Lumpur for under eye filler
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg mb-12 text-cream max-w-3xl mx-auto"
-          >
-            If you are comparing clinics in Kuala Lumpur, here are practical
-            reasons patients often care about:
-          </motion.p>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <motion.div
-              variants={scaleIn}
-              className="p-6 bg-white bg-opacity-10 rounded-2xl backdrop-blur-sm"
-            >
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-                <Calendar className="w-8 h-8 text-wine" />
-              </div>
-              <h3 className="text-xl font-bold text-wine mb-2">
-                Established clinic
+      {/* Side Effects & Aftercare Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Side Effects and Aftercare</h2>
+            <p className="text-taupe font-inter">What to expect after treatment</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div variants={fadeInLeft} className="bg-light p-6 rounded-xl border border-taupe/10">
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <Heart className="w-5 h-5 text-wine" />
+                Common Temporary Effects
               </h3>
-              <p className="text-sm text-wine">
-                Founded in 2001. (DoctorOnCall listing)
-              </p>
+              <ul className="space-y-2">
+                {[
+                  "Mild swelling, most noticeable in first 48 hours, resolves within 7-14 days",
+                  "Bruising possible due to thin under-eye skin, fades within 5-10 days",
+                  "Temporary firmness under the eye for 2-4 days",
+                  "Mild tenderness around injection area for 24-48 hours",
+                ].map((effect, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-taupe font-inter text-sm">
+                    <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                    <span>{effect}</span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="p-6 bg-white bg-opacity-10 rounded-2xl backdrop-blur-sm"
-            >
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-                <MapPin className="w-8 h-8 text-wine" />
-              </div>
-              <h3 className="text-xl text-wine font-bold mb-2">
-                Central KL location
+            
+            <motion.div variants={fadeInRight} className="bg-light p-6 rounded-xl border border-taupe/10">
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <AlertTriangle className="w-5 h-5 text-wine" />
+                Rare Risks
               </h3>
-              <p className="text-sm text-wine">
-                Wisma UOA II, Jalan Pinang, near KL's Golden Triangle. (Nexus
-                Aesthetic site; DoctorOnCall listing)
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="p-6 bg-white bg-opacity-10 rounded-2xl backdrop-blur-sm"
-            >
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="w-8 h-8 text-wine" />
-              </div>
-              <h3 className="text-xl font-bold text-wine mb-2">
-                Non-surgical aesthetics focus
-              </h3>
-              <p className="text-sm text-wine">
-                Wide range of non-surgical and laser services, useful when
-                under-eye concerns need combination treatment. (DoctorOnCall
-                listing)
-              </p>
+              <ul className="space-y-2">
+                {[
+                  "Tyndall effect: Bluish tint if filler placed too superficially. Treated with hyaluronidase",
+                  "Migration: Filler moving from original placement site",
+                  "Vascular occlusion: Extremely rare, requires immediate management",
+                ].map((risk, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-taupe font-inter text-sm">
+                    <AlertCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                    <span>{risk}</span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           </div>
-        </div>
-      </motion.section>
+          
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 p-6 rounded-xl">
+            <h3 className="font-georgia text-xl text-brown mb-4">Aftercare Instructions</h3>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                "Avoid pressing, rubbing or touching the under-eye area for 48 hours",
+                "Sleep elevated on an extra pillow for the first two nights",
+                "Apply cool compress gently if swelling is uncomfortable",
+                "Avoid alcohol for 24 hours",
+                "Skip intense exercise for 24 to 48 hours",
+                "Avoid glasses resting on the upper cheek for one week",
+                "Do not apply heavy eye creams near injection site for 48 hours",
+                "Assess final result at 14 days when swelling has resolved",
+              ].map((instruction, idx) => (
+                <div key={idx} className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span className="text-taupe font-inter text-sm">{instruction}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
 
       {/* FAQ Section */}
-      <motion.section
-        className="py-20 px-4 bg-white"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-      >
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-bold font-georgia text-brown text-center mb-4"
-          >
-            FAQs
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-taupe text-center mb-12"
-          >
-            (PAA-style questions people ask most)
-          </motion.p>
-
-          <div className="space-y-8">
-            {/* About results and suitability */}
-            <motion.div variants={fadeInUp}>
-              <h3 className="text-2xl font-bold text-brown mb-4">
-                About results and suitability
-              </h3>
-              <div className="space-y-4">
-                <div className="border border-cream rounded-xl p-6 hover:shadow-lg transition-all">
-                  <h4 className="text-lg font-bold text-brown mb-3 flex items-center">
-                    <HelpCircle className="w-5 h-5 text-light mr-2" />
-                    1) Does under eye filler remove dark circles?
-                  </h4>
-                  <p className="text-taupe pl-7">
-                    It can reduce the look of dark circles when the darkness is
-                    mainly from shadowing due to hollows. If pigment is the main
-                    cause, filler alone may not fix it and other treatments may
-                    be needed. (Erufu Care overview)
-                  </p>
-                </div>
-
-                <div className="border border-cream rounded-xl p-6 hover:shadow-lg transition-all">
-                  <h4 className="text-lg font-bold text-brown mb-3 flex items-center">
-                    <HelpCircle className="w-5 h-5 text-wine mr-2" />
-                    2) How long does under eye filler last?
-                  </h4>
-                  <p className="text-taupe pl-7">
-                    Many Malaysia clinic pages cite results lasting up to 12
-                    months, with some people maintaining results longer
-                    depending on the case. (Dr Jane under-eye filler page; Sheen
-                    Clinic)
-                  </p>
-                </div>
-
-                <div className="border border-cream rounded-xl p-6 hover:shadow-lg transition-all">
-                  <h4 className="text-lg font-bold text-brown mb-3 flex items-center">
-                    <HelpCircle className="w-5 h-5 text-wine mr-2" />
-                    3) How many syringes do I need for under eye filler?
-                  </h4>
-                  <p className="text-taupe pl-7">
-                    It depends on your hollow depth and facial support. Many
-                    pricing guides suggest under-eye cases may need 1 to 2
-                    syringes, but exact amounts should only be decided after a
-                    face assessment. (NextMed price guide)
-                  </p>
-                </div>
-
-                <div className="border border-cream rounded-xl p-6 hover:shadow-lg transition-all">
-                  <h4 className="text-lg font-bold text-brown mb-3 flex items-center">
-                    <HelpCircle className="w-5 h-5 text-wine mr-2" />
-                    4) What age is best for under eye filler?
-                  </h4>
-                  <p className="text-taupe pl-7">
-                    There is no single "best age." It depends on anatomy and the
-                    cause of your under-eye concern. Some fillers also have
-                    specific age indications, for example Volbella's FDA
-                    approval is for adults over 21. (FDA device page)
-                  </p>
-                </div>
-
-                <div className="border border-cream rounded-xl p-6 hover:shadow-lg transition-all">
-                  <h4 className="text-lg font-bold text-brown mb-3 flex items-center">
-                    <HelpCircle className="w-5 h-5 text-wine mr-2" />
-                    5) Can under eye filler fix eye bags?
-                  </h4>
-                  <p className="text-taupe pl-7">
-                    If the issue is a true bulge or fluid bag, filler may not be
-                    ideal. Some people need other treatments or surgery.
-                    (Moorfields)
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Comfort and downtime */}
-            <motion.div variants={fadeInUp}>
-              <h3 className="text-2xl font-bold text-brown mb-4">
-                Comfort and downtime
-              </h3>
-              <div className="space-y-4">
-                <div className="border border-cream rounded-xl p-6 hover:shadow-lg transition-all">
-                  <h4 className="text-lg font-bold text-brown mb-3 flex items-center">
-                    <HelpCircle className="w-5 h-5 text-wine mr-2" />
-                    6) Is under eye filler painful?
-                  </h4>
-                  <p className="text-taupe pl-7">
-                    Most clinics use numbing and patients often describe it as
-                    tolerable. The under-eye area can feel sensitive, but the
-                    session is usually quick.
-                  </p>
-                </div>
-
-                <div className="border border-cream rounded-xl p-6 hover:shadow-lg transition-all">
-                  <h4 className="text-lg font-bold text-brown mb-3 flex items-center">
-                    <HelpCircle className="w-5 h-5 text-wine mr-2" />
-                    7) How long is the downtime after under eye filler?
-                  </h4>
-                  <p className="text-taupe pl-7">
-                    Many clinics describe minimal downtime, with mild swelling
-                    or bruising that settles within a few days. (Dr Jane
-                    under-eye filler page)
-                  </p>
-                </div>
-
-                <div className="border border-cream rounded-xl p-6 hover:shadow-lg transition-all">
-                  <h4 className="text-lg font-bold text-brown mb-3 flex items-center">
-                    <HelpCircle className="w-5 h-5 text-wine mr-2" />
-                    8) Can I wear makeup after under eye filler?
-                  </h4>
-                  <p className="text-taupe pl-7">
-                    Some clinics advise avoiding makeup for the first 24 hours
-                    to reduce infection risk. (Dr Chong Clinic blog)
-                  </p>
-                </div>
-
-                <div className="border border-cream rounded-xl p-6 hover:shadow-lg transition-all">
-                  <h4 className="text-lg font-bold text-brown mb-3 flex items-center">
-                    <HelpCircle className="w-5 h-5 text-wine mr-2" />
-                    9) When can I exercise after under eye filler?
-                  </h4>
-                  <p className="text-taupe pl-7">
-                    Many providers suggest avoiding strenuous exercise for about
-                    24 hours, especially if you swell easily.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Safety */}
-            <motion.div variants={fadeInUp}>
-              <h3 className="text-2xl font-bold text-brown mb-4">Safety</h3>
-              <div className="space-y-4">
-                <div className="border border-cream rounded-xl p-6 hover:shadow-lg transition-all">
-                  <h4 className="text-lg font-bold text-brown mb-3 flex items-center">
-                    <HelpCircle className="w-5 h-5 text-wine mr-2" />
-                    10) Is under eye filler safe?
-                  </h4>
-                  <p className="text-taupe pl-7">
-                    Dermal fillers are commonly used, and most side effects are
-                    mild like swelling and bruising. But serious complications
-                    are possible, including vascular events. (Cleveland Clinic;
-                    RANZCO guideline PDF)
-                  </p>
-                </div>
-
-                <div className="border border-cream rounded-xl p-6 hover:shadow-lg transition-all">
-                  <h4 className="text-lg font-bold text-brown mb-3 flex items-center">
-                    <HelpCircle className="w-5 h-5 text-wine mr-2" />
-                    11) What are the warning signs of a serious complication?
-                  </h4>
-                  <p className="text-taupe pl-7">
-                    Severe pain, skin colour changes, or any vision symptoms
-                    need urgent medical attention. Professional guidance
-                    emphasises informed consent and urgency if symptoms occur.
-                    (RANZCO guideline PDF)
-                  </p>
-                </div>
-
-                <div className="border border-cream rounded-xl p-6 hover:shadow-lg transition-all">
-                  <h4 className="text-lg font-bold text-brown mb-3 flex items-center">
-                    <HelpCircle className="w-5 h-5 text-wine mr-2" />
-                    12) Why can under eye filler look blue or grey?
-                  </h4>
-                  <p className="text-taupe pl-7">
-                    A bluish tint can happen when filler sits too close to the
-                    skin surface or due to swelling and light reflection.
-                    Moorfields lists discolouration and swelling among key risks
-                    to understand. (Moorfields)
-                  </p>
-                </div>
-
-                <div className="border border-cream rounded-xl p-6 hover:shadow-lg transition-all">
-                  <h4 className="text-lg font-bold text-brown mb-3 flex items-center">
-                    <HelpCircle className="w-5 h-5 text-wine mr-2" />
-                    13) Are all fillers approved to be used around the eyes?
-                  </h4>
-                  <p className="text-taupe pl-7">
-                    No. FDA warnings note that injecting around the eyes is an
-                    unapproved use for many dermal fillers, and approvals vary
-                    by product. Some products do have infraorbital indications.
-                    (FDA dermal filler safety page; FDA device page)
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Cost in Malaysia */}
-            <motion.div variants={fadeInUp}>
-              <h3 className="text-2xl font-bold text-brown mb-4">
-                Cost in Malaysia
-              </h3>
-              <div className="space-y-4">
-                <div className="border border-cream rounded-xl p-6 hover:shadow-lg transition-all">
-                  <h4 className="text-lg font-bold text-brown mb-3 flex items-center">
-                    <HelpCircle className="w-5 h-5 text-wine mr-2" />
-                    14) How much does under eye filler cost in Kuala Lumpur?
-                  </h4>
-                  <p className="text-taupe pl-7">
-                    Real clinic and price guide references commonly show ranges
-                    such as RM 1,500 to RM 2,200 per 1ml for under-eye or RM
-                    1,800 to RM 3,000 per syringe in KL, depending on clinic and
-                    product. (NextMed price guide; Dr Jane pricing guide)
-                  </p>
-                </div>
-
-                <div className="border border-cream rounded-xl p-6 hover:shadow-lg transition-all">
-                  <h4 className="text-lg font-bold text-brown mb-3 flex items-center">
-                    <HelpCircle className="w-5 h-5 text-wine mr-2" />
-                    15) Why is under eye filler more expensive at some clinics?
-                  </h4>
-                  <p className="text-taupe pl-7">
-                    Under-eye injections are a high-precision area. Price often
-                    reflects injector experience, clinic standards, and product
-                    selection.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
+      <FAQ data={faqData} />
+      
       {/* CTA Section */}
-      <motion.section
-        className="py-20 px-4 bg-cream"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
+      <section className="py-20 px-4 bg-wine">
         <motion.div
-          variants={scaleIn}
-          className="max-w-4xl mx-auto text-center bg-white rounded-3xl p-12 shadow-2xl"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-4xl text-center"
         >
-          <h2 className="text-4xl font-bold font-georgia text-brown mb-6">
-            Ready to look refreshed?
-          </h2>
-          <p className="text-xl text-taupe mb-8">
-            Book your consultation at Nexus Clinic Kuala Lumpur today.
-          </p>
-          <button className="px-12 py-4 bg-wine text-white rounded-full font-medium text-lg hover:bg-rose transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-            Schedule Your Consultation
-          </button>
+          <motion.div variants={fadeInUp} className="space-y-6">
+            <h2 className="font-georgia text-3xl md:text-5xl text-light">
+              Book Under Eye Filler in Kuala Lumpur at Nexus Clinic KL
+            </h2>
+            <p className="text-xl text-cream font-inter max-w-2xl mx-auto">
+              Looking rested is not a luxury. It is how you want to feel when you look in the mirror and how you want others to see you. 
+              Under eye filler at Nexus Clinic KL is a 30-minute appointment that addresses the structural reason your eyes look the way they do.
+            </p>
+            <p className="text-cream/90 font-inter">
+              One consultation. An honest diagnosis. A treatment plan that actually addresses your concern.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                Book Your Free Under Eye Consultation Now
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+              <Whatsapp 
+                message="Hi, I'd like to book a free consultation for under eye filler at Nexus Clinic KL. Please let me know available slots."
+                variant="light"
+              />
+            </div>
+            <p className="text-cream/80 font-inter text-sm">
+              Limited slots available this week | Located at Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
+            </p>
+            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
+              <a href="#" className="hover:text-cream transition-colors">Explore Tear Trough Filler</a>
+              <span>•</span>
+              <a href="#" className="hover:text-cream transition-colors">Explore Cheek Filler</a>
+            </div>
+          </motion.div>
         </motion.div>
-      </motion.section>
+      </section>
     </div>
   );
 }

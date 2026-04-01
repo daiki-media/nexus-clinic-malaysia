@@ -1,0 +1,478 @@
+{
+  "hero": {
+    "badge": "Nexus Clinic Kuala Lumpur",
+    "title": "Best Acne Scar Treatment in Malaysia for ",
+    "title2": "Smoother, Clearer Skin",
+    "description": "Stubborn pits, dark marks, and uneven skin texture. Nexus Clinic KL treats every scar type with doctor-performed CO2 Laser, Pico Laser, RF Microneedling and Subcision. Personalised for Malaysian skin.",
+    "subtext": "Your skin healed from acne years ago. The scars did not. They sit in the mirror every morning, pitted, dark, or raised, a constant reminder of breakouts that should belong in the past. The reality is that acne scars do not resolve on their own, and no amount of serum or filter changes the texture underneath. At Nexus Clinic KL, our licensed aesthetic doctors assess every scar type individually and build a treatment plan using clinically proven modalities matched precisely to your scarring, skin tone and healing capacity.",
+    "safetyNote": "Malaysia's Fitzpatrick skin types III to V require a different clinical approach than protocols used in Western markets. At Nexus Clinic KL, our doctors are trained in Southeast Asian facial anatomy and skin physiology, meaning every treatment setting and aftercare recommendation is calibrated for Malaysian patients.",
+    "ctaButton": "Book Your Free Acne Scar Assessment",
+    "whatsappMessage": "Hi, I'm interested in acne scar treatment at Nexus Clinic KL. I'd like to book a consultation."
+  },
+  "trust": {
+    "title": "Trust at a glance",
+    "subtitle": "Nexus Clinic Kuala Lumpur — Excellence in Aesthetic Medicine",
+    "items": [
+      {
+        "icon": "Award",
+        "label": "Established",
+        "value": "2001",
+        "description": "Over 20 years of excellence"
+      },
+      {
+        "icon": "MapPin",
+        "label": "Location",
+        "value": "Wisma UOA II, Jalan Pinang",
+        "description": "KLCC, 50450 Kuala Lumpur"
+      },
+      {
+        "icon": "Calendar",
+        "label": "Opening Hours",
+        "value": "Monday - Saturday",
+        "description": "9:00am – 6:00pm | Closed Sundays & PH"
+      }
+    ],
+    "features": [
+      {
+        "icon": "Shield",
+        "title": "Scar Mapping Process",
+        "description": "Every scar type assessed individually before treatment"
+      },
+      {
+        "icon": "Activity",
+        "title": "Doctor-Performed Only",
+        "description": "Licensed doctors trained in Malaysian skin types"
+      },
+      {
+        "icon": "CheckCircle",
+        "title": "Combination Protocols",
+        "description": "2-3 modalities for mixed scar types"
+      }
+    ],
+    "badges": [
+      "MOH-approved devices",
+      "Fractional CO2 Laser",
+      "Pico Laser • RF Microneedling • Subcision"
+    ]
+  },
+  "treatmentAtGlance": {
+    "title": "Acne Scar Treatment at a Glance",
+    "subtitle": "Everything you need to know",
+    "cards": [
+      {
+        "icon": "Syringe",
+        "label": "Treatment",
+        "value": "Fractional CO2 Laser, Pico Laser, RF Microneedling, Subcision, Rejuran S, Chemical Peels"
+      },
+      {
+        "icon": "Clock",
+        "label": "Session Time",
+        "value": "30 to 90 minutes depending on modality"
+      },
+      {
+        "icon": "Heart",
+        "label": "Downtime",
+        "value": "0 to 7 days depending on treatment intensity"
+      },
+      {
+        "icon": "Zap",
+        "label": "Visible Results",
+        "value": "2 to 4 weeks; full remodelling at 3 to 6 months"
+      }
+    ],
+    "details": [
+      { "label": "Sessions Required", "value": "3 to 6 sessions on average" },
+      { "label": "Spacing", "value": "4 to 6 weeks apart" },
+      { "label": "Suitable For", "value": "Ice pick, rolling, boxcar, hypertrophic scars, PIH" },
+      { "label": "Anaesthesia", "value": "Topical numbing cream (30 to 45 minutes)" }
+    ],
+    "ctaText": "Speak to a Doctor About Your Scar Type | Free Assessment"
+  },
+  "scarTypeMatrix": {
+    "title": "The Scar-Type-to-Treatment Decision Matrix",
+    "subtitle": "Used at Nexus Clinic KL for every initial consultation",
+    "headers": ["Scar Type", "Appearance", "Depth", "Best Treatment at Nexus Clinic KL"],
+    "rows": [
+      {
+        "type": "Ice pick scars",
+        "appearance": "Deep, narrow pits like pin holes in the skin",
+        "depth": "Deep",
+        "treatment": "TCA CROSS Chemical Peel + Pico Laser",
+        "isHighRisk": true
+      },
+      {
+        "type": "Rolling scars",
+        "appearance": "Broad, wavy depressions with sloped edges",
+        "depth": "Moderate to deep",
+        "treatment": "Subcision + Fractional CO2 Laser + Rejuran S",
+        "isHighRisk": true
+      },
+      {
+        "type": "Boxcar scars",
+        "appearance": "Wider pits with sharp, defined vertical edges",
+        "depth": "Shallow to moderate",
+        "treatment": "RF Microneedling + Fractional CO2 Laser",
+        "isHighRisk": false
+      },
+      {
+        "type": "Hypertrophic / Keloid",
+        "appearance": "Raised, thickened scar tissue above skin surface",
+        "depth": "Raised",
+        "treatment": "Steroid Injection + Silicone Gel + Pico Laser",
+        "isHighRisk": false
+      },
+      {
+        "type": "Post-Inflammatory Hyperpigmentation (PIH)",
+        "appearance": "Flat dark marks left after active acne",
+        "depth": "Surface",
+        "treatment": "Pico Laser + Skin Booster + Topical Brighteners",
+        "isHighRisk": false
+      },
+      {
+        "type": "Mixed / Combination",
+        "appearance": "Multiple scar types across the face",
+        "depth": "Varied",
+        "treatment": "Custom combination protocol (minimum 2 modalities)",
+        "isHighRisk": false
+      }
+    ],
+    "note": "Ice pick scars respond poorly to surface lasers alone. Rolling scars require subcision to release tethers before resurfacing. Understanding these distinctions before treatment is the difference between money well spent and multiple rounds that never addressed the actual problem."
+  },
+  "malaysianSkinProtocol": {
+    "title": "Acne Scar Treatment for Malaysian Skin",
+    "subtitle": "A different clinical protocol is required for Fitzpatrick types III to V",
+    "leftSection": {
+      "title": "Why Malaysian Skin Needs Specialised Care",
+      "description": "Malaysian skin sits predominantly in Fitzpatrick types III to V. Darker skin types carry a significantly higher risk of post-inflammatory hyperpigmentation after laser and needle-based procedures. Aggressive ablative laser settings that deliver excellent results on lighter Caucasian skin can trigger darkening, prolonged redness or uneven healing when applied without adjustment to Asian skin.",
+      "points": [
+        "Conservative energy settings on first treatment sessions",
+        "Combination sessions using non-ablative modalities first",
+        "Rejuran S incorporated as standard repair step",
+        "Broad-spectrum SPF50 is non-negotiable after every session",
+        "Climate-specific aftercare for Malaysia's tropical humidity"
+      ]
+    },
+    "rightSection": {
+      "title": "Humidity and Healing Factors",
+      "description": "Malaysia's tropical humidity affects healing. The moist environment can support faster superficial recovery, but it also increases the risk of bacterial contamination on open or sensitized post-laser skin. Our post-treatment protocols account for this with clear, evidence-based wound care guidance that reflects the local climate rather than instructions written for patients in cooler or drier countries.",
+      "statSource": "ISAPS Global Statistics Report 2023",
+      "statText": "Non-surgical skin resurfacing procedures in Southeast Asia grew by 28% year-on-year, with Malaysia showing above-average demand for combination scar protocols."
+    }
+  },
+  "treatments": {
+    "title": "Treatments and Technologies Used at Nexus Clinic KL",
+    "subtitle": "Evidence-based modalities for every scar type",
+    "items": [
+      {
+        "title": "Fractional CO2 Laser",
+        "description": "The gold standard for moderate to severe atrophic scarring. Fractional CO2 laser delivers precise columns of carbon dioxide laser energy deep into the dermis, vaporising damaged scar tissue and triggering a robust collagen remodelling response. Results improve progressively over 3 to 6 months as new collagen fills depressed scar floors.",
+        "bestFor": "Boxcar scars, rolling scars, deep atrophic scarring",
+        "downtime": "5 to 7 days",
+        "sessions": "2 to 4"
+      },
+      {
+        "title": "Pico Laser",
+        "description": "Delivers ultra-short picosecond pulses that shatter pigment and stimulate collagen through photoacoustic pressure rather than heat. This makes it the preferred tool for post-inflammatory hyperpigmentation, early-stage scarring, and skin texture refinement in darker skin types where thermal lasers carry higher PIH risk.",
+        "bestFor": "PIH, mild texture, early scarring",
+        "downtime": "Minimal (24-48 hours redness)",
+        "sessions": "3 to 5"
+      },
+      {
+        "title": "RF Microneedling (Sylfirm X / Potenza)",
+        "description": "Combines controlled micro-needling with targeted RF energy to remodel collagen in the mid-dermis without significant surface injury. Particularly effective for rolling and boxcar scars, open pores, and overall skin texture.",
+        "bestFor": "Rolling scars, boxcar scars, skin texture",
+        "downtime": "24 to 48 hours mild redness",
+        "sessions": "3 to 5"
+      },
+      {
+        "title": "Subcision",
+        "description": "A minor surgical procedure performed under local anaesthetic where a specialised bevelled needle is inserted beneath a rolling or tethered scar to physically sever the fibrous bands anchoring the scar floor. Once released, the depressed skin rises naturally and the created space fills with new collagen.",
+        "bestFor": "Rolling scars, tethered depressions",
+        "downtime": "Mild bruising for 7-10 days",
+        "sessions": "1 to 3"
+      },
+      {
+        "title": "TCA CROSS Chemical Peel",
+        "description": "Trichloroacetic Acid Chemical Reconstruction of Skin Scars involves precise application of high-concentration TCA directly into individual ice pick scar channels. The focal chemical reaction stimulates scar wall fibroblasts and gradually converts the deep channel into a broader, shallower depression.",
+        "bestFor": "Ice pick scars",
+        "downtime": "5 to 7 days crusting",
+        "sessions": "2 to 4"
+      },
+      {
+        "title": "Rejuran S Skin Booster",
+        "description": "A polynucleotide-based injectable specifically formulated for scar removal. Its PDRN molecules activate dermal fibroblasts, reduce inflammatory cytokines, and stimulate production of new extracellular matrix components. Integrated into the recovery phase of most combination scar protocols.",
+        "bestFor": "Skin repair, post-treatment recovery",
+        "downtime": "Minimal (24 hours redness)",
+        "sessions": "2 to 3"
+      }
+    ]
+  },
+  "comparisonTable": {
+    "title": "Subcision vs Laser vs Microneedling",
+    "subtitle": "Which is better? The answer depends on your scar type",
+    "headers": ["Factor", "Subcision", "Laser", "Microneedling"],
+    "rows": [
+      {
+        "factor": "Primary mechanism",
+        "subcision": "Releases tethered scars by cutting fibrous bands beneath the skin",
+        "laser": "Resurfaces skin texture through controlled micro-injuries",
+        "microneedling": "Stimulates collagen via controlled micro-punctures"
+      },
+      {
+        "factor": "Best for",
+        "subcision": "Rolling scars, tethered depressions, scars that don't lift with surface treatments",
+        "laser": "Boxcar scars, overall texture improvement, moderate to deep atrophic scars",
+        "microneedling": "Mild to moderate scarring, shallow boxcar, maintenance between stronger procedures"
+      },
+      {
+        "factor": "Downtime",
+        "subcision": "Mild swelling or bruising for a few days, improvement over 2-3 months",
+        "laser": "5 to 7 days for Fractional CO2; minimal for Pico Laser",
+        "microneedling": "24 to 48 hours of mild redness and swelling"
+      },
+      {
+        "factor": "Sessions needed",
+        "subcision": "1 to 3 sessions",
+        "laser": "3 to 5 sessions (spaced 4-6 weeks apart)",
+        "microneedling": "3 to 5 sessions"
+      },
+      {
+        "factor": "Pigment risk for Malaysian skin",
+        "subcision": "Low (no thermal energy)",
+        "laser": "Moderate to high (requires careful settings and aftercare)",
+        "microneedling": "Low"
+      }
+    ],
+    "note": "In real practice, many patients benefit from blending these modalities. Rolling scars often need subcision first, then resurfacing. Boxcar scars respond well to laser or microneedling. Mixed scarring requires a combination approach."
+  },
+  "procedureSteps": {
+    "title": "The Acne Scar Treatment Process at Nexus Clinic KL",
+    "subtitle": "Step by step",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Skin Consultation & Scar Mapping",
+        "description": "Your doctor examines the distribution, depth, type and density of your scarring under specialised lighting. This step determines which modalities are indicated and in which order."
+      },
+      {
+        "step": "02",
+        "title": "Skin Preparation & Numbing",
+        "description": "Medical-grade topical anaesthetic cream is applied for 30 to 45 minutes. For subcision, targeted local anaesthetic ensures full comfort."
+      },
+      {
+        "step": "03",
+        "title": "Treatment Session",
+        "description": "Your doctor applies the laser, RF microneedling device, or needling instrument to mapped scar zones. Sessions range from 30 to 90 minutes."
+      },
+      {
+        "step": "04",
+        "title": "Post-Treatment Care & Follow-up",
+        "description": "Soothing serums and barrier creams are applied. Written aftercare instructions provided. Review appointment at 4 to 6 weeks to assess healing and adjust next session parameters."
+      }
+    ],
+    "ctaButton": "Book Your Acne Scar Consultation",
+    "ctaSubtext": "Personalised scar mapping at Nexus Clinic KL"
+  },
+  "treatmentJourney": {
+    "title": "The Acne Scar Treatment Journey",
+    "subtitle": "A realistic month-by-month roadmap for moderate to severe mixed scarring",
+    "phases": [
+      {
+        "phase": "Month 1",
+        "title": "Consultation + First Session",
+        "treatments": "Skin assessment, scar mapping, targeted treatment (Pico Laser or Subcision)",
+        "goal": "Identify scar types and begin collagen stimulation"
+      },
+      {
+        "phase": "Month 2 to 3",
+        "title": "Core Treatment",
+        "treatments": "Fractional CO2 Laser or RF Microneedling",
+        "goal": "Deep remodelling of scar tissue and collagen rebuilding"
+      },
+      {
+        "phase": "Month 3 to 4",
+        "title": "Skin Repair",
+        "treatments": "Rejuran S Skin Booster",
+        "goal": "Accelerate recovery, hydrate, reduce PIH"
+      },
+      {
+        "phase": "Month 5 to 6",
+        "title": "Refinement",
+        "treatments": "Pico Laser for residual pigmentation; maintenance session",
+        "goal": "Even skin tone, refine texture"
+      },
+      {
+        "phase": "Month 6+",
+        "title": "Maintenance",
+        "treatments": "Annual or biannual touch-up as required",
+        "goal": "Preserve results and manage new marks"
+      }
+    ],
+    "note": "Collagen remodelling is a slow biological process. Most patients notice the most dramatic visible changes between months 3 and 6 as the new collagen matrix matures. Planning a realistic timeline before beginning protects patients from disappointment."
+  },
+  "pricing": {
+    "title": "Acne Scar Treatment Cost in Malaysia 2026",
+    "subtitle": "Transparent pricing at Nexus Clinic KL",
+    "headers": ["Treatment", "Target Scar Type", "Sessions Needed", "Price Range (RM)"],
+    "rows": [
+      {
+        "treatment": "Pico Laser (Full Face)",
+        "target": "PIH, mild texture, early scarring",
+        "sessions": "3 to 5",
+        "price": "RM 700 – RM 1,200 / session"
+      },
+      {
+        "treatment": "Fractional CO2 Laser (Full Face)",
+        "target": "Boxcar, rolling, moderate to deep atrophic",
+        "sessions": "2 to 4",
+        "price": "RM 1,200 – RM 2,500 / session"
+      },
+      {
+        "treatment": "RF Microneedling (Sylfirm X / Potenza)",
+        "target": "Rolling, boxcar, skin texture",
+        "sessions": "3 to 5",
+        "price": "RM 1,000 – RM 1,800 / session"
+      },
+      {
+        "treatment": "Subcision",
+        "target": "Tethered rolling scars",
+        "sessions": "1 to 3",
+        "price": "RM 500 – RM 900 / session"
+      },
+      {
+        "treatment": "TCA CROSS Chemical Peel",
+        "target": "Ice pick scars",
+        "sessions": "2 to 4",
+        "price": "RM 400 – RM 700 / session"
+      },
+      {
+        "treatment": "Rejuran S Skin Booster",
+        "target": "Skin repair, post-treatment recovery",
+        "sessions": "2 to 3",
+        "price": "RM 900 – RM 1,500 / session"
+      },
+      {
+        "treatment": "Combination Scar Programme",
+        "target": "Mixed / severe scarring (2 to 3 modalities)",
+        "sessions": "4 to 6 total",
+        "price": "From RM 3,500 (package pricing available)"
+      }
+    ],
+    "footnote": "* Package pricing available for combination programmes of 4 or more sessions. Final pricing confirmed at consultation after scar mapping."
+  },
+  "commonMistakes": {
+    "title": "Common Mistakes Malaysian Patients Make",
+    "subtitle": "When treating acne scars",
+    "items": [
+      {
+        "title": "Treating only pigmentation, not texture",
+        "description": "Dark marks left by acne and physical scar depressions look similar but are biologically different. Pico Laser clears PIH effectively but does not remodel collagen in ice pick or rolling scar channels."
+      },
+      {
+        "title": "Using beauty-salon lasers that lack depth",
+        "description": "Low-powered LED-based or pulsed light devices cannot reach scar depth. Under Ministry of Health Malaysia guidelines, medical-grade laser procedures must be performed by licensed doctors."
+      },
+      {
+        "title": "Stopping after one or two sessions",
+        "description": "The scar-filling collagen continues to mature for 3 to 6 months post-treatment. Stopping mid-protocol misses the majority of the result."
+      },
+      {
+        "title": "Not addressing active acne first",
+        "description": "Treating established scars while new breakouts are still forming is a losing battle. Each new inflammatory lesion adds to the scar burden."
+      }
+    ]
+  },
+  "sideEffects": {
+    "title": "Side Effects and Aftercare",
+    "subtitle": "What to expect after treatment",
+    "common": {
+      "title": "Common Temporary Effects",
+      "items": [
+        "Redness, swelling, warmth (24-72 hours for Pico/RF; 5-7 days for CO2)",
+        "Peeling or dryness after resurfacing procedures",
+        "Mild bruising after subcision (resolves in 7-10 days)",
+        "Temporary darkening or lightening of skin (pigment shift risk higher in darker skin tones)"
+      ]
+    },
+    "rare": {
+      "title": "Rare but Serious Risks",
+      "items": [
+        "Post-inflammatory hyperpigmentation (preventable with proper settings and SPF)",
+        "Infection (rare with proper aftercare)",
+        "Scarring (extremely rare with experienced injectors)",
+        "Prolonged redness or delayed healing"
+      ]
+    },
+    "aftercare": {
+      "title": "Aftercare Instructions",
+      "items": [
+        "Apply SPF50 every 2 hours when outdoors",
+        "Pause retinols, AHAs, BHAs for at least 5 days before and after",
+        "Avoid heavy exercise, saunas, swimming for 3-5 days",
+        "Use gentle, non-stripping cleansers",
+        "Apply ceramide or hyaluronic acid moisturisers",
+        "Do not pick at peeling skin",
+        "Sleep on your back for the first few nights after resurfacing",
+        "Attend follow-up appointment at 4-6 weeks"
+      ]
+    }
+  },
+  "faq": {
+    "title": "People Also Ask (FAQs)",
+    "items": [
+      {
+        "question": "How many sessions of fractional CO2 laser are needed for acne scars?",
+        "answer": "Most patients require 3 to 5 sessions of Fractional CO2 laser, spaced 4 to 6 weeks apart, depending on scar depth and treatment goals. Your doctor at Nexus Clinic KL will assess your specific scarring and provide a personalised session estimate at your consultation."
+      },
+      {
+        "question": "How long does it take to see results after acne scar treatment?",
+        "answer": "Initial improvement can be noticed within 2 to 4 weeks, but the most dramatic visible changes typically occur between 3 and 6 months as new collagen matures. Collagen remodelling is a slow biological process, which is why patience and completing the full protocol are essential for optimal results."
+      },
+      {
+        "question": "Is laser acne scar treatment safe for darker skin tones (Malaysian skin)?",
+        "answer": "Yes, when performed by a licensed doctor experienced with Fitzpatrick skin types III to V. At Nexus Clinic KL, we use conservative energy settings on first sessions, incorporate non-ablative modalities like Pico Laser and RF Microneedling, and prescribe structured post-treatment sun protection to minimise the risk of post-inflammatory hyperpigmentation. Aggressive settings designed for lighter skin can trigger darkening on Asian skin, which is why our protocols are specifically calibrated for Malaysian patients."
+      },
+      {
+        "question": "What is the difference between Pico Laser and Fractional CO2 for acne scars?",
+        "answer": "Pico Laser targets surface and mid-dermal concerns using photoacoustic pressure without significant surface ablation. It excels at post-inflammatory hyperpigmentation, early shallow scars, and improving skin tone with minimal downtime. Fractional CO2 Laser performs ablative resurfacing, creating controlled micro-wounds that trigger deep collagen remodelling and physically alter scar morphology. It is more effective for moderate to deep atrophic scarring but involves 5 to 7 days of recovery. Many patients benefit from both technologies in sequence."
+      },
+      {
+        "question": "What is subcision and what scars is it for?",
+        "answer": "Subcision is a minor surgical procedure performed under local anaesthetic where a specialised bevelled needle is inserted beneath a rolling or tethered scar. The needle is swept in a fanning motion to physically sever the fibrous bands anchoring the scar floor to deeper tissue. Once released, the depressed skin rises naturally and the created space fills with new collagen over weeks. Subcision is a prerequisite for true rolling scar correction and is often overlooked by patients who have tried laser alone without result."
+      },
+      {
+        "question": "How much does acne scar treatment cost in Malaysia in 2026?",
+        "answer": "Pricing varies by scar severity, treatment type, and number of sessions. At Nexus Clinic KL in 2026, Pico Laser ranges from RM 700 to RM 1,200 per session, Fractional CO2 Laser from RM 1,200 to RM 2,500 per session, RF Microneedling from RM 1,000 to RM 1,800 per session, and Subcision from RM 500 to RM 900 per session. Combination scar programmes start from RM 3,500 for 4 to 6 sessions across multiple modalities. Final pricing is confirmed after your scar mapping consultation."
+      },
+      {
+        "question": "Can acne scars be fully removed?",
+        "answer": "Clinically meaningful and visible improvement, typically a 50 to 80 percent reduction in scar depth and pigmentation, is achievable for most scar types with a properly designed combination programme. Complete removal to a level indistinguishable from unaffected skin is not always possible, particularly for deep ice pick scars or longstanding hypertrophic scars. What patients consistently achieve is a significant improvement in skin texture and tone that makes scars far less visible in natural lighting and reduces dependence on heavy-coverage makeup."
+      },
+      {
+        "question": "How many subcision sessions do I need?",
+        "answer": "Most patients require 1 to 3 subcision sessions, depending on the severity and number of tethered rolling scars. The procedure takes 30 to 60 minutes, and improvement builds gradually over 2 to 3 months as new collagen fills the space created by releasing the scar tissue."
+      },
+      {
+        "question": "Can I treat acne scars if I still have active breakouts?",
+        "answer": "Our doctors recommend waiting until active acne is either resolved or well-controlled before beginning aggressive scar treatment. Active inflammation can worsen scar formation and compromise healing after laser or needling procedures. A period of 3 to 6 months of acne stability is generally preferred before beginning fractional resurfacing. For patients with active acne alongside established scarring, our doctors will assess whether simultaneous management is feasible or if treating active acne first produces the best outcome."
+      },
+      {
+        "question": "What is a realistic acne scar improvement goal?",
+        "answer": "The most realistic goal is visible improvement in texture and depth that makes scars less noticeable in everyday lighting and reduces reliance on makeup. Most patients do not need 'perfect' skin; they want smoother skin in real lighting. Combination plans using 2 to 3 modalities tailored to your specific scar types deliver the best outcomes, and your doctor at Nexus Clinic KL will provide an honest expectation at your consultation."
+      }
+    ]
+  },
+  "finalCta": {
+    "title": "Start Your Acne Scar Journey at Nexus Clinic KL",
+    "description": "Acne scars respond to treatment. The texture your skin has today is not the texture it has to keep. What changes outcomes is the precision of the approach: matching the right treatment to the right scar type, calibrating every session to your skin's specific response, and committing to a realistic programme.",
+    "subtext": "At Nexus Clinic KL, our licensed aesthetic doctors have performed over 5,000 aesthetic procedures, bring more than 15 years of combined experience to every consultation, and work exclusively with MOH-approved devices and injectables.",
+    "ctaButton": "Book Your Free Acne Scar Assessment",
+    "whatsappMessage": "Hi, I'd like to book a free consultation for acne scar treatment at Nexus Clinic KL. Please let me know available slots.",
+    "location": "Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001",
+    "links": [
+      { "text": "Explore Pico Laser Treatment", "href": "#" },
+      { "text": "Explore Fractional CO2 Laser", "href": "#" },
+      { "text": "Explore RF Microneedling", "href": "#" }
+    ]
+  }
+}

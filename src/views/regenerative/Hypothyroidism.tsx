@@ -35,7 +35,7 @@ import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 
 const HypothyroidLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "hypothyroidism");
+  const { t } = useTranslation(locale, "regenerative/hypothyroidism");
 
   const realLifeItems = [
     { icon: Activity, key: "r1" },

@@ -36,7 +36,7 @@ const DarkEyeCircleLanding = ({
 }: {
   locale?: string;
 }) => {
-  const { t } = useTranslation(locale, "darkEyeCircle");
+  const { t } = useTranslation(locale, "skin/darkEyeCircle");
 
   const transformations = [
     {

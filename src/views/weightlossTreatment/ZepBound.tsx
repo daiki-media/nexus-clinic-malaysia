@@ -32,7 +32,7 @@ import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 
 const ZepboundLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "zepbound");
+  const { t } = useTranslation(locale, "weightLoss/zepbound");
 
   const transformations = [
     {

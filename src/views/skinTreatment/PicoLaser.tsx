@@ -28,7 +28,7 @@ import { fallbackLng } from "@/src/i18n/settings";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
 const PicoLaserLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "picoLaser");
+  const { t } = useTranslation(locale, "skin/picoLaser");
 
   const transformations = [
     {

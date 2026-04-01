@@ -35,7 +35,7 @@ import { fallbackLng } from "@/src/i18n/settings";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
 const PRPLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "prpHair");
+  const { t } = useTranslation(locale, "hair/prpHair");
 
   const transformations = [
     {

@@ -47,7 +47,7 @@ export default function EDTreatment({
 }: {
   locale?: string;
 }) {
-  const { t } = useTranslation(locale, "edTreatment");
+  const { t } = useTranslation(locale, "regenerative/edTreatment");
 
   const images = {
     doctorConsultation: "/images/regenerative/ed-treatment.webp",

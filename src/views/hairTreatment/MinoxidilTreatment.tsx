@@ -39,7 +39,7 @@ import { fallbackLng } from "@/src/i18n/settings";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
 const MinoxidilLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "minoxidil");
+  const { t } = useTranslation(locale, "hair/minoxidil");
 
   const quickAnswers = [
     { question: t("quickAnswers.q1"), answer: t("quickAnswers.a1") },

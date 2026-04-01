@@ -16,7 +16,7 @@ import { fallbackLng } from "@/src/i18n/settings";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
 const ExosomeLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "exosomeHair");
+  const { t } = useTranslation(locale, "hair/exosomeHair");
 
   const faqs = [
     { q: t("faq.q1"), a: t("faq.a1") },

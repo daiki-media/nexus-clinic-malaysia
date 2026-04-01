@@ -41,7 +41,7 @@ const HairMesotherapyLanding = ({
 }: {
   locale?: string;
 }) => {
-  const { t } = useTranslation(locale, "hairMesotherapy");
+  const { t } = useTranslation(locale, "hair/hairMesotherapy");
 
   const faqs = [
     { q: t("faq.q1"), a: t("faq.a1") },

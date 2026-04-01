@@ -54,7 +54,7 @@ import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 
 const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "glp1");
+  const { t } = useTranslation(locale, "weightLoss/glp1");
 
   const transformations = [
     {

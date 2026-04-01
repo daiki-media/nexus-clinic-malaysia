@@ -38,7 +38,7 @@ export default function HormoneTestLanding({
 }: {
   locale?: string;
 }) {
-  const { t } = useTranslation(locale, "hormoneTest");
+  const { t } = useTranslation(locale, "regenerative/hormoneTest");
 
   const faqs = [
     { q: t("faq.q1"), a: t("faq.a1") },

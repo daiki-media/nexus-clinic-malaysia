@@ -1,1310 +1,789 @@
 "use client";
-
-import React from "react";
 import { motion } from "framer-motion";
 import {
-  Droplets,
   Sparkles,
-  Clock,
-  Shield,
-  Heart,
-  ChevronRight,
-  Star,
-  CheckCircle2,
-  AlertCircle,
+  Award,
+  MapPin,
   Calendar,
-  Droplet,
-  Leaf,
+  CheckCircle,
+  Syringe,
+  Clock,
+  Heart,
+  Shield,
+  ArrowRight,
+  AlertCircle,
   Activity,
-  Droplet as DropletIcon,
-  Zap as ZapIcon,
+  Zap,
+  Droplet,
+  Sun,
+  Wind,
+  Thermometer,
+  Leaf,
+  FlaskRound,
+  Droplets,
 } from "lucide-react";
-
 import {
-  fadeInUp,
   staggerContainer,
   fadeInLeft,
   fadeInRight,
+  fadeInUp,
   scaleIn,
 } from "../../lib/animations";
+import FAQ from "../../components/FAQ";
+import Whatsapp from "../../components/Whatsapp";
+import Image from "next/image";
+
 interface SkinBoosterProps {
   locale: string;
 }
 
 export default function SkinBooster({ locale }: SkinBoosterProps) {
+  const skinConcerns = [
+    { concern: "Dehydration and dullness", bestBooster: "Profhilo", why: "Ultra-high HA concentration spreads beneath the skin to restore moisture binding and elasticity across the full face" },
+    { concern: "Acne scars and skin texture", bestBooster: "Rejuran Healer", why: "Polynucleotides derived from salmon DNA repair damaged tissue and stimulate cell regeneration to improve scar depth and texture" },
+    { concern: "Fine lines and early skin laxity", bestBooster: "Juvelook", why: "PDLLA collagen stimulator combined with HA rebuilds the skin's collagen matrix gradually for firmer, denser skin over 3 to 6 months" },
+    { concern: "Dull complexion and nutrient depletion", bestBooster: "NCTF 135HA", why: "59 active ingredients including vitamins, minerals, amino acids and HA provide comprehensive skin nourishment and radiance" },
+    { concern: "Sensitive or inflamed skin", bestBooster: "Plinest", why: "Polynucleotide from trout DNA, milder than Rejuran, suitable for reactive or inflamed skin with lower risk of temporary purging" },
+    { concern: "Pigmentation and uneven tone", bestBooster: "NCTF 135HA or combination", why: "Antioxidants and amino acids in NCTF reduce oxidative stress while HA improves the skin environment for a more even, brighter tone" },
+    { concern: "Post-acne redness", bestBooster: "Rejuran Healer", why: "The anti-inflammatory and regenerative properties of PN help to reduce chronic post-inflammatory erythema over 3 to 4 sessions" },
+    { concern: "Ageing skin with collagen loss", bestBooster: "Juvelook or combination", why: "PDLLA triggers fibroblast activity to produce new collagen, improving firmness and density in skin that has lost structural integrity" },
+    { concern: "All-round rejuvenation", bestBooster: "Profhilo + Rejuran combo", why: "Addresses hydration, elasticity and repair simultaneously. Popular protocol for patients wanting comprehensive skin quality improvement" },
+  ];
+
+  const productComparison = [
+    { product: "Profhilo", active: "Ultra-high HA", benefit: "Deep hydration and bio-remodelling", sessions: "2 sessions", longevity: "6 months", bestAge: "30 to 55+" },
+    { product: "Rejuran", active: "Salmon DNA PN", benefit: "Repair, texture, acne scars", sessions: "3 to 4 sessions", longevity: "6 to 9 months", bestAge: "25 to 50" },
+    { product: "Juvelook", active: "PDLLA and HA", benefit: "Collagen stimulation and density", sessions: "3 to 4 sessions", longevity: "12 to 18 months", bestAge: "30 to 55" },
+    { product: "NCTF 135HA", active: "59 ingredients and HA", benefit: "Comprehensive skin nourishment", sessions: "4 sessions", longevity: "3 to 6 months", bestAge: "25 to 50" },
+    { product: "Plinest", active: "Trout DNA PN", benefit: "Regeneration for sensitive skin", sessions: "3 to 4 sessions", longevity: "6 to 9 months", bestAge: "25 to 50" },
+  ];
+
+  const sessionProtocols = [
+    { product: "Profhilo", protocol: "2 sessions, 4 weeks apart", results: "Glow visible within 7 days of session 1. Full effect after session 2", maintenance: "Every 6 months" },
+    { product: "Rejuran", protocol: "3 to 4 sessions, 2 to 4 weeks apart", results: "Skin texture improves from week 3. Full scar improvement over 8 to 12 weeks", maintenance: "Every 6 to 9 months" },
+    { product: "Juvelook", protocol: "3 to 4 sessions, spaced 3 to 4 weeks apart", results: "Gradual firmness improvement from month 2. Full collagen response at month 3 to 4", maintenance: "Every 12 to 18 months" },
+    { product: "NCTF 135HA", protocol: "4 sessions, 2 weeks apart", results: "Radiance visible from session 2. Full skin nutrition effect after session 4", maintenance: "Every 3 to 6 months" },
+    { product: "Plinest", protocol: "3 to 4 sessions, 2 to 3 weeks apart", results: "Similar to Rejuran. Gradual improvement from week 3 onward", maintenance: "Every 6 to 9 months" },
+  ];
+
+  const pricingTiers = [
+    { treatment: "Profhilo", area: "Face / neck", price: "RM 2,500" },
+    { treatment: "Plinest", area: "Face", price: "RM 1,800 – RM 2,200" },
+    { treatment: "Skin booster (general rejuvenation)", area: "Face", price: "RM 1,800 – RM 2,500" },
+    { treatment: "Advanced skin remodelling", area: "Face / multi-area", price: "RM 2,000 – RM 3,000+" },
+  ];
+
+  const faqData = [
+    { q: "How long does skin booster treatment last in Malaysia?", a: "Longevity varies by product. Profhilo results typically last six months. Rejuran Healer and Plinest last six to nine months. Juvelook provides the longest-lasting results at 12 to 18 months due to its collagen-stimulating PDLLA component. NCTF 135HA requires maintenance every three to six months. Individual metabolism, sun exposure and skincare habits all affect how long results last." },
+    { q: "How much does skin booster treatment cost in Malaysia in 2026?", a: "Skin booster prices at Nexus Clinic KL typically range from RM 1,800 to RM 2,500 per session depending on the product used and treatment area. Advanced skin remodelling treatments such as Profhilo are typically priced around RM 2,500 per session, while other skin booster treatments generally fall within the RM 1,800 to RM 2,200 range. Most treatments require multiple sessions for optimal results. Final pricing is confirmed after consultation based on your skin condition and goals." },
+    { q: "Which skin booster is best for acne scars in Malaysia?", a: "Rejuran Healer is the most effective skin booster for improving acne scar texture and depth. Its polynucleotide formula stimulates cell regeneration and tissue repair, gradually filling shallow to moderate rolling and boxcar scars over three to four sessions. Juvelook is an alternative for scars where collagen loss contributes to the indentation, as its PDLLA component rebuilds the surrounding collagen matrix. Many patients benefit from combining both treatments in a staged protocol." },
+    { q: "What is the difference between skin booster and dermal filler?", a: "Skin boosters improve the overall quality of the skin across the full treatment area. They target hydration, texture, collagen content and radiance. They do not add volume or reshape facial structure. Dermal fillers add volume to specific areas to restore lost structure or contour the face. Skin boosters are injected superficially into the dermis. Fillers are placed more deeply into subcutaneous tissue. The two treatments address different concerns and are frequently used together." },
+    { q: "How many sessions of skin booster are needed?", a: "Most skin boosters require two to four sessions for initial results. Profhilo uses the fewest sessions at two, spaced four weeks apart. Rejuran, Juvelook, NCTF and Plinest typically require three to four sessions spaced two to four weeks apart. After the initial protocol, most patients maintain their results with sessions every three to six months depending on the product used." },
+    { q: "Is Rejuran safe for Muslim patients in Malaysia?", a: "Rejuran Healer contains polynucleotides derived from highly purified salmon DNA. The purification process removes proteins and most allergens. Islamic scholars and medical authorities in Malaysia have generally considered the use of highly purified pharmaceutical-grade salmon DNA in medical treatment permissible due to the extent of processing involved. Plinest, derived from trout rather than salmon, is available as an alternative for patients who prefer a non-salmon PN booster." },
+    { q: "Can skin booster be done during pregnancy or breastfeeding?", a: "No. Skin booster treatment is not recommended during pregnancy or breastfeeding. While the risk of systemic absorption of injectable hyaluronic acid or polynucleotides is considered very low, there are no clinical trials supporting safety in pregnant or breastfeeding patients. The precautionary approach at Nexus Clinic KL is to defer all non-essential injectable treatments until after pregnancy and breastfeeding have concluded." },
+    { q: "How long before an event should I book skin booster treatment?", a: "For Profhilo, book at least two to three weeks before a significant event to allow both sessions to be completed and the initial injection marks to resolve. For Rejuran and other PN boosters, allow four to six weeks before the event to see meaningful improvement. For a big event like a wedding, the ideal plan is to start a full protocol three to four months in advance for the best accumulated result from multiple sessions." },
+    { q: "Is skin booster treatment painful?", a: "Skin boosters are administered with very fine needles into the upper dermis. Most patients describe the sensation as a series of tiny pinches rather than significant pain. Topical numbing cream can be applied before treatment on request. The treatment takes 20 to 30 minutes. There is no recovery period and most patients return to normal activities immediately." },
+  ];
+
   return (
-    <div className="w-full bg-light font-[--font-inter] overflow-hidden">
-      {/* Hero Section - With ALL text from page 1 */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="relative min-h-[90vh] flex items-center bg-linear-to-br from-cream to-white"
-      >
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, var(--color-taupe) 1px, transparent 0)`,
-            backgroundSize: "40px 40px",
-          }}
-        />
+    <div className="w-full bg-light overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
+        
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="container mx-auto max-w-6xl relative z-10"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-8">
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
+                <Sparkles className="w-4 h-4 text-wine" />
+                <span className="text-sm font-inter text-wine font-medium">Injectable Skin Quality Treatment</span>
+              </motion.div>
+              
+              <motion.h1
+                variants={fadeInUp}
+                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
+              >
+                Best Skin Booster Treatment in Malaysia for{" "}
+                <span className="text-wine italic">Hydrated, Glowing Skin</span>
+              </motion.h1>
 
-        <div className="container mx-auto px-4 py-20 relative z-10">
-          <div className="max-w-4xl">
-            {/* Nexus Clinic Kuala Lumpur - exactly as in doc */}
-            <motion.div
-              variants={fadeInUp}
-              className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full mb-8 border border-rose/20"
-            >
-              <Sparkles className="w-4 h-4 text-wine" />
-              <span className="text-sm text-brown">
-                Nexus Clinic Kuala Lumpur
-              </span>
-            </motion.div>
+              <motion.p
+                variants={fadeInUp}
+                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
+              >
+                Dull skin. Fine lines that skincare cannot reach. A tired, flat complexion that no serum or facial seems to fix.
+              </motion.p>
 
-            {/* Hero text - EXACT match */}
-            <motion.h1
-              variants={fadeInUp}
-              className="font-georgia text-5xl md:text-7xl text-brown mb-6 leading-tight"
-            >
-              Skin Booster in Kuala Lumpur, Malaysia
-            </motion.h1>
+              <motion.p
+                variants={fadeInUp}
+                className="text-brown font-inter"
+              >
+                Skin booster treatment at Nexus Clinic Kuala Lumpur works from the inside out. Injectable formulations of hyaluronic acid, 
+                polynucleotides, collagen stimulators and growth factors are delivered directly into the dermis where topical skincare cannot reach. 
+                The skin is rehydrated, repaired and restructured at the cellular level.
+              </motion.p>
 
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl md:text-2xl text-wine font-semibold mb-4"
-            >
-              Hydration that shows, glow that feels, and skin that looks rested
-            </motion.p>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-taupe mb-8 max-w-2xl"
-            >
-              Skin Boosters support deep hydration and smoother texture. You get
-              a fresher look without changing your facial shape.
-            </motion.p>
-
-            {/* Trust at a glance - ALL bullet points from page 1 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white/90 backdrop-blur-md rounded-2xl p-6 border border-rose/20 mb-8"
-            >
-              <h2 className="text-lg font-semibold text-brown mb-4 flex items-center gap-2">
-                <Shield className="w-5 h-5 text-wine" />
-                Trust at a glance (Nexus Clinic KL)
-              </h2>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-wine mt-2" />
-                  <span className="text-sm text-brown">
-                    Doctor-led consultation and skin assessment before
-                    injections
-                  </span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-wine mt-2" />
-                  <span className="text-sm text-brown">
-                    KL Golden Triangle location: LG 10, Wisma UOA II, Jalan
-                    Pinang, 50450 Kuala Lumpur
-                  </span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-wine mt-2" />
-                  <span className="text-sm text-brown">
-                    Skin booster positioning focused on hydration and skin
-                    quality, not "extra volume"
-                  </span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-wine mt-2" />
-                  <span className="text-sm text-brown">
-                    Options under the Nexus umbrella include HA-based skin
-                    boosters and popular regeneratives like Rejuran and Profhilo
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
-              <button className="bg-wine text-white px-8 py-4 rounded-full hover:bg-rose transition-all transform hover:scale-105 flex items-center gap-2 text-lg">
-                Book Your Consultation
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* What is a Skin Booster - ALL text from page 2 */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-24 bg-cream"
-      >
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft}>
-              <h2 className="font-georgia text-4xl text-brown mb-6">
-                What is a <span className="text-wine">Skin Booster?</span>
-              </h2>
-
-              <p className="text-lg text-taupe mb-4 leading-relaxed">
-                A skin booster is an injectable treatment designed to improve
-                skin hydration and overall skin quality.
-              </p>
-
-              <p className="text-lg text-taupe mb-4 leading-relaxed">
-                At Nexus Clinic, the skin booster concept is described as
-                hyaluronic acid micro-injections that hydrate from within,
-                unlike creams that sit on the surface.
-              </p>
-
-              <div className="bg-white p-6 rounded-xl border-l-4 border-wine">
-                <p className="text-brown text-lg italic">
-                  <span className="font-bold not-italic">
-                    Think of it like this:
-                  </span>{" "}
-                  Skincare is your daily maintenance. A skin booster is a
-                  hydration and repair push directly where your skin needs it.
-                </p>
-              </div>
+              <motion.div 
+                variants={fadeInLeft} 
+                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-4"
+              >
+                <motion.button
+                  variants={fadeInUp}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  Book Skin Booster Consultation
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+                <Whatsapp message="Hi, I'm interested in skin booster treatment at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
+              </motion.div>
             </motion.div>
 
             <motion.div variants={fadeInRight} className="relative">
-              <div className="absolute -inset-4 bg-rose/10 rounded-3xl blur-2xl" />
-              <img
-                src="/images/skin/acne-treatment.webp"
-                alt="Skin Booster Treatment at Nexus Clinic"
-                className="relative rounded-2xl shadow-2xl w-full object-cover"
-              />
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
+                <Image
+                  src="/images/face/Skin Booster Treatment.png"
+                  alt="Nexus Clinic Kuala Lumpur - Skin Booster Treatment"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
+                <p className="font-inter font-bold text-brown">✨ Radiant Results</p>
+                <p className="font-inter text-sm text-taupe">Visible glow • No downtime</p>
+              </div>
             </motion.div>
           </div>
+        </motion.div>
+      </section>
 
-          {/* HA Skin Booster micro-injections - from page 3 */}
-          <motion.div
-            variants={fadeInUp}
-            className="mt-12 bg-white p-6 rounded-xl"
-          >
-            <h3 className="text-xl font-semibold text-wine mb-2">
-              1) HA Skin Booster micro-injections (hydration focused)
-            </h3>
-            <p className="text-brown">
-              This is the classic "microdroplet hydration" style described on
-              Nexus Clinic's Skin Booster page. Best for: dry, dull skin and
-              fine dehydration lines.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* What Skin Boosters help with - ALL text from page 3 */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-24 bg-white"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
-          >
-            What Skin Boosters help with{" "}
-            <span className="text-wine">(real-life concerns)</span>
-          </motion.h2>
-
-          <motion.p variants={fadeInUp} className="text-center text-taupe mb-8">
-            People in Kuala Lumpur usually come in with one of these feelings:
-          </motion.p>
-
-          {/* Real-life concerns - EXACT quotes */}
-          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12">
-            {[
-              "My skin looks tired even after sleeping.",
-              "My makeup sits weird and looks patchy.",
-              "My pores look bigger when I'm dehydrated.",
-              "I want glass-skin glow, but not a puffy filler look.",
-            ].map((quote, i) => (
-              <motion.div
-                key={i}
-                variants={fadeInUp}
-                custom={i}
-                className="bg-cream p-6 rounded-xl italic text-brown relative"
-              >
-                <span className="text-4xl text-rose absolute top-2 left-2">
-                  "
-                </span>
-                <span className="relative z-10 pl-4">{quote}</span>
-                <span className="text-4xl text-rose absolute bottom-2 right-2">
-                  "
-                </span>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* What skin boosters support - EXACT list */}
-          <motion.div variants={fadeInUp} className="max-w-2xl mx-auto">
-            <h3 className="text-xl font-semibold text-brown mb-4 text-center">
-              Skin boosters are commonly used to support:
-            </h3>
-            <div className="space-y-3">
-              <div className="flex items-center gap-3 bg-cream p-4 rounded-lg">
-                <Droplets className="w-5 h-5 text-wine" />
-                <span className="text-brown">deep hydration and glow</span>
+      {/* Trust Section */}
+      <section className="py-12 px-4 bg-light">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-taupe/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <Award className="w-6 h-6 text-wine" />
+                </div>
+                <h2 className="font-georgia text-2xl md:text-3xl text-brown">Trust at a glance</h2>
               </div>
-              <div className="flex items-center gap-3 bg-cream p-4 rounded-lg">
-                <Sparkles className="w-5 h-5 text-wine" />
-                <span className="text-brown">
-                  smoother texture and more bounce over time
-                </span>
+              <div className="hidden sm:block w-px h-8 bg-taupe/20" />
+              <p className="text-taupe font-inter text-sm">Nexus Clinic Kuala Lumpur — Excellence in Aesthetic Medicine</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-4 border-y border-taupe/10">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Award className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Established</p>
+                  <p className="font-georgia text-brown font-bold text-lg">2001</p>
+                  <p className="font-inter text-taupe text-xs">Over 20 years of excellence</p>
+                </div>
               </div>
-              <div className="flex items-center gap-3 bg-cream p-4 rounded-lg">
-                <Activity className="w-5 h-5 text-wine" />
-                <span className="text-brown">
-                  fine lines that look worse when your skin is dry
-                </span>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Location</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Wisma UOA II, Jalan Pinang</p>
+                  <p className="font-inter text-taupe text-xs">KLCC, 50450 Kuala Lumpur</p>
+                </div>
               </div>
-              <div className="flex items-center gap-3 bg-cream p-4 rounded-lg">
-                <Heart className="w-5 h-5 text-wine" />
-                <span className="text-brown">
-                  acne marks or early scarring support, depending on product
-                  choice
-                </span>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Opening Hours</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Monday - Saturday</p>
+                  <p className="font-inter text-taupe text-xs">9:00am – 6:00pm | Closed Sundays & PH</p>
+                </div>
               </div>
             </div>
-          </motion.div>
-        </div>
-      </motion.section>
 
-      {/* Types of Skin Boosters - ALL text from pages 3-4 */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-24 bg-cream"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-4"
-          >
-            Types of Skin Boosters you'll hear about in Malaysia{" "}
-            <span className="text-wine">(simple guide)</span>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-taupe mb-12"
-          >
-            "Skin booster" is a category. In Malaysia, people often mean one of
-            these:
-          </motion.p>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Type 1 - HA Skin Booster */}
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-xl hover:shadow-lg transition-all"
-            >
-              <div className="bg-wine text-white p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                <Droplets className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-semibold text-brown mb-2">
-                1) HA Skin Booster micro-injections (hydration focused)
-              </h3>
-              <p className="text-rose text-sm mb-2">
-                This is the classic "microdroplet hydration" style described on
-                Nexus Clinic's Skin Booster page.
-              </p>
-              <p className="text-taupe text-sm">
-                <span className="font-semibold">Best for:</span> dry, dull skin
-                and fine dehydration lines.
-              </p>
-            </motion.div>
-
-            {/* Type 2 - Profhilo */}
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-xl hover:shadow-lg transition-all"
-            >
-              <div className="bg-wine text-white p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                <Sparkles className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-semibold text-brown mb-2">
-                2) Profhilo (bio-remodelling HA)
-              </h3>
-              <p className="text-taupe text-sm mt-2">
-                Bio-remodelling HA for skin firmness and elasticity.
-              </p>
-            </motion.div>
-
-            {/* Type 3 - Rejuran */}
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-xl hover:shadow-lg transition-all"
-            >
-              <div className="bg-wine text-white p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                <Leaf className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-semibold text-brown mb-2">
-                3) Rejuran (polynucleotide skin rejuvenation)
-              </h3>
-              <p className="text-rose text-sm mb-2">
-                Nexus describes Rejuran as containing polynucleotide (PN) and
-                being used for skin texture, elasticity, hydration, fine lines,
-                and acne scars.
-              </p>
-              <p className="text-taupe text-sm">
-                <span className="font-semibold">Best for:</span> repair-focused
-                glow, pores, texture, acne marks.
-              </p>
-            </motion.div>
-
-            {/* Type 4 - HydroDeluxe */}
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-xl hover:shadow-lg transition-all"
-            >
-              <div className="bg-wine text-white p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                <Droplet className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-semibold text-brown mb-2">
-                4) HydroDeluxe (HA-based glow booster)
-              </h3>
-              <p className="text-rose text-sm mb-2">
-                Nexus presents HydroDeluxe as an injectable skin booster
-                approach aimed at hydration and rejuvenation, with discussion of
-                results lasting months and maintenance.
-              </p>
-              <p className="text-taupe text-sm">
-                <span className="font-semibold">Best for:</span> dehydrated,
-                dull skin and "camera glow".
-              </p>
-            </motion.div>
-
-            {/* Type 5 - Karisma Collagen */}
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-xl hover:shadow-lg transition-all"
-            >
-              <div className="bg-wine text-white p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                <Star className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-semibold text-brown mb-2">
-                5) Collagen skin boosters like Karisma
-              </h3>
-              <p className="text-rose text-sm mb-2">
-                Nexus describes Karisma Collagen Skin Booster with collagen and
-                HA, and provides session guidance and price tiers on the page.
-              </p>
-              <p className="text-taupe text-sm">
-                <span className="font-semibold">Best for:</span> firmness,
-                wrinkles, elasticity, hydration.
-              </p>
-            </motion.div>
-          </div>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center mt-8 text-brown font-medium"
-          >
-            At Nexus Clinic KL, your doctor will recommend the right option
-            after a skin assessment.
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* Who is Skin Booster for - ALL text from pages 4-5 */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-24 bg-white"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
-          >
-            Who is <span className="text-wine">Skin Booster</span> for?
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Good fit */}
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-green-50 p-8 rounded-2xl"
-            >
-              <h3 className="text-xl font-semibold text-green-700 mb-4 flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5" />
-                You are a good fit if:
-              </h3>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2 text-brown">
-                  <span className="text-green-500">•</span>
-                  your skin looks dull, dehydrated, or rough
-                </li>
-                <li className="flex items-start gap-2 text-brown">
-                  <span className="text-green-500">•</span>
-                  you want glow and hydration without changing face shape
-                </li>
-                <li className="flex items-start gap-2 text-brown">
-                  <span className="text-green-500">•</span>
-                  you want smoother texture and better bounce over time
-                </li>
-                <li className="flex items-start gap-2 text-brown">
-                  <span className="text-green-500">•</span>
-                  you have early lines, enlarged pores, or acne marks and want
-                  skin quality improvement
-                </li>
-              </ul>
-            </motion.div>
-
-            {/* Who should avoid */}
-            <motion.div
-              variants={fadeInRight}
-              className="bg-orange-50 p-8 rounded-2xl"
-            >
-              <h3 className="text-xl font-semibold text-orange-700 mb-4 flex items-center gap-2">
-                <AlertCircle className="w-5 h-5" />
-                Who should avoid or postpone
-              </h3>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2 text-brown">
-                  <span className="text-orange-500">●</span>
-                  active infection, inflamed acne flare, or cold sore in the
-                  area
-                </li>
-                <li className="flex items-start gap-2 text-brown">
-                  <span className="text-orange-500">●</span>
-                  pregnancy or breastfeeding (ask your doctor)
-                </li>
-                <li className="flex items-start gap-2 text-brown">
-                  <span className="text-orange-500">●</span>
-                  severe allergy history or uncontrolled medical issues
-                </li>
-              </ul>
-              <p className="mt-4 text-sm text-taupe">
-                A proper medical consultation is essential, especially because
-                "skin booster" can mean different products.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Treatment Flow - ALL text from pages 5-6 */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-24 bg-cream"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
-          >
-            What happens during a Skin Booster treatment{" "}
-            <span className="text-wine">at Nexus Clinic KL?</span>
-          </motion.h2>
-
-          <motion.p variants={fadeInUp} className="text-center text-taupe mb-8">
-            Most sessions follow a simple flow:
-          </motion.p>
-
-          <div className="grid md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-8">
-            {[
-              {
-                step: 1,
-                title: "Consultation and skin assessment",
-                desc: "Nexus describes consultation and assessment as part of treatment planning for injections like Rejuran and Skin Booster.",
-              },
-              {
-                step: 2,
-                title: "Numbing for comfort",
-                desc: "Nexus describes numbing as part of the process for Rejuran injections.",
-              },
-              {
-                step: 3,
-                title: "Micro-injections",
-                desc: "The product is placed in small points across the face or targeted areas, depending on your plan.",
-              },
-              {
-                step: 4,
-                title: "Aftercare instructions",
-                desc: "Nexus provides aftercare guidance across booster content and blog posts.",
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                variants={scaleIn}
-                className="bg-white p-4 rounded-xl text-center"
-              >
-                <div className="bg-wine text-white w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2">
-                  {item.step}
-                </div>
-                <h3 className="font-semibold text-brown text-sm mb-1">
-                  {item.title}
-                </h3>
-                <p className="text-xs text-taupe">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.p variants={fadeInUp} className="text-center text-brown">
-            Many KL clinics describe skin booster sessions around 30 to 45
-            minutes, including numbing time. Nexus also lists booster-style
-            procedures like Karisma at 20 to 30 minutes in its overview.
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* Results Timeline - ALL text from pages 6-7 */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-24 bg-white"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-4"
-          >
-            Results timeline:{" "}
-            <span className="text-wine">what you'll notice, and when</span>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-taupe mb-12"
-          >
-            This is what most patients actually want to know.
-          </motion.p>
-
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {/* First 24-48 hours */}
-            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-wine mb-3">
-                First 24 to 48 hours
-              </h3>
-              <p className="text-brown mb-2">You may have:</p>
-              <ul className="list-disc list-inside text-taupe space-y-1">
-                <li>small bumps at injection points</li>
-                <li>mild redness or swelling</li>
-              </ul>
-              <p className="text-sm text-taupe mt-3">
-                These short-term effects are commonly described by Malaysian
-                clinic resources.
-              </p>
-            </motion.div>
-
-            {/* 1 to 2 weeks */}
-            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-wine mb-3">
-                1 to 2 weeks
-              </h3>
-              <p className="text-brown mb-2">
-                Nexus notes that many patients notice improvement in about 1 to
-                2 weeks on its Skin Booster and Karisma pages.
-              </p>
-              <p className="text-brown mb-2">Your skin often looks:</p>
-              <ul className="list-disc list-inside text-taupe space-y-1">
-                <li>more hydrated</li>
-                <li>more "plump" in a healthy way</li>
-                <li>smoother under makeup</li>
-              </ul>
-            </motion.div>
-
-            {/* 3 to 6 weeks */}
-            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-wine mb-3">
-                3 to 6 weeks
-              </h3>
-              <p className="text-taupe">
-                Texture improvements become clearer, especially with
-                regenerative options and a proper course plan.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Sessions and Longevity - ALL text from page 7 */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-24 bg-cream"
-      >
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* How many sessions */}
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-white p-8 rounded-2xl"
-            >
-              <h3 className="text-2xl font-semibold text-brown mb-4 flex items-center gap-2">
-                <Calendar className="w-6 h-6 text-wine" />
-                How many sessions do you need?
-              </h3>
-              <p className="text-taupe mb-4">
-                Most clinics recommend a course.
-              </p>
-              <div className="space-y-3">
-                <p className="text-brown">
-                  <span className="font-semibold">
-                    Examples from Malaysia clinic sources:
-                  </span>
-                </p>
-                <p className="text-taupe pl-4">
-                  Dr K Clinic recommends three sessions with a 14 to 21-day
-                  interval, then maintenance every 6 to 9 months.
-                </p>
-                <p className="text-taupe pl-4">
-                  Nexus Rejuran page suggests 3 to 4 sessions, spaced 3 to 4
-                  weeks apart.
-                </p>
-              </div>
-              <p className="mt-4 text-wine font-medium">
-                At Nexus Clinic KL, your doctor will tailor the plan to your
-                skin goals and budget.
-              </p>
-            </motion.div>
-
-            {/* How long they last */}
-            <motion.div
-              variants={fadeInRight}
-              className="bg-white p-8 rounded-2xl"
-            >
-              <h3 className="text-2xl font-semibold text-brown mb-4 flex items-center gap-2">
-                <Clock className="w-6 h-6 text-wine" />
-                How long do Skin Boosters last?
-              </h3>
-              <p className="text-taupe mb-4">
-                Most KL and Malaysia sources commonly state 6 to 12 months
-                depending on product, skin condition, and maintenance.
-              </p>
-              <p className="text-taupe">
-                Nexus HydroDeluxe content also discusses results commonly
-                lasting six to nine months, with maintenance to sustain results.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Pros and Cons - ALL text from pages 7-8 */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-24 bg-white"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
-          >
-            Pros and cons{" "}
-            <span className="text-wine">(honest, not salesy)</span>
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Pros */}
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-green-50 p-8 rounded-2xl"
-            >
-              <h3 className="text-2xl font-semibold text-green-700 mb-4">
-                Pros
-              </h3>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2 text-brown">
-                  <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0 mt-1" />
-                  improves hydration and glow without changing facial structure
-                </li>
-                <li className="flex items-start gap-2 text-brown">
-                  <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0 mt-1" />
-                  supports smoother texture and healthier-looking skin over time
-                </li>
-                <li className="flex items-start gap-2 text-brown">
-                  <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0 mt-1" />
-                  minimal downtime for most people
-                </li>
-                <li className="flex items-start gap-2 text-brown">
-                  <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0 mt-1" />
-                  flexible, can be combined with lasers and other rejuvenation
-                  treatments
-                </li>
-              </ul>
-            </motion.div>
-
-            {/* Cons */}
-            <motion.div
-              variants={fadeInRight}
-              className="bg-orange-50 p-8 rounded-2xl"
-            >
-              <h3 className="text-2xl font-semibold text-orange-700 mb-4">
-                Cons
-              </h3>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2 text-brown">
-                  <AlertCircle className="w-5 h-5 text-orange-500 shrink-0 mt-1" />
-                  results are not permanent
-                </li>
-                <li className="flex items-start gap-2 text-brown">
-                  <AlertCircle className="w-5 h-5 text-orange-500 shrink-0 mt-1" />
-                  you may need multiple sessions for best results
-                </li>
-                <li className="flex items-start gap-2 text-brown">
-                  <AlertCircle className="w-5 h-5 text-orange-500 shrink-0 mt-1" />
-                  mild redness, swelling, bruising can happen
-                </li>
-                <li className="flex items-start gap-2 text-brown">
-                  <AlertCircle className="w-5 h-5 text-orange-500 shrink-0 mt-1" />
-                  not a replacement for surgical lifting if your main issue is
-                  significant sagging
-                </li>
-              </ul>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Side effects and safety - ALL text from page 8 */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-24 bg-cream"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
-          >
-            Side effects <span className="text-wine">and safety</span>
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-white p-8 rounded-2xl"
-            >
-              <h3 className="text-xl font-semibold text-brown mb-4">
-                Most people experience mild, temporary effects:
-              </h3>
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  "redness",
-                  "swelling",
-                  "bruising",
-                  "small bumps at injection points",
-                ].map((effect, i) => (
-                  <div
-                    key={i}
-                    className="bg-cream p-3 rounded-lg text-center text-brown"
-                  >
-                    {effect}
+            <div className="mt-6 pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-wine" />
                   </div>
-                ))}
-              </div>
-              <p className="text-sm text-taupe mt-4">
-                These are commonly listed in clinic FAQs and aftercare guides.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="bg-white p-8 rounded-2xl"
-            >
-              <h3 className="text-xl font-semibold text-brown mb-4">
-                Safety depends on:
-              </h3>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2 text-brown">
-                  <Shield className="w-5 h-5 text-wine shrink-0" />
-                  proper medical assessment
-                </li>
-                <li className="flex items-start gap-2 text-brown">
-                  <Shield className="w-5 h-5 text-wine shrink-0" />
-                  authentic product
-                </li>
-                <li className="flex items-start gap-2 text-brown">
-                  <Shield className="w-5 h-5 text-wine shrink-0" />
-                  sterile technique
-                </li>
-                <li className="flex items-start gap-2 text-brown">
-                  <Shield className="w-5 h-5 text-wine shrink-0" />
-                  correct depth and placement
-                </li>
-              </ul>
-              <p className="mt-4 text-wine font-medium">
-                This is why doctor-led clinics matter.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Cost Section - ALL text from page 9 */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-24 bg-white"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-4"
-          >
-            Cost of Skin Booster in Malaysia{" "}
-            <span className="text-wine">
-              (Kuala Lumpur pricing expectations)
-            </span>
-          </motion.h2>
-
-          <motion.p variants={fadeInUp} className="text-center text-taupe mb-8">
-            Skin booster cost varies by:
-          </motion.p>
-
-          <div className="grid md:grid-cols-3 gap-4 max-w-3xl mx-auto mb-12">
-            {[
-              "product type (basic HA vs Profhilo vs Rejuran vs collagen boosters)",
-              "dosage and number of sessions",
-              "clinic location and doctor experience",
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                variants={scaleIn}
-                className="bg-cream p-4 rounded-lg text-center text-brown text-sm"
-              >
-                {item}
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-cream p-8 rounded-2xl"
-            >
-              <h3 className="text-xl font-semibold text-brown mb-4">
-                Common price ranges you'll see in Malaysia
-              </h3>
-              <ul className="space-y-3">
-                <li className="text-brown">
-                  <span className="font-semibold">•</span> Many KL sources cite
-                  RM 1,000 to RM 3,500 per session depending on brand and
-                  volume.
-                </li>
-                <li className="text-brown">
-                  <span className="font-semibold">•</span> One Malaysia price
-                  guide lists examples such as Rejuran RM 1,200 to RM 2,500 and
-                  Juvelook RM 1,500 to RM 2,800.
-                </li>
-              </ul>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="bg-wine text-white p-8 rounded-2xl"
-            >
-              <h3 className="text-xl font-semibold mb-4">
-                Nexus Clinic example pricing (Karisma Collagen Skin Booster)
-              </h3>
-              <p className="mb-4">
-                Nexus publishes a tiered price list on its Karisma page:
-              </p>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span>1 syringe (2cc)</span>
-                  <span className="font-bold">RM 3000</span>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">20+ Years of Excellence</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Trusted aesthetic care since 2001</p>
+                  </div>
                 </div>
-                <div className="flex justify-between">
-                  <span>2 syringes (4cc)</span>
-                  <span className="font-bold">RM 6000</span>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">5,000+ Procedures</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Performed by licensed doctors</p>
+                  </div>
                 </div>
-                <div className="flex justify-between">
-                  <span>3 syringes (6cc)</span>
-                  <span className="font-bold">RM 9000</span>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">Premium Products</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Profhilo, Rejuran, Juvelook, NCTF, Plinest</p>
+                  </div>
                 </div>
               </div>
-              <p className="mt-6 text-white/80 text-sm">
-                If you want an exact quote, you need a consult because the
-                "right" plan depends on your skin and goals.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Skin Booster vs Others - ALL text from pages 9-10 */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-24 bg-cream"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
-          >
-            Skin Booster vs{" "}
-            <span className="text-wine">other popular treatments</span>
-          </motion.h2>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {/* vs Dermal Filler */}
-            <motion.div variants={scaleIn} className="bg-white p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-brown mb-3">
-                Skin Booster vs Dermal Filler
-              </h3>
-              <p className="text-taupe mb-2">
-                Filler adds volume and shapes contours.
-              </p>
-              <p className="text-taupe mb-2">
-                Skin boosters focus on hydration, glow, elasticity, and skin
-                quality.
-              </p>
-              <p className="text-sm text-wine mt-2">
-                Nexus Skin Booster page explains this difference clearly:
-                boosters improve hydration and elasticity without changing
-                facial structure.
-              </p>
-            </motion.div>
-
-            {/* vs Botox */}
-            <motion.div variants={scaleIn} className="bg-white p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-brown mb-3">
-                Skin Booster vs Botox
-              </h3>
-              <p className="text-taupe mb-2">
-                Botox relaxes muscle to soften expression lines.
-              </p>
-              <p className="text-taupe mb-2">
-                Skin boosters improve skin quality and hydration.
-              </p>
-              <p className="text-sm text-wine mt-2">
-                Nexus also explains Profhilo is not Botox and does not "freeze"
-                muscles, focusing instead on skin remodeling.
-              </p>
-            </motion.div>
-
-            {/* vs Laser or Microneedling */}
-            <motion.div variants={scaleIn} className="bg-white p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-brown mb-3">
-                Skin Booster vs Laser or Microneedling
-              </h3>
-              <p className="text-taupe">
-                Lasers and microneedling target pigment, scars, pores, and
-                collagen stimulation. Skin boosters support hydration and skin
-                condition, and many clinics combine them for better overall
-                results.
-              </p>
-            </motion.div>
-          </div>
-
-          {/* Areas that can be treated */}
-          <motion.div
-            variants={fadeInUp}
-            className="mt-12 bg-white p-8 rounded-2xl max-w-2xl mx-auto text-center"
-          >
-            <h3 className="text-xl font-semibold text-brown mb-4">
-              Areas that can be treated
-            </h3>
-            <p className="text-taupe mb-4">
-              Most patients treat the face, but boosters can also be used on:
-            </p>
-            <div className="flex justify-center gap-6">
-              <span className="px-4 py-2 bg-cream rounded-full text-brown">
-                neck
-              </span>
-              <span className="px-4 py-2 bg-cream rounded-full text-brown">
-                hands
-              </span>
-              <span className="px-4 py-2 bg-cream rounded-full text-brown">
-                decolletage (upper chest)
-              </span>
             </div>
-            <p className="text-sm text-taupe mt-4">
-              Nexus lists these areas for boosters like Skin Booster and
-              Karisma.
-            </p>
+
+            <div className="mt-6 pt-4 border-t border-taupe/10">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Award-winning practitioners</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Doctor-led consultations</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Clinically proven formulations</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Treatment Overview Section */}
+      <section className="py-16 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">Skin Booster Treatment Overview</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">Everything you need to know at a glance</p>
           </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Aftercare - ALL text from page 11 */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-24 bg-white"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-4"
-          >
-            Aftercare:{" "}
-            <span className="text-wine">how to protect your glow</span>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-taupe mb-12"
-          >
-            Here is a simple checklist used across clinic guidance:
-          </motion.p>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-            {/* First 24 hours */}
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-cream p-8 rounded-2xl"
-            >
-              <h3 className="text-xl font-semibold text-wine mb-4">
-                For the first 24 hours
-              </h3>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2 text-brown">
-                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0" />
-                  Avoid makeup if possible.
-                </li>
-                <li className="flex items-start gap-2 text-brown">
-                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0" />
-                  Avoid heavy sweating and intense workouts.
-                </li>
-                <li className="flex items-start gap-2 text-brown">
-                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0" />
-                  Do not rub or massage injection points.
-                </li>
-              </ul>
-            </motion.div>
-
-            {/* For 48 hours */}
-            <motion.div
-              variants={fadeInRight}
-              className="bg-cream p-8 rounded-2xl"
-            >
-              <h3 className="text-xl font-semibold text-wine mb-4">
-                For 48 hours
-              </h3>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2 text-brown">
-                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0" />
-                  Skip harsh skincare actsives if your skin feels sensitive.
-                </li>
-                <li className="flex items-start gap-2 text-brown">
-                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0" />
-                  Use sunscreen daily.
-                </li>
-              </ul>
-            </motion.div>
-          </div>
-
-          <motion.p variants={fadeInUp} className="text-center text-taupe mt-8">
-            Nexus publishes aftercare-style guidance for boosters and related
-            treatments to help maximize results.
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* Why Nexus Clinic Kuala Lumpur - ALL text from page 11 */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-24 bg-cream"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
-          >
-            Why <span className="text-wine">Nexus Clinic Kuala Lumpur?</span>
-          </motion.h2>
-
-          <div className="max-w-3xl mx-auto">
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-brown mb-8 text-center italic"
-            >
-              If you want skin that looks better in real life, not just in a
-              filtered selfie, you need a plan that fits your skin.
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-8 rounded-2xl space-y-4"
-            >
-              <p className="text-brown">At Nexus Clinic KL:</p>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
-                  <span className="text-taupe">
-                    Skin boosters are positioned as hydration and skin quality
-                    improvement, not "face changing" volume.
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
-                  <span className="text-taupe">
-                    Nexus offers popular options like Rejuran and Profhilo and
-                    explains what they do, which helps set realistic
-                    expectations.
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
-                  <span className="text-taupe">
-                    You get a KL location that's easy to reach: LG 10, Wisma UOA
-                    II, Jalan Pinang, 50450 Kuala Lumpur.
-                  </span>
-                </li>
-              </ul>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* FAQ Section - ALL 16 questions and answers from pages 12-14 */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-24 bg-white"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
-          >
-            Frequently Asked <span className="text-wine">Questions</span>
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {/* Question 1-8 */}
+          
+          <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              {
-                q: "1) What is a skin booster?",
-                a: "A skin booster is an injectable treatment that improves hydration and skin quality, often using hyaluronic acid micro-injections into the dermis.",
-              },
-              {
-                q: "2) What does a skin booster do for your face?",
-                a: "It supports deep hydration, smoother texture, and a healthier glow, without adding 'filler volume'.",
-              },
-              {
-                q: "3) Is a skin booster the same as a dermal filler?",
-                a: "No. Fillers add volume and shape. Skin boosters focus on hydration and elasticity without changing facial structure.",
-              },
-              {
-                q: "4) How long do skin boosters last?",
-                a: "Many clinics state results commonly last 6 to 12 months, depending on product, skin condition, and maintenance.",
-              },
-              {
-                q: "5) When will I see results after a skin booster?",
-                a: "Nexus notes many people notice changes in 1 to 2 weeks, with continued improvement after.",
-              },
-              {
-                q: "6) How many sessions do I need?",
-                a: "Many providers recommend a course, often 3 sessions, then maintenance every few months.",
-              },
-              {
-                q: "7) Do skin boosters hurt?",
-                a: "Most clinics use numbing cream, and people usually feel mild discomfort rather than strong pain.",
-              },
-              {
-                q: "8) Is there downtime after skin booster injections?",
-                a: "Most people have mild redness, swelling, or small bumps that settle within a few days.",
-              },
-              {
-                q: "9) Can I wear makeup after a skin booster?",
-                a: "Some clinics advise avoiding makeup for at least 24 hours to let the skin calm.",
-              },
-              {
-                q: "10) Are skin boosters safe?",
-                a: "They are generally considered safe when performed by trained medical professionals using sterile technique and authentic products. Mild redness and swelling are common short-term effects.",
-              },
-              {
-                q: "11) What are the side effects of skin boosters?",
-                a: "Common effects include redness, swelling, bruising, and small bumps at injection points. They usually resolve in days.",
-              },
-              {
-                q: "12) How much do skin boosters cost in Malaysia?",
-                a: "Many KL sources commonly cite RM 1,000 to RM 3,500 per session, depending on product and dosage.",
-              },
-              {
-                q: "13) Why do prices vary so much?",
-                a: "Product type (basic HA vs Profhilo vs Rejuran vs collagen boosters), dosage, number of sessions, and doctor experience all affect cost.",
-              },
-              {
-                q: "14) Is Profhilo a skin booster?",
-                a: "Nexus positions Profhilo as a skin bio-remodelling injectable with pure hyaluronic acid that hydrates and supports firmness, and it is not a traditional filler.",
-              },
-              {
-                q: "15) What is Rejuran, and why is it popular in Malaysia?",
-                a: "Nexus describes Rejuran as a PN-based skin rejuvenation treatment used to improve texture, elasticity, hydration, fine lines, pores, and acne scars.",
-              },
-              {
-                q: "16) Can I combine skin boosters with laser or microneedling?",
-                a: "Yes, many clinics state boosters can pair well with other rejuvenation treatments for enhanced results, but your doctor should plan the timing.",
-              },
-            ].map((faq, i) => (
-              <motion.div
-                key={i}
-                variants={fadeInUp}
-                custom={i}
-                className="bg-cream p-6 rounded-xl hover:shadow-lg transition-all"
-              >
-                <h3 className="font-semibold text-brown mb-2">{faq.q}</h3>
-                <p className="text-taupe text-sm">{faq.a}</p>
-              </motion.div>
+              { icon: Syringe, label: "Treatment Type", value: "Injectable skin quality improvement" },
+              { icon: Clock, label: "Session Time", value: "20 to 30 minutes" },
+              { icon: Heart, label: "Downtime", value: "Minimal, 24-48 hours" },
+              { icon: Zap, label: "Results", value: "Visible glow within days" },
+            ].map((item, idx) => (
+              <div key={idx} className="bg-light p-5 rounded-xl border border-taupe/10 shadow-sm">
+                <item.icon className="w-8 h-8 text-wine mb-3" />
+                <p className="font-inter text-sm text-taupe">{item.label}</p>
+                <p className="font-georgia text-md text-brown font-semibold">{item.value}</p>
+              </div>
             ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Final CTA - ALL text from page 14 */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-24 bg-linear-to-r from-wine to-rose text-white"
-      >
-        <div className="container mx-auto px-4 text-center">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl md:text-5xl mb-6"
-          >
-            Ready for a glow that looks{" "}
-            <span className="italic">natural, not overdone?</span>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-xl mb-8 max-w-3xl mx-auto opacity-90"
-          >
-            If your main goal is hydration, smoother texture, and a rested look,
-            a Skin Booster in Kuala Lumpur at Nexus Clinic is a strong option.
-            Start with a consult so your doctor can choose the right booster
-            type and session plan for your skin.
-          </motion.p>
-
-          <motion.div variants={fadeInUp}>
-            <button className="bg-white text-wine px-12 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transform hover:scale-105 transition-all">
-              Book Your Consultation
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 rounded-2xl p-6 border border-wine/10">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div>
+                <p className="font-inter text-sm text-taupe">Sessions Needed</p>
+                <p className="font-georgia text-brown font-semibold">2 to 4 sessions initially<br />Maintenance every 3-6 months</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Longevity</p>
+                <p className="font-georgia text-brown font-semibold">Profhilo: 6 months<br />Juvelook: 12-18 months</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Suitable For</p>
+                <p className="font-georgia text-brown">Dull skin, dehydration, fine lines, acne scars, poor texture</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Not Suitable For</p>
+                <p className="font-georgia text-brown">Pregnancy, breastfeeding, active infection, allergies</p>
+              </div>
+            </div>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-8">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Not Sure Which Booster Is Right for You | Free Skin Assessment
+              <ArrowRight className="w-4 h-4" />
             </button>
           </motion.div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
+
+      {/* Malaysian Skin Stressors Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Malaysian Skin and the Three Hidden Stressors</h2>
+            <p className="text-taupe font-inter">That age it faster</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl border border-taupe/10">
+              <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center mb-4">
+                <Sun className="w-6 h-6 text-wine" />
+              </div>
+              <h3 className="font-georgia text-xl text-brown mb-2">UV Exposure Near the Equator</h3>
+              <p className="text-taupe font-inter text-sm">
+                Malaysia sits between 1 and 7 degrees north of the equator. UV index levels reach 11 or above on most days, 
+                accelerating collagen breakdown and depleting natural hyaluronic acid content.
+              </p>
+            </motion.div>
+            
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl border border-taupe/10">
+              <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center mb-4">
+                <Wind className="w-6 h-6 text-wine" />
+              </div>
+              <h3 className="font-georgia text-xl text-brown mb-2">Air-Conditioning Dehydration</h3>
+              <p className="text-taupe font-inter text-sm">
+                Air conditioning aggressively reduces ambient humidity. Skin loses transepidermal water continuously, 
+                leading to a chronic dehydration pattern that topical moisturisers cannot fully correct.
+              </p>
+            </motion.div>
+            
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl border border-taupe/10">
+              <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center mb-4">
+                <Thermometer className="w-6 h-6 text-wine" />
+              </div>
+              <h3 className="font-georgia text-xl text-brown mb-2">Tropical Heat and Humidity Cycling</h3>
+              <p className="text-taupe font-inter text-sm">
+                Moving between intense outdoor heat and cold air-conditioned spaces repeatedly stresses the skin's barrier function, 
+                disrupting sebum regulation and increasing sensitivity over time.
+              </p>
+            </motion.div>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-brown font-inter">
+              Skin boosters deliver active ingredients directly into the dermis, bypassing the surface barrier entirely. 
+              This is why injectable treatment achieves what even the best topical skincare routine cannot.
+            </p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Address Your Skin at the Right Level | Book a Consultation
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* How Skin Boosters Work Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-6">
+              <h2 className="font-georgia text-3xl md:text-4xl text-brown">
+                How Skin Booster Injections Work and <span className="text-wine">What They Actually Fix</span>
+              </h2>
+              <p className="text-brown font-inter">
+                A skin booster is an injectable treatment that delivers active ingredients into the mid to deep dermis using very fine needles. 
+                Unlike dermal filler, which adds volume and structure to specific areas, skin boosters are distributed across the full treatment area.
+              </p>
+              <p className="text-brown font-inter">
+                The key distinction is that skin boosters target skin quality while fillers target facial structure. 
+                A patient whose skin looks dull, dehydrated and aged regardless of the shape of their face needs a skin booster.
+              </p>
+              <div className="bg-cream p-4 rounded-xl border-l-4 border-wine">
+                <p className="text-brown font-inter text-sm">
+                  According to the International Society of Aesthetic Plastic Surgery 2024 Global Statistics Report, 
+                  injectable skin quality treatments including skin boosters saw a 41% increase in Southeast Asia, 
+                  the highest growth rate of any non-surgical aesthetic category in the region.
+                </p>
+                <p className="text-taupe text-xs mt-1">[ISAPS Global Statistics Report 2024]</p>
+              </div>
+            </motion.div>
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
+                <Image
+                  src="/images/face/skin-booster.jpeg"
+                  alt="How skin booster works"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <button className="mt-6 text-wine font-inter font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                Get the Right Booster for Your Skin
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Skin Booster Selector Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Skin Booster Selector</h2>
+            <p className="text-taupe font-inter">Match your skin concern to the right treatment</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Skin Concern</th>
+                  <th className="p-4 text-left font-georgia">Best Booster</th>
+                  <th className="p-4 text-left font-georgia">Why It Works</th>
+                 </tr>
+              </thead>
+              <tbody>
+                {skinConcerns.slice(0, 6).map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.concern}</td>
+                    <td className="p-4 text-wine font-inter font-medium">{item.bestBooster}</td>
+                    <td className="p-4 text-taupe font-inter">{item.why}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <div className="mt-4 overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <tbody>
+                {skinConcerns.slice(6).map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.concern}</td>
+                    <td className="p-4 text-wine font-inter font-medium">{item.bestBooster}</td>
+                    <td className="p-4 text-taupe font-inter">{item.why}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Get Your Personalised Booster Recommendation | Free Skin Assessment
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Product Comparison Table */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Skin Booster Products Comparison</h2>
+            <p className="text-taupe font-inter">All products side by side</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Product</th>
+                  <th className="p-4 text-left font-georgia">Active Ingredient</th>
+                  <th className="p-4 text-left font-georgia">Primary Benefit</th>
+                  <th className="p-4 text-left font-georgia">Sessions</th>
+                  <th className="p-4 text-left font-georgia">Longevity</th>
+                  <th className="p-4 text-left font-georgia">Best Age</th>
+                 </tr>
+              </thead>
+              <tbody>
+                {productComparison.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.product}</td>
+                    <td className="p-4 text-taupe font-inter">{item.active}</td>
+                    <td className="p-4 text-taupe font-inter">{item.benefit}</td>
+                    <td className="p-4 text-taupe font-inter">{item.sessions}</td>
+                    <td className="p-4 text-taupe font-inter">{item.longevity}</td>
+                    <td className="p-4 text-taupe font-inter">{item.bestAge}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Ask About Products at Your Consultation
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Session Protocols Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Session Protocols and Results Timeline</h2>
+            <p className="text-taupe font-inter">What to expect from each product</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Product</th>
+                  <th className="p-4 text-left font-georgia">Initial Protocol</th>
+                  <th className="p-4 text-left font-georgia">When to Expect Results</th>
+                  <th className="p-4 text-left font-georgia">Maintenance</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sessionProtocols.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.product}</td>
+                    <td className="p-4 text-taupe font-inter">{item.protocol}</td>
+                    <td className="p-4 text-taupe font-inter">{item.results}</td>
+                    <td className="p-4 text-taupe font-inter">{item.maintenance}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-brown font-inter">
+              For patients wanting the fastest overall improvement, the most effective starting approach at Nexus Clinic KL is a combined 
+              Profhilo and Rejuran protocol. Profhilo delivers immediate radiance while Rejuran rebuilds texture and skin barrier function.
+            </p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Get a Protocol Recommendation for Your Skin
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-4xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Skin Booster Price in Malaysia</h2>
+            <p className="text-taupe font-inter">Transparent 2026 Pricing at Nexus Clinic KL</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Treatment</th>
+                  <th className="p-4 text-left font-georgia">Area</th>
+                  <th className="p-4 text-left font-georgia">Price per Session (2026)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pricingTiers.map((tier, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10">
+                    <td className="p-4 font-inter text-brown">{tier.treatment}</td>
+                    <td className="p-4 font-inter text-taupe">{tier.area}</td>
+                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr className="bg-wine/5">
+                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
+                    * Most treatments require multiple sessions depending on skin condition and goals. Final pricing confirmed during consultation.
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
+            <h3 className="font-georgia text-lg text-brown mb-2">What Affects Skin Booster Price in Kuala Lumpur</h3>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                <span>Product brand and formulation: Profhilo and Juvelook are priced higher due to proprietary molecular structures</span>
+              </li>
+              <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                <span>Treatment area: Full face costs more than targeted areas like under-eyes or neck</span>
+              </li>
+              <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                <span>Number of sessions: Booking an initial protocol together is more cost-efficient</span>
+              </li>
+            </ul>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Get Your Personalised Skin Booster Price
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Side Effects & Aftercare Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Side Effects and Aftercare</h2>
+            <p className="text-taupe font-inter">What to expect after treatment</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div variants={fadeInLeft} className="bg-cream p-6 rounded-xl border border-taupe/10">
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <Heart className="w-5 h-5 text-wine" />
+                Common Temporary Effects
+              </h3>
+              <ul className="space-y-2">
+                {[
+                  "Small pinpoint injection marks, resolving within 24 to 48 hours",
+                  "Mild redness and puffiness, settling within a day",
+                  "Occasional small bumps, resolving within 24 to 72 hours",
+                  "Light bruising in some patients, fading within 3 to 5 days",
+                  "Temporary skin purging in some Rejuran patients with oily skin",
+                ].map((effect, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-taupe font-inter text-sm">
+                    <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                    <span>{effect}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+            
+            <motion.div variants={fadeInRight} className="bg-cream p-6 rounded-xl border border-taupe/10">
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <Shield className="w-5 h-5 text-wine" />
+                Aftercare Instructions
+              </h3>
+              <ul className="space-y-2">
+                {[
+                  "Avoid touching or pressing the treatment area for at least 6 hours",
+                  "Keep skin clean and gently moisturised. Avoid active skincare for 48 hours",
+                  "Apply SPF 30+ sunscreen every day after treatment",
+                  "Skip intense exercise for 24 hours",
+                  "Avoid saunas, steam rooms and prolonged heat for 48 hours",
+                  "No facial massages or laser treatments for at least 2 weeks",
+                ].map((instruction, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-taupe font-inter text-sm">
+                    <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                    <span>{instruction}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* FAQ Section */}
+      <FAQ data={faqData} />
+      
+      {/* CTA Section */}
+      <section className="py-20 px-4 bg-wine">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-4xl text-center"
+        >
+          <motion.div variants={fadeInUp} className="space-y-6">
+            <h2 className="font-georgia text-3xl md:text-5xl text-light">
+              Book Your Skin Booster Treatment in Kuala Lumpur at Nexus Clinic KL
+            </h2>
+            <p className="text-xl text-cream font-inter max-w-2xl mx-auto">
+              Skincare reaches the surface. Skin boosters reach the dermis. If your skin looks dull, dry, textured or tired 
+              despite a consistent routine, the answer is treatment at the level where the problem actually lives.
+            </p>
+            <p className="text-cream/90 font-inter">
+              One consultation at Nexus Clinic KL is enough to identify exactly which booster addresses your skin concern, 
+              how many sessions you need and what a realistic result looks like for your skin type.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                Book Your Free Consultation Now
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+              <Whatsapp 
+                message="Hi, I'd like to book a free consultation for skin booster treatment at Nexus Clinic KL. Please let me know available slots."
+                variant="light"
+              />
+            </div>
+            <p className="text-cream/80 font-inter text-sm">
+              Limited slots available this week | Located at Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
+            </p>
+            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
+              <a href="#" className="hover:text-cream transition-colors">Explore Cheek Filler</a>
+              <span>•</span>
+              <a href="#" className="hover:text-cream transition-colors">Explore Jawline Filler</a>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
     </div>
   );
 }

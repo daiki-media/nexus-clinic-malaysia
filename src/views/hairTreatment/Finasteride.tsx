@@ -27,7 +27,7 @@ import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 
 const FinasterideLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "finasteride");
+  const { t } = useTranslation(locale, "hair/finasteride");
 
   const faqs = [
     { q: t("faq.q1"), a: t("faq.a1") },

@@ -36,7 +36,7 @@ import FAQ from "@/src/components/FAQ";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
 const FUEHairTransplant = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "fueHairTransplant");
+  const { t } = useTranslation(locale, "hair/fueHairTransplant");
 
   const transformations = [
     {

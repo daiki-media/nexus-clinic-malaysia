@@ -21,32 +21,32 @@ export const faceTreatmentsMetadata: TreatmentMetadata[] = [
   {
     slug: 'chin-filler-malaysia',
     component: 'ChinFiller',
-    title: 'Chin Filler Malaysia | Chin Enhancement in KL | Nexus Clinic',
-    description: 'Define your chin & improve facial balance with expert chin filler in Kuala Lumpur. Safe, natural results by experienced doctors. Book your consultation today.',
+    title: 'Best Chin Filler in Malaysia | Instant Results Without Surgery | Nexus Clinic Kuala Lumpur',
+    description: 'Trusted by thousands. Award-winning injectors and aesthetic doctors at Nexus Clinic KL deliver precise chin filler Kuala Lumpur results. Sharper profile, restored facial balance. No surgery. No downtime. Book today.',
   },
   {
     slug: 'jawline-filler-malaysia',
     component: 'JawlineFiller',
-    title: 'Best Jawline Filler in Kuala Lumpur | Facial Contour Malaysia',
-    description: 'Achieve a sharper, masculine or feminine jawline with professional jawline filler in Malaysia. Personalized treatment with medical precision. Schedule now.',
+    title: 'Non Surgical Jawline Filler in Malaysia for Defined, Sculpted Contours | Nexus Clinic KL',
+    description: 'Over 5,000 filler procedures and counting. Nexus Clinic KL delivers precise jawline filler in Malaysia built for Southeast Asian bone structure. Real definition, no surgery, same-day results. Book your consultation in Kuala Lumpur today.',
   },
   {
     slug: 'botox-malaysia',
     component: 'MasseterBotox',
-    title: 'Masseter Botox Malaysia | Jaw Slimming in KL | Nexus Clinic',
-    description: 'Slim and reshape your jaw with masseter Botox in Kuala Lumpur. Safe, precise treatment by experienced aesthetic doctors for natural results. Book your consultation today.',
+    title: 'Top Botox Treatment in Malaysia for Smoother Skin and Natural Results | Nexus Clinic KL',
+    description: 'Lines that appear when you talk, smile or frown are fixable in under 20 minutes. Nexus Clinic KL has delivered Botox treatment in Malaysia since 2001. Precise dosing, natural results, zero frozen look. Book your free consultation in Kuala Lumpur today.',
   },
   {
     slug: 'nose-thread-lift-malaysia',
     component: 'NoseThreadLift',
-    title: 'Nose Thread Lift Malaysia | Non-Surgical Nose Lift in KL',
-    description: 'Achieve a refined nose shape with nose thread lift in Kuala Lumpur. Safe, non-surgical enhancement by experienced aesthetic doctors. Book your consultation today.',
+    title: 'Instant Nose Thread Lift in Malaysia for a Higher Bridge and Sharper Tip | Nexus Clinic KL',
+    description: 'Get a higher nose bridge & sharper tip with a non-surgical nose thread lift in Malaysia. Minimal downtime, instant contour. Learn about nose threads!',
   },
   {
     slug: 'skin-booster-malaysia',
     component: 'SkinBooster',
-    title: 'Skin Booster Malaysia | Hydrating & Rejuvenating Treatment KL',
-    description: 'Revitalize your skin with professional Skin Booster treatment in Kuala Lumpur. Boost hydration, glow & elasticity with safe, expert-administered care. Book now.',
+    title: 'Best Skin Booster Treatment in Malaysia for Hydrated, Glowing Skin | Nexus Clinic KL',
+    description: 'Get radiant, hydrated skin with skin booster treatment in Malaysia. Improve skin hydration & elasticity, reduce wrinkles for a youthful glow.',
   },
   {
     slug: 'nose-filler-malaysia',
@@ -57,7 +57,7 @@ export const faceTreatmentsMetadata: TreatmentMetadata[] = [
   {
     slug: 'cheek-filler-malaysia',
     component: 'CheekFiller',
-    title: 'Cheek Filler Malaysia | Facial Contouring & Volume KL',
+    title: 'Cheek Dermal Filler in Malaysia for Lifted, Defined Midface | Nexus Clinic KL',
     description: 'Add volume & definition to your cheeks with professional cheek filler in Kuala Lumpur. Safe, natural results by skilled clinicians. Book a consultation now.',
   },
   {

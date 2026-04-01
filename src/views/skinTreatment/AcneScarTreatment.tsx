@@ -1,36 +1,226 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import {
   Sparkles,
+  Award,
+  MapPin,
+  Calendar,
+  CheckCircle,
+  Syringe,
   Clock,
+  Heart,
   Shield,
+  ArrowRight,
+  AlertCircle,
+  Activity,
+  Zap,
+  Eye,
+  AlertTriangle,
+  Droplet,
+  Scissors,
+  TrendingUp,
+  Sun,
   Map,
+  Layers,
+  Target,
+  Info,
   ChevronRight,
   Star,
-  Calendar,
-  Sun,
-  Award,
-  Heart,
-  Target,
-  Layers,
-  Info,
-  CheckCircle2,
-  AlertCircle,
 } from "lucide-react";
+
 import {
-  fadeInUp,
   staggerContainer,
   fadeInLeft,
   fadeInRight,
+  fadeInUp,
   scaleIn,
 } from "../../lib/animations";
-import { useTranslation } from "@/src/i18n/client";
-import { fallbackLng } from "@/src/i18n/settings";
+
+import FAQ from "../../components/FAQ";
+import Whatsapp from "../../components/Whatsapp";
+import Image from "next/image";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
-const AcneScarLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "acneScarTreatment");
+interface AcneScarLandingProps {
+  locale: string;
+}
+
+export default function AcneScarLanding({ locale }: AcneScarLandingProps) {
+  const scarTypeData = [
+    {
+      type: "Ice pick scars",
+      appearance: "Deep, narrow pits like pin holes in the skin",
+      depth: "Deep",
+      bestTreatment: "TCA CROSS Chemical Peel + Pico Laser",
+    },
+    {
+      type: "Rolling scars",
+      appearance: "Broad, wavy depressions with sloped edges",
+      depth: "Moderate to deep",
+      bestTreatment: "Subcision + Fractional CO2 Laser + Rejuran S",
+    },
+    {
+      type: "Boxcar scars",
+      appearance: "Wider pits with sharp, defined vertical edges",
+      depth: "Shallow to moderate",
+      bestTreatment: "RF Microneedling + Fractional CO2 Laser",
+    },
+    {
+      type: "Hypertrophic / Keloid",
+      appearance: "Raised, thickened scar tissue above skin surface",
+      depth: "Raised",
+      bestTreatment: "Steroid Injection + Silicone Gel + Pico Laser",
+    },
+    {
+      type: "Post-Inflammatory Hyperpigmentation (PIH)",
+      appearance: "Flat dark marks left after active acne",
+      depth: "Surface",
+      bestTreatment: "Pico Laser + Skin Booster + Topical Brighteners",
+    },
+    {
+      type: "Mixed / Combination",
+      appearance: "Multiple scar types across the face",
+      depth: "Varied",
+      bestTreatment: "Custom combination protocol (minimum 2 modalities)",
+    },
+  ];
+
+  const comparisonData = [
+    {
+      factor: "Primary mechanism",
+      subcision:
+        "Releases tethered scars by cutting fibrous bands beneath the skin",
+      laser: "Resurfaces skin texture through controlled micro-injuries",
+      microneedling:
+        "Stimulates collagen via controlled micro-punctures",
+    },
+    {
+      factor: "Best for",
+      subcision:
+        "Rolling scars, tethered depressions, scars that don't lift with surface treatments",
+      laser: "Boxcar scars, overall texture improvement, moderate to deep atrophic scars",
+      microneedling:
+        "Mild to moderate scarring, shallow boxcar, maintenance between stronger procedures",
+    },
+    {
+      factor: "Downtime",
+      subcision:
+        "Mild swelling or bruising for a few days, improvement over 2-3 months",
+      laser: "5 to 7 days for Fractional CO2; minimal for Pico Laser",
+      microneedling:
+        "24 to 48 hours of mild redness and swelling",
+    },
+    {
+      factor: "Sessions needed",
+      subcision: "1 to 3 sessions",
+      laser: "3 to 5 sessions (spaced 4-6 weeks apart)",
+      microneedling: "3 to 5 sessions",
+    },
+    {
+      factor: "Pigment risk for Malaysian skin",
+      subcision: "Low (no thermal energy)",
+      laser: "Moderate to high (requires careful settings and aftercare)",
+      microneedling: "Low",
+    },
+  ];
+
+  const pricingTiers = [
+    {
+      treatment: "Pico Laser (Full Face)",
+      target: "PIH, mild texture, early scarring",
+      sessions: "3 to 5",
+      price: "RM 700 – RM 1,200 / session",
+    },
+    {
+      treatment: "Fractional CO2 Laser (Full Face)",
+      target: "Boxcar, rolling, moderate to deep atrophic",
+      sessions: "2 to 4",
+      price: "RM 1,200 – RM 2,500 / session",
+    },
+    {
+      treatment: "RF Microneedling (Sylfirm X / Potenza)",
+      target: "Rolling, boxcar, skin texture",
+      sessions: "3 to 5",
+      price: "RM 1,000 – RM 1,800 / session",
+    },
+    {
+      treatment: "Subcision",
+      target: "Tethered rolling scars",
+      sessions: "1 to 3",
+      price: "RM 500 – RM 900 / session",
+    },
+    {
+      treatment: "TCA CROSS Chemical Peel",
+      target: "Ice pick scars",
+      sessions: "2 to 4",
+      price: "RM 400 – RM 700 / session",
+    },
+    {
+      treatment: "Rejuran S Skin Booster",
+      target: "Skin repair, post-treatment recovery",
+      sessions: "2 to 3",
+      price: "RM 900 – RM 1,500 / session",
+    },
+    {
+      treatment: "Combination Scar Programme",
+      target: "Mixed / severe scarring (2 to 3 modalities)",
+      sessions: "4 to 6 total",
+      price: "From RM 3,500 (package pricing available)",
+    },
+  ];
+
+  const faqData = [
+    {
+      q: "How many sessions of fractional CO2 laser are needed for acne scars?",
+      a: "Most patients require 3 to 5 sessions of Fractional CO2 laser, spaced 4 to 6 weeks apart, depending on scar depth and treatment goals. Your doctor at Nexus Clinic KL will assess your specific scarring and provide a personalised session estimate at your consultation.",
+    },
+    {
+      q: "How long does it take to see results after acne scar treatment?",
+      a: "Initial improvement can be noticed within 2 to 4 weeks, but the most dramatic visible changes typically occur between 3 and 6 months as new collagen matures. Collagen remodelling is a slow biological process, which is why patience and completing the full protocol are essential for optimal results.",
+    },
+    {
+      q: "Is laser acne scar treatment safe for darker skin tones (Malaysian skin)?",
+      a: "Yes, when performed by a licensed doctor experienced with Fitzpatrick skin types III to V. At Nexus Clinic KL, we use conservative energy settings on first sessions, incorporate non-ablative modalities like Pico Laser and RF Microneedling, and prescribe structured post-treatment sun protection to minimise the risk of post-inflammatory hyperpigmentation. Aggressive settings designed for lighter skin can trigger darkening on Asian skin, which is why our protocols are specifically calibrated for Malaysian patients.",
+    },
+    {
+      q: "What is the difference between Pico Laser and Fractional CO2 for acne scars?",
+      a: "Pico Laser targets surface and mid-dermal concerns using photoacoustic pressure without significant surface ablation. It excels at post-inflammatory hyperpigmentation, early shallow scars, and improving skin tone with minimal downtime. Fractional CO2 Laser performs ablative resurfacing, creating controlled micro-wounds that trigger deep collagen remodelling and physically alter scar morphology. It is more effective for moderate to deep atrophic scarring but involves 5 to 7 days of recovery. Many patients benefit from both technologies in sequence.",
+    },
+    {
+      q: "What is subcision and what scars is it for?",
+      a: "Subcision is a minor surgical procedure performed under local anaesthetic where a specialised bevelled needle is inserted beneath a rolling or tethered scar. The needle is swept in a fanning motion to physically sever the fibrous bands anchoring the scar floor to deeper tissue. Once released, the depressed skin rises naturally and the created space fills with new collagen over weeks. Subcision is a prerequisite for true rolling scar correction and is often overlooked by patients who have tried laser alone without result.",
+    },
+    {
+      q: "How much does acne scar treatment cost in Malaysia in 2026?",
+      a: "Pricing varies by scar severity, treatment type, and number of sessions. At Nexus Clinic KL in 2026, Pico Laser ranges from RM 700 to RM 1,200 per session, Fractional CO2 Laser from RM 1,200 to RM 2,500 per session, RF Microneedling from RM 1,000 to RM 1,800 per session, and Subcision from RM 500 to RM 900 per session. Combination scar programmes start from RM 3,500 for 4 to 6 sessions across multiple modalities. Final pricing is confirmed after your scar mapping consultation.",
+    },
+    {
+      q: "Can acne scars be fully removed?",
+      a: "Clinically meaningful and visible improvement, typically a 50 to 80 percent reduction in scar depth and pigmentation, is achievable for most scar types with a properly designed combination programme. Complete removal to a level indistinguishable from unaffected skin is not always possible, particularly for deep ice pick scars or longstanding hypertrophic scars. What patients consistently achieve is a significant improvement in skin texture and tone that makes scars far less visible in natural lighting and reduces dependence on heavy-coverage makeup.",
+    },
+    {
+      q: "How many subcision sessions do I need?",
+      a: "Most patients require 1 to 3 subcision sessions, depending on the severity and number of tethered rolling scars. The procedure takes 30 to 60 minutes, and improvement builds gradually over 2 to 3 months as new collagen fills the space created by releasing the scar tissue.",
+    },
+    {
+      q: "Can I treat acne scars if I still have active breakouts?",
+      a: "Our doctors recommend waiting until active acne is either resolved or well-controlled before beginning aggressive scar treatment. Active inflammation can worsen scar formation and compromise healing after laser or needling procedures. A period of 3 to 6 months of acne stability is generally preferred before beginning fractional resurfacing. For patients with active acne alongside established scarring, our doctors will assess whether simultaneous management is feasible or if treating active acne first produces the best outcome.",
+    },
+    {
+      q: "What is the difference between fractional laser and non-fractional laser?",
+      a: "Fractional laser treats the skin in fractions, leaving healthy tissue between treated micro-zones. This supports faster healing and reduces side effect risk compared to older non-fractional approaches that treated the entire surface at once. Fractional CO2 and fractional Pico lasers are the modern standards for acne scar treatment because they balance efficacy with manageable downtime.",
+    },
+    {
+      q: "What is a realistic acne scar improvement goal?",
+      a: "The most realistic goal is visible improvement in texture and depth that makes scars less noticeable in everyday lighting and reduces reliance on makeup. Most patients do not need 'perfect' skin; they want smoother skin in real lighting. Combination plans using 2 to 3 modalities tailored to your specific scar types deliver the best outcomes, and your doctor at Nexus Clinic KL will provide an honest expectation at your consultation.",
+    },
+    {
+      q: "What aftercare is required after acne scar treatment?",
+      a: "Aftercare is critical for protecting your results. For the first 48 hours, keep the skin gentle, avoid heat, saunas, and heavy workouts. For the first week, apply SPF50 daily even indoors, pause harsh actives like retinoids and strong acids, and keep skin hydrated. Between sessions, do not rush; your skin needs time to rebuild collagen. Full aftercare guidance is provided in writing at Nexus Clinic KL.",
+    },
+  ];
 
   const transformations = [
     {
@@ -51,1504 +241,1115 @@ const AcneScarLanding = ({ locale = fallbackLng }: { locale?: string }) => {
   ];
 
   return (
-    <div className="bg-light font-inter">
+    <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center bg-linear-to-br from-cream via-light to-rose/10 overflow-hidden">
-        <div className="absolute inset-0 bg-glass backdrop-blur-[2px]" />
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
+
         <motion.div
           variants={staggerContainer}
-          initial="initial"
-          whileInView="whileInView"
-          className="container mx-auto px-4 md:px-8 relative z-10"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="container mx-auto max-w-6xl relative z-10"
         >
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div variants={fadeInUp} className="mb-6">
-              <span className="inline-block px-4 py-2 bg-wine/10 text-wine rounded-full text-sm font-semibold tracking-wide">
-                Nexus Clinic Kuala Lumpur
-              </span>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-8">
+              <motion.div
+                variants={fadeInUp}
+                className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full"
+              >
+                <AlertTriangle className="w-4 h-4 text-wine" />
+                <span className="text-sm font-inter text-wine font-medium">
+                  Doctor-Performed • Scar Mapping Approach
+                </span>
+              </motion.div>
+
+              <motion.h1
+                variants={fadeInUp}
+                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
+              >
+                Best Acne Scar Treatment in Malaysia for{" "}
+                <span className="text-wine italic">Smoother, Clearer Skin</span>
+              </motion.h1>
+              <motion.p
+                variants={fadeInUp}
+                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
+              >
+                Stubborn pits, dark marks, and uneven skin texture. Nexus Clinic
+                KL treats every scar type with doctor-performed CO2 Laser, Pico
+                Laser, RF Microneedling and Subcision. Personalised for
+                Malaysian skin.
+              </motion.p>
+              <motion.p
+                variants={fadeInUp}
+                className="text-brown font-inter"
+              >
+                Your skin healed from acne years ago. The scars did not. They
+                sit in the mirror every morning, pitted, dark, or raised, a
+                constant reminder of breakouts that should belong in the past.
+                The reality is that acne scars do not resolve on their own, and
+                no amount of serum or filter changes the texture underneath. At
+                Nexus Clinic KL, our licensed aesthetic doctors assess every
+                scar type individually and build a treatment plan using
+                clinically proven modalities matched precisely to your scarring,
+                skin tone and healing capacity.
+              </motion.p>
+              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
+                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  Important Clinical Note
+                </p>
+                <p className="text-taupe font-inter text-sm mt-1">
+                  Malaysia's Fitzpatrick skin types III to V require a different
+                  clinical approach than protocols used in Western markets. At
+                  Nexus Clinic KL, our doctors are trained in Southeast Asian
+                  facial anatomy and skin physiology, meaning every treatment
+                  setting and aftercare recommendation is calibrated for
+                  Malaysian patients.
+                </p>
+              </motion.div>
+              <motion.div
+                variants={fadeInLeft}
+                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
+              >
+                <motion.button
+                  variants={fadeInUp}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  Book Free Assessment
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+                <Whatsapp
+                  message="Hi, I'm interested in acne scar treatment at Nexus Clinic KL. I'd like to book a consultation."
+                  variant="light"
+                />
+              </motion.div>
             </motion.div>
-
-            <motion.h1
-              variants={fadeInUp}
-              className="text-5xl md:text-7xl font-georgia mb-6 leading-tight"
-            >
-              <span className="text-brown">Acne Scar Treatment</span>
-              <br />
-              <span className="text-wine">in Kuala Lumpur, Malaysia</span>
-            </motion.h1>
-
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-georgia text-rose mb-8"
-            >
-              Clearer skin is not a dream. It is a plan.
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl md:text-2xl text-taupe mb-8 max-w-3xl mx-auto"
-            >
-              Acne may be gone, but the scars can still steal your confidence.
-              At Nexus Clinic Kuala Lumpur, we build a scar map for your face
-              and match it with the right mix of treatments, so your skin looks
-              smoother in real life, not just in photos.
-            </motion.p>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-brown/80 bg-white/50 backdrop-blur-sm p-6 rounded-2xl border border-cream max-w-2xl mx-auto"
-            >
-              You will know what we can improve, what will take time, and what
-              is not worth doing.
-            </motion.p>
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
+                <Image
+                  src="/images/skin/acne-scar-treatment.webp"
+                  alt="Nexus Clinic Kuala Lumpur - Acne Scar Treatment Consultation"
+                  fill
+                  className="object-cover"
+                  onError={(e) => {
+                    const img = e.target as HTMLImageElement;
+                    img.src =
+                      "https://placehold.co/600x800/FAF7F2/8B5A2B?text=Acne+Scar+Treatment";
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
+                <p className="font-inter font-bold text-brown">
+                  ✨ Scar Mapping Process
+                </p>
+                <p className="font-inter text-sm text-taupe">
+                  Doctor-led • Personalised Plan
+                </p>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
       </section>
 
-      {/* Trust Strip */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        className="py-16 bg-wine text-light"
-      >
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <motion.div variants={scaleIn} className="flex items-center gap-4">
-              <Shield className="w-8 h-8 text-cream shrink-0" />
-              <div>
-                <p className="font-semibold">
-                  Established aesthetic clinic in Kuala Lumpur, founded in 2001.
-                </p>
-                <p className="text-sm text-cream/80">
-                  Located at Wisma UOA II, Jalan Pinang, Kuala Lumpur.
-                </p>
+      {/* Trust Section */}
+      <section className="py-12 px-4 bg-light">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-taupe/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <Award className="w-6 h-6 text-wine" />
+                </div>
+                <h2 className="font-georgia text-2xl md:text-3xl text-brown">
+                  Trust at a glance
+                </h2>
               </div>
-            </motion.div>
-
-            <motion.div variants={scaleIn} className="flex items-center gap-4">
-              <Star className="w-8 h-8 text-cream shrink-0" />
-              <div>
-                <p className="font-semibold">Doctor-guided scar plans</p>
-                <p className="text-sm text-cream/80">
-                  with treatments commonly used for acne scars like fractional
-                  CO2 laser, subcision, dermaroller, peels, PRP, and more.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div variants={scaleIn} className="flex items-center gap-4">
-              <Target className="w-8 h-8 text-cream shrink-0" />
-              <div>
-                <p className="font-semibold">Rated 4.7 stars</p>
-                <p className="text-sm text-cream/80">
-                  from 437+ reviewers on a Google review aggregator
-                  (Trustindex).
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div variants={scaleIn} className="flex items-center gap-4">
-              <Heart className="w-8 h-8 text-cream shrink-0" />
-              <div>
-                <p className="font-semibold">Personalized Care</p>
-                <p className="text-sm text-cream/80"> scar mapping approach</p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Honest Note */}
-      <motion.section
-        variants={fadeInUp}
-        initial="initial"
-        whileInView="whileInView"
-        className="py-16 bg-cream"
-      >
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="bg-white p-8 md:p-12 rounded-3xl shadow-lg border border-rose/10">
-            <div className="flex items-start gap-4 mb-6">
-              <Info className="w-6 h-6 text-wine shrink-0 mt-1" />
-              <h2 className="text-3xl font-georgia text-brown">
-                A quick, honest note before we start
-              </h2>
+              <div className="hidden sm:block w-px h-8 bg-taupe/20" />
+              <p className="text-taupe font-inter text-sm">
+                Nexus Clinic Kuala Lumpur — Excellence in Aesthetic Medicine
+              </p>
             </div>
-            <p className="text-lg text-taupe mb-4">
-              There is no single "best acne scar treatment" for everyone. Acne
-              scars come in different shapes, depths, and directions. Many
-              people also have more than one scar type on the same cheek. That
-              is why combination plans are often the fastest way to see
-              meaningful change.
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-4 border-y border-taupe/10">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Award className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">
+                    Established
+                  </p>
+                  <p className="font-georgia text-brown font-bold text-lg">
+                    2001
+                  </p>
+                  <p className="font-inter text-taupe text-xs">
+                    Over 20 years of excellence
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">
+                    Location
+                  </p>
+                  <p className="font-georgia text-brown font-bold text-sm">
+                    Wisma UOA II, Jalan Pinang
+                  </p>
+                  <p className="font-inter text-taupe text-xs">
+                    KLCC, 50450 Kuala Lumpur
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">
+                    Opening Hours
+                  </p>
+                  <p className="font-georgia text-brown font-bold text-sm">
+                    Monday - Saturday
+                  </p>
+                  <p className="font-inter text-taupe text-xs">
+                    9:00am – 6:00pm | Closed Sundays & PH
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-6 pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Shield className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">
+                      Scar Mapping Process
+                    </p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">
+                      Every scar type assessed individually before treatment
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Activity className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">
+                      Doctor-Performed Only
+                    </p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">
+                      Licensed doctors trained in Malaysian skin types
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">
+                      Combination Protocols
+                    </p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">
+                      2-3 modalities for mixed scar types
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="mt-6 pt-4 border-t border-taupe/10">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">
+                    MOH-approved devices
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">
+                    Fractional CO2 Laser
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">
+                    Pico Laser • RF Microneedling • Subcision
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Treatment Overview Section */}
+      <section className="py-16 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">
+              Acne Scar Treatment at a Glance
+            </h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">
+              Everything you need to know
             </p>
-            <p className="text-lg text-taupe bg-rose/5 p-4 rounded-xl border-l-4 border-rose">
-              Also, if you still get active acne breakouts every week, we
-              usually focus on calming that down first, otherwise new scars can
-              keep forming.
+          </motion.div>
+
+          <motion.div
+            variants={fadeInUp}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+          >
+            {[
+              {
+                icon: Syringe,
+                label: "Treatment",
+                value:
+                  "Fractional CO2 Laser, Pico Laser, RF Microneedling, Subcision, Rejuran S, Chemical Peels",
+              },
+              {
+                icon: Clock,
+                label: "Session Time",
+                value: "30 to 90 minutes depending on modality",
+              },
+              {
+                icon: Heart,
+                label: "Downtime",
+                value: "0 to 7 days depending on treatment intensity",
+              },
+              {
+                icon: Zap,
+                label: "Visible Results",
+                value: "2 to 4 weeks; full remodelling at 3 to 6 months",
+              },
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="bg-light p-5 rounded-xl border border-taupe/10 shadow-sm"
+              >
+                <item.icon className="w-8 h-8 text-wine mb-3" />
+                <p className="font-inter text-sm text-taupe">{item.label}</p>
+                <p className="font-georgia text-md text-brown font-semibold">
+                  {item.value}
+                </p>
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            variants={fadeInUp}
+            className="mt-8 bg-wine/5 rounded-2xl p-6 border border-wine/10"
+          >
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div>
+                <p className="font-inter text-sm text-taupe">Sessions Required</p>
+                <p className="font-georgia text-brown font-semibold">
+                  3 to 6 sessions on average
+                </p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Spacing</p>
+                <p className="font-georgia text-brown font-semibold">
+                  4 to 6 weeks apart
+                </p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Suitable For</p>
+                <p className="font-georgia text-brown font-semibold">
+                  Ice pick, rolling, boxcar, hypertrophic scars, PIH
+                </p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Anaesthesia</p>
+                <p className="font-georgia text-brown">
+                  Topical numbing cream (30 to 45 minutes)
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div variants={fadeInUp} className="text-center mt-8">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor About Your Scar Type | Free Assessment
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Scar Type Matrix Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">
+              The Scar-Type-to-Treatment Decision Matrix
+            </h2>
+            <p className="text-taupe font-inter">
+              Used at Nexus Clinic KL for every initial consultation
             </p>
+          </motion.div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Scar Type</th>
+                  <th className="p-4 text-left font-georgia">Appearance</th>
+                  <th className="p-4 text-left font-georgia">Depth</th>
+                  <th className="p-4 text-left font-georgia">
+                    Best Treatment at Nexus Clinic KL
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {scarTypeData.map((scar, idx) => (
+                  <tr
+                    key={idx}
+                    className="border-t border-taupe/10 hover:bg-cream/30 transition-colors"
+                  >
+                    <td className="p-4 font-inter font-semibold text-brown">
+                      {scar.type}
+                    </td>
+                    <td className="p-4 text-taupe font-inter">
+                      {scar.appearance}
+                    </td>
+                    <td
+                      className={`p-4 font-inter ${
+                        scar.depth === "Deep" || scar.depth === "Moderate to deep"
+                          ? "text-wine font-semibold"
+                          : "text-taupe"
+                      }`}
+                    >
+                      {scar.depth}
+                    </td>
+                    <td className="p-4 text-taupe font-inter">
+                      {scar.bestTreatment}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </div>
-      </motion.section>
 
-      {/* Why Scars Are Stubborn */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        className="py-16 bg-light"
-      >
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft}>
-              <h2 className="text-4xl font-georgia text-brown mb-6">
-                Why acne scars feel so stubborn
-                <span className="block text-wine text-2xl mt-2">
-                  (and why they are not your fault)
-                </span>
-              </h2>
-              <p className="text-lg text-taupe mb-4">
-                Acne scars are not just "marks on the surface." Many scars sit
-                deeper because acne inflammation damages collagen below the
-                skin. When healing happens unevenly, the surface can dip,
-                tether, or look rough.
-              </p>
-              <p className="text-lg text-taupe mb-4">
-                And yes, picking makes it worse. But even people who never pick
-                can still scar, especially with cystic acne.
-              </p>
-              <p className="text-lg text-wine font-semibold">
-                The good news is this: scars can be improved. The skin can
-                rebuild collagen. It just needs the right trigger and enough
-                time.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="relative h-125 rounded-3xl overflow-hidden shadow-2xl"
-            >
-              <img
-                src="/images/skin/acne-scar-treatment.webp"
-                alt="Acne scar consultation at Nexus Clinic showing scar mapping process"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-brown/50 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-sm p-4 rounded-xl">
-                <p className="text-brown font-semibold">
-                  Scar mapping in progress at Nexus Clinic Kuala Lumpur
-                </p>
-                <p className="text-sm text-taupe">
-                  Doctor-guided scar assessment for combination treatment
-                  planning
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Types of Acne Scars */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        className="py-16 bg-cream"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
+          <motion.div
             variants={fadeInUp}
-            className="text-4xl font-georgia text-brown text-center mb-4"
+            className="mt-6 p-4 bg-wine/5 rounded-xl text-center"
           >
-            Types of acne scars
-            <span className="block text-wine text-xl mt-2">(simple guide)</span>
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-taupe mb-12 max-w-2xl mx-auto"
-          >
-            Most facial acne scars fall into a few patterns:
-          </motion.p>
+            <p className="text-brown font-inter text-sm">
+              Ice pick scars respond poorly to surface lasers alone. Rolling
+              scars require subcision to release tethers before resurfacing.
+              Understanding these distinctions before treatment is the
+              difference between money well spent and multiple rounds that never
+              addressed the actual problem.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-2xl shadow-lg border border-rose/10"
-            >
-              <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center mb-4">
-                <span className="text-wine font-bold text-xl">1</span>
-              </div>
-              <h3 className="text-xl font-bold text-brown mb-2">
-                Ice pick scars
-              </h3>
-              <p className="text-taupe">
-                Small, narrow, deep "holes." These are often the hardest to
-                treat and usually need very targeted methods.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-2xl shadow-lg border border-rose/10"
-            >
-              <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center mb-4">
-                <span className="text-wine font-bold text-xl">2</span>
-              </div>
-              <h3 className="text-xl font-bold text-brown mb-2">
-                Boxcar scars
-              </h3>
-              <p className="text-taupe">
-                Wider dents with clearer edges, sometimes like old chickenpox
-                marks.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-2xl shadow-lg border border-rose/10"
-            >
-              <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center mb-4">
-                <span className="text-wine font-bold text-xl">3</span>
-              </div>
-              <h3 className="text-xl font-bold text-brown mb-2">
-                Rolling scars
-              </h3>
-              <p className="text-taupe">
-                Soft wave-like dents. These often happen because bands of scar
-                tissue pull the skin down.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-2xl shadow-lg border border-rose/10"
-            >
-              <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center mb-4">
-                <span className="text-wine font-bold text-xl">4</span>
-              </div>
-              <h3 className="text-xl font-bold text-brown mb-2">
-                Raised scars (hypertrophic or keloid)
-              </h3>
-              <p className="text-taupe">
-                More common on jawline, chest, shoulders, or back. These need a
-                different approach than depressed scars.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-2xl shadow-lg border border-rose/10 md:col-span-2"
-            >
-              <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center mb-4">
-                <span className="text-wine font-bold text-xl">5</span>
-              </div>
-              <h3 className="text-xl font-bold text-brown mb-2">
-                Post-acne marks (not true scars)
-              </h3>
-              <p className="text-taupe">
-                Brown or red marks after acne are very common in Malaysia. They
-                can look like scarring, but they are usually pigment or redness.
-                They often respond well to pigment-friendly plans and strict sun
-                protection.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Who It's For */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        className="py-16 bg-light"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-georgia text-brown text-center mb-12"
-          >
-            Who acne scar treatment is for
-            <span className="block text-wine text-xl mt-2">
-              (and who should wait)
-            </span>
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-cream p-8 rounded-3xl"
-            >
-              <h3 className="text-2xl font-bold text-brown mb-4 flex items-center gap-2">
-                <CheckCircle2 className="text-rose" />
-                You are a good fit if:
-              </h3>
-              <ul className="space-y-4">
-                <li className="flex gap-2 text-taupe">
-                  <ChevronRight className="text-wine shrink-0 mt-1" size={16} />
-                  Your acne is mostly under control and the scars are the main
-                  problem
-                </li>
-                <li className="flex gap-2 text-taupe">
-                  <ChevronRight className="text-wine shrink-0 mt-1" size={16} />
-                  You feel your scars show more in certain lighting, selfies, or
-                  video calls
-                </li>
-                <li className="flex gap-2 text-taupe">
-                  <ChevronRight className="text-wine shrink-0 mt-1" size={16} />
-                  You want improvement, not "perfect glass skin"
-                </li>
-                <li className="flex gap-2 text-taupe">
-                  <ChevronRight className="text-wine shrink-0 mt-1" size={16} />
-                  You can commit to a plan (usually multiple sessions)
-                </li>
-              </ul>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="bg-cream p-8 rounded-3xl"
-            >
-              <h3 className="text-2xl font-bold text-brown mb-4 flex items-center gap-2">
-                <AlertCircle className="text-rose" />
-                You may need to wait or adjust your plan if:
-              </h3>
-              <ul className="space-y-4">
-                <li className="flex gap-2 text-taupe">
-                  <ChevronRight className="text-wine shrink-0 mt-1" size={16} />
-                  You have active, inflamed acne that keeps flaring
-                </li>
-                <li className="flex gap-2 text-taupe">
-                  <ChevronRight className="text-wine shrink-0 mt-1" size={16} />
-                  You are pregnant or breastfeeding (some procedures are
-                  postponed)
-                </li>
-                <li className="flex gap-2 text-taupe">
-                  <ChevronRight className="text-wine shrink-0 mt-1" size={16} />
-                  You have a history of severe keloids (we plan more carefully)
-                </li>
-                <li className="flex gap-2 text-taupe">
-                  <ChevronRight className="text-wine shrink-0 mt-1" size={16} />
-                  You cannot avoid sun exposure at all (sun matters a lot after
-                  resurfacing)
-                </li>
-              </ul>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Scar Mapping Approach */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        className="py-16 bg-wine text-light"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-georgia text-center mb-4"
-          >
-            Our approach at Nexus Clinic Kuala Lumpur
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-cream/80 mb-12 max-w-2xl mx-auto"
-          >
-            Scar Mapping Plan: A good acne scar plan should feel clear, not
-            confusing.
-          </motion.p>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <motion.div
-              variants={scaleIn}
-              className="text-center bg-cream/10 p-8 rounded-3xl backdrop-blur-sm"
-            >
-              <div className="w-20 h-20 bg-cream/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Map className="w-10 h-10 text-cream" />
-              </div>
-              <h3 className="text-xl font-bold mb-4">
-                Step 1: We map your scars, not just your "skin type"
-              </h3>
-              <p className="text-cream/80 text-left">
-                We look at:
-                <br />• Scar types (ice pick, rolling, boxcar, mixed)
-                <br />• Depth and tethering
-                <br />• Skin sensitivity and pigment risk
-                <br />• Lifestyle and downtime tolerance
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="text-center bg-cream/10 p-8 rounded-3xl backdrop-blur-sm"
-            >
-              <div className="w-20 h-20 bg-cream/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Layers className="w-10 h-10 text-cream" />
-              </div>
-              <h3 className="text-xl font-bold mb-4">
-                Step 2: We choose the right tools (often a combination)
-              </h3>
-              <p className="text-cream/80 text-left">
-                A single modality can help, but many patients have mixed scars,
-                so combining treatments is common in real practice.
-                <br />
-                <br />
-                At Nexus Clinic Kuala Lumpur, acne scar care often includes
-                options like fractional CO2 laser, dermaroller, skin peels, PRP,
-                subcision, microdermabrasion, and LED photomodulation therapy
-                depending on your needs.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="text-center bg-cream/10 p-8 rounded-3xl backdrop-blur-sm"
-            >
-              <div className="w-20 h-20 bg-cream/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Target className="w-10 h-10 text-cream" />
-              </div>
-              <h3 className="text-xl font-bold mb-4">
-                Step 3: We set expectations you can actually live with
-              </h3>
-              <p className="text-cream/80 text-left">
-                Some scars lift faster than others. Some need deeper work. We
-                will talk about what "good progress" looks like for your face.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Treatments Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        className="py-16 bg-light"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-georgia text-brown text-center mb-4"
-          >
-            Acne scar treatments we use
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-taupe mb-12"
-          >
-            (explained in easy words)
-          </motion.p>
-
-          <div className="space-y-6 max-w-4xl mx-auto">
-            {/* Subcision */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream p-8 rounded-2xl"
-            >
-              <h3 className="text-2xl font-bold text-brown mb-2">
-                1) Subcision (best for rolling scars and tethered dents)
-              </h3>
-              <p className="text-taupe mb-4">
-                If a scar is pulled down by tight bands under the skin, lasers
-                alone can struggle.
-              </p>
-              <div className="space-y-3 text-taupe">
-                <p>
-                  <span className="font-semibold text-brown">
-                    What it does:
-                  </span>{" "}
-                  Subcision releases the fibrotic strands that tether scars,
-                  allowing the skin to lift and stimulating collagen as it
-                  heals.
-                </p>
-                <p>
-                  <span className="font-semibold text-brown">Sessions:</span>{" "}
-                  Many people need 1 to 3 sessions, depending on scar severity.
-                </p>
-                <p>
-                  <span className="font-semibold text-brown">Time:</span> Around
-                  30 to 60 minutes.
-                </p>
-                <p>
-                  <span className="font-semibold text-brown">Downtime:</span>{" "}
-                  Usually mild swelling or bruising for a few days, and you may
-                  see improvement gradually over 2 to 3 months as collagen
-                  rebuilds.
-                </p>
-                <p>
-                  <span className="font-semibold text-brown">Feels like:</span>{" "}
-                  With numbing, it is usually very tolerable, but you can expect
-                  some soreness after.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Fractional CO2 Laser */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream p-8 rounded-2xl"
-            >
-              <h3 className="text-2xl font-bold text-brown mb-2">
-                2) Fractional CO2 laser (best for texture, boxcar scars, and
-                overall resurfacing)
-              </h3>
-              <p className="text-taupe mb-4">
-                Fractional CO2 is one of the most common scar-resurfacing lasers
-                used in Malaysia for acne scars. It creates tiny controlled
-                "micro-zones" so the skin heals by building new collagen.
-              </p>
-              <p className="text-taupe mb-3">
-                Clinics in Malaysia commonly describe fractional CO2 as
-                targeting superficial and deeper layers and supporting collagen
-                remodelling for scar improvement.
-              </p>
-              <div className="space-y-2">
-                <p>
-                  <span className="font-semibold text-brown">
-                    What it helps most:
-                  </span>{" "}
-                  Shallow boxcar scars, rough texture, pores and uneven tone
-                  alongside scars (depending on settings)
-                </p>
-                <p>
-                  <span className="font-semibold text-brown">Downtime:</span>{" "}
-                  This varies by intensity. Some clinics describe mild redness
-                  for a few days and healing over 1 to 2 weeks for CO2 laser.
-                </p>
-                <p>
-                  <span className="font-semibold text-brown">
-                    Pigment risk:
-                  </span>{" "}
-                  If you have a darker skin tone, there can be a higher risk of
-                  pigmentation changes, so settings and aftercare matter a lot.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Microneedling */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream p-8 rounded-2xl"
-            >
-              <h3 className="text-2xl font-bold text-brown mb-2">
-                3) Microneedling or dermaroller (best for gradual collagen
-                building with lighter downtime)
-              </h3>
-              <p className="text-taupe mb-4">
-                Microneedling creates controlled micro-injuries that encourage
-                collagen production. It is often used for acne scarring and can
-                also support product absorption during a plan.
-              </p>
-              <p>
-                <span className="font-semibold text-brown">Good for:</span>
-              </p>
-              <ul className="list-disc pl-5 text-taupe space-y-1">
-                <li>Mild to moderate scars</li>
-                <li>People who want a steadier approach with less downtime</li>
-                <li>Maintenance between stronger procedures</li>
-              </ul>
-            </motion.div>
-
-            {/* Chemical Peels */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream p-8 rounded-2xl"
-            >
-              <h3 className="text-2xl font-bold text-brown mb-2">
-                4) Chemical peels and microdermabrasion (best for marks,
-                dullness, and surface smoothing)
-              </h3>
-              <p className="text-taupe mb-3">
-                Not every patient needs aggressive laser immediately.
-              </p>
-              <p className="text-taupe mb-3">
-                Chemical peels can support skin renewal and may help certain
-                scar textures and post-acne marks.
-              </p>
-              <p className="text-taupe mb-3">
-                Microdermabrasion is a form of deep exfoliation that can improve
-                texture and brightness, often as part of a wider plan.
-              </p>
-              <p className="text-taupe">
-                These are often great when your main concern is "my skin looks
-                uneven," not deep dents.
-              </p>
-            </motion.div>
-
-            {/* PRP */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream p-8 rounded-2xl"
-            >
-              <h3 className="text-2xl font-bold text-brown mb-2">
-                5) PRP as an add-on (for healing support in some plans)
-              </h3>
-              <p className="text-taupe mb-3">
-                PRP (platelet-rich plasma) is sometimes used alongside other
-                treatments in scar programs. At Nexus Clinic Kuala Lumpur, PRP
-                is listed among treatment options used in acne and scar care.
-              </p>
-              <p className="text-taupe">
-                Think of PRP like a support tool. It is not usually the main
-                scar treatment by itself.
-              </p>
-            </motion.div>
-
-            {/* LED */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream p-8 rounded-2xl"
-            >
-              <h3 className="text-2xl font-bold text-brown mb-2">
-                6) LED photomodulation therapy (helpful support, especially for
-                calming skin)
-              </h3>
-              <p className="text-taupe">
-                LED therapy is sometimes included to calm inflammation and
-                support recovery as part of acne and scar care.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      <SectionBeforeAfter transformations={transformations} />
-
-      {/* Pros and Cons */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        className="py-16 bg-cream"
-      >
-        <div className="container mx-auto px-4 max-w-4xl">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-georgia text-brown text-center mb-12"
-          >
-            Pros and cons
-            <span className="block text-wine text-xl">
-              (realistic, not salesy)
-            </span>
-          </motion.h2>
+      {/* Malaysian Skin Protocol Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">
+              Acne Scar Treatment for Malaysian Skin
+            </h2>
+            <p className="text-taupe font-inter">
+              A different clinical protocol is required for Fitzpatrick types III to V
+            </p>
+          </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div
               variants={fadeInLeft}
-              className="bg-white p-8 rounded-3xl"
+              className="bg-light p-6 rounded-xl border border-taupe/10"
             >
-              <h3 className="text-2xl font-bold text-brown mb-4 flex items-center gap-2">
-                <Heart className="text-rose" />
-                What patients usually love
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <Shield className="w-5 h-5 text-wine" />
+                Why Malaysian Skin Needs Specialised Care
               </h3>
-              <ul className="space-y-3">
-                <li className="flex gap-2 text-taupe">
-                  <ChevronRight className="text-wine shrink-0 mt-1" size={16} />
-                  Skin looks smoother in daily lighting
-                </li>
-                <li className="flex gap-2 text-taupe">
-                  <ChevronRight className="text-wine shrink-0 mt-1" size={16} />
-                  Makeup sits better
-                </li>
-                <li className="flex gap-2 text-taupe">
-                  <ChevronRight className="text-wine shrink-0 mt-1" size={16} />
-                  Confidence improves, especially in photos
-                </li>
-                <li className="flex gap-2 text-taupe">
-                  <ChevronRight className="text-wine shrink-0 mt-1" size={16} />
-                  Texture feels less "bumpy" or "pitted"
-                </li>
+              <p className="text-taupe font-inter text-sm mb-4">
+                Malaysian skin sits predominantly in Fitzpatrick types III to V.
+                Darker skin types carry a significantly higher risk of
+                post-inflammatory hyperpigmentation after laser and needle-based
+                procedures. Aggressive ablative laser settings that deliver
+                excellent results on lighter Caucasian skin can trigger
+                darkening, prolonged redness or uneven healing when applied
+                without adjustment to Asian skin.
+              </p>
+              <ul className="space-y-2">
+                {[
+                  "Conservative energy settings on first treatment sessions",
+                  "Combination sessions using non-ablative modalities first",
+                  "Rejuran S incorporated as standard repair step",
+                  "Broad-spectrum SPF50 is non-negotiable after every session",
+                  "Climate-specific aftercare for Malaysia's tropical humidity",
+                ].map((item, idx) => (
+                  <li
+                    key={idx}
+                    className="flex items-start gap-2 text-taupe font-inter text-sm"
+                  >
+                    <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
             </motion.div>
 
             <motion.div
               variants={fadeInRight}
-              className="bg-white p-8 rounded-3xl"
+              className="bg-light p-6 rounded-xl border border-taupe/10"
             >
-              <h3 className="text-2xl font-bold text-brown mb-4 flex items-center gap-2">
-                <Info className="text-rose" />
-                What can be annoying (but normal)
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <Sun className="w-5 h-5 text-wine" />
+                Humidity and Healing Factors
               </h3>
-              <ul className="space-y-3">
-                <li className="flex gap-2 text-taupe">
-                  <ChevronRight className="text-wine shrink-0 mt-1" size={16} />
-                  It takes time. Collagen does not rebuild overnight.
-                </li>
-                <li className="flex gap-2 text-taupe">
-                  <ChevronRight className="text-wine shrink-0 mt-1" size={16} />
-                  Downtime can be inconvenient if you choose resurfacing lasers.
-                </li>
-                <li className="flex gap-2 text-taupe">
-                  <ChevronRight className="text-wine shrink-0 mt-1" size={16} />
-                  You may need a combination plan for mixed scars.
-                </li>
-              </ul>
+              <p className="text-taupe font-inter text-sm">
+                Malaysia's tropical humidity affects healing. The moist
+                environment can support faster superficial recovery, but it also
+                increases the risk of bacterial contamination on open or
+                sensitized post-laser skin. Our post-treatment protocols account
+                for this with clear, evidence-based wound care guidance that
+                reflects the local climate rather than instructions written for
+                patients in cooler or drier countries.
+              </p>
+              <div className="mt-6 bg-wine/5 p-4 rounded-lg">
+                <p className="text-wine font-inter text-sm font-semibold">
+                  ISAPS Global Statistics Report 2023:
+                </p>
+                <p className="text-taupe text-sm mt-1">
+                  Non-surgical skin resurfacing procedures in Southeast Asia grew
+                  by 28% year-on-year, with Malaysia showing above-average
+                  demand for combination scar protocols.
+                </p>
+              </div>
             </motion.div>
           </div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
 
-      {/* Side Effects and Safety */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        className="py-16 bg-light"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-georgia text-brown text-center mb-8"
-          >
-            Side effects and safety
-            <span className="block text-wine text-xl">
-              (what you should know in Malaysia)
-            </span>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-taupe mb-8 max-w-3xl mx-auto"
-          >
-            Most acne scar procedures are safe when performed by trained medical
-            professionals, using proper settings and aftercare. Malaysia also
-            has guidance around aesthetic medical practice and credentialing, so
-            it is worth choosing a clinic that takes clinical governance
-            seriously.
-          </motion.p>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-cream p-8 rounded-3xl max-w-3xl mx-auto"
-          >
-            <h3 className="text-xl font-bold text-brown mb-4">
-              Common temporary side effects (depends on procedure):
-            </h3>
-            <div className="grid md:grid-cols-2 gap-3">
-              <div className="flex items-center gap-2 text-taupe">
-                <div className="w-2 h-2 bg-wine rounded-full" />
-                Redness, swelling, warmth
-              </div>
-              <div className="flex items-center gap-2 text-taupe">
-                <div className="w-2 h-2 bg-wine rounded-full" />
-                Peeling or dryness after resurfacing
-              </div>
-              <div className="flex items-center gap-2 text-taupe">
-                <div className="w-2 h-2 bg-wine rounded-full" />
-                Mild bruising after subcision
-              </div>
-              <div className="flex items-center gap-2 text-taupe">
-                <div className="w-2 h-2 bg-wine rounded-full" />
-                Temporary darkening or lightening of skin (pigment shift risk
-                can be higher in darker skin tones, especially after stronger
-                resurfacing)
-              </div>
-            </div>
-            <p className="mt-6 text-wine font-semibold text-lg">
-              The best safety move you can make is simple: follow aftercare,
-              avoid sun, and do not "over-treat" too fast.
+      {/* Treatments Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">
+              Treatments and Technologies Used at Nexus Clinic KL
+            </h2>
+            <p className="text-taupe font-inter">
+              Evidence-based modalities for every scar type
             </p>
           </motion.div>
-        </div>
-      </motion.section>
 
-      {/* Sessions and Results */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        className="py-16 bg-wine text-light"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-georgia text-center mb-6"
-          >
-            How many sessions do you need?
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-xl mb-4 text-center max-w-3xl mx-auto text-cream/90"
-          >
-            (and how long until you see results?)
-          </motion.p>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg mb-12 text-center max-w-3xl mx-auto text-cream/80"
-          >
-            This depends on scar depth and scar type.
-          </motion.p>
-
-          <motion.div
-            variants={staggerContainer}
-            className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto"
-          >
-            <motion.div
-              variants={scaleIn}
-              className="bg-cream/10 p-6 rounded-2xl text-center"
-            >
-              <Calendar className="w-10 h-10 mx-auto mb-4 text-cream" />
-              <p className="text-lg text-cream/90">
-                Some people notice changes within 1 to 2 weeks after fractional
-                CO2, with continued improvement over months as collagen
-                increases.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-cream/10 p-6 rounded-2xl text-center"
-            >
-              <Clock className="w-10 h-10 mx-auto mb-4 text-cream" />
-              <p className="text-lg text-cream/90">
-                With subcision, improvement can build gradually over 2 to 3
-                months, and 1 to 3 sessions may be needed.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-cream/10 p-6 rounded-2xl text-center"
-            >
-              <Sparkles className="w-10 h-10 mx-auto mb-4 text-cream" />
-              <p className="text-lg text-cream/90">
-                Many fractional CO2 plans are described in the range of 3 to 5
-                sessions spaced 4 to 6 weeks apart, depending on the case.
-              </p>
-            </motion.div>
-          </motion.div>
-
-          <motion.p
-            variants={fadeInUp}
-            className="mt-12 text-center text-cream/90 text-xl italic"
-          >
-            If you want a clean, natural result, slow and steady usually wins.
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* Cost Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        className="py-16 bg-light"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-georgia text-brown text-center mb-6"
-          >
-            Cost of acne scar treatment in Kuala Lumpur and Malaysia
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-taupe mb-8 max-w-3xl mx-auto"
-          >
-            Prices vary by:
-          </motion.p>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-cream p-8 rounded-3xl max-w-3xl mx-auto"
-          >
-            <ul className="space-y-2 text-taupe mb-6">
-              <li>
-                • Scar severity and number of areas (cheeks only vs full face)
-              </li>
-              <li>• Treatment type (laser vs microneedling vs subcision)</li>
-              <li>• Device used and doctor time</li>
-              <li>• Number of sessions and package structure</li>
-            </ul>
-
-            <h3 className="text-xl font-bold text-brown mb-3">
-              To give you real market context in Malaysia:
-            </h3>
-            <ul className="space-y-3 text-taupe">
-              <li>
-                Dr Chong Clinic lists a trial session at RM398, a single session
-                at RM800, and a package example of 4 sessions plus 2
-                complimentary sessions for RM3,200 (terms apply).
-              </li>
-              <li>
-                Premier Clinic Malaysia lists subcision from RM800 onwards and
-                fractional CO2 laser from RM1,800 per session (as published on
-                their site).
-              </li>
-              <li className="mt-4 text-wine font-semibold">
-                At Nexus Clinic Kuala Lumpur, your cost depends on your scar map
-                and your chosen plan, especially if you need combination work
-                (for example, subcision plus resurfacing). The best way to avoid
-                overpaying is to avoid guessing and start with a proper
-                assessment.
-              </li>
-            </ul>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Laser vs Microneedling vs Subcision */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        className="py-16 bg-cream"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-georgia text-brown text-center mb-8"
-          >
-            Laser vs microneedling vs subcision
-            <span className="block text-wine text-xl">(which is better?)</span>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-taupe mb-12 max-w-2xl mx-auto"
-          >
-            People ask this all the time, and the honest answer is "better for
-            what?"
-          </motion.p>
-
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <motion.div variants={scaleIn} className="bg-white p-8 rounded-2xl">
-              <h3 className="text-xl font-bold text-brown mb-3">
-                If your scars are tethered (rolling scars)
-              </h3>
-              <p className="text-taupe">
-                Subcision is often the key step because it releases the pull
-                under the skin.
-              </p>
-            </motion.div>
-
-            <motion.div variants={scaleIn} className="bg-white p-8 rounded-2xl">
-              <h3 className="text-xl font-bold text-brown mb-3">
-                If your issue is overall texture and shallow dents
-              </h3>
-              <p className="text-taupe">
-                Fractional resurfacing can be powerful, but downtime and pigment
-                risk need planning.
-              </p>
-            </motion.div>
-
-            <motion.div variants={scaleIn} className="bg-white p-8 rounded-2xl">
-              <h3 className="text-xl font-bold text-brown mb-3">
-                If you want gradual improvement with lighter downtime
-              </h3>
-              <p className="text-taupe">
-                Microneedling can be a strong steady option, especially in
-                combination plans.
-              </p>
-            </motion.div>
+          <div className="space-y-8">
+            {[
+              {
+                title: "Fractional CO2 Laser",
+                desc: "The gold standard for moderate to severe atrophic scarring. Fractional CO2 laser delivers precise columns of carbon dioxide laser energy deep into the dermis, vaporising damaged scar tissue and triggering a robust collagen remodelling response. Results improve progressively over 3 to 6 months as new collagen fills depressed scar floors.",
+                bestFor: "Boxcar scars, rolling scars, deep atrophic scarring",
+                downtime: "5 to 7 days",
+                sessions: "2 to 4",
+              },
+              {
+                title: "Pico Laser",
+                desc: "Delivers ultra-short picosecond pulses that shatter pigment and stimulate collagen through photoacoustic pressure rather than heat. This makes it the preferred tool for post-inflammatory hyperpigmentation, early-stage scarring, and skin texture refinement in darker skin types where thermal lasers carry higher PIH risk.",
+                bestFor: "PIH, mild texture, early scarring",
+                downtime: "Minimal (24-48 hours redness)",
+                sessions: "3 to 5",
+              },
+              {
+                title: "RF Microneedling (Sylfirm X / Potenza)",
+                desc: "Combines controlled micro-needling with targeted RF energy to remodel collagen in the mid-dermis without significant surface injury. Particularly effective for rolling and boxcar scars, open pores, and overall skin texture.",
+                bestFor: "Rolling scars, boxcar scars, skin texture",
+                downtime: "24 to 48 hours mild redness",
+                sessions: "3 to 5",
+              },
+              {
+                title: "Subcision",
+                desc: "A minor surgical procedure performed under local anaesthetic where a specialised bevelled needle is inserted beneath a rolling or tethered scar to physically sever the fibrous bands anchoring the scar floor. Once released, the depressed skin rises naturally and the created space fills with new collagen.",
+                bestFor: "Rolling scars, tethered depressions",
+                downtime: "Mild bruising for 7-10 days",
+                sessions: "1 to 3",
+              },
+              {
+                title: "TCA CROSS Chemical Peel",
+                desc: "Trichloroacetic Acid Chemical Reconstruction of Skin Scars involves precise application of high-concentration TCA directly into individual ice pick scar channels. The focal chemical reaction stimulates scar wall fibroblasts and gradually converts the deep channel into a broader, shallower depression.",
+                bestFor: "Ice pick scars",
+                downtime: "5 to 7 days crusting",
+                sessions: "2 to 4",
+              },
+              {
+                title: "Rejuran S Skin Booster",
+                desc: "A polynucleotide-based injectable specifically formulated for scar removal. Its PDRN molecules activate dermal fibroblasts, reduce inflammatory cytokines, and stimulate production of new extracellular matrix components. Integrated into the recovery phase of most combination scar protocols.",
+                bestFor: "Skin repair, post-treatment recovery",
+                downtime: "Minimal (24 hours redness)",
+                sessions: "2 to 3",
+              },
+            ].map((treatment, idx) => (
+              <motion.div
+                key={idx}
+                variants={fadeInUp}
+                className="bg-cream p-6 rounded-xl border border-taupe/10"
+              >
+                <h3 className="font-georgia text-xl text-brown mb-2">
+                  {treatment.title}
+                </h3>
+                <p className="text-taupe font-inter text-sm mb-3">
+                  {treatment.desc}
+                </p>
+                <div className="grid grid-cols-3 gap-4 mt-4 pt-3 border-t border-taupe/10">
+                  <div>
+                    <p className="font-inter text-xs text-taupe">Best for</p>
+                    <p className="font-inter text-sm text-brown font-medium">
+                      {treatment.bestFor}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-inter text-xs text-taupe">Downtime</p>
+                    <p className="font-inter text-sm text-brown font-medium">
+                      {treatment.downtime}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-inter text-xs text-taupe">
+                      Sessions needed
+                    </p>
+                    <p className="font-inter text-sm text-brown font-medium">
+                      {treatment.sessions}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
+        </motion.div>
+      </section>
 
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-wine font-semibold mt-8 text-xl"
-          >
-            In real life, many plans blend them.
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* Areas We Can Treat */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        className="py-16 bg-light"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-georgia text-brown text-center mb-8"
-          >
-            Areas we can treat
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-taupe mb-8 max-w-2xl mx-auto"
-          >
-            Acne scars are not only on the cheeks. We commonly see scars on:
-          </motion.p>
-
-          <motion.div
-            variants={fadeInUp}
-            className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto"
-          >
-            <div className="bg-cream p-4 rounded-xl text-center text-brown font-medium">
-              Cheeks and temples
-            </div>
-            <div className="bg-cream p-4 rounded-xl text-center text-brown font-medium">
-              Jawline and chin
-            </div>
-            <div className="bg-cream p-4 rounded-xl text-center text-brown font-medium">
-              Forehead
-            </div>
-            <div className="bg-cream p-4 rounded-xl text-center text-brown font-medium">
-              Nose area (pore texture)
-            </div>
-            <div className="bg-cream p-4 rounded-xl text-center text-brown font-medium">
-              Neck (selected cases)
-            </div>
-            <div className="bg-cream p-4 rounded-xl text-center text-brown font-medium">
-              Back and chest (raised scars need different planning)
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Aftercare */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        className="py-16 bg-wine text-light"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-georgia text-center mb-8"
-          >
-            Aftercare that protects your results
-            <span className="block text-cream text-xl">(simple checklist)</span>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-cream/80 mb-12 max-w-2xl mx-auto"
-          >
-            Your aftercare is not "optional." It is part of the treatment.
-          </motion.p>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <motion.div
-              variants={scaleIn}
-              className="bg-cream/10 p-6 rounded-2xl"
-            >
-              <Clock className="w-8 h-8 mb-4 text-cream" />
-              <h3 className="text-xl font-bold mb-3">First 48 hours</h3>
-              <ul className="space-y-2 text-cream/80">
-                <li>• Keep it gentle. Cleanse softly.</li>
-                <li>
-                  • Avoid heat, sauna, and heavy workouts if you are swollen or
-                  red.
-                </li>
-                <li>• Do not pick peeling skin.</li>
-              </ul>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-cream/10 p-6 rounded-2xl"
-            >
-              <Sun className="w-8 h-8 mb-4 text-cream" />
-              <h3 className="text-xl font-bold mb-3">First week</h3>
-              <ul className="space-y-2 text-cream/80">
-                <li>• Sunscreen daily, even if you "just go out for a bit."</li>
-                <li>
-                  • Pause harsh actives (retinoids, strong acids) unless your
-                  doctor says otherwise.
-                </li>
-                <li>• Keep skin hydrated and protected.</li>
-              </ul>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-cream/10 p-6 rounded-2xl"
-            >
-              <Calendar className="w-8 h-8 mb-4 text-cream" />
-              <h3 className="text-xl font-bold mb-3">Between sessions</h3>
-              <ul className="space-y-2 text-cream/80">
-                <li>
-                  • Do not rush. Your skin needs time to rebuild collagen.
-                </li>
-                <li>
-                  • If acne returns, treat it early so scars do not keep
-                  forming.
-                </li>
-              </ul>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Why Nexus Clinic */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        className="py-16 bg-light"
-      >
-        <div className="container mx-auto px-4 max-w-4xl">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-georgia text-brown text-center mb-8"
-          >
-            Why Nexus Clinic Kuala Lumpur
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-taupe mb-8 text-lg"
-          >
-            If you are searching for acne scar treatment in Kuala Lumpur or acne
-            scar treatment in Malaysia, you are probably overwhelmed by options.
-            Many clinics offer lasers. Many clinics offer microneedling. The
-            difference is how well your plan is built.
-          </motion.p>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-wine font-semibold mb-6"
-          >
-            Here is what we focus on:
-          </motion.p>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-cream p-8 rounded-3xl space-y-4"
-          >
-            <div className="flex items-start gap-3">
-              <Award className="text-wine shrink-0 mt-1" />
-              <p className="text-taupe">
-                Scar mapping and combination planning, because mixed scars are
-                common.
-              </p>
-            </div>
-            <div className="flex items-start gap-3">
-              <Award className="text-wine shrink-0 mt-1" />
-              <p className="text-taupe">
-                Aesthetic clinic with a long presence in KL, founded in 2001,
-                located in the Golden Triangle area.
-              </p>
-            </div>
-            <div className="flex items-start gap-3">
-              <Award className="text-wine shrink-0 mt-1" />
-              <p className="text-taupe">
-                A broad toolkit, including common scar procedures like
-                subcision, fractional CO2 laser, dermaroller, peels, PRP,
-                microdermabrasion, and LED photomodulation therapy.
-              </p>
-            </div>
-            <div className="flex items-start gap-3">
-              <Award className="text-wine shrink-0 mt-1" />
-              <p className="text-taupe">
-                Easy access in Kuala Lumpur at Wisma UOA II, Jalan Pinang.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Competitor Analysis */}
-      {/* <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        className="py-16 bg-cream"
-      >
-        <div className="container mx-auto px-4 max-w-4xl">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl font-georgia text-brown text-center mb-6"
-          >
-            Top competitors showing up on Google
-            <span className="block text-wine text-lg">
-              (quick review, and what we learned)
-            </span>
-          </motion.h2>
-
-          <motion.p variants={fadeInUp} className="text-center text-taupe mb-8">
-            When we reviewed pages that commonly appear for searches like "acne
-            scar treatment Kuala Lumpur" and "acne scar treatment Malaysia", a
-            few patterns showed up.
-          </motion.p>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-white p-6 rounded-2xl mb-6"
-          >
-            <h3 className="font-bold text-brown mb-3">
-              Competitors that frequently appear (examples)
-            </h3>
-            <ul className="list-disc pl-5 text-taupe space-y-1">
-              <li>
-                Erufu Care often ranks because it is a directory listing
-                multiple clinics and patient reviews for acne scar treatments.
-              </li>
-              <li>
-                Dr Chong Clinic ranks with clear explanations, pricing examples,
-                side effects, and a structured FAQ.
-              </li>
-              <li>
-                Sliq Clinic ranks with strong device-based positioning and FAQs
-                around fractional lasers, downtime, and laser comparisons.
-              </li>
-              <li>
-                Da Vinci Clinic ranks with a detailed CO2 laser page including
-                downtime, healing time, and treatment duration.
-              </li>
-              <li>
-                CLEO Clinic ranks with a clear breakdown of scar types and
-                multiple treatment options including fractional CO2, peels,
-                microdermabrasion, fillers, microneedling, and subcision.
-              </li>
-            </ul>
-          </motion.div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-white p-6 rounded-2xl mb-6"
-          >
-            <h3 className="font-bold text-brown mb-3">
-              What the best competitor pages do well
-            </h3>
-            <ul className="list-disc pl-5 text-taupe space-y-1">
-              <li>They explain scar types in plain language</li>
-              <li>They show realistic downtime and healing</li>
-              <li>They include FAQs that match what people actually search</li>
-              <li>
-                Some show price anchors, which reduces anxiety before booking
-              </li>
-            </ul>
-          </motion.div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-rose/10 p-6 rounded-2xl border-l-4 border-rose"
-          >
-            <h3 className="font-bold text-brown mb-2">
-              The gap we can win in Kuala Lumpur:
-            </h3>
-            <p className="text-taupe">
-              Many pages describe treatments. Fewer pages help a reader choose a
-              plan based on scar shape, downtime tolerance, and skin tone risk.
-              That is exactly what we do with scar mapping and a combination
-              roadmap.
+      {/* Comparison Table Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">
+              Subcision vs Laser vs Microneedling
+            </h2>
+            <p className="text-taupe font-inter">
+              Which is better? The answer depends on your scar type
             </p>
           </motion.div>
-        </div>
-      </motion.section> */}
+
+          <div className="overflow-x-auto">
+            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Factor</th>
+                  <th className="p-4 text-left font-georgia">Subcision</th>
+                  <th className="p-4 text-left font-georgia">Laser</th>
+                  <th className="p-4 text-left font-georgia">Microneedling</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonData.map((row, idx) => (
+                  <tr
+                    key={idx}
+                    className="border-t border-taupe/10 hover:bg-cream/30 transition-colors"
+                  >
+                    <td className="p-4 font-inter font-semibold text-brown">
+                      {row.factor}
+                    </td>
+                    <td className="p-4 text-taupe font-inter">
+                      {row.subcision}
+                    </td>
+                    <td className="p-4 text-taupe font-inter">{row.laser}</td>
+                    <td className="p-4 text-taupe font-inter">
+                      {row.microneedling}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <motion.div
+            variants={fadeInUp}
+            className="mt-6 p-4 bg-wine/5 rounded-xl text-center"
+          >
+            <p className="text-brown font-inter">
+              In real practice, many patients benefit from blending these
+              modalities. Rolling scars often need subcision first, then
+              resurfacing. Boxcar scars respond well to laser or microneedling.
+              Mixed scarring requires a combination approach.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Procedure Steps Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">
+              The Acne Scar Treatment Process at Nexus Clinic KL
+            </h2>
+            <p className="text-taupe font-inter">Step by step</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                step: "01",
+                title: "Skin Consultation & Scar Mapping",
+                desc: "Your doctor examines the distribution, depth, type and density of your scarring under specialised lighting. This step determines which modalities are indicated and in which order.",
+              },
+              {
+                step: "02",
+                title: "Skin Preparation & Numbing",
+                desc: "Medical-grade topical anaesthetic cream is applied for 30 to 45 minutes. For subcision, targeted local anaesthetic ensures full comfort.",
+              },
+              {
+                step: "03",
+                title: "Treatment Session",
+                desc: "Your doctor applies the laser, RF microneedling device, or needling instrument to mapped scar zones. Sessions range from 30 to 90 minutes.",
+              },
+              {
+                step: "04",
+                title: "Post-Treatment Care & Follow-up",
+                desc: "Soothing serums and barrier creams are applied. Written aftercare instructions provided. Review appointment at 4 to 6 weeks to assess healing and adjust next session parameters.",
+              },
+            ].map((item, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="text-center">
+                <div className="w-14 h-14 bg-wine rounded-full flex items-center justify-center text-light font-georgia text-xl mx-auto mb-4 shadow-md">
+                  {item.step}
+                </div>
+                <h3 className="font-georgia text-lg text-brown mb-2 font-semibold">
+                  {item.title}
+                </h3>
+                <p className="text-taupe font-inter text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div variants={fadeInUp} className="text-center mt-10">
+            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+              Book Your Acne Scar Consultation
+              <ArrowRight className="w-5 h-5" />
+            </button>
+            <p className="text-taupe text-sm mt-3">
+              Personalised scar mapping at Nexus Clinic KL
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Month-by-Month Roadmap */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">
+              The Acne Scar Treatment Journey
+            </h2>
+            <p className="text-taupe font-inter">
+              A realistic month-by-month roadmap for moderate to severe mixed
+              scarring
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-5 gap-4">
+            {[
+              {
+                phase: "Month 1",
+                title: "Consultation + First Session",
+                treatments: "Skin assessment, scar mapping, targeted treatment (Pico Laser or Subcision)",
+                goal: "Identify scar types and begin collagen stimulation",
+              },
+              {
+                phase: "Month 2 to 3",
+                title: "Core Treatment",
+                treatments: "Fractional CO2 Laser or RF Microneedling",
+                goal: "Deep remodelling of scar tissue and collagen rebuilding",
+              },
+              {
+                phase: "Month 3 to 4",
+                title: "Skin Repair",
+                treatments: "Rejuran S Skin Booster",
+                goal: "Accelerate recovery, hydrate, reduce PIH",
+              },
+              {
+                phase: "Month 5 to 6",
+                title: "Refinement",
+                treatments: "Pico Laser for residual pigmentation; maintenance session",
+                goal: "Even skin tone, refine texture",
+              },
+              {
+                phase: "Month 6+",
+                title: "Maintenance",
+                treatments: "Annual or biannual touch-up as required",
+                goal: "Preserve results and manage new marks",
+              },
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                variants={fadeInUp}
+                className="bg-light p-4 rounded-xl border border-taupe/10 text-center"
+              >
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-wine font-bold">{item.phase.split(" ")[1]}</span>
+                </div>
+                <p className="font-inter font-semibold text-brown text-sm">
+                  {item.title}
+                </p>
+                <p className="font-inter text-taupe text-xs mt-1">
+                  {item.treatments}
+                </p>
+                <p className="font-inter text-wine text-xs mt-2 font-medium">
+                  {item.goal}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            variants={fadeInUp}
+            className="mt-8 p-4 bg-wine/5 rounded-xl text-center"
+          >
+            <p className="text-brown font-inter text-sm">
+              Collagen remodelling is a slow biological process. Most patients
+              notice the most dramatic visible changes between months 3 and 6 as
+              the new collagen matrix matures. Planning a realistic timeline
+              before beginning protects patients from disappointment.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">
+              Acne Scar Treatment Cost in Malaysia 2026
+            </h2>
+            <p className="text-taupe font-inter">
+              Transparent pricing at Nexus Clinic KL
+            </p>
+          </motion.div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Treatment</th>
+                  <th className="p-4 text-left font-georgia">Target Scar Type</th>
+                  <th className="p-4 text-left font-georgia">Sessions Needed</th>
+                  <th className="p-4 text-left font-georgia">Price Range (RM)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pricingTiers.map((tier, idx) => (
+                  <tr
+                    key={idx}
+                    className="border-t border-taupe/10 hover:bg-cream/30 transition-colors"
+                  >
+                    <td className="p-4 font-inter font-semibold text-brown">
+                      {tier.treatment}
+                    </td>
+                    <td className="p-4 font-inter text-taupe">{tier.target}</td>
+                    <td className="p-4 font-inter text-taupe">{tier.sessions}</td>
+                    <td className="p-4 font-inter font-semibold text-wine">
+                      {tier.price}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr className="bg-wine/5">
+                  <td colSpan={4} className="p-4 text-taupe font-inter text-sm italic">
+                    * Package pricing available for combination programmes of 4 or more sessions.
+                    Final pricing confirmed at consultation after scar mapping.
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Common Mistakes Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">
+              Common Mistakes Malaysian Patients Make
+            </h2>
+            <p className="text-taupe font-inter">When treating acne scars</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              {
+                title: "Treating only pigmentation, not texture",
+                desc: "Dark marks left by acne and physical scar depressions look similar but are biologically different. Pico Laser clears PIH effectively but does not remodel collagen in ice pick or rolling scar channels.",
+              },
+              {
+                title: "Using beauty-salon lasers that lack depth",
+                desc: "Low-powered LED-based or pulsed light devices cannot reach scar depth. Under Ministry of Health Malaysia guidelines, medical-grade laser procedures must be performed by licensed doctors.",
+              },
+              {
+                title: "Stopping after one or two sessions",
+                desc: "The scar-filling collagen continues to mature for 3 to 6 months post-treatment. Stopping mid-protocol misses the majority of the result.",
+              },
+              {
+                title: "Not addressing active acne first",
+                desc: "Treating established scars while new breakouts are still forming is a losing battle. Each new inflammatory lesion adds to the scar burden.",
+              },
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                variants={fadeInUp}
+                className="bg-light p-6 rounded-xl border-l-4 border-wine"
+              >
+                <h3 className="font-georgia text-lg text-brown mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-taupe font-inter text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Side Effects & Aftercare Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">
+              Side Effects and Aftercare
+            </h2>
+            <p className="text-taupe font-inter">What to expect after treatment</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              variants={fadeInLeft}
+              className="bg-cream p-6 rounded-xl border border-taupe/10"
+            >
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <Heart className="w-5 h-5 text-wine" />
+                Common Temporary Effects
+              </h3>
+              <ul className="space-y-2">
+                {[
+                  "Redness, swelling, warmth (24-72 hours for Pico/RF; 5-7 days for CO2)",
+                  "Peeling or dryness after resurfacing procedures",
+                  "Mild bruising after subcision (resolves in 7-10 days)",
+                  "Temporary darkening or lightening of skin (pigment shift risk higher in darker skin tones)",
+                ].map((effect, idx) => (
+                  <li
+                    key={idx}
+                    className="flex items-start gap-2 text-taupe font-inter text-sm"
+                  >
+                    <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                    <span>{effect}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInRight}
+              className="bg-cream p-6 rounded-xl border border-taupe/10"
+            >
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <AlertTriangle className="w-5 h-5 text-wine" />
+                Rare but Serious Risks
+              </h3>
+              <ul className="space-y-2">
+                {[
+                  "Post-inflammatory hyperpigmentation (preventable with proper settings and SPF)",
+                  "Infection (rare with proper aftercare)",
+                  "Scarring (extremely rare with experienced injectors)",
+                  "Prolonged redness or delayed healing",
+                ].map((risk, idx) => (
+                  <li
+                    key={idx}
+                    className="flex items-start gap-2 text-taupe font-inter text-sm"
+                  >
+                    <AlertCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                    <span>{risk}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+
+          <motion.div
+            variants={fadeInUp}
+            className="mt-8 bg-wine/5 p-6 rounded-xl"
+          >
+            <h3 className="font-georgia text-xl text-brown mb-4">
+              Aftercare Instructions
+            </h3>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                "Apply SPF50 every 2 hours when outdoors",
+                "Pause retinols, AHAs, BHAs for at least 5 days before and after",
+                "Avoid heavy exercise, saunas, swimming for 3-5 days",
+                "Use gentle, non-stripping cleansers",
+                "Apply ceramide or hyaluronic acid moisturisers",
+                "Do not pick at peeling skin",
+                "Sleep on your back for the first few nights after resurfacing",
+                "Attend follow-up appointment at 4-6 weeks",
+              ].map((instruction, idx) => (
+                <div key={idx} className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span className="text-taupe font-inter text-sm">
+                    {instruction}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Before After Section */}
+      <SectionBeforeAfter transformations={transformations} />
 
       {/* FAQ Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        className="py-16 bg-light"
-      >
-        <div className="container mx-auto px-4 max-w-4xl">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-georgia text-brown text-center mb-12"
-          >
-            People Also Ask (FAQs)
-          </motion.h2>
+      <FAQ data={faqData} />
 
-          <div className="space-y-4">
-            {/* FAQ 1 */}
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-bold text-brown mb-2">
-                How many sessions of fractional CO2 laser are needed for acne
-                scars?
-              </h3>
-              <p className="text-taupe">
-                Many patients are guided toward 3 to 5 sessions, often spaced 4
-                to 6 weeks apart, depending on scar depth and goals.
-              </p>
-            </motion.div>
-
-            {/* FAQ 2 */}
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-bold text-brown mb-2">
-                How long does it take to see results after fractional CO2 laser?
-              </h3>
-              <p className="text-taupe">
-                Some people notice improvement within 1 to 2 weeks, but bigger
-                changes develop over 3 to 6 months as collagen builds.
-              </p>
-            </motion.div>
-
-            {/* FAQ 3 */}
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-bold text-brown mb-2">
-                Is fractional CO2 laser safe for darker skin tones?
-              </h3>
-              <p className="text-taupe">
-                It can be safe with proper assessment and customised settings,
-                but pigment risk needs planning. Some clinics note that darker
-                skin tones may have a higher risk of pigmentation changes and
-                should consult a qualified doctor.
-              </p>
-            </motion.div>
-
-            {/* FAQ 4 */}
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-bold text-brown mb-2">
-                What are the side effects of fractional CO2 laser for acne
-                scars?
-              </h3>
-              <p className="text-taupe">
-                Temporary redness, swelling, peeling or crusting, and sun
-                sensitivity are commonly listed. Some clinics also mention a
-                minimal risk of hyperpigmentation, especially in darker skin
-                tones.
-              </p>
-            </motion.div>
-
-            {/* FAQ 5 */}
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-bold text-brown mb-2">
-                How much does fractional CO2 laser cost in Malaysia?
-              </h3>
-              <p className="text-taupe">
-                It varies by clinic and plan. One published example in Malaysia
-                lists RM398 for a trial session, RM800 for a single session, and
-                RM3,200 for a multi-session package (terms apply).
-              </p>
-            </motion.div>
-
-            {/* FAQ 6 */}
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-bold text-brown mb-2">
-                What is fractional laser vs non-fractional laser?
-              </h3>
-              <p className="text-taupe">
-                One KL clinic explains that fractional laser treats the skin in
-                fractions, which supports faster healing and reduced side effect
-                risk compared to older approaches.
-              </p>
-            </motion.div>
-
-            {/* FAQ 7 */}
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-bold text-brown mb-2">
-                Does fractional laser cause long downtime?
-              </h3>
-              <p className="text-taupe">
-                Some clinics describe around 5 to 7 days of downtime for certain
-                newer fractional laser systems, while older conventional lasers
-                may take longer. Your downtime depends on settings and skin
-                response.
-              </p>
-            </motion.div>
-
-            {/* FAQ 8 */}
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-bold text-brown mb-2">
-                What is the difference between picosecond fractional laser and
-                fractional CO2 laser for acne scars?
-              </h3>
-              <p className="text-taupe">
-                One clinic explains that fractional CO2 is an ablative laser
-                with more peeling, while picosecond fractional laser tends to
-                have shorter downtime and no peeling, and choices depend on
-                lifestyle, skin type, and scar type.
-              </p>
-            </motion.div>
-
-            {/* FAQ 9 */}
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-bold text-brown mb-2">
-                What is subcision and what scars is it for?
-              </h3>
-              <p className="text-taupe">
-                Subcision is a minor procedure where a needle is used to release
-                tethering strands under the skin, helping depressed scars lift
-                and encouraging collagen formation during healing.
-              </p>
-            </motion.div>
-
-            {/* FAQ 10 */}
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-bold text-brown mb-2">
-                How many subcision sessions do I need?
-              </h3>
-              <p className="text-taupe">
-                Many people need 1 to 3 sessions, depending on the severity of
-                the scars.
-              </p>
-            </motion.div>
-
-            {/* FAQ 11 */}
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-bold text-brown mb-2">
-                How long does subcision take and what is the downtime?
-              </h3>
-              <p className="text-taupe">
-                A published clinic guide describes 30 to 60 minutes and minimal
-                downtime, with improvement often seen over 2 to 3 months as
-                collagen forms.
-              </p>
-            </motion.div>
-
-            {/* FAQ 12 */}
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-bold text-brown mb-2">
-                What is a realistic acne scar improvement goal?
-              </h3>
-              <p className="text-taupe">
-                The most realistic goal is visible improvement in texture and
-                depth. Many patients do not need "perfect," they want smoother
-                skin in real lighting. Combination plans are often used for
-                mixed scar types.
-              </p>
-            </motion.div>
-
-            {/* FAQ 13 */}
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-bold text-brown mb-2">
-                What is the best acne scar treatment in Kuala Lumpur?
-              </h3>
-              <p className="text-taupe">
-                The best treatment depends on your scar map. Rolling scars often
-                respond better when tethering is addressed (often via
-                subcision), while texture and boxcar scars may respond well to
-                resurfacing or collagen-induction plans.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Final CTA */}
-      <motion.section
-        variants={fadeInUp}
-        initial="initial"
-        whileInView="whileInView"
-        className="py-20 bg-wine text-light"
-      >
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-georgia mb-6">
-            Ready for a scar map
-            <span className="block text-cream">(not a guess)?</span>
-          </h2>
-
-          <p className="text-xl mb-8 max-w-3xl mx-auto text-cream/90">
-            If you want acne scar treatment in Kuala Lumpur with a plan that
-            matches your scar type, downtime comfort, and skin tone risk, start
-            with a consultation at Nexus Clinic Kuala Lumpur.
-          </p>
-
-          <div className="inline-block bg-cream/20 backdrop-blur-sm px-8 py-4 rounded-full">
-            <p className="text-lg font-semibold">
-              Wisma UOA II, Jalan Pinang • Kuala Lumpur
+      {/* CTA Section */}
+      <section className="py-20 px-4 bg-wine">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-4xl text-center"
+        >
+          <motion.div variants={fadeInUp} className="space-y-6">
+            <h2 className="font-georgia text-3xl md:text-5xl text-light">
+              Start Your Acne Scar Journey at Nexus Clinic KL
+            </h2>
+            <p className="text-xl text-cream font-inter max-w-2xl mx-auto">
+              Acne scars respond to treatment. The texture your skin has today
+              is not the texture it has to keep. What changes outcomes is the
+              precision of the approach: matching the right treatment to the
+              right scar type, calibrating every session to your skin's specific
+              response, and committing to a realistic programme.
             </p>
-          </div>
-
-          <p className="mt-4 text-cream/70">(Nexus Clinic Kuala Lumpur)</p>
-        </div>
-      </motion.section>
+            <p className="text-cream/90 font-inter">
+              At Nexus Clinic KL, our licensed aesthetic doctors have performed
+              over 5,000 aesthetic procedures, bring more than 15 years of
+              combined experience to every consultation, and work exclusively
+              with MOH-approved devices and injectables.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                Book Your Free Acne Scar Assessment
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+              <Whatsapp
+                message="Hi, I'd like to book a free consultation for acne scar treatment at Nexus Clinic KL. Please let me know available slots."
+                variant="light"
+              />
+            </div>
+            <p className="text-cream/80 font-inter text-sm">
+              Limited slots available this week | Located at Wisma UOA II, Jalan
+              Pinang, KLCC — Serving Malaysia since 2001
+            </p>
+            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
+              <a href="#" className="hover:text-cream transition-colors">
+                Explore Pico Laser Treatment
+              </a>
+              <span>•</span>
+              <a href="#" className="hover:text-cream transition-colors">
+                Explore Fractional CO2 Laser
+              </a>
+              <span>•</span>
+              <a href="#" className="hover:text-cream transition-colors">
+                Explore RF Microneedling
+              </a>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
     </div>
   );
-};
-
-export default AcneScarLanding;
+}

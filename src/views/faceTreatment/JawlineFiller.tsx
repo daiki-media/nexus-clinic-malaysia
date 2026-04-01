@@ -1,156 +1,408 @@
 "use client";
-
 import { motion } from "framer-motion";
 import {
-  CheckCircle2,
-  AlertCircle,
+  Sparkles,
+  Award,
+  MapPin,
+  Calendar,
+  CheckCircle,
   Syringe,
   Clock,
-  Shield,
   Heart,
-  Sparkles,
-  ChevronRight,
+  Shield,
+  ArrowRight,
+  Eye,
+  ArrowUp,
+  AlertCircle,
   Droplets,
   Activity,
-  MapPin,
-  HelpCircle,
+  TrendingUp,
+  Users,
+  Scissors,
+  Zap,
 } from "lucide-react";
 import {
   staggerContainer,
   fadeInLeft,
   fadeInRight,
-  scaleIn,
   fadeInUp,
+  scaleIn,
 } from "../../lib/animations";
 import FAQ from "../../components/FAQ";
-import { useTranslation } from "@/src/i18n/client";
-import { fallbackLng } from "@/src/i18n/settings";
+import Whatsapp from "../../components/Whatsapp";
+import Image from "next/image";
 
-const JawlineFillerLanding = ({
-  locale = fallbackLng,
-}: {
-  locale?: string;
-}) => {
-  const { t } = useTranslation(locale, "jawlineFiller");
+interface JawlineFillerProps {
+  locale: string;
+}
+
+export default function JawlineFiller({ locale }: JawlineFillerProps) {
+  const rootCauses = [
+    {
+      cause: "Weak bone structure",
+      concern: "Recessed or undefined jaw from the side and front",
+      treatment: "Jawline filler along the mandible",
+      filler: "HA filler or Radiesse",
+    },
+    {
+      cause: "Masseter muscle bulk",
+      concern: "Wide, square lower face when jaw is clenched",
+      treatment: "Masseter Botox to slim the muscle",
+      filler: "Sometimes combined with filler",
+    },
+    {
+      cause: "Skin laxity and jowling",
+      concern: "Soft or sagging jaw border, blurred definition",
+      treatment: "Filler to restore volume and structure",
+      filler: "Yes. HA filler for lifting effect",
+    },
+    {
+      cause: "Submental fat",
+      concern: "Double chin appearance, blurred neck-jaw angle",
+      treatment: "Fat dissolving or CoolSculpting",
+      filler: "Sometimes combined after fat reduction",
+    },
+  ];
+
+  const genderGoals = [
+    {
+      gender: "Men",
+      goal: "Stronger angularity and sharper definition",
+      focus: "Mandible body and lower border definition",
+      volume: "1.5 to 3ml typically across the full jawline",
+      product: "Juvederm Volux or Radiesse",
+      combo: "Often combined with chin filler",
+      outcome: "Chiselled jaw that photographs well",
+    },
+    {
+      gender: "Women",
+      goal: "Softer contour, V-line shape, feminine taper",
+      focus: "Mandible angle, chin projection and V-line taper",
+      volume: "1 to 2ml with lighter hand at the angle",
+      product: "Juvederm Voluma or Volux",
+      combo: "Very commonly combined with jaw Botox",
+      outcome: "Defined but soft jaw that tapers to a clean chin",
+    },
+  ];
+
+  const faceShapes = [
+    { shape: "Round", concern: "Jaw blends into neck, no definition", approach: "Filler along the full mandible border", combine: "Chin filler to elongate the face" },
+    { shape: "Square", concern: "Wide jaw due to muscle bulk", approach: "Light filler for definition, primary Botox slimming", combine: "Masseter Botox to reduce width" },
+    { shape: "Oval", concern: "Mild softening with age, wants refinement", approach: "Conservative filler at mandible angles", combine: "Skin booster for overall quality" },
+    { shape: "Heart-shaped", concern: "Narrow jaw, prominent forehead", approach: "Filler to widen the lower jaw", combine: "Chin filler to complete lower face" },
+    { shape: "Long", concern: "Wants definition without adding length", approach: "Filler at angles only, not along lower border", combine: "Cheek filler to balance mid-face" },
+    { shape: "Diamond", concern: "Wide cheekbones, narrow jaw", approach: "Filler along full mandible to widen lower face", combine: "Chin filler for symmetry" },
+  ];
+
+  const comparisonData = [
+    { factor: "What it does", filler: "Adds structure and definition along the mandible", botox: "Slims the jaw by shrinking overdeveloped masseter muscle" },
+    { factor: "Addresses", filler: "Weak bone structure, age-related loss, lack of definition", botox: "Wide square jaw caused by muscle bulk" },
+    { factor: "Results timeline", filler: "Immediate. Visible the same day", botox: "Gradual. Full results in 4 to 6 weeks" },
+    { factor: "Duration", filler: "12 to 24 months", botox: "4 to 6 months" },
+    { factor: "Reversible", filler: "Yes for HA filler", botox: "Yes. Naturally wears off" },
+    { factor: "Best for", filler: "Undefined or recessed jawline", botox: "Wide or square jaw due to muscle" },
+    { factor: "Cost in KL (2026)", filler: "RM 2,000 to RM 4,500 per session", botox: "RM 800 to RM 1,500 per session" },
+  ];
+
+  const fillerProducts = [
+    {
+      name: "Juvederm Volux",
+      description: "The firmest HA filler in the Juvederm range, designed specifically for jawline and chin structural support.",
+      longevity: "18 to 24 months",
+      bestFor: "Primary choice for patients requiring significant definition",
+    },
+    {
+      name: "Juvederm Voluma",
+      description: "High-density HA filler with strong lift capacity. Used for jawline maintenance and moderate correction.",
+      longevity: "12 to 18 months",
+      bestFor: "Patients needing moderate structural correction",
+    },
+    {
+      name: "Restylane Lyft",
+      description: "Firm HA with good structural support and a strong safety record. Frequently used for jawline contouring.",
+      longevity: "12 to 18 months",
+      bestFor: "Combined jawline and chin treatments",
+    },
+    {
+      name: "Radiesse",
+      description: "Calcium hydroxylapatite biostimulatory filler. Adds immediate volume and stimulates collagen production.",
+      longevity: "18 to 24 months",
+      bestFor: "Patients wanting longest-lasting result",
+    },
+  ];
+
+  const pricingTiers = [
+    { treatment: "Jawline filler", volume: "1 to 3 ml", price: "RM 2,500 – RM 3,500+" },
+    { treatment: "Jawline refinement / touch-up", volume: "0.5 to 1.5 ml", price: "RM 1,800 – RM 2,500" },
+    { treatment: "Jaw slimming (Botox)", volume: "Customised", price: "RM 1,500 – RM 2,400" },
+    { treatment: "Jawline + chin contouring", volume: "Customised", price: "RM 3,000 – RM 5,000+" },
+    { treatment: "Full lower face plan", volume: "Multi-area", price: "RM 6,000 – RM 9,000+" },
+  ];
+
+  const faqData = [
+    { q: "How long does jawline filler last in Malaysia?", a: "Jawline filler typically lasts 12 to 24 months depending on the product used. Juvederm Volux and Radiesse produce the longest-lasting results at 18 to 24 months. Standard HA fillers like Juvederm Voluma or Restylane Lyft last 12 to 18 months. Individual metabolism and lifestyle also affect how quickly filler breaks down." },
+    { q: "How much does jawline filler cost in Malaysia in 2026?", a: "Jawline filler treatments in Malaysia typically range from RM 1,800 to RM 3,500+ depending on the product used, volume required and the level of contouring needed. Combination treatments involving jawline, chin or facial balancing generally start from RM 3,000 and can range up to RM 7,000+ for more advanced corrections. Final pricing is confirmed after consultation." },
+    { q: "Is jawline filler suitable for men in Malaysia?", a: "Yes. Jawline filler is increasingly popular among men in Malaysia, particularly for achieving a sharper, more angular lower face. The technique for male patients differs significantly from female patients. More volume is typically used, placement is adjusted for masculine angularity and the overall goal is structural definition. Nexus Clinic KL uses gender-specific injection protocols for all jawline treatments." },
+    { q: "Can jawline filler fix a double chin?", a: "Jawline filler can improve the appearance of a double chin caused by an undefined or recessed jaw by creating a cleaner neck-to-jaw angle. If the double chin is caused by submental fat rather than structural weakness, filler alone will not resolve it. In those cases, fat dissolving treatments or CoolSculpting are the appropriate primary intervention." },
+    { q: "What is the difference between jawline filler and jaw Botox?", a: "Jawline filler adds volume and structural definition along the mandible to create a sharper border. Results are immediate and last 12 to 24 months. Jaw Botox relaxes the masseter muscles to slim a wide or square lower face caused by muscle bulk. Results take 4 to 6 weeks and last 4 to 6 months. Many patients benefit from combining both." },
+    { q: "How many ml of filler is needed for the jawline?", a: "Most patients need 1 to 2.5ml of filler for a visible, natural-looking jawline result. Male patients with strong structural goals may require 2 to 3ml. Maintenance top-up treatments typically use 0.5 to 1ml. The exact volume is confirmed at consultation based on your bone structure, face shape and the degree of correction required." },
+    { q: "Can jawline filler be dissolved?", a: "Hyaluronic acid jawline fillers are fully dissolvable with hyaluronidase. This is one of the primary reasons HA fillers are the preferred starting point for first-time patients. Radiesse is not dissolvable and requires more careful patient assessment before use." },
+    { q: "How soon are results visible after jawline filler?", a: "Results are visible immediately after treatment. The jawline will look defined and structured from the day of the appointment. Over the following 7 to 14 days, any minor swelling resolves and the filler integrates fully with surrounding tissue. The final result is typically at its best two weeks after treatment." },
+  ];
 
   return (
-    <div className="w-full overflow-hidden bg-light">
+    <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-b from-cream/50 to-light z-0" />
-
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
+        
         <motion.div
           variants={staggerContainer}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="container mx-auto max-w-6xl relative z-10"
         >
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInUp} className="space-y-6">
-              <h1 className="font-georgia text-5xl lg:text-6xl leading-tight text-brown">
-                Jawline Filler in{" "}
-                <span className="text-wine block">
-                  Kuala Lumpur, Malaysia (Nexus Clinic KL)
-                </span>
-              </h1>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-8">
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
+                <Sparkles className="w-4 h-4 text-wine" />
+                <span className="text-sm font-inter text-wine font-medium">Non-Surgical Jawline Contouring</span>
+              </motion.div>
+              
+              <motion.h1
+                variants={fadeInUp}
+                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
+              >
+                Sharper Jawline Filler in Malaysia for{" "}
+                <span className="text-wine italic">Defined Contours and a Sculpted Lower Face</span>
+              </motion.h1>
 
-              <p className="text-xl text-taupe leading-relaxed">
-                A sharper jawline, without surgery, and without looking "done."
-                Subtle definition or a stronger angle, we tailor it to your
-                face, not a trend. Doctor-led planning, authentic products, and
-                a result that still looks like you.
-              </p>
+              <motion.p
+                variants={fadeInUp}
+                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
+              >
+                A defined jawline does not just change how you look in photographs. It changes how your entire face reads. 
+                The jaw is the structural frame of the lower face.
+              </motion.p>
 
-              <div className="bg-glass backdrop-blur-sm border border-cream rounded-2xl p-6 space-y-4">
-                <h2 className="font-georgia text-brown text-lg">
-                  Trust at a glance (Nexus Clinic Kuala Lumpur)
+              <motion.p
+                variants={fadeInUp}
+                className="text-brown font-inter"
+              >
+                Jawline filler at Nexus Clinic Kuala Lumpur reshapes that frame without surgery, stitches or recovery time. 
+                Our doctors have performed over 5,000 facial filler procedures using technique specifically built for Southeast Asian facial anatomy. 
+                The result is a sharper, more defined lower face that looks completely natural.
+              </motion.p>
+              <motion.div 
+                variants={fadeInLeft} 
+                className="flex flex-col sm:flex-row gap-4 items-center justify-start"
+              >
+                <motion.button
+                  variants={fadeInUp}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  Book Jawline Assessment
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+                <Whatsapp message="Hi, I'm interested in jawline filler at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
+              </motion.div>
+            </motion.div>
+
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
+                <Image
+                  src="/images/face/Jawline Filler.png"
+                  alt="Nexus Clinic Kuala Lumpur - Jawline Filler Treatment"
+                  fill
+                  className="object-cover object-[70%_30%]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
+                <p className="font-inter font-bold text-brown"> Defined Jawline</p>
+                <p className="font-inter text-sm text-taupe">Immediate results • Zero surgery</p>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Trust Section */}
+      <section className="py-12 px-4 bg-light">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-taupe/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+            {/* Header Section */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <Award className="w-6 h-6 text-wine" />
+                </div>
+                <h2 className="font-georgia text-2xl md:text-3xl text-brown">
+                  Trust at a glance
                 </h2>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="flex items-start gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                    <span className="text-sm text-brown/80">
-                      Authentic premium dermal fillers (including Allergan
-                      Juvederm options)
-                    </span>
+              </div>
+              <div className="hidden sm:block w-px h-8 bg-taupe/20" />
+              <p className="text-taupe font-inter text-sm">
+                Nexus Clinic Kuala Lumpur — Excellence in Aesthetic Medicine
+              </p>
+            </div>
+
+            {/* Key Stats Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-4 border-y border-taupe/10">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Award className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Established</p>
+                  <p className="font-georgia text-brown font-bold text-lg">2001</p>
+                  <p className="font-inter text-taupe text-xs">Over 20 years of excellence</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Location</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Wisma UOA II, Jalan Pinang</p>
+                  <p className="font-inter text-taupe text-xs">KLCC, 50450 Kuala Lumpur</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Opening Hours</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Monday - Saturday</p>
+                  <p className="font-inter text-taupe text-xs">9:00am – 6:00pm | Closed Sundays & PH</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Achievement Badges */}
+            <div className="mt-6 pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-wine" />
                   </div>
-                  <div className="flex items-start gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                    <span className="text-sm text-brown/80">
-                      Transparent per-syringe pricing, so you can plan
-                      confidently
-                    </span>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">20+ Years of Excellence</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Trusted aesthetic care since 2001</p>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                    <span className="text-sm text-brown/80">
-                      Specialist medical injectors, doctor-led assessment
-                    </span>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-wine" />
                   </div>
-                  <div className="flex items-start gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                    <span className="text-sm text-brown/80">
-                      Established aesthetic clinic, founded in 2001
-                    </span>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">5,000+ Procedures</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Performed by licensed doctors</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">MOH-Approved Products</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Premium, medical-grade fillers only</p>
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              variants={fadeInRight}
-              className="relative h-150 rounded-3xl overflow-hidden shadow-2xl"
-            >
-              <img
-                src="/images/skin/acne-treatment.webp"
-                alt="Jawline contouring result"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-brown/20 to-transparent" />
-            </motion.div>
+            {/* Additional Trust Indicators */}
+            <div className="mt-6 pt-4 border-t border-taupe/10">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Award-winning practitioners</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Doctor-led consultations</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Emergency protocols in place</span>
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
       </section>
-
-      {/* Why Jawline Definition Matters */}
-      <section className="py-20 px-4 bg-cream/30">
+      {/* Treatment Overview Section */}
+      <section className="py-16 px-4 bg-cream">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="container mx-auto max-w-4xl"
+          className="container mx-auto max-w-5xl"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown mb-8"
-          >
-            Why jawline definition matters{" "}
-            <span className="text-rose">more than you think</span>
-          </motion.h2>
-
-          <motion.div
-            variants={fadeInUp}
-            className="prose prose-lg max-w-none space-y-4"
-          >
-            <p className="text-brown/80 leading-relaxed">
-              A well-defined jawline does not just "look sharp." It balances the
-              whole lower face. It can make cheeks look lifted, soften early
-              jowls, and give your profile more structure in photos.
-            </p>
-            <p className="text-brown/80 leading-relaxed">
-              In Kuala Lumpur, we see one common pattern. People do not want a
-              dramatic change. They want a cleaner line from ear to chin, a more
-              confident side profile, and a face that looks less tired.
-            </p>
-            <p className="text-wine font-semibold text-xl">
-              Jawline filler is one of the fastest ways to do that, when it is
-              done with proper planning and the right product choice.
-            </p>
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">Jawline Filler Treatment Overview</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">Everything you need to know at a glance</p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Syringe, label: "Treatment", value: "Non-surgical jawline contouring" },
+              { icon: Clock, label: "Session Time", value: "30 to 45 minutes" },
+              { icon: Heart, label: "Downtime", value: "Minimal, same day return" },
+              { icon: Zap, label: "Results", value: "Immediate, settled in 7-14 days" },
+            ].map((item, idx) => (
+              <div key={idx} className="bg-light p-5 rounded-xl border border-taupe/10 shadow-sm">
+                <item.icon className="w-8 h-8 text-wine mb-3" />
+                <p className="font-inter text-sm text-taupe">{item.label}</p>
+                <p className="font-georgia text-md text-brown font-semibold">{item.value}</p>
+              </div>
+            ))}
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 rounded-2xl p-6 border border-wine/10">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div>
+                <p className="font-inter text-sm text-taupe">Longevity</p>
+                <p className="font-georgia text-brown font-semibold">12 to 24 months<br />depending on product</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Reversible</p>
+                <p className="font-georgia text-brown font-semibold">Yes for HA fillers<br />Dissolvable with hyaluronidase</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Volume Used</p>
+                <p className="font-georgia text-brown font-semibold">1 to 3ml per session</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Suitable For</p>
+                <p className="font-georgia text-brown">Undefined jawline, jowling, age-related volume loss, asymmetry</p>
+              </div>
+            </div>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-8">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor About Your Jawline
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* What is Jawline Filler */}
+      {/* Root Causes Section */}
       <section className="py-20 px-4 bg-light">
         <motion.div
           variants={staggerContainer}
@@ -159,49 +411,45 @@ const JawlineFillerLanding = ({
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-6">
-              <h2 className="font-georgia text-4xl text-brown">
-                What is <span className="text-wine">jawline filler?</span>
-              </h2>
-
-              <div className="space-y-4 text-brown/80 leading-relaxed">
-                <p>
-                  Jawline filler is a non-surgical injectable treatment that
-                  adds structure along the jaw, usually using hyaluronic acid
-                  (HA) dermal fillers. HA is widely used in dermal fillers and
-                  is gradually absorbed by the body over time.
-                </p>
-                <p>
-                  Think of it like subtle sculpting. Small amounts are placed
-                  along specific points to create a smoother jawline, support
-                  the jaw angle, and reduce the look of sagging around the lower
-                  face.
-                </p>
-                <p className="bg-rose/10 p-4 rounded-xl border border-rose/20">
-                  At Nexus Clinic KL, the focus is facial harmony. We plan your
-                  jawline with your chin, cheeks, and natural face shape in
-                  mind, not a one-size template.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="relative h-125 rounded-2xl overflow-hidden shadow-xl"
-            >
-              <img
-                src="/images/skin/acne-treatment.webp"
-                alt="Jawline filler procedure"
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Three Root Causes of a Weak Jawline</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">And the right fix for each</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine/10">
+                <tr>
+                  <th className="p-4 text-left font-georgia text-brown">Root Cause</th>
+                  <th className="p-4 text-left font-georgia text-brown">What You See</th>
+                  <th className="p-4 text-left font-georgia text-brown">Correct Treatment</th>
+                  <th className="p-4 text-left font-georgia text-brown">Filler Involved</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rootCauses.map((cause, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{cause.cause}</td>
+                    <td className="p-4 text-taupe font-inter">{cause.concern}</td>
+                    <td className="p-4 text-taupe font-inter">{cause.treatment}</td>
+                    <td className="p-4 text-taupe font-inter">{cause.filler}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 text-center">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Find Out Your Root Cause | Book a Free Facial Assessment
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
         </motion.div>
       </section>
 
-      {/* What Jawline Filler Can Help With */}
-      <section className="py-20 px-4 bg-cream/30">
+      {/* Gender-Specific Goals Section */}
+      <section className="py-20 px-4 bg-cream">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -209,151 +457,86 @@ const JawlineFillerLanding = ({
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
-          >
-            What jawline filler can help with{" "}
-            <span className="text-wine">(and what it cannot)</span>
-          </motion.h2>
-
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Jawline Filler for Men and Women</h2>
+            <p className="text-taupe font-inter">Different goals, different technique — personalized approach</p>
+          </motion.div>
+          
           <div className="grid md:grid-cols-2 gap-8">
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-white rounded-2xl p-8 shadow-lg"
-            >
-              <h3 className="font-georgia text-2xl text-brown mb-6 flex items-center gap-2">
-                <CheckCircle2 className="w-6 h-6 text-wine" />
-                Jawline filler can help with
-              </h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3 text-brown/80">
-                  <ChevronRight className="w-5 h-5 text-rose shrink-0 mt-0.5" />
-                  Soft or weak jawline definition
-                </li>
-                <li className="flex items-start gap-3 text-brown/80">
-                  <ChevronRight className="w-5 h-5 text-rose shrink-0 mt-0.5" />
-                  Mild jowls and "pre-jowl" hollowing near the chin
-                </li>
-                <li className="flex items-start gap-3 text-brown/80">
-                  <ChevronRight className="w-5 h-5 text-rose shrink-0 mt-0.5" />
-                  A jawline that looks uneven on one side
-                </li>
-                <li className="flex items-start gap-3 text-brown/80">
-                  <ChevronRight className="w-5 h-5 text-rose shrink-0 mt-0.5" />
-                  A less defined jaw angle (common in photos)
-                </li>
-                <li className="flex items-start gap-3 text-brown/80">
-                  <ChevronRight className="w-5 h-5 text-rose shrink-0 mt-0.5" />
-                  Enhancing a more structured lower face for men and women
-                </li>
-              </ul>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="bg-white rounded-2xl p-8 shadow-lg"
-            >
-              <h3 className="font-georgia text-2xl text-brown mb-6 flex items-center gap-2">
-                <AlertCircle className="w-6 h-6 text-rose" />
-                Jawline filler cannot fully fix
-              </h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3 text-brown/80">
-                  <ChevronRight className="w-5 h-5 text-taupe shrink-0 mt-0.5" />
-                  Significant loose skin (you may need tightening treatments
-                  like HIFU or threads)
-                </li>
-                <li className="flex items-start gap-3 text-brown/80">
-                  <ChevronRight className="w-5 h-5 text-taupe shrink-0 mt-0.5" />
-                  A heavy lower face caused mainly by muscle bulk (masseter
-                  Botox may be better)
-                </li>
-                <li className="flex items-start gap-3 text-brown/80">
-                  <ChevronRight className="w-5 h-5 text-taupe shrink-0 mt-0.5" />
-                  A double chin caused mainly by fat (fat reduction options may
-                  be needed)
-                </li>
-              </ul>
-              <p className="mt-6 text-sm italic text-taupe">
-                The best results often come from choosing the correct tool, or
-                combining treatments in a staged plan.
-              </p>
-            </motion.div>
+            {genderGoals.map((item, idx) => (
+              <motion.div 
+                key={idx} 
+                variants={fadeInUp} 
+                className={`rounded-2xl p-6 ${idx === 0 ? 'bg-wine/5 border border-wine/20' : 'bg-rose/5 border border-rose/20'} hover:shadow-xl transition-shadow`}
+              >
+                <h3 className="font-georgia text-2xl text-brown mb-4">{item.gender}</h3>
+                <div className="space-y-3">
+                  <div><span className="font-inter font-semibold text-brown">Goal:</span> <span className="text-taupe">{item.goal}</span></div>
+                  <div><span className="font-inter font-semibold text-brown">Primary Focus:</span> <span className="text-taupe">{item.focus}</span></div>
+                  <div><span className="font-inter font-semibold text-brown">Volume Used:</span> <span className="text-taupe">{item.volume}</span></div>
+                  <div><span className="font-inter font-semibold text-brown">Product Choice:</span> <span className="text-taupe">{item.product}</span></div>
+                  <div><span className="font-inter font-semibold text-brown">Often Combined With:</span> <span className="text-taupe">{item.combo}</span></div>
+                  <div><span className="font-inter font-semibold text-brown">Key Outcome:</span> <span className="text-taupe">{item.outcome}</span></div>
+                </div>
+              </motion.div>
+            ))}
           </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-10">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Book a Consultation for Men or Women | Tailored Jawline Plans
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
         </motion.div>
       </section>
 
-      {/* Who is a Good Candidate */}
+      {/* Comparison Table: Filler vs Botox */}
       <section className="py-20 px-4 bg-light">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="container mx-auto max-w-4xl"
+          className="container mx-auto max-w-5xl"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
-          >
-            Who is a good candidate{" "}
-            <span className="text-wine">for jawline filler in KL?</span>
-          </motion.h2>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-linear-to-br from-wine/5 to-rose/5 rounded-3xl p-8 border border-wine/10"
-          >
-            <p className="text-brown/80 mb-4">
-              Jawline filler is usually a good option if:
-            </p>
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="flex items-start gap-3 p-4 bg-white rounded-xl">
-                <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                <span className="text-brown/80 text-sm">
-                  You want visible definition but still natural results
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-white rounded-xl">
-                <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                <span className="text-brown/80 text-sm">
-                  Your jawline lacks structure, especially from the front or
-                  side
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-white rounded-xl">
-                <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                <span className="text-brown/80 text-sm">
-                  You are noticing early sagging along the lower face
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-white rounded-xl">
-                <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                <span className="text-brown/80 text-sm">
-                  You want a more masculine jawline shape or a sharper V-line
-                  look
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-white rounded-xl sm:col-span-2">
-                <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                <span className="text-brown/80 text-sm">
-                  You want a non-surgical option with minimal downtime
-                </span>
-              </div>
-            </div>
-            <p className="mt-6 text-brown/70 text-sm border-t border-wine/10 pt-4">
-              You may need extra care, or you may be advised to postpone, if you
-              are pregnant, breastfeeding, have an active skin infection, or
-              have certain medical conditions. Your doctor will guide you during
-              consultation.
-            </p>
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Jawline Filler Compared to Jaw Botox</h2>
+            <p className="text-taupe font-inter">Choosing the right treatment for your concern</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Factor</th>
+                  <th className="p-4 text-left font-georgia">Jawline Filler</th>
+                  <th className="p-4 text-left font-georgia">Jaw Botox (Masseter)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonData.map((row, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{row.factor}</td>
+                    <td className="p-4 text-taupe font-inter">{row.filler}</td>
+                    <td className="p-4 text-taupe font-inter">{row.botox}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 text-center">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Not Sure Which Treatment You Need? Book a Free Assessment
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Areas We Can Treat */}
-      <section className="py-20 px-4 bg-cream/30">
+      {/* Face Shape Guide Section */}
+      <section className="py-20 px-4 bg-cream">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -361,398 +544,157 @@ const JawlineFillerLanding = ({
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
-          >
-            Areas we can treat for{" "}
-            <span className="text-wine">jawline contouring</span>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-brown/80 mb-8"
-          >
-            Jawline contouring is not one injection point. It is a "map."
-          </motion.p>
-
-          <div className="grid md:grid-cols-4 gap-6">
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-xl shadow-lg border border-cream"
-            >
-              <h3 className="font-georgia text-lg text-brown mb-2">
-                Jaw angle (near the ear)
-              </h3>
-              <p className="text-taupe text-sm">
-                for a stronger corner and cleaner line
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-xl shadow-lg border border-cream"
-            >
-              <h3 className="font-georgia text-lg text-brown mb-2">
-                Jaw body (along the mandible)
-              </h3>
-              <p className="text-taupe text-sm">to connect the line smoothly</p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-xl shadow-lg border border-cream"
-            >
-              <h3 className="font-georgia text-lg text-brown mb-2">
-                Pre-jowl area
-              </h3>
-              <p className="text-taupe text-sm">
-                to reduce the shadow or dip beside the chin
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-xl shadow-lg border border-cream"
-            >
-              <h3 className="font-georgia text-lg text-brown mb-2">
-                Chin support (when needed)
-              </h3>
-              <p className="text-taupe text-sm">
-                jawline definition often looks better with balanced chin
-                projection
-              </p>
-            </motion.div>
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Jawline Filler by Face Shape</h2>
+            <p className="text-taupe font-inter">A guide for Malaysian patients</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine/10">
+                <tr>
+                  <th className="p-4 text-left font-georgia text-brown">Face Shape</th>
+                  <th className="p-4 text-left font-georgia text-brown">Current Concern</th>
+                  <th className="p-4 text-left font-georgia text-brown">Recommended Jawline Approach</th>
+                  <th className="p-4 text-left font-georgia text-brown">Combine With</th>
+                </tr>
+              </thead>
+              <tbody>
+                {faceShapes.map((shape, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{shape.shape}</td>
+                    <td className="p-4 text-taupe font-inter">{shape.concern}</td>
+                    <td className="p-4 text-taupe font-inter">{shape.approach}</td>
+                    <td className="p-4 text-taupe font-inter">{shape.combine}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="mt-8 p-6 bg-wine/5 rounded-xl border border-wine/20"
-          >
-            <p className="text-brown/80">
-              This is why online pricing "per treatment" can be misleading.
-              Jawline shaping often needs more product than smaller areas like
-              lips.
-            </p>
-            <p className="text-rose font-semibold mt-2">
-              Nexus Clinic's own pricing guide notes that jawline shaping can
-              require multiple syringes for balanced definition.
-            </p>
+          
+          <motion.div variants={fadeInUp} className="mt-8 text-center">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Book Your Free Consultation
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Fillers Used */}
+      {/* Nexus Clinic Difference Section */}
       <section className="py-20 px-4 bg-light">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
-          >
-            What fillers are typically used for{" "}
-            <span className="text-wine">jawline definition?</span>
-          </motion.h2>
-
-          <motion.div variants={fadeInUp} className="space-y-6">
-            <p className="text-brown/80 text-lg">
-              Jawline is a structural area. It usually needs a firmer filler
-              that can hold shape.
-            </p>
-
-            <div className="bg-linear-to-r from-wine/5 to-rose/5 p-8 rounded-2xl">
-              <p className="text-brown/90 leading-relaxed">
-                At Nexus Clinic KL, the Juvederm price guide includes options
-                that are commonly used for lower-face structure such as Juvederm
-                Volux and Juvederm Volift, priced per 1 cc syringe.
-              </p>
-              <p className="text-taupe mt-4 text-sm italic">
-                HA fillers can differ in how they are formulated and
-                crosslinked, which affects properties like firmness and
-                longevity.
-              </p>
-              <p className="text-wine font-semibold mt-2">
-                That is one reason product choice matters as much as technique.
-              </p>
-            </div>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* What to Expect */}
-      <section className="py-20 px-4 bg-cream/30">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-6xl"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
-          >
-            What to expect at{" "}
-            <span className="text-wine">Nexus Clinic Kuala Lumpur</span>
-          </motion.h2>
-
-          <div className="grid md:grid-cols-4 gap-6">
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-xl shadow-lg relative"
-            >
-              <span className="absolute -top-3 -left-3 w-8 h-8 bg-wine text-white rounded-full flex items-center justify-center font-bold">
-                1
-              </span>
-              <h3 className="font-georgia text-lg text-brown mt-4 mb-3">
-                Consultation and facial assessment
-              </h3>
-              <p className="text-taupe text-sm">
-                We look at your face at rest and in motion. We talk about what
-                you see in the mirror, what bothers you in photos, and what
-                "natural" means to you.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-xl shadow-lg relative"
-            >
-              <span className="absolute -top-3 -left-3 w-8 h-8 bg-wine text-white rounded-full flex items-center justify-center font-bold">
-                2
-              </span>
-              <h3 className="font-georgia text-lg text-brown mt-4 mb-3">
-                Face mapping and treatment plan
-              </h3>
-              <p className="text-taupe text-sm">
-                We map key jawline points and decide: Which areas need
-                structure, How much volume is likely needed, Whether chin
-                support will improve the jawline outcome.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-xl shadow-lg relative"
-            >
-              <span className="absolute -top-3 -left-3 w-8 h-8 bg-wine text-white rounded-full flex items-center justify-center font-bold">
-                3
-              </span>
-              <h3 className="font-georgia text-lg text-brown mt-4 mb-3">
-                The treatment session
-              </h3>
-              <p className="text-taupe text-sm">
-                Cleansing and prep, Numbing (if appropriate), Precise injection
-                using a plan designed for your face, Quick review and aftercare
-                guidance.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-xl shadow-lg relative"
-            >
-              <span className="absolute -top-3 -left-3 w-8 h-8 bg-wine text-white rounded-full flex items-center justify-center font-bold">
-                4
-              </span>
-              <h3 className="font-georgia text-lg text-brown mt-4 mb-3">
-                Review and refinement (if needed)
-              </h3>
-              <p className="text-taupe text-sm">
-                Some patients love the immediate result. Others prefer small
-                staged sessions. A gradual approach can look very natural.
-              </p>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Pain, Downtime, Aftercare */}
-      <section className="py-20 px-4 bg-light">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-6xl"
-        >
-          <div className="grid md:grid-cols-3 gap-8">
-            <motion.div variants={fadeInLeft} className="space-y-4">
-              <div className="flex items-center gap-3 mb-4">
-                <Activity className="w-8 h-8 text-wine" />
-                <h2 className="font-georgia text-2xl text-brown">
-                  Does jawline filler hurt?
-                </h2>
-              </div>
-              <p className="text-brown/80">
-                Most people describe it as pressure or brief pinches. Many
-                fillers include lidocaine, and numbing can be used to improve
-                comfort.
-              </p>
-              <p className="text-sm text-taupe">
-                If pain control is a worry for you, tell us during consultation.
-                We plan around it.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="space-y-4">
-              <div className="flex items-center gap-3 mb-4">
-                <Clock className="w-8 h-8 text-wine" />
-                <h2 className="font-georgia text-2xl text-brown">
-                  Downtime and healing timeline
-                </h2>
-              </div>
-              <p className="text-brown/80">
-                You can usually return to normal routine quickly, but expect:
-              </p>
-              <ul className="list-disc list-inside text-brown/70 space-y-1">
-                <li>Mild swelling for a few days</li>
-                <li>Possible bruising (varies by person)</li>
-                <li>Tenderness when pressed</li>
-              </ul>
-              <p className="text-sm text-taupe">
-                You will often see improvement immediately. The filler then
-                settles and integrates over 1 to 2 weeks.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="space-y-4">
-              <div className="flex items-center gap-3 mb-4">
-                <Heart className="w-8 h-8 text-wine" />
-                <h2 className="font-georgia text-2xl text-brown">
-                  Aftercare that protects your result
-                </h2>
-              </div>
-              <p className="text-brown/80">
-                Good aftercare reduces swelling and helps your jawline settle
-                smoothly.
-              </p>
-              <div className="bg-rose/5 p-4 rounded-lg">
-                <p className="text-sm font-semibold text-rose mb-2">
-                  The American Society of Plastic Surgeons advises:
-                </p>
-                <ul className="text-sm text-brown/70 space-y-1">
-                  <li>• Avoid strenuous exercise for 24 hours</li>
-                  <li>
-                    • Avoid excessive heat (like saunas) for 24 to 48 hours
-                  </li>
-                  <li>
-                    • Avoid alcohol and blood-thinning medications around
-                    treatment, when medically appropriate
-                  </li>
-                </ul>
-              </div>
-              <div className="mt-4 text-sm text-brown/70 space-y-1">
-                <p>
-                  • Do not press or massage the jawline unless your doctor tells
-                  you to
-                </p>
-                <p>
-                  • Sleep slightly elevated the first night if you swell easily
-                </p>
-                <p>
-                  • Contact the clinic if anything feels unusual, especially
-                  increasing pain or skin color changes
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Longevity and Syringes */}
-      <section className="py-20 px-4 bg-cream/30">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-6xl"
+          className="container mx-auto max-w-5xl"
         >
           <div className="grid md:grid-cols-2 gap-12">
             <motion.div variants={fadeInLeft} className="space-y-6">
-              <h2 className="font-georgia text-3xl text-brown">
-                How long does jawline filler last?
-              </h2>
-              <p className="text-brown/80">
-                Jawline fillers gradually break down over time. Cleveland Clinic
-                notes:
+              <h2 className="font-georgia text-3xl md:text-4xl text-brown">Nexus Clinic Kuala Lumpur</h2>
+              <p className="text-2xl text-wine font-georgia">5,000+ Procedures, Built for Southeast Asian Faces</p>
+              <p className="text-brown font-inter">
+                Every aesthetic clinic in Malaysia offers jawline filler. The difference is not in the products but in the experience of the doctor reading your face, planning your treatment and executing the injection with precision.
               </p>
               <ul className="space-y-3">
-                <li className="flex items-start gap-2">
-                  <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                  <span>
-                    HA fillers often last six to 12 months, and sometimes up to
-                    two years
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                  <span>CaHA fillers can last up to 12 months</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                  <span>
-                    Some longer-term options exist, depending on product type
-                  </span>
-                </li>
+                {[
+                  "Over 5,000 facial filler procedures completed by licensed medical aesthetic doctors",
+                  "15+ years of combined experience across our clinical team",
+                  "Southeast Asian facial anatomy training built into every treatment protocol",
+                  "Full facial proportion assessment before every jawline treatment",
+                  "Honest consultations: if filler is not the right solution, you will be told",
+                  "Gender-specific injection technique for male and female patients",
+                  "MOH-approved products for every treatment without exception",
+                  "Full aftercare support and structured follow-up included as standard",
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                    <span className="text-taupe font-inter text-sm">{item}</span>
+                  </li>
+                ))}
               </ul>
-              <p className="text-sm text-taupe">
-                Longevity depends on your metabolism, the product used, and how
-                much structure is needed. Structural areas like the jaw can hold
-                results longer than high-movement areas like lips.
-              </p>
+              <div className="bg-cream p-4 rounded-xl border-l-4 border-wine">
+                <p className="text-brown font-inter text-sm">
+                  According to the International Society of Aesthetic Plastic Surgery 2024 Global Statistics Report, non-surgical jawline and lower face contouring saw a 38% increase in procedure volume across Southeast Asia.
+                </p>
+                <p className="text-taupe text-xs mt-1">[ISAPS Global Statistics Report 2024]</p>
+              </div>
             </motion.div>
 
             <motion.div variants={fadeInRight} className="space-y-6">
-              <h2 className="font-georgia text-3xl text-brown">
-                How many syringes do you need for jawline filler?
-              </h2>
-              <p className="text-brown/80">
-                There is no single number that fits everyone. Jawline usually
-                needs more product because it is a longer area and it is about
-                structure.
-              </p>
-              <div className="bg-white p-6 rounded-xl space-y-3">
-                <li className="flex items-start gap-2 list-none">
-                  <Syringe className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                  <span>
-                    Nexus Clinic's guide notes jawline shaping may require
-                    multiple syringes.
-                  </span>
-                </li>
-                <li className="flex items-start gap-2 list-none">
-                  <Syringe className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                  <span>
-                    A Malaysia-based price guide estimates jawline filler often
-                    uses 2 to 4 syringes, with total cost depending on how much
-                    definition you want.
-                  </span>
-                </li>
-                <li className="flex items-start gap-2 list-none">
-                  <Syringe className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                  <span>
-                    International clinical guidance commonly lands in the same
-                    range for jawline contouring.
-                  </span>
-                </li>
+              <div className="bg-cream p-6 rounded-2xl border border-taupe/20">
+                <h3 className="font-georgia text-2xl text-brown mb-4">Dermal Filler Products Used for Jawline Contouring</h3>
+                <div className="space-y-4">
+                  {fillerProducts.map((product, idx) => (
+                    <div key={idx} className="border-l-4 border-wine pl-4">
+                      <p className="font-georgia text-brown font-semibold">{product.name}</p>
+                      <p className="text-taupe font-inter text-sm">{product.description}</p>
+                      <div className="flex justify-between items-center mt-2">
+                        <span className="font-inter text-xs text-wine">⏱️ {product.longevity}</span>
+                        <span className="font-inter text-xs text-brown">✓ {product.bestFor}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 p-3 bg-wine/5 rounded-lg">
+                  <p className="text-taupe text-xs">
+                    Allergan/AbbVie Malaysia reported in 2023 that Juvederm Volux was the fastest-growing filler product in the structural contouring category in Malaysia, with a 47% increase in prescription volume.
+                  </p>
+                  <p className="text-taupe text-xs mt-1">[AbbVie Malaysia Aesthetic Market Summary Report, 2023]</p>
+                </div>
+                <button className="mt-4 text-wine font-inter font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                  Ask Which Product Suits Your Jawline
+                  <ArrowRight className="w-4 h-4" />
+                </button>
               </div>
-              <p className="text-sm text-taupe">
-                If your goal is subtle definition, you may need less. If you
-                want a stronger jaw angle and a clearer line from ear to chin,
-                you may need more.
-              </p>
             </motion.div>
           </div>
         </motion.div>
       </section>
 
-      {/* Pricing */}
+      {/* Procedure Steps Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The Jawline Filler Procedure at Nexus Clinic KL</h2>
+            <p className="text-taupe font-inter">Step by step — safe, precise, and personalized</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { step: "01", title: "Full Facial & Jawline Assessment", desc: "Doctor assesses your jawline in context of entire lower face. Front view, profile and 45-degree angle evaluated." },
+              { step: "02", title: "Treatment Plan Confirmation", desc: "Exact product, volume, placement points, and technique confirmed. Most patients need 1-2ml for natural result." },
+              { step: "03", title: "Numbing & Precise Injection", desc: "Topical numbing cream applied. Filler placed along mandible using cannula or fine needle. 30-45 minutes." },
+              { step: "04", title: "Review, Shaping & Aftercare", desc: "Results reviewed immediately. Symmetry and proportion checked. Full aftercare instructions provided." },
+            ].map((item, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="text-center">
+                <div className="w-14 h-14 bg-wine rounded-full flex items-center justify-center text-light font-georgia text-xl mx-auto mb-4 shadow-md">
+                  {item.step}
+                </div>
+                <h3 className="font-georgia text-lg text-brown mb-2 font-semibold">{item.title}</h3>
+                <p className="text-taupe font-inter text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-10">
+            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+              Book Your Jawline Filler Appointment
+              <ArrowRight className="w-5 h-5" />
+            </button>
+            <p className="text-taupe text-sm mt-3">Same-day results at Nexus Clinic KL</p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Pricing Section */}
       <section className="py-20 px-4 bg-light">
         <motion.div
           variants={staggerContainer}
@@ -761,577 +703,129 @@ const JawlineFillerLanding = ({
           viewport={{ once: true }}
           className="container mx-auto max-w-4xl"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
-          >
-            Jawline filler cost in Kuala Lumpur, Malaysia{" "}
-            <span className="text-wine">(transparent planning)</span>
-          </motion.h2>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-linear-to-br from-wine to-rose text-white p-8 rounded-2xl"
-          >
-            <p className="mb-6">
-              At Nexus Clinic KL, pricing is listed per 1 cc syringe. Current
-              guide pricing includes, for example:
-            </p>
-
-            <div className="grid sm:grid-cols-2 gap-4 mb-6">
-              <div className="bg-white/10 backdrop-blur p-4 rounded-lg">
-                <h3 className="font-semibold text-lg">Juvederm Volux</h3>
-                <p className="text-2xl font-bold">Regular RM 3000</p>
-                <p className="text-sm opacity-90">Promo RM 2500 (per 1 cc)</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur p-4 rounded-lg">
-                <h3 className="font-semibold text-lg">Juvederm Volift</h3>
-                <p className="text-2xl font-bold">Regular RM 3000</p>
-                <p className="text-sm opacity-90">Promo RM 2500 (per 1 cc)</p>
-              </div>
-            </div>
-
-            <p className="text-sm opacity-90">
-              Because jawline often needs multiple syringes, total budget
-              depends on your plan. A consultation lets us estimate the likely
-              range and discuss staged options if you prefer a gradual change.
-            </p>
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Jawline Filler Cost in Malaysia</h2>
+            <p className="text-taupe font-inter">Full 2026 Pricing Guide at Nexus Clinic KL</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Treatment</th>
+                  <th className="p-4 text-left font-georgia">Typical Volume</th>
+                  <th className="p-4 text-left font-georgia">Price Range (2026)</th>
+                 </tr>
+              </thead>
+              <tbody>
+                {pricingTiers.map((tier, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10">
+                    <td className="p-4 font-inter text-brown">{tier.treatment}</td>
+                    <td className="p-4 font-inter text-taupe">{tier.volume}</td>
+                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr className="bg-wine/5">
+                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
+                    * Final pricing confirmed at consultation. Price depends on filler brand, volume required and complexity.
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 text-center">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Get Your Personalised Jawline Quote
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Treatment Comparisons */}
-      <section className="py-20 px-4 bg-cream/30">
+      {/* Side Effects & Aftercare Section */}
+      <section className="py-20 px-4 bg-cream">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="container mx-auto max-w-6xl"
+          className="container mx-auto max-w-5xl"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
-          >
-            Jawline filler vs{" "}
-            <span className="text-wine">other jawline treatments</span>
-          </motion.h2>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-white p-6 rounded-xl"
-            >
-              <h3 className="font-georgia text-xl text-brown mb-3">
-                Jawline filler vs Masseter Botox
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Side Effects, Recovery and Aftercare</h2>
+            <p className="text-taupe font-inter">What to expect and how to care for your results</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div variants={fadeInLeft} className="bg-light p-6 rounded-xl border border-taupe/10">
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <Heart className="w-5 h-5 text-wine" />
+                Common Temporary Effects
               </h3>
-              <p className="text-sm text-taupe mb-3">
-                Filler adds structure and definition. Masseter Botox can slim
-                the jaw if the muscle is bulky
-              </p>
-              <p className="text-xs text-brown/70">
-                If your lower face looks wide mainly from muscle, Botox may make
-                a bigger difference. If your jawline looks soft or lacks
-                bone-like definition, filler is often the better tool.
-              </p>
+              <ul className="space-y-2">
+                {[
+                  "Mild swelling along the mandible, resolving within 2-4 days",
+                  "Light bruising, fading within 5-7 days",
+                  "Tenderness or firmness for 2-4 days as filler integrates",
+                  "Mild redness at injection points, resolving within hours",
+                ].map((effect, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-taupe font-inter text-sm">
+                    <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                    <span>{effect}</span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-white p-6 rounded-xl">
-              <h3 className="font-georgia text-xl text-brown mb-3">
-                Jawline filler vs HIFU or skin tightening
+            
+            <motion.div variants={fadeInRight} className="bg-light p-6 rounded-xl border border-taupe/10">
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <Shield className="w-5 h-5 text-wine" />
+                Rare Risks
               </h3>
-              <p className="text-sm text-taupe mb-3">
-                Filler shapes and supports. HIFU and tightening improve skin
-                laxity
-              </p>
-              <p className="text-xs text-brown/70">
-                If early jowls are your main concern, tightening plus filler can
-                be a powerful combo.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="bg-white p-6 rounded-xl"
-            >
-              <h3 className="font-georgia text-xl text-brown mb-3">
-                Jawline filler vs Threads
-              </h3>
-              <p className="text-sm text-taupe mb-3">
-                Threads lift. Filler builds structure.
-              </p>
-              <p className="text-xs text-brown/70">
-                Some faces need lift first, others need shape first. We decide
-                based on your anatomy.
-              </p>
+              <ul className="space-y-2">
+                {[
+                  "Nodules or irregular texture if filler placed at wrong depth",
+                  "Asymmetry if volume not balanced across both sides",
+                  "Vascular occlusion, requiring immediate management by trained doctor",
+                ].map((risk, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-taupe font-inter text-sm">
+                    <AlertCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                    <span>{risk}</span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           </div>
-        </motion.div>
-      </section>
-
-      {/* Side Effects and Safety */}
-      <section className="py-20 px-4 bg-light">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
-          >
-            Side effects and <span className="text-wine">safety</span>
-          </motion.h2>
-
-          <motion.div variants={fadeInUp} className="space-y-6">
-            <p className="text-brown/80">
-              Most side effects are temporary and mild:
-            </p>
-
-            <div className="flex flex-wrap gap-2">
-              {["Swelling", "Bruising", "Redness", "Tenderness"].map(
-                (item, i) => (
-                  <span
-                    key={i}
-                    className="bg-cream px-4 py-2 rounded-full text-brown text-sm border border-rose/20"
-                  >
-                    {item}
-                  </span>
-                ),
-              )}
-            </div>
-
-            <p className="text-brown/80">
-              More serious complications are rare but possible. Cleveland Clinic
-              notes complications can include infection, allergic reactions, and
-              vascular occlusion, where filler blocks a blood vessel and can
-              cause tissue damage, and in very rare cases, vision problems.
-            </p>
-
-            <div className="bg-wine/5 p-6 rounded-xl border-l-4 border-wine">
-              <p className="font-semibold text-wine mb-2">Important:</p>
-              <p className="text-brown/80">
-                This is why jawline filler should be done by trained medical
-                professionals with proper anatomical knowledge, sterile
-                technique, and safe product selection.
-              </p>
-              <p className="text-rose font-semibold mt-4">
-                If you ever experience severe pain, skin whitening, spreading
-                discoloration, or vision symptoms after any filler treatment,
-                seek urgent medical care.
-              </p>
-            </div>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Competitor Snapshot */}
-      {/* <section className="py-20 px-4 bg-cream/30">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-6xl"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
-          >
-            Competitor snapshot{" "}
-            <span className="text-wine">
-              (what's ranking on Google, and what's missing)
-            </span>
-          </motion.h2>
-
-          <motion.div variants={fadeInUp} className="bg-white p-8 rounded-2xl">
-            <p className="text-brown/80 mb-6">
-              When people search "jawline filler Kuala Lumpur" or "jawline
-              contouring Malaysia," Google often surfaces a mix of:
-            </p>
-
-            <ul className="list-disc list-inside space-y-2 text-brown/70 mb-8">
-              <li>
-                Clinic pages that talk about dermal fillers and show
-                before-after galleries (example: Dr K & Associates includes
-                jawline as a contouring area and lists brands).
-              </li>
-              <li>
-                Price-guide articles that estimate syringes and totals (example:
-                NextMed shares jawline 2 to 4 syringes and estimated totals).
-              </li>
-              <li>
-                Directory and review platforms (example: Erufu lists many KL
-                clinics for dermal fillers and explains basic filler use).
-              </li>
-            </ul>
-
-            <h3 className="font-georgia text-xl text-brown mb-4">
-              Common gaps we see on many ranking pages:
-            </h3>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="flex items-start gap-2 p-3 bg-rose/5 rounded-lg">
-                <AlertCircle className="w-5 h-5 text-rose shrink-0 mt-0.5" />
-                <span className="text-sm text-brown/80">
-                  Not enough "real-life" guidance: people want to know what it
-                  feels like, how swelling looks day-by-day, and what is normal.
-                </span>
-              </div>
-              <div className="flex items-start gap-2 p-3 bg-rose/5 rounded-lg">
-                <AlertCircle className="w-5 h-5 text-rose shrink-0 mt-0.5" />
-                <span className="text-sm text-brown/80">
-                  Weak expectation setting: not explaining who needs tightening
-                  vs filler vs Botox.
-                </span>
-              </div>
-              <div className="flex items-start gap-2 p-3 bg-rose/5 rounded-lg">
-                <AlertCircle className="w-5 h-5 text-rose shrink-0 mt-0.5" />
-                <span className="text-sm text-brown/80">
-                  Pricing without clarity: listing "starting from" prices, but
-                  not explaining syringe planning for jawline.
-                </span>
-              </div>
-              <div className="flex items-start gap-2 p-3 bg-rose/5 rounded-lg">
-                <AlertCircle className="w-5 h-5 text-rose shrink-0 mt-0.5" />
-                <span className="text-sm text-brown/80">
-                  Safety discussion feels too light: not enough detail on
-                  product authenticity and red flags.
-                </span>
-              </div>
-              <div className="flex items-start gap-2 p-3 bg-rose/5 rounded-lg sm:col-span-2">
-                <AlertCircle className="w-5 h-5 text-rose shrink-0 mt-0.5" />
-                <span className="text-sm text-brown/80">
-                  Male jawline goals are under-served: many men search for
-                  jawline definition but do not see content written for them.
-                </span>
-              </div>
-            </div>
-            <p className="mt-6 text-sm italic text-taupe">
-              This page is built to answer those missing questions directly,
-              while keeping the tone simple and human.
-            </p>
-          </motion.div>
-        </motion.div>
-      </section> */}
-
-      {/* Why Choose Nexus */}
-      <section className="py-20 px-4 bg-light">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
-          >
-            Why choose{" "}
-            <span className="text-wine">Nexus Clinic Kuala Lumpur</span> for
-            jawline filler?
-          </motion.h2>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-linear-to-br from-wine/5 to-rose/5 p-8 rounded-3xl"
-          >
-            <p className="text-xl text-brown mb-8 italic">
-              Because you are not buying "1 syringe." You are trusting someone
-              to shape your face.
-            </p>
-
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-6 h-6 text-wine shrink-0 mt-1" />
-                <span className="text-brown/80">
-                  Doctor-led planning and facial mapping
-                </span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-6 h-6 text-wine shrink-0 mt-1" />
-                <span className="text-brown/80">
-                  Authentic products and transparent per-syringe pricing
-                </span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-6 h-6 text-wine shrink-0 mt-1" />
-                <span className="text-brown/80">
-                  A long-standing clinic reputation (founded in 2001)
-                </span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-6 h-6 text-wine shrink-0 mt-1" />
-                <span className="text-brown/80">
-                  A result that looks refined, not obvious
-                </span>
-              </div>
-            </div>
-
-            <div className="mt-8 p-4 bg-white/50 rounded-lg">
-              <p className="text-brown/70 text-sm flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-wine" />
-                Clinic location (for Kuala Lumpur searches and convenience):
-                Nexus Clinic Kuala Lumpur, LG 10, Lower Ground Floor, Wisma UOA
-                II, Jalan Pinang, 50450 Kuala Lumpur.
-              </p>
+          
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 p-6 rounded-xl">
+            <h3 className="font-georgia text-xl text-brown mb-4">Aftercare Instructions</h3>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                "Avoid pressing or massaging the treated area for 48 hours",
+                "Skip intense exercise for the first 24 hours",
+                "Stay away from saunas and prolonged heat exposure for 48 hours",
+                "Avoid alcohol for the first 24 hours to reduce bruising risk",
+                "Sleep on your back for the first two nights if possible",
+                "Assess your final result after 14 days when all settling is complete",
+              ].map((instruction, idx) => (
+                <div key={idx} className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span className="text-taupe font-inter text-sm">{instruction}</span>
+                </div>
+              ))}
             </div>
           </motion.div>
         </motion.div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-4 bg-cream/30">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
-          >
-            Frequently asked <span className="text-wine">questions</span>
-          </motion.h2>
-
-          <div className="space-y-8">
-            {/* Results and Longevity */}
-            <motion.div variants={fadeInUp} className="bg-white rounded-xl p-6">
-              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-wine" />
-                Results and longevity
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <p className="font-semibold text-brown">
-                    1) How long does jawline filler last?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    Most people see results for 6 to 12 months, and sometimes
-                    longer depending on the product and your metabolism.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-brown">
-                    2) Will I look bigger or swollen?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    Right after treatment, mild swelling is common. The final
-                    look usually appears after the filler settles over 1 to 2
-                    weeks.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-brown">
-                    3) Is jawline filler permanent?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    No. Most jawline fillers are temporary and gradually break
-                    down over time.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-brown">
-                    4) Can jawline filler look natural?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    Yes, if the plan matches your face and the volume is
-                    appropriate. Natural results are about balance, not maximum
-                    sharpness.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-brown">
-                    5) What age is best for jawline filler?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    There is no perfect age. Some do it in their 20s for
-                    structure, others in their 30s to 50s for early jowls and
-                    definition.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Pain, Downtime, Aftercare FAQ */}
-            <motion.div variants={fadeInUp} className="bg-white rounded-xl p-6">
-              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
-                <Activity className="w-5 h-5 text-wine" />
-                Pain, downtime, and aftercare
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <p className="font-semibold text-brown">
-                    6) Does jawline filler hurt?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    It is usually mild to moderate discomfort. Many products
-                    include lidocaine, and numbing can be used.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-brown">
-                    7) Can I exercise after jawline filler?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    It is best to avoid strenuous exercise for 24 hours to
-                    reduce bruising and swelling.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-brown">
-                    8) Can I go sauna or steam room after filler?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    Avoid excessive heat for 24 to 48 hours, as it may worsen
-                    swelling.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-brown">
-                    9) What should I avoid after jawline filler?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    Avoid heavy workouts, heat exposure, and alcohol for a short
-                    period. Follow your doctor's instructions.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-brown">
-                    10) When can I sleep on my side?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    The first night, try not to press the treated side. After
-                    that, most people can sleep normally, unless your doctor
-                    advises otherwise.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Syringes and Cost */}
-            <motion.div variants={fadeInUp} className="bg-white rounded-xl p-6">
-              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
-                <Droplets className="w-5 h-5 text-wine" />
-                Syringes and cost in KL
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <p className="font-semibold text-brown">
-                    11) How many ml or syringes do I need for jawline filler?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    Jawline commonly needs multiple syringes. Many guides
-                    estimate 2 to 4 syringes depending on definition goals.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-brown">
-                    12) How much is jawline filler in Kuala Lumpur?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    It depends on filler type and number of syringes. Nexus
-                    Clinic KL lists prices per 1 cc syringe, with options like
-                    Juvederm Volux and Volift.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-brown">
-                    13) Why does jawline filler cost more than lip filler?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    Jawline is a larger structural area and often needs more
-                    product for balanced results.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-brown">
-                    14) Can I do it gradually to manage budget?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    Yes. Staged treatment is common and can look very natural.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Safety and Risks */}
-            <motion.div variants={fadeInUp} className="bg-white rounded-xl p-6">
-              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
-                <Shield className="w-5 h-5 text-wine" />
-                Safety and risks
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <p className="font-semibold text-brown">
-                    15) Is jawline filler safe?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    When done by trained medical professionals using authentic
-                    products, it is generally safe. Like any medical procedure,
-                    risks exist.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-brown">
-                    16) What are the risks of jawline filler?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    Common: swelling, bruising. Rare but serious: vascular
-                    occlusion, infection, and other complications.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-brown">
-                    17) Can jawline filler be dissolved?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    If it is hyaluronic acid filler, it can often be dissolved
-                    using hyaluronidase. Many Malaysia clinic guides note HA is
-                    reversible.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-brown">
-                    18) What are red flags after filler?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    Severe pain, skin turning pale or dusky, spreading
-                    discoloration, or vision symptoms need urgent medical
-                    attention.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-brown">
-                    19) Can men do jawline filler in Malaysia?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    Yes. Many men use it to build stronger lower-face structure
-                    and jaw angles.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-brown">
-                    20) What is better for a sharper jawline, filler or Botox?
-                  </p>
-                  <p className="text-brown/70 text-sm">
-                    If you need structure, filler is better. If jaw width is
-                    mainly muscle, masseter Botox may help more. A consult
-                    decides the right route.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
+      <FAQ data={faqData} />
+      
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-linear-to-r from-wine to-rose text-white">
+      <section className="py-20 px-4 bg-wine">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -1339,46 +833,37 @@ const JawlineFillerLanding = ({
           viewport={{ once: true }}
           className="container mx-auto max-w-4xl text-center"
         >
-          <motion.h2 variants={fadeInUp} className="font-georgia text-4xl mb-6">
-            Ready to plan your jawline,{" "}
-            <span className="text-cream">the right way?</span>
-          </motion.h2>
-
-          <motion.p variants={fadeInUp} className="text-lg mb-8 text-white/90">
-            If you want a sharper jawline that still looks like you, start with
-            a doctor-led consultation at Nexus Clinic Kuala Lumpur. We will
-            assess your face, recommend the right filler type, estimate the
-            number of syringes, and explain the full cost plan before anything
-            begins.
-          </motion.p>
-
-          <motion.div
-            variants={scaleIn}
-            className="inline-flex gap-4 flex-wrap justify-center"
-          >
-            <button className="bg-white text-wine px-8 py-4 rounded-full font-semibold hover:bg-cream transition-all transform hover:scale-105 shadow-lg">
-              Book Consultation
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition-all transform hover:scale-105">
-              Download Price Guide
-            </button>
+          <motion.div variants={fadeInUp} className="space-y-6">
+            <h2 className="font-georgia text-3xl md:text-5xl text-light">
+              Book Jawline Filler in Kuala Lumpur at Nexus Clinic KL
+            </h2>
+            <p className="text-xl text-cream font-inter max-w-2xl mx-auto">
+              A defined jawline is one of the highest-impact structural improvements available without surgery. 
+              One consultation is enough to understand exactly what is causing your concern and what the result will look like.
+            </p>
+            <p className="text-cream/90 font-inter">
+              Over 5,000 procedures. Technique built for Southeast Asian faces. A sharper lower face, same day.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                Book Your Free Consultation Now
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+              <Whatsapp 
+                message="Hi, I'd like to book a free consultation for jawline filler at Nexus Clinic KL. Please let me know available slots."
+                variant="light"
+              />
+            </div>
+            <p className="text-cream/80 font-inter text-sm">
+              Limited slots available this week | Located at Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
+            </p>
           </motion.div>
         </motion.div>
       </section>
-
-      {/* Floating element */}
-      <div className="fixed bottom-8 right-8 z-50">
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 1 }}
-          className="bg-wine text-white p-4 rounded-full shadow-lg cursor-pointer hover:bg-rose transition-colors"
-        >
-          <HelpCircle className="w-6 h-6" />
-        </motion.div>
-      </div>
     </div>
   );
-};
-
-export default JawlineFillerLanding;
+}

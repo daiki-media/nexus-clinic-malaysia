@@ -35,7 +35,7 @@ export default function PageWegovyMalaysia({
 }: {
   locale?: string;
 }) {
-  const { t } = useTranslation(locale, "wegovy");
+  const { t } = useTranslation(locale, "weightLoss/wegovy");
   const faqs = [
     {
       q: "How much weight can I lose with Wegovy?",

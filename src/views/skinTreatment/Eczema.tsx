@@ -27,7 +27,7 @@ import { fallbackLng } from "@/src/i18n/settings";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
 const EczemaLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "eczema");
+  const { t } = useTranslation(locale, "skin/eczema");
 
   const transformations = [
     {

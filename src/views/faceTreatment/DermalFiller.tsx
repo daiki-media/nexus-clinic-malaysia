@@ -1,6 +1,7 @@
 "use client";
-
+import Image from "next/image";
 import { motion } from "framer-motion";
+import Whatsapp from "../../components/Whatsapp";
 import {
   Sparkles,
   Clock,
@@ -144,26 +145,27 @@ const DermalFillersLanding = ({
 
   return (
     <>
-      <main className="bg-light min-h-screen font-inter">
+      <main className="bg-light min-h-screen font-inter overflow-x-hidden">
+        {/* Hero Section */}
         <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="relative overflow-hidden bg-linear-to-b from-cream to-light pt-20 pb-16 px-4"
+          className="relative overflow-hidden bg-linear-to-b from-cream to-light pt-20 pb-16 px-4 md:px-8 lg:px-16"
         >
           <div className="absolute top-0 right-0 w-96 h-96 bg-rose/5 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-wine/5 rounded-full blur-3xl" />
 
           <motion.div
             variants={fadeInUp}
-            className="container mx-auto max-w-6xl relative z-10"
+            className="container mx-auto max-w-7xl relative z-10"
           >
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <motion.div
                   variants={fadeInUp}
-                  className="inline-block px-4 py-2 bg-glass backdrop-blur-sm rounded-full text-wine text-sm mb-6 border border-white/20"
+                  className="inline-block px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-wine text-sm mb-6 border border-taupe/20"
                 >
                   <span className="flex items-center gap-2">
                     <Sparkles size={16} /> Nexus Clinic Kuala Lumpur
@@ -172,7 +174,7 @@ const DermalFillersLanding = ({
 
                 <motion.h1
                   variants={fadeInUp}
-                  className="font-georgia text-4xl lg:text-5xl text-brown leading-tight mb-6"
+                  className="font-georgia text-4xl lg:text-5xl xl:text-6xl text-brown leading-tight mb-6"
                 >
                   {heroData?.title}
                   <span className="text-wine italic">{heroData?.title2}</span>
@@ -184,9 +186,10 @@ const DermalFillersLanding = ({
                 >
                   {heroData?.description}
                 </motion.p>
+                
                 <motion.div
                   variants={fadeInUp}
-                  className="bg-wine/10 p-4 rounded-xl mb-6"
+                  className="bg-wine/10 p-4 rounded-xl mb-6 border-l-4 border-wine"
                 >
                   <p className="text-wine font-semibold">
                     {heroData?.experience}
@@ -204,16 +207,22 @@ const DermalFillersLanding = ({
                       size={18}
                     />
                   </button>
+                  <Whatsapp message="Hi, I'm interested in dermal filler at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
                 </motion.div>
               </div>
 
               <motion.div variants={scaleIn} className="relative">
                 <div className="absolute inset-0 bg-linear-to-r from-wine/10 to-rose/10 rounded-3xl blur-2xl" />
-                <img
-                  src="/images/skin/acne-treatment.webp"
-                  alt="Dermal filler treatment at Nexus Clinic Kuala Lumpur"
-                  className="relative z-10 rounded-3xl shadow-2xl object-cover w-full h-125"
-                />
+                <div className="relative rounded-3xl shadow-2xl overflow-hidden">
+                  <Image
+                    src="/images/face/dermal-filler.jpeg"
+                    alt="Dermal filler treatment at Nexus Clinic Kuala Lumpur"
+                    width={600}
+                    height={500}
+                    className="w-full h-auto object-cover"
+                    priority
+                  />
+                </div>
               </motion.div>
             </div>
           </motion.div>
@@ -225,24 +234,24 @@ const DermalFillersLanding = ({
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="py-16 px-4 bg-white"
+          className="py-20 px-4 md:px-8 lg:px-16 bg-white"
         >
-          <div className="container mx-auto max-w-6xl">
+          <div className="container mx-auto max-w-7xl">
             <motion.div variants={fadeInUp} className="text-center mb-12">
               <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">
                 {treatmentAtGlance?.title}
               </h2>
-                <motion.p
-                  variants={fadeInUp}
-                  className="text-md text-brown mb-6 leading-relaxed font-medium"
-                  >
-                  {treatmentAtGlance?.clinicStatement}
-                </motion.p>
+              <motion.p
+                variants={fadeInUp}
+                className="text-md text-brown mb-6 leading-relaxed font-medium max-w-3xl mx-auto"
+              >
+                {treatmentAtGlance?.clinicStatement}
+              </motion.p>
             </motion.div>
 
             <motion.div
               variants={fadeInUp}
-              className="grid md:grid-cols-2 lg:grid-cols-4 gap-4"
+              className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
             >
               {treatmentAtGlance?.items?.map((item: any, index: number) => {
                 const IconMap: Record<string, any> = {
@@ -259,21 +268,21 @@ const DermalFillersLanding = ({
                 return (
                   <div
                     key={index}
-                    className="p-4 rounded-xl bg-cream/30 border border-taupe/10 hover:shadow-md transition-shadow"
+                    className="p-6 rounded-xl bg-cream/30 border border-taupe/10 hover:shadow-md transition-shadow"
                   >
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center">
-                        <Icon size={16} className="text-wine" />
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 bg-wine/10 rounded-full flex items-center justify-center">
+                        <Icon size={18} className="text-wine" />
                       </div>
                       <span className="text-sm font-semibold text-brown">{item.label}</span>
                     </div>
-                    <p className="text-taupe text-sm">{item.value}</p>
+                    <p className="text-taupe text-sm leading-relaxed">{item.value}</p>
                   </div>
                 );
               })}
             </motion.div>
 
-            <motion.div variants={fadeInUp} className="text-center mt-8">
+            <motion.div variants={fadeInUp} className="text-center mt-10">
               <button className="text-wine font-semibold hover:underline flex items-center gap-2 mx-auto">
                 {treatmentAtGlance?.cta || "Speak to a Doctor About Your Goals | Book a Free Assessment"}
                 <ArrowRight size={16} />
@@ -288,24 +297,25 @@ const DermalFillersLanding = ({
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="py-20 px-4 bg-linear-to-b from-cream to-light"
+          className="py-20 px-4 md:px-8 lg:px-16 bg-linear-to-b from-cream to-light"
         >
-          <div className="container mx-auto max-w-6xl">
-              <motion.div variants={fadeInUp} className="text-center mb-12">
-                <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">
-                  {howItWorks?.title || "Dermal Filler | How It Restores Structure and Volume"}
-                </h2>
-                <p className="text-taupe text-lg mb-6 leading-relaxed">
-                  {howItWorks?.description}
-                </p>
-              </motion.div>
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="container mx-auto max-w-7xl">
+            <motion.div variants={fadeInUp} className="text-center mb-12">
+              <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">
+                {howItWorks?.title || "Dermal Filler | How It Restores Structure and Volume"}
+              </h2>
+              <p className="text-taupe text-lg max-w-3xl mx-auto leading-relaxed">
+                {howItWorks?.description}
+              </p>
+            </motion.div>
+            
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
               <motion.div variants={fadeInLeft}>
-                <div className="bg-white p-6 rounded-xl shadow-md mb-6">
-                  <h3 className="font-georgia text-xl text-brown mb-3">
+                <div className="bg-white p-8 rounded-2xl shadow-md mb-6">
+                  <h3 className="font-georgia text-xl text-brown mb-4">
                     {howItWorks?.levels?.title}
                   </h3>
-                  <ul className="space-y-3">
+                  <ul className="space-y-4">
                     <li className="flex items-start gap-3">
                       <CheckCircle2 size={20} className="text-wine shrink-0 mt-0.5" />
                       <span className="text-taupe">{howItWorks?.levels?.first}</span>
@@ -316,12 +326,12 @@ const DermalFillersLanding = ({
                     </li>
                   </ul>
                 </div>
-                <div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
+                <div className="bg-wine/5 p-6 rounded-xl border-l-4 border-wine">
                   <p className="text-taupe text-sm italic">
                     {howItWorks?.statistics}
                   </p>
                 </div>
-                <motion.div variants={fadeInUp} className="mt-6">
+                <motion.div variants={fadeInUp} className="mt-8">
                   <button className="bg-wine text-white px-6 py-3 rounded-full hover:bg-rose transition-all duration-300">
                     {howItWorks?.cta || "Find Out If Dermal Filler Is Right for You | Book a Free Consultation"}
                   </button>
@@ -330,12 +340,16 @@ const DermalFillersLanding = ({
 
               <motion.div variants={fadeInRight} className="relative">
                 <div className="absolute -inset-4 bg-wine/10 rounded-3xl blur-2xl" />
-                <img
-                  src="/images/skin/acne-treatment.webp"
-                  alt="How dermal filler works"
-                  className="relative rounded-2xl shadow-2xl w-full h-auto object-cover"
-                />
-                <div className="absolute bottom-4 left-4 right-4 bg-glass backdrop-blur-md p-4 rounded-xl border border-white/30">
+                <div className="relative rounded-2xl shadow-2xl overflow-hidden">
+                  <Image
+                    src="/images/face/dermal-filler-malaysia.jpeg"
+                    alt="How dermal filler works"
+                    width={500}
+                    height={400}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+                <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-4 rounded-xl border border-white/30 shadow-lg">
                   <p className="text-brown text-sm">
                     <Quote size={16} className="inline text-wine mr-2" />
                     HA filler ranked #2 most performed non-surgical procedure worldwide - ISAPS 2024
@@ -352,9 +366,9 @@ const DermalFillersLanding = ({
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="py-20 px-4 bg-white"
+          className="py-20 px-4 md:px-8 lg:px-16 bg-white"
         >
-          <div className="container mx-auto max-w-6xl">
+          <div className="container mx-auto max-w-7xl">
             <motion.div variants={fadeInUp} className="text-center mb-12">
               <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">
                 {faceAreas?.title || "Face Areas Treated with Dermal Filler at Nexus Clinic KL"}
@@ -389,9 +403,9 @@ const DermalFillersLanding = ({
                     <h3 className="font-georgia text-xl text-brown mb-2">
                       {area.name}
                     </h3>
-                    <p className="text-taupe text-sm mb-3">{area.description}</p>
+                    <p className="text-taupe text-sm leading-relaxed">{area.description}</p>
                     {area.cta && (
-                      <button className="text-wine text-sm font-medium hover:underline flex items-center gap-1 mt-2">
+                      <button className="text-wine text-sm font-medium hover:underline flex items-center gap-1 mt-3">
                         Learn More <ArrowRight size={12} />
                       </button>
                     )}
@@ -400,7 +414,7 @@ const DermalFillersLanding = ({
               })}
             </div>
 
-            <motion.div variants={fadeInUp} className="text-center mt-10">
+            <motion.div variants={fadeInUp} className="text-center mt-12">
               <button className="bg-wine/10 text-wine px-8 py-3 rounded-full hover:bg-wine/20 transition-all duration-300 font-semibold">
                 {faceAreas?.cta || "Book a Consultation to Map Your Treatment Areas | Free Assessment Available"}
               </button>
@@ -414,9 +428,9 @@ const DermalFillersLanding = ({
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="py-20 px-4 bg-linear-to-b from-cream to-light"
+          className="py-20 px-4 md:px-8 lg:px-16 bg-linear-to-b from-cream to-light"
         >
-          <div className="container mx-auto max-w-6xl">
+          <div className="container mx-auto max-w-7xl">
             <motion.div variants={fadeInUp} className="text-center mb-12">
               <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">
                 {products?.title || "Dermal Filler Products Used at Nexus Clinic KL"}
@@ -465,35 +479,28 @@ const DermalFillersLanding = ({
           </div>
         </motion.section>
 
-        {/* Why Nexus Section */}
+        {/* Why Nexus Section - Fixed Symmetrical Layout */}
         <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="py-20 px-4 bg-white"
+          className="py-20 px-4 md:px-8 lg:px-16 bg-white"
         >
-          <div className="container mx-auto max-w-6xl">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <motion.div variants={fadeInLeft}>
-                <img
-                  src="/images/skin/acne-treatment.webp"
-                  alt="Nexus Clinic KL Award-Winning Aesthetic Doctors"
-                  className="rounded-2xl shadow-xl w-full h-auto object-cover"
-                />
-              </motion.div>
-              <motion.div variants={fadeInRight}>
+          <div className="container mx-auto max-w-7xl">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <motion.div variants={fadeInLeft} className="order-2 lg:order-1">
                 <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">
                   {whyNexus?.title || "Nexus Clinic KL | Award-Winning Aesthetic Doctors for Dermal Filler"}
                 </h2>
-                <p className="text-taupe mb-6">
+                <p className="text-taupe mb-6 leading-relaxed">
                   {whyNexus?.description}
                 </p>
                 <div className="space-y-3">
                   {whyNexus?.differentiators?.map((item: string, idx: number) => (
                     <div key={idx} className="flex items-start gap-3">
                       <BadgeCheck size={20} className="text-wine shrink-0 mt-0.5" />
-                      <span className="text-brown text-sm">{item}</span>
+                      <span className="text-brown text-sm leading-relaxed">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -502,6 +509,19 @@ const DermalFillersLanding = ({
                     {whyNexus?.cta || "Book Your Consultation at Nexus Clinic KL | Award-Winning Injectors"}
                   </button>
                 </motion.div>
+              </motion.div>
+
+              <motion.div variants={fadeInRight} className="relative order-1 lg:order-2">
+                <div className="absolute inset-0 bg-linear-to-r from-wine/10 to-rose/10 rounded-3xl blur-2xl" />
+                <div className="relative rounded-2xl shadow-2xl overflow-hidden">
+                  <Image
+                    src="/images/face/Dermal Filler Area.png"
+                    alt="Nexus Clinic KL Award-Winning Aesthetic Doctors"
+                    width={500}
+                    height={400}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
               </motion.div>
             </div>
           </div>
@@ -513,9 +533,9 @@ const DermalFillersLanding = ({
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="py-20 px-4 bg-linear-to-b from-cream to-light"
+          className="py-20 px-4 md:px-8 lg:px-16 bg-linear-to-b from-cream to-light"
         >
-          <div className="container mx-auto max-w-6xl">
+          <div className="container mx-auto max-w-7xl">
             <motion.div variants={fadeInUp} className="text-center mb-12">
               <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">
                 {procedure?.title || "The Dermal Filler Procedure at Nexus Clinic KL"}
@@ -535,12 +555,12 @@ const DermalFillersLanding = ({
                   <h3 className="font-georgia text-lg text-brown mb-3 mt-2">
                     {step.title}
                   </h3>
-                  <p className="text-taupe text-sm">{step.description}</p>
+                  <p className="text-taupe text-sm leading-relaxed">{step.description}</p>
                 </motion.div>
               ))}
             </div>
 
-            <motion.div variants={fadeInUp} className="text-center mt-10">
+            <motion.div variants={fadeInUp} className="text-center mt-12">
               <button className="bg-wine text-white px-8 py-3 rounded-full hover:bg-rose transition-all duration-300">
                 {procedure?.cta || "Ready to Book | Secure Your Appointment at Nexus Clinic KL"}
               </button>
@@ -554,9 +574,9 @@ const DermalFillersLanding = ({
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="py-20 px-4 bg-white"
+          className="py-20 px-4 md:px-8 lg:px-16 bg-white"
         >
-          <div className="container mx-auto max-w-6xl">
+          <div className="container mx-auto max-w-7xl">
             <motion.div variants={fadeInUp} className="text-center mb-12">
               <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">
                 {pricing?.title || "Dermal Filler Cost in Malaysia | Transparent 2026 Pricing"}
@@ -589,7 +609,7 @@ const DermalFillersLanding = ({
               </table>
             </motion.div>
 
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl mb-6">
+            <motion.div variants={fadeInUp} className="bg-cream p-8 rounded-xl mb-6">
               <p className="text-brown text-center italic mb-4">
                 {pricing?.note}
               </p>
@@ -626,9 +646,9 @@ const DermalFillersLanding = ({
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="py-20 px-4 bg-linear-to-b from-cream to-light"
+          className="py-20 px-4 md:px-8 lg:px-16 bg-linear-to-b from-cream to-light"
         >
-          <div className="container mx-auto max-w-6xl">
+          <div className="container mx-auto max-w-7xl">
             <div className="grid md:grid-cols-2 gap-8">
               <motion.div
                 variants={fadeInLeft}
@@ -679,9 +699,9 @@ const DermalFillersLanding = ({
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="py-20 px-4 bg-white"
+          className="py-20 px-4 md:px-8 lg:px-16 bg-white"
         >
-          <div className="container mx-auto max-w-6xl">
+          <div className="container mx-auto max-w-7xl">
             <motion.div variants={fadeInUp} className="text-center mb-12">
               <AlertCircle className="text-wine mx-auto mb-4" size={48} />
               <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">
@@ -745,7 +765,7 @@ const DermalFillersLanding = ({
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="py-20 px-4 bg-linear-to-b from-cream to-light"
+          className="py-20 px-4 md:px-8 lg:px-16 bg-linear-to-b from-cream to-light"
         >
           <div className="container mx-auto max-w-4xl">
             <motion.div variants={fadeInUp} className="text-center mb-12">
@@ -763,7 +783,7 @@ const DermalFillersLanding = ({
                 {aftercare?.items?.map((item: string, idx: number) => (
                   <div key={idx} className="flex items-start gap-3">
                     <CheckCircle2 size={18} className="text-wine shrink-0 mt-0.5" />
-                    <span className="text-taupe text-sm">{item}</span>
+                    <span className="text-taupe text-sm leading-relaxed">{item}</span>
                   </div>
                 ))}
               </div>
@@ -776,31 +796,14 @@ const DermalFillersLanding = ({
           </div>
         </motion.section>
 
-        {/* FAQ Section */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-          className="py-20 px-4 bg-white"
-        >
-          <div className="container mx-auto max-w-4xl">
-            <motion.div variants={fadeInUp} className="text-center mb-12">
-              <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">
-                {faqData?.title || "Frequently Asked Questions About Dermal Filler in Malaysia"}
-              </h2>
-            </motion.div>
-            <FAQ data={faqs} />
-          </div>
-        </motion.section>
-
+        <FAQ data={faqs} />
         {/* Final CTA Section */}
         <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="py-20 px-4 bg-gradient-to-r from-wine to-rose text-white"
+          className="py-20 px-4 md:px-8 lg:px-16 bg-gradient-to-r from-wine to-rose text-white"
         >
           <div className="container mx-auto max-w-4xl text-center">
             <motion.h2

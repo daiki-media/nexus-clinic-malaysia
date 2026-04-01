@@ -27,7 +27,7 @@ export default function DoctorMonitoredLanding({
 }: {
   locale?: string;
 }) {
-  const { t } = useTranslation(locale, "doctorMonitored");
+  const { t } = useTranslation(locale, "weightLoss/doctorMonitored");
 
   return (
     <div className="min-h-screen bg-light">

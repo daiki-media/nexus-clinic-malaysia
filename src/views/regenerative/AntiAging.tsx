@@ -22,7 +22,7 @@ import { fallbackLng } from "@/src/i18n/settings";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
 const AntiAgingLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "antiAging");
+  const { t } = useTranslation(locale, "regenerative/antiAging");
 
   const transformations = [
     {

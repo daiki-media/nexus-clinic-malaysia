@@ -36,7 +36,7 @@ const SkinWhiteningLanding = ({
 }: {
   locale?: string;
 }) => {
-  const { t } = useTranslation(locale, "skinWhitening");
+  const { t } = useTranslation(locale, "skin/skinWhitening");
 
   const transformations = [
     {

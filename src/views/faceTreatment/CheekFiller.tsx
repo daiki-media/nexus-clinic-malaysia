@@ -1,1010 +1,743 @@
 "use client";
 import { motion } from "framer-motion";
-import { MapPin, Calendar, Award } from "lucide-react";
+import FAQ from "../../components/FAQ";
+import Whatsapp from "../../components/Whatsapp";
+import Image from "next/image";
+import { MapPin, Calendar, Award, ArrowRight, CheckCircle, Clock, Syringe, Heart, Shield, Sparkles, Droplet, Gem, Zap, Eye, ArrowUp } from "lucide-react";
 import {
   staggerContainer,
   fadeInLeft,
   fadeInRight,
   fadeInUp,
+  scaleIn,
+  containerVariants,
+  rowVariants,
 } from "../../lib/animations";
-interface cheekFillerProps {
+
+interface CheekFillerProps {
   locale: string;
 }
 
-export default function CheekFiller({ locale }: cheekFillerProps) {
+export default function CheekFiller({ locale }: CheekFillerProps) {
+  const ageGroups = [
+    {
+      range: "Mid to late 20s",
+      concern: "Flat cheeks, lack of cheekbone definition, desire for apple cheeks or sculpted midface",
+      approach: "Contouring and augmentation. Low volume placed at zygomatic arch and anteromedial cheek for definition rather than volume restoration",
+    },
+    {
+      range: "Early 30s",
+      concern: "Early volume thinning, mild nasolabial fold development, cheeks beginning to look less full",
+      approach: "Combination of contouring and early restoration. Volume placed in medial cheek to maintain youthful proportion",
+    },
+    {
+      range: "Mid 30s to 40s",
+      concern: "Noticeable volume loss, descent of malar fat pad, deepening smile lines, under-eye hollowing",
+      approach: "Volume restoration. Medial and submalar zones filled to re-lift the descending tissue and reduce cascading signs of aging",
+    },
+    {
+      range: "40s and beyond",
+      concern: "Significant volume depletion, jowling, deep folds, sunken under-eyes, flat midface",
+      approach: "Structural rebuilding. Higher volumes used to restore the full midface scaffold. Often combined with tear trough and jawline filler",
+    },
+  ];
+
+  const genderGoals = [
+    {
+      gender: "Female Patients",
+      goal: "Lifted, rounded apple cheeks. Heart-shaped youthful appearance. Soft upper cheek fullness",
+      zone: "Anteromedial cheek and submalar. Volume placed centrally for roundness",
+      volume: "1 to 2ml per side typically. Conservative for natural result",
+      product: "Juvederm Voluma or Restylane Lyft for soft rounded projection",
+      avoid: "Lateral zygomatic projection that widens the face",
+      combine: "Tear trough filler, lip filler, Botox for complete youthful refresh",
+      outcome: "Face looks rested, lifted and naturally young without looking done",
+    },
+    {
+      gender: "Male Patients",
+      goal: "Stronger zygomatic projection. Defined cheekbones. Structured, angular midface",
+      zone: "Zygomatic arch and lateral cheekbone. Volume placed laterally for definition",
+      volume: "1 to 2.5ml per side. More volume needed for structural definition",
+      product: "Juvederm Volux or Radiesse for firmer structural angularity",
+      avoid: "Submalar softness that feminises the midface",
+      combine: "Jawline filler, chin filler for complete masculine structure",
+      outcome: "Face looks strong, defined, and structured without looking overdone",
+    },
+  ];
+
+  const fillerProducts = [
+    {
+      name: "Juvederm Voluma",
+      description: "The most prescribed cheek filler product in Malaysia according to Allergan/AbbVie Malaysia 2023 data. High-density HA with a firm structural profile, excellent lift capacity and a natural feel. Specifically designed for deep cheekbone placement.",
+      longevity: "12 to 18 months",
+      bestFor: "First-choice for both cheek volume restoration and contouring in most patients",
+      citation: "AbbVie Malaysia Aesthetic Market Summary Report, 2023",
+    },
+    {
+      name: "Juvederm Volux",
+      description: "The firmest HA product in the Juvederm range. Used for male patients wanting strong zygomatic projection or patients requiring significant structural cheekbone definition.",
+      longevity: "18 to 24 months",
+      bestFor: "Male patients wanting strong zygomatic projection or significant structural definition",
+      citation: "",
+    },
+    {
+      name: "Restylane Lyft",
+      description: "Firm HA with strong lift capacity and a consistent safety record. Frequently used alongside Juvederm Voluma for combined cheek and jawline treatments.",
+      longevity: "12 to 18 months",
+      bestFor: "Combined cheek and jawline treatments",
+      citation: "",
+    },
+    {
+      name: "Radiesse",
+      description: "A calcium hydroxylapatite biostimulatory filler that adds immediate structural volume and stimulates the body's own collagen production over time.",
+      longevity: "12 to 24 months",
+      bestFor: "Patients wanting longest-lasting result and collagen rebuilding",
+      citation: "Not reversible with hyaluronidase",
+    },
+  ];
+
+  const pricingTiers = [
+    { treatment: "Cheek filler (contouring / volume restoration)", volume: "1 to 2 ml", price: "RM 2,400 – RM 3,000+" },
+    { treatment: "Advanced cheek enhancement", volume: "2 to 3 ml", price: "RM 3,000 – RM 4,000+" },
+    { treatment: "Cheek + facial balancing (multi-area)", volume: "Customised", price: "RM 4,000 – RM 7,000+" },
+  ];
+
+  const priceFactors = [
+    "Product: Juvederm Volux and Radiesse cost more than Juvederm Voluma. The difference reflects structural firmness for male augmentation and longevity",
+    "Volume: Contouring in a patient with good existing cheek structure needs less product than significant volume restoration",
+    "One side vs both sides: Full bilateral cheek treatment costs more than treating a single side for asymmetry correction",
+    "Combination treatment: Cheek filler combined with tear trough, jawline or lip filler is more cost-efficient than separate appointments",
+  ];
+
+  const sideEffects = {
+    common: [
+      "Mild swelling in the cheek area, typically resolving within 2 to 5 days",
+      "Light bruising possible, especially when using a needle rather than a cannula, fading within 3 to 7 days",
+      "Temporary firmness or heaviness in the cheeks for 3 to 5 days as the filler integrates",
+      "Minor asymmetry in the days immediately after treatment as swelling resolves unevenly. Both sides settle equally by day 14",
+    ],
+    rare: [
+      "Visible or palpable nodules if filler is placed too superficially",
+      "Asymmetry may occur if the facial volume is not balanced evenly between both sides",
+      "Infection at injection site, extremely rare with sterile technique",
+      "Vascular occlusion, very rare in the cheek area but requires trained injector and emergency protocol readiness",
+    ],
+  };
+
+  const aftercareInstructions = [
+    "Avoid pressing, massaging or applying direct pressure to the cheeks for at least 48 hours",
+    "Sleep on your back for the first two nights to avoid compressing one side more than the other",
+    "Skip intense exercise for 24 hours",
+    "Stay away from saunas, steam rooms and prolonged heat for 48 hours",
+    "Avoid alcohol for the first 24 hours",
+    "Do not book facial massages or energy-based treatments for at least two weeks after cheek filler",
+    "Assess your final result at 14 days when all swelling has fully resolved",
+  ];
+
+  const faqData = [
+    { q: "How long does cheek filler last in Malaysia?", a: "Juvederm Voluma, the most prescribed cheek filler in Malaysia, typically lasts 12 to 18 months. Radiesse can last 12 to 24 months. Individual metabolism, lifestyle and the volume used all affect longevity. Patients who maintain regular top-up sessions typically find that each subsequent session requires less product as residual filler from the previous treatment remains in the tissue." },
+    { q: "How much does cheek filler cost in Malaysia in 2026?", a: "Cheek filler treatments at Nexus Clinic KL typically range from RM 2,400 to RM 3,000+ per session, depending on the product used and the volume required for contouring or volume restoration. More advanced treatments requiring higher volume or multi-area facial balancing can range from RM 3,000 to RM 5,000+. Final pricing is confirmed during consultation based on your facial structure and treatment goals." },
+    { q: "How much filler is needed for the cheeks?", a: "Most patients need 1 to 2ml per side for a natural, proportionate cheek filler result. First-time patients with good existing cheek structure wanting subtle contouring may need only 1ml per side. Patients with significant age-related volume loss may require 2 to 3ml per side. The doctor confirms the right volume at consultation based on your face shape and the degree of correction needed." },
+    { q: "Will cheek filler make my face look too round or puffy?", a: "Correctly placed cheek filler creates definition and lift, not roundness or puffiness. An overfilled, puffy appearance is caused by too much volume placed too superficially or in the wrong anatomical zone. At Nexus Clinic KL, the approach is anatomy-first and restrained, focusing on medical aesthetic principles. The goal is to restore the natural Ogee curve and cheek position, not to overfill the face. Many patients find that cheek filler makes their face look slimmer and more defined, not rounder." },
+    { q: "Can cheek filler help with nasolabial folds?", a: "Yes. Nasolabial folds deepen significantly when cheek volume drops because the weight of deflated cheeks pulls downward on the skin above the fold. Restoring cheek volume lifts this skin from above and reduces fold depth without directly injecting the nasolabial fold area. Many patients find their smile lines improve significantly after cheek filler, as it helps to restore volume before any fold-specific treatment is considered." },
+    { q: "Does cheek filler improve under-eye hollowing?", a: "Often yes, though the degree of improvement depends on the depth of the tear trough and how much of it is contributed by cheek descent versus direct under-eye hollowing. Restoring cheek volume provides structural support to the lower eyelid area and can significantly reduce the visible tear trough. Patients with significant under-eye hollowing may still benefit from dedicated tear trough filler after cheek treatment." },
+    { q: "Can cheek filler be dissolved?", a: "Hyaluronic acid cheek fillers are fully dissolvable with hyaluronidase. If you are unhappy with the result for any reason, the filler can be partially or completely removed. Radiesse is not reversible with hyaluronidase and requires more thorough patient assessment before use. For first-time patients, HA filler is always the recommended starting option due to its reversibility." },
+    { q: "Is cheek filler suitable for men?", a: "Yes. Cheek filler for men is a growing treatment category at Nexus Clinic KL. Male patients want stronger zygomatic projection and defined cheekbones rather than rounded apple cheeks. The product selection, injection depth and placement zones differ significantly from female technique. Juvederm Volux and Radiesse are the preferred products for male patients due to their firmer structural profile. Results look masculine and natural when the technique is gender-appropriate." },
+    { q: "How soon will I see results from cheek filler?", a: "Results are visible immediately after treatment. Mild swelling over the first 24 to 48 hours may slightly exaggerate the initial volume. As swelling resolves over 7 to 14 days, the final settled result becomes visible. Most patients see their best outcome at the two-week review. The secondary cascade effects on nasolabial folds and under-eyes become clearer as the filler fully integrates with surrounding tissue." },
+    { q: "Who is not suitable for cheek filler?", a: "Cheek filler is not suitable for patients who are pregnant or breastfeeding, have an active skin infection in the treatment area, have a known allergy to hyaluronic acid or lidocaine, or have certain autoimmune conditions affecting healing. Patients with very thin facial skin or who have had cheek implants previously are assessed case by case. A full medical assessment at consultation determines suitability for each individual." },
+  ];
+
   return (
     <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
-        <div className="absolute inset-0 bg-linear-to-br from-cream/50 via-light to-rose/10" />
-
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
+        
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="container mx-auto max-w-6xl relative z-10"
         >
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-6">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-8">
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
+                <Sparkles className="w-4 h-4 text-wine" />
+                <span className="text-sm font-inter text-wine font-medium">Non-Surgical Midface Lift</span>
+              </motion.div>
+              
               <motion.h1
                 variants={fadeInUp}
-                className="font-georgia text-5xl lg:text-5xl text-brown leading-tight"
+                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
               >
-                Want higher cheekbones, softer smile lines, and a lifted
-                mid-face that still looks like you?
+                Sculpted Cheek Filler in Malaysia for a{" "}
+                <span className="text-wine italic">Lifted, Youthful Midface</span> Without Surgery
               </motion.h1>
 
               <motion.p
                 variants={fadeInUp}
-                className="text-lg text-taupe font-inter leading-relaxed"
+                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
               >
-                Cheek filler is one of the quickest ways to restore shape and
-                balance in Kuala Lumpur, with minimal downtime.
+                Your cheeks are the structural foundation of your face. When they are full and well-positioned, 
+                the eyes look brighter, the nasolabial folds stay shallow and the lower face holds its definition.
               </motion.p>
 
-              {/* Trust at a glance */}
-              <motion.div
+              <motion.p
                 variants={fadeInUp}
-                className="bg-cream p-6 rounded-xl border border-taupe/20"
+                className="text-brown font-inter"
               >
-                <h2 className="font-georgia text-2xl text-brown mb-4">
-                  Trust at a glance (Nexus Clinic Kuala Lumpur)
-                </h2>
-                <ul className="space-y-2 font-inter text-brown">
-                  <li className="flex items-center gap-2">
-                    <Award className="w-4 h-4 text-wine" />
-                    <span>Founded in 2001</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-wine" />
-                    <span>
-                      Located at LG 10, Lower Ground Floor, Wisma UOA II, Jalan
-                      Pinang, 50450 Kuala Lumpur
-                    </span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-wine" />
-                    <span>
-                      Open Monday to Saturday (9.00am to 6.00pm), closed Sundays
-                      and public holidays
-                    </span>
-                  </li>
-                </ul>
+                Cheek filler at Nexus Clinic Kuala Lumpur works at that structural level, enhancing skin texture and volume. 
+                Using high-density hyaluronic acid products placed precisely at the cheekbone and in the midface fat compartments, 
+                our doctors restore the volume and lift that the face needs to look balanced, rested and defined.
+              </motion.p>
+
+              <motion.div 
+                variants={fadeInLeft} 
+                className="flex flex-col sm:flex-row gap-4 items-center justify-start"
+              >
+                <motion.button
+                  variants={fadeInUp}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  Book free consultation
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+                <Whatsapp message="Hi, I'm interested in cheek filler at Nexus Clinic KL. I'd like to book a consultation." />
               </motion.div>
             </motion.div>
 
             <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <img
-                  src="/images/skin/acne-treatment.webp"
-                  alt="Nexus Clinic Kuala Lumpur - Premier Aesthetic Clinic"
-                  className="w-full h-auto object-cover"
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
+                <Image
+                  src="/images/face/Cheek Filler Treatment.png"
+                  alt="Nexus Clinic Kuala Lumpur - Cheek Filler Treatment"
+                  fill
+                  className="object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
+                <p className="font-inter font-bold text-brown">✨ Immediate Results</p>
+                <p className="font-inter text-sm text-taupe">Minimal downtime • Natural lift</p>
               </div>
             </motion.div>
           </div>
         </motion.div>
       </section>
 
-      {/* Quick reality check section */}
-      <section className="py-20 px-4 bg-cream">
+      {/* Treatment Overview Section */}
+      <section className="py-16 px-4 bg-cream">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="container mx-auto max-w-4xl"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="space-y-6">
-            <h2 className="font-georgia text-4xl text-brown">
-              Quick reality check: what ranks on Google, and what most pages
-              miss
-            </h2>
-
-            <p className="text-brown font-inter">
-              When people search "cheek filler Kuala Lumpur" or "cheek
-              augmentation KL", they often land on:
-            </p>
-
-            <ul className="list-disc pl-6 space-y-3 text-brown font-inter">
-              <li>
-                Directory-style pages listing clinics and reviews (for example,
-                Erufu Care lists "Cheek Augmentation" clinics across KL areas
-                like KLCC, Bukit Bintang, Mont Kiara, Bangsar, Mid Valley, and
-                more).
-              </li>
-              <li>
-                Clinic service pages with benefits, before-after photos, and
-                short FAQs (example: Dr Jane Clinic explains suitability, "12-24
-                months" longevity, and basic side effects).
-              </li>
-              <li>
-                Price guide articles giving ballpark costs per syringe and
-                estimated totals in Malaysia.
-              </li>
-            </ul>
-
-            <p className="text-brown font-inter font-bold">
-              What's often missing is the stuff you actually worry about:
-            </p>
-
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3 text-brown font-inter">
-                <span className="text-wine font-bold text-xl">"</span>
-                How many syringes will I need for my face, not someone else's?
-                <span className="text-wine font-bold text-xl">"</span>
-              </li>
-              <li className="flex items-start gap-3 text-brown font-inter">
-                <span className="text-wine font-bold text-xl">"</span>
-                Will I look puffy or overfilled?
-                <span className="text-wine font-bold text-xl">"</span>
-              </li>
-              <li className="flex items-start gap-3 text-brown font-inter">
-                <span className="text-wine font-bold text-xl">"</span>
-                What's normal in week one, and when do I stop worrying?
-                <span className="text-wine font-bold text-xl">"</span>
-              </li>
-              <li className="flex items-start gap-3 text-brown font-inter">
-                <span className="text-wine font-bold text-xl">"</span>
-                What's the safety plan if something feels off?
-                <span className="text-wine font-bold text-xl">"</span>
-              </li>
-            </ul>
-
-            <p className="text-brown font-inter">
-              This page is written to answer those questions clearly, in plain
-              English, for Kuala Lumpur and Malaysia.
-            </p>
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">Cheek Filler Treatment Overview</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">Everything you need to know at a glance</p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Syringe, label: "Treatment", value: "Hyaluronic acid or Radiesse filler" },
+              { icon: Clock, label: "Session Time", value: "20 to 40 minutes" },
+              { icon: Heart, label: "Downtime", value: "Minimal, 2-5 days" },
+              { icon: Zap, label: "Results", value: "Immediate, settled in 7-14 days" },
+            ].map((item, idx) => (
+              <div key={idx} className="bg-light p-5 rounded-xl border border-taupe/10 shadow-sm">
+                <item.icon className="w-8 h-8 text-wine mb-3" />
+                <p className="font-inter text-sm text-taupe">{item.label}</p>
+                <p className="font-georgia text-md text-brown font-semibold">{item.value}</p>
+              </div>
+            ))}
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 rounded-2xl p-6 border border-wine/10">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div>
+                <p className="font-inter text-sm text-taupe">Longevity</p>
+                <p className="font-georgia text-brown font-semibold">Juvederm Voluma: 12-18 months<br />Radiesse: 12-24 months</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Reversible</p>
+                <p className="font-georgia text-brown font-semibold">Yes for HA fillers<br />Fully dissolvable with hyaluronidase</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Volume Used</p>
+                <p className="font-georgia text-brown font-semibold">1 to 3ml per session</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Suitable For</p>
+                <p className="font-georgia text-brown">Age-related volume loss, flat cheekbones, hollow under-eyes, nasolabial folds, face sculpting</p>
+              </div>
+            </div>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-8">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor About Your Midface Goals
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* What is cheek filler section */}
+      {/* Asian Midface Aging Section */}
       <section className="py-20 px-4 bg-light">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="container mx-auto max-w-6xl"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
         >
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div variants={fadeInLeft} className="space-y-6">
-              <h2 className="font-georgia text-4xl text-brown">
-                What is cheek filler, really?
+              <h2 className="font-georgia text-3xl md:text-4xl text-brown">
+                How Asian Midface Aging Differs — <span className="text-wine italic">Why Cheek Filler Matters Earlier</span>
               </h2>
-
               <p className="text-brown font-inter">
-                Cheek filler is an injectable treatment used to add structure
-                and volume to the mid-face. It can:
+                Cheek filler is not just an anti-aging treatment; it can also add volume, improve facial contour, and enhance skin texture. 
+                For Asian patients including the majority of those seen at Nexus Clinic KL, it is often the most structurally impactful 
+                facial filler treatment available.
               </p>
-
-              <ul className="space-y-2 text-brown font-inter">
-                <li>• Lift and shape the cheekbones</li>
-                <li>• Improve mid-face flatness</li>
-                <li>
-                  • Create better balance between cheeks, under-eyes, and smile
-                  lines
-                </li>
-                <li>• Support a softer, less tired look</li>
-              </ul>
-
               <p className="text-brown font-inter">
-                Most clinics describe cheek fillers as a way to restore volume
-                lost with age or enhance naturally flatter cheeks.
+                Research in aesthetic medicine has shown that Asian patients typically experience midface volume loss earlier than their 
+                Western counterparts, often beginning in the mid-twenties. Asian cheekbones tend to project laterally outward rather than 
+                anteriorly forward, making volume loss more visually impactful.
               </p>
-
-              <p className="text-brown font-georgia italic">
-                At Nexus Clinic Kuala Lumpur, the goal is not a "new face." It's
-                a refreshed version of your own features, with cheek support
-                that looks natural in real life and real lighting.
+              <p className="text-brown font-inter">
+                At Nexus Clinic KL, cheek filler placement is planned specifically for Southeast Asian facial anatomy. Volume is placed 
+                medially at the anteromedial cheek and submalar zones rather than laterally, creating a natural, lifted appearance.
               </p>
+              <div className="bg-cream p-5 rounded-xl border-l-4 border-wine">
+                <p className="font-georgia italic text-brown">"The goal is a refreshed version of your own features — not a new face."</p>
+              </div>
             </motion.div>
-
             <motion.div variants={fadeInRight} className="relative">
-              <img
-                src="/images/skin/acne-treatment.webp"
-                alt="Facial anatomy showing cheek structure and filler placement"
-                className="rounded-2xl shadow-xl w-full h-auto"
-              />
+              <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
+                <Image
+                  src="/images/face/Cheek Filler.jpeg"
+                  alt="Asian facial anatomy for cheek filler"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <button className="mt-6 text-wine font-inter font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                Get a Cheek Assessment Built for Your Anatomy
+                <ArrowRight className="w-4 h-4" />
+              </button>
             </motion.div>
           </div>
         </motion.div>
       </section>
 
-      {/* Why cheeks change your whole face */}
+      {/* Cascade Effect Section */}
       <section className="py-20 px-4 bg-cream">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="container mx-auto max-w-4xl"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="space-y-6">
-            <h2 className="font-georgia text-4xl text-brown">
-              Why cheeks change your whole face (and why people notice)
-            </h2>
-
-            <p className="text-brown font-inter">
-              Your cheeks are like the "frame" of your face. When the mid-face
-              loses support, you may notice:
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The Cascade Effect</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">How cheek filler improves more than just the cheeks</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { 
+                title: "Nasolabial Fold Reduction", 
+                desc: "Deep smile lines are often caused by deflated cheeks pulling downward. Restoring cheek volume lifts the skin above the fold and reduces its depth from above.", 
+                icon: Sparkles 
+              },
+              { 
+                title: "Under-Eye Hollow Improvement", 
+                desc: "The tear trough is directly connected to the cheek below. Restoring cheek volume provides structural support to the lower eyelid area and reduces tear trough depth.", 
+                icon: Eye 
+              },
+              { 
+                title: "Lower Face Lifting", 
+                desc: "Volume in the midface acts as a scaffold for the skin below. Restoring midface volume re-tightens the skin drape over the lower face and lifts the jawline.", 
+                icon: ArrowUp 
+              },
+            ].map((item, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="bg-light p-6 rounded-xl shadow-md border border-taupe/10 hover:shadow-lg transition-shadow">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center mb-4">
+                  <item.icon className="w-6 h-6 text-wine" />
+                </div>
+                <h3 className="font-georgia text-xl text-brown mb-3">{item.title}</h3>
+                <p className="text-taupe font-inter">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-10 text-center p-6 bg-wine/5 rounded-xl">
+            <p className="font-georgia text-brown text-lg">
+              <span className="font-bold">Restored Ogee Curve</span> — the double S-shaped contour seen on a youthful face from the oblique angle. 
+              Precisely placed cheek filler restores this curve, which is the clinical goal of every cheek filler treatment at Nexus Clinic KL.
             </p>
-
-            <ul className="space-y-2 text-brown font-inter">
-              <li>A flatter side profile</li>
-              <li>Shadowing under the eyes</li>
-              <li>Smile lines looking deeper</li>
-              <li>A heavier look around the lower face</li>
-            </ul>
-
-            <p className="text-brown font-inter">
-              Adding support to the cheek area can visually lift the face, even
-              if you do not touch other areas.
-            </p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-8">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Understand Your Cascade Effect Potential
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Cheek filler can help if */}
+      {/* Gender-Specific Goals Section */}
       <section className="py-20 px-4 bg-light">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="container mx-auto max-w-4xl"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="space-y-6">
-            <h2 className="font-georgia text-4xl text-brown">
-              Cheek filler can help if you want any of these results
-            </h2>
-
-            <p className="text-brown font-inter">
-              You might be a good match for cheek filler in KL if you have:
-            </p>
-
-            <ul className="space-y-2 text-brown font-inter">
-              <li>Flat or less defined cheekbones</li>
-              <li>A tired look from mid-face volume loss</li>
-              <li>Mild sagging in the mid-face</li>
-              <li>Under-eye hollowing that looks worse when you smile</li>
-              <li>A goal to look fresher without surgery</li>
-            </ul>
-
-            <p className="text-brown font-inter">
-              Many patients also combine cheek filler with under-eye filler or
-              jawline filler for overall balance, depending on facial structure.
-            </p>
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Cheek Filler for Men & Women</h2>
+            <p className="text-taupe font-inter">Different goals, different technique — personalized approach</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {genderGoals.map((item, idx) => (
+              <motion.div 
+                key={idx} 
+                variants={fadeInUp} 
+                className={`rounded-2xl p-6 ${idx === 0 ? 'bg-rose/5 border border-rose/20' : 'bg-wine/5 border border-wine/20'} hover:shadow-xl transition-shadow`}
+              >
+                <h3 className="font-georgia text-2xl text-brown mb-4">{item.gender}</h3>
+                <div className="space-y-3">
+                  <div><span className="font-inter font-semibold text-brown">Goal:</span> <span className="text-taupe">{item.goal}</span></div>
+                  <div><span className="font-inter font-semibold text-brown">Primary Zone:</span> <span className="text-taupe">{item.zone}</span></div>
+                  <div><span className="font-inter font-semibold text-brown">Volume Used:</span> <span className="text-taupe">{item.volume}</span></div>
+                  <div><span className="font-inter font-semibold text-brown">Product Choice:</span> <span className="text-taupe">{item.product}</span></div>
+                  <div><span className="font-inter font-semibold text-brown">Avoid:</span> <span className="text-taupe">{item.avoid}</span></div>
+                  <div><span className="font-inter font-semibold text-brown">Often Combined With:</span> <span className="text-taupe">{item.combine}</span></div>
+                  <div><span className="font-inter font-semibold text-brown">Key Outcome:</span> <span className="text-taupe">{item.outcome}</span></div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-10">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Book a Gender-Specific Cheek Filler Plan
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Who should avoid */}
+      {/* Age Group Table Section */}
       <section className="py-20 px-4 bg-cream">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="container mx-auto max-w-4xl"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="space-y-6">
-            <h2 className="font-georgia text-4xl text-brown">
-              Who should avoid cheek filler (or delay it)
-            </h2>
-
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Cheek Filler by Age Group</h2>
+            <p className="text-taupe font-inter">Sculpting in your 20s, restoring in your 30s and beyond</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine/10">
+                <tr>
+                  <th className="p-4 text-left font-georgia text-brown">Age Group</th>
+                  <th className="p-4 text-left font-georgia text-brown">Primary Concern</th>
+                  <th className="p-4 text-left font-georgia text-brown">Treatment Approach</th>
+                </tr>
+              </thead>
+              <tbody>
+                {ageGroups.map((group, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/50 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{group.range}</td>
+                    <td className="p-4 text-taupe font-inter">{group.concern}</td>
+                    <td className="p-4 text-taupe font-inter">{group.approach}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 p-5 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter">
-              You should usually postpone treatment if you are:
+              Patients who start cheek filler maintenance in their late 20s or early 30s typically require less volume at each session 
+              and maintain a natural, youthful appearance with minimal intervention over time.
             </p>
-
-            <ul className="space-y-2 text-brown font-inter">
-              <li>Pregnant or breastfeeding</li>
-              <li>
-                Actively unwell, with skin infection, fever, or inflammation
-                near the area
-              </li>
-              <li>
-                Recovering from dental infection or major dental work (timing
-                matters, ask your doctor)
-              </li>
-            </ul>
-
-            <p className="text-brown font-inter">
-              A proper consultation matters because cheeks are not a "one-size"
-              area. Face shape, skin thickness, and bone support change the
-              plan.
-            </p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Find Out the Right Approach for Your Age and Goals
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Cheek filler areas */}
+      {/* Filler Products Section */}
       <section className="py-20 px-4 bg-light">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="container mx-auto max-w-4xl"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="space-y-6">
-            <h2 className="font-georgia text-4xl text-brown">
-              Cheek filler areas that can be treated
-            </h2>
-
-            <p className="text-brown font-inter">
-              Cheek filler is not just one spot. Your doctor may treat:
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Filler Products Used for Cheek Augmentation</h2>
+            <p className="text-taupe font-inter">Premium, medical-grade choices for optimal results</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            {fillerProducts.map((product, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="bg-cream p-6 rounded-xl border border-taupe/20 hover:shadow-lg transition-shadow">
+                <h3 className="font-georgia text-xl text-brown mb-2">{product.name}</h3>
+                <p className="text-taupe font-inter text-sm mb-3">{product.description}</p>
+                <div className="flex flex-wrap justify-between items-center text-sm gap-2">
+                  <span className="font-inter font-semibold text-wine">⏱️ {product.longevity}</span>
+                  <span className="font-inter text-brown text-xs">✓ {product.bestFor}</span>
+                </div>
+                {product.citation && (
+                  <p className="text-xs text-taupe mt-2 italic">[{product.citation}]</p>
+                )}
+              </motion.div>
+            ))}
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-brown font-inter text-sm">
+              According to the International Society of Aesthetic Plastic Surgery 2024 Global Statistics Report, cheek and midface augmentation 
+              was the second most performed non-surgical facial filler procedure in Southeast Asia, with a 32% year-on-year increase.
             </p>
-
-            <ul className="space-y-2 text-brown font-inter">
-              <li>Cheekbone highlight (upper cheek) for definition</li>
-              <li>Mid-cheek support for lift</li>
-              <li>
-                Anterior cheek (front of the cheek) for soft contour and balance
-              </li>
-            </ul>
-
-            <p className="text-brown font-inter">
-              A good plan avoids placing filler where it will make the face look
-              heavy.
-            </p>
+            <p className="text-taupe text-xs mt-2">[ISAPS Global Statistics Report 2024]</p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Ask About the Right Product for Your Cheeks
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* How many syringes */}
+      {/* Procedure Steps Section */}
       <section className="py-20 px-4 bg-cream">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="container mx-auto max-w-4xl"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="space-y-6">
-            <h2 className="font-georgia text-4xl text-brown">
-              How many syringes do you need for cheek filler?
-            </h2>
-
-            <p className="text-brown font-inter">
-              This is one of the biggest questions in Malaysia.
-            </p>
-
-            <p className="text-brown font-inter">
-              A common pricing guide in Malaysia estimates cheek filler often
-              needs 2 to 4 syringes, depending on your goal and your starting
-              point.
-            </p>
-
-            <p className="text-brown font-inter">
-              That does not mean everyone needs 4. Some people look great with a
-              subtle amount. Others need more structure for real lifting
-              support.
-            </p>
-
-            <h3 className="font-georgia text-2xl text-brown">
-              A simple way to think about it
-            </h3>
-
-            <ul className="space-y-2 text-brown font-inter">
-              <li>1-2 syringes total: subtle contour, gentle refresh</li>
-              <li>
-                2-4 syringes total: more visible lift and structure (common for
-                cheeks)
-              </li>
-            </ul>
-
-            <p className="text-brown font-inter">
-              Your best number comes from an in-person assessment, not a chart.
-            </p>
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The Cheek Filler Procedure at Nexus Clinic KL</h2>
+            <p className="text-taupe font-inter">Step by step — safe, precise, and personalized</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { step: "1", title: "Full Facial & Midface Assessment", desc: "Doctor evaluates cheeks in context of entire face, bone structure, fat pad position, and aesthetic goals." },
+              { step: "2", title: "Product, Volume & Placement Confirmation", desc: "Exact product, total volume per side, and placement points are confirmed. Most patients receive 1-2ml per side initially." },
+              { step: "3", title: "Numbing & Precise Injection", desc: "Topical numbing + built-in lidocaine. Filler placed using blunt cannula via single entry point per side. 20-40 minutes." },
+              { step: "4", title: "Symmetry Review & Aftercare", desc: "Results reviewed from all angles. Full aftercare provided. Two-week follow-up scheduled for final assessment." },
+            ].map((item, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="text-center">
+                <div className="w-14 h-14 bg-wine rounded-full flex items-center justify-center text-light font-georgia text-xl mx-auto mb-4 shadow-md">
+                  {item.step}
+                </div>
+                <h3 className="font-georgia text-lg text-brown mb-2 font-semibold">{item.title}</h3>
+                <p className="text-taupe font-inter text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-10">
+            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+              Book Your Cheek Filler Appointment
+              <ArrowRight className="w-5 h-5" />
+            </button>
+            <p className="text-taupe text-sm mt-3">Same-day results at Nexus Clinic KL</p>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* What does cheek filler feel like */}
+      {/* Pricing Section */}
       <section className="py-20 px-4 bg-light">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
+          viewport={{ once: true }}
           className="container mx-auto max-w-4xl"
         >
-          <motion.div variants={fadeInUp} className="space-y-4">
-            <h2 className="font-georgia text-4xl text-brown">
-              What does cheek filler feel like?
-            </h2>
-            <p className="text-brown font-inter">
-              Most people describe it as pressure and small pinches. Many
-              fillers also include lidocaine, and numbing cream is often used to
-              keep you comfortable.
-            </p>
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Cheek Filler Price in Malaysia</h2>
+            <p className="text-taupe font-inter">Transparent 2026 Pricing at Nexus Clinic KL</p>
           </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Procedure */}
-      <section className="py-20 px-4 bg-cream">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="space-y-6">
-            <h2 className="font-georgia text-4xl text-brown">
-              Cheek filler procedure: what happens at Nexus Clinic KL
-            </h2>
-
-            <ol className="space-y-4 list-decimal pl-6 text-brown font-inter">
-              <li>
-                Consultation and face assessment - You share what you want. Your
-                doctor checks symmetry, structure, and where volume is missing.
-              </li>
-              <li>
-                Mapping and planning - The doctor marks key support points for
-                safe, balanced placement.
-              </li>
-              <li>
-                Cleansing and numbing - Comfort first. The plan is to keep
-                bruising and swelling low.
-              </li>
-              <li>
-                Injection - The filler is placed carefully to build shape. This
-                part is usually quick.
-              </li>
-              <li>
-                Review and aftercare - You see the result right away, then get a
-                clear aftercare plan.
-              </li>
-            </ol>
-
-            <p className="text-brown font-inter">
-              Many clinics describe cheek filler results as immediate, with
-              final results clearer once swelling settles in a few days.
-            </p>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Downtime and healing */}
-      <section className="py-20 px-4 bg-light">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="space-y-6">
-            <h2 className="font-georgia text-4xl text-brown">
-              Downtime and healing: what's normal in the first 14 days
-            </h2>
-
-            <p className="text-brown font-inter">
-              Most people can return to normal life quickly, but your face may
-              go through stages.
-            </p>
-
-            <h3 className="font-georgia text-2xl text-brown">Day 1 to Day 3</h3>
-            <ul className="space-y-2 text-brown font-inter">
-              <li>Mild swelling</li>
-              <li>Tenderness when you touch the area</li>
-              <li>Possible small bruises</li>
-            </ul>
-
-            <h3 className="font-georgia text-2xl text-brown">Day 4 to Day 7</h3>
-            <ul className="space-y-2 text-brown font-inter">
-              <li>Swelling reduces</li>
-              <li>Shape looks more "you"</li>
-              <li>Makeup usually sits better again</li>
-            </ul>
-
-            <h3 className="font-georgia text-2xl text-brown">Week 2</h3>
-            <ul className="space-y-2 text-brown font-inter">
-              <li>Most minor swelling and bruising settles</li>
-              <li>You can judge the result more accurately</li>
-            </ul>
-
-            <p className="text-brown font-inter">
-              Directory-style medical pages often describe recovery for cheek
-              augmentation as around 1 to 2 weeks.
-            </p>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Aftercare tips */}
-      <section className="py-20 px-4 bg-cream">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="space-y-6">
-            <h2 className="font-georgia text-4xl text-brown">
-              Aftercare tips (easy and practical)
-            </h2>
-
-            <p className="text-brown font-inter">
-              For the first 24 to 48 hours:
-            </p>
-
-            <ul className="space-y-2 text-brown font-inter">
-              <li>Avoid heavy workouts</li>
-              <li>Avoid alcohol if you bruise easily</li>
-              <li>
-                Do not press or massage the cheeks unless your doctor tells you
-                to
-              </li>
-              <li>Sleep on your back if possible</li>
-              <li>Keep skin clean and gentle</li>
-            </ul>
-
-            <p className="text-brown font-inter">
-              If you have an important event, book your cheek filler at least 2
-              weeks before.
-            </p>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* How long does cheek filler last */}
-      <section className="py-20 px-4 bg-light">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="space-y-4">
-            <h2 className="font-georgia text-4xl text-brown">
-              How long does cheek filler last?
-            </h2>
-
-            <p className="text-brown font-inter">
-              Many clinics state cheek filler commonly lasts 12 to 24 months,
-              depending on product choice and your metabolism.
-            </p>
-
-            <p className="text-brown font-inter">
-              Some people break it down faster, especially if they exercise
-              intensely or have a very fast metabolism.
-            </p>
-
-            <p className="text-brown font-inter">
-              A good approach is maintenance, not overfilling. You can top up
-              lightly instead of adding too much at once.
-            </p>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Pros and cons */}
-      <section className="py-20 px-4 bg-cream">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="space-y-8">
-            <h2 className="font-georgia text-4xl text-brown">
-              Pros and cons of cheek filler
-            </h2>
-
-            <div>
-              <h3 className="font-georgia text-2xl text-brown mb-4">Pros</h3>
-              <ul className="space-y-2 text-brown font-inter">
-                <li>Immediate improvement in mid-face shape</li>
-                <li>Minimal downtime for many people</li>
-                <li>Can improve facial balance without surgery</li>
-                <li>
-                  Can support under-eye and smile line appearance (depending on
-                  your anatomy)
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Treatment</th>
+                  <th className="p-4 text-left font-georgia">Typical Volume</th>
+                  <th className="p-4 text-left font-georgia">Price Range (2026)</th>
+                 </tr>
+              </thead>
+              <tbody>
+                {pricingTiers.map((tier, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10">
+                    <td className="p-4 font-inter text-brown">{tier.treatment}</td>
+                    <td className="p-4 font-inter text-taupe">{tier.volume}</td>
+                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-8">
+            <h3 className="font-georgia text-xl text-brown mb-3">What Affects Cheek Filler Price in Kuala Lumpur</h3>
+            <ul className="space-y-2">
+              {priceFactors.map((factor, idx) => (
+                <li key={idx} className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <span className="text-wine">•</span>
+                  <span>{factor}</span>
                 </li>
+              ))}
+            </ul>
+          </motion.div>
+          
+          <motion.p variants={fadeInUp} className="text-center text-sm text-taupe mt-6 italic">
+            All pricing at Nexus Clinic KL is confirmed after consultation. There are no hidden fees and no pressure to proceed.
+          </motion.p>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Get Your Personalised Cheek Filler Quote
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Side Effects & Aftercare Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Side Effects and Aftercare</h2>
+            <p className="text-taupe font-inter">What to expect and how to care for your results</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div variants={fadeInLeft} className="bg-light p-6 rounded-xl border border-taupe/10">
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <Heart className="w-5 h-5 text-wine" />
+                Common Temporary Effects
+              </h3>
+              <ul className="space-y-2">
+                {sideEffects.common.map((effect, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-taupe font-inter text-sm">
+                    <CheckCircle className="w-4 h-4 text-wine mt-0.5 flex-shrink-0" />
+                    <span>{effect}</span>
+                  </li>
+                ))}
               </ul>
-            </div>
-
-            <div>
-              <h3 className="font-georgia text-2xl text-brown mb-4">Cons</h3>
-              <ul className="space-y-2 text-brown font-inter">
-                <li>Swelling or bruising can happen</li>
-                <li>Results depend heavily on injector skill</li>
-                <li>Overfilling is possible if the plan is not conservative</li>
-                <li>It is not permanent, so maintenance may be needed</li>
+            </motion.div>
+            
+            <motion.div variants={fadeInRight} className="bg-light p-6 rounded-xl border border-taupe/10">
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <Shield className="w-5 h-5 text-wine" />
+                Rare Risks
+              </h3>
+              <ul className="space-y-2">
+                {sideEffects.rare.map((effect, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-taupe font-inter text-sm">
+                    <span className="text-wine text-lg">⚠️</span>
+                    <span>{effect}</span>
+                  </li>
+                ))}
               </ul>
-            </div>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Side effects and safety */}
-      <section className="py-20 px-4 bg-light">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="space-y-6">
-            <h2 className="font-georgia text-4xl text-brown">
-              Side effects and safety: what you should know (without fear)
-            </h2>
-
-            <p className="text-brown font-inter">
-              Most side effects are mild and short-term.
-            </p>
-
-            <p className="text-brown font-inter">
-              The FDA lists common risks like bruising, redness, swelling, pain,
-              tenderness, itching, and rash.
-            </p>
-
-            <p className="text-brown font-inter">
-              An evidence-based safety paper also notes that common
-              injection-site reactions usually resolve within 1 to 2 weeks.
-            </p>
-
-            <h3 className="font-georgia text-2xl text-brown">
-              Rare but serious risks (important to understand)
-            </h3>
-
-            <p className="text-brown font-inter">
-              A major safety review notes rare but more serious events can
-              include vascular occlusion, which in severe cases can lead to skin
-              injury or even blindness.
-            </p>
-
-            <p className="text-brown font-inter">
-              These are uncommon, but this is exactly why you should choose a
-              medical clinic with trained doctors and clear emergency protocols.
-            </p>
-
-            <h3 className="font-georgia text-2xl text-brown">
-              When to contact the clinic urgently
-            </h3>
-
-            <p className="text-brown font-inter">
-              Contact your clinic immediately if you notice:
-            </p>
-
-            <ul className="space-y-2 text-brown font-inter">
-              <li>Severe or worsening pain</li>
-              <li>Skin turning very pale, grey, or blotchy</li>
-              <li>Rapid swelling that feels wrong</li>
-              <li>Changes in vision</li>
-            </ul>
-
-            <p className="text-brown font-inter font-bold">
-              Do not "wait it out" if something feels seriously off.
-            </p>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Cost */}
-      <section className="py-20 px-4 bg-cream">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="space-y-6">
-            <h2 className="font-georgia text-4xl text-brown">
-              How much does cheek filler cost in Kuala Lumpur and Malaysia?
-            </h2>
-
-            <p className="text-brown font-inter">Cost depends on:</p>
-
-            <ul className="space-y-2 text-brown font-inter">
-              <li>The filler type and brand</li>
-              <li>How many syringes you need</li>
-              <li>The clinic's expertise and location</li>
-            </ul>
-
-            <p className="text-brown font-inter">
-              A Malaysia-based pricing guide estimates:
-            </p>
-
-            <ul className="space-y-2 text-brown font-inter">
-              <li>Cheek filler per 1ml syringe: RM1,800 to RM3,500</li>
-              <li>Typical cheek filler total: 2 to 4 syringes</li>
-              <li>Estimated total: RM3,600 to RM14,000</li>
-            </ul>
-
-            <p className="text-brown font-inter">
-              Use this as a planning range, not a promise. Your face plan
-              decides your final cost.
-            </p>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Cheek filler vs other options */}
-      <section className="py-20 px-4 bg-light">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="space-y-8">
-            <h2 className="font-georgia text-4xl text-brown">
-              Cheek filler vs other options (how to choose)
-            </h2>
-
-            <p className="text-brown font-inter">
-              If you are comparing treatments in Kuala Lumpur, here is a clear
-              guide:
-            </p>
-
-            <div>
-              <h3 className="font-georgia text-2xl text-brown">
-                Cheek filler vs thread lift
-              </h3>
-              <p className="text-brown font-inter">
-                Filler: adds volume and structure
-                <br />
-                Thread lift: focuses more on lifting and tightening
-                <br />
-                Some clinics position thread lift, devices, and fillers as
-                options depending on your goal and skin laxity.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="font-georgia text-2xl text-brown">
-                Cheek filler vs collagen stimulators (like Sculptra or Radiesse)
-              </h3>
-              <p className="text-brown font-inter">
-                Filler: immediate result
-                <br />
-                Biostimulators: gradual improvement over weeks, more collagen
-                support
-                <br />
-                Some clinics offer biostimulators as part of facial sculpting
-                for longer-term volume improvement.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="font-georgia text-2xl text-brown">
-                Cheek filler vs energy-based tightening (Ultherapy, Thermage)
-              </h3>
-              <p className="text-brown font-inter">
-                Filler: replaces volume
-                <br />
-                Energy devices: tighten skin and stimulate collagen
-                <br />
-                If your main issue is loose skin rather than volume loss,
-                tightening might matter more.
-              </p>
-            </div>
-
-            <p className="text-brown font-inter">
-              Often, the best results come from combining the right tools, not
-              forcing one treatment for every concern.
-            </p>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* How we keep cheek filler looking natural */}
-      <section className="py-20 px-4 bg-cream">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="space-y-6">
-            <h2 className="font-georgia text-4xl text-brown">
-              How we keep cheek filler looking natural (the "no puffy face"
-              plan)
-            </h2>
-
-            <p className="text-brown font-inter">
-              A natural cheek result usually comes from:
-            </p>
-
-            <ul className="space-y-2 text-brown font-inter">
-              <li>
-                Building support in the right plane, not just adding front
-                volume
-              </li>
-              <li>Matching cheek shape to your jawline and chin</li>
-              <li>
-                Respecting your natural facial width (important for many Asian
-                face shapes)
-              </li>
-              <li>Using a conservative approach, then reviewing</li>
-            </ul>
-
-            <p className="text-brown font-georgia text-2xl">
-              The best compliment is: "You look well rested." Not: "You got
-              fillers."
-            </p>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Why choose Nexus Clinic */}
-      <section className="py-20 px-4 bg-light">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="space-y-6">
-            <h2 className="font-georgia text-4xl text-brown">
-              Why choose Nexus Clinic Kuala Lumpur for cheek filler?
-            </h2>
-
-            <p className="text-brown font-inter">
-              If you want cheek filler in KL, you want three things: safety,
-              balance, and honesty.
-            </p>
-
-            <ul className="space-y-2 text-brown font-inter">
-              <li>Established clinic: Founded in 2001</li>
-              <li>
-                Central Kuala Lumpur location: Wisma UOA II, Jalan Pinang, in
-                KL's Golden Triangle area
-              </li>
-              <li>
-                Doctor-led care: You are guided through options clearly, so you
-                can choose what suits your face and comfort level
-              </li>
-              <li>
-                Personalised planning: Treatment is mapped to your facial
-                structure, not a template
-              </li>
-            </ul>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-20 px-4 bg-cream">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="space-y-8">
-            <h2 className="font-georgia text-4xl text-brown">
-              Frequently Asked Questions (PAA-style)
-            </h2>
-
-            <p className="text-brown font-inter">
-              These are the questions people most commonly ask before booking
-              cheek filler in Malaysia and Kuala Lumpur.
-            </p>
-
-            <div className="space-y-6">
-              {[
-                {
-                  q: "1) How long does cheek filler last?",
-                  a: "Many clinics state cheek fillers typically last 12 to 24 months, depending on product and metabolism.",
-                },
-                {
-                  q: "2) How much is cheek filler in Kuala Lumpur?",
-                  a: "A common Malaysia price guide estimates RM1,800 to RM3,500 per 1ml, and cheeks often need 2 to 4 syringes.",
-                },
-                {
-                  q: "3) How many syringes do I need for cheek filler?",
-                  a: "Cheeks commonly need 2 to 4 syringes, but your face structure and goals decide the real number.",
-                },
-                {
-                  q: "4) Is cheek filler painful?",
-                  a: "Most people feel mild discomfort. Numbing cream is commonly used, and many fillers contain lidocaine.",
-                },
-                {
-                  q: "5) When will I see results?",
-                  a: "Results are usually immediate, and look more natural once swelling settles over the next few days.",
-                },
-                {
-                  q: "6) What downtime should I expect?",
-                  a: "Mild swelling or bruising may occur and usually improves over days. Many sources describe recovery around 1 to 2 weeks for cheek augmentation-type treatments.",
-                },
-                {
-                  q: "7) What are the common side effects?",
-                  a: "Common risks include bruising, redness, swelling, pain, tenderness, itching, and rash.",
-                },
-                {
-                  q: "8) Are serious complications possible?",
-                  a: "They are rare, but medical safety reviews note serious events can include vascular occlusion and severe outcomes. Choosing trained doctors and a medical clinic matters.",
-                },
-                {
-                  q: "9) Will cheek filler make my face look wider?",
-                  a: "It can if filler is placed too far outward or too much is used. A good plan focuses on lift and structure, not sideways bulk.",
-                },
-                {
-                  q: "10) Can cheek filler help my under-eye hollows?",
-                  a: "Sometimes, yes. Mid-face support can reduce under-eye shadowing, and some people combine cheek and under-eye filler depending on anatomy.",
-                },
-                {
-                  q: "11) Can cheek filler reduce smile lines?",
-                  a: "It can soften them for some people by supporting the mid-face. If lines are deep, you may need a combined plan.",
-                },
-                {
-                  q: "12) Can men do cheek filler?",
-                  a: "Yes. The technique usually aims for stronger structure and a more angular contour, not a rounded look.",
-                },
-                {
-                  q: "13) What age is best for cheek filler?",
-                  a: "There is no perfect age. Some people start in their 20s for contour, others in their 30s to 50s for volume support.",
-                },
-                {
-                  q: "14) Can cheek fillers be reversed?",
-                  a: "Hyaluronic acid fillers can be dissolved with hyaluronidase, which is why many first-time patients feel more comfortable starting with HA.",
-                },
-                {
-                  q: "15) What should I avoid after cheek filler?",
-                  a: "Avoid heavy exercise, alcohol (if you bruise easily), and pressing on the area for the first 24 to 48 hours unless advised.",
-                },
-                {
-                  q: "16) Can I fly after cheek filler?",
-                  a: "Many people can. If you swell easily, it may be smarter to avoid flying within the first couple of days.",
-                },
-                {
-                  q: "17) How do I avoid looking overfilled?",
-                  a: "Choose a clinic that plans conservatively, uses facial mapping, and prefers staged results over 'all at once.'",
-                },
-                {
-                  q: "18) What's better for cheeks: filler, thread lift, or Ultherapy?",
-                  a: "It depends. Filler restores volume. Threads lift. Ultherapy tightens. Some clinics offer all as options based on your goals.",
-                },
-                {
-                  q: "19) How soon can I wear makeup?",
-                  a: "Often the next day, if injection points are closed and your skin is calm. Follow your doctor's advice.",
-                },
-                {
-                  q: "20) What should I ask during my consultation?",
-                  a: "Ask about product type, syringe estimate, safety plan, expected swelling timeline, and what 'natural' means for your face.",
-                },
-              ].map((faq, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  className="border-b border-taupe/20 pb-4"
-                >
-                  <p className="font-georgia text-brown mb-2">{faq.q}</p>
-                  <p className="text-taupe font-inter">{faq.a}</p>
-                </motion.div>
+            </motion.div>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 p-6 rounded-xl">
+            <h3 className="font-georgia text-xl text-brown mb-4">Aftercare Instructions</h3>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {aftercareInstructions.map((instruction, idx) => (
+                <div key={idx} className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-wine mt-0.5 flex-shrink-0" />
+                  <span className="text-taupe font-inter text-sm">{instruction}</span>
+                </div>
               ))}
             </div>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Ready to explore */}
+      {/* FAQ Section */}
+      <FAQ data={faqData} />
+      
+      {/* CTA Section */}
       <section className="py-20 px-4 bg-wine">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
+          viewport={{ once: true }}
           className="container mx-auto max-w-4xl text-center"
         >
           <motion.div variants={fadeInUp} className="space-y-6">
-            <h2 className="font-georgia text-4xl text-light">
-              Ready to explore cheek filler in Kuala Lumpur?
+            <h2 className="font-georgia text-3xl md:text-5xl text-light">
+              Book Cheek Filler in Malaysia at Nexus Clinic Kuala Lumpur
             </h2>
-
-            <p className="text-xl text-cream font-inter">
-              If you want a cheek filler result that looks fresh, balanced, and
-              not obvious, book a consultation at Nexus Clinic Kuala Lumpur.
+            <p className="text-xl text-cream font-inter max-w-2xl mx-auto">
+              Your cheeks do more for your face than most patients realise. Restoring their structure lifts the eyes, 
+              softens smile lines, and resets the balance of your entire face.
             </p>
-
-            <p className="text-cream font-inter">
-              We are located at Wisma UOA II, Jalan Pinang, and we have been
-              caring for aesthetic patients since 2001.
+            <p className="text-cream/90 font-inter">
+              One consultation at Nexus Clinic KL is enough to understand exactly what cheek filler can achieve for your specific anatomy.
             </p>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-light text-wine px-12 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-colors mt-8"
-            >
-              Book Your Consultation
-            </motion.button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                Book Your Free Consultation Now
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+              <Whatsapp 
+                message="Hi, I'd like to book a free consultation for cheek filler at Nexus Clinic KL. Please let me know available slots."
+                variant="light"
+              />
+            </div>
+            <p className="text-cream/80 font-inter text-sm">
+              Limited slots available this week | Located at Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
+            </p>
           </motion.div>
         </motion.div>
       </section>

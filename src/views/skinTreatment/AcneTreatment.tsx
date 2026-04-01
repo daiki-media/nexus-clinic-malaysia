@@ -29,7 +29,7 @@ export default function AcneLandingPage({
 }: {
   locale?: string;
 }) {
-  const { t } = useTranslation(locale, "acneTreatment");
+  const { t } = useTranslation(locale, "skin/acneTreatment");
 
   const transformations = [
     {

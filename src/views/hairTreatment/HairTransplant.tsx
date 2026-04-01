@@ -27,7 +27,7 @@ const HairTransplantLanding = ({
 }: {
   locale?: string;
 }) => {
-  const { t } = useTranslation(locale, "hairTransplant");
+  const { t } = useTranslation(locale, "hair/hairTransplant");
 
   const transformations = [
     {

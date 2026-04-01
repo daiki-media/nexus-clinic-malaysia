@@ -31,7 +31,7 @@ import { fallbackLng } from "@/src/i18n/settings";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
 const HairLossTreatment = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "hairLoss");
+  const { t } = useTranslation(locale, "hair/hairLoss");
 
   const transformations = [
     {

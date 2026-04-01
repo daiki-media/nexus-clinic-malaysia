@@ -27,7 +27,7 @@ import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 
 const SimaglutideLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "semaglutide");
+  const { t } = useTranslation(locale, "weightLoss/semaglutide");
   const faqs = [
     {
       q: "How does semaglutide help with weight loss?",

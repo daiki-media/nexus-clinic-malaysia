@@ -37,7 +37,7 @@ const HCGWeightLossLanding = ({
 }: {
   locale?: string;
 }) => {
-  const { t } = useTranslation(locale, "hcg");
+  const { t } = useTranslation(locale, "weightLoss/hcg");
 
   return (
     <div className="bg-light font-inter">

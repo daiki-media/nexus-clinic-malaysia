@@ -29,6 +29,7 @@ import {
 import FAQ from "../../components/FAQ";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
+import Whatsapp from "@/src/components/Whatsapp";
 
 // Import icon mapping for dynamic icons
 const iconMap: Record<string, any> = {
@@ -99,17 +100,24 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
 
               <h1 className="font-georgia text-5xl md:text-5xl lg:text-6xl leading-tight text-brown">
                 {heroData?.title}
+                <span className="text-wine italic">{heroData?.title2}</span>
               </h1>
 
               <p className="text-lg text-taupe max-w-lg font-inter">
                 {heroData?.description}
               </p>
+              <div className="flex gap-4">
+                <button className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
+                  Book a Consultation
+                </button> 
+                <Whatsapp message="Hi! can i get more information about lip filler treatment?" />
+              </div>
 
             </motion.div>
             <motion.div variants={scaleIn} className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/skin/acne-treatment.webp"
+                  src="/images/face/Lip Filler.png"
                   alt={heroData?.imageAlt}
                   className="w-full h-auto object-cover"
                   width={600}
@@ -267,7 +275,7 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
             <motion.div variants={fadeInRight} className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/skin/acne-treatment.webp"
+                  src="/images/face/lip-filler.jpeg"
                   alt={whatIsLipFiller?.imageAlt || "Lip filler injection procedure at Nexus Clinic KL"}
                   className="w-full h-auto object-cover"
                   width={600}

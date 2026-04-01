@@ -28,7 +28,7 @@ import { fallbackLng } from "@/src/i18n/settings";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
 const MoleRemovalLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "moleRemoval");
+  const { t } = useTranslation(locale, "skin/moleRemoval");
 
   const transformations = [
     {

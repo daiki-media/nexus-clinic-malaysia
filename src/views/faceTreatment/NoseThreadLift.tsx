@@ -1,2017 +1,894 @@
 "use client";
-
 import { motion } from "framer-motion";
 import {
-  Shield,
+  Sparkles,
+  Award,
+  MapPin,
+  Calendar,
+  CheckCircle,
+  Syringe,
+  Clock,
   Heart,
-  AlertCircle,
-  CheckCircle2,
-  XCircle,
+  Shield,
   ArrowRight,
-  Star,
+  AlertCircle,
   Activity,
+  Zap,
+  Scissors,
+  TrendingUp,
+  Eye,
 } from "lucide-react";
-
 import {
-  fadeInUp,
   staggerContainer,
   fadeInLeft,
   fadeInRight,
+  fadeInUp,
   scaleIn,
 } from "../../lib/animations";
+import FAQ from "../../components/FAQ";
+import Whatsapp from "../../components/Whatsapp";
+import Image from "next/image";
 
 interface NoseThreadLiftProps {
   locale: string;
 }
 
 export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
+  const threadTypes = [
+    {
+      type: "PDO",
+      material: "Polydioxanone. Most common in surgical sutures",
+      longevity: "12 to 18 months",
+      liftStrength: "Moderate immediate lift",
+      bestFor: "First-time patients. Mild correction. Testing results before committing to longer-lasting threads",
+    },
+    {
+      type: "PLLA",
+      material: "Poly-L-Lactic Acid. Used in Sculptra skin injectable",
+      longevity: "18 to 24 months",
+      liftStrength: "Gradual collagen volumising",
+      bestFor: "Patients wanting slower, progressive improvement. Sensitive skin. Those who want volume alongside lift",
+    },
+    {
+      type: "PCL",
+      material: "Polycaprolactone. Slowest-dissolving biocompatible polymer",
+      longevity: "24 to 36 months",
+      liftStrength: "Strongest long-term structural support",
+      bestFor: "Patients who have done threads before. Those wanting maximum longevity and strong bridge projection",
+    },
+  ];
+
+  const comparisonData = [
+    { factor: "Primary effect", thread: "Lift and define existing tissue structure", filler: "Add volume and height to the bridge", surgery: "Permanent structural alteration of bone and cartilage" },
+    { factor: "Best for", thread: "Low bridge, drooping tip, flat side profile", filler: "Low bridge requiring volume, minor bump smoothing", surgery: "Significant deformity, breathing issues, major structural change" },
+    { factor: "Results", thread: "Immediate. Improvements over 6-8 weeks", filler: "Immediate", surgery: "Final result visible after 6-12 months" },
+    { factor: "Longevity", thread: "12 to 36 months depending on type", filler: "12 to 18 months", surgery: "Permanent" },
+    { factor: "Reversible", thread: "No. Threads dissolve naturally but not removable", filler: "Yes. Fully dissolvable with hyaluronidase", surgery: "No. Revision surgery possible but complex" },
+    { factor: "Vascular risk", thread: "Extremely low. No risk of blindness", filler: "Low to moderate. Vascular occlusion possible", surgery: "Surgical risks apply" },
+    { factor: "Downtime", thread: "2 to 5 days mild swelling and redness", filler: "1 to 3 days mild swelling", surgery: "2 to 4 weeks. Significant bruising and swelling" },
+    { factor: "Anaesthesia", thread: "Local anaesthetic at tip entry point", filler: "Topical numbing cream", surgery: "General or twilight anaesthesia" },
+    { factor: "Cost in KL (2026)", thread: "RM 2,000 – RM 4,500", filler: "RM 1,200 – RM 2,500", surgery: "RM 15,000 – RM 35,000+" },
+    { factor: "Can be combined", thread: "Yes. Frequently combined with nose filler", filler: "Yes. Often combined with thread lift", surgery: "Not easily combined with non-surgical options" },
+  ];
+
+  const pricingTiers = [
+    { treatment: "Nose bridge thread lift", price: "RM 2,500" },
+    { treatment: "Nose tip refinement", price: "RM 1,400" },
+    { treatment: "Combined nose bridge and tip", price: "RM 2,500 – RM 3,500" },
+  ];
+
+  const faqData = [
+    { q: "How long does a nose thread lift last in Malaysia?", a: "PDO nose threads last 12 to 18 months. PLLA threads last 18 to 24 months. PCL threads last 24 to 36 months. The collagen produced during the thread dissolving process extends the visible result beyond the thread lifespan in most patients. Many PCL patients report maintained definition two to three years after their treatment." },
+    { q: "How much does a nose thread lift cost in Malaysia in 2026?", a: "Nose thread lift treatments at Nexus Clinic KL typically range from RM 1,400 to RM 2,500 depending on whether the treatment involves tip refinement or bridge enhancement. Combined nose bridge and tip treatments usually range from RM 2,500 to RM 3,500 based on the number of threads used and the level of correction required. Final pricing is confirmed during consultation." },
+    { q: "Is a nose thread lift painful?", a: "The most noticeable discomfort is the local anaesthetic injection at the nasal tip entry point, which resolves within seconds. Once the area is numb, the thread insertion using a blunt cannula is generally described as mild pressure rather than pain. Most patients rate the overall experience as very manageable. The full procedure takes 15 to 20 minutes." },
+    { q: "What is the difference between nose thread lift and nose filler?", a: "Nose thread lift inserts dissolvable threads that lift and reposition tissue structurally. It is best for bridge height, tip definition and improving the side profile. Nose filler adds volume using hyaluronic acid gel to raise the bridge or smooth a dorsal hump. Filler carries a slightly higher vascular risk in the nasal area. Threads carry no vascular risk. Many patients achieve the best result by combining both at Nexus Clinic KL." },
+    { q: "How many sessions of nose thread lift are needed?", a: "Most patients achieve their desired result in a single session. Some patients choose to return for a second session 12 to 18 months later when PDO threads begin to dissolve, either to maintain the result or to upgrade to PCL threads for a longer-lasting outcome. Patients who start with PDO often progress to PCL at the second session once they are satisfied with how the treatment looks and feels." },
+    { q: "Can a nose thread lift fix a crooked nose?", a: "Mild nasal asymmetry or crookedness can often be improved with strategic thread placement. The doctor assesses the degree and structural origin of the asymmetry at consultation. Mild deviation caused by tissue asymmetry rather than cartilage or bone displacement responds better to thread correction. Significant structural asymmetry, particularly bone-related crookedness, typically requires surgical assessment." },
+    { q: "Is a nose thread lift safe in Malaysia?", a: "Nose thread lift is significantly safer than nose filler in terms of vascular risk. There is no blood supply involvement during thread insertion as a blunt cannula is used rather than a sharp needle. The thread materials, PDO, PLLA and PCL, have been used in surgical sutures for decades. At Nexus Clinic KL, only MDA-registered White Medience threads from a Korean GMP-certified manufacturer are used." },
+    { q: "Can a nose thread lift be reversed?", a: "No. Unlike HA filler which is fully dissolvable, nose threads cannot be removed once placed. However, they dissolve naturally over time, so any result you do not like will resolve on its own. This is why the doctor assesses candidacy carefully and first-time patients are often recommended to start with PDO threads, which dissolve within 12 to 18 months." },
+    { q: "What results can realistically be expected from nose thread lift?", a: "A nose thread lift produces visible bridge elevation, improved tip definition and a cleaner side profile. The degree of change is proportional to the starting anatomy and thread count used. It does not produce the same dramatic projection as surgical rhinoplasty and is not intended to. The goal is natural, harmonious improvement within the existing structure of your nose." },
+    { q: "Who is not suitable for a nose thread lift?", a: "Nose thread lift is not recommended for patients who are pregnant or breastfeeding, have an active skin infection near the nose, have very thin nasal skin that increases extrusion risk, have had recent rhinoplasty, or have significant structural nasal deformity requiring surgical correction. Patients with keloid scarring tendencies should discuss this with the doctor at consultation." },
+  ];
+
   return (
-    <div className="bg-light font-inter overflow-x-hidden">
-      {/* Hero Section dengan semua teks dari PDF */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="relative min-h-screen flex items-center overflow-hidden"
-        style={{ backgroundColor: "var(--color-cream)" }}
-      >
-        <div className="absolute inset-0 bg-glass backdrop-blur-sm" />
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-6">
-              <motion.div variants={scaleIn} className="inline-block">
-                <span
-                  className="px-4 py-2 rounded-full text-sm font-medium"
-                  style={{
-                    backgroundColor: "var(--color-rose)",
-                    color: "white",
-                  }}
-                >
-                  Nexus Clinic Kuala Lumpur
-                </span>
+    <div className="w-full bg-light overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
+        
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="container mx-auto max-w-6xl relative z-10"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-8">
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
+                <Sparkles className="w-4 h-4 text-wine" />
+                <span className="text-sm font-inter text-wine font-medium">Non-Surgical Nose Enhancement</span>
               </motion.div>
-
-              <h1
-                className="text-5xl lg:text-6xl font-bold leading-tight"
-                style={{ color: "var(--color-brown)" }}
+              
+              <motion.h1
+                variants={fadeInUp}
+                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
               >
-                Lift your nose shape without surgery, <br />
-                <span style={{ color: "var(--color-wine)" }}>
-                  and still look like you
-                </span>
-              </h1>
+                Instant Nose Thread Lift in Malaysia for a{" "}
+                <span className="text-wine italic">Higher Bridge, Sharper Tip and Better Profile</span>
+              </motion.h1>
 
-              <p className="text-xl" style={{ color: "var(--color-taupe)" }}>
-                A higher bridge. A sharper tip. A cleaner side profile. Fast
-                treatment, low downtime, and natural-looking refinement.
-              </p>
+              <motion.p
+                variants={fadeInUp}
+                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
+              >
+                Your nose sits in the exact centre of your face. Everything else radiates outward from it. 
+                A flat bridge makes the face look broader. A drooping tip takes years off the profile.
+              </motion.p>
 
-              {/* Trust at a glance section dengan semua teks */}
-              <div className="space-y-4 pt-4">
-                <h2
-                  className="text-2xl font-semibold"
-                  style={{ color: "var(--color-wine)" }}
+              <motion.p
+                variants={fadeInUp}
+                className="text-brown font-inter"
+              >
+                Nose thread lift at Nexus Clinic Kuala Lumpur is the non-surgical solution built specifically for Asian nasal anatomy. 
+                Using the Korean HIKO technique with MDA-registered White Medience PDO and PCL threads, our doctors reshape the 
+                nose bridge and tip in a single 20 to 30-minute session. No surgery, no general anaesthesia, no incisions, no weeks of recovery.
+              </motion.p>
+
+              <motion.p
+                variants={fadeInUp}
+                className="text-taupe font-inter"
+              >
+                The result is visible immediately. The structural support improves further over the following six to eight weeks 
+                as the body's collagen response builds around the threads.
+              </motion.p>
+
+              <motion.div 
+                variants={fadeInLeft} 
+                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-4"
+              >
+                <motion.button
+                  variants={fadeInUp}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
                 >
-                  Trust at a glance (Nexus Clinic KL)
+                  Book Free Consultation
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+                <Whatsapp message="Hi, I'm interested in nose thread lift at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
+              </motion.div>
+            </motion.div>
+
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
+                <Image
+                  src="/images/face/Nose Thread Lift.png"
+                  alt="Nexus Clinic Kuala Lumpur - Nose Thread Lift Treatment"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
+                <p className="font-inter font-bold text-brown">✨ Instant Results</p>
+                <p className="font-inter text-sm text-taupe">No surgery • 20-30 minutes</p>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Trust Section - Separated */}
+      <section className="py-12 px-4 bg-light">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-taupe/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+            {/* Header Section */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <Award className="w-6 h-6 text-wine" />
+                </div>
+                <h2 className="font-georgia text-2xl md:text-3xl text-brown">
+                  Trust at a glance
                 </h2>
-                <ul className="space-y-3">
-                  <li className="flex items-center gap-3">
-                    <CheckCircle2
-                      className="w-5 h-5"
-                      style={{ color: "var(--color-rose)" }}
-                    />
-                    <span style={{ color: "var(--color-brown)" }}>
-                      Doctor-led assessment and face mapping before threads
-                    </span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle2
-                      className="w-5 h-5"
-                      style={{ color: "var(--color-rose)" }}
-                    />
-                    <span style={{ color: "var(--color-brown)" }}>
-                      Natural proportions for Asian nose profiles, not "copy
-                      paste" results
-                    </span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle2
-                      className="w-5 h-5"
-                      style={{ color: "var(--color-rose)" }}
-                    />
-                    <span style={{ color: "var(--color-brown)" }}>
-                      Central Kuala Lumpur location for easy access
-                    </span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle2
-                      className="w-5 h-5"
-                      style={{ color: "var(--color-rose)" }}
-                    />
-                    <span style={{ color: "var(--color-brown)" }}>
-                      Transparent starting price guidance for Nose Thread Lift
-                      is commonly listed as RM 1,500 to RM 3,000 on Nexus thread
-                      lift information pages.
-                    </span>
-                  </li>
-                </ul>
               </div>
-            </motion.div>
+              <div className="hidden sm:block w-px h-8 bg-taupe/20" />
+              <p className="text-taupe font-inter text-sm">
+                Nexus Clinic Kuala Lumpur — Excellence in Aesthetic Medicine
+              </p>
+            </div>
 
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
-                <img
-                  src="/images/skin/acne-treatment.webp"
-                  alt="Nose Thread Lift at Nexus Clinic Kuala Lumpur"
-                  className="w-full h-full object-cover"
-                />
+            {/* Key Stats Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-4 border-y border-taupe/10">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Award className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Established</p>
+                  <p className="font-georgia text-brown font-bold text-lg">2001</p>
+                  <p className="font-inter text-taupe text-xs">Over 20 years of excellence</p>
+                </div>
               </div>
-            </motion.div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Location</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Wisma UOA II, Jalan Pinang</p>
+                  <p className="font-inter text-taupe text-xs">KLCC, 50450 Kuala Lumpur</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Opening Hours</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Monday - Saturday</p>
+                  <p className="font-inter text-taupe text-xs">9:00am – 6:00pm | Closed Sundays & PH</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Achievement Badges */}
+            <div className="mt-6 pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">20+ Years of Excellence</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Trusted aesthetic care since 2001</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">5,000+ Procedures</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Performed by licensed doctors</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">MDA-Registered Threads</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">White Medience Korea | GMP & ISO certified</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Additional Trust Indicators */}
+            <div className="mt-6 pt-4 border-t border-taupe/10">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Award-winning practitioners</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Doctor-led consultations</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Korean HIKO technique</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
 
-      {/* What is Nose Thread Lift Section dengan semua teks */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20"
-        style={{ backgroundColor: "var(--color-cream)" }}
-      >
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft}>
-              <h2
-                className="text-4xl font-bold mb-6"
-                style={{ color: "var(--color-brown)" }}
-              >
-                What is a{" "}
-                <span style={{ color: "var(--color-wine)" }}>
-                  Nose Thread Lift?
-                </span>
+      {/* Treatment Overview Section */}
+      <section className="py-16 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">Nose Thread Lift Treatment Overview</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">Everything you need to know at a glance</p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Scissors, label: "Treatment", value: "HIKO Korean nose thread lift using PDO or PCL dissolvable threads" },
+              { icon: Clock, label: "Session Time", value: "20 to 30 minutes" },
+              { icon: Heart, label: "Downtime", value: "Minimal. 2 to 5 days" },
+              { icon: Zap, label: "Results", value: "Immediate, collagen at 6-8 weeks" },
+            ].map((item, idx) => (
+              <div key={idx} className="bg-light p-5 rounded-xl border border-taupe/10 shadow-sm">
+                <item.icon className="w-8 h-8 text-wine mb-3" />
+                <p className="font-inter text-sm text-taupe">{item.label}</p>
+                <p className="font-georgia text-md text-brown font-semibold">{item.value}</p>
+              </div>
+            ))}
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 rounded-2xl p-6 border border-wine/10">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div>
+                <p className="font-inter text-sm text-taupe">Longevity</p>
+                <p className="font-georgia text-brown font-semibold">PDO: 12-18 months<br />PCL: 24-36 months</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Threads Used</p>
+                <p className="font-georgia text-brown font-semibold">4 to 10 threads per session</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Reversible</p>
+                <p className="font-georgia text-brown font-semibold">Not reversible but threads dissolve naturally</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Anaesthesia</p>
+                <p className="font-georgia text-brown font-semibold">Local anaesthetic at nasal tip entry point</p>
+              </div>
+            </div>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-8">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor About Your Nose | Free Assessment
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Asian Nose Anatomy Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-6">
+              <h2 className="font-georgia text-3xl md:text-4xl text-brown">
+                Asian Nose Anatomy and Why <span className="text-wine">So Many Malaysians Seek Nose Enhancement</span>
               </h2>
-
-              <p
-                className="text-lg mb-4"
-                style={{ color: "var(--color-taupe)" }}
-              >
-                A nose thread lift is a minimally invasive treatment that uses
-                absorbable threads to improve the look of your nose bridge and
-                tip.
+              <p className="text-brown font-inter">
+                Among East and Southeast Asian populations, including the majority of patients in Malaysia, 
+                the nasal structure is genetically different from the proportions that Western cosmetic standards were originally built around.
               </p>
-
-              <p
-                className="text-lg mb-4 font-semibold"
-                style={{ color: "var(--color-brown)" }}
-              >
-                It is often used for:
+              <p className="text-brown font-inter">
+                The Asian nose typically has a lower, flatter nasal bridge with less bony projection. 
+                The nasal tip is often broader and less defined, with thicker skin covering the cartilage below. 
+                The columella, the strip of tissue between the nostrils, tends to sit lower.
               </p>
-
-              <ul className="space-y-3 mb-4">
-                <li className="flex items-center gap-3">
-                  <div
-                    className="w-2 h-2 rounded-full"
-                    style={{ backgroundColor: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    a flatter bridge that looks low in photos
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div
-                    className="w-2 h-2 rounded-full"
-                    style={{ backgroundColor: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    a tip that looks soft or slightly droopy
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div
-                    className="w-2 h-2 rounded-full"
-                    style={{ backgroundColor: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    mild asymmetry
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div
-                    className="w-2 h-2 rounded-full"
-                    style={{ backgroundColor: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    a profile that needs sharper definition
-                  </span>
-                </li>
-              </ul>
-
-              <p
-                className="text-lg mb-4 italic"
-                style={{ color: "var(--color-taupe)" }}
-              >
-                The threads act like a scaffold under the skin to support the
-                new shape.
+              <p className="text-brown font-inter">
+                Nose thread lift was developed in Korea specifically to address this anatomical pattern. 
+                The HIKO technique, named from the Korean words meaning high nose, was designed around Asian nasal proportions 
+                and relies on thread placement that provides vertical structural support from within the nasal bridge.
               </p>
-
-              <p className="text-lg" style={{ color: "var(--color-brown)" }}>
-                Many clinics in Malaysia use PDO threads, and some also use PCL
-                threads.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="aspect-square rounded-2xl overflow-hidden shadow-xl">
-                <img
-                  src="/images/skin/acne-treatment.webp"
-                  alt="Nose Thread Lift procedure explanation"
-                  className="w-full h-full object-cover"
-                />
+              <div className="bg-cream p-4 rounded-xl border-l-4 border-wine">
+                <p className="text-brown font-inter text-sm">
+                  Enhancing the bridge height and tip projection creates proportion and definition without changing the person's fundamental appearance.
+                </p>
               </div>
             </motion.div>
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
+                <Image
+                  src="/images/face/nose-thread-filler.jpeg"
+                  alt="Asian nose anatomy for thread lift"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <button className="mt-6 text-wine font-inter font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                Find Out If You Are a Candidate | Free Nose Assessment
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </motion.div>
           </div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
 
-      {/* What Nose Threads Can Do - dengan semua teks */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20"
-      >
-        <div className="container mx-auto px-4">
+      {/* How It Works Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">How Nose Thread Lift Works</h2>
+            <p className="text-taupe font-inter">The Mechanics and the Collagen Timeline</p>
+          </motion.div>
+          
           <div className="grid md:grid-cols-2 gap-8">
-            <motion.div
-              variants={fadeInLeft}
-              className="p-8 rounded-2xl"
-              style={{ backgroundColor: "var(--color-light)" }}
-            >
-              <h3
-                className="text-2xl font-bold mb-6 flex items-center gap-2"
-                style={{ color: "var(--color-wine)" }}
-              >
-                <CheckCircle2 className="w-6 h-6" />
-                What Nose Threads can do (realistic results)
-              </h3>
-
-              <p
-                className="mb-4 font-semibold"
-                style={{ color: "var(--color-brown)" }}
-              >
-                A nose thread lift can usually:
+            <motion.div variants={fadeInLeft} className="bg-light p-6 rounded-xl border border-taupe/10">
+              <h3 className="font-georgia text-2xl text-brown mb-4">Phase 1 | Immediate Mechanical Lift</h3>
+              <p className="text-taupe font-inter mb-4">
+                When threads are inserted along the nasal bridge or into the nasal tip using a blunt cannula, 
+                they create a physical scaffold beneath the skin. The threads are anchored at the nasal tip and run upward along the bridge, 
+                pulling tissue slightly tighter and lifting the structure above them.
               </p>
-
-              <ul className="space-y-3 mb-4">
-                <li className="flex items-center gap-3">
-                  <Star
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    create a more defined bridge line
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Star
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    give a slightly higher bridge appearance
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Star
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    help the tip look more lifted and projected
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Star
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    improve contour in side photos
-                  </span>
-                </li>
-              </ul>
-
-              <p
-                className="text-sm italic"
-                style={{ color: "var(--color-taupe)" }}
-              >
-                Beverly Wilshire describes the idea clearly: threads support and
-                lift tissues, improving bridge definition and tip projection.
+              <p className="text-taupe font-inter">
+                The nose is visibly higher and more defined from the moment the procedure is complete. 
+                This effect is structural, not volumetric. The threads do not add bulk. They reposition and support existing tissue.
               </p>
             </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="p-8 rounded-2xl"
-              style={{ backgroundColor: "var(--color-cream)" }}
-            >
-              <h3
-                className="text-2xl font-bold mb-6 flex items-center gap-2"
-                style={{ color: "var(--color-wine)" }}
-              >
-                <XCircle className="w-6 h-6" />
-                What it cannot do
-              </h3>
-
-              <p
-                className="mb-4 font-semibold"
-                style={{ color: "var(--color-brown)" }}
-              >
-                Be honest with yourself here. Nose threads are not magic.
+            
+            <motion.div variants={fadeInRight} className="bg-light p-6 rounded-xl border border-taupe/10">
+              <h3 className="font-georgia text-2xl text-brown mb-4">Phase 2 | Collagen Stimulation Over Time</h3>
+              <p className="text-taupe font-inter mb-4">
+                As the threads begin to dissolve, the body responds to the biocompatible material by producing new collagen around each thread's length. 
+                This collagen framework reinforces the structural improvement achieved in phase one.
               </p>
-
-              <p className="mb-4" style={{ color: "var(--color-brown)" }}>
-                Threads cannot:
-              </p>
-
-              <ul className="space-y-3 mb-4">
-                <li className="flex items-center gap-3">
-                  <AlertCircle
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    make a very wide nose become narrow
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <AlertCircle
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    reduce bone width
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <AlertCircle
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    fix major structural issues like severe deviation
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <AlertCircle
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    replace surgical rhinoplasty results
-                  </span>
-                </li>
-              </ul>
-
-              <p
-                className="text-sm italic"
-                style={{ color: "var(--color-taupe)" }}
-              >
-                Clinic Cleo also notes it will not offer the same results as
-                surgical rhinoplasty, but can be a good option for subtle
-                refinement.
+              <p className="text-taupe font-inter">
+                By the time the threads have fully dissolved, a natural collagen scaffold has formed in their place. 
+                Patients typically notice the best improvement between six and twelve weeks after treatment.
               </p>
             </motion.div>
           </div>
-        </div>
-      </motion.section>
+          
+          <motion.div variants={fadeInUp} className="mt-8 text-center">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Book a Consultation to Understand Your Expected Result
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
 
-      {/* Why people in Kuala Lumpur choose Nose Thread Lift - semua teks */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20"
-        style={{ backgroundColor: "var(--color-brown)" }}
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-bold mb-6 text-white"
-          >
-            Why people in Kuala Lumpur choose Nose Thread Lift
-          </motion.h2>
-
-          <motion.p variants={fadeInUp} className="text-xl mb-8 text-white/90">
-            Most people do not want a "new nose." They want their nose to look
-            better in photos.
-          </motion.p>
-
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            {[
-              '"My bridge disappears in bright light."',
-              '"My tip looks round."',
-              '"I want a sharper profile, but I am scared of surgery."',
-              '"I want a quick procedure with less downtime."',
-            ].map((quote, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeInUp}
-                className="p-6 rounded-xl"
-                style={{ backgroundColor: "var(--color-glass)" }}
-              >
-                <p className="text-white text-lg italic">{quote}</p>
-              </motion.div>
-            ))}
+      {/* Thread Types Table Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">PDO, PLLA and PCL Nose Threads</h2>
+            <p className="text-taupe font-inter">Choosing the right material for your goals</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Thread Type</th>
+                  <th className="p-4 text-left font-georgia">Material</th>
+                  <th className="p-4 text-left font-georgia">Longevity</th>
+                  <th className="p-4 text-left font-georgia">Lift Strength</th>
+                  <th className="p-4 text-left font-georgia">Best For</th>
+                </tr>
+              </thead>
+              <tbody>
+                {threadTypes.map((thread, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{thread.type}</td>
+                    <td className="p-4 text-taupe font-inter">{thread.material}</td>
+                    <td className="p-4 text-taupe font-inter">{thread.longevity}</td>
+                    <td className="p-4 text-taupe font-inter">{thread.liftStrength}</td>
+                    <td className="p-4 text-taupe font-inter">{thread.bestFor}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-
-          <motion.p variants={fadeInUp} className="text-white/90">
-            Nose thread lift is popular because it is quick and minimally
-            invasive. Beverly Wilshire describes it as fast with minimal
-            downtime compared to surgery.
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* Who is Nose Thread Lift for - semua teks */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20"
-      >
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <motion.div variants={fadeInLeft}>
-              <h2
-                className="text-4xl font-bold mb-8"
-                style={{ color: "var(--color-brown)" }}
-              >
-                Who is{" "}
-                <span style={{ color: "var(--color-wine)" }}>
-                  Nose Thread Lift
-                </span>{" "}
-                for?
-              </h2>
-
-              <p
-                className="text-lg mb-4"
-                style={{ color: "var(--color-brown)" }}
-              >
-                You may be a good candidate if:
-              </p>
-
-              <ul className="space-y-3 mb-4">
-                <li className="flex items-center gap-3">
-                  <CheckCircle2
-                    className="w-5 h-5"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    you want subtle improvement (not a dramatic change)
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2
-                    className="w-5 h-5"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    you have a low bridge and want more definition
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2
-                    className="w-5 h-5"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    your tip drops slightly and you want it lifted
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2
-                    className="w-5 h-5"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    you are not ready for rhinoplasty
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2
-                    className="w-5 h-5"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    you want low downtime
-                  </span>
-                </li>
-              </ul>
-
-              <p
-                className="text-sm italic mb-6"
-                style={{ color: "var(--color-taupe)" }}
-              >
-                RJ Clinic also emphasizes treatment should be customized after
-                doctor assessment, not one-size-fits-all.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInRight}>
-              <h3
-                className="text-2xl font-bold mb-4"
-                style={{ color: "var(--color-wine)" }}
-              >
-                Who should avoid or postpone
-              </h3>
-
-              <p className="mb-4" style={{ color: "var(--color-brown)" }}>
-                You may need to delay if you have:
-              </p>
-
-              <ul className="space-y-3 mb-4">
-                <li className="flex items-center gap-3">
-                  <AlertCircle
-                    className="w-5 h-5"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    active skin infection or severe acne on the nose area
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <AlertCircle
-                    className="w-5 h-5"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    uncontrolled medical conditions
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <AlertCircle
-                    className="w-5 h-5"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    unrealistic expectations of "surgical results"
-                  </span>
-                </li>
-              </ul>
-
-              <p
-                className="font-semibold"
-                style={{ color: "var(--color-wine)" }}
-              >
-                A doctor consultation is the safest way to confirm suitability.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Types of threads section - semua teks */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20"
-        style={{ backgroundColor: "var(--color-cream)" }}
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-bold text-center mb-8"
-            style={{ color: "var(--color-brown)" }}
-          >
-            Types of threads used for{" "}
-            <span style={{ color: "var(--color-wine)" }}>Nose Thread Lift</span>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg text-center mb-6"
-            style={{ color: "var(--color-taupe)" }}
-          >
-            In Malaysia, clinics commonly mention:
-          </motion.p>
-
-          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-6">
-            <motion.div
-              variants={fadeInLeft}
-              className="p-6 rounded-xl bg-white shadow-lg"
-            >
-              <h3
-                className="text-xl font-bold mb-2"
-                style={{ color: "var(--color-wine)" }}
-              >
-                PDO threads
-              </h3>
-              <p className="text-sm" style={{ color: "var(--color-brown)" }}>
-                (polydioxanone)
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="p-6 rounded-xl bg-white shadow-lg"
-            >
-              <h3
-                className="text-xl font-bold mb-2"
-                style={{ color: "var(--color-wine)" }}
-              >
-                PCL threads
-              </h3>
-              <p className="text-sm" style={{ color: "var(--color-brown)" }}>
-                (polycaprolactone)
-              </p>
-            </motion.div>
-          </div>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center max-w-2xl mx-auto"
-            style={{ color: "var(--color-brown)" }}
-          >
-            Simple way to understand it: PDO is widely used and absorbable. PCL
-            is often described by clinics as lasting longer than some other
-            options.
-          </motion.p>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center mt-4 font-semibold"
-            style={{ color: "var(--color-wine)" }}
-          >
-            Your doctor decides based on your nose anatomy, safety, and desired
-            outcome.
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* How the procedure works - semua teks */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-bold text-center mb-8"
-            style={{ color: "var(--color-brown)" }}
-          >
-            How the{" "}
-            <span style={{ color: "var(--color-wine)" }}>Nose Thread Lift</span>{" "}
-            procedure works
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg text-center mb-8"
-            style={{ color: "var(--color-taupe)" }}
-          >
-            Most clinics describe a similar process:
-          </motion.p>
-
-          <div className="space-y-4 max-w-3xl mx-auto">
-            <motion.div
-              variants={fadeInLeft}
-              className="p-6 rounded-xl"
-              style={{ backgroundColor: "var(--color-light)" }}
-            >
-              <h3
-                className="text-xl font-bold mb-2"
-                style={{ color: "var(--color-wine)" }}
-              >
-                1. Assessment and mapping
-              </h3>
-              <p style={{ color: "var(--color-brown)" }}>
-                We check your bridge, tip, skin thickness, and nose structure.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="p-6 rounded-xl"
-              style={{ backgroundColor: "var(--color-light)" }}
-            >
-              <h3
-                className="text-xl font-bold mb-2"
-                style={{ color: "var(--color-wine)" }}
-              >
-                2. Cleansing and local anaesthetic
-              </h3>
-              <p style={{ color: "var(--color-brown)" }}>
-                Clinic Cleo mentions local anaesthetic and a fine needle
-                approach.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInLeft}
-              className="p-6 rounded-xl"
-              style={{ backgroundColor: "var(--color-light)" }}
-            >
-              <h3
-                className="text-xl font-bold mb-2"
-                style={{ color: "var(--color-wine)" }}
-              >
-                3. Thread placement
-              </h3>
-              <p style={{ color: "var(--color-brown)" }}>
-                Threads can be placed along the bridge and into the tip area
-                depending on goals. Clinic Cleo describes horizontal placement
-                in the bridge and vertical placement in the tip for scaffolding.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="p-6 rounded-xl"
-              style={{ backgroundColor: "var(--color-light)" }}
-            >
-              <h3
-                className="text-xl font-bold mb-2"
-                style={{ color: "var(--color-wine)" }}
-              >
-                4. Shaping and review
-              </h3>
-              <p style={{ color: "var(--color-brown)" }}>
-                The nose is gently adjusted to refine the contour.
-              </p>
-            </motion.div>
-          </div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="mt-8 p-6 rounded-xl text-center"
-            style={{ backgroundColor: "var(--color-cream)" }}
-          >
-            <h3
-              className="text-xl font-bold mb-2"
-              style={{ color: "var(--color-wine)" }}
-            >
-              How long does it take?
-            </h3>
-            <p style={{ color: "var(--color-brown)" }}>
-              Many clinics describe it as a quick treatment. Clinic Cleo notes
-              around 20 to 30 minutes. Beverly Wilshire also states a typical
-              range like 15 to 30 minutes.
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-taupe text-sm">
+              Nexus Clinic KL uses White Medience threads manufactured in Korea by a GMP and ISO-certified facility. 
+              All thread products are registered with Malaysia's Medical Device Authority (MDA).
             </p>
           </motion.div>
-        </div>
-      </motion.section>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Ask About Thread Types at Your Consultation
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
 
-      {/* How many threads section - semua teks */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20"
-        style={{ backgroundColor: "var(--color-cream)" }}
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-bold text-center mb-6"
-            style={{ color: "var(--color-brown)" }}
-          >
-            How many <span style={{ color: "var(--color-wine)" }}>threads</span>{" "}
-            do you need?
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg text-center mb-6"
-            style={{ color: "var(--color-taupe)" }}
-          >
-            This depends on:
-          </motion.p>
-
-          <div className="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto mb-6">
-            <motion.div
-              variants={fadeInLeft}
-              className="p-4 text-center rounded-lg bg-white"
-            >
-              <p style={{ color: "var(--color-brown)" }}>
-                how low your bridge is
-              </p>
-            </motion.div>
-            <motion.div
-              variants={fadeInRight}
-              className="p-4 text-center rounded-lg bg-white"
-            >
-              <p style={{ color: "var(--color-brown)" }}>
-                how much tip support you need
-              </p>
-            </motion.div>
-            <motion.div
-              variants={fadeInLeft}
-              className="p-4 text-center rounded-lg bg-white"
-            >
-              <p style={{ color: "var(--color-brown)" }}>your skin thickness</p>
-            </motion.div>
-            <motion.div
-              variants={fadeInRight}
-              className="p-4 text-center rounded-lg bg-white"
-            >
-              <p style={{ color: "var(--color-brown)" }}>
-                how much space your nose can safely accommodate
-              </p>
-            </motion.div>
+      {/* Thread Count Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Thread Count</h2>
+            <p className="text-taupe font-inter">How many threads are actually used in a nose thread lift</p>
+          </motion.div>
+          
+          <div className="bg-light p-8 rounded-2xl border border-taupe/10">
+            <p className="text-2xl text-wine font-georgia text-center mb-6">4 to 10 threads typically used per session</p>
+            <div className="grid md:grid-cols-2 gap-4">
+              {[
+                "Degree of bridge lift required",
+                "Skin thickness",
+                "Bridge length",
+                "Tip work required",
+                "Thread type (PCL vs PDO)",
+                "Previous treatments",
+              ].map((factor, idx) => (
+                <div key={idx} className="flex items-center gap-3 p-3 bg-cream rounded-lg">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0" />
+                  <span className="text-taupe font-inter text-sm">{factor}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-taupe font-inter text-sm mt-6 text-center italic">
+              There is a clinical upper limit on how many threads can be placed safely in a single session. 
+              Placing too many threads increases the risk of thread extrusion, irregular texture and skin thinning over time.
+            </p>
           </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Find Out Your Recommended Thread Count
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
 
-          <motion.p
-            variants={fadeInUp}
-            className="text-center mb-4"
-            style={{ color: "var(--color-brown)" }}
-          >
-            Clinic Cleo states an average of 4 to 8 threads per session. RJ
-            Clinic also warns against "putting too many threads" and stresses
-            assessment for enough space and clean conditions to reduce infection
-            risk.
-          </motion.p>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center font-bold text-xl"
-            style={{ color: "var(--color-wine)" }}
-          >
-            At Nexus Clinic KL, the goal should be safe improvement, not maximum
-            threads.
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* Results timeline - semua teks */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-bold text-center mb-8"
-            style={{ color: "var(--color-brown)" }}
-          >
-            Results timeline:{" "}
-            <span style={{ color: "var(--color-wine)" }}>
-              what you see, and when you see it
-            </span>
-          </motion.h2>
-
-          <div className="space-y-4 max-w-2xl mx-auto">
-            <motion.div
-              variants={fadeInUp}
-              className="p-6 rounded-xl"
-              style={{ backgroundColor: "var(--color-light)" }}
-            >
-              <h3
-                className="text-xl font-bold mb-2"
-                style={{ color: "var(--color-wine)" }}
-              >
-                Immediately after
-              </h3>
-              <p style={{ color: "var(--color-brown)" }}>
-                You may see the bridge look sharper right away.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="p-6 rounded-xl"
-              style={{ backgroundColor: "var(--color-light)" }}
-            >
-              <h3
-                className="text-xl font-bold mb-2"
-                style={{ color: "var(--color-wine)" }}
-              >
-                First 3 to 7 days
-              </h3>
-              <p style={{ color: "var(--color-brown)" }}>
-                Swelling is common. Mild bruising can happen.
-              </p>
-              <p
-                className="text-sm mt-2 italic"
-                style={{ color: "var(--color-taupe)" }}
-              >
-                Beverly Wilshire mentions downtime can be minimal, around a few
-                days, with minor swelling or bruising. Dr Soma's FAQ section
-                also suggests most patients return to daily activities within 1
-                to 2 days, though swelling can still be present.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="p-6 rounded-xl"
-              style={{ backgroundColor: "var(--color-light)" }}
-            >
-              <h3
-                className="text-xl font-bold mb-2"
-                style={{ color: "var(--color-wine)" }}
-              >
-                Weeks 2 to 4
-              </h3>
-              <p style={{ color: "var(--color-brown)" }}>
-                The nose looks more settled. The result looks more "yours."
-              </p>
-            </motion.div>
+      {/* Comparison Table Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Nose Thread Lift Compared to Nose Filler and Rhinoplasty</h2>
+            <p className="text-taupe font-inter">Understanding your options</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Factor</th>
+                  <th className="p-4 text-left font-georgia">Nose Thread Lift</th>
+                  <th className="p-4 text-left font-georgia">Nose Filler (HA)</th>
+                  <th className="p-4 text-left font-georgia">Rhinoplasty (Surgery)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonData.map((row, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{row.factor}</td>
+                    <td className="p-4 text-taupe font-inter">{row.thread}</td>
+                    <td className="p-4 text-taupe font-inter">{row.filler}</td>
+                    <td className="p-4 text-taupe font-inter">{row.surgery}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </div>
-      </motion.section>
-
-      {/* How long does it last - semua teks */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20"
-        style={{ backgroundColor: "var(--color-cream)" }}
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-bold text-center mb-6"
-            style={{ color: "var(--color-brown)" }}
-          >
-            How long does{" "}
-            <span style={{ color: "var(--color-wine)" }}>Nose Thread Lift</span>{" "}
-            last?
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg text-center mb-4"
-            style={{ color: "var(--color-brown)" }}
-          >
-            Many Malaysia clinic pages commonly state results around 12 to 18
-            months.
-          </motion.p>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg text-center mb-4"
-            style={{ color: "var(--color-brown)" }}
-          >
-            Some clinics describe longer ranges depending on thread type and
-            individual factors. Clinic Cleo lists "results that last 18 to 24
-            months" as a headline claim.
-          </motion.p>
-
-          <motion.p
-            variants={fadeInUp}
-            className="font-semibold mb-3 text-center"
-            style={{ color: "var(--color-wine)" }}
-          >
-            Real-life longevity depends on:
-          </motion.p>
-
-          <div className="grid md:grid-cols-2 gap-3 max-w-2xl mx-auto">
-            {[
-              "thread type",
-              "your metabolism",
-              "your lifestyle",
-              "how strong your nose support is naturally",
-              "whether you do a touch-up plan",
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeInUp}
-                className="p-3 text-center rounded-lg bg-white"
-                style={{ color: "var(--color-brown)" }}
-              >
-                {item}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Aftercare section - semua teks */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-bold text-center mb-8"
-            style={{ color: "var(--color-brown)" }}
-          >
-            Nose Thread Lift{" "}
-            <span style={{ color: "var(--color-wine)" }}>aftercare</span>{" "}
-            (simple, realistic)
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg text-center mb-6"
-            style={{ color: "var(--color-taupe)" }}
-          >
-            To protect your result:
-          </motion.p>
-
-          <div className="max-w-2xl mx-auto space-y-4">
-            {[
-              "Avoid pressing or squeezing your nose for the first week",
-              "Avoid facials and strong nose massage for at least 2 weeks",
-              "Sleep on your back if possible for a few nights",
-              "Avoid heavy exercise for a short period if you swell easily",
-              "Avoid glasses pressing hard on the bridge if advised by your doctor",
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeInUp}
-                className="flex items-start gap-3 p-4 rounded-lg"
-                style={{ backgroundColor: "var(--color-light)" }}
-              >
-                <Heart
-                  className="w-5 h-5 mt-1 shrink-0"
-                  style={{ color: "var(--color-rose)" }}
-                />
-                <span style={{ color: "var(--color-brown)" }}>{item}</span>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="mt-6 p-6 rounded-xl text-center"
-            style={{ backgroundColor: "var(--color-wine)" }}
-          >
-            <p className="text-white font-semibold">
-              If you feel increasing pain, strong redness, fever, or worsening
-              swelling, contact a medical professional promptly.
+          
+          <motion.div variants={fadeInUp} className="mt-8 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-taupe text-sm">
+              The most complete non-surgical nose result is often achieved by combining nose thread lift with a small amount of nose filler. 
+              The threads provide structural lift and tip definition while filler addresses bridge height and any remaining volume deficit.
             </p>
           </motion.div>
-        </div>
-      </motion.section>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Compare Your Options | Book a Free Nose Assessment
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
 
-      {/* Pros and Cons section - semua teks */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20"
-        style={{ backgroundColor: "var(--color-cream)" }}
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-bold text-center mb-8"
-            style={{ color: "var(--color-brown)" }}
-          >
-            Pros and cons of{" "}
-            <span style={{ color: "var(--color-wine)" }}>Nose Thread Lift</span>
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div
-              variants={fadeInLeft}
-              className="p-8 rounded-2xl bg-white shadow-lg"
-            >
-              <h3
-                className="text-2xl font-bold mb-6"
-                style={{ color: "var(--color-wine)" }}
-              >
-                Pros
-              </h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-2">
-                  <CheckCircle2
-                    className="w-5 h-5 mt-1 shrink-0"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    Non-surgical refinement
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2
-                    className="w-5 h-5 mt-1 shrink-0"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    Quick procedure time
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2
-                    className="w-5 h-5 mt-1 shrink-0"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    Minimal downtime for many people
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2
-                    className="w-5 h-5 mt-1 shrink-0"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    Can enhance bridge and tip contour without general
-                    anaesthesia
-                  </span>
-                </li>
-              </ul>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="p-8 rounded-2xl bg-white shadow-lg"
-            >
-              <h3
-                className="text-2xl font-bold mb-6"
-                style={{ color: "var(--color-wine)" }}
-              >
-                Cons
-              </h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-2">
-                  <XCircle
-                    className="w-5 h-5 mt-1 shrink-0"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    Results are not permanent
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <XCircle
-                    className="w-5 h-5 mt-1 shrink-0"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    Not suitable for major reshaping
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <XCircle
-                    className="w-5 h-5 mt-1 shrink-0"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    Swelling or bruising may occur
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <XCircle
-                    className="w-5 h-5 mt-1 shrink-0"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    Over-threading can increase risk and does not always look
-                    better, so planning matters
-                  </span>
-                </li>
-              </ul>
-            </motion.div>
+      {/* Patients Who Get Best Results Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Patients Who Get the Best Results</h2>
+            <p className="text-taupe font-inter">From nose thread lift in Malaysia</p>
+          </motion.div>
+          
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              "Patients with a flat or low nasal bridge wanting more height and projection",
+              "Patients with a drooping nasal tip affecting profile balance",
+              "Patients with mild nasal asymmetry or crookedness",
+              "Patients who have had nose filler previously and want to extend longevity",
+              "Patients in their 20s and 30s seeking non-permanent nose enhancement",
+              "Patients wanting Korean-style higher bridge and refined tip",
+              "Patients with saddle nose deformity or mild dorsal hump",
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-start gap-3 bg-light p-4 rounded-xl border border-taupe/10">
+                <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                <span className="text-taupe font-inter text-sm">{item}</span>
+              </div>
+            ))}
           </div>
-        </div>
-      </motion.section>
+          
+          <motion.div variants={fadeInUp} className="mt-8 text-center">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Find Out If You Are a Suitable Candidate
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
 
-      {/* Side effects and safety - semua teks */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-bold text-center mb-8"
-            style={{ color: "var(--color-brown)" }}
-          >
-            Side effects and{" "}
-            <span style={{ color: "var(--color-wine)" }}>safety</span>
-          </motion.h2>
+      {/* Procedure Steps Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The Nose Thread Lift Procedure at Nexus Clinic KL</h2>
+            <p className="text-taupe font-inter">Step by step</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { step: "01", title: "Facial Profile and Nasal Assessment", desc: "Doctor assesses nose in context of full facial profile. Front, 45-degree oblique and side profile evaluated." },
+              { step: "02", title: "Thread Type, Count and Placement Plan", desc: "Doctor confirms thread material, number of threads and exact placement path. Most treatments use 4-8 threads." },
+              { step: "03", title: "Local Anaesthesia and Thread Insertion", desc: "Small local anaesthetic at nasal tip entry point. Blunt cannula used for thread insertion. 15-20 minutes." },
+              { step: "04", title: "Review and Aftercare Instructions", desc: "Results reviewed immediately. Full aftercare provided. Follow-up at 6-8 weeks to assess collagen response." },
+            ].map((item, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="text-center">
+                <div className="w-14 h-14 bg-wine rounded-full flex items-center justify-center text-light font-georgia text-xl mx-auto mb-4 shadow-md">
+                  {item.step}
+                </div>
+                <h3 className="font-georgia text-lg text-brown mb-2 font-semibold">{item.title}</h3>
+                <p className="text-taupe font-inter text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-10">
+            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+              Book Your Nose Thread Lift Appointment
+              <ArrowRight className="w-5 h-5" />
+            </button>
+            <p className="text-taupe text-sm mt-3">Same-day results at Nexus Clinic KL</p>
+          </motion.div>
+        </motion.div>
+      </section>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div variants={fadeInLeft} className="space-y-4">
-              <h3
-                className="text-xl font-bold"
-                style={{ color: "var(--color-wine)" }}
-              >
-                Common temporary effects:
+      {/* Pricing Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-4xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Nose Thread Lift Cost in Malaysia</h2>
+            <p className="text-taupe font-inter">Transparent 2026 Pricing at Nexus Clinic KL</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Treatment</th>
+                  <th className="p-4 text-left font-georgia">Price Range (2026)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pricingTiers.map((tier, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10">
+                    <td className="p-4 font-inter text-brown">{tier.treatment}</td>
+                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr className="bg-wine/5">
+                  <td colSpan={2} className="p-4 text-taupe font-inter text-sm italic">
+                    * Final pricing confirmed at consultation. Price depends on thread type, count and correction required.
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-taupe text-sm">
+              According to the International Society of Aesthetic Plastic Surgery 2024 Global Statistics Report, 
+              non-surgical nose procedures including thread lift and nose filler saw a 33% increase in Southeast Asia, 
+              with Malaysia among the top three markets by procedure volume in the region.
+            </p>
+            <p className="text-taupe text-xs mt-1">[ISAPS Global Statistics Report 2024]</p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Get Your Personalised Nose Thread Lift Quote
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Side Effects & Aftercare Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Side Effects and Aftercare</h2>
+            <p className="text-taupe font-inter">What to expect after treatment</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div variants={fadeInLeft} className="bg-cream p-6 rounded-xl border border-taupe/10">
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <Heart className="w-5 h-5 text-wine" />
+                Common Temporary Effects
               </h3>
               <ul className="space-y-2">
-                <li className="flex items-center gap-2">
-                  <Activity
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>swelling</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Activity
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>bruising</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Activity
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    mild tenderness
-                  </span>
-                </li>
+                {[
+                  "Mild redness and swelling at thread entry points, resolving within 2-5 days",
+                  "Slight tenderness along nasal bridge for 2-3 days",
+                  "Tiny visible entry point marks at nasal tip, fading within a week",
+                  "Mild bruising in some patients, resolving within 5-7 days",
+                ].map((effect, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-taupe font-inter text-sm">
+                    <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                    <span>{effect}</span>
+                  </li>
+                ))}
               </ul>
-              <p
-                className="text-sm italic"
-                style={{ color: "var(--color-taupe)" }}
-              >
-                Beverly Wilshire describes mild bruising, swelling, and
-                tenderness as expected and usually settling.
-              </p>
             </motion.div>
-
-            <motion.div variants={fadeInRight} className="space-y-4">
-              <h3
-                className="text-xl font-bold"
-                style={{ color: "var(--color-wine)" }}
-              >
-                Safety depends on:
+            
+            <motion.div variants={fadeInRight} className="bg-cream p-6 rounded-xl border border-taupe/10">
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <Shield className="w-5 h-5 text-wine" />
+                Rare Risks
               </h3>
               <ul className="space-y-2">
-                <li className="flex items-center gap-2">
-                  <Shield
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    sterile conditions
-                  </span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Shield
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    correct anatomy and depth
-                  </span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Shield
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    correct number of threads
-                  </span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Shield
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    experienced medical practitioner
-                  </span>
-                </li>
+                {[
+                  "Thread extrusion, rare and more likely with too many threads or very thin nasal skin",
+                  "Infection at entry point, extremely rare with sterile technique",
+                  "Asymmetry if threads not placed evenly, correctable with touch-up",
+                  "Dimpling or skin irregularity if threads placed too superficially",
+                ].map((risk, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-taupe font-inter text-sm">
+                    <AlertCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                    <span>{risk}</span>
+                  </li>
+                ))}
               </ul>
-              <p
-                className="text-sm italic"
-                style={{ color: "var(--color-taupe)" }}
-              >
-                RJ Clinic directly stresses clean conditions and avoiding too
-                many threads to reduce infection risk.
-              </p>
             </motion.div>
           </div>
-        </div>
-      </motion.section>
-
-      {/* Cost section - semua teks */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20"
-        style={{ backgroundColor: "var(--color-cream)" }}
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-bold text-center mb-6"
-            style={{ color: "var(--color-brown)" }}
-          >
-            Cost of Nose Thread Lift in Malaysia{" "}
-            <span style={{ color: "var(--color-wine)" }}>
-              (KL pricing expectations)
-            </span>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg text-center mb-6"
-            style={{ color: "var(--color-taupe)" }}
-          >
-            Prices vary based on:
-          </motion.p>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-3xl mx-auto mb-8">
-            {[
-              "number of threads",
-              "thread type",
-              "clinic location",
-              "doctor expertise",
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeInUp}
-                className="p-3 text-center rounded-lg bg-white"
-                style={{ color: "var(--color-brown)" }}
-              >
-                {item}
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.h3
-            variants={fadeInUp}
-            className="text-2xl font-bold text-center mb-4"
-            style={{ color: "var(--color-wine)" }}
-          >
-            Typical Malaysia ranges shown by clinics
-          </motion.h3>
-
-          <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
-            <motion.div
-              variants={fadeInLeft}
-              className="p-6 rounded-xl bg-white shadow-lg text-center"
-            >
-              <p
-                className="font-semibold"
-                style={{ color: "var(--color-brown)" }}
-              >
-                Beverly Wilshire
-              </p>
-              <p
-                className="text-xl font-bold"
-                style={{ color: "var(--color-wine)" }}
-              >
-                RM 2,000 to RM 5,000
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="p-6 rounded-xl bg-white shadow-lg text-center"
-            >
-              <p
-                className="font-semibold"
-                style={{ color: "var(--color-brown)" }}
-              >
-                RJ Clinic
-              </p>
-              <p
-                className="text-xl font-bold"
-                style={{ color: "var(--color-wine)" }}
-              >
-                RM 2,000 to RM 4,000 depending on number of threads
-              </p>
-            </motion.div>
-          </div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="p-8 rounded-xl text-center max-w-2xl mx-auto"
-            style={{ backgroundColor: "var(--color-wine)" }}
-          >
-            <h3 className="text-2xl font-bold mb-4 text-white">
-              Nexus Clinic Kuala Lumpur starting guidance
-            </h3>
-            <p className="text-3xl font-bold mb-4 text-white">
-              RM 1,500 to RM 3,000
-            </p>
-            <p className="text-white/90">
-              Nexus thread lift information commonly lists Nose Thread Lift
-              starting price RM 1,500 to RM 3,000.
-            </p>
+          
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 p-6 rounded-xl">
+            <h3 className="font-georgia text-xl text-brown mb-4">Aftercare Instructions</h3>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                "Avoid pressing, squeezing or massaging the nose for at least 2 weeks",
+                "Sleep on your back for the first week to avoid lateral pressure",
+                "Avoid glasses that rest on the nose bridge for 2 weeks",
+                "Skip intense exercise for the first 48 hours",
+                "Avoid steam rooms, saunas and prolonged heat for 48 hours",
+                "Do not blow your nose forcefully for the first week",
+                "Avoid facial massages and skin treatments near the nose for two weeks",
+              ].map((instruction, idx) => (
+                <div key={idx} className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span className="text-taupe font-inter text-sm">{instruction}</span>
+                </div>
+              ))}
+            </div>
           </motion.div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="mt-8 p-6 rounded-xl"
-            style={{ backgroundColor: "var(--color-light)" }}
-          >
-            <h3
-              className="text-xl font-bold mb-4"
-              style={{ color: "var(--color-wine)" }}
-            >
-              What changes your quote at Nexus Clinic KL
-            </h3>
-            <ul className="space-y-2">
-              <li className="flex items-center gap-2">
-                <ArrowRight
-                  className="w-4 h-4"
-                  style={{ color: "var(--color-rose)" }}
-                />
-                <span style={{ color: "var(--color-brown)" }}>
-                  Do you need bridge work, tip work, or both?
-                </span>
-              </li>
-              <li className="flex items-center gap-2">
-                <ArrowRight
-                  className="w-4 h-4"
-                  style={{ color: "var(--color-rose)" }}
-                />
-                <span style={{ color: "var(--color-brown)" }}>
-                  How many threads are safe for your nose space?
-                </span>
-              </li>
-              <li className="flex items-center gap-2">
-                <ArrowRight
-                  className="w-4 h-4"
-                  style={{ color: "var(--color-rose)" }}
-                />
-                <span style={{ color: "var(--color-brown)" }}>
-                  Do you need a combined plan (threads plus filler) for better
-                  balance?
-                </span>
-              </li>
-            </ul>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-taupe text-sm">
+              Nexus Clinic KL uses White Medience threads certified by Korean GMP and ISO quality standard and 
+              registered with Malaysia's Medical Device Authority. All nose thread lift procedures are performed by 
+              licensed medical doctors using sterile technique in a clinical environment.
+            </p>
+            <p className="text-taupe text-xs mt-1">[MDA Registration Reference: White Medience Korea. GMP and ISO-certified thread manufacturer]</p>
           </motion.div>
-        </div>
-      </motion.section>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Explore Cheek Filler for Facial Balance
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
 
-      {/* Comparison section - semua teks */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-bold text-center mb-8"
-            style={{ color: "var(--color-brown)" }}
-          >
-            Nose Thread Lift{" "}
-            <span style={{ color: "var(--color-wine)" }}>vs</span> Nose Filler{" "}
-            <span style={{ color: "var(--color-wine)" }}>vs</span> Rhinoplasty
-          </motion.h2>
-
-          <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div
-              variants={fadeInLeft}
-              className="p-6 rounded-xl"
-              style={{ backgroundColor: "var(--color-light)" }}
-            >
-              <h3
-                className="text-xl font-bold mb-4"
-                style={{ color: "var(--color-wine)" }}
+      {/* FAQ Section */}
+      <FAQ data={faqData} />
+      
+      {/* CTA Section */}
+      <section className="py-20 px-4 bg-wine">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-4xl text-center"
+        >
+          <motion.div variants={fadeInUp} className="space-y-6">
+            <h2 className="font-georgia text-3xl md:text-5xl text-light">
+              Book Your Nose Thread Lift in Kuala Lumpur at Nexus Clinic KL
+            </h2>
+            <p className="text-xl text-cream font-inter max-w-2xl mx-auto">
+              A clearer bridge, a more defined tip and a nose that finally balances the rest of your face. 
+              No surgery, no general anaesthesia, no weeks of recovery.
+            </p>
+            <p className="text-cream/90 font-inter">
+              One 30-minute appointment at Nexus Clinic KL using MDA-registered Korean threads and technique developed for Asian nasal anatomy.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
-                Nose Thread Lift vs Nose Filler
-              </h3>
-              <p className="mb-4" style={{ color: "var(--color-brown)" }}>
-                A simple way many clinics describe it:
-              </p>
-              <ul className="space-y-2 mb-4">
-                <li className="flex items-center gap-2">
-                  <ArrowRight
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    Flat bridge can be improved with filler
-                  </span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <ArrowRight
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    Drooping tip is often better suited to threads
-                  </span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <ArrowRight
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    Overall refinement may need both
-                  </span>
-                </li>
-              </ul>
-              <p
-                className="text-sm italic"
-                style={{ color: "var(--color-taupe)" }}
-              >
-                Clinic Cleo also explains nose can be reshaped by hyaluronic
-                acid filler too, and threads can be combined with fillers.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="p-6 rounded-xl"
-              style={{ backgroundColor: "var(--color-light)" }}
-            >
-              <h3
-                className="text-xl font-bold mb-4"
-                style={{ color: "var(--color-wine)" }}
-              >
-                Nose Thread Lift vs Surgical Rhinoplasty
-              </h3>
-              <p className="mb-4" style={{ color: "var(--color-brown)" }}>
-                Rhinoplasty is surgery. It can reshape bone and cartilage.
-              </p>
-              <p className="mb-4" style={{ color: "var(--color-brown)" }}>
-                A Malaysia clinic comparison page states rhinoplasty can cost
-                around RM 10,000 to RM 30,000, while nose thread lift is often
-                RM 2,000 to RM 5,000 depending on threads and doctor expertise.
-              </p>
-              <p
-                className="font-semibold"
-                style={{ color: "var(--color-wine)" }}
-              >
-                Threads are often chosen when:
-              </p>
-              <ul className="space-y-2 mt-2">
-                <li className="flex items-center gap-2">
-                  <CheckCircle2
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    you want subtle enhancement
-                  </span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    you want lower downtime
-                  </span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-rose)" }}
-                  />
-                  <span style={{ color: "var(--color-brown)" }}>
-                    you want a less invasive option
-                  </span>
-                </li>
-              </ul>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Why choose Nexus Clinic - semua teks */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20"
-        style={{ backgroundColor: "var(--color-cream)" }}
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-bold text-center mb-8"
-            style={{ color: "var(--color-brown)" }}
-          >
-            Why choose{" "}
-            <span style={{ color: "var(--color-wine)" }}>
-              Nexus Clinic Kuala Lumpur
-            </span>{" "}
-            for Nose Thread Lift?
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-xl text-center mb-6"
-            style={{ color: "var(--color-taupe)" }}
-          >
-            Because this is not a "trend treatment." It is a face-balancing
-            decision.
-          </motion.p>
-
-          <div className="max-w-3xl mx-auto space-y-4 mb-6">
-            <motion.p
-              variants={fadeInUp}
-              className="p-4 rounded-lg bg-white"
-              style={{ color: "var(--color-brown)" }}
-            >
-              At Nexus Clinic KL, the focus is:
-            </motion.p>
-
-            <motion.ul variants={fadeInUp} className="space-y-3">
-              <li className="flex items-start gap-3 p-4 rounded-lg bg-white">
-                <Star
-                  className="w-5 h-5 mt-1 shrink-0"
-                  style={{ color: "var(--color-rose)" }}
-                />
-                <span style={{ color: "var(--color-brown)" }}>
-                  a doctor-led plan based on your nose and facial proportions
-                </span>
-              </li>
-              <li className="flex items-start gap-3 p-4 rounded-lg bg-white">
-                <Star
-                  className="w-5 h-5 mt-1 shrink-0"
-                  style={{ color: "var(--color-rose)" }}
-                />
-                <span style={{ color: "var(--color-brown)" }}>
-                  safe thread count and safe technique
-                </span>
-              </li>
-              <li className="flex items-start gap-3 p-4 rounded-lg bg-white">
-                <Star
-                  className="w-5 h-5 mt-1 shrink-0"
-                  style={{ color: "var(--color-rose)" }}
-                />
-                <span style={{ color: "var(--color-brown)" }}>
-                  natural improvement that looks good in real life, not only in
-                  one photo angle
-                </span>
-              </li>
-            </motion.ul>
-
-            <motion.p
-              variants={fadeInUp}
-              className="p-4 rounded-lg bg-white"
-              style={{ color: "var(--color-brown)" }}
-            >
-              Nexus is also commonly listed in third-party directories with
-              strong public review volume, which helps add trust when patients
-              compare options.
-            </motion.p>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* FAQ Section - semua 16 pertanyaan dan jawaban */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-bold text-center mb-12"
-            style={{ color: "var(--color-brown)" }}
-          >
-            Frequently Asked{" "}
-            <span style={{ color: "var(--color-wine)" }}>Questions</span>
-          </motion.h2>
-
-          <div className="max-w-3xl mx-auto space-y-4">
-            {/* General Questions */}
-            <motion.div
-              variants={fadeInUp}
-              className="p-6 rounded-xl"
-              style={{ backgroundColor: "var(--color-light)" }}
-            >
-              <h3
-                className="text-xl font-bold mb-4"
-                style={{ color: "var(--color-wine)" }}
-              >
-                General Questions
-              </h3>
-
-              <div className="space-y-4">
-                <div>
-                  <p
-                    className="font-semibold"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    1) What does a nose thread lift do?
-                  </p>
-                  <p style={{ color: "var(--color-taupe)" }}>
-                    It enhances the nose bridge and tip using absorbable threads
-                    to improve contour without surgery.
-                  </p>
-                </div>
-
-                <div>
-                  <p
-                    className="font-semibold"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    2) Is a nose thread lift safe?
-                  </p>
-                  <p style={{ color: "var(--color-taupe)" }}>
-                    It can be safe when performed by a qualified medical
-                    practitioner using regulated medical threads and sterile
-                    technique.
-                  </p>
-                </div>
-
-                <div>
-                  <p
-                    className="font-semibold"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    3) Who is suitable for a nose thread lift?
-                  </p>
-                  <p style={{ color: "var(--color-taupe)" }}>
-                    People who want subtle bridge or tip improvement without
-                    surgery, and who have enough nose space for safe thread
-                    placement.
-                  </p>
-                </div>
-
-                <div>
-                  <p
-                    className="font-semibold"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    4) Can anyone get nose threads?
-                  </p>
-                  <p style={{ color: "var(--color-taupe)" }}>
-                    Not always. Some noses cannot safely take many threads, and
-                    assessment is important to avoid complications.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Results and longevity */}
-            <motion.div
-              variants={fadeInUp}
-              className="p-6 rounded-xl"
-              style={{ backgroundColor: "var(--color-light)" }}
-            >
-              <h3
-                className="text-xl font-bold mb-4"
-                style={{ color: "var(--color-wine)" }}
-              >
-                Results and longevity
-              </h3>
-
-              <div className="space-y-4">
-                <div>
-                  <p
-                    className="font-semibold"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    5) How long do nose thread lift results last?
-                  </p>
-                  <p style={{ color: "var(--color-taupe)" }}>
-                    Many clinics state results usually last between 12 and 18
-                    months.
-                  </p>
-                </div>
-
-                <div>
-                  <p
-                    className="font-semibold"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    6) Are the threads permanent?
-                  </p>
-                  <p style={{ color: "var(--color-taupe)" }}>
-                    No. They are biodegradable and designed to be absorbed over
-                    time.
-                  </p>
-                </div>
-
-                <div>
-                  <p
-                    className="font-semibold"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    7) When will I see the final result?
-                  </p>
-                  <p style={{ color: "var(--color-taupe)" }}>
-                    You can see changes immediately, but the nose looks more
-                    settled after swelling reduces, often over 2 to 4 weeks.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Procedure and recovery */}
-            <motion.div
-              variants={fadeInUp}
-              className="p-6 rounded-xl"
-              style={{ backgroundColor: "var(--color-light)" }}
-            >
-              <h3
-                className="text-xl font-bold mb-4"
-                style={{ color: "var(--color-wine)" }}
-              >
-                Procedure and recovery
-              </h3>
-
-              <div className="space-y-4">
-                <div>
-                  <p
-                    className="font-semibold"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    8) Is the procedure painful?
-                  </p>
-                  <p style={{ color: "var(--color-taupe)" }}>
-                    Discomfort is usually minimal because local anaesthesia is
-                    used.
-                  </p>
-                </div>
-
-                <div>
-                  <p
-                    className="font-semibold"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    9) How long does the procedure take?
-                  </p>
-                  <p style={{ color: "var(--color-taupe)" }}>
-                    Many clinics describe around 15 to 30 minutes or 20 to 30
-                    minutes.
-                  </p>
-                </div>
-
-                <div>
-                  <p
-                    className="font-semibold"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    10) Is there downtime after a nose thread lift?
-                  </p>
-                  <p style={{ color: "var(--color-taupe)" }}>
-                    Most patients return to daily activities quickly, sometimes
-                    within 1 to 2 days, though mild swelling or bruising can
-                    last a few days.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Threads, number, and cost */}
-            <motion.div
-              variants={fadeInUp}
-              className="p-6 rounded-xl"
-              style={{ backgroundColor: "var(--color-light)" }}
-            >
-              <h3
-                className="text-xl font-bold mb-4"
-                style={{ color: "var(--color-wine)" }}
-              >
-                Threads, number, and cost
-              </h3>
-
-              <div className="space-y-4">
-                <div>
-                  <p
-                    className="font-semibold"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    11) How many threads are used for a nose thread lift?
-                  </p>
-                  <p style={{ color: "var(--color-taupe)" }}>
-                    Some clinics state an average of 4 to 8 threads per session,
-                    but it depends on your nose anatomy and goals.
-                  </p>
-                </div>
-
-                <div>
-                  <p
-                    className="font-semibold"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    12) How much does a nose thread lift cost in Malaysia?
-                  </p>
-                  <p style={{ color: "var(--color-taupe)" }}>
-                    Common published ranges include RM 2,000 to RM 5,000,
-                    depending on threads and clinic factors.
-                  </p>
-                </div>
-
-                <div>
-                  <p
-                    className="font-semibold"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    13) What is the nose thread lift price range some KL clinics
-                    share?
-                  </p>
-                  <p style={{ color: "var(--color-taupe)" }}>
-                    RJ Clinic states RM 2,000 to RM 4,000 depending on number of
-                    threads.
-                  </p>
-                </div>
-
-                <div>
-                  <p
-                    className="font-semibold"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    14) What is Nexus Clinic KL starting price guidance for nose
-                    thread lift?
-                  </p>
-                  <p style={{ color: "var(--color-taupe)" }}>
-                    Nexus thread lift information commonly lists RM 1,500 to RM
-                    3,000 as starting price guidance.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Comparison questions */}
-            <motion.div
-              variants={fadeInUp}
-              className="p-6 rounded-xl"
-              style={{ backgroundColor: "var(--color-light)" }}
-            >
-              <h3
-                className="text-xl font-bold mb-4"
-                style={{ color: "var(--color-wine)" }}
-              >
-                Comparison questions
-              </h3>
-
-              <div className="space-y-4">
-                <div>
-                  <p
-                    className="font-semibold"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    15) Is nose filler or nose thread lift better?
-                  </p>
-                  <p style={{ color: "var(--color-taupe)" }}>
-                    Many clinics explain it depends on your goal. Filler often
-                    helps a flat bridge, while threads are often used for a
-                    drooping tip, and combination can refine overall shape.
-                  </p>
-                </div>
-
-                <div>
-                  <p
-                    className="font-semibold"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    16) Is nose thread lift better than rhinoplasty?
-                  </p>
-                  <p style={{ color: "var(--color-taupe)" }}>
-                    Threads are less invasive and lower downtime, but they
-                    cannot replace the structural changes possible with surgery.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Final CTA dengan semua teks */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20"
-        style={{ backgroundColor: "var(--color-wine)" }}
-      >
-        <div className="container mx-auto px-4 text-center">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl font-bold mb-6 text-white"
-          >
-            Want a KL-focused Nose Thread Lift plan that looks natural?
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-xl mb-4 text-white/90 max-w-3xl mx-auto"
-          >
-            If you want a sharper bridge, a more lifted tip, and a refined
-            profile without surgery, Nose Thread Lift at Nexus Clinic Kuala
-            Lumpur can be a great option.
-          </motion.p>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg mb-8 text-white/80 max-w-2xl mx-auto"
-          >
-            The most important step is a proper assessment so we choose the
-            safest technique and the right number of threads for your nose.
-          </motion.p>
-        </div>
-      </motion.section>
+                Book Your Free Consultation Now
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+              <Whatsapp 
+                message="Hi, I'd like to book a free consultation for nose thread lift at Nexus Clinic KL. Please let me know available slots."
+                variant="light"
+              />
+            </div>
+            <p className="text-cream/80 font-inter text-sm">
+              Limited slots available this week | Located at Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
+            </p>
+            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
+              <a href="#" className="hover:text-cream transition-colors">Explore Cheek Filler</a>
+              <span>•</span>
+              <a href="#" className="hover:text-cream transition-colors">Explore Jawline Filler</a>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
     </div>
   );
 }

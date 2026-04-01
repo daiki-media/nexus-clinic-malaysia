@@ -26,7 +26,7 @@ import { fallbackLng } from "@/src/i18n/settings";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
 const StemCellLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "stemCell");
+  const { t } = useTranslation(locale, "regenerative/stemCell");
 
   const transformations = [
     {

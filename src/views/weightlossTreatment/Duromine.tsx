@@ -29,7 +29,7 @@ import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 
 const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "duromine");
+  const { t } = useTranslation(locale, "weightLoss/duromine");
   const transformations = [
     {
       id: 1,

@@ -38,7 +38,7 @@ import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 
 const MounjaroLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "mounjaro");
+  const { t } = useTranslation(locale, "weightLoss/mounjaro");
 
   const transformations = [
     {

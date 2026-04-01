@@ -31,7 +31,7 @@ import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 
 const TirzepatideLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "tirzepatide");
+  const { t } = useTranslation(locale, "weightLoss/tirzepatide");
   const faqs = [
     {
       q: "What is tirzepatide used for?",

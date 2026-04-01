@@ -42,7 +42,7 @@ import { fallbackLng } from "@/src/i18n/settings";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
 const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "testosterone");
+  const { t } = useTranslation(locale, "regenerative/testosterone");
 
   const images = {
     doctorConsultation: "/images/regenerative/testosterone-therapy.webp",

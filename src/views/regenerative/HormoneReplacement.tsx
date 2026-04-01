@@ -34,7 +34,7 @@ const HormonReplaceLanding = ({
 }: {
   locale?: string;
 }) => {
-  const { t } = useTranslation(locale, "hormoneReplacement");
+  const { t } = useTranslation(locale, "regenerative/hormoneReplacement");
 
   const images = {
     heroWoman:

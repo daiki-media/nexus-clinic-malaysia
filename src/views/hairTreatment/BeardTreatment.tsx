@@ -31,7 +31,7 @@ export default function BeardLanding({
 }: {
   locale?: string;
 }) {
-  const { t } = useTranslation(locale, "beardTransplant");
+  const { t } = useTranslation(locale, "hair/beardTransplant");
 
   const transformations = [
     {

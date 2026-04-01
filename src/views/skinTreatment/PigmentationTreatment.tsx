@@ -29,7 +29,7 @@ import { fallbackLng } from "@/src/i18n/settings";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
 const PigmentationLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "pigmentationTreatment");
+  const { t } = useTranslation(locale, "skin/pigmentationTreatment");
 
   const transformations = [
     {

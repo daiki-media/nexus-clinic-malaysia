@@ -29,7 +29,7 @@ import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 
 const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "ozempic");
+  const { t } = useTranslation(locale, "weightLoss/ozempic");
   const faqs = [
     {
       q: "Is Ozempic approved for weight loss?",

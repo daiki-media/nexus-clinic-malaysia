@@ -39,7 +39,7 @@ import { fallbackLng } from "@/src/i18n/settings";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 
 const MelasmaLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "melasmaTreatment");
+  const { t } = useTranslation(locale, "skin/melasmaTreatment");
 
   const transformations = [
     {

@@ -34,7 +34,7 @@ const HydraFacialLandingPage = ({
 }: {
   locale?: string;
 }) => {
-  const { t } = useTranslation(locale, "hydrafacial");
+  const { t } = useTranslation(locale, "skin/hydrafacial");
 
   const transformations = [
     {

@@ -26,7 +26,7 @@ import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 
 const PCOSPage = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "pcosTreatment");
+  const { t } = useTranslation(locale, "regenerative/pcosTreatment");
 
   return (
     <div className="bg-light font-inter overflow-x-hidden">
