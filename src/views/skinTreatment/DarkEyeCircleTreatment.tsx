@@ -1,42 +1,81 @@
 "use client";
-
 import { motion } from "framer-motion";
 import {
-  Sun,
-  Droplets,
-  Eye,
   Sparkles,
-  Shield,
   Award,
-  ChevronRight,
-  AlertCircle,
-  CheckCircle2,
-  XCircle,
-  Info,
-  Heart,
-  Droplet,
-  Zap,
-  Layers,
   MapPin,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Heart,
+  Shield,
+  ArrowRight,
+  AlertCircle,
+  Activity,
+  Zap,
+  Eye,
+  AlertTriangle,
+  Droplet,
+  Sun,
+  TrendingUp,
+  DollarSign,
+  Layers,
+  Stethoscope,
 } from "lucide-react";
 import {
-  fadeInUp,
   staggerContainer,
   fadeInLeft,
   fadeInRight,
+  fadeInUp,
   scaleIn,
 } from "../../lib/animations";
 import FAQ from "../../components/FAQ";
-import { useTranslation } from "@/src/i18n/client";
-import { fallbackLng } from "@/src/i18n/settings";
+import Whatsapp from "../../components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
+import Image from "next/image";
 
-const DarkEyeCircleLanding = ({
-  locale = fallbackLng,
-}: {
-  locale?: string;
-}) => {
-  const { t } = useTranslation(locale, "skin/darkEyeCircle");
+interface DarkEyeCircleProps {
+  locale: string;
+}
+
+export default function DarkEyeCircle({ locale }: DarkEyeCircleProps) {
+  const darkCircleTypes = [
+    { type: "Pigmented (Brown)", appearance: "Tan, brown or dark brown patches; uniform colour; similar tone on both sides", test: "Gently stretch the under-eye skin sideways. If colour stays dark or becomes more visible, it is pigmented.", cause: "Excess melanin from UV, allergies, chronic eye rubbing, genetic predisposition", treatment: "Pico Laser (1064nm toning) + medical-grade topicals with kojic acid and niacinamide" },
+    { type: "Vascular (Blue or Purple)", appearance: "Blue, purple or reddish-pink hue; more visible when tired, dehydrated or after allergies", test: "Gently press the under-eye area. If colour temporarily lightens or blanches, it is vascular.", cause: "Visible blood vessels through thin skin; allergic rhinitis; poor circulation; sleep deprivation", treatment: "Sylfirm X (vascular RF coagulation) + Rejuran I to thicken dermis" },
+    { type: "Structural (Shadow/Hollow)", appearance: "Grey or dark shadow that worsens in direct overhead lighting; looks like a physical indent", test: "Look in mirror at eye level. Tilt head back. If shadow reduces when head tilts back, it is structural.", cause: "Volume loss in tear trough; fat pad descent; deep orbital rim anatomy", treatment: "Tear Trough Filler (hyaluronic acid) for immediate shadow correction" },
+    { type: "Mixed (Pigmented and Structural)", appearance: "Brown discolouration combined with visible depressions; does not resolve with filler or laser alone", test: "Both tests above show positive findings", cause: "Simultaneous pigmentation and volume loss; most common in patients over 35", treatment: "Tear Trough Filler first, then Pico Laser or Rejuran I for pigmentation" },
+    { type: "Allergic Shiners", appearance: "Bluish-brown or purplish bilateral circles; often with nasal congestion or puffiness", test: "Worsens with allergic flares, hay fever season, or sinus congestion episodes", cause: "Chronic allergic rhinitis causing venous congestion; histamine-driven inflammation", treatment: "Address allergy management first; Sylfirm X + Rejuran I for tissue strengthening" },
+  ];
+
+  const combinationProtocols = [
+    { type: "Pigmented", phase1: "Pico Laser 1064nm toning (3 to 4 sessions monthly)", phase2: "Medical-grade brightening topicals; SPF50 eye area protection", maintenance: "Quarterly Pico Laser toning session; daily SPF50; brightening topicals ongoing" },
+    { type: "Vascular", phase1: "Sylfirm X (Pulsed Wave RF to coagulate vessels, 2 to 3 sessions)", phase2: "Rejuran I (2 sessions to thicken periorbital dermis)", maintenance: "Rejuran I every 6 months; Sylfirm X booster session annually" },
+    { type: "Structural", phase1: "Tear Trough Filler (1 syringe HA, immediate volume correction)", phase2: "Rejuran I at 4 to 6 weeks post-filler to improve skin quality", maintenance: "Filler top-up at 12 to 18 months; Rejuran I every 6 months" },
+    { type: "Mixed", phase1: "Tear Trough Filler first (structural correction precedes laser)", phase2: "Pico Laser toning (3 sessions) at 4 to 8 weeks post-filler", maintenance: "Filler top-up at 12 to 18 months; Pico toning quarterly; Rejuran I every 6 months" },
+    { type: "Allergic Shiners", phase1: "Allergy review; Sylfirm X for vascular component (2 sessions)", phase2: "Rejuran I to strengthen periorbital skin", maintenance: "Sylfirm X annually; allergy management ongoing; Rejuran I every 6 months" },
+  ];
+
+  const pricingTiers = [
+    { treatment: "Tear Trough Filler (Hyaluronic Acid)", bestFor: "Structural and mixed dark circles; sunken tear trough hollowness", sessions: "1 session", price: "RM 1,300 to RM 2,200 per syringe (lasts 9 to 18 months)" },
+    { treatment: "Pico Laser (Under-Eye Toning)", bestFor: "Pigmented dark circles; periorbital hyperpigmentation", sessions: "3 to 5 sessions", price: "RM 700 to RM 1,100 per session" },
+    { treatment: "Rejuran I (Polynucleotide Eye)", bestFor: "Vascular circles; thin skin; crepey texture; fine lines", sessions: "2 to 3 sessions", price: "RM 800 to RM 1,300 per session" },
+    { treatment: "Sylfirm X RF (Under-Eye Vascular)", bestFor: "Vascular and allergic shiner dark circles; vessel coagulation", sessions: "2 to 3 sessions", price: "RM 1,000 to RM 1,600 per session" },
+    { treatment: "Skin Booster (HA or Polynucleotide)", bestFor: "Hydration support; post-filler or post-laser skin quality", sessions: "2 to 3 sessions", price: "RM 800 to RM 1,400 per session" },
+    { treatment: "Combination Dark Circle Programme", bestFor: "Mixed or complex dark circles (2 or more modalities)", sessions: "3 to 6 total professional treatments", price: "From RM 2,500 (package pricing available)" },
+  ];
+
+  const faqData = [
+    { q: "Why do I have dark circles even when I sleep well?", a: "Adequate sleep is only one of the common causes of dark circles under the eyes. The other four are structural volume loss creating a shadow, genetic or UV-driven pigmentation, blood vessel visibility through thinning skin and allergic rhinitis causing venous congestion around the sinuses. Patients with structural, pigmented, vascular or allergy-driven dark circles will not see significant improvement from sleep alone regardless of how many hours they rest. The persistence of dark circles despite good sleep and adequate hydration is the primary indicator that a clinical assessment is warranted to identify the actual cause before any treatment is selected." },
+    { q: "What is the most effective treatment for dark circles in Malaysia?", a: "There is no single most effective treatment because the correct treatment depends entirely on the type of dark circle. Tear trough filler is the most effective treatment for structural hollowing-related shadows, producing immediate improvement visible from the day of injection. Pico Laser is most effective for pigmented periorbital hyperpigmentation. Sylfirm X and Rejuran I are most effective for vascular circles. The most common presentation in Malaysian patients over 30 is mixed, involving both structural and pigmented components, requiring a sequenced combination of filler followed by laser or Rejuran I for optimal outcome." },
+    { q: "Is tear trough filler safe?", a: "Tear trough filler is safe when performed by an experienced doctor using appropriate technique and correct product selection. The under-eye area is the highest-risk filler zone on the face because of its thin skin and proximity to the orbital septum and infraorbital vessels. At Nexus Clinic KL, tear trough filler is performed exclusively by licensed aesthetic doctors, using a cannula technique in most cases to reduce bruising and vascular risk, with low-viscosity hyaluronic acid products specifically formulated for this zone. Hyaluronidase enzyme is available to dissolve filler immediately if any complication arises." },
+    { q: "How long does tear trough filler last?", a: "Tear trough filler placed in the deep periosteal plane typically lasts 12 to 18 months in most patients. Results duration varies based on the patient's metabolic rate, the specific product used and the volume placed. Some patients retain visible results for up to 24 months. When the filler gradually resorbs, the hollow shadow slowly returns over weeks to months rather than disappearing suddenly. Top-up treatments at 12 to 18 months maintain continuous improvement. At Nexus Clinic KL, the product and volume selected produce natural results that age gracefully rather than creating an overfilled appearance." },
+    { q: "Can dark eye circles be permanently removed?", a: "Permanent removal depends on the type of dark circle. Structural circles caused by volume loss return as ageing continues, as the tear trough deepens progressively over years even with regular filler maintenance. Pigmented circles can be cleared significantly with Pico Laser and maintained with SPF50 use and quarterly toning sessions, but may recur with UV exposure or hormonal changes. Vascular circles can be reduced with Sylfirm X and dermal thickening with Rejuran I but may require periodic maintenance as periorbital skin continues to thin with age. Allergy-driven circles will persist as long as underlying allergic rhinitis is active." },
+    { q: "What is Rejuran I and how is it different from regular skin booster?", a: "Rejuran I is a polynucleotide formulation specifically engineered for the periorbital zone. Unlike hyaluronic acid skin boosters which provide hydration and volumisation, Rejuran I's PDRN molecules activate fibroblasts to produce new collagen and elastin, physically thickening the under-eye dermis over weeks. This biological thickening effect reduces visibility of underlying blood vessels, making it particularly effective for vascular dark circles. Rejuran I also improves the texture of crepey fine-lined under-eye skin that regular HA skin boosters do not address at the structural level." },
+    { q: "Is dark circle treatment suitable for men?", a: "Yes. Dark circles affect men and women equally, and treatment approaches are identical across genders. Male patients at Nexus Clinic KL commonly seek dark circle treatment for professional appearance concerns, with many citing that persistent dark circles make them appear chronically fatigued to colleagues and clients. The diagnostic framework applies equally: structural circles in men respond to tear trough filler, pigmented circles respond to Pico Laser and vascular circles respond to Sylfirm X and Rejuran I. Male patients often respond particularly well to Rejuran I as results are natural-looking rather than obviously treated." },
+    { q: "Can I combine dark circle treatment with other facial treatments?", a: "Yes. Dark circle treatment at Nexus Clinic KL is frequently combined with other facial treatments as part of a broader facial rejuvenation plan. Tear trough filler is often performed alongside cheek filler or chin filler, as mid-face volume restoration reduces the apparent depth of the tear trough and may reduce the amount of under-eye filler required. Pico Laser for periorbital pigmentation is commonly performed in the same session as full-face Pico toning for general skin brightening. Rejuran I for the under-eye area can be performed alongside a full-face Rejuran Healer treatment." },
+    { q: "How do I know if my dark circles are from allergies?", a: "The key indicators of allergy-driven dark circles include bilateral, symmetrical presentation in the blue-purple tone range, fluctuation in severity that correlates with known allergy triggers such as dust, pollen or pet dander, association with nasal congestion or chronic runny nose, a history of diagnosed allergic rhinitis or hay fever, worsening in the morning compared to the evening, and partial or temporary improvement with antihistamine medication. If you have been using antihistamines and noticed your dark circles lighten, this is a strong indicator of an allergic vascular component." },
+    { q: "Is the dark eye circle consultation at Nexus Clinic KL free?", a: "Yes. Your initial dark eye circle consultation at Nexus Clinic KL is complimentary and includes clinical assessment of your dark circle type using the stretch, press and head-tilt tests, confirmation of whether the presentation is pigmented, vascular, structural, allergic or mixed, a recommended combination protocol based on your specific type and anatomy, full transparent pricing before any procedure is booked, and realistic outcome expectations for your specific presentation. If your dark circles are not suitable for a particular treatment due to anatomical or clinical reasons, our doctors will tell you clearly and recommend the appropriate alternative." },
+  ];
 
   const transformations = [
     {
@@ -55,1369 +94,685 @@ const DarkEyeCircleLanding = ({
       after: "/images/B&A-skin/B&A-dark-eye-treatment3.webp",
     },
   ];
+
   return (
-    <div className="w-full bg-light font-inter overflow-hidden">
+    <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="relative min-h-screen flex items-center justify-center px-4 py-20 bg-linear-to-br from-cream via-light to-cream"
-      >
-        <div className="absolute inset-0 bg-glass backdrop-blur-3xl opacity-20" />
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
+        
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="container mx-auto max-w-6xl relative z-10"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-8">
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
+                <AlertTriangle className="w-4 h-4 text-wine" />
+                <span className="text-sm font-inter text-wine font-medium">Doctor-Assessed • Cause-First Approach</span>
+              </motion.div>
+              
+              <motion.h1
+                variants={fadeInUp}
+                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
+              >
+                Dark Eye Circle Treatment in Malaysia for{" "}
+                <span className="text-wine italic">Naturally Brighter, Rested-Looking Eyes</span>
+              </motion.h1>
 
-        <div className="relative max-w-7xl mx-auto text-center z-10">
-          <motion.div variants={fadeInUp} className="mb-6">
-            <span className="inline-flex items-center gap-2 bg-wine/10 text-wine px-4 py-2 rounded-full text-sm font-medium">
-              <Shield className="w-4 h-4" />
-              Doctor-led aesthetic clinic in Kuala Lumpur with
-              consultation-first planning
-            </span>
-          </motion.div>
+              <motion.p
+                variants={fadeInUp}
+                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
+              >
+                Eight hours of sleep. Two litres of water. A comprehensive eye cream routine. And the dark circles under the eyes are still there when you look in the mirror.
+              </motion.p>
 
-          <motion.h1
-            variants={fadeInUp}
-            className="text-5xl md:text-7xl font-georgia text-brown mb-6 leading-tight"
-          >
-            Dark Eye Circle Treatment
-            <span className="block text-wine text-3xl md:text-4xl mt-4">
-              in Kuala Lumpur, Malaysia
-            </span>
-          </motion.h1>
+              <motion.p
+                variants={fadeInUp}
+                className="text-brown font-inter"
+              >
+                At Nexus Clinic KL, our licensed aesthetic doctors assess the type of dark circle before recommending any treatment. The assessment determines whether your circles are pigmented, vascular, structural, allergic or a combination, and the treatment protocol is built from that diagnosis rather than from a menu.
+              </motion.p>
 
-          <motion.p
-            variants={fadeInUp}
-            className="text-xl md:text-2xl text-taupe max-w-3xl mx-auto mb-12 font-inter"
-          >
-            Bright eyes again, without looking "done".
-            <span className="block text-rose mt-2">
-              Just rested, fresh, and like you.
-            </span>
-          </motion.p>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg text-brown max-w-3xl mx-auto mb-12"
-          >
-            Dark eye circles are not always from lack of sleep. Sometimes it is
-            genetics, pigmentation, hollowness, or eye bags creating shadows. At
-            Nexus Clinic Kuala Lumpur, we treat the real cause first, then
-            choose the safest option for your under-eye area.
-          </motion.p>
-
-          <motion.div
-            variants={fadeInUp}
-            className="flex flex-wrap gap-4 justify-center"
-          >
-            <button className="bg-wine text-light px-8 py-4 rounded-full font-medium hover:bg-rose transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2">
-              Book Consultation <ChevronRight className="w-4 h-4" />
-            </button>
-            <button className="border-2 border-wine text-wine px-8 py-4 rounded-full font-medium hover:bg-wine/5 transition-all duration-300">
-              Learn More
-            </button>
-          </motion.div>
-
-          {/* Trust at a glance */}
-          <motion.div
-            variants={fadeInUp}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 bg-glass backdrop-blur-sm rounded-2xl p-8 border border-white/20"
-          >
-            <div className="flex items-center gap-3">
-              <Award className="w-6 h-6 text-wine shrink-0" />
-              <span className="text-brown font-medium text-left">
-                Doctor-led aesthetic clinic in Kuala Lumpur with
-                consultation-first planning
-              </span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Eye className="w-6 h-6 text-wine shrink-0" />
-              <span className="text-brown font-medium text-left">
-                Under-eye expertise including tear trough (under eye) filler
-                options for hollows and shadowing
-              </span>
-            </div>
-            <div className="flex items-center gap-3">
-              <MapPin className="w-6 h-6 text-wine shrink-0" />
-              <span className="text-brown font-medium text-left">
-                Located at Wisma UOA II, Jalan Pinang, Kuala Lumpur
-              </span>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Why Dark Circles Section */}
-      <section className="px-4 py-24 bg-light">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            variants={fadeInLeft}
-            initial="hidden"
-            whileInView="visible"
-            className="grid md:grid-cols-2 gap-12 items-center"
-          >
-            <div>
-              <h2 className="text-4xl md:text-5xl font-georgia text-brown mb-6">
-                Why dark circles feel so frustrating
-              </h2>
-              <div className="space-y-6 text-taupe text-lg">
-                <p>
-                  You can sleep well and still look tired. You can use eye cream
-                  for months and see no change.
+              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
+                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  Important Clinical Information
                 </p>
-                <p className="text-brown font-medium">
-                  That is because "dark circles" is not one problem. It is a
-                  label people use for several different under-eye issues.
+                <p className="text-taupe font-inter text-sm mt-1">
+                  The under-eye area is the most delicate and highest-risk injection zone on the face. Clinical precision here matters more than anywhere else. All treatments are doctor-performed at Nexus Clinic KL.
                 </p>
-                <p className="text-wine font-medium">
-                  Once we identify what is actually happening under your eyes,
-                  treatment becomes simpler. Also more effective.
-                </p>
+              </motion.div>
+
+              <motion.div 
+                variants={fadeInLeft} 
+                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
+              >
+                <motion.button
+                  variants={fadeInUp}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  Free Assessment
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+                <Whatsapp message="Hi, I'm interested in dark eye circle treatment at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
+              </motion.div>
+            </motion.div>
+
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
+                <Image
+                  src="/images/skin/dark-eye-circle-treatment.webp"
+                  alt="Nexus Clinic Kuala Lumpur - Dark Eye Circle Treatment"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
               </div>
-            </div>
-
-            {/* Single Image Section */}
-            <motion.div
-              variants={scaleIn}
-              className="relative h-125 rounded-3xl overflow-hidden shadow-2xl"
-            >
-              <img
-                src="/images/skin/dark-eye-circle-treatment.webp"
-                alt="Under-eye assessment at Nexus Clinic KL showing detailed eye analysis"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-brown/50 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-light">
-                <p className="text-lg font-georgia">
-                  Professional under-eye assessment identifying pigment,
-                  vessels, hollows, and bags at Nexus Clinic KL
-                </p>
+              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
+                <p className="font-inter font-bold text-brown">Type-Assessed Treatment</p>
+                <p className="font-inter text-sm text-taupe">Over 5,000 procedures completed</p>
               </div>
             </motion.div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </section>
 
-      {/* What are Dark Circles Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="px-4 py-24 bg-cream"
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl md:text-5xl font-georgia text-brown text-center mb-8"
-          >
-            What are dark eye circles, really?
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-xl text-taupe text-center max-w-4xl mx-auto mb-16"
-          >
-            Dark eye circles are a darker looking area under the lower eyelids.
-            It can look brown, grey, blue, or purple depending on the cause and
-            your skin tone. It is usually not a medical problem, but it can be a
-            big confidence problem.
-          </motion.p>
-
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            {/* 1. Pigmented */}
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-light rounded-2xl p-8 shadow-lg"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="bg-rose/10 p-3 rounded-xl">
-                  <Sun className="w-6 h-6 text-rose" />
-                </div>
-                <h3 className="text-2xl font-georgia text-brown">
-                  1. Pigmented dark circles (brown)
-                </h3>
-              </div>
-              <p className="text-taupe">
-                Often from melasma-like pigment, post-inflammatory pigment, sun
-                exposure, or rubbing (especially with allergies or eczema).
-              </p>
-            </motion.div>
-
-            {/* 2. Vascular */}
-            <motion.div
-              variants={fadeInRight}
-              className="bg-light rounded-2xl p-8 shadow-lg"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="bg-wine/10 p-3 rounded-xl">
-                  <Droplets className="w-6 h-6 text-wine" />
-                </div>
-                <h3 className="text-2xl font-georgia text-brown">
-                  2. Vascular dark circles (blue or purple)
-                </h3>
-              </div>
-              <p className="text-taupe">
-                Often from visible blood vessels or thin skin, sometimes worse
-                with fatigue and dehydration.
-              </p>
-            </motion.div>
-
-            {/* 3. Structural */}
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-light rounded-2xl p-8 shadow-lg"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="bg-taupe/10 p-3 rounded-xl">
-                  <Layers className="w-6 h-6 text-taupe" />
-                </div>
-                <h3 className="text-2xl font-georgia text-brown">
-                  3. Structural shadowing (hollows or tear trough)
-                </h3>
-              </div>
-              <p className="text-taupe">
-                The skin may not be "dark". The contour creates a shadow. This
-                is common with genetics, aging, weight loss, and reduced cheek
-                support.
-              </p>
-            </motion.div>
-
-            {/* 4. Eye bags */}
-            <motion.div
-              variants={fadeInRight}
-              className="bg-light rounded-2xl p-8 shadow-lg"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="bg-brown/10 p-3 rounded-xl">
-                  <Eye className="w-6 h-6 text-brown" />
-                </div>
-                <h3 className="text-2xl font-georgia text-brown">
-                  4. Eye bags and puffiness
-                </h3>
-              </div>
-              <p className="text-taupe">
-                Swelling or fat pads create shadows beneath them. The "dark" is
-                often a shadow effect, not pigment.
-              </p>
-            </motion.div>
-          </div>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-lg text-brown mb-12"
-          >
-            Many people have a mix of two or three types. That is why one
-            product rarely solves everything.
-          </motion.p>
-
-          {/* Quick Self-Check */}
-          <motion.div
-            variants={fadeInUp}
-            className="bg-light rounded-3xl p-8 shadow-xl"
-          >
-            <h3 className="text-2xl font-georgia text-brown mb-6 flex items-center gap-2">
-              <Info className="w-6 h-6 text-wine" />
-              Quick self-check: what type do you likely have?
-            </h3>
-            <p className="text-taupe mb-6">
-              This helps you understand what your doctor will look for.
-            </p>
-            <div className="grid md:grid-cols-2 gap-6 text-taupe">
-              <div className="flex items-start gap-3">
-                <span className="text-wine font-bold text-xl">•</span>
-                <p>
-                  If it looks brown and stays brown in every lighting, pigment
-                  is likely part of it.
-                </p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-wine font-bold text-xl">•</span>
-                <p>
-                  If it looks more blue or purple, vessels and thin skin may be
-                  involved.
-                </p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-wine font-bold text-xl">•</span>
-                <p>
-                  If it looks worse under overhead lights, hollows and shadowing
-                  may be a major factor.
-                </p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-wine font-bold text-xl">•</span>
-                <p>
-                  If you wake up puffy and it improves later, fluid retention
-                  and eye bags may be involved.
-                </p>
-              </div>
-            </div>
-            <p className="mt-6 text-sm text-wine">
-              A proper assessment matters because the under-eye is delicate.
-              Nexus Clinic's tear trough page highlights that under-eye filler
-              requires careful assessment, conservative dosing, and safety-first
-              technique.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Causes Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="px-4 py-24 bg-light"
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl md:text-5xl font-georgia text-brown text-center mb-8"
-          >
-            What causes dark circles under the eyes?
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-xl text-taupe mb-8"
-          >
-            There is no single cause. Common causes include:
-          </motion.p>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <motion.div
-              variants={scaleIn}
-              className="bg-cream rounded-xl p-4 text-center text-brown font-medium"
-            >
-              Genetics
-            </motion.div>
-            <motion.div
-              variants={scaleIn}
-              className="bg-cream rounded-xl p-4 text-center text-brown font-medium"
-            >
-              Fatigue
-            </motion.div>
-            <motion.div
-              variants={scaleIn}
-              className="bg-cream rounded-xl p-4 text-center text-brown font-medium"
-            >
-              Rubbing or scratching (often linked to allergies, dermatitis)
-            </motion.div>
-            <motion.div
-              variants={scaleIn}
-              className="bg-cream rounded-xl p-4 text-center text-brown font-medium"
-            >
-              Skin thinning with age
-            </motion.div>
-            <motion.div
-              variants={scaleIn}
-              className="bg-cream rounded-xl p-4 text-center text-brown font-medium"
-            >
-              Changes in skin colour from melasma
-            </motion.div>
-            <motion.div
-              variants={scaleIn}
-              className="bg-cream rounded-xl p-4 text-center text-brown font-medium"
-            >
-              Post-inflammatory pigmentation
-            </motion.div>
-            <motion.div
-              variants={scaleIn}
-              className="bg-cream rounded-xl p-4 text-center text-brown font-medium"
-            >
-              Sun exposure
-            </motion.div>
-          </div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="mt-8 bg-rose/5 border border-rose/20 rounded-2xl p-6"
-          >
-            <p className="text-taupe">
-              <span className="font-bold text-wine">Important:</span> If your
-              dark circles come with persistent one-sided swelling, irritation,
-              or sudden changes, it is worth discussing with a medical
-              professional.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Treatment Options Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="px-4 py-24 bg-cream"
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl md:text-5xl font-georgia text-brown text-center mb-4"
-          >
-            Dark eye circle treatment at Nexus Clinic Kuala Lumpur
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-xl text-taupe mb-12 max-w-3xl mx-auto"
-          >
-            At Nexus Clinic KL, we treat under-eye concerns with a "cause-first"
-            approach. That means we do not push one trendy solution for
-            everyone.
-          </motion.p>
-
-          {/* Step 1 */}
-          <motion.div variants={fadeInLeft} className="mb-16">
-            <h3 className="text-2xl font-georgia text-brown mb-6 flex items-center gap-3">
-              <span className="bg-wine text-light w-10 h-10 rounded-full flex items-center justify-center text-lg">
-                1
-              </span>
-              Step 1: Under-eye diagnosis and plan
-            </h3>
-            <p className="text-taupe mb-4">We assess:</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div className="bg-light rounded-xl p-4 text-brown flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-wine shrink-0" />
-                <span>pigment vs vessels vs hollows vs bags</span>
-              </div>
-              <div className="bg-light rounded-xl p-4 text-brown flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-wine shrink-0" />
-                <span>skin thickness</span>
-              </div>
-              <div className="bg-light rounded-xl p-4 text-brown flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-wine shrink-0" />
-                <span>cheek support (midface volume)</span>
-              </div>
-              <div className="bg-light rounded-xl p-4 text-brown flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-wine shrink-0" />
-                <span>allergy or rubbing history</span>
-              </div>
-              <div className="bg-light rounded-xl p-4 text-brown flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-wine shrink-0" />
-                <span>your downtime comfort level</span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Step 2 */}
-          <motion.div variants={fadeInRight}>
-            <h3 className="text-2xl font-georgia text-brown mb-6 flex items-center gap-3">
-              <span className="bg-wine text-light w-10 h-10 rounded-full flex items-center justify-center text-lg">
-                2
-              </span>
-              Step 2: Choose the right option (or combination)
-            </h3>
-            <p className="text-taupe mb-8">
-              Here are the core options Nexus Clinic highlights across its
-              services.
-            </p>
-
-            <div className="space-y-8">
-              {/* Option 1 - Tear Trough Filler */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light rounded-2xl p-8 shadow-lg"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="bg-wine/10 p-4 rounded-xl">
-                    <Droplet className="w-6 h-6 text-wine" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-2xl font-georgia text-brown mb-3">
-                      Option 1: Tear Trough Filler (Under Eye Filler) for
-                      hollows and shadowing
-                    </h4>
-                    <p className="text-taupe mb-4">
-                      If your "dark circles" are actually shadows from a hollow
-                      tear trough, filler can be one of the most satisfying
-                      fixes.
-                    </p>
-                    <p className="text-taupe mb-4">
-                      Nexus Clinic explains that tear trough filler is designed
-                      to soften the hollow groove between the lower eyelid and
-                      upper cheek. When done correctly, it can reduce the tired
-                      look caused by hollowness and shadowing.
-                    </p>
-
-                    <div className="grid md:grid-cols-3 gap-4 mt-6">
-                      <div className="bg-green-50 rounded-xl p-4">
-                        <p className="font-bold text-brown mb-2 flex items-center gap-1">
-                          <CheckCircle2 className="w-4 h-4 text-green-600" />{" "}
-                          Best for
-                        </p>
-                        <ul className="text-sm text-taupe space-y-1">
-                          <li>• Sunken under-eyes</li>
-                          <li>• Shadowing that looks like dark circles</li>
-                          <li>
-                            • Mild indentation when cheek support is reduced
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="bg-rose/5 rounded-xl p-4">
-                        <p className="font-bold text-brown mb-2 flex items-center gap-1">
-                          <XCircle className="w-4 h-4 text-rose" /> Not ideal
-                          for
-                        </p>
-                        <ul className="text-sm text-taupe space-y-1">
-                          <li>• Prominent eye bags from fat prolapse</li>
-                          <li>• Significant puffiness or fluid retention</li>
-                          <li>• Dark circles caused mainly by pigmentation</li>
-                        </ul>
-                      </div>
-                      <div className="bg-blue-50 rounded-xl p-4">
-                        <p className="font-bold text-brown mb-2">
-                          What it feels like
-                        </p>
-                        <p className="text-sm text-taupe">
-                          Quick. Precise. Usually mild discomfort.
-                        </p>
-                        <p className="font-bold text-brown mt-2">Downtime</p>
-                        <p className="text-sm text-taupe">
-                          Often minimal swelling early on. Some people bruise.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="mt-6 bg-amber-50 border border-amber-200 rounded-xl p-4">
-                      <p className="font-bold text-amber-800 flex items-center gap-2 mb-2">
-                        <AlertCircle className="w-5 h-5" />
-                        Safety note (important)
-                      </p>
-                      <p className="text-sm text-amber-700">
-                        Nexus Clinic states dermal fillers can carry serious
-                        risks if injected into a blood vessel, including skin
-                        injury and rare vision complications. That is why
-                        correct patient selection and experienced injection
-                        matter.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Option 2 - Ultraformer */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light rounded-2xl p-8 shadow-lg"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="bg-wine/10 p-4 rounded-xl">
-                    <Zap className="w-6 h-6 text-wine" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-2xl font-georgia text-brown mb-3">
-                      Option 2: Ultraformer eye bag removal (HIFU-based
-                      tightening)
-                    </h4>
-                    <p className="text-taupe mb-4">
-                      If your under-eye looks puffy or "baggy", tightening and
-                      lifting may help, especially when laxity contributes to
-                      the tired look.
-                    </p>
-                    <p className="text-taupe mb-4">
-                      Nexus Clinic describes Ultraformer eye bag and dark circle
-                      removal as a non-surgical method using high intensity
-                      ultrasound frequency, and calls it non-invasive and
-                      extremely safe.
-                    </p>
-
-                    <div className="grid md:grid-cols-2 gap-4 mt-6">
-                      <div className="bg-green-50 rounded-xl p-4">
-                        <p className="font-bold text-brown mb-2">Best for</p>
-                        <ul className="text-sm text-taupe space-y-1">
-                          <li>• Mild to moderate under-eye laxity</li>
-                          <li>
-                            • Some eye bag concerns where tightening helps
-                          </li>
-                          <li>• People who want a non-surgical option</li>
-                        </ul>
-                      </div>
-                      <div className="bg-blue-50 rounded-xl p-4">
-                        <p className="font-bold text-brown mb-2">Downtime</p>
-                        <p className="text-sm text-taupe">
-                          Usually low. Some people have temporary redness or
-                          tenderness.
-                        </p>
-                        <p className="font-bold text-brown mt-2">
-                          What to expect
-                        </p>
-                        <p className="text-sm text-taupe">
-                          Skin tightening results usually build over weeks as
-                          collagen response develops.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Option 3 - PDRN */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light rounded-2xl p-8 shadow-lg"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="bg-wine/10 p-4 rounded-xl">
-                    <Sparkles className="w-6 h-6 text-wine" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-2xl font-georgia text-brown mb-3">
-                      Option 3: PDRN Eye Rejuvenation injections
-                    </h4>
-                    <p className="text-taupe mb-4">
-                      If your main issue is thin, crepey under-eye skin and
-                      early fine lines, an injectable skin-repair approach may
-                      be considered.
-                    </p>
-                    <p className="text-taupe mb-4">
-                      Nexus Clinic states PDRN Eye Rejuvenation targets the
-                      delicate under-eye area and helps reduce dark circles,
-                      fine lines, and puffiness for a refreshed appearance.
-                    </p>
-
-                    <div className="grid md:grid-cols-2 gap-4 mt-6">
-                      <div className="bg-green-50 rounded-xl p-4">
-                        <p className="font-bold text-brown mb-2">Best for</p>
-                        <ul className="text-sm text-taupe space-y-1">
-                          <li>• Crepey texture</li>
-                          <li>• Fine lines</li>
-                          <li>• Under-eye skin quality goals</li>
-                        </ul>
-                      </div>
-                      <div className="bg-blue-50 rounded-xl p-4">
-                        <p className="font-bold text-brown mb-2">Downtime</p>
-                        <p className="text-sm text-taupe">
-                          Typically mild. Expect small injection bumps for a
-                          short time.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Option 4 - PRP */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light rounded-2xl p-8 shadow-lg"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="bg-wine/10 p-4 rounded-xl">
-                    <Heart className="w-6 h-6 text-wine" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-2xl font-georgia text-brown mb-3">
-                      Option 4: PRP for under-eyes (natural rejuvenation
-                      support)
-                    </h4>
-                    <p className="text-taupe mb-4">
-                      PRP is often chosen by people who prefer a natural,
-                      regenerative approach.
-                    </p>
-                    <p className="text-taupe mb-4">
-                      Nexus Clinic notes PRP for under-eyes may support crepey
-                      texture, tired look, and fine lines, and also states that
-                      if dark circles are mostly genetic or structural
-                      hollowness, they will discuss more suitable options.
-                    </p>
-
-                    <div className="bg-green-50 rounded-xl p-4">
-                      <p className="font-bold text-brown mb-2">Best for</p>
-                      <ul className="text-sm text-taupe space-y-1">
-                        <li>• Texture and fine lines</li>
-                        <li>• Mild under-eye dullness</li>
-                        <li>• People who want gradual improvement</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Option 5 - Carboxy */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light rounded-2xl p-8 shadow-lg"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="bg-wine/10 p-4 rounded-xl">
-                    <Droplet className="w-6 h-6 text-wine" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-2xl font-georgia text-brown mb-3">
-                      Option 5: Carboxy therapy (CO2 infusion approach)
-                    </h4>
-                    <p className="text-taupe mb-2">
-                      For some patients, carboxy therapy is considered as part
-                      of an under-eye plan.
-                    </p>
-                    <p className="text-taupe">
-                      Nexus Clinic states carboxytherapy is useful for several
-                      skin conditions including dark under-eye circles.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Option 6 - Laser */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light rounded-2xl p-8 shadow-lg"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="bg-wine/10 p-4 rounded-xl">
-                    <Sun className="w-6 h-6 text-wine" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-2xl font-georgia text-brown mb-3">
-                      Option 6: Laser options for specific types of dark circles
-                    </h4>
-                    <p className="text-taupe mb-4">
-                      Laser is not "the answer" for every dark circle. But it
-                      can help when pigment and skin quality are key drivers.
-                    </p>
-                    <p className="text-taupe mb-4">
-                      Competitors in KL commonly highlight laser choices for
-                      dark circles:
-                    </p>
-                    <ul className="text-taupe space-y-2 mb-4">
-                      <li className="flex items-start gap-2">
-                        <span className="text-wine">•</span> Kaiteki Clinic
-                        lists Pro Yellow Laser and PicoSure as options for dark
-                        circles, positioning them for pigmentation and collagen
-                        support.
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-wine">•</span> Dr Chong Clinic's
-                        dark circles article mentions laser options including
-                        Pico Laser and dual yellow light laser therapy for
-                        discoloration and brightening the under-eye area.
-                      </li>
-                    </ul>
-                    <p className="text-taupe">
-                      At Nexus Clinic KL, lasers are also positioned across
-                      pigmentation and rejuvenation services, so your doctor may
-                      recommend a laser-based approach if your under-eye concern
-                      is mainly pigment or tone.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-
-          {/* Best Treatment Summary */}
-          <motion.div
-            variants={fadeInUp}
-            className="mt-16 bg-wine text-light rounded-3xl p-8"
-          >
-            <h3 className="text-3xl font-georgia mb-6">
-              What treatment is "best" for dark circles?
-            </h3>
-            <p className="text-xl mb-6">It depends on the cause.</p>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <p className="font-bold text-xl mb-2">
-                  • Hollows and shadowing:
-                </p>
-                <p className="mb-4">
-                  tear trough filler often makes the biggest visible difference.
-                </p>
-
-                <p className="font-bold text-xl mb-2">
-                  • Puffiness and laxity:
-                </p>
-                <p className="mb-4">
-                  Ultraformer-style tightening may be considered.
-                </p>
-              </div>
-              <div>
-                <p className="font-bold text-xl mb-2">• Thin crepey skin:</p>
-                <p className="mb-4">
-                  PDRN or PRP can help improve skin quality over time.
-                </p>
-
-                <p className="font-bold text-xl mb-2">• Pigmentation:</p>
-                <p>
-                  laser and topical plans can help, but require strict sun
-                  protection.
-                </p>
-              </div>
-            </div>
-            <p className="mt-6 text-2xl text-cream font-medium">
-              The strongest results often come from combining 2 approaches. For
-              example, cheek support plus tear trough refinement, followed by
-              skin quality support.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      <SectionBeforeAfter transformations={transformations} />
-
-      {/* Pros and Cons Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="px-4 py-24 bg-light"
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl md:text-5xl font-georgia text-brown text-center mb-4"
-          >
-            Pros and cons (honest version)
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-green-50 rounded-3xl p-8"
-            >
-              <h3 className="text-2xl font-georgia text-brown mb-6 flex items-center gap-2">
-                <CheckCircle2 className="w-6 h-6 text-green-600" />
-                Pros
-              </h3>
-              <ul className="space-y-4 text-taupe">
-                <li className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold text-xl">•</span>
-                  <span>
-                    Treatments can be tailored to the actual cause, not
-                    guesswork.
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold text-xl">•</span>
-                  <span>
-                    Many options are non-surgical with minimal downtime.
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold text-xl">•</span>
-                  <span>
-                    Structural shadowing can improve dramatically with the right
-                    filler strategy.
-                  </span>
-                </li>
-              </ul>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="bg-rose/5 rounded-3xl p-8"
-            >
-              <h3 className="text-2xl font-georgia text-brown mb-6 flex items-center gap-2">
-                <XCircle className="w-6 h-6 text-rose" />
-                Cons
-              </h3>
-              <ul className="space-y-4 text-taupe">
-                <li className="flex items-start gap-3">
-                  <span className="text-rose font-bold text-xl">•</span>
-                  <span>
-                    Dark circles often need a plan, not a single session.
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-rose font-bold text-xl">•</span>
-                  <span>
-                    Pigmentation-based circles can return if sun and rubbing
-                    triggers continue.
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-rose font-bold text-xl">•</span>
-                  <span>
-                    Injectables carry risks, especially in the under-eye area,
-                    so provider skill matters.
-                  </span>
-                </li>
-              </ul>
-            </motion.div>
-          </div>
-
-          {/* Side Effects */}
-          <motion.div variants={fadeInUp}>
-            <h3 className="text-3xl font-georgia text-brown mb-6">
-              Side effects and safety
-            </h3>
-            <p className="text-taupe mb-4">
-              Side effects depend on the treatment selected.
-            </p>
-
-            <div className="bg-cream rounded-2xl p-8 mb-6">
-              <p className="font-bold text-brown text-xl mb-4">
-                Common temporary effects:
-              </p>
-              <div className="flex flex-wrap gap-3 mb-6">
-                <span className="bg-light px-6 py-3 rounded-full text-taupe text-sm font-medium">
-                  Redness or swelling
-                </span>
-                <span className="bg-light px-6 py-3 rounded-full text-taupe text-sm font-medium">
-                  Mild bruising (especially with injectables)
-                </span>
-                <span className="bg-light px-6 py-3 rounded-full text-taupe text-sm font-medium">
-                  Tenderness
-                </span>
-              </div>
-            </div>
-
-            <div className="border-l-4 border-wine bg-wine/5 p-8 rounded-r-2xl">
-              <p className="font-bold text-wine text-xl mb-3">
-                Important risk note for under-eye fillers
-              </p>
-              <p className="text-taupe text-lg">
-                Nexus Clinic explicitly warns of serious risks if filler is
-                injected into a blood vessel, including skin injury and rare
-                vision complications. Choose a doctor-led clinic and a
-                conservative technique.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Cost Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="px-4 py-24 bg-cream"
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl md:text-5xl font-georgia text-brown text-center mb-4"
-          >
-            Cost of dark eye circle treatment in Malaysia (KL guide)
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-xl text-taupe mb-12"
-          >
-            Cost varies based on what you actually need.
-          </motion.p>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-light rounded-3xl p-8 shadow-xl"
-          >
-            <h3 className="text-2xl font-georgia text-brown mb-6">
-              Published price references from Nexus Clinic
-            </h3>
-
-            <div className="space-y-4 mb-8">
-              <div className="flex justify-between items-center pb-3 border-b border-cream">
-                <span className="text-taupe text-lg">
-                  Nexus Clinic states dermal fillers start from
-                </span>
-                <span className="text-brown font-bold text-xl">
-                  RM 1,200 per syringe
-                </span>
-              </div>
-              <div className="flex justify-between items-center pb-3 border-b border-cream">
-                <span className="text-taupe text-lg">
-                  Nexus Clinic's 2026 guide references a filler cost range in
-                  Malaysia of
-                </span>
-                <span className="text-brown font-bold text-xl">
-                  RM 1,200 to RM 3,500 per syringe
-                </span>
-              </div>
-              <div className="flex justify-between items-center pb-3 border-b border-cream">
-                <span className="text-taupe text-lg">
-                  Nexus Clinic also lists typical ranges on an anti-aging
-                  pricing page:
-                </span>
-                <span className="text-brown font-bold text-xl">
-                  Fillers RM 1,200 - RM 2,200 per syringe
-                </span>
-              </div>
-              <div className="flex justify-between items-center pb-3 border-b border-cream">
-                <span className="text-taupe text-lg">HIFU face lift</span>
-                <span className="text-brown font-bold text-xl">
-                  RM 1,500 - RM 3,500 per session
-                </span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-taupe text-lg">PRP therapy</span>
-                <span className="text-brown font-bold text-xl">
-                  RM 800 - RM 1,800 per session
-                </span>
-              </div>
-            </div>
-
-            <div className="bg-wine/5 p-8 rounded-xl">
-              <h4 className="font-georgia text-brown text-2xl mb-4">
-                What affects your final cost
-              </h4>
-              <ul className="grid md:grid-cols-2 gap-4 text-taupe text-lg">
-                <li className="flex items-center gap-3">
-                  <span className="text-wine font-bold text-xl">•</span> Pigment
-                  vs hollow vs eye bag combination
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="text-wine font-bold text-xl">•</span> How
-                  many sessions are needed
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="text-wine font-bold text-xl">•</span> Whether
-                  cheek support is included with tear trough work
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="text-wine font-bold text-xl">•</span> Product
-                  choice and dose
-                </li>
-              </ul>
-              <p className="mt-6 text-lg text-wine font-medium">
-                A consultation saves money long-term because it prevents you
-                from paying for the wrong treatment repeatedly.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Before Appointment */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="px-4 py-24 bg-cream"
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl md:text-5xl font-georgia text-brown text-center mb-12"
-          >
-            Before your appointment (small things that matter)
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-light rounded-xl p-6 flex items-start gap-3 shadow-md"
-            >
-              <CheckCircle2 className="w-6 h-6 text-wine shrink-0 mt-1" />
-              <span className="text-taupe text-lg">
-                Bring a list of what you have tried (creams, supplements,
-                facials, lasers)
-              </span>
-            </motion.div>
-            <motion.div
-              variants={fadeInRight}
-              className="bg-light rounded-xl p-6 flex items-start gap-3 shadow-md"
-            >
-              <CheckCircle2 className="w-6 h-6 text-wine shrink-0 mt-1" />
-              <span className="text-taupe text-lg">
-                Tell your doctor if you rub your eyes often or have allergies
-              </span>
-            </motion.div>
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-light rounded-xl p-6 flex items-start gap-3 shadow-md"
-            >
-              <CheckCircle2 className="w-6 h-6 text-wine shrink-0 mt-1" />
-              <span className="text-taupe text-lg">
-                Avoid strong actives around the eyes before the visit if you are
-                irritated
-              </span>
-            </motion.div>
-            <motion.div
-              variants={fadeInRight}
-              className="bg-light rounded-xl p-6 flex items-start gap-3 shadow-md"
-            >
-              <CheckCircle2 className="w-6 h-6 text-wine shrink-0 mt-1" />
-              <span className="text-taupe text-lg">
-                Expect photos. They help track change realistically.
-              </span>
-            </motion.div>
-          </div>
-
-          {/* Aftercare */}
-          <motion.div variants={fadeInUp}>
-            <h3 className="text-3xl font-georgia text-brown mb-6">
-              Aftercare basics (keep results looking clean)
-            </h3>
-            <p className="text-taupe text-lg mb-4">
-              Your doctor will tailor this by treatment type. General guidance:
-            </p>
-            <div className="bg-light rounded-2xl p-8">
-              <ul className="space-y-4 text-taupe text-lg">
-                <li className="flex items-start gap-3">
-                  <span className="text-wine font-bold text-xl">•</span>
-                  Cold compress can help reduce swelling and visible vessels
-                  temporarily.
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-wine font-bold text-xl">•</span>
-                  Avoid rubbing the area. Rubbing can worsen pigment over time.
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-wine font-bold text-xl">•</span>
-                  Sun protection matters even under the eyes, especially if
-                  pigment is involved.
-                </li>
-              </ul>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* FAQ Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="px-4 py-24 bg-light"
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl md:text-5xl font-georgia text-brown text-center mb-12"
-          >
-            People Also Ask FAQs
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* FAQ 1 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-xl p-6 hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-brown font-georgia font-bold text-lg mb-3 flex items-start gap-2">
-                <span className="text-wine">Q:</span>
-                What causes dark circles under the eyes?
-              </h3>
-              <p className="text-taupe flex items-start gap-2">
-                <span className="text-wine font-bold">A:</span>
-                Common causes include genetics, fatigue, rubbing or scratching,
-                skin thinning with age, pigment changes like melasma or
-                post-inflammatory hyperpigmentation, and sun exposure.
-              </p>
-            </motion.div>
-
-            {/* FAQ 2 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-xl p-6 hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-brown font-georgia font-bold text-lg mb-3 flex items-start gap-2">
-                <span className="text-wine">Q:</span>
-                How do I get rid of dark circles under my eyes?
-              </h3>
-              <p className="text-taupe flex items-start gap-2">
-                <span className="text-wine font-bold">A:</span>
-                It depends on the cause. Home methods like cold compresses and
-                better sleep may help temporarily, while medical options can
-                include chemical peels, lasers, and tissue fillers for hollows.
-              </p>
-            </motion.div>
-
-            {/* FAQ 3 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-xl p-6 hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-brown font-georgia font-bold text-lg mb-3 flex items-start gap-2">
-                <span className="text-wine">Q:</span>
-                Are dark circles under the eyes a sign of a health problem?
-              </h3>
-              <p className="text-taupe flex items-start gap-2">
-                <span className="text-wine font-bold">A:</span>
-                Often no. Cleveland Clinic notes dark circles usually are not a
-                sign of a medical problem, though many people treat them for
-                cosmetic reasons.
-              </p>
-            </motion.div>
-
-            {/* FAQ 4 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-xl p-6 hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-brown font-georgia font-bold text-lg mb-3 flex items-start gap-2">
-                <span className="text-wine">Q:</span>
-                Can lack of sleep cause dark circles?
-              </h3>
-              <p className="text-taupe flex items-start gap-2">
-                <span className="text-wine font-bold">A:</span>
-                Yes, fatigue is a known contributor and can make the under-eye
-                area look darker or more hollow.
-              </p>
-            </motion.div>
-
-            {/* FAQ 5 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-xl p-6 hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-brown font-georgia font-bold text-lg mb-3 flex items-start gap-2">
-                <span className="text-wine">Q:</span>
-                Do allergies cause dark circles?
-              </h3>
-              <p className="text-taupe flex items-start gap-2">
-                <span className="text-wine font-bold">A:</span>
-                They can. A medical review notes infra-orbital dark circles are
-                more common in allergic conditions, and rubbing habits can lead
-                to post-inflammatory hyperpigmentation around the eyes.
-              </p>
-            </motion.div>
-
-            {/* FAQ 6 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-xl p-6 hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-brown font-georgia font-bold text-lg mb-3 flex items-start gap-2">
-                <span className="text-wine">Q:</span>
-                Does tear trough filler remove dark circles?
-              </h3>
-              <p className="text-taupe flex items-start gap-2">
-                <span className="text-wine font-bold">A:</span>
-                It can reduce the "dark" look when the problem is shadowing from
-                hollowness. Nexus Clinic also explains filler does not remove
-                pigmentation and is not ideal when pigmentation is the main
-                cause.
-              </p>
-            </motion.div>
-
-            {/* FAQ 7 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-xl p-6 hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-brown font-georgia font-bold text-lg mb-3 flex items-start gap-2">
-                <span className="text-wine">Q:</span>
-                What is the best treatment for under-eye hollows in Kuala
-                Lumpur?
-              </h3>
-              <p className="text-taupe flex items-start gap-2">
-                <span className="text-wine font-bold">A:</span>
-                For many people with structural hollows, under-eye filler (tear
-                trough filler) is a common approach because it smooths the
-                eyelid-to-cheek transition and softens shadowing.
-              </p>
-            </motion.div>
-
-            {/* FAQ 8 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-xl p-6 hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-brown font-georgia font-bold text-lg mb-3 flex items-start gap-2">
-                <span className="text-wine">Q:</span>
-                What treatments help dark circles caused by pigmentation?
-              </h3>
-              <p className="text-taupe flex items-start gap-2">
-                <span className="text-wine font-bold">A:</span>
-                Options can include topical brightening strategies and selected
-                laser approaches, depending on skin type and pigment depth.
-                Competitor clinics commonly mention Pico Laser and yellow light
-                lasers for discoloration and brightening.
-              </p>
-            </motion.div>
-
-            {/* FAQ 9 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-xl p-6 hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-brown font-georgia font-bold text-lg mb-3 flex items-start gap-2">
-                <span className="text-wine">Q:</span>
-                How much does dark eye circle treatment cost in Malaysia?
-              </h3>
-              <p className="text-taupe flex items-start gap-2">
-                <span className="text-wine font-bold">A:</span>
-                It depends on the treatment. Nexus Clinic states dermal fillers
-                start from RM 1,200 per syringe, and also publishes typical
-                ranges for fillers, HIFU, and PRP on its pricing pages.
-              </p>
-            </motion.div>
-
-            {/* FAQ 10 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-xl p-6 hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-brown font-georgia font-bold text-lg mb-3 flex items-start gap-2">
-                <span className="text-wine">Q:</span>
-                Can dark circles be removed permanently?
-              </h3>
-              <p className="text-taupe flex items-start gap-2">
-                <span className="text-wine font-bold">A:</span>
-                Sometimes you can significantly improve them, but "permanent"
-                depends on the cause. Healthline notes dark circles can be
-                linked to fatigue or aging and discusses both home remedies and
-                professional treatments, with results varying by individual
-                factors.
-              </p>
-            </motion.div>
-
-            {/* FAQ 11 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-xl p-6 hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-brown font-georgia font-bold text-lg mb-3 flex items-start gap-2">
-                <span className="text-wine">Q:</span>
-                What's the fastest way to reduce dark circles before an event?
-              </h3>
-              <p className="text-taupe flex items-start gap-2">
-                <span className="text-wine font-bold">A:</span>A cold compress
-                can temporarily shrink visible vessels and reduce swelling
-                appearance. Makeup camouflage can also help.
-              </p>
-            </motion.div>
-
-            {/* FAQ 12 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-xl p-6 hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-brown font-georgia font-bold text-lg mb-3 flex items-start gap-2">
-                <span className="text-wine">Q:</span>
-                When should I see a doctor about dark circles?
-              </h3>
-              <p className="text-taupe flex items-start gap-2">
-                <span className="text-wine font-bold">A:</span>
-                If there is sudden onset, one-sided swelling, pain, irritation,
-                or other worrying changes, it is sensible to get a medical
-                opinion.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* CTA Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="px-4 py-24 bg-wine"
-      >
+      {/* Trust Section */}
+      <section className="py-12 px-4 bg-light">
         <motion.div
           variants={fadeInUp}
-          className="max-w-4xl mx-auto text-center text-light"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
         >
-          <h2 className="text-4xl md:text-5xl font-georgia mb-6">
-            CTA (Nexus Clinic Kuala Lumpur)
-          </h2>
-          <p className="text-xl text-cream mb-12 leading-relaxed">
-            If you want your eyes to look rested in real life, not only in
-            selfies, start with a diagnosis-led consultation at Nexus Clinic
-            Kuala Lumpur. We will identify whether your dark circles are
-            pigment, vessels, hollows, or eye bags, then build a plan that fits
-            your skin and your comfort level.
-          </p>
-          <button className="bg-light text-wine px-12 py-4 rounded-full font-medium text-lg hover:bg-cream transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
-            Schedule Your Consultation Today
-          </button>
+          <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-taupe/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <Award className="w-6 h-6 text-wine" />
+                </div>
+                <h2 className="font-georgia text-2xl md:text-3xl text-brown">Trust at a glance</h2>
+              </div>
+              <div className="hidden sm:block w-px h-8 bg-taupe/20" />
+              <p className="text-taupe font-inter text-sm">Nexus Clinic Kuala Lumpur — Excellence in Aesthetic Medicine</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-4 border-y border-taupe/10">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Award className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Experience</p>
+                  <p className="font-georgia text-brown font-bold text-lg">Over 15 Years</p>
+                  <p className="font-inter text-taupe text-xs">Combined clinical experience</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Location</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Wisma UOA II, Jalan Pinang</p>
+                  <p className="font-inter text-taupe text-xs">KLCC, 50450 Kuala Lumpur</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Opening Hours</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Monday - Saturday</p>
+                  <p className="font-inter text-taupe text-xs">9:00am – 6:00pm | Closed Sundays & PH</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Shield className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">MOH Approved</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">All products and devices MOH-approved</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Activity className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">Doctor-Only Treatment</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">LCP-certified doctors perform every procedure</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">5,000+ Procedures</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Extensive experience in periorbital treatments</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-taupe/10">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Tear Trough Filler (Cannula Technique)</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Pico Laser + Rejuran I + Sylfirm X</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Hyaluronidase On Hand for Safety</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </motion.div>
-      </motion.section>
+      </section>
+
+      {/* Treatment Overview Section */}
+      <section className="py-16 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">Dark Eye Circle Treatment at a Glance</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">Cause-first approach for all dark circle types</p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Eye, label: "Treatments Available", value: "Tear Trough Filler, Pico Laser, Rejuran I, Sylfirm X" },
+              { icon: Clock, label: "Session Time", value: "20 to 45 minutes depending on modality" },
+              { icon: Heart, label: "Downtime", value: "Zero to 48 hours mild swelling" },
+              { icon: Activity, label: "Results", value: "Immediate (filler) to progressive (laser)" },
+            ].map((item, idx) => (
+              <div key={idx} className="bg-light p-5 rounded-xl border border-taupe/10 shadow-sm">
+                <item.icon className="w-8 h-8 text-wine mb-3" />
+                <p className="font-inter text-sm text-taupe">{item.label}</p>
+                <p className="font-georgia text-md text-brown font-semibold">{item.value}</p>
+              </div>
+            ))}
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 rounded-2xl p-6 border border-wine/10">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div>
+                <p className="font-inter text-sm text-taupe">Sessions Required</p>
+                <p className="font-georgia text-brown font-semibold">Filler: 1 session; Laser: 3 to 5; Rejuran I: 2 to 3</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Suitable For</p>
+                <p className="font-georgia text-brown font-semibold">All skin types; men and women</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Anaesthesia</p>
+                <p className="font-georgia text-brown">Topical numbing cream; no general anaesthesia</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">MOH Approved</p>
+                <p className="font-georgia text-brown">Yes. All products and devices MOH-approved</p>
+              </div>
+            </div>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-8">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor About Your Dark Circles | Free Under-Eye Assessment
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Dark Circle Type-to-Treatment Decision Matrix Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Dark Circle Type-to-Treatment Decision Matrix</h2>
+            <p className="text-taupe font-inter">Identify your dark circle type before choosing treatment</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Dark Circle Type</th>
+                  <th className="p-4 text-left font-georgia">Appearance</th>
+                  <th className="p-4 text-left font-georgia">At-Home Test</th>
+                  <th className="p-4 text-left font-georgia">Primary Cause</th>
+                  <th className="p-4 text-left font-georgia">First-Line Treatment</th>
+                </tr>
+              </thead>
+              <tbody>
+                {darkCircleTypes.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.type}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.appearance}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.test}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.cause}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.treatment}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-brown font-inter text-sm">
+              The stretch test and press test are standard bedside clinical assessments. Patients who have received multiple rounds of Pico Laser for dark circles that are actually structural have wasted investment because laser pigment fragmentation does not address the shadow cast by a hollow tear trough.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Allergic Shiners Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-8">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The Most Overlooked Cause of Dark Eye Circles</h2>
+            <p className="text-taupe font-inter">Allergic rhinitis affects 30 to 40% of Malaysians</p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl border-l-4 border-wine">
+            <p className="text-brown font-inter mb-3">Allergic rhinitis is one of the most prevalent chronic conditions in Malaysia, yet it is entirely absent from most aesthetic clinic's dark eye circle treatment pages.</p>
+            <p className="text-taupe font-inter">The mechanism is specific: when allergic rhinitis causes nasal congestion, venous blood return from the periorbital area is impaired. Blood pools in the small periorbital veins and capillaries beneath the thin under-eye skin, producing the bluish or purplish bilateral dark shadow called allergic shiners.</p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 grid md:grid-cols-2 gap-4">
+            <div className="bg-wine/5 p-4 rounded-xl">
+              <p className="font-semibold text-brown">Key diagnostic clues:</p>
+              <ul className="mt-2 space-y-1 text-taupe text-sm">
+                <li>• Bilateral, symmetrical presentation</li>
+                <li>• Fluctuation with allergy seasons or dust exposure</li>
+                <li>• Worse in morning, improves through day</li>
+                <li>• Associated with nasal congestion</li>
+              </ul>
+            </div>
+            <div className="bg-wine/5 p-4 rounded-xl">
+              <p className="font-semibold text-brown">Treatment approach:</p>
+              <ul className="mt-2 space-y-1 text-taupe text-sm">
+                <li>• Address allergy trigger first</li>
+                <li>• Sylfirm X for vascular component</li>
+                <li>• Rejuran I for periorbital tissue strengthening</li>
+                <li>• Refer to GP for allergy management</li>
+              </ul>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Combination Protocol Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Structured Dark Circle Combination Protocol</h2>
+            <p className="text-taupe font-inter">Sequencing matters as much as the treatments themselves</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Dark Circle Type</th>
+                  <th className="p-4 text-left font-georgia">Phase 1 Treatment</th>
+                  <th className="p-4 text-left font-georgia">Phase 2 Treatment (4 to 8 weeks later)</th>
+                  <th className="p-4 text-left font-georgia">Maintenance</th>
+                </tr>
+              </thead>
+              <tbody>
+                {combinationProtocols.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.type}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.phase1}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.phase2}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.maintenance}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-brown font-inter text-sm">
+              A critical sequencing point: tear trough filler is always performed before Pico Laser in mixed cases. Restoring structural volume changes the skin's surface geometry, reducing apparent darkness even before pigmentation treatment begins.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Treatment Longevity Slider Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">Treatment Longevity & Results Timeline</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">What to expect and how long results last</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-stretch">
+            <motion.div
+              variants={fadeInLeft}
+              className="bg-light p-8 rounded-2xl border border-taupe/20 shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <TrendingUp className="w-6 h-6 text-wine" />
+                </div>
+                <h3 className="font-georgia text-2xl text-brown">Factors Affecting Longevity</h3>
+              </div>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Treatment type (filler, laser, or polynucleotide)</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Individual metabolic rate affects filler resorption</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Sun exposure and UV protection compliance</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Underlying allergy management (for allergic shiners)</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Maintenance schedule adherence</span>
+                </li>
+              </ul>
+              <div className="mt-8 p-4 bg-wine/5 rounded-xl">
+                <p className="text-brown font-inter text-sm text-center">
+                  Most patients achieve optimal results with a structured combination protocol followed by regular maintenance sessions.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInRight}
+              className="bg-wine p-8 rounded-2xl text-white shadow-xl hover:shadow-2xl transition-shadow"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                  <Clock className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="font-georgia text-2xl font-bold">Treatment Longevity</h3>
+              </div>
+              
+              <div className="space-y-8">
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Tear Trough Filler</span>
+                    <span className="font-georgia text-2xl font-bold text-white">12 to 18 months</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "70%" }}
+                      transition={{ duration: 1, delay: 0.2 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Some patients retain results up to 24 months</p>
+                </div>
+                
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Rejuran I (Polynucleotide)</span>
+                    <span className="font-georgia text-2xl font-bold text-white">6 to 9 months</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "50%" }}
+                      transition={{ duration: 1, delay: 0.4 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Maintenance sessions every 6 months recommended</p>
+                </div>
+                
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Pico Laser (Pigmentation)</span>
+                    <span className="font-georgia text-2xl font-bold text-white">3 to 6 months</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "35%" }}
+                      transition={{ duration: 1, delay: 0.6 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Quarterly toning sessions maintain brightness</p>
+                </div>
+
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Sylfirm X (Vascular)</span>
+                    <span className="font-georgia text-2xl font-bold text-white">9 to 12 months</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "55%" }}
+                      transition={{ duration: 1, delay: 0.8 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Annual booster sessions for vessel control</p>
+                </div>
+              </div>
+              
+              <div className="mt-8 pt-4 border-t border-white/20">
+                <p className="text-white/80 text-sm text-center">
+                  Combination protocols produce longer-lasting results than single-modality approaches
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.div variants={fadeInUp} className="mt-8 text-center">
+            <p className="text-taupe font-inter text-sm">
+              ✨ Structural correction with filler must precede pigmentation laser in mixed cases. This sequencing prevents over-treatment and is a clinical practice distinction unique to Nexus Clinic KL.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Treatment Process Steps */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The Dark Eye Circle Treatment Process</h2>
+            <p className="text-taupe font-inter">Step by step at Nexus Clinic KL</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { step: "01", title: "Clinical Dark Circle Assessment", desc: "Doctor examines under-eye area under specialised lighting, performs stretch and press tests, assesses structural hollowing, reviews allergy history." },
+              { step: "02", title: "Candidacy & Treatment Planning", desc: "Doctor confirms treatment candidacy, explains expected outcome, volume range, risk profile specific to your anatomy, and session requirements." },
+              { step: "03", title: "Treatment Session", desc: "Topical numbing cream applied. Doctor performs filler (cannula technique), Pico Laser, Rejuran I, or Sylfirm X based on assessment." },
+              { step: "04", title: "Aftercare & Follow-Up", desc: "Cold compresses applied. Written aftercare provided. Review appointment at 2 to 4 weeks to assess result and determine if touch-up needed." },
+            ].map((item, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="text-center">
+                <div className="w-14 h-14 bg-wine rounded-full flex items-center justify-center text-light font-georgia text-xl mx-auto mb-4 shadow-md">
+                  {item.step}
+                </div>
+                <h3 className="font-georgia text-lg text-brown mb-2 font-semibold">{item.title}</h3>
+                <p className="text-taupe font-inter text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-10">
+            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+              Book Your Free Assessment
+              <ArrowRight className="w-5 h-5" />
+            </button>
+            <p className="text-taupe text-sm mt-3">Doctor-assessed, cause-first dark circle treatment</p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Dark Eye Circle Treatment Cost in Malaysia 2026</h2>
+            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Treatment</th>
+                  <th className="p-4 text-left font-georgia">Best For</th>
+                  <th className="p-4 text-left font-georgia">Sessions</th>
+                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pricingTiers.map((tier, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10">
+                    <td className="p-4 font-inter font-semibold text-brown">{tier.treatment}</td>
+                    <td className="p-4 font-inter text-taupe text-sm">{tier.bestFor}</td>
+                    <td className="p-4 font-inter text-taupe text-sm">{tier.sessions}</td>
+                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr className="bg-wine/5">
+                  <td colSpan={4} className="p-4 text-taupe font-inter text-sm italic">
+                    Combination programmes that pair two or more modalities offer the most comprehensive improvement for mixed and complex dark circle presentations. All pricing disclosed before any procedure is booked.
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Confirm Your Dark Circle Treatment Pricing
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Before After Section */}
+      <SectionBeforeAfter transformations={transformations} />
+
+      {/* FAQ Section */}
+      <FAQ data={faqData} />
+      
+      {/* CTA Section */}
+      <section className="py-20 px-4 bg-wine">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-4xl text-center"
+        >
+          <motion.div variants={fadeInUp} className="space-y-6">
+            <h2 className="font-georgia text-3xl md:text-5xl text-light">
+              Refresh Your Under-Eye Area at Nexus Clinic KL
+            </h2>
+            <p className="text-xl text-cream font-inter max-w-2xl mx-auto">
+              Dark circles are one of the most complex presentations in aesthetic medicine because the same visual symptom can arise from four entirely different causes. Getting the diagnosis right before selecting the treatment is what separates results that hold from results that disappoint.
+            </p>
+            <p className="text-cream/90 font-inter">
+              Our licensed aesthetic doctors have performed over 5,000 aesthetic procedures, bring more than 15 years of combined experience in treating Malaysian patients to every consultation, and work exclusively with MOH-approved products and medical-grade devices. All procedures in the periorbital zone are doctor-performed.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                Free Assessment
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+              <Whatsapp 
+                message="Hi, I'd like to book a consultation for dark eye circle treatment at Nexus Clinic KL. Please let me know available slots."
+                variant="light"
+              />
+            </div>
+            <p className="text-cream/80 font-inter text-sm">
+              Limited slots available | Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
+            </p>
+            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
+              <a href="#" className="hover:text-cream transition-colors">Call: 016-7025699</a>
+              <span>•</span>
+              <a href="#" className="hover:text-cream transition-colors">WhatsApp: 03-21635699</a>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
     </div>
   );
-};
-
-export default DarkEyeCircleLanding;
+}

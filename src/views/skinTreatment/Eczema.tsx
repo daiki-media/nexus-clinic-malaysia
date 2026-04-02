@@ -1,33 +1,87 @@
 "use client";
-
 import { motion } from "framer-motion";
 import {
   Sparkles,
-  Car,
-  CheckCircle,
-  XCircle,
-  Shield,
+  Award,
   MapPin,
-  Target,
-  Home as HomeIcon,
-  ThermometerIcon,
-  DropletIcon,
-  WindIcon,
-  ShowerHead,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Heart,
+  Shield,
+  ArrowRight,
+  AlertCircle,
+  Activity,
+  Zap,
+  Eye,
+  AlertTriangle,
+  Droplet,
+  Thermometer,
+  Wind,
+  Home,
+  Car,
 } from "lucide-react";
 import {
-  fadeInUp,
   staggerContainer,
   fadeInLeft,
   fadeInRight,
+  fadeInUp,
   scaleIn,
 } from "../../lib/animations";
-import { useTranslation } from "@/src/i18n/client";
-import { fallbackLng } from "@/src/i18n/settings";
+import FAQ from "../../components/FAQ";
+import Whatsapp from "../../components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
+import Image from "next/image";
 
-const EczemaLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "skin/eczema");
+interface EczemaTreatmentProps {
+  locale: string;
+}
+
+export default function EczemaTreatment({ locale }: EczemaTreatmentProps) {
+  const severityFramework = [
+    { severity: "Mild", signs: "Small dry patches; occasional itch; minimal sleep disruption; no infection; skin not thickened", scorad: "SCORAD below 25; limited areas affected", treatment: "Twice-daily prescription emollient; mild or moderate potency topical corticosteroid applied to flare patches; trigger identification", escalate: "If not clearing within 2 to 3 weeks or spreading" },
+    { severity: "Moderate", signs: "Widespread redness; persistent night-time itch; frequent flares; skin thickening; some sleep disruption", scorad: "SCORAD 25 to 50; multiple affected areas", treatment: "Moderate to potent topical corticosteroid for flares; topical calcineurin inhibitor for face and flexures; proactive maintenance twice weekly; antihistamine", escalate: "If uncontrolled after 4 to 6 weeks of combined topical therapy" },
+    { severity: "Severe", signs: "Constant itch; widespread inflamed raw skin; weeping or crusted lesions; severely disrupted sleep; risk of secondary infection", scorad: "SCORAD above 50; widespread involvement", treatment: "Potent topical corticosteroid for acute flare; systemic antihistamine; short course oral steroid considered; referral for phototherapy or biologics", escalate: "Urgent review if secondary infection suspected; refer dermatologist if inadequate response" },
+    { severity: "Infected Eczema", signs: "Yellow crust or weeping; expanding lesion despite steroid; fever or unwell; hot and painful patches", scorad: "Clinical infection indicators present", treatment: "Oral or topical antibiotic; topical fusidic acid for localised infection; antifungal if fungal co-infection suspected", escalate: "Seek review within 24 to 48 hours if spreading rapidly or patient unwell" },
+  ];
+
+  const malaysiaTriggers = [
+    { trigger: "House Dust Mites", whyWorse: "Malaysia's year-round humidity above 70% creates ideal breeding conditions; sensitisation rate 60 to 80% in Malaysia vs under 20% in temperate climates", evidence: "PubMed review confirms tropical countries like Malaysia are becoming a hotspot for HDM allergy; HDM allergens are the leading cause of atopic dermatitis flares", management: "Dust mite-proof mattress and pillow covers; wash bedding weekly at 60C; remove carpets and fabric sofas; use HEPA air purifier" },
+    { trigger: "Sweat and Humidity", whyWorse: "Prolonged sweat contact with eczematous skin causes histamine release and itch; KL's average relative humidity of 80 to 90% means continuous skin moisture loading", evidence: "Sweat contains lactic acid and ammonia that irritate compromised barrier; studies confirm sweat worsens atopic dermatitis in tropical climates", management: "Shower immediately after sweating; use light cotton clothing; avoid prolonged outdoor activity during midday heat; apply emollient after showering" },
+    { trigger: "Air-Conditioning Cycling", whyWorse: "Moving between outdoor heat (35C) and air-conditioned offices (18 to 22C) multiple times daily creates repeated temperature shock", evidence: "Cold dry air reduces ambient humidity, increasing transepidermal water loss; temperature cycling worsens itch in atopic patients", management: "Apply emollient before entering air-conditioned spaces; use small humidifier at desk; carry barrier cream for top-up" },
+    { trigger: "Urban Air Pollution", whyWorse: "KL's urban air quality and periodic haze episodes increase fine particulate matter exposure", evidence: "PM2.5 activates Th2 immune pathways and worsens atopic dermatitis severity; haze episodes correlate with dermatology visit spikes", management: "Wear light long sleeves outdoors during haze; shower and apply emollient after outdoor exposure; check daily AQI" },
+    { trigger: "Harsh Cleansing Agents", whyWorse: "Malaysian bathing frequency is twice daily due to heat; harsh soaps strip skin's natural lipid layer", evidence: "Surfactant-based soaps raise skin pH and degrade ceramide-producing enzymes; dermatitis improves with soap-free cleansers", management: "Switch to pH-balanced soap-free syndet cleansers; use fragrance-free bath products; limit shower time to 5 to 10 minutes" },
+  ];
+
+  const flareActionPlan = [
+    { stage: "Early Flare (Day 1 to 2)", signs: "Skin becoming drier and more sensitive; mild redness appearing; itch worsening in evening", action: "Apply emollient immediately and increase to 3 to 4 times daily; apply prescribed topical corticosteroid as directed; avoid known triggers", whenToCall: "If no improvement within 48 to 72 hours" },
+    { stage: "Active Flare (Day 3 to 7)", signs: "Visible redness and scaling; persistent itch disrupting sleep; patches spreading to new areas", action: "Continue emollient every 3 to 4 hours; apply topical corticosteroid twice daily; take antihistamine at night; consider wet wrapping", whenToCall: "Within 24 hours if patches spreading rapidly or sleep severely disrupted" },
+    { stage: "Suspected Secondary Infection", signs: "Yellow or honey-coloured crusting; weeping that does not dry; expanding hot pink or red skin; fever", action: "Do not apply steroid cream to infected areas; apply only emollient; seek medical review urgently", whenToCall: "Same day or next morning" },
+    { stage: "Wet Wrapping Technique", signs: "Suitable for limbs when itch is severe and sleep is impossible", action: "Apply thick layer of emollient; cover with damp cotton bandage; cover damp bandage with dry bandage; leave for 2 to 6 hours", whenToCall: "If wet wrapping causes increased redness or pain" },
+    { stage: "Emergency: Widespread Infected Eczema", signs: "Multiple crusted infected patches; high fever; patient very unwell; rapidly spreading hot red skin", action: "This is a medical emergency. Do not self-treat. Go to nearest A&E.", whenToCall: "Proceed directly to A&E or contact clinic immediately" },
+  ];
+
+  const pricingTiers = [
+    { service: "Initial Eczema Consultation", includes: "Full skin assessment, severity scoring, diagnosis confirmation, personalised treatment plan, written trigger guide", price: "RM 100 to RM 180" },
+    { service: "Follow-Up Review", includes: "Progress assessment, treatment plan adjustment, prescription renewal, flare management review", price: "RM 80 to RM 150" },
+    { service: "Prescription Emollients", includes: "Medical-grade fragrance-free emollients (cream, ointment and lotion formulations)", price: "RM 30 to RM 90 per item" },
+    { service: "Topical Corticosteroid Course", includes: "Graded potency topical corticosteroid with written application instructions", price: "RM 25 to RM 80 per tube" },
+    { service: "Topical Calcineurin Inhibitor", includes: "Tacrolimus or pimecrolimus for steroid-sparing maintenance", price: "RM 80 to RM 200 per tube" },
+    { service: "Oral Antibiotic Course", includes: "Flucloxacillin or alternative for secondary bacterial infection", price: "RM 40 to RM 120 per course" },
+  ];
+
+  const faqData = [
+    { q: "Is there a cure for eczema?", a: "No. Eczema has no known cure. The goal of treatment is to manage symptoms effectively, reduce the frequency and severity of flares, prevent secondary infections and maintain quality of life. Many children improve significantly or go into long remission by their teenage years, but a substantial proportion carry the condition into adulthood. Adults who develop eczema for the first time have a different pattern, often with persistent hand or facial eczema driven by contact exposures and occupational factors. At Nexus Clinic KL, we are honest with patients from the first consultation: treatment controls eczema, it does not eliminate it." },
+    { q: "Are topical steroids safe for long-term eczema management?", a: "When used correctly, topical corticosteroids are safe and effective for managing eczema. The risk of side effects is related to the potency grade, the body area, the duration of continuous use, and the age of the patient. Mild potency steroids such as 1% hydrocortisone are safe for use on the face and in children for short courses. Moderate and potent steroids used for limited periods on the body under medical supervision carry very low risk of the side effects that have created widespread fear. The risk of skin thinning does not apply to correctly supervised short-course application. At Nexus Clinic KL, every topical steroid prescription includes a written application guide." },
+    { q: "Why does my eczema keep coming back despite treatment?", a: "Recurring eczema despite treatment usually results from one of four causes. First, topical treatment being stopped too early when the skin appears to be improving, leaving subclinical inflammation that rebuilds. Second, an unidentified trigger that is continuing to activate the immune response, most commonly house dust mites or a contact allergen. Third, inadequate emollient use between flares, meaning the skin barrier never fully repairs. Fourth, secondary bacterial colonisation with Staphylococcus aureus that maintains chronic low-level inflammation. At Nexus Clinic KL, we systematically review all four causes in patients presenting with treatment-resistant recurring eczema." },
+    { q: "What triggers eczema in Malaysia specifically?", a: "Malaysia's tropical environment creates a unique combination of triggers not present in temperate climates. House dust mites thrive in Malaysia's permanently humid indoor environment, with sensitisation rates of 60 to 80 percent. Sweat and heat loading from the climate continuously challenge the eczematous skin barrier. Daily temperature cycling between outdoor heat and heavily air-conditioned offices disrupts barrier function. Periodic haze episodes increase air pollution. Harsh soap products in the context of twice-daily bathing strip the skin lipid layer repeatedly. Effective eczema management in Malaysia requires addressing these specific environmental factors alongside pharmacological treatment." },
+    { q: "Can children with eczema be treated at Nexus Clinic KL?", a: "Yes. Eczema is extremely common in Malaysian children, affecting over 20 percent according to the Dermatological Society of Malaysia. At Nexus Clinic KL, our doctors are experienced in assessing eczema in infants, children and adolescents and prescribing age-appropriate treatments including mild-potency topical corticosteroids, pimecrolimus for face and neck in children over two years of age, fragrance-free emollients formulated for paediatric skin, and antihistamines appropriate for the child's age and weight. Parents are provided with written guidance on applying treatments correctly to their child." },
+    { q: "What is the difference between eczema and contact dermatitis?", a: "Atopic dermatitis is a genetic chronic inflammatory condition where the skin barrier is intrinsically compromised and the immune system is prone to overreaction. It tends to run in families alongside asthma and allergic rhinitis. Contact dermatitis is a reaction to a specific external substance, either through an immune-mediated allergic mechanism or through direct chemical irritation. The two conditions can coexist in the same patient. The clinical distinction matters because contact dermatitis requires identification and removal of the specific trigger, while atopic dermatitis requires long-term barrier management and anti-inflammatory treatment." },
+    { q: "When should I use wet wrapping for eczema?", a: "Wet wrapping is a technique suitable for moderate to severe eczema on the limbs when itch is severe enough to disrupt sleep and topical treatment alone is not providing adequate relief. It involves applying a thick layer of emollient to the affected limb, covering with a damp cotton bandage and placing a dry bandage on top. The wet layer enhances emollient absorption and provides cooling relief that reduces the itch-scratch cycle. It should only be used with emollient under the wrap, not with topical corticosteroid alone, as occlusion significantly increases steroid absorption. It should not be used on infected skin." },
+    { q: "What is eczema herpeticum and how serious is it?", a: "Eczema herpeticum is a rare but potentially serious complication of atopic dermatitis caused by herpes simplex virus infecting areas of eczematous skin. It presents as small, painful, punched-out ulcers or vesicles spreading across eczema-affected areas, often accompanied by fever and general unwellness. It is distinguishable from infected bacterial eczema by the characteristic punched-out appearance of the lesions and the absence of yellow crusting. Eczema herpeticum requires urgent systemic antiviral treatment with acyclovir and should not be managed with topical steroids, which would worsen the viral spread. Malaysian eczema patients who notice this pattern should proceed to Accident and Emergency immediately." },
+    { q: "Can stress trigger eczema flares in Malaysia?", a: "Yes. Psychological stress is a well-established eczema trigger through its effects on the immune system and the skin barrier. Stress activates the hypothalamic-pituitary-adrenal axis, which alters immune signalling and reduces the skin's production of ceramides and antimicrobial peptides. In Malaysia's fast-paced urban work culture, chronic workplace stress is a significant contributor to the pattern of eczema that improves during holidays and worsens during exam periods, project deadlines or high-pressure work months. At Nexus Clinic KL, stress is included in the trigger assessment at every consultation." },
+    { q: "Is the eczema consultation at Nexus Clinic KL free?", a: "The initial eczema consultation at Nexus Clinic KL is priced at RM 100 to RM 180 and includes a full clinical skin assessment, SCORAD severity scoring, eczema type identification, trigger profiling using a Malaysia-specific environmental checklist, a written personalised treatment plan covering all prescribed medications with detailed application instructions, and a written flare action plan. If your presentation requires additional investigation such as patch testing for suspected contact allergen, this is discussed and priced separately at the consultation." },
+  ];
 
   const transformations = [
     {
@@ -46,1273 +100,607 @@ const EczemaLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
       after: "/images/B&A-skin/B&A-eczema-treatment3.webp",
     },
   ];
+
   return (
-    <div className="bg-light font-inter">
+    <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-linear-to-br from-cream via-light to-cream">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-rose/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-wine/20 rounded-full blur-3xl"></div>
-        </div>
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
+        
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="container mx-auto max-w-6xl relative z-10"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-8">
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
+                <AlertTriangle className="w-4 h-4 text-wine" />
+                <span className="text-sm font-inter text-wine font-medium">Structured Care • Doctor-Led</span>
+              </motion.div>
+              
+              <motion.h1
+                variants={fadeInUp}
+                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
+              >
+                Trusted Eczema Treatment in Malaysia for{" "}
+                <span className="text-wine italic">Long-Term Skin Comfort and Fewer Flares</span>
+              </motion.h1>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <motion.div
-            className="max-w-4xl mx-auto"
-            initial="initial"
-            whileInView="whileInView"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeInUp} className="mb-6">
-              <span className="inline-flex items-center gap-2 bg-wine/10 text-wine px-4 py-2 rounded-full font-inter text-sm tracking-wide">
-                <Sparkles className="w-4 h-4" />
-                HERO SECTION (Nexus Clinic Kuala Lumpur)
-              </span>
+              <motion.p
+                variants={fadeInUp}
+                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
+              >
+                Red, cracked, endlessly itchy skin that flares every few weeks and never fully settles. Eczema is one of the most common skin conditions treated at Nexus Clinic KL, and it is also one of the most undertreated.
+              </motion.p>
+
+              <motion.p
+                variants={fadeInUp}
+                className="text-brown font-inter"
+              >
+                At Nexus Clinic KL, eczema management begins with a structured clinical assessment that identifies your eczema type, scores your severity using the validated SCORAD system, identifies your likely trigger profile including Malaysia-specific factors, and builds a written treatment plan with clear escalation criteria.
+              </motion.p>
+
+              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
+                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  Important Clinical Information
+                </p>
+                <p className="text-taupe font-inter text-sm mt-1">
+                  Over 20% of Malaysian children are affected by eczema. The most common management error is applying topical corticosteroid for one or two days then stopping, leaving subclinical inflammation that rebuilds and restarts the cycle.
+                </p>
+              </motion.div>
+
+              <motion.div 
+                variants={fadeInLeft} 
+                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
+              >
+                <motion.button
+                  variants={fadeInUp}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  Free Assessment
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+                <Whatsapp message="Hi, I'm interested in eczema treatment at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
+              </motion.div>
             </motion.div>
 
-            <motion.h1
-              variants={fadeInUp}
-              className="text-5xl md:text-7xl font-georgia text-brown mb-8 leading-tight"
-            >
-              Strong heading
-              <span className="block text-3xl md:text-4xl text-rose mt-4 font-inter font-light">
-                Eczema relief that feels real. Calm your skin, sleep better, and
-                stop the flare cycle in Kuala Lumpur.
-              </span>
-            </motion.h1>
-
-            <motion.h2
-              variants={fadeInUp}
-              className="text-2xl font-georgia text-brown mb-6"
-            >
-              Two supporting lines
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl text-taupe mb-12 max-w-2xl leading-relaxed"
-            >
-              When eczema flares, it is not "just a rash." It steals sleep,
-              confidence, and comfort. At Nexus Clinic Kuala Lumpur, we keep
-              your plan simple, doctor-led, and built for daily life in
-              Malaysia.
-            </motion.p>
-
-            <motion.h2
-              variants={fadeInUp}
-              className="text-2xl font-georgia text-brown mb-4"
-            >
-              Trust section
-            </motion.h2>
-
-            <motion.div
-              variants={fadeInUp}
-              className="grid grid-cols-1 gap-4 mt-4 p-8 bg-glass backdrop-blur-sm rounded-3xl border border-cream"
-            >
-              <div className="flex items-start gap-3">
-                <Shield className="w-6 h-6 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  MOH-registered, doctor-led clinic with a diagnosis-first
-                  approach.
-                </span>
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
+                <Image
+                  src="/images/skin/eczema-treatment.webp"
+                  alt="Nexus Clinic Kuala Lumpur - Eczema Treatment"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
               </div>
-              <div className="flex items-start gap-3">
-                <MapPin className="w-6 h-6 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Located near KLCC: LG 10, Lower Ground Floor, Wisma UOA II,
-                  Jalan Pinang, Kuala Lumpur.
-                </span>
+              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
+                <p className="font-inter font-bold text-brown">SCORAD Assessment</p>
+                <p className="font-inter text-sm text-taupe">Over 5,000 procedures completed</p>
               </div>
-              <div className="flex items-start gap-3">
-                <Target className="w-6 h-6 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Skin health focus: we start with assessment and trigger
-                  mapping before we talk treatments.
-                </span>
-              </div>
-            </motion.div>
-
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl font-georgia text-brown mt-12 mb-4"
-            >
-              Eczema Treatment in Malaysia (Kuala Lumpur)
-            </motion.h2>
-
-            <motion.h3
-              variants={fadeInUp}
-              className="text-2xl font-georgia text-rose mt-8 mb-4"
-            >
-              A quick note before we start
-            </motion.h3>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Medical Disclaimer */}
-      <section className="py-12 bg-rose/5 border-y border-cream">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="max-w-3xl mx-auto"
-            initial="initial"
-            whileInView="whileInView"
-            variants={staggerContainer}
-          >
-            <motion.p
-              variants={fadeInUp}
-              className="text-taupe leading-relaxed mb-4"
-            >
-              Eczema can look mild, but it can feel intense. The itch can be
-              loud. The redness can be embarrassing. The "Why is this happening
-              again?" feeling can be exhausting.
-            </motion.p>
-            <motion.p
-              variants={fadeInUp}
-              className="text-taupe leading-relaxed mb-4"
-            >
-              This page is for education and guidance. It is not a substitute
-              for medical diagnosis. If your skin is infected, very painful,
-              spreading fast, or you feel unwell, please get medical care
-              quickly.
-            </motion.p>
-            <motion.p
-              variants={fadeInUp}
-              className="text-2xl font-georgia text-brown mt-8"
-            >
-              Now, let's make eczema feel less confusing.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* What is Eczema Section with Image */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <motion.div
-              initial="initial"
-              whileInView="whileInView"
-              variants={staggerContainer}
-            >
-              <motion.h2
-                variants={fadeInLeft}
-                className="text-4xl font-georgia text-brown mb-6"
-              >
-                What is eczema, really?
-              </motion.h2>
-              <motion.p
-                variants={fadeInLeft}
-                className="text-lg text-taupe mb-4 leading-relaxed"
-              >
-                Eczema is a long-term skin condition that causes dry, itchy,
-                inflamed skin. It often comes and goes in flares. You can be
-                fine for weeks, then one trigger hits and your skin reacts.
-              </motion.p>
-              <motion.p
-                variants={fadeInLeft}
-                className="text-lg text-taupe mb-4 leading-relaxed"
-              >
-                The most common type is atopic dermatitis. But "eczema" is also
-                used for other dermatitis types like contact dermatitis or
-                seborrheic dermatitis (dandruff-like eczema).
-              </motion.p>
-              <motion.p
-                variants={fadeInLeft}
-                className="text-lg text-rose font-medium mb-8 leading-relaxed"
-              >
-                One important fact that eases anxiety for many people: eczema is
-                not contagious. You cannot "catch" it from someone.
-              </motion.p>
-            </motion.div>
-
-            <motion.div
-              initial="initial"
-              whileInView="whileInView"
-              variants={fadeInRight}
-              className="relative"
-            >
-              <div className="absolute inset-0 bg-linear-to-tr from-wine/20 to-rose/20 rounded-3xl transform rotate-3"></div>
-              <img
-                src="/images/skin/eczema-treatment.webp"
-                alt="Eczema skin condition visualization"
-                className="relative rounded-3xl shadow-2xl w-full object-cover"
-              />
             </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* KL Environment Section */}
-      <section className="py-24 bg-cream">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="whileInView"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl font-georgia text-brown mb-6"
-            >
-              Why eczema feels worse in Kuala Lumpur
-            </motion.h2>
-            <motion.p variants={fadeInUp} className="text-xl text-taupe mb-8">
-              Malaysia's climate and lifestyle can be a perfect storm for
-              eczema.
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="space-y-4 mb-8">
-              <p className="text-brown flex items-start gap-2">
-                <ThermometerIcon className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span>
-                  <span className="font-semibold">Heat + sweat:</span> sweat can
-                  sting cracked skin and trigger itching.
-                </span>
-              </p>
-              <p className="text-brown flex items-start gap-2">
-                <DropletIcon className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span>
-                  <span className="font-semibold">Humidity:</span> it can feel
-                  like your skin is wet, but your barrier is still dry and
-                  sensitive.
-                </span>
-              </p>
-              <p className="text-brown flex items-start gap-2">
-                <WindIcon className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span>
-                  <span className="font-semibold">Air conditioning:</span> many
-                  KL offices are cold and dry. The temperature swings can stress
-                  your skin.
-                </span>
-              </p>
-              <p className="text-brown flex items-start gap-2">
-                <ShowerHead className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span>
-                  <span className="font-semibold">Frequent showers:</span>{" "}
-                  understandable in KL, but hot water and harsh cleansers strip
-                  the barrier.
-                </span>
-              </p>
-              <p className="text-brown flex items-start gap-2">
-                <Car className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span>
-                  <span className="font-semibold">
-                    Traffic pollution and stress:
-                  </span>{" "}
-                  both can increase inflammation and scratching.
-                </span>
-              </p>
-            </motion.div>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl text-rose font-medium p-6 bg-white rounded-2xl"
-            >
-              If your eczema "behaves differently" in KL, you are not imagining
-              it. Your environment matters.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Symptoms Section */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="whileInView"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl font-georgia text-brown mb-8"
-            >
-              Common eczema symptoms
-            </motion.h2>
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-8">
-              Eczema does not look the same on everyone, but these are typical:
-            </motion.p>
-
-            <motion.ul variants={fadeInUp} className="space-y-4 mb-6">
-              <li className="flex items-start gap-3 text-brown">
-                <span className="text-wine font-bold">•</span>
-                Intense itching, often before you see a rash
-              </li>
-              <li className="flex items-start gap-3 text-brown">
-                <span className="text-wine font-bold">•</span>
-                Dry, rough, flaky skin
-              </li>
-              <li className="flex items-start gap-3 text-brown">
-                <span className="text-wine font-bold">•</span>
-                Red or darker patches (on deeper skin tones it can look brown,
-                purple, or grey)
-              </li>
-              <li className="flex items-start gap-3 text-brown">
-                <span className="text-wine font-bold">•</span>
-                Small bumps, oozing, or crusting during flares
-              </li>
-              <li className="flex items-start gap-3 text-brown">
-                <span className="text-wine font-bold">•</span>
-                Thickened skin over time from repeated scratching
-              </li>
-            </motion.ul>
-
-            <motion.p variants={fadeInUp} className="text-taupe italic">
-              Atopic dermatitis often appears in skin folds like elbows, behind
-              knees, neck, wrists, and ankles.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Types of Eczema */}
-      <section className="py-24 bg-cream">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="whileInView"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl font-georgia text-brown mb-6"
-            >
-              Types of eczema we commonly see
-            </motion.h2>
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-8">
-              You do not need to memorise this. You just need to know why
-              diagnosis matters.
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="space-y-6 mb-6">
-              <div className="bg-white p-6 rounded-2xl">
-                <h3 className="text-2xl font-georgia text-brown mb-3">
-                  Atopic dermatitis
-                </h3>
-                <p className="text-taupe">
-                  Often linked to a sensitive skin barrier and immune response.
-                  Can start in childhood or appear later.
-                </p>
+      {/* Trust Section */}
+      <section className="py-12 px-4 bg-light">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-taupe/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <Award className="w-6 h-6 text-wine" />
+                </div>
+                <h2 className="font-georgia text-2xl md:text-3xl text-brown">Trust at a glance</h2>
               </div>
+              <div className="hidden sm:block w-px h-8 bg-taupe/20" />
+              <p className="text-taupe font-inter text-sm">Nexus Clinic Kuala Lumpur — Excellence in Aesthetic Medicine</p>
+            </div>
 
-              <div className="bg-white p-6 rounded-2xl">
-                <h3 className="text-2xl font-georgia text-brown mb-3">
-                  Contact dermatitis
-                </h3>
-                <p className="text-taupe">
-                  Your skin reacts to something it touched, like fragrance,
-                  detergent, hair dye, nickel, or some skincare. This is common
-                  in KL because products are everywhere.
-                </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-4 border-y border-taupe/10">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Award className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Experience</p>
+                  <p className="font-georgia text-brown font-bold text-lg">Over 15 Years</p>
+                  <p className="font-inter text-taupe text-xs">Combined clinical experience</p>
+                </div>
               </div>
-
-              <div className="bg-white p-6 rounded-2xl">
-                <h3 className="text-2xl font-georgia text-brown mb-3">
-                  Hand eczema
-                </h3>
-                <p className="text-taupe">
-                  Frequent handwashing, sanitiser, and wet work can destroy the
-                  barrier.
-                </p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Location</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Wisma UOA II, Jalan Pinang</p>
+                  <p className="font-inter text-taupe text-xs">KLCC, 50450 Kuala Lumpur</p>
+                </div>
               </div>
-
-              <div className="bg-white p-6 rounded-2xl">
-                <h3 className="text-2xl font-georgia text-brown mb-3">
-                  Seborrheic dermatitis
-                </h3>
-                <p className="text-taupe">
-                  Scalp, eyebrows, sides of nose, chest. Looks like dandruff
-                  with redness.
-                </p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Opening Hours</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Monday - Saturday</p>
+                  <p className="font-inter text-taupe text-xs">9:00am – 6:00pm | Closed Sundays & PH</p>
+                </div>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl text-rose font-medium"
-            >
-              When the type is wrong, the treatment often fails. That is why
-              assessment matters.
-            </motion.p>
-          </motion.div>
-        </div>
+            <div className="mt-6 pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Shield className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">MOH Guidelines</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Following Ministry of Health Malaysia CPG 2018</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Activity className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">Doctor-Only Treatment</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">LCP-certified doctors perform every assessment</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">5,000+ Procedures</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Extensive experience in skin health</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-taupe/10">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">SCORAD Severity Scoring</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Malaysia-Specific Trigger Mapping</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Written Flare Action Plan</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
-      {/* Who Treatment Is For */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="whileInView"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl font-georgia text-brown mb-6"
-            >
-              Who eczema treatment is for
-            </motion.h2>
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-8">
-              If you are searching eczema treatment in Kuala Lumpur or eczema
-              specialist Malaysia, you are probably dealing with one of these:
-            </motion.p>
-
-            <motion.ul variants={fadeInUp} className="space-y-3 mb-6">
-              <li className="flex items-start gap-3 text-brown">
-                <span className="text-wine font-bold">•</span>
-                itch that keeps returning
-              </li>
-              <li className="flex items-start gap-3 text-brown">
-                <span className="text-wine font-bold">•</span>
-                Patches that come back in the same spots
-              </li>
-              <li className="flex items-start gap-3 text-brown">
-                <span className="text-wine font-bold">•</span>
-                Skin that burns after showering
-              </li>
-              <li className="flex items-start gap-3 text-brown">
-                <span className="text-wine font-bold">•</span>
-                Flares after stress, sweat, or certain products
-              </li>
-              <li className="flex items-start gap-3 text-brown">
-                <span className="text-wine font-bold">•</span>
-                Redness and dryness on face, eyelids, neck, hands, or body folds
-              </li>
-              <li className="flex items-start gap-3 text-brown">
-                <span className="text-wine font-bold">•</span>
-                Fear of using creams because "what if steroids harm my skin?"
-              </li>
-            </motion.ul>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl text-rose font-medium p-6 bg-rose/5 rounded-2xl"
-            >
-              You are not being dramatic. Eczema can affect sleep and mental
-              wellbeing, not just skin.
-            </motion.p>
+      {/* Treatment Overview Section */}
+      <section className="py-16 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">Eczema Treatment at a Glance</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">Structured care following MOH Malaysia Clinical Practice Guidelines</p>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Triggers Section */}
-      <section className="py-24 bg-cream">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="whileInView"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl font-georgia text-brown mb-6"
-            >
-              What causes eczema flares?
-            </motion.h2>
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              There is no single cause, but there are common triggers. Mayo
-              Clinic describes eczema as chronic, flare-prone, and influenced by
-              multiple factors.
-            </motion.p>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-brown font-medium mb-4"
-            >
-              Typical triggers include:
-            </motion.p>
-
-            <motion.ul variants={fadeInUp} className="space-y-2 mb-4">
-              <li className="text-brown">Heat and sweating</li>
-              <li className="text-brown">
-                Harsh soaps and fragranced products
-              </li>
-              <li className="text-brown">Detergent residue in clothes</li>
-              <li className="text-brown">Stress and poor sleep</li>
-              <li className="text-brown">Dust mites, pet dander, pollen</li>
-              <li className="text-brown">Rough fabrics like wool</li>
-              <li className="text-brown">Skin infections</li>
-              <li className="text-brown">
-                Over-scrubbing, strong acids, or frequent peeling
-              </li>
-            </motion.ul>
-
-            <motion.p variants={fadeInUp} className="text-taupe italic">
-              Some people also have food-related triggers, but it is not as
-              simple as "avoid all dairy." It needs careful evaluation.
-            </motion.p>
+          
+          <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Shield, label: "Treatments Available", value: "Emollients, topical steroids, calcineurin inhibitors, antihistamines" },
+              { icon: Clock, label: "Consultation Time", value: "30 to 60 minutes for initial assessment" },
+              { icon: Heart, label: "Goal", value: "Control flares, repair barrier, reduce itch" },
+              { icon: Activity, label: "Follow-Up", value: "4 to 6 weeks for treatment review" },
+            ].map((item, idx) => (
+              <div key={idx} className="bg-light p-5 rounded-xl border border-taupe/10 shadow-sm">
+                <item.icon className="w-8 h-8 text-wine mb-3" />
+                <p className="font-inter text-sm text-taupe">{item.label}</p>
+                <p className="font-georgia text-md text-brown font-semibold">{item.value}</p>
+              </div>
+            ))}
           </motion.div>
-        </div>
-      </section>
-
-      {/* Nexus Approach */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="whileInView"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl font-georgia text-brown mb-2"
-            >
-              Nexus Clinic Kuala Lumpur approach
-            </motion.h2>
-            <motion.p variants={fadeInUp} className="text-xl text-rose mb-8">
-              (simple and human)
-            </motion.p>
-
-            <motion.p variants={fadeInUp} className="text-taupe mb-6">
-              At Nexus Clinic, we are a doctor-led, diagnosis-driven clinic.
-              That matters with eczema because eczema is not a one-product
-              problem.
-            </motion.p>
-
-            <motion.h3
-              variants={fadeInUp}
-              className="text-2xl font-georgia text-brown mt-8 mb-4"
-            >
-              Step 1: We identify what you are dealing with
-            </motion.h3>
-            <motion.p variants={fadeInUp} className="text-taupe mb-4">
-              Is it eczema, contact dermatitis, fungal rash, or something else
-              that looks similar? Many rashes imitate eczema.
-            </motion.p>
-
-            <motion.h3
-              variants={fadeInUp}
-              className="text-2xl font-georgia text-brown mt-8 mb-4"
-            >
-              Step 2: We calm the flare first
-            </motion.h3>
-            <motion.p variants={fadeInUp} className="text-taupe mb-4">
-              When skin is inflamed, "beauty treatments" are not the priority.
-              Comfort is.
-            </motion.p>
-
-            <motion.h3
-              variants={fadeInUp}
-              className="text-2xl font-georgia text-brown mt-8 mb-4"
-            >
-              Step 3: We build a routine you can actually do in Malaysia
-            </motion.h3>
-            <motion.p variants={fadeInUp} className="text-taupe mb-4">
-              Short steps. Clear product rules. Simple trigger control.
-            </motion.p>
-
-            <motion.h3
-              variants={fadeInUp}
-              className="text-2xl font-georgia text-brown mt-8 mb-4"
-            >
-              Step 4: We plan maintenance
-            </motion.h3>
-            <motion.p variants={fadeInUp} className="text-taupe mb-4">
-              Eczema is often managed, not "cured forever." Mayo Clinic notes
-              symptoms can return even after improvement.
-            </motion.p>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-rose font-medium mt-6 p-4 bg-rose/5 rounded-xl"
-            >
-              If your eczema is severe, widespread, infected, or needs
-              specialist systemic therapy, we will advise appropriate
-              escalation.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Treatment Options */}
-      <section className="py-24 bg-cream">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="whileInView"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl font-georgia text-brown mb-12"
-            >
-              Treatment options (what actually works)
-            </motion.h2>
-
-            <motion.div variants={fadeInUp} className="mb-8">
-              <h3 className="text-2xl font-georgia text-brown mb-4">
-                1) Moisturisers and barrier repair (the foundation)
-              </h3>
-              <p className="text-taupe mb-4">
-                Moisturising is not "extra." It is treatment.
-              </p>
-              <p className="text-taupe mb-4">
-                Clinical guidelines strongly support moisturisers as a core part
-                of atopic dermatitis care. The NHS also gives practical
-                guidance, like spacing emollients and medicated creams so you do
-                not dilute treatment.
-              </p>
-              <p className="text-brown font-medium mb-2">
-                What this looks like in real life:
-              </p>
-              <ul className="list-disc pl-6 space-y-1 text-taupe mb-4">
-                <li>Moisturise every day, even when your skin looks calm.</li>
-                <li>After showering, pat dry and moisturise quickly.</li>
-                <li>Use fragrance-free products whenever possible.</li>
-              </ul>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="mb-8">
-              <h3 className="text-2xl font-georgia text-brown mb-4">
-                2) Anti-inflammatory creams during flares
-              </h3>
-              <p className="text-taupe mb-4">
-                When eczema is active, moisturiser alone may not be enough.
-              </p>
-              <p className="text-taupe mb-4">
-                Topical corticosteroids are commonly used for flares. DermNet
-                notes they are a mainstay and safe when used correctly, and that
-                site choice and severity guide strength.
-              </p>
-              <p className="text-taupe mb-4">
-                If steroids are not ideal for certain areas or long-term use,
-                topical calcineurin inhibitors like tacrolimus or pimecrolimus
-                can be used, especially for sensitive sites such as eyelids and
-                skin folds.
-              </p>
-              <p className="text-rose font-medium">
-                This is where doctor guidance makes a difference. Wrong
-                strength, wrong area, wrong duration leads to frustration.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="mb-8">
-              <h3 className="text-2xl font-georgia text-brown mb-4">
-                3) Itch control and sleep support
-              </h3>
-              <p className="text-taupe mb-4">
-                Itch is not just annoying. It keeps you awake, and tired skin
-                flares more easily.
-              </p>
-              <p className="text-brown font-medium mb-2">
-                Your plan may include:
-              </p>
-              <ul className="list-disc pl-6 space-y-1 text-taupe mb-4">
-                <li>Cold compresses for acute itch</li>
-                <li>Nail and habit strategies to reduce damage</li>
-                <li>Night routine adjustments</li>
-                <li>
-                  Medications if clinically appropriate (your doctor decides)
-                </li>
-              </ul>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="mb-8">
-              <h3 className="text-2xl font-georgia text-brown mb-4">
-                4) Infection control when needed
-              </h3>
-              <p className="text-taupe">
-                Scratching creates micro-wounds. That opens the door to
-                infection. If eczema starts oozing, crusting, or becomes
-                suddenly painful, it may need medical treatment.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="mb-8">
-              <h3 className="text-2xl font-georgia text-brown mb-4">
-                5) Phototherapy and advanced options (for moderate to severe
-                cases)
-              </h3>
-              <p className="text-taupe mb-4">
-                When eczema is persistent or widespread, dermatology clinics may
-                use phototherapy or systemic treatments.
-              </p>
-              <p className="text-taupe mb-4">
-                DermNet and Mayo Clinic both discuss escalation options like
-                phototherapy and injectable biologic medicines such as dupilumab
-                for harder-to-control disease.
-              </p>
-              <p className="text-taupe">
-                Not everyone needs these. But it helps to know they exist,
-                especially if you have suffered for years.
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      <SectionBeforeAfter transformations={transformations} />
-
-      {/* Pros and Cons */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="whileInView"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl font-georgia text-brown mb-8"
-            >
-              Pros and cons of eczema treatments
-            </motion.h2>
-
-            <motion.div variants={fadeInUp} className="mb-6">
-              <h3 className="text-2xl font-georgia text-green-700 mb-3">
-                Pros
-              </h3>
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 shrink-0 mt-1" />
-                  <span>Less itch, fewer sleepless nights</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 shrink-0 mt-1" />
-                  <span>Reduced redness and flaking</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 shrink-0 mt-1" />
-                  <span>Fewer flare-ups with a consistent routine</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 shrink-0 mt-1" />
-                  <span>Better confidence in public and at work</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 shrink-0 mt-1" />
-                  <span>Less skin thickening and scarring over time</span>
-                </li>
-              </ul>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="mb-6">
-              <h3 className="text-2xl font-georgia text-rose mb-3">Cons</h3>
-              <ul className="space-y-2">
-                <li className="flex items-start gap-2">
-                  <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                  <span>Needs consistency, not occasional effort</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                  <span>Some treatments need monitoring and careful use</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                  <span>
-                    You may need to try a few options to find your match
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                  <span>
-                    Triggers in KL can still cause flares, even with good care
-                  </span>
-                </li>
-              </ul>
-            </motion.div>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-2xl text-center text-rose font-georgia mt-8"
-            >
-              The goal is not perfection. The goal is control.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Safety Section */}
-      <section className="py-24 bg-cream">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="whileInView"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl font-georgia text-brown mb-4"
-            >
-              Side effects and safety
-            </motion.h2>
-            <motion.p variants={fadeInUp} className="text-xl text-rose mb-8">
-              (important, but not scary)
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="mb-6">
-              <h3 className="text-2xl font-georgia text-brown mb-2">
-                Moisturisers
-              </h3>
-              <p className="text-taupe mb-4">
-                Usually very safe. If a product stings, it may contain irritants
-                or your barrier is very broken. We adjust.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="mb-6">
-              <h3 className="text-2xl font-georgia text-brown mb-2">
-                Steroid creams
-              </h3>
-              <p className="text-taupe mb-4">
-                Safe when used correctly, but misuse can cause thinning or
-                irritation, especially on face or skin folds. DermNet emphasises
-                correct use and choosing the weakest effective option for the
-                right site.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="mb-6">
-              <h3 className="text-2xl font-georgia text-brown mb-2">
-                Calcineurin inhibitors
-              </h3>
-              <p className="text-taupe mb-4">
-                Can cause a warm or tingling sensation at first in some people.
-                Often improves.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="mb-6">
-              <h3 className="text-2xl font-georgia text-brown mb-2">
-                Phototherapy and systemic medicines
-              </h3>
-              <p className="text-taupe">
-                Require medical oversight and are usually handled by dermatology
-                specialists depending on severity.
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Cost Section */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="whileInView"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl font-georgia text-brown mb-4"
-            >
-              Cost of eczema treatment in Malaysia (what to expect)
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-taupe mb-4">
-              Eczema costs vary because eczema varies.
-            </motion.p>
-
-            <motion.p variants={fadeInUp} className="text-taupe mb-4">
-              Here is a realistic view of pricing signals in Malaysia:
-            </motion.p>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-rose italic mb-6 p-4 bg-rose/5 rounded-xl"
-            >
-              Community-reported first-visit eczema treatment costs can vary
-              widely on local medical directories, from a few hundred ringgit
-              upward depending on clinic type and medication plan.
-            </motion.p>
-
-            <motion.p variants={fadeInUp} className="text-taupe mb-4">
-              Some specialist dermatology clinics publicly list procedure
-              charges such as phototherapy and other dermatology procedures with
-              set ranges.
-            </motion.p>
-
-            <motion.h3
-              variants={fadeInUp}
-              className="text-2xl font-georgia text-brown mt-8 mb-4"
-            >
-              What changes the cost most:
-            </motion.h3>
-
-            <motion.ul variants={fadeInUp} className="space-y-3 mb-6">
-              <li className="flex items-start gap-2">
-                <span className="text-wine font-bold">•</span>
-                Severity and body area involved (face and hands often need more
-                careful planning)
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-wine font-bold">•</span>
-                Whether this is true eczema or allergic contact dermatitis (may
-                require allergy testing)
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-wine font-bold">•</span>
-                How often you flare and whether infection is involved
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-wine font-bold">•</span>
-                Whether you need escalation therapy through dermatology services
-              </li>
-            </motion.ul>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-rose font-medium p-4 bg-rose/5 rounded-xl"
-            >
-              If you want, Nexus Clinic can outline an estimated plan after
-              assessment, so you know what you are paying for and why.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Comparisons */}
-      <section className="py-24 bg-cream">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="whileInView"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl font-georgia text-brown mb-8"
-            >
-              Eczema vs other common skin problems (quick comparisons)
-            </motion.h2>
-
-            <motion.div variants={fadeInUp} className="mb-6">
-              <h3 className="text-2xl font-georgia text-brown mb-2">
-                Eczema vs fungal infection
-              </h3>
-              <p className="text-taupe">
-                Fungal rashes often have clearer borders and may worsen with
-                steroid use if misdiagnosed. If you tried "eczema cream" and it
-                got worse, you need reassessment.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="mb-6">
-              <h3 className="text-2xl font-georgia text-brown mb-2">
-                Eczema vs psoriasis
-              </h3>
-              <p className="text-taupe">
-                Psoriasis often has thicker plaques and different distribution.
-                Treatment differs, so accurate diagnosis saves time.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="mb-6">
-              <h3 className="text-2xl font-georgia text-brown mb-2">
-                Eczema vs hives
-              </h3>
-              <p className="text-taupe">
-                Hives move around and come and go quickly. Eczema tends to stay
-                and flare in the same zones.
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Areas We Treat */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="whileInView"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl font-georgia text-brown mb-4"
-            >
-              Areas we commonly treat (and why they need different plans)
-            </motion.h2>
-
-            <motion.ul variants={fadeInUp} className="space-y-3 mb-6">
-              <li className="flex items-start gap-2">
-                <span className="text-wine font-bold">•</span>
-                Face and eyelids: needs gentle anti-inflammatory options and
-                barrier support
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-wine font-bold">•</span>
-                Neck: often triggered by fragrance, hair products, sweat
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-wine font-bold">•</span>
-                Hands: common in KL due to sanitiser and wet work
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-wine font-bold">•</span>
-                Elbows, knees, body folds: classic flare zones
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-wine font-bold">•</span>
-                Scalp: may be seborrheic dermatitis and needs different care
-              </li>
-            </motion.ul>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl text-rose font-medium p-6 bg-rose/5 rounded-2xl"
-            >
-              One mistake many people make is treating every area with the same
-              product, the same strength, the same frequency. Skin does not work
-              that way.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Daily Routine */}
-      <section className="py-24 bg-cream">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="whileInView"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl font-georgia text-brown mb-4"
-            >
-              A practical eczema routine for KL life (simple, not perfect)
-            </motion.h2>
-
-            <motion.h3
-              variants={fadeInUp}
-              className="text-2xl font-georgia text-brown mt-6 mb-3"
-            >
-              Morning
-            </motion.h3>
-            <motion.ul
-              variants={fadeInUp}
-              className="list-disc pl-6 space-y-1 text-taupe mb-4"
-            >
-              <li>Quick rinse or gentle cleanse</li>
-              <li>Moisturiser</li>
-              <li>Sunscreen if exposed (choose sensitive-skin friendly)</li>
-            </motion.ul>
-
-            <motion.h3
-              variants={fadeInUp}
-              className="text-2xl font-georgia text-brown mt-6 mb-3"
-            >
-              Midday (if you sweat)
-            </motion.h3>
-            <motion.ul
-              variants={fadeInUp}
-              className="list-disc pl-6 space-y-1 text-taupe mb-4"
-            >
-              <li>Rinse sweat if possible</li>
-              <li>Reapply moisturiser if skin feels tight</li>
-              <li>Avoid fragranced wipes</li>
-            </motion.ul>
-
-            <motion.h3
-              variants={fadeInUp}
-              className="text-2xl font-georgia text-brown mt-6 mb-3"
-            >
-              Night
-            </motion.h3>
-            <motion.ul
-              variants={fadeInUp}
-              className="list-disc pl-6 space-y-1 text-taupe mb-4"
-            >
-              <li>Lukewarm shower</li>
-              <li>Pat dry, moisturise</li>
-              <li>Use medicated creams only where needed (and as advised)</li>
-              <li>Keep nails short. Use cotton sleepwear.</li>
-            </motion.ul>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-rose mt-6 p-4 bg-white rounded-xl"
-            >
-              The NHS also advises spacing emollients and other medicated creams
-              by about 20 to 30 minutes so treatment works properly.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="whileInView"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl font-georgia text-brown mb-8"
-            >
-              Real People Also Ask style FAQs (Malaysia + KL intent)
-            </motion.h2>
-
-            <motion.div variants={fadeInUp} className="space-y-6">
+          
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 rounded-2xl p-6 border border-wine/10">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               <div>
-                <h3 className="text-xl font-georgia text-brown mb-2">
-                  1) Will eczema go away without treatment?
-                </h3>
-                <p className="text-taupe">
-                  Some mild cases improve, but eczema often flares and returns.
-                  Many clinics and medical sources emphasise management and
-                  prevention of flare-ups rather than a guaranteed cure.
-                </p>
+                <p className="font-inter text-sm text-taupe">Condition</p>
+                <p className="font-georgia text-brown font-semibold">Eczema (atopic dermatitis and other types)</p>
               </div>
-
               <div>
-                <h3 className="text-xl font-georgia text-brown mb-2">
-                  2) Is eczema contagious?
-                </h3>
-                <p className="text-taupe">
-                  No. Atopic dermatitis is not contagious. You cannot spread it
-                  by touch.
-                </p>
+                <p className="font-inter text-sm text-taupe">Malaysian Prevalence</p>
+                <p className="font-georgia text-brown font-semibold">Over 20% of Malaysian children affected</p>
               </div>
-
               <div>
-                <h3 className="text-xl font-georgia text-brown mb-2">
-                  3) Why is eczema worse at night?
-                </h3>
-                <p className="text-taupe">
-                  Many people feel itch more at night due to routine changes,
-                  body temperature shifts, and subconscious scratching. This is
-                  also a commonly asked eczema FAQ on KL clinic pages.
-                </p>
+                <p className="font-inter text-sm text-taupe">Goal of Treatment</p>
+                <p className="font-georgia text-brown">No cure; control flares, reduce itch, prevent infection</p>
               </div>
-
               <div>
-                <h3 className="text-xl font-georgia text-brown mb-2">
-                  4) What triggers eczema flare-ups in Malaysia?
-                </h3>
-                <p className="text-taupe">
-                  Common triggers include heat, sweat, harsh soaps, stress, and
-                  irritants like fragrance and detergent. Atopic dermatitis is
-                  chronic and flare-prone, and triggers vary by person.
-                </p>
+                <p className="font-inter text-sm text-taupe">MOH Approved</p>
+                <p className="font-georgia text-brown">Yes. All treatments follow MOH CPG 2018</p>
               </div>
-
-              <div>
-                <h3 className="text-xl font-georgia text-brown mb-2">
-                  5) What is the best treatment for eczema in Kuala Lumpur?
-                </h3>
-                <p className="text-taupe">
-                  There is no single "best." Evidence-based care usually starts
-                  with moisturisers and flare control using topical
-                  anti-inflammatory treatments, then escalation if needed.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-georgia text-brown mb-2">
-                  6) Are steroid creams safe for eczema?
-                </h3>
-                <p className="text-taupe">
-                  They are widely used and can be safe and effective when used
-                  correctly. The key is correct strength, correct area, and
-                  correct duration under medical advice.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-georgia text-brown mb-2">
-                  7) Can eczema be cured permanently?
-                </h3>
-                <p className="text-taupe">
-                  Eczema is often long-term and may flare even after it
-                  improves. The goal is control, longer calm periods, and fewer
-                  flares.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-georgia text-brown mb-2">
-                  8) What is the fastest way to calm eczema itching?
-                </h3>
-                <p className="text-taupe">
-                  Fast relief usually comes from cooling the skin, restoring
-                  moisture, and using doctor-recommended anti-inflammatory
-                  treatment during a flare. If itching is severe or sleep is
-                  affected, medical review helps.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-georgia text-brown mb-2">
-                  9) Should I avoid certain foods if I have eczema?
-                </h3>
-                <p className="text-taupe">
-                  Some people have food-related triggers, but many do not. If
-                  you suspect food triggers, it is best to assess carefully
-                  rather than cutting many foods at once.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-georgia text-brown mb-2">
-                  10) When should I see a doctor for eczema?
-                </h3>
-                <p className="text-taupe">
-                  See a doctor if eczema is spreading fast, oozing, crusting,
-                  painful, affecting sleep, or not improving with basic care.
-                  Moderate to severe eczema may need escalation options like
-                  phototherapy or advanced medicines under specialist care.
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 bg-linear-to-br from-wine to-rose">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="whileInView"
-            variants={scaleIn}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <h2 className="text-4xl md:text-5xl font-georgia text-white mb-6">
-              Call to action (Nexus Clinic Kuala Lumpur)
-            </h2>
-
-            <p className="text-xl text-white/90 mb-8 leading-relaxed">
-              If your eczema is making your days uncomfortable or your nights
-              miserable, do not keep guessing with random creams.
-            </p>
-
-            <div className="bg-glass backdrop-blur-sm p-8 rounded-3xl border border-white/20">
-              <p className="text-2xl text-wine font-georgia mb-4">
-                Visit Nexus Clinic Kuala Lumpur
-              </p>
-              <p className="text-wine/90 mb-2">
-                Wisma UOA II, Jalan Pinang, near KLCC
-              </p>
-              <p className="text-wine/80">
-                for a doctor-led skin assessment and a plan that fits real KL
-                life.
-              </p>
             </div>
           </motion.div>
-        </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-8">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor About Your Eczema | Free Assessment
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Eczema Severity-to-Treatment Step-Up Framework Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Eczema Severity-to-Treatment Framework</h2>
+            <p className="text-taupe font-inter">Following Ministry of Health Malaysia Clinical Practice Guidelines 2018</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Severity Level</th>
+                  <th className="p-4 text-left font-georgia">Clinical Signs</th>
+                  <th className="p-4 text-left font-georgia">SCORAD Guide</th>
+                  <th className="p-4 text-left font-georgia">Recommended Treatment</th>
+                  <th className="p-4 text-left font-georgia">When to Escalate</th>
+                </tr>
+              </thead>
+              <tbody>
+                {severityFramework.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.severity}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.signs}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.scorad}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.treatment}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.escalate}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-brown font-inter text-sm">
+              A critical clinical point: most Malaysian patients with mild to moderate eczema are undertreated, not overtreated. Continue topical corticosteroid until skin is completely clear plus two to three additional days, not stopping at the first sign of improvement.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Malaysia-Specific Triggers Table */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Malaysia-Specific Eczema Triggers</h2>
+            <p className="text-taupe font-inter">Why eczema is harder to control in tropical Malaysia</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Trigger</th>
+                  <th className="p-4 text-left font-georgia">Why It Is Worse in Malaysia</th>
+                  <th className="p-4 text-left font-georgia">Evidence</th>
+                  <th className="p-4 text-left font-georgia">Practical Management</th>
+                </tr>
+              </thead>
+              <tbody>
+                {malaysiaTriggers.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.trigger}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.whyWorse}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.evidence}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.management}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Eczema Flare Emergency Action Plan Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Eczema Flare Emergency Action Plan</h2>
+            <p className="text-taupe font-inter">What to do in the first 48 hours of a flare</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Flare Stage</th>
+                  <th className="p-4 text-left font-georgia">Signs to Look For</th>
+                  <th className="p-4 text-left font-georgia">Action at Home</th>
+                  <th className="p-4 text-left font-georgia">When to Call Clinic</th>
+                </tr>
+              </thead>
+              <tbody>
+                {flareActionPlan.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.stage}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.signs}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.action}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.whenToCall}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl border-l-4 border-wine">
+            <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
+              <AlertCircle className="w-4 h-4" />
+              Critical Clinical Message
+            </p>
+            <p className="text-taupe font-inter text-sm mt-1">
+              Applying topical corticosteroids to a secondary bacterial infection accelerates the spread of the infection. If you notice yellow crusting, expanding hot red patches or weeping that does not dry within 24 hours, seek medical review for antibiotic prescription.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Types of Eczema Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Types of Eczema Treated at Nexus Clinic KL</h2>
+            <p className="text-taupe font-inter">Each type requires a different management approach</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl border border-taupe/10">
+              <h3 className="font-georgia text-xl text-wine mb-2">Atopic Dermatitis</h3>
+              <p className="text-taupe font-inter text-sm">Most common form, affecting over 20% of Malaysian children. Genetic inflammatory condition linked to filaggrin protein deficiency. Presents with flexural eczema in elbows and knees. Management follows MOH Malaysia 2018 CPG framework.</p>
+            </motion.div>
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl border border-taupe/10">
+              <h3 className="font-georgia text-xl text-wine mb-2">Contact Dermatitis</h3>
+              <p className="text-taupe font-inter text-sm">Allergic or irritant reaction to specific substances including nickel, latex, preservatives, or fragrances. Assessed through detailed history and patch testing. Treatment includes barrier creams and trigger avoidance.</p>
+            </motion.div>
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl border border-taupe/10">
+              <h3 className="font-georgia text-xl text-wine mb-2">Seborrhoeic Dermatitis</h3>
+              <p className="text-taupe font-inter text-sm">Scaly, greasy patches on oily areas including scalp, face, chest and back. Driven by abnormal immune response to Malassezia yeast. Treatment includes antifungal creams and medicated shampoos.</p>
+            </motion.div>
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl border border-taupe/10">
+              <h3 className="font-georgia text-xl text-wine mb-2">Hand Eczema</h3>
+              <p className="text-taupe font-inter text-sm">Extremely common in Malaysian patients, frequently occupationally driven affecting healthcare workers, food handlers, and cleaners. Treatment emphasises barrier restoration and protective measures including glove use.</p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Daily Eczema Skincare Routine */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Daily Eczema Skincare Routine</h2>
+            <p className="text-taupe font-inter">Foundation of long-term eczema management</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl border-l-4 border-wine">
+              <h3 className="font-georgia text-lg text-brown mb-3">Morning</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Quick rinse or gentle cleanse</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Apply emollient within 3 minutes of shower</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Sunscreen if exposed (sensitive-skin friendly)</span>
+                </li>
+              </ul>
+            </motion.div>
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl border-l-4 border-wine">
+              <h3 className="font-georgia text-lg text-brown mb-3">Midday (if you sweat)</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Rinse sweat if possible</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Reapply emollient if skin feels tight</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Avoid fragranced wipes</span>
+                </li>
+              </ul>
+            </motion.div>
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl border-l-4 border-wine">
+              <h3 className="font-georgia text-lg text-brown mb-3">Night</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Lukewarm shower, pat dry</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Apply emollient immediately</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Use medicated creams only where needed</span>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-brown font-inter text-sm">
+              The three-minute window after showering is when transepidermal water loss is actively occurring and emollient application is most effective at sealing moisture.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Eczema Treatment Cost in Malaysia 2026</h2>
+            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Service / Treatment</th>
+                  <th className="p-4 text-left font-georgia">What Is Included</th>
+                  <th className="p-4 text-left font-georgia">Price Guide (RM) 2026</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pricingTiers.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.service}</td>
+                    <td className="p-4 font-inter text-taupe text-sm">{item.includes}</td>
+                    <td className="p-4 font-inter font-semibold text-wine">{item.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr className="bg-wine/5">
+                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
+                    Total ongoing treatment costs depend on severity and frequency of flares. All treatment is structured to reduce frequency and severity over time through proper long-term management.
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Get Your Eczema Treatment Cost Estimate
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Before After Section */}
+      <SectionBeforeAfter transformations={transformations} />
+
+      {/* FAQ Section */}
+      <FAQ data={faqData} />
+      
+      {/* CTA Section */}
+      <section className="py-20 px-4 bg-wine">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-4xl text-center"
+        >
+          <motion.div variants={fadeInUp} className="space-y-6">
+            <h2 className="font-georgia text-3xl md:text-5xl text-light">
+              Structured Eczema Management at Nexus Clinic KL
+            </h2>
+            <p className="text-xl text-cream font-inter max-w-2xl mx-auto">
+              Eczema in Malaysia is harder to control than eczema in temperate climates, and it deserves a treatment plan that acknowledges this. House dust mites, sweat, heat, humidity, and daily temperature cycling keep Malaysian patients in a cycle of flares that generic treatment plans never fully address.
+            </p>
+            <p className="text-cream/90 font-inter">
+              Every eczema patient receives a severity-matched treatment protocol, a written trigger management guide calibrated to Malaysian conditions, a flare action plan they can follow at home, and the correct information about their medications to use them effectively without fear.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                Free Assessment
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+              <Whatsapp 
+                message="Hi, I'd like to book a consultation for eczema treatment at Nexus Clinic KL. Please let me know available slots."
+                variant="light"
+              />
+            </div>
+            <p className="text-cream/80 font-inter text-sm">
+              Limited slots available | Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
+            </p>
+            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
+              <a href="#" className="hover:text-cream transition-colors">Call: 016-7025699</a>
+              <span>•</span>
+              <a href="#" className="hover:text-cream transition-colors">WhatsApp: 03-21635699</a>
+            </div>
+          </motion.div>
+        </motion.div>
       </section>
     </div>
   );
-};
-
-export default EczemaLandingPage;
+}

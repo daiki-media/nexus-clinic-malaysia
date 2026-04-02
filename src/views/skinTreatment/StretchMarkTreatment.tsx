@@ -1,155 +1,97 @@
 "use client";
-
-import React from "react";
 import { motion } from "framer-motion";
 import {
+  Sparkles,
+  Award,
+  MapPin,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Heart,
   Shield,
-  Target,
-  Droplets,
-  Zap,
-  CheckCircle2,
   ArrowRight,
-  Touchpad,
+  AlertCircle,
+  Activity,
+  Zap,
+  Eye,
+  AlertTriangle,
+  Droplet,
+  Scissors,
+  TrendingUp,
+  DollarSign,
+  Palette,
+  Layers,
+  Sun,
+  Target,
   Combine,
+  Touchpad,
 } from "lucide-react";
 import {
-  fadeInUp,
   staggerContainer,
   fadeInLeft,
   fadeInRight,
+  fadeInUp,
   scaleIn,
 } from "../../lib/animations";
-import FAQ from "@/src/components/FAQ";
+import FAQ from "../../components/FAQ";
+import Whatsapp from "../../components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
+import Image from "next/image";
 
-const StretchMarkLanding = () => {
-  const treatments = [
-    {
-      icon: <Zap className="w-6 h-6" />,
-      title: "Dermaroller and Microneedling for Stretch Marks",
-      description:
-        "Microneedling creates tiny controlled micro-injuries in the skin. As the skin heals, it produces collagen and elastin that can improve texture and scars. Mayo Clinic Health System explains this collagen induction process clearly. (mayoclinichealthsystem.org) Cleveland Clinic also lists microneedling among treatment options for stretch marks. (my.clevelandclinic.org)",
-      bestFor: [
-        "early to mid-stage stretch marks",
-        "people who want low downtime",
-        "areas like thighs, hips, buttocks, arms",
-      ],
-      bgColor: "bg-cream",
-      borderColor: "border-rose",
-      footer:
-        "What it feels like: mild prickly sensation. Numbing cream can help. Typical sessions: often a series. Many clinics plan multiple sessions because collagen builds gradually.",
-    },
-    {
-      icon: <Target className="w-6 h-6" />,
-      title: "Fractional CO2 Laser Stretch Mark Treatment",
-      description:
-        "Fractional CO2 laser is often used for scars and texture. It creates tiny columns of controlled “micro-treatment zones” in the skin, encouraging new collagen and resurfacing over time. Nexus Clinic lists Fractional CO2 Laser as a key stretch mark treatment in KL. (nexus-clinic.com) A Malaysia clinic resource also notes different lasers may be used for stretch marks, including fractional and CO2, with choice based on severity and skin type. (drjaneclinic.com)",
-      bestFor: [
-        "older white stretch marks that need stronger remodeling",
-        "thicker texture changes",
-        "people who can follow aftercare well (this is important)",
-      ],
-      bgColor: "bg-rose bg-opacity-10",
-      borderColor: "border-wine",
-      footer:
-        "Downtime: usually more than microneedling. Expect redness and sensitivity for a few days, sometimes longer depending on settings. Skin tone note for Malaysia: Laser settings should be chosen carefully for medium to deeper skin tones to reduce the risk of post-inflammatory hyperpigmentation.",
-    },
-    {
-      icon: <Droplets className="w-6 h-6" />,
-      title: "Carboxytherapy for Stretch Marks",
-      description:
-        "Carboxytherapy uses controlled medical CO2 delivery to the skin. It is often positioned to support circulation and collagen stimulation for concerns like stretch marks and skin laxity. Nexus Clinic offers Carboxy Therapy in Malaysia and provides clinic contact details and service positioning online. (nexus-clinic.com)",
-      bestFor: [
-        "mild to moderate stretch marks",
-        "patients who want an “add-on” to boost results with microneedling or laser",
-        "areas like abdomen, thighs, buttocks",
-      ],
-      bgColor: "bg-taupe bg-opacity-10",
-      borderColor: "border-brown",
-      footer:
-        "What it feels like: temporary pressure or tingling. Most people tolerate it well.",
-    },
-    {
-      icon: <Touchpad className="w-6 h-6" />,
-      title: "Topical Retinoids for New Stretch Marks (At-Home Support)",
-      description:
-        "If your stretch marks are new (less than a few months), topical tretinoin may improve appearance in some cases by supporting collagen rebuilding. Mayo Clinic notes tretinoin may help stretch marks that are less than a few months old, but it can irritate skin. (mayoclinic.org).",
-      bgColor: "bg-taupe bg-opacity-10",
-      borderColor: "border-brown",
-      footer:
-        "Important: tretinoin is not used in pregnancy, and your doctor should guide you if you are breastfeeding or planning pregnancy.",
-    },
-    {
-      icon: <Combine className="w-6 h-6" />,
-      title: "Combination Treatment (Often the Best Results)",
-      description:
-        "Many dermatology and aesthetic discussions note that combining treatments can improve outcomes for stretch marks, such as using microneedling-based technology and fractional lasers together. A peer-reviewed article discussing microfocused ultrasound and skin therapies notes better aesthetic results have been demonstrated when more than one therapy is used for stretch marks, including combining fractionated microneedle radiofrequency and fractional CO2 laser. (pmc.ncbi.nlm.nih.gov)",
-      bgColor: "bg-taupe bg-opacity-10",
-      borderColor: "border-brown",
-      footer:
-        "Even if you are not doing RF microneedling specifically, the lesson is the same: stretch marks often respond best to a layered plan, not a single one-off session.",
-    },
+interface StretchMarkRemovalProps {
+  locale: string;
+}
+
+export default function StretchMarkRemoval({ locale }: StretchMarkRemovalProps) {
+  const stretchMarkStages = [
+    { stage: "Striae Rubrae (Red or Pink)", appearance: "Active red or pink stretch marks; may feel slightly raised or itchy; skin has been stretched recently", mechanism: "Active inflammation in the middle layer of the skin (dermis); blood vessels are dilated; fibroblasts are still active; collagen and elastin disruption is recent", treatment: "Pulsed Dye Laser (PDL) targets blood vessels in active layer of skin; reduces redness while stimulating collagen production | Fractional CO2 laser or microneedling with PRP" },
+    { stage: "Striae Albae (White or Silver)", appearance: "Mature white or silver stretch marks; flat or slightly depressed into skin; skin texture is permanently altered", mechanism: "Blood vessels have regressed in the middle layer of the skin; fibrosis replacing torn collagen and elastin; melanocytes are depleted; dermis is thinned and atrophic", treatment: "Fractional CO2 laser treatment is most effective option | Radiofrequency microneedling | PRP combined with microneedling" },
+    { stage: "Mixed (Red Transitioning to White)", appearance: "Stretch marks in transition; some areas still red, others fading to white or silver", mechanism: "Parts of dermis still actively inflamed while other areas progressed to fibrosis; window of opportunity exists to treat remaining active red areas", treatment: "Combined treatment approach: PDL for remaining red areas and fractional laser or RF microneedling for transitioning areas" },
+    { stage: "Striae Gravidarum (Pregnancy)", appearance: "Stretch marks on tummy, breasts and thighs; typically present postpartum; can appear rapidly during third trimester", mechanism: "Rapid expansion of skin during pregnancy combined with hormonal changes reducing collagen production; skin stretched beyond elasticity threshold", treatment: "Begin postpartum once breastfeeding complete; start with PDL for red areas; progress to fractional CO2 laser or RF microneedling with PRP" },
   ];
 
-  const areas = [
-    "Perut & pinggang",
-    "Paha (dalam & luar)",
-    "Pinggul",
-    "Bokong",
-    "Payudara",
-    "Lengan atas",
-    "Punggung & bahu",
+  const treatmentComparison = [
+    { treatment: "Fractional CO2 Laser Treatment", bestFor: "White or silver mature stretch marks; mixed stage", mechanism: "Creates microscopic ablation columns in middle layer of skin; stimulates wound healing and collagen production", outcome: "20 to 60% improvement in appearance; 3 to 5 sessions; PIH risk moderate; downtime 3 to 7 days", pihRisk: "Moderate - conservative settings used at Nexus Clinic KL" },
+    { treatment: "Pulsed Dye Laser (PDL)", bestFor: "Striae rubrae (red or pink active stretch marks)", mechanism: "Targets blood vessels in active layer of skin; reduces vasodilation and inflammation; stimulates collagen", outcome: "Significant reduction in redness and flattening; 3 to 6 sessions; lower PIH risk; minimal downtime", pihRisk: "Low - safe for Malaysian skin with appropriate settings" },
+    { treatment: "Microneedling with PRP", bestFor: "All stages; particularly useful for stretch marks resistant to laser alone", mechanism: "Creates controlled micro-injuries to stimulate collagen; PRP delivers growth factors directly into dermis", outcome: "30 to 40% improvement in appearance; excellent safety profile; minimal PIH risk", pihRisk: "Very low - excellent for darker Malaysian skin" },
+    { treatment: "RF Microneedling", bestFor: "White or silver stretch marks; skin laxity; patients needing minimal downtime", mechanism: "Radiofrequency energy delivered through microneedles heats dermis uniformly; contracts existing collagen", outcome: "Moderate improvement in texture and elasticity; very low PIH risk; minimal downtime", pihRisk: "Very low - excellent for Fitzpatrick III-V skin" },
+    { treatment: "Stretch Mark Removal Cream", bestFor: "Prevention only; once stretch marks formed in dermis, minimal effect", mechanism: "Works on skin surface only; cannot penetrate to middle layer where stretch marks originate", outcome: "Minimal to no improvement in established stretch marks; may help prevent new marks", pihRisk: "None - but ineffective for existing stretch marks" },
   ];
 
-  const faqs = [
-    {
-      q: "Can stretch marks be removed completely?",
-      a: "Stretch marks often fade, but they may not disappear completely. Treatment usually improves appearance and texture rather than fully erasing them. (mayoclinic.org)",
-    },
-    {
-      q: "What is the best treatment for stretch marks in Malaysia?",
-      a: "There is no single best treatment for everyone. Many clinics use microneedling, fractional CO2 laser, and combination plans. Nexus Clinic offers Fractional CO2 Laser, Carboxytherapy, and Dermaroller for stretch marks. (nexus-clinic.com)",
-    },
-    {
-      q: "Is laser better than microneedling for stretch marks?",
-      a: "Laser can be stronger for older white marks and texture, while microneedling is a lower-downtime collagen option. Many people do best when treatments are combined or planned in stages. (pmc.ncbi.nlm.nih.gov)",
-    },
-    {
-      q: "Does tretinoin cream work for stretch marks?",
-      a: "Tretinoin may improve the appearance of stretch marks that are less than a few months old, but it can irritate skin and is not suitable for everyone. (mayoclinic.org)",
-    },
-    {
-      q: "How many sessions do I need to remove stretch marks?",
-      a: "Most people need multiple sessions, especially for older marks. Your exact number depends on mark age, depth, and the treatment type used.",
-    },
-    {
-      q: "Is stretch mark treatment painful?",
-      a: "Many treatments are tolerable. Numbing cream is commonly used for microneedling and laser-based procedures. Discomfort varies by body area and sensitivity.",
-    },
-    {
-      q: "How long is downtime after fractional CO2 laser?",
-      a: "Downtime depends on settings and your skin response. Expect redness and sensitivity for several days, sometimes longer. Your clinic will guide recovery.",
-    },
-    {
-      q: "Can stretch marks come back after treatment?",
-      a: "Treated marks do not usually 'come back,' but new stretch marks can form if your skin stretches quickly again. Prevention and lifestyle habits still matter.",
-    },
-    {
-      q: "Is stretch mark removal safe for darker skin in Malaysia?",
-      a: "Yes, but settings must be chosen carefully because pigment change risk can be higher in medium to deeper skin tones. A good clinic plans conservatively and prioritises aftercare.",
-    },
-    {
-      q: "Can I do stretch mark removal during pregnancy or breastfeeding?",
-      a: "Some treatments may not be suitable during pregnancy or early breastfeeding. Nexus Clinic advises discussing safe options with your provider. (nexus-clinic.com)",
-    },
-    {
-      q: "What areas can be treated?",
-      a: "Common areas include abdomen, thighs, hips, buttocks, breasts, and arms. Mayo Clinic lists common body locations where stretch marks appear. (mayoclinic.org)",
-    },
-    {
-      q: "How much does stretch mark removal cost in Kuala Lumpur?",
-      a: "Public directory listings show starting prices from about RM286, and some clinics list stretch mark treatment starting from RM499. Exact cost depends on area size and number of sessions. (whatclinic.com)",
-    },
+  const causeData = [
+    { cause: "Pregnancy (Striae Gravidarum)", mechanism: "Rapid expansion of tummy, breasts, thighs; hormonal factors reduce collagen production", location: "Tummy most common; thighs, buttock, breasts", timing: "Begin postpartum; treat red marks early; do not wait until marks turn white" },
+    { cause: "Rapid Weight Changes", mechanism: "Weight gain stretches skin faster than collagen can adapt; weight loss leaves lax skin", location: "Tummy, flanks, hips; thighs, buttock; upper arms", timing: "Begin once weight stabilised; treating during ongoing weight changes reduces efficacy" },
+    { cause: "Puberty (Growth Spurts)", mechanism: "Rapid height gain stretches thighs, buttock, upper arms; hormonal factors reduce elasticity", location: "Thighs most common; buttock; upper arms; lower back", timing: "Red puberty marks respond to laser at any age; white marks improved with fractional laser" },
+    { cause: "Muscle Building", mechanism: "Rapid increase in muscle mass stretches skin over upper arms, shoulders, buttock", location: "Upper arms most common; shoulders; buttock", timing: "Same treatment options as pregnancy or weight change stretch marks" },
+    { cause: "Hormonal Conditions", mechanism: "Elevated cortisol inhibits collagen production; skin becomes fragile; stretch marks may occur without visible size change", location: "Abdomen, flanks, upper arms, thighs, buttock", timing: "Address underlying hormonal condition before or concurrent with treatment" },
+  ];
+
+  const maintenanceData = [
+    { measure: "SPF50 Sunscreen", when: "Every morning from day after each session; continue throughout treatment course", instruction: "Laser treatment sensitises treated skin to UV; Malaysia's UV index 10-13 creates high PIH risk; mineral sunscreen preferred" },
+    { measure: "Moisturisation", when: "Twice daily from immediately after each session; continue between sessions", instruction: "Fragrance-free moisturiser with ceramides, hyaluronic acid supports skin barrier recovery; supports skin elasticity" },
+    { measure: "Gradual Weight Management", when: "Throughout treatment course and maintenance period", instruction: "Rapid weight changes during treatment can produce new stretch marks; stable weight recommended during course" },
+    { measure: "Collagen-Supporting Nutrition", when: "Ongoing lifestyle measure throughout treatment", instruction: "Adequate protein, vitamin C, zinc support collagen production; avoid smoking as nicotine suppresses collagen" },
+  ];
+
+  const pricingTiers = [
+    { treatment: "Fractional CO2 Laser Treatment", bestFor: "White or silver mature stretch marks; skin texture improvement", sessions: "3 to 5 sessions at 4 to 8 week intervals", price: "RM 800 to RM 2,000 per session" },
+    { treatment: "Pulsed Dye Laser (PDL)", bestFor: "Red or pink active stretch marks; any stage with remaining redness", sessions: "3 to 6 sessions at 4 to 6 week intervals", price: "RM 600 to RM 1,500 per session" },
+    { treatment: "Microneedling with PRP", bestFor: "All stages; excellent for all skin types; safe for Malaysian Fitzpatrick III-V", sessions: "3 to 5 sessions at 4 to 6 week intervals", price: "RM 700 to RM 1,500 per session" },
+    { treatment: "RF Microneedling", bestFor: "White or silver marks; skin laxity; patients needing minimal downtime", sessions: "3 to 5 sessions at 4 to 6 week intervals", price: "RM 800 to RM 1,800 per session" },
+    { treatment: "Combination Stretch Marks Programme", bestFor: "Moderate to significant stretch marks; mixed stage", sessions: "3 to 5 combined sessions", price: "From RM 2,000 per session or RM 6,000 to RM 12,000 per programme" },
+  ];
+
+  const faqData = [
+    { q: "Can stretch marks be removed completely?", a: "No cosmetic procedure removes stretch marks completely. Stretch marks are a permanent structural change in the middle layer of the skin caused when the skin has been stretched beyond the capacity of collagen and elastin to compensate. What effective stretch marks treatment achieves is a significant reduction in the appearance of stretch marks: the marks on the skin become flatter, smoother, closer to the surrounding skin tone and far less noticeable. Red or pink stretch marks respond more significantly to laser treatment than white or silver mature marks. At Nexus Clinic KL, we provide honest outcome expectations at the initial consultation specific to the type and stage of stretch marks you have, rather than promising complete removal." },
+    { q: "Which treatment is best for stretch marks in Malaysia?", a: "The best stretch marks removal treatment depends on the stage and type of stretch marks. For red active stretch marks (striae rubrae), pulsed dye laser treatment is the most effective first step, targeting the active blood vessels in the middle layer of the skin. For white or silver mature stretch marks (striae albae), fractional CO2 laser treatment is the most effective treatment option for improving skin texture. Microneedling with PRP (platelet rich plasma) is excellent for all stages and is particularly suited to darker Malaysian skin types. RF microneedling is the best advanced treatment for patients who need minimal downtime. A combination of laser treatment and PRP provides the best overall stretch marks removal outcomes." },
+    { q: "How many sessions are needed to get rid of stretch marks?", a: "Most patients require 3 to 5 sessions to significantly get rid of stretch marks or reduce their appearance. Red stretch marks may respond visibly from session 2 or 3 with pulsed dye laser treatment. White or silver marks require the full course of fractional laser treatment or RF microneedling with PRP to see meaningful improvement. The exact number of sessions varies based on the severity of the stretch marks, how long they have been present, the body area being treated, and the patient's skin response. At Nexus Clinic KL, a realistic session estimate is provided at the initial consultation and reviewed at each treatment visit based on your progress." },
+    { q: "Is stretch mark laser treatment safe for Malaysian skin?", a: "Laser treatment for stretch marks is safe for Malaysian skin types when performed by a qualified LCP certified aesthetic doctor using the correct settings for your Fitzpatrick skin type. The primary risk for Malaysian Fitzpatrick III-V skin is post-inflammatory hyperpigmentation (PIH), particularly with ablative fractional laser treatment. At Nexus Clinic KL, settings for all laser treatment sessions are calibrated conservatively for Malaysian skin to reduce PIH risk, and SPF50 use is mandatory during the treatment course. RF microneedling and microneedling with PRP carry the lowest PIH risk of the available treatment options and are excellent choices for darker-skinned Malaysian patients." },
+    { q: "How much does stretch mark removal cost in Malaysia?", a: "Stretch mark removal cost in Malaysia at Nexus Clinic KL ranges from RM 600 to RM 2,000 per session depending on the laser treatment modality and the body area being treated. A complete treatment programme of 3 to 5 sessions for a single area such as the tummy or thighs costs approximately RM 3,000 to RM 8,000 per area depending on the treatment selected. Combination stretch marks removal programmes incorporating laser treatment and PRP are available at programme pricing. All pricing is disclosed transparently before any commitment at the free initial consultation." },
+    { q: "Can stretch mark removal treatment be done during pregnancy?", a: "No. Laser treatment and microneedling with PRP are not recommended during pregnancy. Stretch mark removal treatment in Malaysia should be deferred until after delivery. If breastfeeding, treatment should ideally wait until breastfeeding is complete, though PRP can be considered earlier as it uses the patient's own blood components without any medications. Using stretch mark removal cream during pregnancy to prevent developing stretch marks or reduce their severity is safe and recommended as a preventive measure, particularly on the tummy from the second trimester onwards." },
+    { q: "Do stretch marks on the tummy respond to treatment?", a: "Yes. Tummy stretch marks are among the most common presentations at stretch marks removal clinics in Malaysia, particularly in postpartum patients. Tummy stretch marks caused by pregnancy respond well to laser treatment and PRP when treatment begins while the marks are still red or pink. The tummy is a well-accessible treatment area and fractional laser treatment, RF microneedling and PRP are all well-suited to this body area. A course of 3 to 5 sessions is typically recommended for tummy stretch marks at Nexus Clinic KL." },
+    { q: "How is Nexus Clinic KL different from other stretch marks removal clinics in Malaysia?", a: "Nexus Clinic KL differentiates from other marks removal clinics in Malaysia in three ways. First, all treatment is performed by a LCP certified aesthetic doctor rather than by therapists or technicians. Second, the treatment plan is stage-matched: red stretch marks receive pulsed dye laser treatment and white or silver marks receive fractional laser or RF microneedling, rather than a single protocol applied regardless of stage. Third, the consultation includes honest outcome expectations including PIH risk for Malaysian skin and realistic improvement percentages rather than overselling complete removal." },
+    { q: "Is PRP good for stretch marks?", a: "PRP (platelet rich plasma) is an effective treatment for stretch marks and an important component of the combination advanced treatments programme at Nexus Clinic KL. The platelets and fibrin in PRP contain growth factors that stimulate fibroblast activity, collagen production and skin texture improvement in the treated layer of the skin. PRP combined with microneedling delivers the platelets and fibrin directly into the dermis where stretch marks originate. Published studies show 30 to 40% improvement in the appearance of stretch marks with a full PRP course. PRP treatment is safe for all skin types including darker Malaysian Fitzpatrick skin and carries minimal PIH risk." },
+    { q: "Is the stretch mark consultation at Nexus Clinic KL free?", a: "Yes. The initial stretch mark removal consultation at Nexus Clinic KL is complimentary and includes clinical assessment of the type and stage of stretch marks, body area assessment including tummy, thighs, buttock, upper arms and other areas, a review of the cause of stretch marks and any relevant hormonal history, confirmation of the appropriate treatment options available for your specific presentation, an honest outcome expectation discussion, and a personalised cost estimate for the full recommended programme. A LCP certified aesthetic doctor performs the assessment." },
   ];
 
   const transformations = [
@@ -171,928 +113,746 @@ const StretchMarkLanding = () => {
   ];
 
   return (
-    <main className="min-h-screen bg-light font-[--font-inter] overflow-hidden">
+    <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-wine rounded-full filter blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-rose rounded-full filter blur-3xl"></div>
-        </div>
-
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
+        
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="container mx-auto px-6 relative z-10"
+          viewport={{ once: true, amount: 0.2 }}
+          className="container mx-auto max-w-6xl relative z-10"
         >
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInUp} className="space-y-6">
-              <div className="inline-flex items-center gap-2 bg-cream px-4 py-2 rounded-full">
-                <Shield className="w-4 h-4 text-wine" />
-                <span className="text-sm text-brown">
-                  Nexus Clinic Kuala Lumpur
-                </span>
-              </div>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-8">
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
+                <AlertTriangle className="w-4 h-4 text-wine" />
+                <span className="text-sm font-inter text-wine font-medium">Stage-Matched Laser Treatment • Doctor-Only</span>
+              </motion.div>
+              
+              <motion.h1
+                variants={fadeInUp}
+                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
+              >
+                Best Stretch Mark Removal in Malaysia Using{" "}
+                <span className="text-wine italic">Laser Treatment for All Skin Types</span>
+              </motion.h1>
 
-              <h2 className="font-georgia text-5xl lg:text-5xl text-brown leading-tight">
-                Stretch Mark Removal in Malaysia at
-                <span className="text-wine block">
-                  Nexus Clinic Kuala Lumpur
-                </span>
-              </h2>
+              <motion.p
+                variants={fadeInUp}
+                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
+              >
+                Stretch marks removal in Malaysia is one of the most requested and most misunderstood areas of aesthetic medicine. Stretch marks are marks on the skin caused when the skin has been stretched rapidly, tearing the collagen and elastin fibres in the middle layer of the skin.
+              </motion.p>
 
-              <p className="text-xl text-taupe leading-relaxed">
-                Stretch marks are common. Feeling uncomfortable about them is
-                common too. Let's fade them safely.
-              </p>
+              <motion.p
+                variants={fadeInUp}
+                className="text-brown font-inter"
+              >
+                At Nexus Clinic KL, the best stretch marks removal outcomes come from matching the laser treatment to the specific stage and cause of the stretch marks. Red stretch marks respond to pulsed dye laser. White or silver mature stretch marks require fractional CO2 laser or RF microneedling. Stretch mark removal cream cannot reach the middle layer of the skin where stretch marks originate.
+              </motion.p>
 
-              <p className="text-lg text-brown">
-                Whether your stretch marks came from pregnancy, weight change,
-                or gym gains, you deserve options that actually make sense. At
-                Nexus Clinic Kuala Lumpur, we focus on realistic improvement,
-                better texture, and a plan that suits your skin tone.
-              </p>
-
-              <div className="flex flex-wrap gap-4 pt-4">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-wine text-white px-8 py-4 rounded-full font-semibold flex items-center gap-2 hover:bg-opacity-90 transition-all"
-                >
-                  Start Your Consultation <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-rose text-rose px-8 py-4 rounded-full font-semibold hover:bg-rose hover:text-white transition-all"
-                >
-                  View Treatment Options
-                </motion.button>
-              </div>
-            </motion.div>
-
-            <motion.div variants={scaleIn} className="relative">
-              <div className="bg-cream rounded-3xl p-8 shadow-xl">
-                <div className="space-y-4">
-                  <div className="bg-white rounded-2xl p-6 shadow-sm">
-                    <h3 className="font-georgia text-xl text-brown mb-3">
-                      Trusted Care in KL
-                    </h3>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-3 text-taupe">
-                        <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
-                        <span>
-                          Central Kuala Lumpur clinic with private consults and
-                          body skin treatments
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-3 text-taupe">
-                        <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
-                        <span>
-                          Targeted solutions: Fractional CO2 Laser,
-                          Carboxytherapy, Dermaroller
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-3 text-taupe">
-                        <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
-                        <span>
-                          Honest expectations: fade and smooth with the right
-                          approach (mayoclinic.org)
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-wine text-white rounded-2xl p-6">
-                    <p className="font-georgia text-lg mb-2">Visit Us Today</p>
-                    <p className="text-sm opacity-90">
-                      LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang,
-                      50450 Kuala Lumpur
-                    </p>
-                    <p className="text-sm mt-2">📞 016-7025699 / 03-21635699</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* What Are Stretch Marks Section */}
-      <section className="py-20 bg-white">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="container mx-auto px-6"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-6">
-              <h2 className="font-georgia text-4xl text-brown">
-                What Are Stretch Marks?
-              </h2>
-              <p className="text-lg text-taupe leading-relaxed">
-                Stretch marks (also called striae) are lines that form when skin
-                stretches or shrinks quickly. This rapid change can cause the
-                deeper layer of skin to tear and heal in a different way. That
-                is why stretch marks are a type of scar. (mayoclinic.org)
-              </p>
-
-              <div className="bg-cream rounded-2xl p-6">
-                <h3 className="font-semibold text-brown mb-3">
-                  They commonly appear on:
-                </h3>
-                <div className="grid grid-cols-2 gap-2">
-                  {[
-                    "Stomach and waist",
-                    "Thighs and hips",
-                    "Buttocks",
-                    "Breasts",
-                    "Upper arms",
-                    "Lower back",
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 text-taupe">
-                      <span className="w-1.5 h-1.5 bg-wine rounded-full"></span>
-                      {item}
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-4 text-sm text-taupe italic">
-                  Stretch marks are not harmful. They are not dangerous. Many
-                  people simply do not like how they look. Mayo Clinic notes
-                  they often fade over time, but they may never disappear
-                  completely. (mayoclinic.org)
+              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
+                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  Important Clinical Information
                 </p>
-              </div>
+                <p className="text-taupe font-inter text-sm mt-1">
+                  The critical clinical distinction that determines the right treatment: whether the stretch marks are red and active, or white and mature. Getting this distinction right separates effective treatment from wasted sessions.
+                </p>
+              </motion.div>
+
+              <motion.div 
+                variants={fadeInLeft} 
+                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
+              >
+                <motion.button
+                  variants={fadeInUp}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  Free Consultation
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+                <Whatsapp message="Hi, I'm interested in stretch mark removal at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
+              </motion.div>
             </motion.div>
 
             <motion.div variants={fadeInRight} className="relative">
-              <div className="bg-linear-to-br from-wine to-rose rounded-3xl p-1">
-                <div className="bg-white rounded-3xl p-6">
-                  <img
-                    src="/images/skin/stretch-mark.webp"
-                    alt="Stretch marks visualization"
-                    className="rounded-2xl w-full object-cover"
-                  />
-                </div>
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
+                <Image
+                  src="/images/skin/stretch-mark.webp"
+                  alt="Nexus Clinic Kuala Lumpur - Stretch Mark Removal Treatment"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
+                <p className="font-inter font-bold text-brown">Stage-Matched Laser</p>
+                <p className="font-inter text-sm text-taupe">Over 5,000 procedures completed</p>
               </div>
             </motion.div>
           </div>
         </motion.div>
       </section>
 
-      {/* New vs Old Stretch Marks */}
-      <section className="py-20 bg-cream">
+      {/* Trust Section */}
+      <section className="py-12 px-4 bg-light">
         <motion.div
-          variants={staggerContainer}
+          variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
-          className="container mx-auto px-6"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-4"
-          >
-            New Stretch Marks vs Old Stretch Marks
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-taupe mb-12 max-w-2xl mx-auto"
-          >
-            This is one of the most important things to understand.
-          </motion.p>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div
-              variants={scaleIn}
-              whileHover={{ y: -10 }}
-              className="bg-white rounded-2xl p-8 shadow-lg border-l-4 border-rose"
-            >
-              <h3 className="font-georgia text-2xl text-rose mb-3">
-                New stretch marks (red or purple)
-              </h3>
-              <p className="text-taupe">
-                These are often called striae rubra. They are newer and may
-                respond faster to treatment because the skin is still actively
-                changing.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              whileHover={{ y: -10 }}
-              className="bg-white rounded-2xl p-8 shadow-lg border-l-4 border-brown"
-            >
-              <h3 className="font-georgia text-2xl text-brown mb-3">
-                Old stretch marks (white or silvery)
-              </h3>
-              <p className="text-taupe">
-                These are often called striae alba. They are older and usually
-                need more sessions because the scar is more established.
-              </p>
-            </motion.div>
-          </div>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center mt-8 text-brown font-medium"
-          >
-            Your treatment plan depends on which type you have, and where they
-            are on your body.
-          </motion.p>
-        </motion.div>
-      </section>
-
-      {/* Why Stretch Marks Happen */}
-      <section className="py-20 bg-white">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="container mx-auto px-6"
-        >
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown mb-6"
-            >
-              Why Stretch Marks Happen
-            </motion.h2>
-            <motion.div
-              variants={fadeInUp}
-              className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8"
-            >
-              {[
-                "Pregnancy",
-                "Weight gain or loss",
-                "Puberty growth spurts",
-                "Rapid muscle growth",
-                "Family tendency",
-                "Skin healing patterns",
-              ].map((cause, i) => (
-                <div key={i} className="bg-cream p-4 rounded-xl">
-                  <p className="text-brown">{cause}</p>
+          <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-taupe/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <Award className="w-6 h-6 text-wine" />
                 </div>
-              ))}
-            </motion.div>
-            <motion.p variants={fadeInUp} className="text-taupe italic">
-              If your skin makes stretch marks easily, it does not mean you did
-              something wrong. It means your skin heals in a certain way.
-            </motion.p>
-          </div>
-        </motion.div>
-      </section>
+                <h2 className="font-georgia text-2xl md:text-3xl text-brown">Trust at a glance</h2>
+              </div>
+              <div className="hidden sm:block w-px h-8 bg-taupe/20" />
+              <p className="text-taupe font-inter text-sm">Nexus Clinic Kuala Lumpur — Excellence in Aesthetic Medicine</p>
+            </div>
 
-      {/* What Removal Really Means */}
-      <section className="py-20 bg-cream">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="container mx-auto px-6"
-        >
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown mb-4"
-            >
-              Stretch Mark Removal: What "Removal" Really Means
-            </motion.h2>
-            <motion.p variants={fadeInUp} className="text-lg text-wine mb-6">
-              Let's keep it real.
-            </motion.p>
-            <motion.p variants={fadeInUp} className="text-taupe mb-8">
-              Most medical sources say stretch marks often fade, and treatment
-              aims to improve texture and reduce visibility, not guarantee total
-              erasing. (mayoclinic.org)
-            </motion.p>
-            <motion.div
-              variants={fadeInUp}
-              className="grid sm:grid-cols-2 gap-4 text-left"
-            >
-              {[
-                "Smoother texture",
-                "Better blending with surrounding skin",
-                "Less obvious lines in daylight and photos",
-                "Improved confidence in swimsuits, gym wear, and fitted clothes",
-              ].map((goal, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
-                  <span className="text-brown">{goal}</span>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-4 border-y border-taupe/10">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Award className="w-5 h-5 text-wine" />
                 </div>
-              ))}
-            </motion.div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Experience</p>
+                  <p className="font-georgia text-brown font-bold text-lg">Over 15 Years</p>
+                  <p className="font-inter text-taupe text-xs">Combined clinical experience</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Location</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Wisma UOA II, Jalan Pinang</p>
+                  <p className="font-inter text-taupe text-xs">KLCC, 50450 Kuala Lumpur</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Opening Hours</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Monday - Saturday</p>
+                  <p className="font-inter text-taupe text-xs">9:00am – 6:00pm | Closed Sundays & PH</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Shield className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">MOH Approved Devices</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">All laser devices MOH-approved and FDA-cleared</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Activity className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">Doctor-Only Treatment</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">LCP-certified doctors perform every session</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">5,000+ Procedures</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Extensive experience in stretch mark treatment</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-taupe/10">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Fractional CO2 Laser</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Pulsed Dye Laser + PRP</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Safe for Fitzpatrick III to V skin</span>
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
       </section>
 
-      {/* Treatments Section */}
-      <section className="py-20 bg-white">
+      {/* Treatment Overview Section */}
+      <section className="py-16 px-4 bg-cream">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="container mx-auto px-6"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-4"
-          >
-            Stretch Mark Treatments in Malaysia
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-taupe mb-12 max-w-2xl mx-auto"
-          >
-            Options That Actually Make Sense
-          </motion.p>
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">Stretch Mark Removal at a Glance</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">Advanced laser treatment for all skin types and stretch mark stages</p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Zap, label: "Treatment Options", value: "Fractional CO2, PDL, PRP, RF Microneedling" },
+              { icon: Clock, label: "Session Time", value: "20 to 60 minutes depending on area" },
+              { icon: Heart, label: "Downtime", value: "Minimal to 7 days depending on treatment" },
+              { icon: Activity, label: "Session Spacing", value: "4 to 8 weeks apart" },
+            ].map((item, idx) => (
+              <div key={idx} className="bg-light p-5 rounded-xl border border-taupe/10 shadow-sm">
+                <item.icon className="w-8 h-8 text-wine mb-3" />
+                <p className="font-inter text-sm text-taupe">{item.label}</p>
+                <p className="font-georgia text-md text-brown font-semibold">{item.value}</p>
+              </div>
+            ))}
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 rounded-2xl p-6 border border-wine/10">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div>
+                <p className="font-inter text-sm text-taupe">Type of Stretch Marks Treated</p>
+                <p className="font-georgia text-brown font-semibold">Striae rubrae, striae albae, striae gravidarum</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Skin Types Treated Safely</p>
+                <p className="font-georgia text-brown font-semibold">All skin types including Malaysian Fitzpatrick III to V</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Realistic Outcome</p>
+                <p className="font-georgia text-brown">20 to 60% improvement; flatter, smoother, less visible</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">MOH Approved</p>
+                <p className="font-georgia text-brown">Yes. All devices MOH-approved and FDA-cleared</p>
+              </div>
+            </div>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-8">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor About Your Stretch Marks | Free Assessment
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {treatments.map((treatment, index) => (
-              <motion.div
-                key={index}
-                variants={scaleIn}
-                whileHover={{ y: -10 }}
-                className={`rounded-2xl p-6 bg-cream border-l-4 ${treatment.borderColor} shadow-lg`}
-              >
-                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-4 text-wine">
-                  {treatment.icon}
+      {/* Type of Stretch Marks Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Type of Stretch Marks and Best Treatment</h2>
+            <p className="text-taupe font-inter">The stage-matched framework for effective results</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Stage of Stretch Marks</th>
+                  <th className="p-4 text-left font-georgia">Clinical Appearance</th>
+                  <th className="p-4 text-left font-georgia">What Is Happening in the Dermis</th>
+                  <th className="p-4 text-left font-georgia">Best Treatment at Nexus Clinic KL</th>
+                </tr>
+              </thead>
+              <tbody>
+                {stretchMarkStages.map((stage, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{stage.stage}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{stage.appearance}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{stage.mechanism}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{stage.treatment}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-brown font-inter text-sm">
+              The most important clinical takeaway: Striae rubrae respond significantly better to laser treatment than white or silver marks. If you have developed stretch marks recently, beginning treatment while the marks are still red gives you the best possible outcome.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Treatment Comparison Table */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Treatment Options Compared</h2>
+            <p className="text-taupe font-inter">Honest outcomes and PIH risk for Malaysian skin</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Treatment</th>
+                  <th className="p-4 text-left font-georgia">Best For</th>
+                  <th className="p-4 text-left font-georgia">Mechanism</th>
+                  <th className="p-4 text-left font-georgia">Outcome and Sessions</th>
+                  <th className="p-4 text-left font-georgia">PIH Risk for Malaysian Skin</th>
+                </tr>
+              </thead>
+              <tbody>
+                {treatmentComparison.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.treatment}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.bestFor}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.mechanism}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.outcome}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.pihRisk}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-brown font-inter text-sm">
+              Stretch mark removal cream cannot penetrate to the middle layer of the skin where damaged collagen and elastin fibres are located. At Nexus Clinic KL, we redirect patients from topical approaches to evidence-based laser and microneedling options that actually reach the layer where treatment is needed.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Cause-Specific Assessment Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Cause-Specific Assessment</h2>
+            <p className="text-taupe font-inter">Why stretch marks develop and when to treat them</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Cause of Stretch Marks</th>
+                  <th className="p-4 text-left font-georgia">How It Damages Collagen</th>
+                  <th className="p-4 text-left font-georgia">Typical Location</th>
+                  <th className="p-4 text-left font-georgia">Treatment Timing</th>
+                </tr>
+              </thead>
+              <tbody>
+                {causeData.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.cause}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.mechanism}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.location}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.timing}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Longevity Reality Section - Slider like NoseFiller */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">Treatment Response Timeline</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">What to expect and when to see improvement</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-stretch">
+            <motion.div
+              variants={fadeInLeft}
+              className="bg-light p-8 rounded-2xl border border-taupe/20 shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <TrendingUp className="w-6 h-6 text-wine" />
                 </div>
-                <h3 className="font-georgia text-xl text-brown mb-3">
-                  {treatment.title}
-                </h3>
-                <p className="text-taupe text-sm mb-4">
-                  {treatment.description}
+                <h3 className="font-georgia text-2xl text-brown">Factors Affecting Response</h3>
+              </div>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Red stretch marks respond faster than white or silver marks</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Younger stretch marks (less than 6 months) show better improvement</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Consistent SPF50 use prevents PIH and supports results</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Collagen production continues for 3-6 months after each session</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Combination therapy (laser + PRP) produces superior results</span>
+                </li>
+              </ul>
+              <div className="mt-8 p-4 bg-wine/5 rounded-xl">
+                <p className="text-brown font-inter text-sm text-center">
+                  Most patients see progressive improvement across 3 to 5 sessions, with optimal results visible 3 months after completing the full course.
                 </p>
-                <div className="space-y-2">
-                  <p className="text-sm font-semibold text-brown">Best for:</p>
-                  {treatment.bestFor &&
-                    treatment.bestFor.map((item, i) => (
-                      <div
-                        key={i}
-                        className="flex items-start gap-2 text-sm text-taupe"
-                      >
-                        <span className="w-1 h-1 bg-wine rounded-full mt-2"></span>
-                        {item}
-                      </div>
-                    ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInRight}
+              className="bg-wine p-8 rounded-2xl text-white shadow-xl hover:shadow-2xl transition-shadow"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                  <Clock className="w-6 h-6 text-white" />
                 </div>
-                <div className="space-y-2 mt-4">
-                  <p className="text-sm text-taupe">{treatment.footer}</p>
+                <h3 className="font-georgia text-2xl font-bold">Improvement Timeline</h3>
+              </div>
+              
+              <div className="space-y-8">
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Red Stretch Marks</span>
+                    <span className="font-georgia text-2xl font-bold text-white">3 to 6 sessions</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "50%" }}
+                      transition={{ duration: 1, delay: 0.2 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Visible fading from session 2 or 3 with PDL</p>
                 </div>
+                
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">White or Silver Stretch Marks</span>
+                    <span className="font-georgia text-2xl font-bold text-white">3 to 5 sessions</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "65%" }}
+                      transition={{ duration: 1, delay: 0.4 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Fractional CO2 laser produces progressive texture improvement</p>
+                </div>
+                
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Combination Programme</span>
+                    <span className="font-georgia text-2xl font-bold text-white">3 to 5 sessions</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "75%" }}
+                      transition={{ duration: 1, delay: 0.6 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Laser + PRP produces best overall improvement</p>
+                </div>
+              </div>
+              
+              <div className="mt-8 pt-4 border-t border-white/20">
+                <p className="text-white/80 text-sm text-center">
+                  Results vary by stretch mark stage, skin type, and consistency with aftercare.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.div variants={fadeInUp} className="mt-8 text-center">
+            <p className="text-taupe font-inter text-sm">
+              ✨ The window of opportunity for red stretch marks: begin treatment while marks are still red for the best possible outcome
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Post-Treatment Maintenance Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Post-Treatment Maintenance Protocol</h2>
+            <p className="text-taupe font-inter">Protecting your results in Malaysia's tropical climate</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Maintenance Measure</th>
+                  <th className="p-4 text-left font-georgia">When to Apply</th>
+                  <th className="p-4 text-left font-georgia">Instructions and Evidence</th>
+                </tr>
+              </thead>
+              <tbody>
+                {maintenanceData.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.measure}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.when}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.instruction}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl border-l-4 border-wine">
+            <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
+              <Sun className="w-4 h-4" />
+              Critical for Malaysian Patients
+            </p>
+            <p className="text-taupe font-inter text-sm mt-1">
+              Kuala Lumpur's year-round UV index of 10 to 13 means treated skin is at meaningful risk of PIH if SPF50 is not applied consistently. At Nexus Clinic KL, every patient receives written aftercare instructions specifying daily SPF50 on any treated areas.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* The Treatment Process Steps */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The Stretch Mark Removal Process at Nexus Clinic KL</h2>
+            <p className="text-taupe font-inter">Step by step</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { step: "01", title: "Clinical Assessment and Stage Identification", desc: "Doctor assesses stretch marks by colour and stage, identifies body areas, reviews cause, confirms Fitzpatrick skin type for safe laser settings." },
+              { step: "02", title: "Treatment Planning", desc: "Doctor explains recommended treatment options, realistic improvement expectation, number of sessions required, and full pricing." },
+              { step: "03", title: "Treatment Session", desc: "Area cleaned, numbing cream applied if required. Laser or PRP treatment performed. Written aftercare instructions provided." },
+              { step: "04", title: "Ongoing Review", desc: "Progress photographs at each visit. Treatment plan adjusted based on response. Maintenance review at 3 months after final session." },
+            ].map((item, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="text-center">
+                <div className="w-14 h-14 bg-wine rounded-full flex items-center justify-center text-light font-georgia text-xl mx-auto mb-4 shadow-md">
+                  {item.step}
+                </div>
+                <h3 className="font-georgia text-lg text-brown mb-2 font-semibold">{item.title}</h3>
+                <p className="text-taupe font-inter text-sm">{item.desc}</p>
               </motion.div>
             ))}
           </div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="mt-12 bg-cream rounded-2xl p-6"
-          >
-            <h4 className="font-georgia text-xl text-brown mb-3">
-              Additional Options:
-            </h4>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h5 className="font-semibold text-wine mb-2">
-                  Topical Retinoids for New Stretch Marks
-                </h5>
-                <p className="text-sm text-taupe">
-                  If your stretch marks are new (less than a few months),
-                  topical tretinoin may improve appearance in some cases by
-                  supporting collagen rebuilding. (mayoclinic.org)
-                </p>
-                <p className="text-xs text-brown mt-2 italic">
-                  Important: tretinoin is not used in pregnancy.
-                </p>
-              </div>
-              <div>
-                <h5 className="font-semibold text-wine mb-2">
-                  Combination Treatment
-                </h5>
-                <p className="text-sm text-taupe">
-                  Many dermatology discussions note that combining treatments
-                  can improve outcomes. A peer-reviewed article discussing skin
-                  therapies notes better aesthetic results have been
-                  demonstrated when more than one therapy is used.
-                  (pmc.ncbi.nlm.nih.gov)
-                </p>
-              </div>
-            </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-10">
+            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+              Book Your Assessment
+              <ArrowRight className="w-5 h-5" />
+            </button>
+            <p className="text-taupe text-sm mt-3">Free consultation at Nexus Clinic KL</p>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Common Treatment Areas */}
-      <section className="py-20 bg-cream">
+      {/* Pricing Section */}
+      <section className="py-20 px-4 bg-light">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="container mx-auto px-6"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-4"
-          >
-            Areas We Commonly Treat
-          </motion.h2>
-          <motion.p variants={fadeInUp} className="text-center text-taupe mb-8">
-            Stretch mark removal in Kuala Lumpur is most commonly requested for:
-          </motion.p>
-
-          <motion.div
-            variants={fadeInUp}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto"
-          >
-            {areas.map((area, i) => (
-              <div
-                key={i}
-                className="bg-white rounded-xl p-4 text-center shadow-sm"
-              >
-                <p className="text-brown font-medium">{area}</p>
-              </div>
-            ))}
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Stretch Mark Removal Cost in Malaysia 2026</h2>
+            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
           </motion.div>
-
-          <motion.p variants={fadeInUp} className="text-center mt-6 text-taupe">
-            Your plan can be full-area or targeted. Many people start with one
-            area, see improvement, then move to the next.
-          </motion.p>
-        </motion.div>
-      </section>
-
-      {/* Consultation Section */}
-      <section className="py-20 bg-white">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="container mx-auto px-6"
-        >
-          <div className="max-w-3xl mx-auto">
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown text-center mb-4"
-            >
-              What to Expect at Your Stretch Mark Consultation
-            </motion.h2>
-            <motion.p
-              variants={fadeInUp}
-              className="text-center text-taupe mb-8"
-            >
-              A good consult should feel simple and respectful.
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="space-y-4">
-              {[
-                "Step 1: We assess your stretch marks - new vs old, depth and texture, skin tone and sensitivity, area size",
-                "Step 2: We choose your best-fit treatment - Fractional CO2 Laser, Carboxytherapy, or Dermaroller based on your marks and downtime preference",
-                "Step 3: You get a clear plan - how many sessions, realistic results, aftercare rules, prevention tips",
-              ].map((step, i) => (
-                <div key={i} className="flex gap-4 bg-cream p-4 rounded-xl">
-                  <div className="w-8 h-8 bg-wine text-white rounded-full flex items-center justify-center shrink-0">
-                    {i + 1}
-                  </div>
-                  <p className="text-brown">{step}</p>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Sessions & Downtime */}
-      <section className="py-20 bg-cream">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="container mx-auto px-6"
-        >
-          <div className="grid md:grid-cols-2 gap-12">
-            <motion.div variants={fadeInLeft} className="space-y-4">
-              <h2 className="font-georgia text-3xl text-brown">
-                How Many Sessions Do You Need?
-              </h2>
-              <p className="text-taupe">
-                There is no one answer. It depends on:
-              </p>
-              <ul className="space-y-2">
-                {[
-                  "Whether marks are red or white",
-                  "How wide and deep the lines are",
-                  "Your age and collagen response",
-                  "Your skin tone (treatment settings and recovery can differ)",
-                  "Whether you choose combination therapy",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-brown">
-                    <span className="w-1.5 h-1.5 bg-wine rounded-full mt-2"></span>
-                    {item}
-                  </li>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Treatment</th>
+                  <th className="p-4 text-left font-georgia">Best For</th>
+                  <th className="p-4 text-left font-georgia">Recommended Sessions</th>
+                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pricingTiers.map((tier, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10">
+                    <td className="p-4 font-inter font-semibold text-brown">{tier.treatment}</td>
+                    <td className="p-4 font-inter text-taupe text-sm">{tier.bestFor}</td>
+                    <td className="p-4 font-inter text-taupe text-sm">{tier.sessions}</td>
+                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
+                  </tr>
                 ))}
-              </ul>
-              <p className="text-sm text-taupe italic">
-                Many people see improvement after a few sessions, but best
-                results typically build across a series because collagen takes
-                time.
-              </p>
-            </motion.div>
+              </tbody>
+              <tfoot>
+                <tr className="bg-wine/5">
+                  <td colSpan={4} className="p-4 text-taupe font-inter text-sm italic">
+                    Combination stretch mark removal programmes incorporating laser and PRP offer the best outcomes for moderate to significant stretch marks. All pricing disclosed before any commitment at the free initial consultation.
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Get Your Personalised Cost Estimate
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
 
-            <motion.div variants={fadeInRight} className="space-y-4">
-              <h2 className="font-georgia text-3xl text-brown">
-                Downtime, Side Effects, and Safety
-              </h2>
-              <div className="bg-white rounded-xl p-4">
-                <h3 className="font-semibold text-wine mb-2">
-                  Microneedling / dermaroller
-                </h3>
-                <p className="text-sm text-taupe">
-                  Redness for 1-2 days, mild swelling, temporary sensitivity
-                </p>
-              </div>
-              <div className="bg-white rounded-xl p-4">
-                <h3 className="font-semibold text-wine mb-2">
-                  Fractional CO2 laser
-                </h3>
-                <p className="text-sm text-taupe">
-                  redness and warmth, dryness and flaking, risk of pigment
-                  change if aftercare is not followed, downtime can be several
-                  days or longer depending on intensity
-                </p>
-              </div>
-              <div className="bg-white rounded-xl p-4">
-                <h3 className="font-semibold text-wine mb-2">Carboxytherapy</h3>
-                <p className="text-sm text-taupe">
-                  Temporary swelling or pressure, mild bruising in some cases
-                </p>
-              </div>
-              <p className="text-taupe text-sm mt-4">
-                Your provider should give aftercare instructions. Follow them
-                strictly, especially sun protection.
-              </p>
-            </motion.div>
+      {/* Common Areas Treated Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Areas We Commonly Treat</h2>
+            <p className="text-taupe font-inter">Stretch mark removal for all body locations</p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              "Tummy (abdomen) - most common",
+              "Thighs (inner and outer)",
+              "Buttocks",
+              "Upper arms",
+              "Breasts",
+              "Hips and flanks",
+              "Lower back",
+              "Calves",
+              "Post-pregnancy stretch marks",
+            ].map((area, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="bg-light p-4 rounded-xl flex items-center gap-3 border border-taupe/10">
+                <CheckCircle className="w-5 h-5 text-wine shrink-0" />
+                <span className="text-brown font-inter">{area}</span>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </section>
 
+      {/* Before After Section */}
       <SectionBeforeAfter transformations={transformations} />
 
-      {/* Aftercare */}
-      <section className="py-20 bg-white">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="container mx-auto px-6"
-        >
-          <div className="max-w-2xl mx-auto text-center">
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown mb-4"
-            >
-              Aftercare That Protects Your Results
-            </motion.h2>
-            <motion.p variants={fadeInUp} className="text-taupe mb-6">
-              This is where results are won or lost.
-            </motion.p>
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-2xl p-6 text-left space-y-3"
-            >
-              {[
-                "Avoid tanning and strong sun exposure",
-                "Keep the area moisturised",
-                "Avoid harsh scrubs until fully healed",
-                "Wear loose clothing on treated areas for a day or two",
-                "Follow your clinic's instructions about exercise and shower timing",
-              ].map((tip, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0" />
-                  <span className="text-brown">{tip}</span>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-          <p className="text-sm text-taupe my-4 text-center">
-            Sun protection matters even on body areas, especially if you wear
-            sleeveless tops or swimwear often.
-          </p>
-        </motion.div>
-      </section>
-
-      {/* Cost Section */}
-      <section className="py-20 bg-cream">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="container mx-auto px-6"
-        >
-          {/* Header */}
-          <motion.div
-            variants={fadeInUp}
-            className="text-center max-w-3xl mx-auto mb-12"
-          >
-            <h2 className="font-georgia text-4xl md:text-5xl text-brown mb-4">
-              Stretch Mark Removal Cost in Malaysia
-            </h2>
-            <p className="text-xl text-wine font-light mb-3">
-              Kuala Lumpur Pricing Reality
-            </p>
-            <p className="text-taupe">
-              Prices vary because stretch marks vary. Area size matters a lot.
-            </p>
-          </motion.div>
-
-          {/* Pricing Cards - Real Public References */}
-          <motion.div
-            variants={fadeInUp}
-            className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16"
-          >
-            {/* Card 1 - Directory Listings */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all border-b-4 border-rose">
-              <div className="w-12 h-12 bg-cream rounded-full flex items-center justify-center mb-4">
-                <span className="text-wine font-bold text-lg">1</span>
-              </div>
-              <p className="text-3xl font-georgia text-wine mb-2">RM286+</p>
-              <p className="text-sm text-brown font-medium mb-3">
-                Starting from Directory Listings
-              </p>
-              <p className="text-xs text-taupe leading-relaxed">
-                Stretch mark removal in Kuala Lumpur with prices starting from
-                RM286 (varies by clinic and treatment type). (whatclinic.com)
-              </p>
-            </div>
-
-            {/* Card 2 - Premier Clinic */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all border-b-4 border-wine">
-              <div className="w-12 h-12 bg-cream rounded-full flex items-center justify-center mb-4">
-                <span className="text-wine font-bold text-lg">2</span>
-              </div>
-              <p className="text-3xl font-georgia text-wine mb-2">RM499+</p>
-              <p className="text-sm text-brown font-medium mb-3">
-                Premier Clinic
-              </p>
-              <p className="text-xs text-taupe leading-relaxed">
-                Stretch marks treatment pricing "starts from RM499," and
-                references dermaroller in its services. (premier-clinic.com)
-              </p>
-            </div>
-
-            {/* Card 3 - Microneedling Range */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all border-b-4 border-brown">
-              <div className="w-12 h-12 bg-cream rounded-full flex items-center justify-center mb-4">
-                <span className="text-wine font-bold text-lg">3</span>
-              </div>
-              <p className="text-3xl font-georgia text-wine mb-2">
-                RM300 - RM2,500
-              </p>
-              <p className="text-sm text-brown font-medium mb-3">
-                Microneedling Sessions
-              </p>
-              <p className="text-xs text-taupe leading-relaxed">
-                Malaysia microneedling pricing overview: sessions range widely,
-                approximately RM300 to RM2,500 per session, depending on device
-                and clinic. (cliqueclinic.com)
-              </p>
-            </div>
-          </motion.div>
-
-          {/* What Affects Cost The Most */}
-          <motion.div variants={fadeInUp} className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-3xl p-8 md:p-10 shadow-xl">
-              <h3 className="font-georgia text-2xl md:text-3xl text-brown mb-6 text-center">
-                What affects cost the most
-              </h3>
-
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
-                {/* Left Column */}
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-cream rounded-full flex items-center justify-center shrink-0">
-                      <span className="text-wine font-bold">1</span>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-brown">Treatment type</p>
-                      <p className="text-sm text-taupe">
-                        Laser often costs more than microneedling
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-cream rounded-full flex items-center justify-center shrink-0">
-                      <span className="text-wine font-bold">2</span>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-brown">
-                        Size of the area
-                      </p>
-                      <p className="text-sm text-taupe">
-                        Full abdomen vs small hip section
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-cream rounded-full flex items-center justify-center shrink-0">
-                      <span className="text-wine font-bold">3</span>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-brown">
-                        Number of sessions
-                      </p>
-                      <p className="text-sm text-taupe">
-                        Multiple sessions often needed for optimal results
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right Column */}
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-cream rounded-full flex items-center justify-center shrink-0">
-                      <span className="text-wine font-bold">4</span>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-brown">
-                        Combine treatments
-                      </p>
-                      <p className="text-sm text-taupe">
-                        Whether you choose combination therapy
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-cream rounded-full flex items-center justify-center shrink-0">
-                      <span className="text-wine font-bold">5</span>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-brown">
-                        Aftercare products
-                      </p>
-                      <p className="text-sm text-taupe">
-                        Sometimes optional, sometimes recommended
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Best Tip - Highlighted */}
-              <div className="bg-wine rounded-xl p-6 text-center">
-                <div className="inline-flex items-center gap-2 bg-white bg-opacity-20 px-4 py-2 rounded-full mb-3">
-                  <span className="text-wine text-sm font-semibold">
-                    BEST TIP
-                  </span>
-                </div>
-                <p className="text-white text-lg md:text-xl font-light">
-                  Ask for an itemised plan with session count,
-                  <span className="font-bold block mt-1">
-                    not only "price per session"
-                  </span>
-                </p>
-              </div>
-
-              {/* Additional Context */}
-              <p className="text-xs text-taupe text-center mt-6">
-                *Prices are indicative and may vary based on individual
-                assessment and current clinic promotions
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Nexus Clinic Note */}
-          <motion.div
-            variants={fadeInUp}
-            className="mt-12 text-center max-w-2xl mx-auto"
-          >
-            <div className="bg-cream rounded-xl p-4 border border-rose border-opacity-30">
-              <p className="text-brown text-sm">
-                <span className="font-semibold">
-                  Nexus Clinic Kuala Lumpur:
-                </span>{" "}
-                Contact us for a personalised treatment plan with transparent
-                pricing based on your specific needs.
-              </p>
-            </div>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Competitor Snapshot */}
-      <section className="py-20 bg-white">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="container mx-auto px-6"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-4"
-          >
-            Competitor Snapshot
-          </motion.h2>
-          <motion.p variants={fadeInUp} className="text-center text-taupe mb-8">
-            What Top Clinics in Malaysia Are Doing
-          </motion.p>
-
-          <motion.div
-            variants={fadeInUp}
-            className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto"
-          >
-            <div className="bg-cream rounded-xl p-6">
-              <h3 className="font-georgia text-xl text-brown mb-3">
-                Price-led positioning
-              </h3>
-              <p className="text-sm text-taupe">
-                Some clinics publish "starting from" prices. Premier Clinic
-                lists from RM499.
-              </p>
-            </div>
-            <div className="bg-cream rounded-xl p-6">
-              <h3 className="font-georgia text-xl text-brown mb-3">
-                Laser-first content
-              </h3>
-              <p className="text-sm text-taupe">
-                Clinics explain different laser types for older marks.
-                (drjaneclinic.com)
-              </p>
-            </div>
-            <div className="bg-cream rounded-xl p-6">
-              <h3 className="font-georgia text-xl text-brown mb-3">
-                Directory platforms
-              </h3>
-              <p className="text-sm text-taupe">
-                WhatClinic and ERUFU Care rank multiple KL providers.
-                (whatclinic.com)
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="mt-8 text-center max-w-2xl mx-auto"
-          >
-            <h3 className="font-georgia text-xl text-brown mb-3">
-              How Nexus Clinic KL stands out
-            </h3>
-            <p className="text-taupe">
-              Nexus Clinic already lists a focused stretch mark menu (Fractional
-              CO2 Laser, Carboxytherapy, Dermaroller) and sets realistic
-              expectations about reduction, not guaranteed total removal.
-              (nexus-clinic.com)
-            </p>
-          </motion.div>
-        </motion.div>
-      </section>
-
       {/* FAQ Section */}
-      <FAQ data={faqs} />
-
+      <FAQ data={faqData} />
+      
       {/* CTA Section */}
-      <section className="py-20 bg-wine">
+      <section className="py-20 px-4 bg-wine">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="container mx-auto px-6 text-center"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-4xl text-center"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-white mb-4"
-          >
-            Start Your Journey Today
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-white opacity-90 mb-8 max-w-2xl mx-auto"
-          >
-            If you're searching for stretch mark removal in Malaysia or stretch
-            marks treatment in Kuala Lumpur, start with a plan that's honest,
-            safe, and built for your skin.
-          </motion.p>
-          <motion.div
-            variants={fadeInUp}
-            className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 max-w-lg mx-auto"
-          >
-            <p className="text-wine font-georgia text-xl mb-2">
-              Nexus Clinic Kuala Lumpur
+          <motion.div variants={fadeInUp} className="space-y-6">
+            <h2 className="font-georgia text-3xl md:text-5xl text-light">
+              Effective Stretch Mark Removal in KL
+            </h2>
+            <p className="text-xl text-cream font-inter max-w-2xl mx-auto">
+              Stretch marks removal in Malaysia is most effective when the laser treatment is matched to the type and stage of your stretch marks. At Nexus Clinic KL, our LCP certified aesthetic doctor team provides honest, stage-matched care.
             </p>
-            <p className="text-wine text-sm mb-2">
-              LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala
-              Lumpur
+            <p className="text-cream/90 font-inter">
+              Our doctors bring over 15 years of combined experience and have completed over 5,000 procedures for patients across KL, Petaling Jaya, Subang Jaya, and throughout Malaysia.
             </p>
-            <p className="text-wine text-lg">📞 016-7025699 / 03-21635699</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                Free Consultation
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+              <Whatsapp 
+                message="Hi, I'd like to book a free consultation for stretch mark removal at Nexus Clinic KL. Please let me know available slots."
+                variant="light"
+              />
+            </div>
+            <p className="text-cream/80 font-inter text-sm">
+              Limited slots available | Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
+            </p>
+            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
+              <a href="#" className="hover:text-cream transition-colors">Call: 016-7025699</a>
+              <span>•</span>
+              <a href="#" className="hover:text-cream transition-colors">WhatsApp: 03-21635699</a>
+            </div>
           </motion.div>
         </motion.div>
       </section>
-    </main>
+    </div>
   );
-};
-
-export default StretchMarkLanding;
+}

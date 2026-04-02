@@ -1,35 +1,56 @@
 "use client";
-
 import { motion } from "framer-motion";
 import {
-  Shield,
-  Zap,
-  Scissors,
-  CheckCircle2,
-  XCircle,
+  Sparkles,
+  Award,
   MapPin,
+  Calendar,
+  CheckCircle,
+  Syringe,
+  Clock,
+  Heart,
+  Shield,
+  ArrowRight,
+  AlertCircle,
+  Activity,
+  Zap,
+  Eye,
   AlertTriangle,
-  Flame,
-  ZapIcon,
-  Snowflake,
+  Droplet,
+  Scissors,
+  TrendingUp,
+  Sun,
+  Thermometer,
+  Flower2,
   Layers,
+  Target,
+  ChevronRight,
+  XCircle,
+  Phone,
+  MessageCircle,
+  Users,
+  FileText,
+  Flame,
+  Snowflake,
   HelpCircle,
 } from "lucide-react";
-
 import {
-  fadeInUp,
   staggerContainer,
   fadeInLeft,
   fadeInRight,
+  fadeInUp,
   scaleIn,
 } from "../../lib/animations";
-import { useTranslation } from "@/src/i18n/client";
-import { fallbackLng } from "@/src/i18n/settings";
-import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
+import FAQ from "../../components/FAQ";
+import Whatsapp from "../../components/Whatsapp";
+import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
+import Image from "next/image";
 
-const MoleRemovalLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "skin/moleRemoval");
+interface MoleRemovalProps {
+  locale: string;
+}
 
+export default function MoleRemoval({ locale }: MoleRemovalProps) {
   const transformations = [
     {
       id: 1,
@@ -48,1358 +69,845 @@ const MoleRemovalLanding = ({ locale = fallbackLng }: { locale?: string }) => {
     },
   ];
 
+  const moleTypes = [
+    { type: "Flat Junctional Naevus", appearance: "Flat, evenly brown or black, well-defined border", depth: "Epidermis only", histopathology: "Not routinely required if no atypical features", method: "CO2 Laser Ablation (1 session)" },
+    { type: "Raised Intradermal Naevus", appearance: "Dome-shaped, flesh-coloured or lightly pigmented, soft", depth: "Dermis only", histopathology: "Not routinely required if benign appearance", method: "RF Cauterisation or Surgical Shave Excision" },
+    { type: "Compound Naevus", appearance: "Slightly raised, tan to brown, smooth surface", depth: "Epidermis and dermis", histopathology: "Recommended", method: "Surgical Shave Excision or CO2 Laser; tissue sent for analysis" },
+    { type: "Congenital Naevus (Small)", appearance: "Present from birth; tan to dark brown; may have hair", depth: "Variable", histopathology: "Recommended", method: "Surgical Excision with Sutures; full specimen sent for histopathology" },
+    { type: "Dysplastic Naevus (Atypical Mole)", appearance: "Irregular border, uneven colour, larger than 6mm", depth: "Variable; often deeper", histopathology: "Mandatory", method: "Surgical Excision with Margins; histopathology compulsory" },
+    { type: "Seborrhoeic Keratosis (Warty Mole)", appearance: "Rough, stuck-on appearance; waxy surface; light to dark brown", depth: "Epidermal layer", histopathology: "Not routinely required", method: "CO2 Laser Ablation or RF Cauterisation (1 session)" },
+  ];
+
+  const scarOutcomes = [
+    { method: "CO2 Laser Ablation", risk: "Very low; flat, skin-toned mark that fades over 4 to 8 weeks", bestLocations: "Face, neck, chest; any visible area requiring minimal scarring", timeline: "Pink mark visible for 2 to 4 weeks; full fading at 6 to 8 weeks" },
+    { method: "RF Cauterisation", risk: "Low; small flat scab forms and resolves; minimal permanent mark", bestLocations: "Face, neck, back; suitable for raised benign moles", timeline: "Scab falls off within 7 to 10 days; residual pinkness resolves at 4 to 6 weeks" },
+    { method: "Surgical Shave Excision", risk: "Low to moderate; flat scar forms at shave level; may retain mild colour", bestLocations: "Raised moles on face, scalp and body; suitable for compound naevi", timeline: "7 to 14 days healing; scar maturation at 3 to 6 months" },
+    { method: "Surgical Excision with Sutures", risk: "Linear scar along incision line; fades significantly over 6 to 12 months", bestLocations: "Deeper or atypical moles; body locations where appearance is less critical", timeline: "Sutures removed at 7 to 14 days; full scar remodelling at 6 to 12 months" },
+  ];
+
+  const pricingTiers = [
+    { treatment: "CO2 Laser Ablation (per mole)", bestFor: "Small to medium flat and raised benign moles", sessions: "1 (2 if deep)", price: "RM 150 – RM 350 per mole" },
+    { treatment: "RF Cauterisation (per mole)", bestFor: "Raised benign moles and skin tags", sessions: "1", price: "RM 120 – RM 280 per mole" },
+    { treatment: "Surgical Shave Excision (per mole)", bestFor: "Raised compound naevi; moles requiring tissue sample", sessions: "1", price: "RM 250 – RM 500 per mole" },
+    { treatment: "Surgical Excision with Sutures (per mole)", bestFor: "Deep, large or atypical moles; histopathology indicated", sessions: "1", price: "RM 400 – RM 900 per mole (histopathology fee additional)" },
+    { treatment: "Multiple Moles Package (5 or more, CO2 or RF)", bestFor: "Multiple small benign moles in one session", sessions: "1 session", price: "From RM 600 for 5 moles" },
+    { treatment: "Histopathology", bestFor: "Atypical, compound or suspicious moles", sessions: "One-time with procedure", price: "RM 150 – RM 350 (lab fee, separate from procedure)" },
+  ];
+
+  const healingTimeline = [
+    { day: "Day 1-3", description: "Mild redness, tenderness, small wound. Local anaesthetic wears off. Keep area clean and dry.", status: "active" },
+    { day: "Day 4-7", description: "Scab forms and begins to dry. No picking or scratching. Apply prescribed ointment.", status: "healing" },
+    { day: "Day 8-14", description: "Scab starts to separate naturally. New pink skin underneath. Continue sun protection.", status: "healing" },
+    { day: "Week 2-4", description: "Skin closes and calms. Mild pinkness may persist. Sunscreen essential daily.", status: "closing" },
+    { day: "Week 4-8", description: "Colour fades significantly. Scar continues to blend with surrounding skin.", status: "fading" },
+    { day: "Month 3-6", description: "Final result visible. Scar maturation complete. Continue sun protection.", status: "mature" },
+  ];
+
+  const faqData = [
+    { q: "Is mole removal painful?", a: "Most mole removal is done with numbing medication, so the procedure itself should not be painful. You may feel mild stinging or burning for a few days afterward. The anaesthetic injection itself takes 2 to 3 seconds and involves a brief, sharp sensation. Once the area is numb, no pain is felt during the removal procedure." },
+    { q: "How long does it take to heal after mole removal?", a: "Recovery is often minimal, with mild redness or scabbing for a few days to a week, depending on the method. Laser healing is commonly quoted around 7 to 14 days, while surgical excision may take longer. A small crust forms and falls off naturally within 7 to 10 days for laser and RF methods." },
+    { q: "Will mole removal leave a scar?", a: "It can. Scar risk depends on mole depth and removal method. CO2 Laser Ablation leaves a flat, skin-toned mark that fades over 4 to 8 weeks. Surgical Excision with Sutures leaves a fine linear scar that fades over 6 to 12 months. Some people find the scar looks better than the mole once it fades." },
+    { q: "Can a mole grow back after removal?", a: "Moles do not typically grow back unless they were incompletely removed. Moles removed by CO2 Laser Ablation or RF Cauterisation have a small possibility of partial recurrence. Moles removed by Surgical Excision with adequate margins virtually never recur." },
+    { q: "How much does mole removal cost in Malaysia?", a: "Cost varies widely based on size, depth, location, and method. At Nexus Clinic KL, CO2 Laser Ablation starts from RM 150 per mole for small flat lesions. Surgical Excision with Sutures ranges from RM 400 to RM 900 per mole. Multiple mole packages starting from RM 600 for 5 moles are available." },
+    { q: "Is laser mole removal safe?", a: "When performed by a medical professional after proper assessment, laser removal can be a safe option for suitable moles. However, suspicious moles may need biopsy or a different pathway, so assessment comes first. CO2 Laser Ablation is particularly safe for flat, benign moles." },
+    { q: "When should I worry about a mole?", a: "If it changes in size, shape, color, border, or starts evolving, get it checked. The ABCDE guide is a simple way to remember warning signs: Asymmetry, Border irregularity, Color variation, Diameter larger than 6mm, Evolution over time." },
+    { q: "Can I remove a mole at home?", a: "No. Professional medical organizations warn against at-home mole removal due to skin cancer risk, scarring, and infection. Never attempt to cut, burn, or use DIY removal creams on moles." },
+    { q: "Do I need a biopsy before removing a mole?", a: "Not always. But if a mole looks suspicious, a doctor may take a tissue sample for microscopic examination. At Nexus Clinic KL, any mole with atypical features is sent for histopathological analysis." },
+    { q: "What is the best method for removing a mole on the face?", a: "There is no single 'best' method. It depends on depth, location, and your scar risk. CO2 Laser Ablation is often preferred for flat facial moles as it leaves minimal scarring. Surgical Shave Excision may be used for slightly raised moles." },
+  ];
+
   return (
-    <div className="w-full overflow-hidden bg-light">
+    <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
+        
         <motion.div
-          className="absolute inset-0 bg-cover bg-center opacity-10"
-          style={{ backgroundImage: "url('/images/clinic/interior.png')" }}
-          initial={{ scale: 1.2 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 20 }}
-        />
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="container mx-auto max-w-6xl relative z-10"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-8">
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
+                <AlertTriangle className="w-4 h-4 text-wine" />
+                <span className="text-sm font-inter text-wine font-medium">Doctor-Led Mole Assessment • MOH Registered Clinic</span>
+              </motion.div>
+              
+              <motion.h1
+                variants={fadeInUp}
+                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
+              >
+                Mole Removal in Kuala Lumpur That{" "}
+                <span className="text-wine italic">Looks Natural</span> When It Heals
+              </motion.h1>
 
-        <div className="container mx-auto px-4 py-20 relative z-10">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            className="max-w-4xl mx-auto text-center"
-          >
-            <motion.h1
-              variants={fadeInUp}
-              className="font-georgia text-5xl md:text-7xl text-brown mb-6 leading-tight"
-            >
-              Mole Removal in Kuala Lumpur That
-              <span className="text-wine"> Looks Natural</span> When It Heals
-            </motion.h1>
+              <motion.p
+                variants={fadeInUp}
+                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
+              >
+                Flat moles, raised moles, atypical lesions you are uncertain about. Nexus Clinic KL assesses every mole before removal, selects the right method, and includes histopathology for any lesion with atypical features.
+              </motion.p>
 
-            <motion.p
-              variants={fadeInUp}
-              className="text-taupe text-xl md:text-2xl mb-4 max-w-3xl mx-auto font-inter"
-            >
-              If it is on your face, you do not just want it gone. You want the
-              area to heal neatly and blend in.
-            </motion.p>
+              <motion.p
+                variants={fadeInUp}
+                className="text-brown font-inter"
+              >
+                Every mole that bothers you deserves a proper medical assessment before anything else. The wrong removal method leaves a worse scar than the mole itself. At Nexus Clinic KL, our licensed aesthetic doctors assess every mole before recommending a removal method.
+              </motion.p>
 
-            <motion.p
-              variants={fadeInUp}
-              className="text-brown text-lg mb-8 max-w-2xl mx-auto font-inter"
-            >
-              At Nexus Clinic KL, we choose the safest method for your mole
-              type, location, and skin, then guide you through aftercare so the
-              result looks clean and calm.
-            </motion.p>
+              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
+                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  Over 5,000 Aesthetic Procedures Completed
+                </p>
+                <p className="text-taupe font-inter text-sm mt-1">
+                  Our doctors have more than 15 years of combined clinical experience providing mole removal that is as medically thorough as it is aesthetically precise.
+                </p>
+              </motion.div>
 
-            <motion.button
-              variants={scaleIn}
-              className="bg-wine text-light px-12 py-4 rounded-full font-inter text-lg hover:bg-rose transition-all duration-300 shadow-xl hover:shadow-2xl"
-            >
-              Book Your Consultation
-            </motion.button>
-          </motion.div>
-        </div>
+              <motion.div 
+                variants={fadeInLeft} 
+                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
+              >
+                <motion.button
+                  variants={fadeInUp}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  Book Free Mole Assessment
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+                <Whatsapp message="Hi, I'm interested in mole removal at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
+              </motion.div>
+            </motion.div>
 
-        {/* Trust Strip */}
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
+                <Image
+                  src="/images/skin/mole-removal.webp"
+                  alt="Nexus Clinic Kuala Lumpur - Mole Removal"
+                  fill
+                  className="object-cover object-[70%_30%]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
+                <p className="font-inter font-bold text-brown"> Precise Removal</p>
+                <p className="font-inter text-sm text-taupe">CO2 Laser • RF • Surgical Excision</p>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Trust Section */}
+      <section className="py-12 px-4 bg-light">
         <motion.div
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
-          className="absolute bottom-0 left-0 right-0 bg-glass backdrop-blur-md border-t border-cream py-4"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
         >
-          <div className="container mx-auto px-4">
-            <div className="flex flex-wrap justify-center gap-8 text-sm text-brown font-inter">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-rose shrink-0" />
-                <span>
-                  Nexus Clinic Kuala Lumpur, KLCC area: LG 10, Lower Ground
-                  Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur
-                </span>
+          <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-taupe/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <Award className="w-6 h-6 text-wine" />
+                </div>
+                <h2 className="font-georgia text-2xl md:text-3xl text-brown">Trust at a glance</h2>
               </div>
-              <div className="flex items-center gap-2">
-                <Zap className="w-4 h-4 text-rose shrink-0" />
-                <span>
-                  Multiple removal methods available: laser, electrocautery,
-                  radiofrequency, cryotherapy
-                </span>
+              <div className="hidden sm:block w-px h-8 bg-taupe/20" />
+              <p className="text-taupe font-inter text-sm">Nexus Clinic Kuala Lumpur — Excellence in Medical Aesthetics</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-4 border-y border-taupe/10">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Award className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Established</p>
+                  <p className="font-georgia text-brown font-bold text-lg">2001</p>
+                  <p className="font-inter text-taupe text-xs">Over 20 years of excellence</p>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <Shield className="w-4 h-4 text-rose shrink-0" />
-                <span>
-                  Doctor-led assessment first: we check changes in size, color,
-                  or texture before removing
-                </span>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Location</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Wisma UOA II, Jalan Pinang</p>
+                  <p className="font-inter text-taupe text-xs">KLCC, 50450 Kuala Lumpur</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Opening Hours</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Monday - Saturday</p>
+                  <p className="font-inter text-taupe text-xs">9:00am – 6:00pm | Closed Sundays & PH</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Shield className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">MOH Registered & Compliant</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">All procedures performed by licensed doctors</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Activity className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">Multiple Removal Methods</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">CO2 Laser • RF • Surgical Excision • Cryotherapy</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Target className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">Histopathology Available</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">For any lesion with atypical features</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </motion.div>
       </section>
 
-      {/* Why People Choose Mole Removal */}
-      <section className="py-24 bg-cream">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown mb-8 text-center"
-            >
-              Mole removal in Malaysia is not only cosmetic.
-              <span className="text-wine"> Sometimes it is peace of mind.</span>
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-taupe font-inter text-lg mb-4"
-            >
-              Most people do not book mole removal because they love skincare.
-            </motion.p>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-taupe font-inter text-lg mb-4"
-            >
-              They book it because the mole is starting to bother them.
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-light rounded-2xl p-8 shadow-lg mb-6"
-            >
-              <p className="text-brown font-inter">
-                It catches on a mask. It sits right where makeup cakes. Someone
-                pointed it out in a photo and now you cannot unsee it. Or worse,
-                it changed. Even slightly. That tiny change can sit in your head
-                for weeks.
-              </p>
-            </motion.div>
-
-            <motion.p variants={fadeInUp} className="text-taupe font-inter">
-              At Nexus Clinic Kuala Lumpur, we treat this the right way. First
-              we assess the mole and your skin. Then we choose the safest
-              removal method for that exact spot. Nexus Clinic states it offers
-              several methods, and the choice depends on the condition and
-              individual needs.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* What Section with Single Image */}
-      <section className="py-24 bg-light">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <motion.div
-              variants={fadeInLeft}
-              initial="hidden"
-              whileInView="visible"
-            >
-              <h2 className="font-georgia text-4xl text-brown mb-6">
-                What is a mole,{" "}
-                <span className="text-wine">in simple words</span>
-              </h2>
-              <p className="text-taupe font-inter text-lg mb-4">
-                A mole is a common skin growth. Many are harmless. Some are
-                present from childhood. Others appear later.
-              </p>
-
-              <p className="text-brown font-inter mb-3 font-semibold">
-                Moles can be:
-              </p>
-              <ul className="list-disc pl-5 text-taupe font-inter mb-4">
-                <li>Flat or raised</li>
-                <li>Light brown, dark brown, or black</li>
-                <li>Smooth or slightly rough</li>
-                <li>Small like a dot, or larger</li>
-              </ul>
-
-              <p className="text-taupe font-inter mb-4">
-                Most people have a few. Some people have many.
-              </p>
-
-              <p className="text-brown font-inter font-semibold">
-                The key point is this: not every mole should be removed the same
-                way, and not every mole should be removed purely for looks. If a
-                mole is changing, it must be checked properly first.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              initial="hidden"
-              whileInView="visible"
-              className="relative"
-            >
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <img
-                  src="/images/skin/mole-removal.webp"
-                  alt="Mole assessment at Nexus Clinic Kuala Lumpur"
-                  className="w-full h-auto"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-brown/50 to-transparent" />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Mole vs Skin Tag vs Wart */}
-      <section className="py-24 bg-cream">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown mb-6 text-center"
-            >
-              Mole vs skin tag vs wart
-              <span className="text-wine">
-                {" "}
-                (people mix these up all the time)
-              </span>
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-brown font-inter mb-4"
-            >
-              This is one reason a doctor-led assessment matters.
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="grid md:grid-cols-3 gap-6 mb-6"
-            >
-              <div className="bg-light rounded-2xl p-6 shadow-lg">
-                <h3 className="font-georgia text-xl text-brown mb-3">Mole</h3>
-                <p className="text-taupe font-inter">
-                  usually pigmented (brown or black), can be flat or raised.
-                </p>
-              </div>
-
-              <div className="bg-light rounded-2xl p-6 shadow-lg">
-                <h3 className="font-georgia text-xl text-brown mb-3">
-                  Skin tag
-                </h3>
-                <p className="text-taupe font-inter">
-                  soft, skin-colored, often on neck, underarms, groin.
-                </p>
-              </div>
-
-              <div className="bg-light rounded-2xl p-6 shadow-lg">
-                <h3 className="font-georgia text-xl text-brown mb-3">Wart</h3>
-                <p className="text-taupe font-inter">
-                  rougher texture, caused by a virus, can come back if the virus
-                  remains.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.p variants={fadeInUp} className="text-taupe font-inter">
-              Nexus Clinic's service also bundles moles, warts, and similar
-              growths because people search them together.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* When to Consider Mole Removal */}
-      <section className="py-24 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown mb-8 text-center"
-            >
-              When should you consider mole removal?
-            </motion.h2>
-
-            <div className="space-y-6">
-              <motion.div
-                variants={fadeInUp}
-                className="bg-cream rounded-2xl p-6"
-              >
-                <h3 className="font-georgia text-2xl text-brown mb-2">
-                  1) Cosmetic reasons
-                </h3>
-                <p className="text-taupe font-inter">
-                  You do not like how it looks, where it sits, or how it makes
-                  you feel. That is valid.
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInUp}
-                className="bg-cream rounded-2xl p-6"
-              >
-                <h3 className="font-georgia text-2xl text-brown mb-2">
-                  2) Comfort reasons
-                </h3>
-                <p className="text-taupe font-inter">
-                  It gets irritated by shaving, masks, collars, bras, or straps.
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInUp}
-                className="bg-cream rounded-2xl p-6"
-              >
-                <h3 className="font-georgia text-2xl text-brown mb-2">
-                  3) "This looks different" reasons
-                </h3>
-                <p className="text-taupe font-inter">
-                  Any mole that changes in size, color, or texture deserves
-                  attention before removal. Nexus Clinic highlights this too.
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInUp}
-                className="bg-cream rounded-2xl p-6"
-              >
-                <h3 className="font-georgia text-2xl text-brown mb-2">
-                  4) You want to check if it is suspicious
-                </h3>
-                <p className="text-taupe font-inter">
-                  A doctor may recommend a biopsy if a mole seems suspicious.
-                  Clique Clinic notes that if cancer is suspected, a tissue
-                  sample may be taken for microscopic examination.
-                </p>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Red Flags Section */}
-      <section className="py-24 bg-wine text-light">
+      {/* Treatment Overview Section */}
+      <section className="py-16 px-4 bg-cream">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="container mx-auto px-4 max-w-4xl"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl mb-8 text-center"
-          >
-            Red flags you should not ignore
-            <span className="text-cream"> (ABCDE rule)</span>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-cream/90 font-inter text-center mb-8"
-          >
-            If you notice changes, do not self-treat. Get it checked.
-          </motion.p>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-cream/90 font-inter text-center mb-8"
-          >
-            The American Academy of Dermatology shares the ABCDE signs used to
-            spot suspicious moles:
-          </motion.p>
-
-          <motion.div
-            variants={fadeInUp}
-            className="grid md:grid-cols-5 gap-4 mb-8"
-          >
-            <div className="text-center bg-light/10 rounded-2xl p-4 backdrop-blur-sm">
-              <div className="text-3xl font-georgia mb-2">A</div>
-              <p className="font-inter text-sm">Asymmetry</p>
-            </div>
-            <div className="text-center bg-light/10 rounded-2xl p-4 backdrop-blur-sm">
-              <div className="text-3xl font-georgia mb-2">B</div>
-              <p className="font-inter text-sm">Border that is irregular</p>
-            </div>
-            <div className="text-center bg-light/10 rounded-2xl p-4 backdrop-blur-sm">
-              <div className="text-3xl font-georgia mb-2">C</div>
-              <p className="font-inter text-sm">Color variation</p>
-            </div>
-            <div className="text-center bg-light/10 rounded-2xl p-4 backdrop-blur-sm">
-              <div className="text-3xl font-georgia mb-2">D</div>
-              <p className="font-inter text-sm">
-                Diameter (often bigger than a pencil eraser, but can be smaller)
-              </p>
-            </div>
-            <div className="text-center bg-light/10 rounded-2xl p-4 backdrop-blur-sm">
-              <div className="text-3xl font-georgia mb-2">E</div>
-              <p className="font-inter text-sm">Evolving changes over time</p>
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">Mole Removal at Nexus Clinic KL at a Glance</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">Everything you need to know</p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Syringe, label: "Methods Available", value: "CO2 Laser Ablation, RF Cauterisation, Surgical Shave Excision, Surgical Excision with Sutures" },
+              { icon: Clock, label: "Session Time", value: "15 to 45 minutes depending on number and size of moles" },
+              { icon: Heart, label: "Downtime", value: "Minimal for laser and RF; 5 to 10 days healing for surgical excision" },
+              { icon: Zap, label: "Sessions Required", value: "Most moles cleared in 1 session; deeper moles may need 2 sessions" },
+            ].map((item, idx) => (
+              <div key={idx} className="bg-light p-5 rounded-xl border border-taupe/10 shadow-sm">
+                <item.icon className="w-8 h-8 text-wine mb-3" />
+                <p className="font-inter text-sm text-taupe">{item.label}</p>
+                <p className="font-georgia text-md text-brown font-semibold">{item.value}</p>
+              </div>
+            ))}
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 rounded-2xl p-6 border border-wine/10">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div>
+                <p className="font-inter text-sm text-taupe">Anaesthesia</p>
+                <p className="font-georgia text-brown font-semibold">Local anaesthetic injection administered before all procedures</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Histopathology</p>
+                <p className="font-georgia text-brown font-semibold">Tissue sample sent for lab analysis for any mole with atypical features</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Suitable For</p>
+                <p className="font-georgia text-brown">Flat moles, raised moles, compound moles, congenital moles; all skin types</p>
+              </div>
             </div>
           </motion.div>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-cream/90 font-inter text-center"
-          >
-            Even if you still want it removed for cosmetic reasons, this
-            screening step protects you.
-          </motion.p>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-8">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor About Your Mole | Free Assessment
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
         </motion.div>
       </section>
 
-      {/* No DIY Section */}
-      <section className="py-24 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-4xl mx-auto text-center"
-          >
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-3xl p-12 shadow-xl border-2 border-wine/20"
-            >
-              <AlertTriangle className="w-16 h-16 text-wine mx-auto mb-6" />
-              <h2 className="font-georgia text-4xl text-brown mb-6">
-                Please do not remove a mole at home
-              </h2>
-              <p className="text-taupe font-inter text-lg mb-4">
-                A lot of people look up "DIY mole removal" after seeing an ad.
-                It is risky.
-              </p>
-              <p className="text-brown font-inter mb-4">
-                AAD clearly says never try to remove a mole at home. Reasons
-                include missed skin cancer, scarring, and infection.
-              </p>
-              <p className="text-taupe font-inter">
-                Cleveland Clinic also advises against at-home mole removal and
-                notes professional removal is safer.
-              </p>
-            </motion.div>
+      {/* ABCDE Warning Signs Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The ABCDE Warning Signs Every Malaysian Should Know</h2>
+            <p className="text-taupe font-inter">Before any mole is removed, understand these clinical warning signs</p>
           </motion.div>
-        </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+            {[
+              { letter: "A", title: "Asymmetry", desc: "One half does not match the other" },
+              { letter: "B", title: "Border", desc: "Irregular, ragged, or blurred edges" },
+              { letter: "C", title: "Colour", desc: "Multiple shades of brown, tan, red, white, or blue" },
+              { letter: "D", title: "Diameter", desc: "Larger than 6mm (size of a pencil eraser)" },
+              { letter: "E", title: "Evolution", desc: "Changing in size, shape, colour, or symptoms" },
+            ].map((item, idx) => (
+              <motion.div key={idx} variants={scaleIn} className="bg-cream p-4 rounded-xl text-center">
+                <div className="w-12 h-12 bg-wine rounded-full flex items-center justify-center text-light font-georgia text-2xl mx-auto mb-3">
+                  {item.letter}
+                </div>
+                <h3 className="font-georgia text-md text-brown font-semibold">{item.title}</h3>
+                <p className="text-taupe font-inter text-xs mt-1">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+          
+          <motion.div variants={fadeInUp} className="bg-wine/5 p-6 rounded-xl border-l-4 border-wine">
+            <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
+              <AlertCircle className="w-4 h-4" />
+              Important: Any mole with one or more ABCDE features requires clinical assessment before removal
+            </p>
+            <p className="text-taupe font-inter text-sm mt-2">
+              At Nexus Clinic KL, moles with concerning features are excised with a margin of healthy surrounding tissue and sent for histopathological examination. This is not optional for any mole assessed as atypical.
+            </p>
+          </motion.div>
+        </motion.div>
       </section>
 
-      {/* How It Works */}
-      <section className="py-24 bg-cream">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown mb-4 text-center"
-            >
-              How mole removal works at Nexus Clinic KL
-            </motion.h2>
-            <motion.p
-              variants={fadeInUp}
-              className="text-taupe font-inter text-center mb-12"
-            >
-              (what to expect)
-            </motion.p>
+      {/* Mole-Type-to-Removal-Method Matrix */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Mole-Type-to-Removal-Method Decision Framework</h2>
+            <p className="text-taupe font-inter">Used at every initial mole assessment at Nexus Clinic KL</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Mole Type</th>
+                  <th className="p-4 text-left font-georgia">Appearance</th>
+                  <th className="p-4 text-left font-georgia">Depth</th>
+                  <th className="p-4 text-left font-georgia">Histopathology Needed?</th>
+                  <th className="p-4 text-left font-georgia">Recommended Method</th>
+                 </tr>
+              </thead>
+              <tbody>
+                {moleTypes.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.type}</td>
+                    <td className="p-4 text-taupe font-inter">{item.appearance}</td>
+                    <td className="p-4 text-taupe font-inter">{item.depth}</td>
+                    <td className="p-4 text-taupe font-inter">{item.histopathology}</td>
+                    <td className="p-4 text-taupe font-inter">{item.method}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
+            <p className="text-brown font-inter text-sm text-center">
+              Using surgical excision for a flat mole is the most common method mismatch in Malaysian mole removal. At Nexus Clinic KL, the correct method is selected based on clinical criteria rather than clinic preference.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
 
-            <motion.p
-              variants={fadeInUp}
-              className="text-brown font-inter text-center mb-8"
-            >
-              Think of this as a calm, step-by-step process.
-            </motion.p>
-
-            <div className="space-y-6">
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light rounded-2xl p-6 shadow-lg"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="bg-wine text-light w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0 mt-1">
-                    1
-                  </div>
-                  <div>
-                    <h3 className="font-georgia text-xl text-brown mb-2">
-                      Step 1: Consultation and assessment
-                    </h3>
-                    <p className="text-taupe font-inter mb-3">We look at:</p>
-                    <ul className="list-disc pl-5 text-taupe font-inter">
-                      <li>The mole's shape, color, texture, and size</li>
-                      <li>The location (face, eyelid area, neck, body)</li>
-                      <li>Your skin type and how you usually heal</li>
-                      <li>Whether the mole has changed recently</li>
-                    </ul>
-                    <p className="text-taupe font-inter mt-3">
-                      Pantai Hospital also describes this consultation logic:
-                      the doctor assesses the type, size, and number of moles,
-                      then gives a treatment plan and quotation.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light rounded-2xl p-6 shadow-lg"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="bg-wine text-light w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0 mt-1">
-                    2
-                  </div>
-                  <div>
-                    <h3 className="font-georgia text-xl text-brown mb-2">
-                      Step 2: Choose the safest removal method
-                    </h3>
-                    <p className="text-taupe font-inter">
-                      Nexus Clinic states it provides options such as laser
-                      treatment, electrocautery, radiofrequency, and
-                      cryotherapy, chosen based on the condition and individual
-                      needs.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light rounded-2xl p-6 shadow-lg"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="bg-wine text-light w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0 mt-1">
-                    3
-                  </div>
-                  <div>
-                    <h3 className="font-georgia text-xl text-brown mb-2">
-                      Step 3: Numbing and removal
-                    </h3>
-                    <p className="text-taupe font-inter">
-                      Most procedures use local anaesthetic, so you stay
-                      comfortable.
-                    </p>
-                    <p className="text-taupe font-inter mt-2">
-                      Cleveland Clinic notes providers use numbing medication,
-                      and you may feel some stinging or burning in the area for
-                      a few days after.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light rounded-2xl p-6 shadow-lg"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="bg-wine text-light w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0 mt-1">
-                    4
-                  </div>
-                  <div>
-                    <h3 className="font-georgia text-xl text-brown mb-2">
-                      Step 4: Aftercare guidance
-                    </h3>
-                    <p className="text-taupe font-inter">
-                      This part affects the final look more than people think.
-                      We guide you on cleaning, protection, and what not to
-                      touch.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
+      {/* Healing Timeline Slider Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Mole Removal Healing Timeline</h2>
+            <p className="text-taupe font-inter">What to expect during your recovery</p>
+          </motion.div>
+          
+          <div className="relative">
+            {/* Timeline Progress Bar */}
+            <div className="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-taupe/20 -translate-y-1/2 rounded-full">
+              <div className="w-2/3 h-full bg-wine rounded-full"></div>
             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Removal Methods */}
-      <section className="py-24 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown mb-8 text-center"
-            >
-              Removal Methods at Nexus Clinic KL
-            </motion.h2>
-
-            <div className="space-y-6">
-              <motion.div
-                variants={fadeInUp}
-                className="bg-cream rounded-2xl p-6"
-              >
-                <h3 className="font-georgia text-2xl text-brown mb-3 flex items-center gap-2">
-                  <Zap className="text-wine" /> 1) Laser mole removal
-                </h3>
-                <p className="text-taupe font-inter mb-3">
-                  Often used for certain cosmetic moles and selected lesions. It
-                  can be quick, precise, and controlled.
-                </p>
-                <p className="text-taupe font-inter">
-                  Competitor pages that rank for KL often focus heavily on
-                  laser:
-                </p>
-                <p className="text-taupe font-inter mt-2">
-                  Clique explains laser removal as a simple outpatient method
-                  where the area is numbed and the laser is used to ablate the
-                  mole. Da Vinci lists laser healing around 7 to 14 days,
-                  depending on method and case.
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInUp}
-                className="bg-cream rounded-2xl p-6"
-              >
-                <h3 className="font-georgia text-2xl text-brown mb-3 flex items-center gap-2">
-                  <Flame className="text-wine" /> 2) Electrocautery
-                </h3>
-                <p className="text-taupe font-inter">
-                  Uses heat to remove the lesion. Often used for certain benign
-                  growths depending on assessment.
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInUp}
-                className="bg-cream rounded-2xl p-6"
-              >
-                <h3 className="font-georgia text-2xl text-brown mb-3 flex items-center gap-2">
-                  <ZapIcon className="text-wine" /> 3) Radiofrequency removal
-                </h3>
-                <p className="text-taupe font-inter">
-                  Uses high-frequency energy with controlled depth. Nexus
-                  includes radiofrequency as an option.
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInUp}
-                className="bg-cream rounded-2xl p-6"
-              >
-                <h3 className="font-georgia text-2xl text-brown mb-3 flex items-center gap-2">
-                  <Snowflake className="text-wine" /> 4) Cryotherapy
-                </h3>
-                <p className="text-taupe font-inter">
-                  Uses freezing for certain lesions. Also listed as an option by
-                  Nexus.
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInUp}
-                className="bg-cream rounded-2xl p-6"
-              >
-                <h3 className="font-georgia text-2xl text-brown mb-3 flex items-center gap-2">
-                  <Scissors className="text-wine" /> 5) Surgical excision (when
-                  needed)
-                </h3>
-                <p className="text-taupe font-inter mb-3">
-                  If a mole is suspicious, deeper, or requires removal with
-                  margins, a surgical approach may be used by the appropriate
-                  specialist route. Clique notes that cancerous moles may
-                  require surgical removal and referral.
-                </p>
-                <p className="text-brown font-inter font-semibold">
-                  Not every mole is a laser mole. And not every mole should be
-                  "burned off" quickly. The method should match the mole, not
-                  the marketing.
-                </p>
-              </motion.div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-6 gap-4 relative">
+              {healingTimeline.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={scaleIn}
+                  className="bg-cream p-4 rounded-xl text-center shadow-md hover:shadow-lg transition-all"
+                >
+                  <div className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 ${
+                    idx === 0 ? 'bg-wine text-light' : 'bg-wine/20 text-wine'
+                  }`}>
+                    <Clock className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-georgia text-md text-brown font-semibold">{item.day}</h3>
+                  <p className="text-taupe font-inter text-xs mt-2">{item.description}</p>
+                </motion.div>
+              ))}
             </div>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 p-6 rounded-xl">
+            <p className="text-brown font-inter text-sm text-center">
+              <span className="font-semibold">Pro Tip:</span> Sun protection over healed mole removal sites is important for at least 3 months after treatment. UV exposure on immature healing skin increases the risk of post-inflammatory pigmentation and slows scar fading.
+            </p>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* Pain Section */}
-      <section className="py-24 bg-cream">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown mb-6 text-center"
-            >
-              Is mole removal painful?
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-taupe font-inter text-center mb-4"
-            >
-              Most people fear this part. Then they are surprised.
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-light rounded-2xl p-8 shadow-lg"
-            >
-              <p className="text-taupe font-inter mb-4">
-                Cleveland Clinic states numbing medication is used to prevent
-                pain during mole removal, though mild stinging or burning can
-                happen for a few days after. Clique also notes laser mole
-                removal is generally comfortable under local anaesthetic.
-              </p>
-              <p className="text-brown font-inter">
-                If you are removing a mole in a sensitive area (like nose, upper
-                lip, around eyes), comfort planning matters even more. That is
-                why we do assessment first.
-              </p>
-            </motion.div>
+      {/* Scar Outcomes Table */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Scar Outcomes by Removal Method and Body Location</h2>
+            <p className="text-taupe font-inter">What to expect based on your mole location and removal method</p>
           </motion.div>
-        </div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Removal Method</th>
+                  <th className="p-4 text-left font-georgia">Scarring Risk</th>
+                  <th className="p-4 text-left font-georgia">Best Locations</th>
+                  <th className="p-4 text-left font-georgia">Expected Healing Timeline</th>
+                </tr>
+              </thead>
+              <tbody>
+                {scarOutcomes.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.method}</td>
+                    <td className="p-4 text-taupe font-inter">{item.risk}</td>
+                    <td className="p-4 text-taupe font-inter">{item.bestLocations}</td>
+                    <td className="p-4 text-taupe font-inter">{item.timeline}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
+            <p className="text-brown font-inter text-sm text-center">
+              Moles on the chest and upper back carry a higher risk of hypertrophic or keloid scarring in darker Fitzpatrick skin types. At Nexus Clinic KL, patients with a personal or family history of keloid scarring are counselled specifically about method choice.
+            </p>
+          </motion.div>
+        </motion.div>
       </section>
 
-      {/* Healing Time */}
-      <section className="py-24 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown mb-6 text-center"
-            >
-              Healing time and what the area looks like afterward
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-taupe font-inter text-center mb-8"
-            >
-              This is where expectations need to be real.
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="space-y-4 mb-8">
-              <p className="text-taupe font-inter">
-                • Pantai Hospital says recovery is usually minimal, with mild
-                redness or scabbing for a few days to a week, depending on the
-                method.
-              </p>
-              <p className="text-taupe font-inter">
-                • Da Vinci mentions laser healing around 7 to 14 days, while
-                surgical excision may take a few weeks.
-              </p>
-              <p className="text-taupe font-inter">
-                • Medical News Today notes a mole removal scar will usually heal
-                within about 4 weeks, though it may remain visible longer.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-2xl p-8"
-            >
-              <h3 className="font-georgia text-2xl text-brown mb-4">
-                The most common "normal" stages:
+      {/* What Happens to Removed Mole Tissue Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">What Happens to Your Removed Mole Tissue</h2>
+            <p className="text-taupe font-inter">Clinical accountability in mole removal</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div variants={fadeInLeft} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-wine" />
+                When Histopathology IS Performed
               </h3>
-              <ol className="space-y-3 text-taupe font-inter">
-                <li>1. Day 1 to 3: mild redness, tenderness, small wound</li>
-                <li>2. Day 4 to 10: scab forms and dries</li>
-                <li>3. Week 2 to 4: skin closes and calms</li>
-                <li>
-                  4. Following months: the scar line (if any) fades and blends
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Moles removed by Surgical Shave Excision with atypical features</span>
                 </li>
-              </ol>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>All Surgical Excision with Sutures cases</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Any mole with dermoscopic concern or patient-reported change</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Clinical uncertainty about the nature of the lesion</span>
+                </li>
+              </ul>
             </motion.div>
+            
+            <motion.div variants={fadeInRight} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <AlertCircle className="w-5 h-5 text-wine" />
+                When Histopathology Is NOT Routinely Performed
+              </h3>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Small, clearly benign moles removed by CO2 Laser Ablation</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>RF Cauterisation with no atypical features identified</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Seborrhoeic keratosis with classic benign appearance</span>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 bg-wine/5 p-4 rounded-xl">
+            <p className="text-taupe font-inter text-sm text-center">
+              Removing a mole without histopathology when the clinical picture warrants it is a practice Nexus Clinic KL does not follow, regardless of the patient's stated preference. Patient safety is not optional.
+            </p>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* Scar Section */}
-      <section className="py-24 bg-cream">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown mb-6 text-center"
-            >
-              Will mole removal leave a scar?
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-brown font-inter text-center mb-4 text-lg"
-            >
-              Sometimes yes. Sometimes barely.
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-light rounded-2xl p-8 shadow-lg mb-6"
-            >
-              <p className="text-taupe font-inter mb-4">
-                Clique answers this honestly: scarring is possible and depends
-                on depth, and for many people the scar is cosmetically better
-                than the mole. Medical News Today also explains scars usually
-                heal within weeks but can remain visible for months or longer.
-              </p>
-            </motion.div>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-brown font-inter font-semibold"
-            >
-              If your top worry is scarring, tell the doctor upfront. The
-              removal method, depth control, and aftercare plan can be tailored
-              around that goal.
-            </motion.p>
+      {/* Removal Methods Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Mole Removal Methods at Nexus Clinic KL</h2>
           </motion.div>
-        </div>
+          
+          <div className="space-y-6">
+            {[
+              { icon: <Zap className="w-6 h-6" />, name: "CO2 Laser Ablation", desc: "Uses a precisely focused beam of carbon dioxide laser energy to vaporise mole tissue layer by layer. No cutting, no sutures, no incision. Treated area forms a flat protective crust that falls off within 7 to 10 days. Preferred method for flat junctional naevi and seborrhoeic keratoses on the face and visible body areas." },
+              { icon: <Flame className="w-6 h-6" />, name: "Radiofrequency Cauterisation", desc: "Uses a fine electrode through which controlled radiofrequency current passes, generating localised heat that precisely destroys mole tissue. Particularly well-suited for raised, dome-shaped intradermal naevi and skin tags. A small scab forms and separates naturally within 7 to 10 days." },
+              { icon: <Scissors className="w-6 h-6" />, name: "Surgical Shave Excision", desc: "Numbing the area with local anaesthetic and using a fine surgical blade to shave the raised portion of the mole flush with the surrounding skin. No sutures required. Used for compound naevi and situations where mole tissue needs to be preserved for histopathological examination." },
+              { icon: <AlertCircle className="w-6 h-6" />, name: "Surgical Excision with Sutures", desc: "Gold standard method for deep, large or atypical moles. Entire mole is cut out along with a margin of healthy surrounding tissue. Wound closed with fine sutures. Excised specimen sent for histopathological analysis in every case. The only technique that provides complete removal certainty." },
+            ].map((item, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="bg-light p-6 rounded-xl border border-taupe/10">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 bg-wine/10 rounded-lg flex items-center justify-center text-wine">
+                    {item.icon}
+                  </div>
+                  <h3 className="font-georgia text-xl text-brown">{item.name}</h3>
+                </div>
+                <p className="text-taupe font-inter text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </section>
 
-      {/* Can It Grow Back */}
-      <section className="py-24 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown mb-6 text-center"
-            >
-              Can a mole grow back after removal?
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-taupe font-inter text-center mb-4"
-            >
-              Usually, it depends on whether it was completely removed.
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-2xl p-8"
-            >
-              <p className="text-taupe font-inter">
-                Da Vinci notes moles do not typically grow back unless
-                incompletely removed. For warts, recurrence can happen if the
-                underlying virus remains, which is why diagnosis matters.
-              </p>
-            </motion.div>
+      {/* Step by Step Process Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The Mole Removal Process at Nexus Clinic KL</h2>
+            <p className="text-taupe font-inter">Step by Step</p>
           </motion.div>
-        </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { step: "01", title: "Clinical Mole Assessment", desc: "Doctor examines every mole under bright lighting and dermoscopy. ABCDE criteria evaluated. Any atypical features documented and removal method selected with clear explanation." },
+              { step: "02", title: "Method Selection & Consent", desc: "Doctor explains recommended removal method, expected healing, realistic scar outcome, and whether histopathology will be performed. Written consent completed before procedure." },
+              { step: "03", title: "The Procedure", desc: "Local anaesthetic administered to each mole site. Takes effect within 2 to 3 minutes. Each mole takes 2 to 15 minutes to treat. Multiple moles treated in same session where appropriate." },
+              { step: "04", title: "Post-Treatment Care & Follow-up", desc: "Wound dressing applied. Written wound care instructions provided. Review appointment at 7 to 14 days for suture removal or wound assessment. Histopathology results reviewed at follow-up." },
+            ].map((item, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="bg-cream p-6 rounded-xl">
+                <div className="w-12 h-12 bg-wine rounded-full flex items-center justify-center text-light font-georgia text-xl mb-4">
+                  {item.step}
+                </div>
+                <h3 className="font-georgia text-lg text-brown mb-2">{item.title}</h3>
+                <p className="text-taupe font-inter text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </section>
 
+      {/* Before & After Section */}
       <SectionBeforeAfter transformations={transformations} />
 
-      {/* Side Effects */}
-      <section className="py-24 bg-wine text-light">
+      {/* Pricing Section */}
+      <section className="py-20 px-4 bg-cream">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="container mx-auto px-4 max-w-4xl"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl mb-8 text-center"
-          >
-            Side effects and risks (what can happen)
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-cream/90 font-inter text-center mb-8"
-          >
-            Most mole removals are straightforward, but you should know the
-            possibilities.
-          </motion.p>
-
-          <motion.div variants={fadeInUp} className="grid md:grid-cols-2 gap-6">
-            <div className="bg-light/10 backdrop-blur-sm rounded-2xl p-6">
-              <h3 className="font-georgia text-xl text-cream mb-3">
-                Possible side effects include:
-              </h3>
-              <ul className="space-y-2 text-cream/80 font-inter">
-                <li>• Redness and mild swelling for a few days</li>
-                <li>• Scabbing</li>
-                <li>
-                  • Temporary darkening of the area, especially in deeper skin
-                  tones
-                </li>
-                <li>• Small scar line</li>
-                <li>
-                  • Infection risk if aftercare is ignored (this is one reason
-                  professionals use sterile equipment and controlled methods)
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-light/10 backdrop-blur-sm rounded-2xl p-6">
-              <h3 className="font-georgia text-xl text-cream mb-3">
-                Rare but important:
-              </h3>
-              <ul className="space-y-2 text-cream/80 font-inter">
-                <li>
-                  • Delayed healing if the area keeps getting rubbed or picked
-                </li>
-                <li>• Pigment changes</li>
-                <li>
-                  • Need for a second session for some moles (Clique mentions
-                  some require a few sessions)
-                </li>
-              </ul>
-            </div>
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Mole Removal Cost in Malaysia 2026</h2>
+            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Treatment / Method</th>
+                  <th className="p-4 text-left font-georgia">Best Suited For</th>
+                  <th className="p-4 text-left font-georgia">Sessions</th>
+                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pricingTiers.map((tier, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10">
+                    <td className="p-4 font-inter text-brown">{tier.treatment}</td>
+                    <td className="p-4 text-taupe font-inter">{tier.bestFor}</td>
+                    <td className="p-4 text-taupe font-inter">{tier.sessions}</td>
+                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr className="bg-wine/5">
+                  <td colSpan={4} className="p-4 text-taupe font-inter text-sm italic">
+                    Multiple mole removal in a single session offered at package pricing where clinically appropriate. Histopathology fees charged at cost and disclosed transparently before procedure.
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Confirm Your Mole Removal Pricing | Free Assessment
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Cost Section */}
-      <section className="py-24 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown mb-6 text-center"
-            >
-              Mole removal cost in Malaysia
-              <span className="text-wine"> (what affects price)</span>
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-taupe font-inter text-center mb-4"
-            >
-              People want a number. The honest answer is that prices vary,
-              because one mole can be tiny and flat, and another can be large,
-              raised, or in a tricky spot.
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-2xl p-8 mb-6"
-            >
-              <p className="text-taupe font-inter mb-4">
-                Local pricing references show wide ranges:
-              </p>
-              <p className="text-brown font-inter font-semibold">
-                A Malaysian clinic site quotes a broad range (RM80 to RM2000 per
-                mole) depending on size, depth, and method. Use it as a rough
-                guide, not a guarantee.
-              </p>
-            </motion.div>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-taupe font-inter mb-4"
-            >
-              Directory pages and clinic listings also show that pricing differs
-              across KL and Malaysia, often because methods and clinic
-              positioning vary.
-            </motion.p>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-brown font-inter mb-4"
-            >
-              Pantai Hospital's advice is sensible: have a consultation, get
-              assessment, then receive a detailed quotation and plan based on
-              type, size, and number of moles.
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-wine/10 rounded-2xl p-6"
-            >
-              <h3 className="font-georgia text-2xl text-brown mb-3">
-                What usually increases cost:
-              </h3>
-              <ul className="list-disc pl-5 text-taupe font-inter">
-                <li>Larger or deeper mole</li>
-                <li>Face locations where precision matters more</li>
-                <li>Multiple moles removed in one visit</li>
-                <li>Suspicion that requires biopsy or referral pathway</li>
-              </ul>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Treatment Areas */}
-      <section className="py-24 bg-cream">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown mb-6 text-center"
-            >
-              Areas we commonly treat
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-taupe font-inter text-center mb-8"
-            >
-              Moles can appear anywhere, but these are the most requested areas
-              in Kuala Lumpur:
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="grid grid-cols-2 md:grid-cols-4 gap-4"
-            >
-              {[
-                "Face (cheeks, nose, forehead, lip line)",
-                "Neck",
-                "Under chin",
-                "Back and shoulders",
-                "Chest",
-                "Arms and hands",
-                "Legs",
-              ].map((area, index) => (
-                <div
-                  key={index}
-                  className="bg-light p-4 rounded-xl text-brown font-inter text-center shadow-sm"
-                >
-                  {area}
-                </div>
-              ))}
-            </motion.div>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-brown font-inter mt-8 text-center"
-            >
-              Face moles are the most emotionally loaded. People see them every
-              day. That is why scar planning and aftercare are a big part of the
-              Nexus approach.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Pros and Cons */}
-      <section className="py-24 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown mb-8 text-center"
-            >
-              Pros and cons of mole removal
-            </motion.h2>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              <motion.div
-                variants={fadeInLeft}
-                className="bg-cream rounded-2xl p-8"
-              >
-                <h3 className="font-georgia text-2xl text-brown mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="text-wine" /> Pros
-                </h3>
-                <ul className="space-y-3 text-taupe font-inter">
-                  <li>• A cleaner look where makeup sits better</li>
-                  <li>• Less irritation from shaving, masks, collars</li>
-                  <li>• Less self-consciousness in photos</li>
-                  <li>• Peace of mind once it is properly assessed</li>
-                </ul>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInRight}
-                className="bg-cream rounded-2xl p-8"
-              >
-                <h3 className="font-georgia text-2xl text-brown mb-4 flex items-center gap-2">
-                  <XCircle className="text-wine" /> Cons
-                </h3>
-                <ul className="space-y-3 text-taupe font-inter">
-                  <li>• Possible scarring, depending on depth and method</li>
-                  <li>
-                    • A healing period where the spot looks "worse" before it
-                    looks better
-                  </li>
-                  <li>• Some moles may require more than one session</li>
-                  <li>
-                    • If a mole is suspicious, cosmetic removal may not be the
-                    correct first step
-                  </li>
-                </ul>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Packages vs Approach */}
-      <section className="py-24 bg-cream">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown mb-6 text-center"
-            >
-              Mole removal vs "skin growth removal" packages
-              <span className="text-wine"> (what to choose)</span>
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-taupe font-inter text-center mb-4"
-            >
-              Some clinics bundle everything under one package: moles, warts,
-              oil seeds, milia, skin tags.
-            </motion.p>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-taupe font-inter text-center mb-4"
-            >
-              That can be convenient. It also increases the chance you remove
-              the wrong thing the wrong way.
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-wine/10 border border-wine/20 rounded-2xl p-8"
-            >
-              <p className="text-brown font-inter text-lg">
-                A better approach is what Nexus states: multiple methods, chosen
-                based on the condition and your needs.
-              </p>
-              <p className="text-brown font-inter mt-4 font-semibold">
-                That single sentence builds trust, because it signals clinical
-                judgment instead of a fixed menu.
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Why Nexus */}
-      <section className="py-24 bg-wine text-light">
+      {/* Side Effects and Aftercare Section */}
+      <section className="py-20 px-4 bg-light">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="container mx-auto px-4 max-w-4xl"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl mb-8 text-center"
-          >
-            Why Nexus Clinic Kuala Lumpur
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-cream/90 font-inter text-center mb-8 text-lg"
-          >
-            If you are removing a mole, you are trusting someone with your face
-            or body. You want calm hands, clear answers, and a plan you
-            understand.
-          </motion.p>
-
-          <motion.div variants={fadeInUp} className="grid md:grid-cols-3 gap-6">
-            <div className="bg-light/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-              <MapPin className="w-12 h-12 text-rose mx-auto mb-3" />
-              <p className="font-inter">
-                KLCC location and easy access: LG 10, Wisma UOA II, Jalan Pinang
-              </p>
-            </div>
-            <div className="bg-light/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-              <Layers className="w-12 h-12 text-rose mx-auto mb-3" />
-              <p className="font-inter">
-                Multiple removal options, so the method matches the mole
-              </p>
-            </div>
-            <div className="bg-light/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-              <Shield className="w-12 h-12 text-rose mx-auto mb-3" />
-              <p className="font-inter">
-                A safety-first approach that flags mole changes for examination
-              </p>
-            </div>
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Side Effects and Aftercare for Mole Removal</h2>
           </motion.div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div variants={fadeInLeft} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <Heart className="w-5 h-5 text-wine" />
+                Common Expected Side Effects
+              </h3>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Mild redness, a slight burning sensation after CO2 Laser or RF</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Small crust or scab forming over treated area within 24 hours</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Mild swelling and tenderness for first 2 to 3 days after surgical excision</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Scab separates naturally within 7 to 10 days</span>
+                </li>
+              </ul>
+            </motion.div>
+            
+            <motion.div variants={fadeInRight} className="bg-cream p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <Shield className="w-5 h-5 text-wine" />
+                Aftercare Instructions
+              </h3>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Gentle daily cleaning with mild soap and water</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Apply prescribed wound healing ointment twice daily</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Keep area covered with small plaster when outdoors</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Sun protection for at least 3 months after treatment</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Do not pick, scratch, or forcibly remove the crust</span>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Who It's For Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Who Mole Removal Is For (And Who Should Pause)</h2>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div variants={fadeInLeft} className="bg-light p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-wine" />
+                You are a good candidate if:
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>You have a mole that catches on clothing or irritates you</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>A mole affects your confidence in photos or daily life</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>You want a mole assessed to ensure it is benign</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>You have a raised mole that you want removed cleanly</span>
+                </li>
+              </ul>
+            </motion.div>
+            
+            <motion.div variants={fadeInRight} className="bg-light p-6 rounded-xl">
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <XCircle className="w-5 h-5 text-wine" />
+                You may need to pause or adjust if:
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Your mole has changed recently in size, shape, or colour</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>You have a personal or family history of skin cancer</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>The mole is bleeding, itching, or crusting without trauma</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>You have a history of keloid scarring</span>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
         </motion.div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown mb-8 text-center"
-            >
-              People Also Ask FAQs
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-taupe font-inter text-center mb-8"
-            >
-              (real PAA-style questions)
-            </motion.p>
-
-            <div className="space-y-4">
-              {[
-                {
-                  q: "Is mole removal painful?",
-                  a: "Most mole removal is done with numbing medication, so the procedure itself should not be painful. You may feel mild stinging or burning for a few days afterward.",
-                },
-                {
-                  q: "How long does it take to heal after mole removal?",
-                  a: "Recovery is often minimal, with mild redness or scabbing for a few days to a week, depending on the method. Laser healing is commonly quoted around 7 to 14 days, while surgical excision may take longer.",
-                },
-                {
-                  q: "Will mole removal leave a scar?",
-                  a: "It can. Scar risk depends on mole depth and removal method. Some people find the scar looks better than the mole once it fades.",
-                },
-                {
-                  q: "Can a mole grow back after removal?",
-                  a: "Moles do not typically grow back unless they were incompletely removed.",
-                },
-                {
-                  q: "How much does mole removal cost in Malaysia?",
-                  a: "Cost varies widely based on size, depth, location, and method. Some Malaysian pricing references show a broad range, and the most accurate way is a consultation and quotation.",
-                },
-                {
-                  q: "Is laser mole removal safe?",
-                  a: "When performed by a medical professional after proper assessment, laser removal can be a safe option for suitable moles. However, suspicious moles may need biopsy or a different pathway, so assessment comes first.",
-                },
-                {
-                  q: "When should I worry about a mole?",
-                  a: "If it changes in size, shape, color, border, or starts evolving, get it checked. The AAD ABCDE guide is a simple way to remember warning signs.",
-                },
-                {
-                  q: "Can I remove a mole at home?",
-                  a: "No. AAD warns against at-home mole removal due to skin cancer risk, scarring, and infection.",
-                },
-                {
-                  q: "Do I need a biopsy before removing a mole?",
-                  a: "Not always. But if a mole looks suspicious, a doctor may take a tissue sample for microscopic examination.",
-                },
-                {
-                  q: "What is the best method for removing a mole on the face?",
-                  a: "There is no single 'best' method. It depends on depth, location, and your scar risk. This is why clinics that offer multiple options and choose based on the condition tend to get better outcomes. Nexus lists several options, selected based on individual needs.",
-                },
-                {
-                  q: "How do I care for the area after mole removal?",
-                  a: "Follow your clinic's instructions closely. Healing and scar appearance are strongly influenced by aftercare, and sun protection matters because scars can darken. Medical sources emphasise ongoing wound care and sun avoidance during healing.",
-                },
-                {
-                  q: "Should I remove a mole if it is changing?",
-                  a: "A changing mole should be examined first. Do not treat it as purely cosmetic. Use the ABCDE signs and book an assessment.",
-                },
-              ].map((faq, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  className="bg-cream rounded-xl p-6 cursor-pointer hover:shadow-lg transition-all"
-                >
-                  <h3 className="font-georgia text-xl text-brown mb-2 flex items-start gap-2">
-                    <HelpCircle className="w-5 h-5 text-wine shrink-0 mt-1" />
-                    {faq.q}
-                  </h3>
-                  <p className="text-taupe font-inter pl-7">{faq.a}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-24 bg-cream">
+      <FAQ data={faqData} />
+      
+      {/* CTA Section */}
+      <section className="py-20 px-4 bg-wine">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="container mx-auto px-4 text-center max-w-4xl"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-4xl text-center"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown mb-6"
-          >
-            If a mole is making you feel self-conscious, you do not need to keep
-            living with that feeling.
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-taupe font-inter text-xl mb-4"
-          >
-            And if a mole is changing, you do not need to keep guessing.
-          </motion.p>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-light rounded-2xl p-8 shadow-xl mb-8"
-          >
-            <p className="text-brown font-inter text-lg">
-              Book a mole assessment at Nexus Clinic Kuala Lumpur (KLCC area)
-              and we will explain what it is, what method suits it, what healing
-              will look like, and what the realistic result is for your skin.
+          <motion.div variants={fadeInUp} className="space-y-6">
+            <h2 className="font-georgia text-3xl md:text-5xl text-light">
+              Safe, Precise Mole Removal at Nexus Clinic KL
+            </h2>
+            <p className="text-xl text-cream font-inter max-w-2xl mx-auto">
+              Every mole is assessed before it is removed. The correct method is selected for the specific lesion type. Scar outcomes are discussed honestly based on your skin type and mole location.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                Book Your Free Mole Assessment Now
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+              <Whatsapp 
+                message="Hi, I'd like to book a free consultation for mole removal at Nexus Clinic KL. Please let me know available slots."
+                variant="light"
+              />
+            </div>
+            <p className="text-cream/80 font-inter text-sm">
+              Limited slots available this week | Located at Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
+            </p>
+            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
+              <a href="#" className="hover:text-cream transition-colors">Explore Skin Tag Removal</a>
+              <span>•</span>
+              <a href="#" className="hover:text-cream transition-colors">Explore Wart Removal</a>
+              <span>•</span>
+              <a href="#" className="hover:text-cream transition-colors">Explore Scar Treatment</a>
+            </div>
           </motion.div>
-
-          <motion.p variants={fadeInUp} className="text-brown font-inter mb-8">
-            Nexus Clinic is located at LG 10, Wisma UOA II, Jalan Pinang, 50450
-            Kuala Lumpur.
-          </motion.p>
-
-          <motion.button
-            variants={scaleIn}
-            className="bg-wine text-light px-12 py-4 rounded-full font-inter text-lg hover:bg-rose transition-all duration-300 shadow-xl hover:shadow-2xl"
-          >
-            Book Your Mole Assessment
-          </motion.button>
         </motion.div>
       </section>
     </div>
   );
-};
-
-export default MoleRemovalLanding;
+}

@@ -1,128 +1,93 @@
 "use client";
-
 import { motion } from "framer-motion";
 import {
   Sparkles,
-  Shield,
+  Award,
+  MapPin,
+  Calendar,
+  CheckCircle,
   Clock,
-  DollarSign,
-  AlertCircle,
-  CheckCircle2,
-  XCircle,
-  Zap,
   Heart,
-  Sun,
-  Droplets,
+  Shield,
+  ArrowRight,
+  AlertCircle,
+  Activity,
+  Zap,
+  AlertTriangle,
+  Droplet,
   Scissors,
+  Sun,
   Palette,
   Layers,
-  Star,
-  ChevronRight,
 } from "lucide-react";
-
 import {
-  fadeInUp,
   staggerContainer,
   fadeInLeft,
   fadeInRight,
+  fadeInUp,
   scaleIn,
 } from "../../lib/animations";
-import FAQ from "@/src/components/FAQ";
+import FAQ from "../../components/FAQ";
+import Whatsapp from "../../components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
+import Image from "next/image";
 
-const TattooRemovalLanding = () => {
-  const colors = {
-    cream: "#F3EFEE",
-    wine: "#8C4F58",
-    brown: "#4B3A33",
-    taupe: "#AC9990",
-    rose: "#AB8068",
-    light: "#FAF8F7",
-    glass: "rgba(255, 255, 255, 0.7)",
-  };
+interface LaserTattooRemovalProps {
+  locale: string;
+}
 
-  // FAQ
-  const faqs = [
-    {
-      q: "Can tattoos be removed completely?",
-      a: "Full removal depends on various factors including ink colour, depth, and your skin's response. While many tattoos can be significantly lightened or removed, complete erasing may not always be possible.",
-    },
-    {
-      q: "How many sessions does tattoo removal take?",
-      a: "Multiple sessions are needed because ink is layered and cannot be safely cleared in one visit.",
-    },
-    {
-      q: "Does laser tattoo removal hurt?",
-      a: "It can be uncomfortable, but numbing cream or an injection can be used to reduce pain.",
-    },
-    {
-      q: "How does laser tattoo removal work?",
-      a: "Laser breaks ink into tiny particles, and your body clears those particles over time between sessions.",
-    },
-    {
-      q: "Can all tattoo colours be removed?",
-      a: "Many multicolour tattoos need different wavelengths. A single laser cannot remove all ink colours.",
-    },
-    {
-      q: "Is tattoo removal safe for dark or Asian skin?",
-      a: "Mayo Clinic notes a Q-switched Nd:YAG may be used on darker skin to reduce the risk of permanent pigment change. Proper settings and aftercare matter.",
-    },
-    {
-      q: "What are the side effects of laser tattoo removal?",
-      a: "Redness and swelling are common. Light or dark spots can occur and often fade within 6-12 months. Blistering can happen.",
-    },
-    {
-      q: "Will tattoo removal leave a scar?",
-      a: "Scarring is possible with any removal method, and Mayo Clinic notes scarring is likely after most types of tattoo removal.",
-    },
-    {
-      q: "Can I remove a cosmetic tattoo like eyebrow or lip liner?",
-      a: "Yes. The AAD specifically mentions permanent makeup removal as a common reason people seek laser tattoo removal.",
-    },
-    {
-      q: "Can I do tattoo removal while pregnant or breastfeeding?",
-      a: "AAD advises women who are pregnant or breastfeeding should not be treated.",
-    },
-    {
-      q: "How do I care for skin after tattoo removal in Malaysia?",
-      a: "Follow your clinician's instructions, use ointment as advised, and protect the area from sun for months.",
-    },
-    {
-      q: "How much does tattoo removal cost in Kuala Lumpur?",
-      a: "Cost varies widely by size and colour. Public KL sources show anything from around RM600+ per session at some clinics to higher per-session costs for premium pico systems.",
-    },
+export default function LaserTattooRemoval({ locale }: LaserTattooRemovalProps) {
+  const inkColourData = [
+    { colour: "Black Ink", challenge: "Black tattoo ink absorbs laser energy across all wavelengths; the easiest colour to break down", wavelength: "1064nm Nd:YAG (safest for darker Malaysian skin); 755nm alexandrite for lighter skin tones", response: "Fastest response of all tattoo ink colours; visible fading often apparent from session 2 or 3", sessions: "4 to 8 sessions for professional black ink tattoo; 3 to 5 for amateur black" },
+    { colour: "Dark Blue and Navy Ink", challenge: "Dark blue tattoo ink responds similarly to black ink; absorbs well at 1064nm; a very common colour in Malaysian tattoos", wavelength: "1064nm Nd:YAG primary; 755nm alexandrite alternative on lighter skin", response: "Very good response; dark blue ink is among the easier colours for the laser to break down", sessions: "5 to 9 sessions for professional dark blue ink tattoo" },
+    { colour: "Green and Teal Ink", challenge: "Green and teal tattoo ink is notoriously resistant to Q-switched laser technology; one of the most difficult colours to remove completely", wavelength: "532nm KTP or frequency-doubled Nd:YAG for green; 755nm alexandrite for teal variants", response: "Moderate to good response with pico laser technology; significantly better than Q-switch laser alone", sessions: "7 to 12 sessions for green ink" },
+    { colour: "Red and Orange Ink", challenge: "Red tattoo ink absorbs green-wavelength laser light; requires a different wavelength from black ink", wavelength: "532nm KTP laser (green-wavelength laser light that red ink absorbs)", response: "Good response to pico laser treatment with correct wavelength; visible fading from session 3 to 5", sessions: "6 to 10 sessions for red and orange ink tattoo" },
+    { colour: "Yellow and Light Green Ink", challenge: "Yellow tattoo ink is among the most challenging of all tattoo ink colours; standard laser wavelengths are not efficiently absorbed by yellow pigment", wavelength: "Yellow laser (589nm or similar specific wavelength); required for yellow ink removal", response: "Slowest response of all tattoo ink colours; requires the most sessions and may not achieve complete removal", sessions: "8 to 14+ sessions for yellow ink tattoo" },
   ];
 
-  // Competitor insights
-  const competitorInsights = [
-    {
-      title: "Directories & Reviews",
-      description:
-        "Erufu Care is a major visibility player for tattoo removal searches in KL, showing many clinics and patient reviews with price mentions.",
-      icon: Star,
-    },
-    {
-      title: "Pico Laser Branding",
-      description:
-        "Clinic Cleo promotes pico laser tattoo removal and positions it as precise and efficient, with multiple KL branches.",
-      icon: Zap,
-    },
-    {
-      title: "Price Anchors",
-      description:
-        "Some clinics publish starting prices (for example, pico laser tattoo removal 'around RM600 onwards').",
-      icon: DollarSign,
-    },
+  const comparisonData = [
+    { factor: "How the Laser Works", pico: "Advanced picosecond laser technology delivers picosecond laser pulses in trillionths of a second; works via a photoacoustic (pressure-based) effect that shatters ink particles into microscopic dust", qswitch: "Q-switched laser delivers laser pulses in nanoseconds (one billionth of a second); works primarily via a photothermal (heat-based) effect", recommendation: "Pico laser is the gold standard advanced laser technology for tattoo removal treatment in Malaysia" },
+    { factor: "Ink Colour Range", pico: "Pico laser technology can remove a wider range of tattoo ink colours including stubborn blues, greens and reds that respond poorly to Q-switch laser", qswitch: "Q-switched laser is most effective for black and dark blue tattoo ink; less effective for green, teal and yellow ink", recommendation: "For any tattoo containing green, yellow, red or mixed ink colours, pico laser treatment is strongly recommended" },
+    { factor: "PIH and Scar Risk for Malaysian Skin", pico: "Pico laser benefits significantly for darker skin tones; works via pressure rather than heat, risk of changes in skin pigmentation is significantly lower", qswitch: "Q-switched laser carries a higher risk of changes in skin pigmentation (PIH) on darker skin tones because of its heat-based mechanism", recommendation: "For Malaysian patients with darker skin tones (Fitzpatrick III to V), pico laser technology is preferred" },
+    { factor: "Number of Sessions Required", pico: "Advanced pico laser technology typically requires fewer sessions for complete removal because each pulse shatters ink particles into much smaller fragments", qswitch: "Q-switched laser requires more sessions for the same degree of ink clearance; larger ink fragments take longer to clear", recommendation: "Pico laser sessions are more productive per session; total number of sessions for complete removal is typically lower" },
   ];
 
-  // Areas we treat
-  const treatmentAreas = [
-    "Forearm and wrist tattoos",
-    "Hand and finger tattoos",
-    "Chest and shoulder tattoos",
-    "Back tattoos",
-    "Ankle and foot tattoos",
-    "Cosmetic tattoo removal (brow, eyeliner, lip liner)",
+  const kirbyDesaiFactors = [
+    { factor: "Fitzpatrick Skin Type", description: "Lighter skin types allow higher laser energy to be safely delivered per session; darker skin tones (Fitzpatrick III to V, which includes the majority of Malaysian patients) require more conservative laser settings", implication: "At Nexus Clinic KL, Fitzpatrick skin type is assessed at the initial consultation and directly determines which laser system and what settings are used" },
+    { factor: "Tattoo Size", description: "A larger tattoo contains more ink particles in the skin across more layers of skin and a wider surface area; each laser session can only treat the tattoo area and deliver a finite amount of laser energy", implication: "Tattoo size is measured at consultation and used to provide the pico laser tattoo removal cost estimate and the realistic number of sessions required" },
+    { factor: "Tattoo Age", description: "Older tattoos have typically already experienced some fading as the body's immune system gradually clears smaller ink particles over the years", implication: "Patients presenting with tattoos over 10 years old typically receive a lower session count estimate than those with fresh ink" },
+    { factor: "Ink Colour and Complexity", description: "Different tattoo ink colours require different laser wavelengths; a tattoo with multiple colours including green, yellow and red requires more laser technologies and more sessions", implication: "A multi-colour tattoo is assessed colour by colour at the initial consultation; presence of yellow or light green ink significantly increases the session estimate" },
+    { factor: "Location on the Body", description: "Tattoos on areas with high lymphatic drainage and good blood circulation (chest, upper back, upper arm) clear faster than tattoos on extremities (hands, feet, ankles)", implication: "Patients with tattoos on the hands, feet or lower legs are advised of the slower clearance rate from these locations" },
+    { factor: "Cover-Up Tattoos", description: "A cover-up tattoo sits on top of an old tattoo; the laser must penetrate through all the layers of skin containing the newer tattoo ink before it can reach and break down the older ink beneath", implication: "Patients presenting with a cover-up tattoo receive a specific session estimate that accounts for the layered ink structure" },
+  ];
+
+  const pricingTiers = [
+    { treatment: "Initial Tattoo Removal Consultation", details: "Clinical assessment of tattoo size, ink colours, tattoo age, skin type and Fitzpatrick classification; session count estimate using Kirby-Desai factors", price: "Complimentary" },
+    { treatment: "Pico Laser Tattoo Removal (Small Tattoo, up to 5cm)", details: "Advanced pico laser treatment; StarWalker PQX picosecond laser technology; includes numbing cream application", price: "RM 400 to RM 800 per session" },
+    { treatment: "Pico Laser Tattoo Removal (Medium Tattoo, 5 to 15cm)", details: "Advanced picosecond laser technology for medium tattoos; includes numbing cream, cooling and post-session skin care", price: "RM 800 to RM 1,500 per session" },
+    { treatment: "Pico Laser Tattoo Removal (Large Tattoo, over 15cm)", details: "Large tattoo laser removal session using pico laser technology; may be divided into treatment zones", price: "RM 1,500 to RM 2,500 per session" },
+    { treatment: "Q-Switch Laser Tattoo Removal (per session)", details: "Nanosecond laser removal session for fresh dense tattoos or as a preparatory laser treatment", price: "RM 300 to RM 700 per session" },
+    { treatment: "Combination Laser Tattoo Removal Programme (6 sessions)", details: "Programme combining Q-switch and pico laser technologies across 6 sessions; recommended for complex multi-colour tattoos", price: "From RM 3,500 (programme pricing available)" },
+  ];
+
+  const aftercareSteps = [
+    { step: "Immediate Cooling and Soothing", why: "Immediately after each laser tattoo removal session, the treated area experiences acute inflammation; proper cooling is critical for preventing scar formation", instruction: "Cooling gel and antiseptic healing cream applied immediately after every session; cold compress for 10 to 20 minutes after returning home reduces inflammation" },
+    { step: "Blister and Scab Management", why: "Blistering is a common and expected response; improper blister management is the most common cause of scar formation", instruction: "Do not puncture blisters; allow them to resolve naturally over 3 to 5 days; do not pick scabs; scabs should fall off naturally over 7 to 14 days" },
+    { step: "SPF50 Sunscreen (Critical for Malaysian Skin)", why: "Malaysia's year-round UV index of 10 to 13 represents a continuous risk; UV exposure on healing skin stimulates melanocytes causing changes in skin pigmentation", instruction: "SPF50 broad-spectrum mineral sunscreen mandatory from the morning after every session throughout the entire treatment course and for 3 months after the final session" },
+    { step: "Session Spacing and Skin Healing", why: "Each session triggers a multi-week process of ink clearance; skin needs 6 to 8 weeks between sessions for adequate healing", instruction: "Sessions spaced minimum 6 weeks apart for body tattoos and 8 weeks apart for facial tattoos; progress assessed photographically at each visit" },
+  ];
+
+  const faqData = [
+    { q: "How does laser tattoo removal work?", a: "Laser tattoo removal works by directing a concentrated beam of laser light into the layers of skin where the tattoo ink particles sit in the dermis. The laser targets the ink particles using selective absorption: different wavelengths of laser light are absorbed by different colours of tattoo ink. When the laser energy is absorbed by the ink particles, the picosecond laser pulses create a photoacoustic (pressure-based) effect that shatters the ink particles into microscopic dust. These tiny ink particles are then cleared by the body's lymphatic system over the following 6 to 8 weeks. This is why sessions for complete removal are spaced 6 to 8 weeks apart rather than done in rapid succession." },
+    { q: "Is laser tattoo removal painful?", a: "Most patients describe the sensation of laser tattoo removal as a rubber band snapping against the skin with each laser pulse. The pico laser delivers its pulses extremely rapidly, which means the treatment is over quickly despite the snapping sensation. At Nexus Clinic KL, numbing cream is applied 30 to 45 minutes before every laser tattoo removal session to significantly reduce discomfort. During the session, a cooling device blows cold air onto the area being treated immediately around each laser pulse, both for comfort and to protect the surrounding skin. Tattoos on bony areas (such as the ankle, wrist or collarbone) tend to be more sensitive than tattoos on fleshy areas." },
+    { q: "How many sessions does tattoo removal require?", a: "The number of sessions depends on six factors assessed at the initial consultation using the Kirby-Desai framework: the Fitzpatrick skin type, the tattoo size, the tattoo age, the complexity of the tattoo in terms of ink colours, the location of the tattoo on the body and whether it is a cover-up layered tattoo. Small amateur black ink tattoos may clear in 3 to 5 pico laser sessions. Professional black and dark blue tattoos typically require 6 to 9 sessions. Multi-colour tattoos with green, red or yellow ink require 8 to 14 or more sessions. Cover-up tattoos with multiple layers of ink require the most sessions." },
+    { q: "Can tattoo removal leave a scar?", a: "When laser tattoo removal is performed correctly using the appropriate laser technology at the right settings for the skin type, with proper session spacing and followed by the correct post-laser skin care, the risk of scar formation is very low. The most common causes of scar formation in tattoo removal in Malaysia are: incorrect laser settings for the skin type producing excess heat; compressed session intervals that do not allow adequate skin healing; improper post-session care including picking scabs or blisters; and poor hygiene allowing infection of the treated area. At Nexus Clinic KL, all of these scar risk factors are addressed through proper skin type assessment, appropriate session spacing, detailed aftercare instructions and a prescribed skin care programme." },
+    { q: "What is the difference between pico laser and Q-switch laser for tattoo removal?", a: "Pico laser (picosecond laser technology) delivers picosecond laser pulses in trillionths of a second, which is 100 times faster than Q-switched nanosecond laser pulses. This speed advantage means pico laser breaks down ink particles into much smaller fragments per laser pulse compared to Q-switch, allowing the lymphatic system to clear the ink faster and reducing the number of sessions for complete removal. Pico laser also works primarily through a pressure-based photoacoustic effect rather than a heat-based photothermal effect, which significantly reduces the risk of changes in skin pigmentation in darker Malaysian skin tones. At Nexus Clinic KL, pico laser is the primary laser tattoo removal treatment for most patients, with Q-switch used selectively for specific situations." },
+    { q: "Does skin type affect laser tattoo removal?", a: "Yes, significantly. Malaysian patients with Fitzpatrick III to V skin tones have melanin throughout the epidermis that competes with tattoo ink for laser energy absorption. This means the laser cannot be applied at as high an energy level per session on darker skin tones without risking changes in skin pigmentation from epidermal melanin activation. Advanced pico laser technology is the preferred type of tattoo removal laser for darker Malaysian skin because its pressure-based mechanism bypasses much of this epidermal melanin competition and targets the deeper ink particles more selectively. Q-switch laser carries a higher risk of changes in skin pigmentation on darker skin tones and requires more conservative settings, which in turn requires more sessions." },
+    { q: "Can all tattoo colours be removed completely?", a: "Not all tattoo colours respond equally to laser tattoo removal treatment. Black and dark blue ink are the easiest colours to remove completely and typically achieve complete removal within the estimated session range. Green and teal ink require specific laser wavelengths and respond more slowly, with complete removal achievable in most cases with the advanced pico laser system. Red and orange ink responds well to 532nm laser wavelength when correctly matched. Yellow tattoo ink is the most challenging colour and requires the yellow laser, a specific wavelength not available in all laser systems; complete removal of dense yellow ink may not be achievable even with advanced pico laser technology. At Nexus Clinic KL, patients with yellow ink in their tattoo are counselled honestly that this colour requires the most sessions and that realistic expectations must be set." },
+    { q: "Is laser tattoo removal safe for Malaysian skin?", a: "Laser tattoo removal is safe for Malaysian skin when performed with the appropriate laser technology at settings calibrated for the patient's specific skin type. The advanced pico laser technology used at Nexus Clinic KL is specifically advantageous for Malaysian Fitzpatrick III to V skin because its photoacoustic mechanism minimises the heat deposited in the surrounding skin and epidermal melanin layer, significantly reducing the risk of changes in skin pigmentation and scar formation. The most important safety factors for tattoo removal in Malaysia are: using an advanced pico laser system specifically designed for darker skin tones; proper Fitzpatrick skin type assessment before each session; mandatory SPF50 application throughout the treatment course; and adequate session spacing of 6 to 8 weeks to allow complete skin healing." },
+    { q: "How much does tattoo removal cost in Malaysia in 2026?", a: "The cost of tattoo removal in Malaysia at Nexus Clinic KL is calculated based on the tattoo size, the type of tattoo ink colours present and the laser technology required. Small tattoos up to 5cm range from RM 400 to RM 800 per session for pico laser. Medium tattoos 5 to 15cm range from RM 800 to RM 1,500 per session. Large tattoos over 15cm range from RM 1,500 to RM 2,500 per session. Programme pricing for a combination laser tattoo removal course across 6 sessions provides a meaningful per-session reduction. All pricing is disclosed at the free initial consultation before any removal session is booked." },
+    { q: "Can I remove a cosmetic tattoo like eyebrow or lip liner?", a: "Yes. Permanent makeup removal including microblading, eyebrow tattoos, eyeliner and lip liner is a common reason people seek laser tattoo removal. Cosmetic tattoos often use specialised inks that may respond differently to laser treatment than body art inks. The same colour-specific wavelength principles apply: black and brown cosmetic inks respond well, while lighter cosmetic inks may require specific wavelengths. At Nexus Clinic KL, cosmetic tattoo removal is assessed individually and the expected outcome is discussed before treatment begins." },
   ];
 
   const transformations = [
@@ -144,1474 +109,615 @@ const TattooRemovalLanding = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-cream font-['Inter',sans-serif]">
+    <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden"
-        style={{ backgroundColor: colors.cream }}
-      >
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-72 h-72 rounded-full bg-wine filter blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-rose filter blur-3xl"></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto text-center">
-          <motion.div variants={fadeInUp} className="mb-6">
-            <span
-              className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium"
-              style={{ backgroundColor: colors.glass, color: colors.brown }}
-            >
-              <Sparkles
-                className="w-4 h-4 mr-2"
-                style={{ color: colors.wine }}
-              />
-              Nexus Clinic Kuala Lumpur
-            </span>
-          </motion.div>
-
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 font-['Georgia',serif] leading-tight"
-            style={{ color: colors.brown }}
-          >
-            Ready to erase the ink
-            <br />
-            <span style={{ color: colors.wine }}>
-              and move on with confidence?
-            </span>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg sm:text-xl mb-8 max-w-3xl mx-auto"
-            style={{ color: colors.taupe }}
-          >
-            Whether it's a name, a rushed decision, or an old tattoo that no
-            longer feels like you, you deserve a safe way forward.
-          </motion.p>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg mb-12 max-w-2xl mx-auto"
-            style={{ color: colors.rose }}
-          >
-            At Nexus Clinic Kuala Lumpur, we focus on smart laser choices,
-            careful settings for Malaysian skin tones, and a clear plan you can
-            actually follow.
-          </motion.p>
-
-          <motion.div
-            variants={fadeInUp}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <button
-              className="px-8 py-4 rounded-full text-white font-medium transition-all transform hover:scale-105 shadow-lg"
-              style={{ backgroundColor: colors.wine }}
-            >
-              Start Your Consultation
-            </button>
-            <button
-              className="px-8 py-4 rounded-full font-medium transition-all transform hover:scale-105"
-              style={{
-                backgroundColor: colors.glass,
-                color: colors.brown,
-                border: `1px solid ${colors.taupe}`,
-              }}
-            >
-              Learn More
-            </button>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Trust Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
-        style={{ backgroundColor: colors.light }}
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <motion.div
-              variants={scaleIn}
-              className="p-6 rounded-2xl backdrop-blur-sm hover:shadow-xl transition-all"
-              style={{ backgroundColor: colors.glass }}
-            >
-              <Shield
-                className="w-10 h-10 mb-4"
-                style={{ color: colors.wine }}
-              />
-              <p className="text-sm" style={{ color: colors.brown }}>
-                LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450
-                Kuala Lumpur
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="p-6 rounded-2xl backdrop-blur-sm hover:shadow-xl transition-all"
-              style={{ backgroundColor: colors.glass }}
-            >
-              <Zap className="w-10 h-10 mb-4" style={{ color: colors.wine }} />
-              <p className="text-sm" style={{ color: colors.brown }}>
-                Medical aesthetic clinic with advanced laser services. Pico
-                Discovery Laser technology for tattoo removal.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="p-6 rounded-2xl backdrop-blur-sm hover:shadow-xl transition-all"
-              style={{ backgroundColor: colors.glass }}
-            >
-              <CheckCircle2
-                className="w-10 h-10 mb-4"
-                style={{ color: colors.wine }}
-              />
-              <p className="text-sm" style={{ color: colors.brown }}>
-                Safety matters: Malaysia has formal guidelines for aesthetic
-                medical practice and credentialing (LCP) to protect the public.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="p-6 rounded-2xl backdrop-blur-sm hover:shadow-xl transition-all"
-              style={{ backgroundColor: colors.glass }}
-            >
-              <Heart
-                className="w-10 h-10 mb-4"
-                style={{ color: colors.wine }}
-              />
-              <p className="text-sm" style={{ color: colors.brown }}>
-                Medical-led safety culture aligned with Malaysia aesthetic
-                practice guideline standards.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* What Section with Image */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
-        style={{ backgroundColor: colors.cream }}
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft}>
-              <h2
-                className="text-3xl sm:text-4xl font-bold mb-6 font-['Georgia',serif]"
-                style={{ color: colors.brown }}
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
+        
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="container mx-auto max-w-6xl relative z-10"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-8">
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
+                <AlertTriangle className="w-4 h-4 text-wine" />
+                <span className="text-sm font-inter text-wine font-medium">Pico Laser Technology • Doctor-Only Treatment</span>
+              </motion.div>
+              
+              <motion.h1
+                variants={fadeInUp}
+                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
               >
-                What Tattoo Removal{" "}
-                <span style={{ color: colors.wine }}>Really Means</span>
-              </h2>
+                Laser Tattoo Removal in Malaysia Using{" "}
+                <span className="text-wine italic">Advanced Pico Laser Technology for All Skin Types</span>
+              </motion.h1>
 
-              <p className="text-lg mb-6" style={{ color: colors.taupe }}>
-                Tattoo ink sits below the top layer of the skin, which is why
-                removing it is harder than getting it done.
-              </p>
-
-              <p
-                className="text-lg mb-4 font-medium"
-                style={{ color: colors.brown }}
+              <motion.p
+                variants={fadeInUp}
+                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
               >
-                Tattoo removal is usually done using one of these methods:
-              </p>
+                Tattoo removal in Malaysia has transformed completely. What once required painful dermabrasion or surgical excision is now achievable through advanced pico laser technology.
+              </motion.p>
 
-              <ul className="space-y-4 mb-6">
-                <li className="flex items-center gap-3">
-                  <div
-                    className="w-2 h-2 rounded-full"
-                    style={{ backgroundColor: colors.wine }}
-                  ></div>
-                  <span style={{ color: colors.brown }}>
-                    Laser removal (most common)
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div
-                    className="w-2 h-2 rounded-full"
-                    style={{ backgroundColor: colors.wine }}
-                  ></div>
-                  <span style={{ color: colors.brown }}>
-                    Surgical removal (small tattoos only)
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div
-                    className="w-2 h-2 rounded-full"
-                    style={{ backgroundColor: colors.wine }}
-                  ></div>
-                  <span style={{ color: colors.brown }}>
-                    Dermabrasion (less common today)
-                  </span>
-                </li>
-              </ul>
+              <motion.p
+                variants={fadeInUp}
+                className="text-brown font-inter"
+              >
+                At Nexus Clinic Kuala Lumpur, we use the StarWalker PQX picosecond laser system with advanced picosecond laser technology and multiple wavelengths including yellow laser capability. Every tattoo is assessed colour by colour before any laser treatment begins, with honest session counts based on actual tattoo complexity.
+              </motion.p>
 
-              <p className="text-base italic" style={{ color: colors.rose }}>
-                In modern clinics, laser tattoo removal has largely replaced
-                older methods because it is generally safer and more effective
-                when done properly.
-              </p>
+              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
+                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  Important Clinical Information
+                </p>
+                <p className="text-taupe font-inter text-sm mt-1">
+                  A single laser system cannot remove all tattoo ink colours with equal effectiveness. The type of tattoo ink colour determines which laser wavelength is required. Yellow ink requires the yellow laser, a specific wavelength not available in standard Q-switch machines.
+                </p>
+              </motion.div>
+
+              <motion.div 
+                variants={fadeInLeft} 
+                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
+              >
+                <motion.button
+                  variants={fadeInUp}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  Book Free Consultation
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+                <Whatsapp message="Hi, I'm interested in laser tattoo removal at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
+              </motion.div>
             </motion.div>
 
             <motion.div variants={fadeInRight} className="relative">
-              <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl">
-                <img
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
+                <Image
                   src="/images/skin/tattoo-removal.webp"
-                  alt="Tattoo removal procedure at Nexus Clinic"
-                  className="w-full h-full object-cover"
+                  alt="Nexus Clinic Kuala Lumpur - Laser Tattoo Removal Treatment"
+                  fill
+                  className="object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
               </div>
-              <div
-                className="absolute -bottom-6 -left-6 p-6 rounded-2xl backdrop-blur-md shadow-xl"
-                style={{ backgroundColor: colors.glass }}
-              >
-                <Layers
-                  className="w-8 h-8 mb-2"
-                  style={{ color: colors.wine }}
-                />
-                <p
-                  className="text-sm font-medium"
-                  style={{ color: colors.brown }}
-                >
-                  Advanced Pico Discovery Laser Technology
-                </p>
+              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
+                <p className="font-inter font-bold text-brown">Advanced Pico Laser</p>
+                <p className="font-inter text-sm text-taupe">Over 5,000 procedures completed</p>
               </div>
             </motion.div>
           </div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
 
-      {/* How Laser Works */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
-        style={{ backgroundColor: colors.light }}
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl sm:text-4xl font-bold mb-12 font-['Georgia',serif]"
-            style={{ color: colors.brown }}
-          >
-            How Laser Tattoo Removal Works{" "}
-            <span style={{ color: colors.wine }}>(Simple Explanation)</span>
-          </motion.h2>
-
-          <motion.div variants={fadeInUp} className="relative">
-            <div className="relative grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div
-                className="p-6 rounded-2xl backdrop-blur-sm"
-                style={{ backgroundColor: colors.glass }}
-              >
-                <Zap
-                  className="w-12 h-12 mx-auto mb-4"
-                  style={{ color: colors.wine }}
-                />
-                <p className="text-lg" style={{ color: colors.brown }}>
-                  Laser light targets the ink
-                </p>
+      {/* Trust Section */}
+      <section className="py-12 px-4 bg-light">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-taupe/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <Award className="w-6 h-6 text-wine" />
+                </div>
+                <h2 className="font-georgia text-2xl md:text-3xl text-brown">Trust at a glance</h2>
               </div>
-
-              <div
-                className="p-6 rounded-2xl backdrop-blur-sm"
-                style={{ backgroundColor: colors.glass }}
-              >
-                <Layers
-                  className="w-12 h-12 mx-auto mb-4"
-                  style={{ color: colors.wine }}
-                />
-                <p className="text-lg" style={{ color: colors.brown }}>
-                  Breaks ink into tiny particles
-                </p>
-              </div>
-
-              <div
-                className="p-6 rounded-2xl backdrop-blur-sm"
-                style={{ backgroundColor: colors.glass }}
-              >
-                <Droplets
-                  className="w-12 h-12 mx-auto mb-4"
-                  style={{ color: colors.wine }}
-                />
-                <p className="text-lg" style={{ color: colors.brown }}>
-                  Body clears particles over time
-                </p>
-              </div>
+              <div className="hidden sm:block w-px h-8 bg-taupe/20" />
+              <p className="text-taupe font-inter text-sm">Nexus Clinic Kuala Lumpur — Excellence in Aesthetic Medicine</p>
             </div>
 
-            <motion.p
-              variants={fadeInUp}
-              className="mt-8 text-lg"
-              style={{ color: colors.taupe }}
-            >
-              That's why tattoo removal is not "one and done." Your skin needs
-              time to heal, and your body needs time to flush out ink between
-              sessions.
-            </motion.p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Pico vs Q-Switched */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
-        style={{ backgroundColor: colors.cream }}
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl sm:text-4xl font-bold mb-12 text-center font-['Georgia',serif]"
-            style={{ color: colors.brown }}
-          >
-            Pico Laser vs Q-Switched Laser{" "}
-            <span style={{ color: colors.wine }}>(What's the Difference?)</span>
-          </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <motion.div
-              variants={fadeInLeft}
-              className="p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all"
-              style={{ backgroundColor: colors.glass }}
-            >
-              <h3
-                className="text-2xl font-bold mb-4"
-                style={{ color: colors.brown }}
-              >
-                Q-switched lasers
-              </h3>
-              <p
-                className="text-base leading-relaxed"
-                style={{ color: colors.taupe }}
-              >
-                Mayo Clinic notes Q-switched lasers are often a treatment of
-                choice for tattoo removal, and a Q-switched Nd:YAG can be used
-                on darker skin to reduce the risk of permanent pigment change.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all"
-              style={{ backgroundColor: colors.glass }}
-            >
-              <h3
-                className="text-2xl font-bold mb-4"
-                style={{ color: colors.wine }}
-              >
-                Pico lasers
-              </h3>
-              <p
-                className="text-base leading-relaxed"
-                style={{ color: colors.taupe }}
-              >
-                Pico lasers deliver extremely short pulses and are widely used
-                for tattoo pigment breakdown and other pigmentation concerns.
-                Nexus clinic branding highlights Pico Discovery Laser and
-                multi-wavelength capability.
-              </p>
-            </motion.div>
-          </div>
-
-          <motion.div
-            variants={scaleIn}
-            className="max-w-3xl mx-auto text-center p-8 rounded-3xl"
-            style={{ backgroundColor: colors.glass }}
-          >
-            <h4
-              className="text-xl font-bold mb-3"
-              style={{ color: colors.brown }}
-            >
-              The honest takeaway
-            </h4>
-            <p className="text-lg italic" style={{ color: colors.rose }}>
-              For many people, both can work. The better result usually comes
-              from the right laser for your skin + your ink colours + correct
-              settings + good aftercare, not from hype.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Colour Matters */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
-        style={{ backgroundColor: colors.light }}
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft}>
-              <h2
-                className="text-3xl sm:text-4xl font-bold mb-6 font-['Georgia',serif]"
-                style={{ color: colors.brown }}
-              >
-                Can All Tattoo{" "}
-                <span style={{ color: colors.wine }}>Colours Be Removed?</span>
-              </h2>
-
-              <p className="text-xl mb-4" style={{ color: colors.brown }}>
-                Colour matters. A lot.
-              </p>
-
-              <p
-                className="text-base mb-4 leading-relaxed"
-                style={{ color: colors.taupe }}
-              >
-                The AAD explains that some places use only one laser, and
-                because a single laser cannot remove all ink colours, people can
-                be left with visible ink. Mayo Clinic also notes that
-                multicoloured tattoos may require different lasers and
-                wavelengths.
-              </p>
-
-              <div
-                className="p-6 rounded-2xl mt-6"
-                style={{ backgroundColor: colors.glass }}
-              >
-                <p className="text-lg" style={{ color: colors.brown }}>
-                  <span className="font-bold">In real life:</span> Black and
-                  dark inks usually respond fastest. Light and mixed colours
-                  often need more sessions and patience.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="grid grid-cols-2 gap-4"
-            >
-              <div
-                className="p-4 text-center rounded-xl"
-                style={{ backgroundColor: colors.wine }}
-              >
-                <Palette className="w-8 h-8 mx-auto mb-2 text-white" />
-                <p className="text-sm text-white">Black/Dark Inks</p>
-                <p className="text-xs text-white opacity-80">
-                  Fastest response
-                </p>
-              </div>
-              <div
-                className="p-4 text-center rounded-xl"
-                style={{ backgroundColor: colors.rose }}
-              >
-                <Palette className="w-8 h-8 mx-auto mb-2 text-white" />
-                <p className="text-sm text-white">Light Colours</p>
-                <p className="text-xs text-white opacity-80">More sessions</p>
-              </div>
-              <div
-                className="p-4 text-center rounded-xl col-span-2"
-                style={{ backgroundColor: colors.taupe }}
-              >
-                <Palette className="w-8 h-8 mx-auto mb-2 text-white" />
-                <p className="text-sm text-white">Multicolour Tattoos</p>
-                <p className="text-xs text-white opacity-80">
-                  Different wavelengths needed
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Who Is Tattoo Removal For */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
-        style={{ backgroundColor: colors.cream }}
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl sm:text-4xl font-bold mb-12 text-center font-['Georgia',serif]"
-            style={{ color: colors.brown }}
-          >
-            Who Is Tattoo Removal{" "}
-            <span style={{ color: colors.wine }}>For?</span>
-          </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              "Regret an old tattoo or relationship tattoo",
-              "Need a tattoo removed for work or personal reasons",
-              "Want to fade a tattoo for a cover-up",
-              "Want to remove cosmetic tattoo (brow, eyeliner, lip liner)",
-              "Had an allergic reaction or complications from ink (in some cases, removal may become medically important)",
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                variants={scaleIn}
-                className="p-6 rounded-xl flex items-start gap-3 hover:shadow-lg transition-all"
-                style={{ backgroundColor: colors.glass }}
-              >
-                <CheckCircle2
-                  className="w-6 h-6 shrink-0 mt-1"
-                  style={{ color: colors.wine }}
-                />
-                <p style={{ color: colors.brown }}>{item}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div variants={fadeInUp} className="mt-12">
-            <h3
-              className="text-2xl font-bold mb-6"
-              style={{ color: colors.brown }}
-            >
-              Who Should Avoid Laser Tattoo Removal{" "}
-              <span style={{ color: colors.rose }}>(Or Pause First)</span>
-            </h3>
-
-            <p className="text-base mb-4" style={{ color: colors.taupe }}>
-              The AAD notes that most people can safely have laser tattoo
-              removal, but there are exceptions:
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div
-                className="p-4 rounded-xl flex items-start gap-2"
-                style={{ backgroundColor: colors.glass }}
-              >
-                <Heart
-                  className="w-5 h-5 shrink-0 mt-1"
-                  style={{ color: colors.wine }}
-                />
-                <span style={{ color: colors.brown }}>
-                  You need a healthy immune system for it to work well
-                </span>
-              </div>
-              <div
-                className="p-4 rounded-xl flex items-start gap-2"
-                style={{ backgroundColor: colors.glass }}
-              >
-                <Heart
-                  className="w-5 h-5 shrink-0 mt-1"
-                  style={{ color: colors.wine }}
-                />
-                <span style={{ color: colors.brown }}>
-                  People who are pregnant or breastfeeding should not be treated
-                </span>
-              </div>
-            </div>
-
-            <p
-              className="text-base mt-4 mb-3 font-medium"
-              style={{ color: colors.brown }}
-            >
-              Also pause and get assessed first if you:
-            </p>
-
-            <ul className="space-y-2">
-              {[
-                "Get keloids easily (raised scars)",
-                "Have active infection, eczema flare, or open wound in the area",
-                "Recently tanned or have heavy sun exposure (higher pigment risk)",
-              ].map((item, index) => (
-                <motion.li
-                  key={index}
-                  variants={fadeInUp}
-                  className="flex items-center gap-2"
-                >
-                  <AlertCircle
-                    className="w-4 h-4"
-                    style={{ color: colors.rose }}
-                  />
-                  <span style={{ color: colors.taupe }}>{item}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Consultation Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
-        style={{ backgroundColor: colors.light }}
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl sm:text-4xl font-bold mb-6 text-center font-['Georgia',serif]"
-            style={{ color: colors.brown }}
-          >
-            What to Expect at Your Tattoo Removal Consultation{" "}
-            <span style={{ color: colors.wine }}>in Kuala Lumpur</span>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-xl text-center mb-8 max-w-3xl mx-auto"
-            style={{ color: colors.rose }}
-          >
-            A proper consultation is not a sales talk. It is planning.
-          </motion.p>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <motion.div variants={fadeInLeft}>
-              <p
-                className="text-base mb-6 leading-relaxed"
-                style={{ color: colors.taupe }}
-              >
-                The AAD lists factors that must be considered before removing a
-                tattoo, including:
-              </p>
-
-              <ul className="grid grid-cols-2 gap-4 mb-8">
-                {[
-                  "Tattoo age",
-                  "Depth of ink",
-                  "Ink colours",
-                  "Location on your body",
-                  "Your health and medications",
-                  "History of raised scars",
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-2">
-                    <ChevronRight
-                      className="w-4 h-4"
-                      style={{ color: colors.wine }}
-                    />
-                    <span className="text-sm" style={{ color: colors.brown }}>
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            <motion.div variants={fadeInRight}>
-              <div
-                className="p-8 rounded-3xl shadow-xl"
-                style={{ backgroundColor: colors.glass }}
-              >
-                <h3
-                  className="text-2xl font-bold mb-6"
-                  style={{ color: colors.brown }}
-                >
-                  At Nexus Clinic KL, you should expect:
-                </h3>
-
-                <ol className="space-y-4">
-                  <li className="flex items-start gap-3">
-                    <span
-                      className="flex items-center justify-center w-6 h-6 rounded-full text-sm font-bold"
-                      style={{ backgroundColor: colors.wine, color: "white" }}
-                    >
-                      1
-                    </span>
-                    <span style={{ color: colors.brown }}>
-                      Skin and tattoo assessment
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span
-                      className="flex items-center justify-center w-6 h-6 rounded-full text-sm font-bold"
-                      style={{ backgroundColor: colors.wine, color: "white" }}
-                    >
-                      2
-                    </span>
-                    <span style={{ color: colors.brown }}>
-                      A plan for laser type and estimated sessions
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span
-                      className="flex items-center justify-center w-6 h-6 rounded-full text-sm font-bold"
-                      style={{ backgroundColor: colors.wine, color: "white" }}
-                    >
-                      3
-                    </span>
-                    <span style={{ color: colors.brown }}>
-                      A clear aftercare guide (this matters as much as the
-                      laser)
-                    </span>
-                  </li>
-                </ol>
-
-                <div
-                  className="mt-8 p-4 rounded-xl border"
-                  style={{ borderColor: colors.wine }}
-                >
-                  <p className="text-sm" style={{ color: colors.brown }}>
-                    <strong>Nexus Clinic address:</strong> LG 10, Lower Ground
-                    Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur
-                  </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-4 border-y border-taupe/10">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Award className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Experience</p>
+                  <p className="font-georgia text-brown font-bold text-lg">Over 15 Years</p>
+                  <p className="font-inter text-taupe text-xs">Combined clinical experience</p>
                 </div>
               </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Sessions & Pain */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
-        style={{ backgroundColor: colors.cream }}
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <motion.div variants={fadeInLeft}>
-              <h2
-                className="text-3xl font-bold mb-6 font-['Georgia',serif]"
-                style={{ color: colors.brown }}
-              >
-                How Many Sessions{" "}
-                <span style={{ color: colors.wine }}>Will I Need?</span>
-              </h2>
-
-              <p
-                className="text-base mb-4 leading-relaxed"
-                style={{ color: colors.taupe }}
-              >
-                This is the question everyone asks. The AAD explains you need
-                multiple sessions because tattoo ink is layered, and a laser
-                cannot safely break down all layers in one session. Mayo Clinic
-                also notes repeated sessions are usually needed to lighten a
-                tattoo, and full erasing may not be possible.
-              </p>
-
-              <p
-                className="text-base mb-4 font-medium"
-                style={{ color: colors.brown }}
-              >
-                In general, more sessions are needed when:
-              </p>
-
-              <ul className="space-y-3 mb-6">
-                {[
-                  "The tattoo is professional (more ink, deeper ink)",
-                  "The tattoo is newer (ink is denser)",
-                  "The tattoo has multiple colours",
-                  "The tattoo is on an area with lower circulation",
-                  "You smoke or have slower healing (your clinician will discuss)",
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <Clock
-                      className="w-5 h-5 shrink-0 mt-1"
-                      style={{ color: colors.wine }}
-                    />
-                    <span className="text-sm" style={{ color: colors.taupe }}>
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <p className="text-sm italic" style={{ color: colors.rose }}>
-                If you only want a fade for cover-up, you may need fewer
-                sessions.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInRight}>
-              <h2
-                className="text-3xl font-bold mb-6 font-['Georgia',serif]"
-                style={{ color: colors.brown }}
-              >
-                Does Tattoo Removal{" "}
-                <span style={{ color: colors.wine }}>Hurt?</span>
-              </h2>
-
-              <p className="text-xl mb-4" style={{ color: colors.brown }}>
-                It can be uncomfortable.
-              </p>
-
-              <p
-                className="text-base mb-6 leading-relaxed"
-                style={{ color: colors.taupe }}
-              >
-                The AAD says it can feel painful, and a dermatologist can use
-                numbing cream or an injection to reduce pain. Many people
-                describe it like quick hot snaps. The good news is the session
-                is usually fast, especially for small tattoos.
-              </p>
-
-              <div
-                className="p-6 rounded-2xl mt-6"
-                style={{ backgroundColor: colors.glass }}
-              >
-                <h3
-                  className="text-xl font-bold mb-3"
-                  style={{ color: colors.brown }}
-                >
-                  Downtime and Healing
-                </h3>
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: colors.taupe }}
-                >
-                  Most people can go back to normal routine quickly, but your
-                  skin will look and feel "treated."
-                </p>
-                <p
-                  className="text-sm mt-3 leading-relaxed"
-                  style={{ color: colors.taupe }}
-                >
-                  After laser tattoo removal, the AAD notes you may see redness,
-                  swelling, and a little blistering. Mayo Clinic also notes
-                  swelling and possibly blistering or bleeding can happen after
-                  laser surgery, and antibacterial ointment is often used to
-                  support healing.
-                </p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Location</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Wisma UOA II, Jalan Pinang</p>
+                  <p className="font-inter text-taupe text-xs">KLCC, 50450 Kuala Lumpur</p>
+                </div>
               </div>
-            </motion.div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Opening Hours</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Monday - Saturday</p>
+                  <p className="font-inter text-taupe text-xs">9:00am – 6:00pm | Closed Sundays & PH</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Shield className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">MOH Approved Devices</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">All laser devices are MOH-approved and FDA-cleared</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Activity className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">Doctor-Only Treatment</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">LCP-certified doctors perform every session</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">5,000+ Procedures</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Extensive experience in tattoo removal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-taupe/10">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Pico Discovery Laser Technology</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Multi-wavelength capability including yellow laser</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Safe for all Fitzpatrick skin types III to V</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
 
-      {/* Aftercare Malaysia */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
-        style={{ backgroundColor: colors.light }}
-      >
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl sm:text-4xl font-bold mb-6 text-center font-['Georgia',serif]"
-            style={{ color: colors.brown }}
-          >
-            Aftercare in Malaysia{" "}
-            <span style={{ color: colors.wine }}>
-              (Very Important Because of Sun)
-            </span>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg text-center mb-8"
-            style={{ color: colors.rose }}
-          >
-            Kuala Lumpur sun and heat can ruin your results if you do not
-            protect your skin.
-          </motion.p>
-
-          <motion.div
-            variants={scaleIn}
-            className="p-8 rounded-3xl shadow-xl mb-8"
-            style={{ backgroundColor: colors.glass }}
-          >
-            <h3
-              className="text-xl font-bold mb-4"
-              style={{ color: colors.brown }}
-            >
-              AAD aftercare includes:
-            </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <CheckCircle2
-                  className="w-5 h-5 shrink-0 mt-1"
-                  style={{ color: colors.wine }}
-                />
-                <span style={{ color: colors.brown }}>
-                  Follow your clinician's instructions for washing and ointment
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2
-                  className="w-5 h-5 shrink-0 mt-1"
-                  style={{ color: colors.wine }}
-                />
-                <span style={{ color: colors.brown }}>
-                  Protect treated skin from the sun for 3 months, ideally with
-                  clothing that blocks light completely
-                </span>
-              </li>
-            </ul>
+      {/* Treatment Overview Section */}
+      <section className="py-16 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">Laser Tattoo Removal at a Glance</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">Advanced pico laser technology for all tattoo types and skin tones</p>
           </motion.div>
-
-          <motion.div
-            variants={scaleIn}
-            className="p-8 rounded-3xl shadow-xl"
-            style={{ backgroundColor: colors.glass }}
-          >
-            <h3
-              className="text-xl font-bold mb-4"
-              style={{ color: colors.brown }}
-            >
-              Simple rules that help most people:
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="flex items-start gap-2">
-                <Sun
-                  className="w-5 h-5 shrink-0"
-                  style={{ color: colors.wine }}
-                />
-                <span className="text-sm" style={{ color: colors.taupe }}>
-                  Keep the area clean and dry at first
-                </span>
+          
+          <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Zap, label: "Laser Technology", value: "Pico laser (picosecond) + Q-switch" },
+              { icon: Clock, label: "Session Time", value: "10 to 60 minutes depending on size" },
+              { icon: Heart, label: "Downtime", value: "Minimal, 1-3 days redness/swelling" },
+              { icon: Activity, label: "Session Spacing", value: "6 to 8 weeks apart" },
+            ].map((item, idx) => (
+              <div key={idx} className="bg-light p-5 rounded-xl border border-taupe/10 shadow-sm">
+                <item.icon className="w-8 h-8 text-wine mb-3" />
+                <p className="font-inter text-sm text-taupe">{item.label}</p>
+                <p className="font-georgia text-md text-brown font-semibold">{item.value}</p>
               </div>
-              <div className="flex items-start gap-2">
-                <AlertCircle
-                  className="w-5 h-5 shrink-0"
-                  style={{ color: colors.wine }}
-                />
-                <span className="text-sm" style={{ color: colors.taupe }}>
-                  Do not pick scabs or blisters
-                </span>
+            ))}
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 rounded-2xl p-6 border border-wine/10">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div>
+                <p className="font-inter text-sm text-taupe">Type of Tattoo Treated</p>
+                <p className="font-georgia text-brown font-semibold">Professional, amateur, cosmetic, cover-up</p>
               </div>
-              <div className="flex items-start gap-2">
-                <Droplets
-                  className="w-5 h-5 shrink-0"
-                  style={{ color: colors.wine }}
-                />
-                <span className="text-sm" style={{ color: colors.taupe }}>
-                  Avoid swimming pools, saunas, and heavy sweating until cleared
-                </span>
+              <div>
+                <p className="font-inter text-sm text-taupe">Skin Types Treated Safely</p>
+                <p className="font-georgia text-brown font-semibold">All skin types including Malaysian Fitzpatrick III to V</p>
               </div>
-              <div className="flex items-start gap-2">
-                <Sun
-                  className="w-5 h-5 shrink-0"
-                  style={{ color: colors.wine }}
-                />
-                <span className="text-sm" style={{ color: colors.taupe }}>
-                  Cover the area from sun if you are outdoors
-                </span>
+              <div>
+                <p className="font-inter text-sm text-taupe">Realistic Outcome</p>
+                <p className="font-georgia text-brown">Most tattoos can be significantly faded or completely removed</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">MOH Approved</p>
+                <p className="font-georgia text-brown">Yes. All devices MOH-approved and FDA-cleared</p>
               </div>
             </div>
           </motion.div>
-        </div>
-      </motion.section>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-8">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor About Your Tattoo Removal | Free Assessment
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
 
-      <SectionBeforeAfter transformations={transformations} />
-
-      {/* Risks Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
-        style={{ backgroundColor: colors.cream }}
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl sm:text-4xl font-bold mb-6 text-center font-['Georgia',serif]"
-            style={{ color: colors.brown }}
-          >
-            Risks and Side Effects{" "}
-            <span style={{ color: colors.wine }}>(Honest List)</span>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-xl text-center mb-8 max-w-3xl mx-auto"
-            style={{ color: colors.rose }}
-          >
-            Let's be clear. Tattoo removal is a medical procedure. It has risks.
-          </motion.p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div
-              variants={fadeInLeft}
-              className="p-6 rounded-2xl shadow-lg"
-              style={{ backgroundColor: colors.glass }}
-            >
-              <h3
-                className="text-xl font-bold mb-4"
-                style={{ color: colors.brown }}
-              >
-                Laser tattoo removal side effects
-              </h3>
-              <p
-                className="text-sm leading-relaxed mb-3"
-                style={{ color: colors.taupe }}
-              >
-                AAD notes light or dark spots can develop, and they usually fade
-                within 6 to 12 months. It also says scarring, texture changes,
-                burns and wounds are more common when the person performing
-                treatment lacks medical training.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="p-6 rounded-2xl shadow-lg"
-              style={{ backgroundColor: colors.glass }}
-            >
-              <h3
-                className="text-xl font-bold mb-4"
-                style={{ color: colors.brown }}
-              >
-                Overall tattoo removal risks
-              </h3>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: colors.taupe }}
-              >
-                Mayo Clinic states scarring is likely after most types of tattoo
-                removal, and infection or skin discoloration is also possible.
-              </p>
-            </motion.div>
+      {/* Tattoo Ink Colour and Laser Wavelength Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Tattoo Ink Colour and Laser Wavelength</h2>
+            <p className="text-taupe font-inter">Why colour determines your removal process</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Tattoo Ink Colour</th>
+                  <th className="p-4 text-left font-georgia">Why This Colour Is Challenging or Easy</th>
+                  <th className="p-4 text-left font-georgia">Laser Wavelength Required</th>
+                  <th className="p-4 text-left font-georgia">Expected Response</th>
+                  <th className="p-4 text-left font-georgia">Sessions for Complete Removal</th>
+                </tr>
+              </thead>
+              <tbody>
+                {inkColourData.map((colour, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{colour.colour}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{colour.challenge}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{colour.wavelength}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{colour.response}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{colour.sessions}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-
-          <motion.div
-            variants={scaleIn}
-            className="mt-8 p-6 rounded-2xl text-center max-w-2xl mx-auto"
-            style={{ backgroundColor: colors.wine, color: "white" }}
-          >
-            <p className="text-lg font-medium">
-              This is why clinic choice matters. So does aftercare.
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-brown font-inter text-sm">
+              The yellow laser row in this table is what distinguishes Nexus Clinic KL from competitor clinics. Yellow tattoo ink is the single most challenging colour to remove. The StarWalker PQX pico laser system includes the capability to address yellow ink, making it one of the most comprehensive laser tattoo removal systems for multi-colour tattoos in Malaysia.
             </p>
           </motion.div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
 
-      {/* Cost Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
-        style={{ backgroundColor: colors.light }}
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl sm:text-4xl font-bold mb-6 text-center font-['Georgia',serif]"
-            style={{ color: colors.brown }}
-          >
-            Tattoo Removal Cost{" "}
-            <span style={{ color: colors.wine }}>
-              in Malaysia (Kuala Lumpur)
-            </span>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg text-center mb-8"
-            style={{ color: colors.taupe }}
-          >
-            Price depends on: Tattoo size, Colours used, Depth and age, Device
-            type (pico vs Q-switched), Number of sessions needed
-          </motion.p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <motion.div
-              variants={scaleIn}
-              className="p-6 rounded-2xl text-center shadow-lg"
-              style={{ backgroundColor: colors.glass }}
-            >
-              <DollarSign
-                className="w-10 h-10 mx-auto mb-3"
-                style={{ color: colors.wine }}
-              />
-              <p className="text-sm" style={{ color: colors.brown }}>
-                Premier Clinic: pico laser from RM600 onwards
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="p-6 rounded-2xl text-center shadow-lg"
-              style={{ backgroundColor: colors.glass }}
-            >
-              <DollarSign
-                className="w-10 h-10 mx-auto mb-3"
-                style={{ color: colors.wine }}
-              />
-              <p className="text-sm" style={{ color: colors.brown }}>
-                Dr Jane Clinic: RM1,000-RM2,500 per session
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="p-6 rounded-2xl text-center shadow-lg"
-              style={{ backgroundColor: colors.glass }}
-            >
-              <DollarSign
-                className="w-10 h-10 mx-auto mb-3"
-                style={{ color: colors.wine }}
-              />
-              <p className="text-sm" style={{ color: colors.brown }}>
-                Erufu Care: RM600-680 reported for certain visits
-              </p>
-            </motion.div>
-          </div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="max-w-2xl mx-auto p-6 rounded-2xl"
-            style={{ backgroundColor: colors.glass }}
-          >
-            <h3
-              className="text-xl font-bold mb-4"
-              style={{ color: colors.brown }}
-            >
-              A fair way to budget is:
-            </h3>
-            <ol className="space-y-3">
-              <li className="flex items-start gap-3">
-                <span
-                  className="w-6 h-6 rounded-full flex items-center justify-center text-sm"
-                  style={{ backgroundColor: colors.wine, color: "white" }}
-                >
-                  1
-                </span>
-                <span style={{ color: colors.brown }}>Cost per session</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span
-                  className="w-6 h-6 rounded-full flex items-center justify-center text-sm"
-                  style={{ backgroundColor: colors.wine, color: "white" }}
-                >
-                  2
-                </span>
-                <span style={{ color: colors.brown }}>
-                  Expected number of sessions
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span
-                  className="w-6 h-6 rounded-full flex items-center justify-center text-sm"
-                  style={{ backgroundColor: colors.wine, color: "white" }}
-                >
-                  3
-                </span>
-                <span style={{ color: colors.brown }}>
-                  Any add-ons (numbing, aftercare products, follow-up reviews)
-                </span>
-              </li>
-            </ol>
+      {/* Kirby-Desai Framework Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">How to Predict Your Session Count</h2>
+            <p className="text-taupe font-inter">The Kirby-Desai clinical framework for accurate session estimates</p>
           </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Options Compared */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
-        style={{ backgroundColor: colors.cream }}
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl sm:text-4xl font-bold mb-12 text-center font-['Georgia',serif]"
-            style={{ color: colors.brown }}
-          >
-            Tattoo Removal{" "}
-            <span style={{ color: colors.wine }}>Options Compared</span>
-          </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <motion.div
-              variants={scaleIn}
-              className="p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all"
-              style={{ backgroundColor: colors.glass }}
-            >
-              <Zap className="w-10 h-10 mb-4" style={{ color: colors.wine }} />
-              <h3
-                className="text-xl font-bold mb-2"
-                style={{ color: colors.brown }}
-              >
-                Laser removal
-              </h3>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: colors.taupe }}
-              >
-                Most common modern option. Breaks ink into particles over time.
-                Multiple sessions.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all"
-              style={{ backgroundColor: colors.glass }}
-            >
-              <Scissors
-                className="w-10 h-10 mb-4"
-                style={{ color: colors.wine }}
-              />
-              <h3
-                className="text-xl font-bold mb-2"
-                style={{ color: colors.brown }}
-              >
-                Surgical removal
-              </h3>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: colors.taupe }}
-              >
-                Can work for very small tattoos, but it leaves a scar and is not
-                practical for large pieces.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all"
-              style={{ backgroundColor: colors.glass }}
-            >
-              <Layers
-                className="w-10 h-10 mb-4"
-                style={{ color: colors.wine }}
-              />
-              <h3
-                className="text-xl font-bold mb-2"
-                style={{ color: colors.brown }}
-              >
-                Dermabrasion
-              </h3>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: colors.taupe }}
-              >
-                Mayo Clinic notes results are less predictable and it is less
-                effective than laser or combined approaches.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all"
-              style={{ backgroundColor: colors.glass }}
-            >
-              <XCircle
-                className="w-10 h-10 mb-4"
-                style={{ color: colors.wine }}
-              />
-              <h3
-                className="text-xl font-bold mb-2"
-                style={{ color: colors.brown }}
-              >
-                Creams and DIY
-              </h3>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: colors.taupe }}
-              >
-                The AAD warns there is no evidence these products remove
-                tattoos, and they can contain strong acids that burn or scar.
-              </p>
-            </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Kirby-Desai Factor</th>
+                  <th className="p-4 text-left font-georgia">How It Affects the Tattoo Removal Process</th>
+                  <th className="p-4 text-left font-georgia">Clinical Implication at Nexus Clinic KL</th>
+                </tr>
+              </thead>
+              <tbody>
+                {kirbyDesaiFactors.map((factor, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{factor.factor}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{factor.description}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{factor.implication}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </div>
-      </motion.section>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-brown font-inter text-sm">
+              When you attend your free consultation at Nexus Clinic KL, the doctor assesses all six of these factors for your specific tattoo. The result is a session count estimate that is specific to your tattoo rather than a generic range.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
 
-      {/* Areas We Treat */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
-        style={{ backgroundColor: colors.light }}
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl sm:text-4xl font-bold mb-12 text-center font-['Georgia',serif]"
-            style={{ color: colors.brown }}
-          >
-            Areas We <span style={{ color: colors.wine }}>Commonly Treat</span>
-          </motion.h2>
+      {/* Pico vs Q-Switch Comparison Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Pico Laser vs Q-Switch Laser</h2>
+            <p className="text-taupe font-inter">Honest comparison for Malaysian patients</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Comparison Factor</th>
+                  <th className="p-4 text-left font-georgia">Pico Laser (Picosecond Laser Technology)</th>
+                  <th className="p-4 text-left font-georgia">Q-Switched Nanosecond Laser</th>
+                  <th className="p-4 text-left font-georgia">Recommendation at Nexus Clinic KL</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonData.map((row, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{row.factor}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{row.pico}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{row.qswitch}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{row.recommendation}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-brown font-inter text-sm">
+              For Malaysian patients with Fitzpatrick III to V skin tones, pico laser benefits are particularly significant because the pressure-based photoacoustic mechanism minimises the risk of changes in skin pigmentation that the heat-based Q-switch laser carries.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {treatmentAreas.map((area, index) => (
-              <motion.div
-                key={index}
-                variants={scaleIn}
-                className="p-4 rounded-xl flex items-center gap-3 hover:shadow-md transition-all"
-                style={{ backgroundColor: colors.glass }}
-              >
-                <CheckCircle2
-                  className="w-5 h-5 shrink-0"
-                  style={{ color: colors.wine }}
-                />
-                <span style={{ color: colors.brown }}>{area}</span>
+      {/* Post-Tattoo Removal Skin Care Protocol */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Post-Tattoo Removal Skin Care Protocol</h2>
+            <p className="text-taupe font-inter">Preventing scar and pigmentation changes in Malaysia's tropical climate</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            {aftercareSteps.map((step, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="bg-light p-6 rounded-xl border border-taupe/10">
+                <h3 className="font-georgia text-lg text-brown mb-2 flex items-center gap-2">
+                  <Shield className="w-5 h-5 text-wine" />
+                  {step.step}
+                </h3>
+                <p className="text-taupe font-inter text-sm mb-3"><span className="font-semibold">Why it matters:</span> {step.why}</p>
+                <p className="text-brown font-inter text-sm"><span className="font-semibold">Instructions:</span> {step.instruction}</p>
               </motion.div>
             ))}
           </div>
-
-          <motion.p
-            variants={fadeInUp}
-            className="mt-8 text-center italic"
-            style={{ color: colors.rose }}
-          >
-            The AAD also mentions permanent makeup removal as a common reason
-            people seek laser tattoo removal.
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* Competitor Snapshot */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
-        style={{ backgroundColor: colors.cream }}
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl sm:text-4xl font-bold mb-6 text-center font-['Georgia',serif]"
-            style={{ color: colors.brown }}
-          >
-            Competitor Snapshot:{" "}
-            <span style={{ color: colors.wine }}>
-              What Ranking Pages Focus On
-            </span>
-          </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {competitorInsights.map((insight, index) => {
-              const IconComponent = insight.icon;
-              return (
-                <motion.div
-                  key={index}
-                  variants={scaleIn}
-                  className="p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all"
-                  style={{ backgroundColor: colors.glass }}
-                >
-                  <IconComponent
-                    className="w-10 h-10 mb-4"
-                    style={{ color: colors.wine }}
-                  />
-                  <h3
-                    className="text-lg font-bold mb-2"
-                    style={{ color: colors.brown }}
-                  >
-                    {insight.title}
-                  </h3>
-                  <p className="text-sm" style={{ color: colors.taupe }}>
-                    {insight.description}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="max-w-3xl mx-auto p-8 rounded-3xl shadow-xl"
-            style={{ backgroundColor: colors.glass }}
-          >
-            <h3
-              className="text-2xl font-bold mb-4 text-center"
-              style={{ color: colors.brown }}
-            >
-              How Nexus Clinic KL can stand out
-            </h3>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <CheckCircle2
-                  className="w-5 h-5 shrink-0 mt-1"
-                  style={{ color: colors.wine }}
-                />
-                <span style={{ color: colors.brown }}>
-                  Clear education about ink colours, session planning, and sun
-                  aftercare
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2
-                  className="w-5 h-5 shrink-0 mt-1"
-                  style={{ color: colors.wine }}
-                />
-                <span style={{ color: colors.brown }}>
-                  Device credibility and multi-wavelength capability (Pico
-                  Discovery positioning)
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2
-                  className="w-5 h-5 shrink-0 mt-1"
-                  style={{ color: colors.wine }}
-                />
-                <span style={{ color: colors.brown }}>
-                  Medical-led safety culture aligned with Malaysia aesthetic
-                  practice guideline standards
-                </span>
-              </li>
-            </ul>
+          
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 p-6 rounded-xl border-l-4 border-wine">
+            <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
+              <Sun className="w-4 h-4" />
+              Critical for Malaysian Patients
+            </p>
+            <p className="text-taupe font-inter text-sm mt-1">
+              Malaysia's year-round UV index of 10 to 13 means that skin undergoing tattoo removal is continuously exposed to UV that drives changes in skin pigmentation. A patient who attends every removal session but does not apply SPF50 between sessions significantly increases the risk of persistent post-inflammatory hyperpigmentation. At Nexus Clinic KL, SPF50 is prescribed as a mandatory component of the tattoo removal programme.
+            </p>
           </motion.div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
+
+      {/* The Laser Tattoo Removal Process Steps */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The Laser Tattoo Removal Process at Nexus Clinic KL</h2>
+            <p className="text-taupe font-inter">Step by step</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { step: "01", title: "Clinical Assessment and Treatment Planning", desc: "Doctor assesses tattoo size, colours, age, location, skin type. Kirby-Desai framework applied for honest session count estimate. Written treatment plan provided." },
+              { step: "02", title: "Pre-Session Preparation", desc: "Tattoo area must not be tanned or sun-exposed for 4 weeks. Numbing cream applied 30-45 minutes before laser. Protective eyewear worn." },
+              { step: "03", title: "Laser Treatment Session", desc: "Pico laser or Q-switch laser applied systematically. Cooling device blows cold air during treatment. Session duration depends on tattoo size." },
+              { step: "04", title: "Post-Session Care and Scheduling", desc: "Cooling gel and prescribed skin care applied. Session interval set at 6-8 weeks. Photographic documentation at every session to assess progress." },
+            ].map((item, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="text-center">
+                <div className="w-14 h-14 bg-wine rounded-full flex items-center justify-center text-light font-georgia text-xl mx-auto mb-4 shadow-md">
+                  {item.step}
+                </div>
+                <h3 className="font-georgia text-lg text-brown mb-2 font-semibold">{item.title}</h3>
+                <p className="text-taupe font-inter text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-10">
+            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+              Start Your Tattoo Removal Journey
+              <ArrowRight className="w-5 h-5" />
+            </button>
+            <p className="text-taupe text-sm mt-3">Free consultation at Nexus Clinic KL</p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Pico Laser Tattoo Removal Cost in Malaysia 2026</h2>
+            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Treatment</th>
+                  <th className="p-4 text-left font-georgia">Details</th>
+                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pricingTiers.map((tier, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10">
+                    <td className="p-4 font-inter font-semibold text-brown">{tier.treatment}</td>
+                    <td className="p-4 font-inter text-taupe text-sm">{tier.details}</td>
+                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr className="bg-wine/5">
+                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
+                    Programme pricing for a combination laser tattoo removal course across 6 sessions provides a meaningful per-session reduction. All pricing disclosed before the first removal session is booked.
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Get Your Personalised Tattoo Removal Cost Estimate
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Common Areas Treated Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Areas We Commonly Treat</h2>
+            <p className="text-taupe font-inter">Tattoo removal for all body locations</p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              "Forearm and wrist tattoos",
+              "Hand and finger tattoos",
+              "Chest and shoulder tattoos",
+              "Back tattoos",
+              "Ankle and foot tattoos",
+              "Cosmetic tattoo removal (brow, eyeliner, lip liner)",
+              "Neck tattoos",
+              "Leg and thigh tattoos",
+              "Cover-up tattoos",
+            ].map((area, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="bg-cream p-4 rounded-xl flex items-center gap-3 border border-taupe/10">
+                <CheckCircle className="w-5 h-5 text-wine shrink-0" />
+                <span className="text-brown font-inter">{area}</span>
+              </motion.div>
+            ))}
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-8">
+            <p className="text-taupe font-inter italic">
+              The AAD mentions permanent makeup removal as a common reason people seek laser tattoo removal.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Before After Section - KEPT AS REQUESTED */}
+      <SectionBeforeAfter transformations={transformations} />
 
       {/* FAQ Section */}
-      <FAQ data={faqs} />
-
+      <FAQ data={faqData} />
+      
       {/* CTA Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
-        style={{ backgroundColor: colors.wine }}
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl sm:text-4xl font-bold mb-6 font-['Georgia',serif] text-white"
-          >
-            Ready to Start Your Journey?
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg mb-8 text-white opacity-90"
-          >
-            If you're searching for tattoo removal in Malaysia or laser tattoo
-            removal in Kuala Lumpur, start with a consult that tells you the
-            truth: how many sessions, what results look like, and how to protect
-            your skin.
-          </motion.p>
-
-          <motion.div
-            variants={scaleIn}
-            className="bg-white p-8 rounded-3xl shadow-2xl inline-block"
-          >
-            <p
-              className="text-xl font-bold mb-2"
-              style={{ color: colors.brown }}
-            >
-              Nexus Clinic Kuala Lumpur
+      <section className="py-20 px-4 bg-wine">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-4xl text-center"
+        >
+          <motion.div variants={fadeInUp} className="space-y-6">
+            <h2 className="font-georgia text-3xl md:text-5xl text-light">
+              Remove Unwanted Tattoos Safely at Nexus Clinic KL
+            </h2>
+            <p className="text-xl text-cream font-inter max-w-2xl mx-auto">
+              Laser tattoo removal in Malaysia is safe, effective and more predictable than ever with advanced pico laser technology. The key to the best outcome is correct wavelength selection for each ink colour, honest session count expectations, appropriate laser settings for your skin type, and complete aftercare.
             </p>
-            <p className="mb-2" style={{ color: colors.taupe }}>
-              LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala
-              Lumpur
+            <p className="text-cream/90 font-inter">
+              Whether you are removing a small tattoo or working through a complex multi-colour cover-up tattoo, the treatment plan at Nexus Clinic KL is built around your specific tattoo, not a generic protocol. Our licensed doctors bring over 15 years of combined clinical experience and have completed over 5,000 procedures.
             </p>
-            <p className="text-lg" style={{ color: colors.wine }}>
-              Call/WhatsApp: 016-7025699 / 03-21635699
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                Book Your Free Consultation Now
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+              <Whatsapp 
+                message="Hi, I'd like to book a free consultation for laser tattoo removal at Nexus Clinic KL. Please let me know available slots."
+                variant="light"
+              />
+            </div>
+            <p className="text-cream/80 font-inter text-sm">
+              Limited slots available this week | Located at Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
             </p>
+            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
+              <a href="#" className="hover:text-cream transition-colors">Call: 016-7025699</a>
+              <span>•</span>
+              <a href="#" className="hover:text-cream transition-colors">WhatsApp: 03-21635699</a>
+            </div>
           </motion.div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
     </div>
   );
-};
-
-export default TattooRemovalLanding;
+}
