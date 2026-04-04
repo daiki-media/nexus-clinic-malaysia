@@ -26,12 +26,14 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import Image from "next/image";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 interface LaserTattooRemovalProps {
   locale: string;
 }
@@ -110,91 +112,25 @@ export default function TattooRemovalLanding({ locale }: LaserTattooRemovalProps
 
   return (
     <div className="w-full bg-light overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <AlertTriangle className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Pico Laser Technology • Doctor-Only Treatment</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Laser Tattoo Removal in Malaysia Using{" "}
-                <span className="text-wine italic">Advanced Pico Laser Technology for All Skin Types</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Tattoo removal in Malaysia has transformed completely. What once required painful dermabrasion or surgical excision is now achievable through advanced pico laser technology.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                At Nexus Clinic Kuala Lumpur, we use the StarWalker PQX picosecond laser system with advanced picosecond laser technology and multiple wavelengths including yellow laser capability. Every tattoo is assessed colour by colour before any laser treatment begins, with honest session counts based on actual tattoo complexity.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Important Clinical Information
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  A single laser system cannot remove all tattoo ink colours with equal effectiveness. The type of tattoo ink colour determines which laser wavelength is required. Yellow ink requires the yellow laser, a specific wavelength not available in standard Q-switch machines.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Book Free Consultation
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in laser tattoo removal at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/skin/tattoo-removal.webp"
-                  alt="Nexus Clinic Kuala Lumpur - Laser Tattoo Removal Treatment"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown">Advanced Pico Laser</p>
-                <p className="font-inter text-sm text-taupe">Over 5,000 procedures completed</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+        badge="Pico Laser Technology • Doctor-Only Treatment"
+        title="Laser Tattoo Removal in Malaysia Using"
+        highlight="Advanced Pico Laser Technology for All Skin Types"
+        description="Tattoo removal in Malaysia has transformed completely. What once required painful dermabrasion or surgical excision is now achievable through advanced pico laser technology."
+        details="At Nexus Clinic Kuala Lumpur, we use the StarWalker PQX picosecond laser system with advanced picosecond laser technology and multiple wavelengths including yellow laser capability. Every tattoo is assessed colour by colour before any laser treatment begins, with honest session counts based on actual tattoo complexity."
+        note="A single laser system cannot remove all tattoo ink colours with equal effectiveness. The type of tattoo ink colour determines which laser wavelength is required. Yellow ink requires the yellow laser, a specific wavelength not available in standard Q-switch machines."
+        image="/images/skin/tattoo-removal.webp"
+        imageAlt="Nexus Clinic Kuala Lumpur - Laser Tattoo Removal Treatment"
+        ctaText="Book Free Consultation"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in laser tattoo removal at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="Advanced Pico Laser"
+        floatingSubtitle="Over 5,000 procedures completed"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -353,10 +289,10 @@ export default function TattooRemovalLanding({ locale }: LaserTattooRemovalProps
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Speak to a Doctor About Your Tattoo Removal | Free Assessment
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -370,35 +306,27 @@ export default function TattooRemovalLanding({ locale }: LaserTattooRemovalProps
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Tattoo Ink Colour and Laser Wavelength</h2>
-            <p className="text-taupe font-inter">Why colour determines your removal process</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Tattoo Ink Colour</th>
-                  <th className="p-4 text-left font-georgia">Why This Colour Is Challenging or Easy</th>
-                  <th className="p-4 text-left font-georgia">Laser Wavelength Required</th>
-                  <th className="p-4 text-left font-georgia">Expected Response</th>
-                  <th className="p-4 text-left font-georgia">Sessions for Complete Removal</th>
-                </tr>
-              </thead>
-              <tbody>
-                {inkColourData.map((colour, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{colour.colour}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{colour.challenge}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{colour.wavelength}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{colour.response}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{colour.sessions}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "colour", header: "Tattoo Ink Colour", className: "font-semibold text-brown" },
+              { key: "challenge", header: "Why This Colour Is Challenging or Easy" },
+              { key: "wavelength", header: "Laser Wavelength Required" },
+              { key: "response", header: "Expected Response" },
+              { key: "sessions", header: "Sessions for Complete Removal" },
+            ]}
+            data={inkColourData.map(item => ({
+              colour: item.colour,
+              challenge: item.challenge,
+              wavelength: item.wavelength,
+              response: item.response,
+              sessions: item.sessions,
+            }))}
+            title="Tattoo Ink Colour and Laser Wavelength"
+            subtitle="Why colour determines your removal process"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
@@ -417,31 +345,23 @@ export default function TattooRemovalLanding({ locale }: LaserTattooRemovalProps
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">How to Predict Your Session Count</h2>
-            <p className="text-taupe font-inter">The Kirby-Desai clinical framework for accurate session estimates</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Kirby-Desai Factor</th>
-                  <th className="p-4 text-left font-georgia">How It Affects the Tattoo Removal Process</th>
-                  <th className="p-4 text-left font-georgia">Clinical Implication at Nexus Clinic KL</th>
-                </tr>
-              </thead>
-              <tbody>
-                {kirbyDesaiFactors.map((factor, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{factor.factor}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{factor.description}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{factor.implication}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "factor", header: "Kirby-Desai Factor", className: "font-semibold text-brown" },
+              { key: "description", header: "How It Affects the Tattoo Removal Process" },
+              { key: "implication", header: "Clinical Implication at Nexus Clinic KL" },
+            ]}
+            data={kirbyDesaiFactors.map(item => ({
+              factor: item.factor,
+              description: item.description,
+              implication: item.implication,
+            }))}
+            title="How to Predict Your Session Count"
+            subtitle="The Kirby-Desai clinical framework for accurate session estimates"
+            variant="default"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
@@ -460,34 +380,25 @@ export default function TattooRemovalLanding({ locale }: LaserTattooRemovalProps
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Pico Laser vs Q-Switch Laser</h2>
-            <p className="text-taupe font-inter">Honest comparison for Malaysian patients</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Comparison Factor</th>
-                  <th className="p-4 text-left font-georgia">Pico Laser (Picosecond Laser Technology)</th>
-                  <th className="p-4 text-left font-georgia">Q-Switched Nanosecond Laser</th>
-                  <th className="p-4 text-left font-georgia">Recommendation at Nexus Clinic KL</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonData.map((row, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{row.factor}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{row.pico}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{row.qswitch}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{row.recommendation}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          
+            <TableForPages
+              columns={[
+                { key: "factor", header: "Comparison Factor", className: "font-semibold text-brown" },
+                { key: "pico", header: "Pico Laser (Picosecond Laser Technology)" },
+                { key: "qswitch", header: "Q-Switched Nanosecond Laser" },
+                { key: "recommendation", header: "Recommendation at Nexus Clinic KL" },
+              ]}
+              data={comparisonData.map(item => ({
+                factor: item.factor,
+                pico: item.pico,
+                qswitch: item.qswitch,
+                recommendation: item.recommendation,
+              }))}
+              title="Pico Laser vs Q-Switch Laser"
+              subtitle="Honest comparison for Malaysian patients"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-12 px-4"
+            />
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
               For Malaysian patients with Fitzpatrick III to V skin tones, pico laser benefits are particularly significant because the pressure-based photoacoustic mechanism minimises the risk of changes in skin pigmentation that the heat-based Q-switch laser carries.
@@ -567,10 +478,10 @@ export default function TattooRemovalLanding({ locale }: LaserTattooRemovalProps
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-10">
-            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+            <Link href="/contact-us" className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
               Start Your Tattoo Removal Journey
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
             <p className="text-taupe text-sm mt-3">Free consultation at Nexus Clinic KL</p>
           </motion.div>
         </motion.div>
@@ -585,44 +496,28 @@ export default function TattooRemovalLanding({ locale }: LaserTattooRemovalProps
           viewport={{ once: true }}
           className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Pico Laser Tattoo Removal Cost in Malaysia 2026</h2>
-            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Details</th>
-                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter font-semibold text-brown">{tier.treatment}</td>
-                    <td className="p-4 font-inter text-taupe text-sm">{tier.details}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
-                    Programme pricing for a combination laser tattoo removal course across 6 sessions provides a meaningful per-session reduction. All pricing disclosed before the first removal session is booked.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          
-          <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Get Your Personalised Tattoo Removal Cost Estimate
-              <ArrowRight className="w-4 h-4" />
-            </button>
+          <TableForPages
+            columns={[
+              { key: "treatment", header: "Treatment", className: "font-semibold text-brown" },
+              { key: "details", header: "Details" },
+              { key: "price", header: "Price Range (RM) 2026", className: "font-semibold text-wine" },
+            ]}
+            data={pricingTiers.map(tier => ({
+              treatment: tier.treatment,
+              details: tier.details,
+              price: tier.price,
+            }))}
+            title="Pico Laser Tattoo Removal Cost in Malaysia 2026"
+            subtitle="Transparent pricing at Nexus Clinic KL"
+            variant="compact"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
+
+          <motion.div variants={fadeInUp} className="text-center mt-4">
+            <p className="text-taupe font-inter text-sm italic">
+              Programme pricing for a combination laser tattoo removal course across 6 sessions provides a meaningful per-session reduction. All pricing disclosed before the first removal session is booked.
+            </p>
           </motion.div>
         </motion.div>
       </section>
@@ -694,14 +589,15 @@ export default function TattooRemovalLanding({ locale }: LaserTattooRemovalProps
               Whether you are removing a small tattoo or working through a complex multi-colour cover-up tattoo, the treatment plan at Nexus Clinic KL is built around your specific tattoo, not a generic protocol. Our licensed doctors bring over 15 years of combined clinical experience and have completed over 5,000 procedures.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Book Your Free Consultation Now
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a free consultation for laser tattoo removal at Nexus Clinic KL. Please let me know available slots."
                 variant="light"

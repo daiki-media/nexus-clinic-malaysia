@@ -24,11 +24,13 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 import Image from "next/image";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 interface NoseThreadLiftProps {
   locale: string;
 }
@@ -93,91 +95,25 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
   return (
     <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <Sparkles className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Non-Surgical Nose Enhancement</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Instant Nose Thread Lift in Malaysia for a{" "}
-                <span className="text-wine italic">Higher Bridge, Sharper Tip and Better Profile</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Your nose sits in the exact centre of your face. Everything else radiates outward from it. 
-                A flat bridge makes the face look broader. A drooping tip takes years off the profile.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                Nose thread lift at Nexus Clinic Kuala Lumpur is the non-surgical solution built specifically for Asian nasal anatomy. 
-                Using the Korean HIKO technique with MDA-registered White Medience PDO and PCL threads, our doctors reshape the 
-                nose bridge and tip in a single 20 to 30-minute session. No surgery, no general anaesthesia, no incisions, no weeks of recovery.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-taupe font-inter"
-              >
-                The result is visible immediately. The structural support improves further over the following six to eight weeks 
-                as the body's collagen response builds around the threads.
-              </motion.p>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-4"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Book Free Consultation
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in nose thread lift at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/face/Nose Thread Lift.png"
-                  alt="Nexus Clinic Kuala Lumpur - Nose Thread Lift Treatment"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown">✨ Instant Results</p>
-                <p className="font-inter text-sm text-taupe">No surgery • 20-30 minutes</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+        badge="Non-Surgical Nose Enhancement"
+        title="Instant Nose Thread Lift in Malaysia for a"
+        highlight="Higher Bridge, Sharper Tip and Better Profile"
+        description="Your nose sits in the exact centre of your face. Everything else radiates outward from it. A flat bridge makes the face look broader. A drooping tip takes years off the profile."
+        details="Nose thread lift at Nexus Clinic Kuala Lumpur is the non-surgical solution built specifically for Asian nasal anatomy. Using the Korean HIKO technique with MDA-registered White Medience PDO and PCL threads, our doctors reshape the nose bridge and tip in a single 20 to 30-minute session. No surgery, no general anaesthesia, no incisions, no weeks of recovery."
+        note="The result is visible immediately. The structural support improves further over the following six to eight weeks as the body's collagen response builds around the threads."
+        image="/images/face/Nose Thread Lift.png"
+        imageAlt="Nexus Clinic Kuala Lumpur - Nose Thread Lift Treatment"
+        ctaText="Book Free Consultation"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in nose thread lift at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="✨ Instant Results"
+        floatingSubtitle="No surgery • 20-30 minutes"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
       {/* Trust Section - Separated */}
       <section className="py-12 px-4 bg-light">
@@ -344,10 +280,10 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Speak to a Doctor About Your Nose | Free Assessment
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -395,10 +331,10 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
                   className="object-cover"
                 />
               </div>
-              <button className="mt-6 text-wine font-inter font-semibold flex items-center gap-2 hover:gap-3 transition-all">
-                Find Out If You Are a Candidate | Free Nose Assessment
+              <Link href="/contact-us" className="mt-6 text-wine font-inter font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                 Free Nose Assessment
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </motion.div>
           </div>
         </motion.div>
@@ -446,10 +382,10 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="mt-8 text-center">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Book a Consultation to Understand Your Expected Result
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Book a Consultation 
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -463,35 +399,27 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">PDO, PLLA and PCL Nose Threads</h2>
-            <p className="text-taupe font-inter">Choosing the right material for your goals</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Thread Type</th>
-                  <th className="p-4 text-left font-georgia">Material</th>
-                  <th className="p-4 text-left font-georgia">Longevity</th>
-                  <th className="p-4 text-left font-georgia">Lift Strength</th>
-                  <th className="p-4 text-left font-georgia">Best For</th>
-                </tr>
-              </thead>
-              <tbody>
-                {threadTypes.map((thread, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{thread.type}</td>
-                    <td className="p-4 text-taupe font-inter">{thread.material}</td>
-                    <td className="p-4 text-taupe font-inter">{thread.longevity}</td>
-                    <td className="p-4 text-taupe font-inter">{thread.liftStrength}</td>
-                    <td className="p-4 text-taupe font-inter">{thread.bestFor}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+            <TableForPages
+              columns={[
+                { key: "type", header: "Thread Type", className: "font-semibold" },
+                { key: "material", header: "Material" },
+                { key: "longevity", header: "Longevity" },
+                { key: "liftStrength", header: "Lift Strength" },
+                { key: "bestFor", header: "Best For" },
+              ]}
+              data={threadTypes.map((thread) => ({
+                type: thread.type,
+                material: thread.material,
+                longevity: thread.longevity,
+                liftStrength: thread.liftStrength,
+                bestFor: thread.bestFor,
+              }))}
+              title="PDO, PLLA and PCL Nose Threads"
+              subtitle="Choosing the right material for your goals"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-20 px-4"
+            />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-taupe text-sm">
@@ -499,13 +427,7 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
               All thread products are registered with Malaysia's Medical Device Authority (MDA).
             </p>
           </motion.div>
-          
-          <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Ask About Thread Types at Your Consultation
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </motion.div>
+        
         </motion.div>
       </section>
 
@@ -546,12 +468,6 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
             </p>
           </div>
           
-          <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Find Out Your Recommended Thread Count
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </motion.div>
         </motion.div>
       </section>
 
@@ -564,33 +480,25 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Nose Thread Lift Compared to Nose Filler and Rhinoplasty</h2>
-            <p className="text-taupe font-inter">Understanding your options</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Factor</th>
-                  <th className="p-4 text-left font-georgia">Nose Thread Lift</th>
-                  <th className="p-4 text-left font-georgia">Nose Filler (HA)</th>
-                  <th className="p-4 text-left font-georgia">Rhinoplasty (Surgery)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonData.map((row, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{row.factor}</td>
-                    <td className="p-4 text-taupe font-inter">{row.thread}</td>
-                    <td className="p-4 text-taupe font-inter">{row.filler}</td>
-                    <td className="p-4 text-taupe font-inter">{row.surgery}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "factor", header: "Factor", className: "font-semibold" },
+              { key: "thread", header: "Nose Thread Lift" },
+              { key: "filler", header: "Nose Filler (HA)" },
+              { key: "surgery", header: "Rhinoplasty (Surgery)" },
+            ]}
+            data={comparisonData.map((row) => ({
+              factor: row.factor,
+              thread: row.thread,
+              filler: row.filler,
+              surgery: row.surgery,
+            }))}
+            title="Nose Thread Lift Compared to Nose Filler and Rhinoplasty"
+            subtitle="Understanding your options"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-20 px-4"
+          />
           
           <motion.div variants={fadeInUp} className="mt-8 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-taupe text-sm">
@@ -600,10 +508,10 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Compare Your Options | Book a Free Nose Assessment
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Compare Your Options
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -640,10 +548,10 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="mt-8 text-center">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Find Out If You Are a Suitable Candidate
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -680,10 +588,10 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-10">
-            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
-              Book Your Nose Thread Lift Appointment
+            <Link href="/contact-us" className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+              Book Your Appointment
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
             <p className="text-taupe text-sm mt-3">Same-day results at Nexus Clinic KL</p>
           </motion.div>
         </motion.div>
@@ -698,35 +606,29 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-4xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Nose Thread Lift Cost in Malaysia</h2>
-            <p className="text-taupe font-inter">Transparent 2026 Pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Price Range (2026)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter text-brown">{tier.treatment}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={2} className="p-4 text-taupe font-inter text-sm italic">
-                    * Final pricing confirmed at consultation. Price depends on thread type, count and correction required.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
+          <div className="container mx-auto max-w-4xl">
+            <TableForPages
+              columns={[
+                { key: "treatment", header: "Treatment" },
+                { key: "price", header: "Price Range (2026)" },
+              ]}
+              data={pricingTiers.map((tier) => ({
+                treatment: tier.treatment,
+                price: tier.price,
+              }))}
+              title="Nose Thread Lift Cost in Malaysia"
+              subtitle="Transparent 2026 Pricing at Nexus Clinic KL"
+              variant="compact"
+              fadeInUp={fadeInUp}
+            />
+            
+            {/* Footnote */}
+            <motion.p 
+              variants={fadeInUp}
+              className="text-center text-taupe font-inter text-sm italic mt-4"
+            >
+              * Final pricing confirmed at consultation. Price depends on thread type, count and correction required.
+            </motion.p>
           </div>
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
@@ -736,13 +638,6 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
               with Malaysia among the top three markets by procedure volume in the region.
             </p>
             <p className="text-taupe text-xs mt-1">[ISAPS Global Statistics Report 2024]</p>
-          </motion.div>
-          
-          <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Get Your Personalised Nose Thread Lift Quote
-              <ArrowRight className="w-4 h-4" />
-            </button>
           </motion.div>
         </motion.div>
       </section>
@@ -831,13 +726,6 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
             </p>
             <p className="text-taupe text-xs mt-1">[MDA Registration Reference: White Medience Korea. GMP and ISO-certified thread manufacturer]</p>
           </motion.div>
-          
-          <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Explore Cheek Filler for Facial Balance
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </motion.div>
         </motion.div>
       </section>
 
@@ -865,14 +753,15 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
               One 30-minute appointment at Nexus Clinic KL using MDA-registered Korean threads and technique developed for Asian nasal anatomy.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Book Your Free Consultation Now
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a free consultation for nose thread lift at Nexus Clinic KL. Please let me know available slots."
                 variant="light"
@@ -882,9 +771,9 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
               Limited slots available this week | Located at Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
-              <a href="#" className="hover:text-cream transition-colors">Explore Cheek Filler</a>
+              <a href="/face/cheek-filler-malaysia/" className="hover:text-cream transition-colors">Explore Cheek Filler</a>
               <span>•</span>
-              <a href="#" className="hover:text-cream transition-colors">Explore Jawline Filler</a>
+              <a href="/face/jawline-filler-malaysia/" className="hover:text-cream transition-colors">Explore Jawline Filler</a>
             </div>
           </motion.div>
         </motion.div>

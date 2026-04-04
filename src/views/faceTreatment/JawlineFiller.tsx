@@ -27,10 +27,13 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 import Image from "next/image";
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 
 interface JawlineFillerProps {
   locale: string;
@@ -152,84 +155,25 @@ export default function JawlineFiller({ locale }: JawlineFillerProps) {
 
   return (
     <div className="w-full bg-light overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <Sparkles className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Non-Surgical Jawline Contouring</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Sharper Jawline Filler in Malaysia for{" "}
-                <span className="text-wine italic">Defined Contours and a Sculpted Lower Face</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                A defined jawline does not just change how you look in photographs. It changes how your entire face reads. 
-                The jaw is the structural frame of the lower face.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                Jawline filler at Nexus Clinic Kuala Lumpur reshapes that frame without surgery, stitches or recovery time. 
-                Our doctors have performed over 5,000 facial filler procedures using technique specifically built for Southeast Asian facial anatomy. 
-                The result is a sharper, more defined lower face that looks completely natural.
-              </motion.p>
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Book Jawline Assessment
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in jawline filler at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/face/Jawline Filler.png"
-                  alt="Nexus Clinic Kuala Lumpur - Jawline Filler Treatment"
-                  fill
-                  className="object-cover object-[70%_30%]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown"> Defined Jawline</p>
-                <p className="font-inter text-sm text-taupe">Immediate results • Zero surgery</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
+      <AllPagesHero
+        badge="Non-Surgical Jawline Contouring"
+        title="Sharper Jawline Filler in Malaysia for"
+        highlight="Defined Contours and a Sculpted Lower Face"
+        description="A defined jawline does not just change how you look in photographs. It changes how your entire face reads. The jaw is the structural frame of the lower face."
+        details="Jawline filler at Nexus Clinic Kuala Lumpur reshapes that frame without surgery, stitches or recovery time. Our doctors have performed over 5,000 facial filler procedures using technique specifically built for Southeast Asian facial anatomy. The result is a sharper, more defined lower face that looks completely natural."
+        note="Jawline filler requires precise placement along the mandible. Results depend on individual bone structure and the amount of volume needed."
+        image="/images/face/Jawline Filler.png"
+        imageAlt="Nexus Clinic Kuala Lumpur - Jawline Filler Treatment"
+        ctaText="Book Jawline Assessment"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in jawline filler at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="✨ Defined Jawline"
+        floatingSubtitle="Immediate results • Zero surgery"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
         <motion.div
@@ -394,10 +338,10 @@ export default function JawlineFiller({ locale }: JawlineFillerProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Speak to a Doctor About Your Jawline
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor 
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -411,39 +355,30 @@ export default function JawlineFiller({ locale }: JawlineFillerProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Three Root Causes of a Weak Jawline</h2>
-            <p className="text-taupe font-inter max-w-2xl mx-auto">And the right fix for each</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine/10">
-                <tr>
-                  <th className="p-4 text-left font-georgia text-brown">Root Cause</th>
-                  <th className="p-4 text-left font-georgia text-brown">What You See</th>
-                  <th className="p-4 text-left font-georgia text-brown">Correct Treatment</th>
-                  <th className="p-4 text-left font-georgia text-brown">Filler Involved</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rootCauses.map((cause, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{cause.cause}</td>
-                    <td className="p-4 text-taupe font-inter">{cause.concern}</td>
-                    <td className="p-4 text-taupe font-inter">{cause.treatment}</td>
-                    <td className="p-4 text-taupe font-inter">{cause.filler}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          
+          <TableForPages
+            columns={[
+              { key: "cause", header: "Root Cause", className: "font-semibold" },
+              { key: "concern", header: "What You See" },
+              { key: "treatment", header: "Correct Treatment" },
+              { key: "filler", header: "Filler Involved" },
+            ]}
+            data={rootCauses.map((cause) => ({
+              cause: cause.cause,
+              concern: cause.concern,
+              treatment: cause.treatment,
+              filler: cause.filler,
+            }))}
+            title="Three Root Causes of a Weak Jawline"
+            subtitle="Different causes require different treatment approaches"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-20 px-4"
+          />
           <motion.div variants={fadeInUp} className="mt-8 text-center">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Find Out Your Root Cause | Book a Free Facial Assessment
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Find Out Your Root Cause
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -483,10 +418,10 @@ export default function JawlineFiller({ locale }: JawlineFillerProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-10">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Book a Consultation for Men or Women | Tailored Jawline Plans
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Tailored Jawline Plans
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -500,37 +435,29 @@ export default function JawlineFiller({ locale }: JawlineFillerProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Jawline Filler Compared to Jaw Botox</h2>
-            <p className="text-taupe font-inter">Choosing the right treatment for your concern</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Factor</th>
-                  <th className="p-4 text-left font-georgia">Jawline Filler</th>
-                  <th className="p-4 text-left font-georgia">Jaw Botox (Masseter)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonData.map((row, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{row.factor}</td>
-                    <td className="p-4 text-taupe font-inter">{row.filler}</td>
-                    <td className="p-4 text-taupe font-inter">{row.botox}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "factor", header: "Factor", className: "font-semibold" },
+              { key: "filler", header: "Jawline Filler" },
+              { key: "botox", header: "Jaw Botox (Masseter)" },
+            ]}
+            data={comparisonData.map((row) => ({
+              factor: row.factor,
+              filler: row.filler,
+              botox: row.botox,
+            }))}
+            title="Jawline Filler vs Jaw Botox"
+            subtitle="Understanding which treatment is right for your goals"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-20 px-4"
+          />
           
           <motion.div variants={fadeInUp} className="mt-8 text-center">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Not Sure Which Treatment You Need? Book a Free Assessment
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+             Book a Free Assessment
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -544,39 +471,32 @@ export default function JawlineFiller({ locale }: JawlineFillerProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Jawline Filler by Face Shape</h2>
-            <p className="text-taupe font-inter">A guide for Malaysian patients</p>
-          </motion.div>
           
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine/10">
-                <tr>
-                  <th className="p-4 text-left font-georgia text-brown">Face Shape</th>
-                  <th className="p-4 text-left font-georgia text-brown">Current Concern</th>
-                  <th className="p-4 text-left font-georgia text-brown">Recommended Jawline Approach</th>
-                  <th className="p-4 text-left font-georgia text-brown">Combine With</th>
-                </tr>
-              </thead>
-              <tbody>
-                {faceShapes.map((shape, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{shape.shape}</td>
-                    <td className="p-4 text-taupe font-inter">{shape.concern}</td>
-                    <td className="p-4 text-taupe font-inter">{shape.approach}</td>
-                    <td className="p-4 text-taupe font-inter">{shape.combine}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+            <TableForPages
+              columns={[
+                { key: "shape", header: "Face Shape", className: "font-semibold" },
+                { key: "concern", header: "Current Concern" },
+                { key: "approach", header: "Recommended Jawline Approach" },
+                { key: "combine", header: "Combine With" },
+              ]}
+              data={faceShapes.map((shape) => ({
+                shape: shape.shape,
+                concern: shape.concern,
+                approach: shape.approach,
+                combine: shape.combine,
+              }))}
+              title="Jawline Filler by Face Shape"
+              subtitle="Personalized approach based on your facial anatomy"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-20 px-4"
+            />
           
           <motion.div variants={fadeInUp} className="mt-8 text-center">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Book Your Free Consultation
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -643,10 +563,10 @@ export default function JawlineFiller({ locale }: JawlineFillerProps) {
                   </p>
                   <p className="text-taupe text-xs mt-1">[AbbVie Malaysia Aesthetic Market Summary Report, 2023]</p>
                 </div>
-                <button className="mt-4 text-wine font-inter font-semibold flex items-center gap-2 hover:gap-3 transition-all">
-                  Ask Which Product Suits Your Jawline
+                <Link href="/contact-us" className="mt-4 text-wine font-inter font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                  Product Suits Your Jawline
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </Link>
               </div>
             </motion.div>
           </div>
@@ -685,10 +605,10 @@ export default function JawlineFiller({ locale }: JawlineFillerProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-10">
-            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
-              Book Your Jawline Filler Appointment
+            <Link href="/contact-us" className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+              Book Your Jawline Assessment
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
             <p className="text-taupe text-sm mt-3">Same-day results at Nexus Clinic KL</p>
           </motion.div>
         </motion.div>
@@ -702,45 +622,42 @@ export default function JawlineFiller({ locale }: JawlineFillerProps) {
           whileInView="visible"
           viewport={{ once: true }}
           className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Jawline Filler Cost in Malaysia</h2>
-            <p className="text-taupe font-inter">Full 2026 Pricing Guide at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Typical Volume</th>
-                  <th className="p-4 text-left font-georgia">Price Range (2026)</th>
-                 </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter text-brown">{tier.treatment}</td>
-                    <td className="p-4 font-inter text-taupe">{tier.volume}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
-                    * Final pricing confirmed at consultation. Price depends on filler brand, volume required and complexity.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
+        >          
+          {/* Jawline Filler Pricing Table */}
+          <section className="py-20 px-4 bg-cream">
+            <div className="container mx-auto max-w-4xl">
+              <TableForPages
+                columns={[
+                  { key: "treatment", header: "Treatment" },
+                  { key: "volume", header: "Typical Volume" },
+                  { key: "price", header: "Price Range (2026)" },
+                ]}
+                data={pricingTiers.map((tier) => ({
+                  treatment: tier.treatment,
+                  volume: tier.volume,
+                  price: tier.price,
+                }))}
+                title="Jawline Filler Price in Malaysia"
+                subtitle="Transparent 2026 Pricing at Nexus Clinic KL"
+                variant="compact"
+                fadeInUp={fadeInUp}
+              />
+              
+              {/* Footnote */}
+              <motion.p 
+                variants={fadeInUp}
+                className="text-center text-taupe font-inter text-sm italic mt-4"
+              >
+                * Final pricing confirmed at consultation. Price depends on filler brand, volume required and complexity.
+              </motion.p>
+            </div>
+          </section>
           
           <motion.div variants={fadeInUp} className="mt-8 text-center">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Get Your Personalised Jawline Quote
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -845,14 +762,15 @@ export default function JawlineFiller({ locale }: JawlineFillerProps) {
               Over 5,000 procedures. Technique built for Southeast Asian faces. A sharper lower face, same day.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Book Your Free Consultation Now
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a free consultation for jawline filler at Nexus Clinic KL. Please let me know available slots."
                 variant="light"

@@ -50,16 +50,18 @@ import {
   fadeInLeft,
   fadeInRight,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
+import TableForPages from "@/src/components/TableForPages";
+import Whatsapp from "@/src/components/Whatsapp";
 
 const PCOSPage = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "regenerative/pcosTreatment");
 
   // PCOS Phenotype Table Data
-  const phenotypeTable = [
+  const phenotypeTableData = [
     {
       phenotype: "Phenotype A (Classic Full)",
       features: "Hyperandrogenism + anovulation + polycystic ovaries on ultrasound",
@@ -90,8 +92,8 @@ const PCOSPage = ({ locale = fallbackLng }: { locale?: string }) => {
     },
   ];
 
-  // PCOS Skin Manifestations Table
-  const skinManifestationsTable = [
+  // PCOS Skin Manifestations Table Data
+  const skinManifestationsTableData = [
     {
       sign: "Hormonal Acne (PCOS-Type)",
       presentation: "Deep, cystic, painful acne lesions on lower face, jawline, chin and neck; persists into or begins in adulthood; each lesion leaves PIH in Malaysian skin",
@@ -118,8 +120,8 @@ const PCOSPage = ({ locale = fallbackLng }: { locale?: string }) => {
     },
   ];
 
-  // PCOS Treatment Evidence Table
-  const treatmentEvidenceTable = [
+  // PCOS Treatment Evidence Table Data
+  const treatmentEvidenceTableData = [
     {
       option: "Inositol (Myo-Inositol, D-Chiro-Inositol)",
       evidence: "2023 International PCOS Guideline explicitly states metformin has greater efficacy than inositol; inositol offers limited clinical benefits; supported by only very low-certainty evidence for metabolic and hormonal benefits",
@@ -142,8 +144,8 @@ const PCOSPage = ({ locale = fallbackLng }: { locale?: string }) => {
     },
   ];
 
-  // Long-term Health Risks Table
-  const healthRisksTable = [
+  // Long-term Health Risks Table Data
+  const healthRisksTableData = [
     {
       risk: "Type 2 Diabetes and Impaired Glucose Tolerance",
       level: "3 to 7 times higher risk than women without PCOS; impaired glucose tolerance affects 30-35% by 40s",
@@ -176,8 +178,32 @@ const PCOSPage = ({ locale = fallbackLng }: { locale?: string }) => {
     },
   ];
 
-  // Pricing Table
-  const pricingItems = [
+  // PCOS at a Glance Table Data
+  const pcosAtGlanceData = [
+    {
+      factor: "What PCOS Is",
+      details: "Most common hormonal disorder in women of reproductive age; affects 8-13% globally, 10-20% of Malaysian women; polycystic ovaries contain multiple fluid-filled sacs; PCOS cannot be cured but symptoms are treatable"
+    },
+    {
+      factor: "Signs and Symptoms of PCOS",
+      details: "Irregular periods or absent menstrual cycle; excess hair growth (hirsutism); acne; female pattern hair loss; weight gain around abdomen; difficulty getting pregnant; polycystic ovaries on ultrasound; acanthosis nigricans"
+    },
+    {
+      factor: "Rotterdam Diagnostic Criteria",
+      details: "Requires 2 of 3 after excluding other causes: (1) clinical or biochemical hyperandrogenism; (2) ovulatory dysfunction; (3) polycystic ovaries on ultrasound or elevated AMH. Ultrasound not required when both hyperandrogenism and ovulatory dysfunction present."
+    },
+    {
+      factor: "PCOS Treatment Goals",
+      details: "Cycle regulation and contraception | Acne, hirsutism and hair loss management | Metabolic health and insulin resistance | Fertility and getting pregnant | Long-term health and endometrial protection"
+    },
+    {
+      factor: "Is PCOS a Lifelong Hormonal Disorder?",
+      details: "Yes. PCOS persists after menopause though reproductive manifestations resolve; metabolic risks continue to accumulate; women with PCOS need lifelong reproductive health plan with metabolic surveillance"
+    },
+  ];
+
+  // Pricing Table Data
+  const pricingItemsData = [
     { item: "Initial PCOS Consultation", details: "Symptom history, menstrual cycle assessment, physical examination for hyperandrogenism, blood pressure, weight, contraindication screening, blood tests requisition", price: "RM 150 to RM 300" },
     { item: "PCOS Blood Panel (Blood Tests)", details: "Total and free testosterone, LH, FSH, oestradiol, prolactin, AMH, fasting insulin, fasting glucose, HbA1c, lipid panel, SHBG, TSH, 17-OH progesterone", price: "RM 400 to RM 700" },
     { item: "Pelvic Ultrasound Scan", details: "Ovarian morphology assessment; endometrial thickness measurement; follicle count and distribution", price: "RM 150 to RM 350" },
@@ -254,27 +280,16 @@ const PCOSPage = ({ locale = fallbackLng }: { locale?: string }) => {
             </motion.p>
 
             <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="px-8 py-4 rounded-full font-semibold flex items-center gap-2 shadow-lg"
                 style={{ backgroundColor: "#8C4F58", color: "#FAF8F7" }}
               >
-                Book Your PCOS Assessment <ChevronRight className="w-5 h-5" />
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-full font-semibold"
-                style={{
-                  background: "rgba(255, 255, 255, 0.7)",
-                  backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(172, 153, 144, 0.3)",
-                  color: "#4B3A33",
-                }}
-              >
                 Speak to a Doctor
-              </motion.button>
+              </motion.a>
+              <Whatsapp message={"HI, can i get more info about PCOS treatment?"} />
             </motion.div>
           </div>
         </div>
@@ -293,7 +308,7 @@ const PCOSPage = ({ locale = fallbackLng }: { locale?: string }) => {
             <motion.div
               variants={scaleIn}
               whileHover={{ y: -5 }}
-              className="p-6 rounded-2xl shadow-sm"
+              className="p-6 rounded-2xl shadow-sm transition-all duration-300"
               style={{ backgroundColor: "#F3EFEE", border: "1px solid rgba(172, 153, 144, 0.2)" }}
             >
               <Award className="w-8 h-8 mb-4" style={{ color: "#8C4F58" }} />
@@ -303,7 +318,7 @@ const PCOSPage = ({ locale = fallbackLng }: { locale?: string }) => {
             <motion.div
               variants={scaleIn}
               whileHover={{ y: -5 }}
-              className="p-6 rounded-2xl shadow-sm"
+              className="p-6 rounded-2xl shadow-sm transition-all duration-300"
               style={{ backgroundColor: "#F3EFEE", border: "1px solid rgba(172, 153, 144, 0.2)" }}
             >
               <Users className="w-8 h-8 mb-4" style={{ color: "#8C4F58" }} />
@@ -313,7 +328,7 @@ const PCOSPage = ({ locale = fallbackLng }: { locale?: string }) => {
             <motion.div
               variants={scaleIn}
               whileHover={{ y: -5 }}
-              className="p-6 rounded-2xl shadow-sm"
+              className="p-6 rounded-2xl shadow-sm transition-all duration-300"
               style={{ backgroundColor: "#F3EFEE", border: "1px solid rgba(172, 153, 144, 0.2)" }}
             >
               <Shield className="w-8 h-8 mb-4" style={{ color: "#8C4F58" }} />
@@ -323,7 +338,7 @@ const PCOSPage = ({ locale = fallbackLng }: { locale?: string }) => {
             <motion.div
               variants={scaleIn}
               whileHover={{ y: -5 }}
-              className="p-6 rounded-2xl shadow-sm"
+              className="p-6 rounded-2xl shadow-sm transition-all duration-300"
               style={{ backgroundColor: "#F3EFEE", border: "1px solid rgba(172, 153, 144, 0.2)" }}
             >
               <MapPin className="w-8 h-8 mb-4" style={{ color: "#8C4F58" }} />
@@ -333,282 +348,140 @@ const PCOSPage = ({ locale = fallbackLng }: { locale?: string }) => {
         </div>
       </motion.section>
 
-      {/* PCOS at a Glance Table */}
+      {/* PCOS at a Glance Table - Using TableForPages */}
       <motion.section
         initial="hidden"
         whileInView="visible"
         variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
+        className="py-20"
         style={{ backgroundColor: "#F3EFEE" }}
       >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl md:text-5xl font-georgia mb-12 text-center"
-            style={{ color: "#4B3A33" }}
-          >
-            PCOS Treatment in Malaysia at a Glance: Polycystic Ovary Syndrome, Symptoms and Treatment Options
-          </motion.h2>
-
-          <div className="overflow-x-auto">
-            <table className="w-full rounded-3xl overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
-              <thead>
-                <tr style={{ backgroundColor: "#8C4F58" }}>
-                  <th className="p-4 text-left text-white font-georgia">Factor</th>
-                  <th className="p-4 text-left text-white font-georgia">Details</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr style={{ backgroundColor: "#FAF8F7", borderBottom: "1px solid #AC9990" }}>
-                  <td className="p-4 font-semibold" style={{ color: "#4B3A33" }}>What PCOS Is</td>
-                  <td className="p-4" style={{ color: "#AC9990" }}>Most common hormonal disorder in women of reproductive age; affects 8-13% globally, 10-20% of Malaysian women; polycystic ovaries contain multiple fluid-filled sacs; PCOS cannot be cured but symptoms are treatable</td>
-                </tr>
-                <tr style={{ backgroundColor: "rgba(255,255,255,0.7)", borderBottom: "1px solid #AC9990" }}>
-                  <td className="p-4 font-semibold" style={{ color: "#4B3A33" }}>Signs and Symptoms of PCOS</td>
-                  <td className="p-4" style={{ color: "#AC9990" }}>Irregular periods or absent menstrual cycle; excess hair growth (hirsutism); acne; female pattern hair loss; weight gain around abdomen; difficulty getting pregnant; polycystic ovaries on ultrasound; acanthosis nigricans</td>
-                </tr>
-                <tr style={{ backgroundColor: "#FAF8F7", borderBottom: "1px solid #AC9990" }}>
-                  <td className="p-4 font-semibold" style={{ color: "#4B3A33" }}>Rotterdam Diagnostic Criteria</td>
-                  <td className="p-4" style={{ color: "#AC9990" }}>Requires 2 of 3 after excluding other causes: (1) clinical or biochemical hyperandrogenism; (2) ovulatory dysfunction; (3) polycystic ovaries on ultrasound or elevated AMH. Ultrasound not required when both hyperandrogenism and ovulatory dysfunction present.</td>
-                </tr>
-                <tr style={{ backgroundColor: "rgba(255,255,255,0.7)", borderBottom: "1px solid #AC9990" }}>
-                  <td className="p-4 font-semibold" style={{ color: "#4B3A33" }}>PCOS Treatment Goals</td>
-                  <td className="p-4" style={{ color: "#AC9990" }}>Cycle regulation and contraception | Acne, hirsutism and hair loss management | Metabolic health and insulin resistance | Fertility and getting pregnant | Long-term health and endometrial protection</td>
-                </tr>
-                <tr style={{ backgroundColor: "#FAF8F7" }}>
-                  <td className="p-4 font-semibold" style={{ color: "#4B3A33" }}>Is PCOS a Lifelong Hormonal Disorder?</td>
-                  <td className="p-4" style={{ color: "#AC9990" }}>Yes. PCOS persists after menopause though reproductive manifestations resolve; metabolic risks continue to accumulate; women with PCOS need lifelong reproductive health plan with metabolic surveillance</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <motion.div variants={fadeInUp} className="mt-8 text-center">
-            <p className="text-lg italic" style={{ color: "#8C4F58" }}>
-              Speak to a Doctor About PCOS and Polycystic Ovaries | Free Assessment at Nexus Clinic KL
-            </p>
-          </motion.div>
-        </div>
+        <TableForPages
+          columns={[
+            { key: "factor", header: "Factor", className: "font-semibold" },
+            { key: "details", header: "Details" },
+          ]}
+          data={pcosAtGlanceData}
+          title="PCOS Treatment in Malaysia at a Glance: Polycystic Ovary Syndrome, Symptoms and Treatment Options"
+          variant="detailed"
+          fadeInUp={fadeInUp}
+          className="container mx-auto px-4 md:px-8"
+        />
+        <motion.div variants={fadeInUp} className="text-center mt-8">
+          <p className="text-lg italic" style={{ color: "#8C4F58" }}>
+            Speak to a Doctor About PCOS and Polycystic Ovaries | Free Assessment at Nexus Clinic KL
+          </p>
+        </motion.div>
       </motion.section>
 
-      {/* PCOS Phenotypes Table */}
+      {/* PCOS Phenotypes Table - Using TableForPages */}
       <motion.section
         initial="hidden"
         whileInView="visible"
         variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
+        className="py-20"
         style={{ backgroundColor: "#FAF8F7" }}
       >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl md:text-5xl font-georgia mb-6 text-center"
-            style={{ color: "#4B3A33" }}
-          >
-            Polycystic Ovary Syndrome Phenotypes: The PCOS Treatment Matching Framework
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg text-center mb-12 max-w-3xl mx-auto"
-            style={{ color: "#AC9990" }}
-          >
-            The Rotterdam diagnostic criteria recognise four distinct PCOS phenotypes that differ in which features are present and which clinical concerns are dominant. Understanding which phenotype a woman has changes which pcos treatment is the first priority.
-          </motion.p>
-
-          <div className="overflow-x-auto">
-            <table className="w-full rounded-3xl overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
-              <thead>
-                <tr style={{ backgroundColor: "#8C4F58" }}>
-                  <th className="p-4 text-left text-white font-georgia">PCOS Phenotype</th>
-                  <th className="p-4 text-left text-white font-georgia">Features Present</th>
-                  <th className="p-4 text-left text-white font-georgia">Dominant Clinical Concern</th>
-                  <th className="p-4 text-left text-white font-georgia">PCOS Treatment Priority</th>
-                  <th className="p-4 text-left text-white font-georgia">Metabolic Risk</th>
-                 </tr>
-              </thead>
-              <tbody>
-                {phenotypeTable.map((item, idx) => (
-                  <tr key={idx} style={{ backgroundColor: idx % 2 === 0 ? "rgba(255,255,255,0.7)" : "#F3EFEE", borderBottom: "1px solid #AC9990" }}>
-                    <td className="p-4 font-semibold" style={{ color: "#4B3A33" }}>{item.phenotype}</td>
-                    <td className="p-4 text-sm" style={{ color: "#AC9990" }}>{item.features}</td>
-                    <td className="p-4 text-sm" style={{ color: "#AC9990" }}>{item.concern}</td>
-                    <td className="p-4 text-sm" style={{ color: "#AC9990" }}>{item.priority}</td>
-                    <td className="p-4 text-sm" style={{ color: "#AC9990" }}>{item.risk}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center" style={{ backgroundColor: "#4B3A33" }}>
-            <p className="text-white">
-              Find Out Your PCOS Phenotype and Get a Matched Treatment Plan at Nexus Clinic KL
-            </p>
-          </motion.div>
-        </div>
+        <TableForPages
+          columns={[
+            { key: "phenotype", header: "PCOS Phenotype", className: "font-semibold" },
+            { key: "features", header: "Features Present" },
+            { key: "concern", header: "Dominant Clinical Concern" },
+            { key: "priority", header: "PCOS Treatment Priority" },
+            { key: "risk", header: "Metabolic Risk" },
+          ]}
+          data={phenotypeTableData}
+          title="Polycystic Ovary Syndrome Phenotypes: The PCOS Treatment Matching Framework"
+          subtitle="The Rotterdam diagnostic criteria recognise four distinct PCOS phenotypes that differ in which features are present and which clinical concerns are dominant. Understanding which phenotype a woman has changes which pcos treatment is the first priority."
+          variant="detailed"
+          fadeInUp={fadeInUp}
+          className="container mx-auto px-4 md:px-8"
+        />
+        <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center max-w-3xl mx-auto" style={{ backgroundColor: "#4B3A33" }}>
+          <p className="text-white">Find Out Your PCOS Phenotype and Get a Matched Treatment Plan at Nexus Clinic KL</p>
+        </motion.div>
       </motion.section>
 
-      {/* PCOS Skin Manifestations Table */}
+      {/* PCOS Skin Manifestations Table - Using TableForPages */}
       <motion.section
         initial="hidden"
         whileInView="visible"
         variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
+        className="py-20"
         style={{ backgroundColor: "#F3EFEE" }}
       >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl md:text-5xl font-georgia mb-6 text-center"
-            style={{ color: "#4B3A33" }}
-          >
-            Symptoms of PCOS on the Skin: Androgen Imbalance and Hormonal Signs in Malaysian Women
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg text-center mb-12 max-w-3xl mx-auto"
-            style={{ color: "#AC9990" }}
-          >
-            For many Malaysian women with PCOS, the skin is where the hormonal disorder first becomes visible. Treating these manifestations cosmetically without addressing the underlying androgen imbalance produces only temporary relief.
-          </motion.p>
-
-          <div className="overflow-x-auto">
-            <table className="w-full rounded-3xl overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
-              <thead>
-                <tr style={{ backgroundColor: "#8C4F58" }}>
-                  <th className="p-4 text-left text-white font-georgia">PCOS Skin Sign</th>
-                  <th className="p-4 text-left text-white font-georgia">How It Presents in Malaysian Skin</th>
-                  <th className="p-4 text-left text-white font-georgia">Underlying Hormonal Mechanism</th>
-                  <th className="p-4 text-left text-white font-georgia">Integrated PCOS Treatment</th>
-                 </tr>
-              </thead>
-              <tbody>
-                {skinManifestationsTable.map((item, idx) => (
-                  <tr key={idx} style={{ backgroundColor: idx % 2 === 0 ? "rgba(255,255,255,0.7)" : "#FAF8F7", borderBottom: "1px solid #AC9990" }}>
-                    <td className="p-4 font-semibold" style={{ color: "#4B3A33" }}>{item.sign}</td>
-                    <td className="p-4 text-sm" style={{ color: "#AC9990" }}>{item.presentation}</td>
-                    <td className="p-4 text-sm" style={{ color: "#AC9990" }}>{item.mechanism}</td>
-                    <td className="p-4 text-sm" style={{ color: "#AC9990" }}>{item.treatment}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <motion.div variants={fadeInUp} className="mt-8 text-center">
-            <p className="text-lg" style={{ color: "#8C4F58" }}>
-              Get Your PCOS Skin Manifestations Assessed and Treated at the Root Cause at Nexus Clinic KL
-            </p>
-          </motion.div>
-        </div>
+        <TableForPages
+          columns={[
+            { key: "sign", header: "PCOS Skin Sign", className: "font-semibold" },
+            { key: "presentation", header: "How It Presents in Malaysian Skin" },
+            { key: "mechanism", header: "Underlying Hormonal Mechanism" },
+            { key: "treatment", header: "Integrated PCOS Treatment" },
+          ]}
+          data={skinManifestationsTableData}
+          title="Symptoms of PCOS on the Skin: Androgen Imbalance and Hormonal Signs in Malaysian Women"
+          subtitle="For many Malaysian women with PCOS, the skin is where the hormonal disorder first becomes visible. Treating these manifestations cosmetically without addressing the underlying androgen imbalance produces only temporary relief."
+          variant="detailed"
+          fadeInUp={fadeInUp}
+          className="container mx-auto px-4 md:px-8"
+        />
+        <motion.div variants={fadeInUp} className="text-center mt-8">
+          <p className="text-lg" style={{ color: "#8C4F58" }}>
+            Get Your PCOS Skin Manifestations Assessed and Treated at the Root Cause at Nexus Clinic KL
+          </p>
+        </motion.div>
       </motion.section>
 
-      {/* PCOS Treatment Evidence Table */}
+      {/* PCOS Treatment Evidence Table - Using TableForPages */}
       <motion.section
         initial="hidden"
         whileInView="visible"
         variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
+        className="py-20"
         style={{ backgroundColor: "#FAF8F7" }}
       >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl md:text-5xl font-georgia mb-6 text-center"
-            style={{ color: "#4B3A33" }}
-          >
-            Honest PCOS Treatment Evidence: Inositol, Metformin, COCP and Letrozole for Polycystic Ovary Syndrome
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg text-center mb-12 max-w-3xl mx-auto"
-            style={{ color: "#AC9990" }}
-          >
-            Inositol supplements are heavily marketed to Malaysian women with PCOS. The 2023 International Evidence-Based PCOS Guideline explicitly states that metformin has greater efficacy than inositol and that inositol offers limited clinical benefits.
-          </motion.p>
-
-          <div className="overflow-x-auto">
-            <table className="w-full rounded-3xl overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
-              <thead>
-                <tr style={{ backgroundColor: "#8C4F58" }}>
-                  <th className="p-4 text-left text-white font-georgia">PCOS Treatment Option</th>
-                  <th className="p-4 text-left text-white font-georgia">What the Evidence Shows</th>
-                  <th className="p-4 text-left text-white font-georgia">The Nexus Clinic KL Position</th>
-                 </tr>
-              </thead>
-              <tbody>
-                {treatmentEvidenceTable.map((item, idx) => (
-                  <tr key={idx} style={{ backgroundColor: idx % 2 === 0 ? "rgba(255,255,255,0.7)" : "#F3EFEE", borderBottom: "1px solid #AC9990" }}>
-                    <td className="p-4 font-semibold" style={{ color: "#4B3A33" }}>{item.option}</td>
-                    <td className="p-4 text-sm" style={{ color: "#AC9990" }}>{item.evidence}</td>
-                    <td className="p-4 text-sm" style={{ color: "#AC9990" }}>{item.position}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center" style={{ backgroundColor: "#4B3A33" }}>
-            <p className="text-white">
-              Replace Guesswork with Evidence: Get a Proper PCOS Treatment Plan at Nexus Clinic KL
-            </p>
-          </motion.div>
-        </div>
+        <TableForPages
+          columns={[
+            { key: "option", header: "PCOS Treatment Option", className: "font-semibold" },
+            { key: "evidence", header: "What the Evidence Shows" },
+            { key: "position", header: "The Nexus Clinic KL Position" },
+          ]}
+          data={treatmentEvidenceTableData}
+          title="Honest PCOS Treatment Evidence: Inositol, Metformin, COCP and Letrozole for Polycystic Ovary Syndrome"
+          subtitle="Inositol supplements are heavily marketed to Malaysian women with PCOS. The 2023 International Evidence-Based PCOS Guideline explicitly states that metformin has greater efficacy than inositol and that inositol offers limited clinical benefits."
+          variant="detailed"
+          fadeInUp={fadeInUp}
+          className="container mx-auto px-4 md:px-8"
+        />
+        <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center max-w-3xl mx-auto" style={{ backgroundColor: "#4B3A33" }}>
+          <p className="text-white">Replace Guesswork with Evidence: Get a Proper PCOS Treatment Plan at Nexus Clinic KL</p>
+        </motion.div>
       </motion.section>
 
-      {/* Long-term Health Risks Table */}
+      {/* Long-term Health Risks Table - Using TableForPages */}
       <motion.section
         initial="hidden"
         whileInView="visible"
         variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
+        className="py-20"
         style={{ backgroundColor: "#F3EFEE" }}
       >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl md:text-5xl font-georgia mb-6 text-center"
-            style={{ color: "#4B3A33" }}
-          >
-            Managing PCOS Long-Term: Health Risks Associated with Polycystic Ovary Syndrome in Malaysia
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg text-center mb-12 max-w-3xl mx-auto"
-            style={{ color: "#AC9990" }}
-          >
-            PCOS is a lifelong hormonal disorder. The 2023 International PCOS Guideline explicitly recommends a lifelong reproductive health plan including metabolic surveillance.
-          </motion.p>
-
-          <div className="overflow-x-auto">
-            <table className="w-full rounded-3xl overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
-              <thead>
-                <tr style={{ backgroundColor: "#8C4F58" }}>
-                  <th className="p-4 text-left text-white font-georgia">Long-Term Health Risk</th>
-                  <th className="p-4 text-left text-white font-georgia">Risk Level</th>
-                  <th className="p-4 text-left text-white font-georgia">Monitoring Parameter</th>
-                  <th className="p-4 text-left text-white font-georgia">How Nexus Clinic KL Manages Risk</th>
-                 </tr>
-              </thead>
-              <tbody>
-                {healthRisksTable.map((item, idx) => (
-                  <tr key={idx} style={{ backgroundColor: idx % 2 === 0 ? "rgba(255,255,255,0.7)" : "#FAF8F7", borderBottom: "1px solid #AC9990" }}>
-                    <td className="p-4 font-semibold" style={{ color: "#4B3A33" }}>{item.risk}</td>
-                    <td className="p-4 text-sm" style={{ color: "#AC9990" }}>{item.level}</td>
-                    <td className="p-4 text-sm" style={{ color: "#AC9990" }}>{item.monitoring}</td>
-                    <td className="p-4 text-sm" style={{ color: "#AC9990" }}>{item.management}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center" style={{ backgroundColor: "#4B3A33" }}>
-            <p className="text-white">
-              Get Your PCOS Long-Term Health Monitored Properly at Nexus Clinic KL | Annual Review Programme
-            </p>
-          </motion.div>
-        </div>
+        <TableForPages
+          columns={[
+            { key: "risk", header: "Long-Term Health Risk", className: "font-semibold" },
+            { key: "level", header: "Risk Level" },
+            { key: "monitoring", header: "Monitoring Parameter" },
+            { key: "management", header: "How Nexus Clinic KL Manages Risk" },
+          ]}
+          data={healthRisksTableData}
+          title="Managing PCOS Long-Term: Health Risks Associated with Polycystic Ovary Syndrome in Malaysia"
+          subtitle="PCOS is a lifelong hormonal disorder. The 2023 International PCOS Guideline explicitly recommends a lifelong reproductive health plan including metabolic surveillance."
+          variant="detailed"
+          fadeInUp={fadeInUp}
+          className="container mx-auto px-4 md:px-8"
+        />
+        <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center max-w-3xl mx-auto" style={{ backgroundColor: "#4B3A33" }}>
+          <p className="text-white">Get Your PCOS Long-Term Health Monitored Properly at Nexus Clinic KL | Annual Review Programme</p>
+        </motion.div>
       </motion.section>
 
       {/* Treatment Process Section */}
@@ -638,7 +511,7 @@ const PCOSPage = ({ locale = fallbackLng }: { locale?: string }) => {
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                className="p-6 rounded-xl text-center"
+                className="p-6 rounded-xl text-center transition-all duration-300 hover:shadow-lg"
                 style={{
                   background: "rgba(255, 255, 255, 0.7)",
                   backdropFilter: "blur(10px)",
@@ -661,57 +534,32 @@ const PCOSPage = ({ locale = fallbackLng }: { locale?: string }) => {
         </div>
       </motion.section>
 
-      {/* Pricing Table */}
+      {/* Pricing Table - Using TableForPages */}
       <motion.section
         initial="hidden"
         whileInView="visible"
         variants={staggerContainer}
-        className="py-20 px-4 sm:px-6 lg:px-8"
+        className="py-20"
         style={{ backgroundColor: "#F3EFEE" }}
       >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl md:text-5xl font-georgia mb-6 text-center"
-            style={{ color: "#4B3A33" }}
-          >
-            PCOS Treatment Cost in Malaysia 2026: Transparent Pricing at Nexus Clinic KL
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg text-center mb-12 max-w-3xl mx-auto"
-            style={{ color: "#AC9990" }}
-          >
-            Annual management cost for polycystic ovary syndrome at Nexus Clinic KL is typically RM 3,000 to RM 7,000 including initial workup, blood tests, ongoing medication, follow-up consultations and annual monitoring.
-          </motion.p>
-
-          <div className="overflow-x-auto">
-            <table className="w-full rounded-3xl overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
-              <thead>
-                <tr style={{ backgroundColor: "#8C4F58" }}>
-                  <th className="p-4 text-left text-white font-georgia">Service / PCOS Treatment</th>
-                  <th className="p-4 text-left text-white font-georgia">Details</th>
-                  <th className="p-4 text-left text-white font-georgia">Price Range (RM) 2026</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingItems.map((item, idx) => (
-                  <tr key={idx} style={{ backgroundColor: idx % 2 === 0 ? "rgba(255,255,255,0.7)" : "#FAF8F7", borderBottom: "1px solid #AC9990" }}>
-                    <td className="p-4 font-semibold" style={{ color: "#4B3A33" }}>{item.item}</td>
-                    <td className="p-4 text-sm" style={{ color: "#AC9990" }}>{item.details}</td>
-                    <td className="p-4 font-semibold" style={{ color: "#8C4F58" }}>{item.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <motion.div variants={fadeInUp} className="mt-8 text-center">
-            <p className="text-lg" style={{ color: "#4B3A33" }}>
-              Get Your PCOS Treatment Programme Pricing at Nexus Clinic KL | Free Assessment
-            </p>
-          </motion.div>
-        </div>
+        <TableForPages
+          columns={[
+            { key: "item", header: "Service / PCOS Treatment", className: "font-semibold" },
+            { key: "details", header: "Details" },
+            { key: "price", header: "Price Range (RM) 2026" },
+          ]}
+          data={pricingItemsData}
+          title="PCOS Treatment Cost in Malaysia 2026: Transparent Pricing at Nexus Clinic KL"
+          subtitle="Annual management cost for polycystic ovary syndrome at Nexus Clinic KL is typically RM 3,000 to RM 7,000 including initial workup, blood tests, ongoing medication, follow-up consultations and annual monitoring."
+          variant="detailed"
+          fadeInUp={fadeInUp}
+          className="container mx-auto px-4 md:px-8"
+        />
+        <motion.div variants={fadeInUp} className="text-center mt-8">
+          <p className="text-lg" style={{ color: "#4B3A33" }}>
+            Get Your PCOS Treatment Programme Pricing at Nexus Clinic KL | Free Assessment
+          </p>
+        </motion.div>
       </motion.section>
 
       {/* Why Nexus Section */}
@@ -749,7 +597,7 @@ const PCOSPage = ({ locale = fallbackLng }: { locale?: string }) => {
 
           <motion.div
             variants={scaleIn}
-            className="p-8 rounded-3xl max-w-3xl mx-auto"
+            className="p-8 rounded-3xl max-w-3xl mx-auto transition-all duration-300 hover:shadow-xl"
             style={{
               background: "rgba(255, 255, 255, 0.7)",
               backdropFilter: "blur(10px)",
@@ -798,7 +646,7 @@ const PCOSPage = ({ locale = fallbackLng }: { locale?: string }) => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-full font-medium flex items-center gap-2"
+                className="px-8 py-4 rounded-full font-medium flex items-center gap-2 transition-all duration-300"
                 style={{ background: "white", color: "#8C4F58" }}
               >
                 Book Your PCOS Assessment

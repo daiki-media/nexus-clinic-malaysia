@@ -32,12 +32,14 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import Image from "next/image";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 interface StretchMarkRemovalProps {
   locale: string;
 }
@@ -114,91 +116,25 @@ export default function StretchMarkLanding({ locale }: StretchMarkRemovalProps) 
 
   return (
     <div className="w-full bg-light overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <AlertTriangle className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Stage-Matched Laser Treatment • Doctor-Only</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Best Stretch Mark Removal in Malaysia Using{" "}
-                <span className="text-wine italic">Laser Treatment for All Skin Types</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Stretch marks removal in Malaysia is one of the most requested and most misunderstood areas of aesthetic medicine. Stretch marks are marks on the skin caused when the skin has been stretched rapidly, tearing the collagen and elastin fibres in the middle layer of the skin.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                At Nexus Clinic KL, the best stretch marks removal outcomes come from matching the laser treatment to the specific stage and cause of the stretch marks. Red stretch marks respond to pulsed dye laser. White or silver mature stretch marks require fractional CO2 laser or RF microneedling. Stretch mark removal cream cannot reach the middle layer of the skin where stretch marks originate.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Important Clinical Information
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  The critical clinical distinction that determines the right treatment: whether the stretch marks are red and active, or white and mature. Getting this distinction right separates effective treatment from wasted sessions.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Free Consultation
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in stretch mark removal at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/skin/stretch-mark.webp"
-                  alt="Nexus Clinic Kuala Lumpur - Stretch Mark Removal Treatment"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown">Stage-Matched Laser</p>
-                <p className="font-inter text-sm text-taupe">Over 5,000 procedures completed</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+        <AllPagesHero
+          badge="Stage-Matched Laser Treatment • Doctor-Only"
+          title="Best Stretch Mark Removal in Malaysia Using"
+          highlight="Laser Treatment for All Skin Types"
+          description="Stretch marks removal in Malaysia is one of the most requested and most misunderstood areas of aesthetic medicine. Stretch marks are marks on the skin caused when the skin has been stretched rapidly, tearing the collagen and elastin fibres in the middle layer of the skin."
+          details="At Nexus Clinic KL, the best stretch marks removal outcomes come from matching the laser treatment to the specific stage and cause of the stretch marks. Red stretch marks respond to pulsed dye laser. White or silver mature stretch marks require fractional CO2 laser or RF microneedling. Stretch mark removal cream cannot reach the middle layer of the skin where stretch marks originate."
+          note="The critical clinical distinction that determines the right treatment: whether the stretch marks are red and active, or white and mature. Getting this distinction right separates effective treatment from wasted sessions."
+          image="/images/skin/stretch-mark.webp"
+          imageAlt="Nexus Clinic Kuala Lumpur - Stretch Mark Removal Treatment"
+          ctaText="Free Consultation"
+          ctaLink="/contact-us"
+          whatsappMessage="Hi, I'm interested in stretch mark removal at Nexus Clinic KL. I'd like to book a consultation."
+          floatingTitle="Stage-Matched Laser"
+          floatingSubtitle="Over 5,000 procedures completed"
+          staggerContainer={staggerContainer}
+          fadeInLeft={fadeInLeft}
+          fadeInRight={fadeInRight}
+          fadeInUp={fadeInUp}
+        />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -357,10 +293,10 @@ export default function StretchMarkLanding({ locale }: StretchMarkRemovalProps) 
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Speak to a Doctor About Your Stretch Marks | Free Assessment
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor About Your Stretch Marks
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -374,33 +310,25 @@ export default function StretchMarkLanding({ locale }: StretchMarkRemovalProps) 
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Type of Stretch Marks and Best Treatment</h2>
-            <p className="text-taupe font-inter">The stage-matched framework for effective results</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Stage of Stretch Marks</th>
-                  <th className="p-4 text-left font-georgia">Clinical Appearance</th>
-                  <th className="p-4 text-left font-georgia">What Is Happening in the Dermis</th>
-                  <th className="p-4 text-left font-georgia">Best Treatment at Nexus Clinic KL</th>
-                </tr>
-              </thead>
-              <tbody>
-                {stretchMarkStages.map((stage, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{stage.stage}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{stage.appearance}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{stage.mechanism}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{stage.treatment}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "stage", header: "Stage of Stretch Marks", className: "font-semibold text-brown" },
+              { key: "appearance", header: "Clinical Appearance" },
+              { key: "mechanism", header: "What Is Happening in the Dermis" },
+              { key: "treatment", header: "Best Treatment at Nexus Clinic KL" },
+            ]}
+            data={stretchMarkStages.map(item => ({
+              stage: item.stage,
+              appearance: item.appearance,
+              mechanism: item.mechanism,
+              treatment: item.treatment,
+            }))}
+            title="Type of Stretch Marks and Best Treatment"
+            subtitle="The stage-matched framework for effective results"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
@@ -419,36 +347,27 @@ export default function StretchMarkLanding({ locale }: StretchMarkRemovalProps) 
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Treatment Options Compared</h2>
-            <p className="text-taupe font-inter">Honest outcomes and PIH risk for Malaysian skin</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Best For</th>
-                  <th className="p-4 text-left font-georgia">Mechanism</th>
-                  <th className="p-4 text-left font-georgia">Outcome and Sessions</th>
-                  <th className="p-4 text-left font-georgia">PIH Risk for Malaysian Skin</th>
-                </tr>
-              </thead>
-              <tbody>
-                {treatmentComparison.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.treatment}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.bestFor}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.mechanism}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.outcome}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.pihRisk}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          
+            <TableForPages
+              columns={[
+                { key: "treatment", header: "Treatment", className: "font-semibold text-brown" },
+                { key: "bestFor", header: "Best For" },
+                { key: "mechanism", header: "Mechanism" },
+                { key: "outcome", header: "Outcome and Sessions" },
+                { key: "pihRisk", header: "PIH Risk for Malaysian Skin" },
+              ]}
+              data={treatmentComparison.map(item => ({
+                treatment: item.treatment,
+                bestFor: item.bestFor,
+                mechanism: item.mechanism,
+                outcome: item.outcome,
+                pihRisk: item.pihRisk,
+              }))}
+              title="Treatment Options Compared"
+              subtitle="Honest outcomes and PIH risk for Malaysian skin"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-12 px-4"
+            />
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
               Stretch mark removal cream cannot penetrate to the middle layer of the skin where damaged collagen and elastin fibres are located. At Nexus Clinic KL, we redirect patients from topical approaches to evidence-based laser and microneedling options that actually reach the layer where treatment is needed.
@@ -466,33 +385,25 @@ export default function StretchMarkLanding({ locale }: StretchMarkRemovalProps) 
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Cause-Specific Assessment</h2>
-            <p className="text-taupe font-inter">Why stretch marks develop and when to treat them</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Cause of Stretch Marks</th>
-                  <th className="p-4 text-left font-georgia">How It Damages Collagen</th>
-                  <th className="p-4 text-left font-georgia">Typical Location</th>
-                  <th className="p-4 text-left font-georgia">Treatment Timing</th>
-                </tr>
-              </thead>
-              <tbody>
-                {causeData.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.cause}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.mechanism}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.location}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.timing}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "cause", header: "Cause of Stretch Marks", className: "font-semibold text-brown" },
+              { key: "mechanism", header: "How It Damages Collagen" },
+              { key: "location", header: "Typical Location" },
+              { key: "timing", header: "Treatment Timing" },
+            ]}
+            data={causeData.map(item => ({
+              cause: item.cause,
+              mechanism: item.mechanism,
+              location: item.location,
+              timing: item.timing,
+            }))}
+            title="Cause-Specific Assessment"
+            subtitle="Why stretch marks develop and when to treat them"
+            variant="default"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
         </motion.div>
       </section>
 
@@ -636,31 +547,23 @@ export default function StretchMarkLanding({ locale }: StretchMarkRemovalProps) 
           viewport={{ once: true }}
           className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Post-Treatment Maintenance Protocol</h2>
-            <p className="text-taupe font-inter">Protecting your results in Malaysia's tropical climate</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Maintenance Measure</th>
-                  <th className="p-4 text-left font-georgia">When to Apply</th>
-                  <th className="p-4 text-left font-georgia">Instructions and Evidence</th>
-                </tr>
-              </thead>
-              <tbody>
-                {maintenanceData.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.measure}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.when}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.instruction}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "measure", header: "Maintenance Measure", className: "font-semibold text-brown" },
+              { key: "when", header: "When to Apply" },
+              { key: "instruction", header: "Instructions and Evidence" },
+            ]}
+            data={maintenanceData.map(item => ({
+              measure: item.measure,
+              when: item.when,
+              instruction: item.instruction,
+            }))}
+            title="Post-Treatment Maintenance Protocol"
+            subtitle="Protecting your results in Malaysia's tropical climate"
+            variant="default"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl border-l-4 border-wine">
             <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
@@ -706,10 +609,10 @@ export default function StretchMarkLanding({ locale }: StretchMarkRemovalProps) 
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-10">
-            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+            <Link href="/contact-us" className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
               Book Your Assessment
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
             <p className="text-taupe text-sm mt-3">Free consultation at Nexus Clinic KL</p>
           </motion.div>
         </motion.div>
@@ -724,46 +627,31 @@ export default function StretchMarkLanding({ locale }: StretchMarkRemovalProps) 
           viewport={{ once: true }}
           className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Stretch Mark Removal Cost in Malaysia 2026</h2>
-            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Best For</th>
-                  <th className="p-4 text-left font-georgia">Recommended Sessions</th>
-                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter font-semibold text-brown">{tier.treatment}</td>
-                    <td className="p-4 font-inter text-taupe text-sm">{tier.bestFor}</td>
-                    <td className="p-4 font-inter text-taupe text-sm">{tier.sessions}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={4} className="p-4 text-taupe font-inter text-sm italic">
-                    Combination stretch mark removal programmes incorporating laser and PRP offer the best outcomes for moderate to significant stretch marks. All pricing disclosed before any commitment at the free initial consultation.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          
-          <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Get Your Personalised Cost Estimate
-              <ArrowRight className="w-4 h-4" />
-            </button>
+          <TableForPages
+            columns={[
+              { key: "treatment", header: "Treatment", className: "font-semibold text-brown" },
+              { key: "bestFor", header: "Best For" },
+              { key: "sessions", header: "Recommended Sessions" },
+              { key: "price", header: "Price Range (RM) 2026", className: "font-semibold text-wine" },
+            ]}
+            data={pricingTiers.map(tier => ({
+              treatment: tier.treatment,
+              bestFor: tier.bestFor,
+              sessions: tier.sessions,
+              price: tier.price,
+            }))}
+            title="Stretch Mark Removal Cost in Malaysia 2026"
+            subtitle="Transparent pricing at Nexus Clinic KL"
+            variant="default"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
+
+          {/* Footnote */}
+          <motion.div variants={fadeInUp} className="text-center mt-4">
+            <p className="text-taupe font-inter text-sm italic">
+              Combination stretch mark removal programmes incorporating laser and PRP offer the best outcomes for moderate to significant stretch marks. All pricing disclosed before any commitment at the free initial consultation.
+            </p>
           </motion.div>
         </motion.div>
       </section>
@@ -829,14 +717,15 @@ export default function StretchMarkLanding({ locale }: StretchMarkRemovalProps) 
               Our doctors bring over 15 years of combined experience and have completed over 5,000 procedures for patients across KL, Petaling Jaya, Subang Jaya, and throughout Malaysia.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Free Consultation
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a free consultation for stretch mark removal at Nexus Clinic KL. Please let me know available slots."
                 variant="light"

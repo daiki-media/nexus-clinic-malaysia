@@ -34,12 +34,14 @@ import {
   scaleIn,
   containerVariants,
   rowVariants,
-} from "../../lib/animations";
+} from "@/src/lib/animations";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 import Image from "next/image";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 interface ChinFillerProps {
   locale: string;
 }
@@ -91,82 +93,25 @@ export default function ChinFillerLanding({ locale }: ChinFillerProps) {
   return (
     <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <Sparkles className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Non-Surgical Chin Augmentation</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Chin Dermal Filler in Malaysia for a{" "}
-                <span className="text-wine italic">Sharper, Defined Profile</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Your side profile is the one angle you cannot control. A chin that sits too far back makes your nose look bigger, your jaw look softer, and your entire face look off.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                Chin filler at Nexus Clinic Kuala Lumpur fixes it. One session, 20 to 30 minutes, zero surgery. 
-                Our award-winning injectors have performed over 5,000 facial filler procedures using technique built for Southeast Asian bone structure. 
-                The result looks like you. Just sharper.
-              </motion.p>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Book free consultation
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in chin filler at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/face/chin.jpeg"
-                  alt="Nexus Clinic Kuala Lumpur - Chin Filler Treatment"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown">✨ Sharper Profile</p>
-                <p className="font-inter text-sm text-taupe">Immediate results • Zero surgery</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+        badge="Non-Surgical Chin Augmentation"
+        title="Chin Dermal Filler in Malaysia for a"
+        highlight="Sharper, Defined Profile"
+        description="Your side profile is the one angle you cannot control. A chin that sits too far back makes your nose look bigger, your jaw look softer, and your entire face look off."
+        details="Chin filler at Nexus Clinic Kuala Lumpur fixes it. One session, 20 to 30 minutes, zero surgery. Our award-winning injectors have performed over 5,000 facial filler procedures using technique built for Southeast Asian bone structure. The result looks like you. Just sharper."
+        note="Chin filler requires precise placement to avoid looking unnatural. Always choose an experienced injector who understands Asian facial proportions."
+        image="/images/face/chin.jpeg"
+        imageAlt="Nexus Clinic Kuala Lumpur - Chin Filler Treatment"
+        ctaText="Book free consultation"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in chin filler at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="✨ Sharper Profile"
+        floatingSubtitle="Immediate results • Zero surgery"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
       <section className="py-12 px-4 bg-light">
         <motion.div
           variants={fadeInUp}
@@ -330,10 +275,10 @@ export default function ChinFillerLanding({ locale }: ChinFillerProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us"className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Speak to a Doctor About Your Chin Profile
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -379,10 +324,10 @@ export default function ChinFillerLanding({ locale }: ChinFillerProps) {
                   className="object-cover"
                 />
               </div>
-              <button className="mt-6 text-wine font-inter font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+              <Link href="/contact-us" className="mt-6 text-wine font-inter font-semibold flex items-center gap-2 hover:gap-3 transition-all">
                 Book a Consultation | Find Out If Chin Filler Is Right for You
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </motion.div>
           </div>
         </motion.div>
@@ -424,10 +369,10 @@ export default function ChinFillerLanding({ locale }: ChinFillerProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+            <Link href="/contact-us" className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
               Not Sure If You Are a Candidate? Book a Free Clinical Assessment
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -493,10 +438,10 @@ export default function ChinFillerLanding({ locale }: ChinFillerProps) {
                     </div>
                   ))}
                 </div>
-                <button className="mt-6 text-wine font-inter font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                <Link href="/contact-us" className="mt-6 text-wine font-inter font-semibold flex items-center gap-2 hover:gap-3 transition-all">
                   Find Out Which Filler Suits Your Chin
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </Link>
               </div>
             </motion.div>
           </div>
@@ -535,10 +480,10 @@ export default function ChinFillerLanding({ locale }: ChinFillerProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-10">
-            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+            <Link href="/contact-us" className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
               Book Your Chin Filler Appointment
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
             <p className="text-taupe text-sm mt-3">Same-day results at Nexus Clinic KL</p>
           </motion.div>
         </motion.div>
@@ -553,34 +498,26 @@ export default function ChinFillerLanding({ locale }: ChinFillerProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Chin Filler Compared to Chin Implant and Thread Lift</h2>
-            <p className="text-taupe font-inter">Understanding your options</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Aspect</th>
-                  <th className="p-4 text-left font-georgia">Chin Filler</th>
-                  <th className="p-4 text-left font-georgia">Chin Implant (Surgery)</th>
-                  <th className="p-4 text-left font-georgia">Thread Lift</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonData.map((row, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{row.aspect}</td>
-                    <td className="p-4 text-taupe font-inter">{row.chinFiller}</td>
-                    <td className="p-4 text-taupe font-inter">{row.implant}</td>
-                    <td className="p-4 text-taupe font-inter">{row.thread}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </motion.div>
+          <TableForPages
+            columns={[
+              { key: "aspect", header: "Aspect", className: "font-semibold" },
+              { key: "chinFiller", header: "Chin Filler" },
+              { key: "implant", header: "Chin Implant (Surgery)" },
+              { key: "thread", header: "Thread Lift" },
+            ]}
+            data={comparisonData.map(row => ({
+              aspect: row.aspect,
+              chinFiller: row.chinFiller,
+              implant: row.implant,
+              thread: row.thread,
+            }))}
+            title="Chin Filler vs Alternatives"
+            subtitle="Compare your options for chin augmentation"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-20 px-4"
+          />
+      </motion.div>
       </section>
 
       {/* Advantages & Limitations Section */}
@@ -649,51 +586,44 @@ export default function ChinFillerLanding({ locale }: ChinFillerProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-4xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Chin Filler Cost in Malaysia</h2>
-            <p className="text-taupe font-inter">Transparent 2026 Pricing at Nexus Clinic KL</p>
-          </motion.div>
           
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Filler Brand / Type</th>
-                  <th className="p-4 text-left font-georgia">Volume</th>
-                  <th className="p-4 text-left font-georgia">Est. Price (RM)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ["Juvederm Voluma (Premium HA)", "1 cc", "RM 2,200 – RM 3,000"],
-                  ["Juvederm Voluma (Premium HA)", "1.5 cc", "RM 3,000 – RM 3,500"],
-                  ["Restylane Lyft (Premium HA)", "1 cc", "RM 2,000 – RM 2,800"],
-                  ["Belotero Volume (HA)", "1 cc", "RM 1,500 – RM 2,200"],
-                  ["Radiesse (Biostimulator)", "1.5 cc", "RM 2,500 – RM 3,500"],
-                  ["Subtle / First-Timer Correction", "0.5 cc", "RM 1,500 – RM 2,000"],
-                ].map((row, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter text-brown">{row[0]}</td>
-                    <td className="p-4 font-inter text-taupe">{row[1]}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{row[2]}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
-                    * Final pricing confirmed at consultation. Price depends on filler brand, volume required and complexity.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
+          <section className="py-20 px-4 bg-cream">
+            <div className="container mx-auto max-w-4xl">
+              <TableForPages
+                columns={[
+                  { key: "brand", header: "Filler Brand / Type" },
+                  { key: "volume", header: "Volume" },
+                  { key: "price", header: "Est. Price (RM)" },
+                ]}
+                data={[
+                  { brand: "Juvederm Voluma (Premium HA)", volume: "1 cc", price: "RM 2,200 – RM 3,000" },
+                  { brand: "Juvederm Voluma (Premium HA)", volume: "1.5 cc", price: "RM 3,000 – RM 3,500" },
+                  { brand: "Restylane Lyft (Premium HA)", volume: "1 cc", price: "RM 2,000 – RM 2,800" },
+                  { brand: "Belotero Volume (HA)", volume: "1 cc", price: "RM 1,500 – RM 2,200" },
+                  { brand: "Radiesse (Biostimulator)", volume: "1.5 cc", price: "RM 2,500 – RM 3,500" },
+                  { brand: "Subtle / First-Timer Correction", volume: "0.5 cc", price: "RM 1,500 – RM 2,000" },
+                ]}
+                title="Chin Filler Price in Malaysia"
+                subtitle="Transparent 2026 Pricing at Nexus Clinic KL"
+                variant="compact"
+                fadeInUp={fadeInUp}
+              />
+              
+              {/* Footnote */}
+              <motion.p 
+                variants={fadeInUp}
+                className="text-center text-taupe font-inter text-sm italic mt-4"
+              >
+                * Final pricing confirmed at consultation. Price depends on filler brand, volume required and complexity.
+              </motion.p>
+            </div>
+          </section>
           
           <motion.div variants={fadeInUp} className="mt-8 text-center">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Get Your Personalised Chin Filler Quote
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -800,14 +730,15 @@ export default function ChinFillerLanding({ locale }: ChinFillerProps) {
               Over 5,000 procedures. Award-winning injectors. Results that look like you at your best.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Book Your Free Consultation Now
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a free consultation for chin filler at Nexus Clinic KL. Please let me know available slots."
                 variant="light"

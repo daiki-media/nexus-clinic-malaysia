@@ -26,11 +26,13 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 import Image from "next/image";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 interface NoseFillerProps {
   locale: string;
 }
@@ -77,95 +79,25 @@ export default function NoseFiller({ locale }: NoseFillerProps) {
   return (
     <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <AlertTriangle className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Highest-Risk Filler Area • Doctor-Only Treatment</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Precise Nose Filler in Malaysia for a{" "}
-                <span className="text-wine italic">Higher Bridge, Sharper Tip and Balanced Profile</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                The nose is the most structurally central feature on the face. A flat bridge draws the eyes apart and makes the face look wider. 
-                A drooping tip ages the profile.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                Nose filler at Nexus Clinic Kuala Lumpur is performed by licensed aesthetic doctors with specific training in nasal vascular anatomy 
-                and emergency complication management. Every nose filler treatment is performed with hyaluronidase on hand, precise low-volume technique, 
-                and clear emergency protocols in place before the first injection.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Important Safety Information
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  The nose is the highest-risk area for filler injection on the entire face due to its proximity to the ophthalmic artery. 
-                  All nose filler treatments at Nexus Clinic KL follow strict vascular safety protocols.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Book Free Consultation
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in nose filler at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/face/Nose Filler Treatment.png"
-                  alt="Nexus Clinic Kuala Lumpur - Nose Filler Treatment"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown"> Precise Results</p>
-                <p className="font-inter text-sm text-taupe">Immediate • Reversible • Doctor-led</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
+      <AllPagesHero
+        badge="Highest-Risk Filler Area • Doctor-Only Treatment"
+        title="Precise Nose Filler in Malaysia for a"
+        highlight="Higher Bridge, Sharper Tip and Balanced Profile"
+        description="The nose is the most structurally central feature on the face. A flat bridge draws the eyes apart and makes the face look wider. A drooping tip ages the profile."
+        details="Nose filler at Nexus Clinic Kuala Lumpur is performed by licensed aesthetic doctors with specific training in nasal vascular anatomy and emergency complication management. Every nose filler treatment is performed with hyaluronidase on hand, precise low-volume technique, and clear emergency protocols in place before the first injection."
+        note="The nose is the highest-risk area for filler injection on the entire face due to its proximity to the ophthalmic artery. All nose filler treatments at Nexus Clinic KL follow strict vascular safety protocols."
+        image="/images/face/Nose Filler Treatment.png"
+        imageAlt="Nexus Clinic Kuala Lumpur - Nose Filler Treatment"
+        ctaText="Book Free Consultation"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in nose filler at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="✨ Precise Results"
+        floatingSubtitle="Immediate • Reversible • Doctor-led"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
         <motion.div
@@ -323,10 +255,10 @@ export default function NoseFiller({ locale }: NoseFillerProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Speak to a Doctor About Your Nose Profile | Free Assessment
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor 
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -393,10 +325,10 @@ export default function NoseFiller({ locale }: NoseFillerProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="mt-8 text-center">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Get an Honest Assessment of Your Nose Filler Options
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Get an Honest Assessment
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -590,10 +522,10 @@ export default function NoseFiller({ locale }: NoseFillerProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Book at a Clinic That Takes Nose Filler Safety Seriously
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Book at a Clinic 
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -607,33 +539,27 @@ export default function NoseFiller({ locale }: NoseFillerProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Nasal Injection Zones</h2>
-            <p className="text-taupe font-inter">Where filler is placed and what changes in each area</p>
-          </motion.div>
           
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Nasal Zone</th>
-                  <th className="p-4 text-left font-georgia">What Filler Achieves</th>
-                  <th className="p-4 text-left font-georgia">Relative Risk</th>
-                  <th className="p-4 text-left font-georgia">Technique Used</th>
-                </tr>
-              </thead>
-              <tbody>
-                {nasalZones.map((zone, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{zone.zone}</td>
-                    <td className="p-4 text-taupe font-inter">{zone.what}</td>
-                    <td className={`p-4 font-inter ${zone.risk === "High" ? "text-wine font-semibold" : "text-taupe"}`}>{zone.risk}</td>
-                    <td className="p-4 text-taupe font-inter">{zone.technique}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              {/* Nasal Zones & Filler Application Table */}
+              <TableForPages
+                columns={[
+                  { key: "zone", header: "Nasal Zone", className: "font-semibold" },
+                  { key: "what", header: "What Filler Achieves" },
+                  { key: "risk", header: "Relative Risk" },
+                  { key: "technique", header: "Technique Used" },
+                ]}
+                data={nasalZones.map((zone) => ({
+                  zone: zone.zone,
+                  what: zone.what,
+                  risk: zone.risk,
+                  technique: zone.technique,
+                }))}
+                title="Nasal Injection Zones"
+                subtitle="Where filler is placed and what changes in each area"
+                variant="detailed"
+                fadeInUp={fadeInUp}
+                className="py-20 px-4"
+              />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
@@ -674,10 +600,10 @@ export default function NoseFiller({ locale }: NoseFillerProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Find Out If Your Nose Concern Can Be Addressed with Filler
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Find Out If Your Nose Concern
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -691,33 +617,26 @@ export default function NoseFiller({ locale }: NoseFillerProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Nose Filler Compared to Nose Thread Lift and Rhinoplasty</h2>
-            <p className="text-taupe font-inter">Understanding your options</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Factor</th>
-                  <th className="p-4 text-left font-georgia">Nose Filler</th>
-                  <th className="p-4 text-left font-georgia">Nose Thread Lift</th>
-                  <th className="p-4 text-left font-georgia">Rhinoplasty (Surgery)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonData.map((row, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{row.factor}</td>
-                    <td className="p-4 text-taupe font-inter">{row.filler}</td>
-                    <td className="p-4 text-taupe font-inter">{row.thread}</td>
-                    <td className="p-4 text-taupe font-inter">{row.surgery}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          {/* Nose Filler vs Nose Thread Lift vs Rhinoplasty Comparison Table */}
+          <TableForPages
+            columns={[
+              { key: "factor", header: "Factor", className: "font-semibold" },
+              { key: "filler", header: "Nose Filler" },
+              { key: "thread", header: "Nose Thread Lift" },
+              { key: "surgery", header: "Rhinoplasty (Surgery)" },
+            ]}
+            data={comparisonData.map((row) => ({
+              factor: row.factor,
+              filler: row.filler,
+              thread: row.thread,
+              surgery: row.surgery,
+            }))}
+            title="Nose Filler Compared to Nose Thread Lift and Rhinoplasty"
+            subtitle="Understanding your options"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-20 px-4"
+          />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter">
@@ -760,10 +679,10 @@ export default function NoseFiller({ locale }: NoseFillerProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-10">
-            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
-              Book Your Nose Filler Appointment
+            <Link href="/contact-us" className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+              Book  Appointment
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
             <p className="text-taupe text-sm mt-3">Same-day results at Nexus Clinic KL</p>
           </motion.div>
         </motion.div>
@@ -778,38 +697,23 @@ export default function NoseFiller({ locale }: NoseFillerProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-4xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Nose Filler Price in Malaysia</h2>
-            <p className="text-taupe font-inter">Transparent 2026 Pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Typical Volume</th>
-                  <th className="p-4 text-left font-georgia">Price Range (2026)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter text-brown">{tier.treatment}</td>
-                    <td className="p-4 font-inter text-taupe">{tier.volume}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
-                    * Final pricing confirmed at consultation. Volume above 1.5ml rarely appropriate for natural results.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
+            <TableForPages
+              columns={[
+                { key: "treatment", header: "Treatment" },
+                { key: "volume", header: "Typical Volume" },
+                { key: "price", header: "Price Range (2026)" },
+              ]}
+              data={pricingTiers.map((tier) => ({
+                treatment: tier.treatment,
+                volume: tier.volume,
+                price: tier.price,
+              }))}
+              title="Nose Filler Price in Malaysia"
+              subtitle="Transparent 2026 Pricing at Nexus Clinic KL"
+              variant="compact"
+              fadeInUp={fadeInUp}
+            />
+
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-taupe text-sm">
@@ -821,10 +725,10 @@ export default function NoseFiller({ locale }: NoseFillerProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Get Your Personalised Nose Filler Quote
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -932,14 +836,15 @@ export default function NoseFiller({ locale }: NoseFillerProps) {
               and what the expected outcome looks like.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Book Your Free Consultation Now
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a free consultation for nose filler at Nexus Clinic KL. Please let me know available slots."
                 variant="light"
@@ -949,9 +854,9 @@ export default function NoseFiller({ locale }: NoseFillerProps) {
               Limited slots available this week | Located at Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
-              <a href="#" className="hover:text-cream transition-colors">Explore Nose Thread Lift</a>
+              <a href="/face/nose-thread-lift-malaysia/" className="hover:text-cream transition-colors">Explore Nose Thread Lift</a>
               <span>•</span>
-              <a href="#" className="hover:text-cream transition-colors">Explore Chin Filler</a>
+              <a href="/face/chin-filler-malaysia/" className="hover:text-cream transition-colors">Explore Chin Filler</a>
             </div>
           </motion.div>
         </motion.div>

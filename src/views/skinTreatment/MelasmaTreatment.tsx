@@ -40,12 +40,14 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
-import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
+import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import Image from "next/image";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 interface MelasmaTreatmentProps {
   locale: string;
 }
@@ -109,91 +111,25 @@ export default function MelasmaLanding({ locale }: MelasmaTreatmentProps) {
 
   return (
     <div className="w-full bg-light overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <AlertTriangle className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Doctor-Led Melasma Treatment • MOH Registered Clinic</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Precise Melasma Treatment in Malaysia for{" "}
-                <span className="text-wine italic">Lasting Clarity Without Rebound</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Brown patches that fade then return, darken with heat and resist every cream. Nexus Clinic KL identifies your exact melasma subtype and builds a structured programme using Sylfirm X, Pico Laser and oral tranexamic acid.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                Melasma in Malaysia is driven by a combination of UV exposure, hormonal activity, vascular inflammation and a damaged skin basement membrane. Treating only the melanin on the surface while these four factors remain active is the reason so many patients experience treatment-resistant and recurrent melasma.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Over 5,000 Aesthetic Procedures Completed
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  Our doctors have more than 15 years of combined clinical experience managing even the most stubborn and previously worsened melasma cases safely and effectively.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Book Free Melasma Assessment
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in melasma treatment at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/skin/melasma-treatment.webp"
-                  alt="Nexus Clinic Kuala Lumpur - Melasma Treatment"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown"> Subtype Assessment</p>
-                <p className="font-inter text-sm text-taupe">Wood's Lamp • Trigger Mapping • Phased Programme</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+          badge="Doctor-Led Melasma Treatment • MOH Registered Clinic"
+          title="Precise Melasma Treatment in Malaysia for"
+          highlight="Lasting Clarity Without Rebound"
+          description="Brown patches that fade then return, darken with heat and resist every cream. Nexus Clinic KL identifies your exact melasma subtype and builds a structured programme using Sylfirm X, Pico Laser and oral tranexamic acid."
+          details="Melasma in Malaysia is driven by a combination of UV exposure, hormonal activity, vascular inflammation and a damaged skin basement membrane. Treating only the melanin on the surface while these four factors remain active is the reason so many patients experience treatment-resistant and recurrent melasma."
+          note="Over 5,000 Aesthetic Procedures Completed — Our doctors have more than 15 years of combined clinical experience managing even the most stubborn and previously worsened melasma cases safely and effectively."
+          image="/images/skin/melasma-treatment.webp"
+          imageAlt="Nexus Clinic Kuala Lumpur - Melasma Treatment"
+          ctaText="Book Free Melasma Assessment"
+          ctaLink="/contact-us"
+          whatsappMessage="Hi, I'm interested in melasma treatment at Nexus Clinic KL. I'd like to book a consultation."
+          floatingTitle="Subtype Assessment"
+          floatingSubtitle="Wood's Lamp • Trigger Mapping • Phased Programme"
+          staggerContainer={staggerContainer}
+          fadeInLeft={fadeInLeft}
+          fadeInRight={fadeInRight}
+          fadeInUp={fadeInUp}
+        />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -331,10 +267,10 @@ export default function MelasmaLanding({ locale }: MelasmaTreatmentProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Speak to a Doctor About Your Melasma | Free Skin Assessment
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -432,35 +368,27 @@ export default function MelasmaLanding({ locale }: MelasmaTreatmentProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The Melasma Subtype-Trigger-Treatment Matrix</h2>
-            <p className="text-taupe font-inter">Used at every initial consultation at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Melasma Subtype</th>
-                  <th className="p-4 text-left font-georgia">Primary Triggers</th>
-                  <th className="p-4 text-left font-georgia">Skin Layer</th>
-                  <th className="p-4 text-left font-georgia">Visual Appearance</th>
-                  <th className="p-4 text-left font-georgia">Recommended Treatment</th>
-                </tr>
-              </thead>
-              <tbody>
-                {melasmaSubtypes.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.subtype}</td>
-                    <td className="p-4 text-taupe font-inter">{item.triggers}</td>
-                    <td className="p-4 text-taupe font-inter">{item.layer}</td>
-                    <td className="p-4 text-taupe font-inter">{item.appearance}</td>
-                    <td className="p-4 text-taupe font-inter">{item.treatment}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "subtype", header: "Melasma Subtype", className: "font-semibold text-brown" },
+              { key: "triggers", header: "Primary Triggers" },
+              { key: "layer", header: "Skin Layer" },
+              { key: "appearance", header: "Visual Appearance" },
+              { key: "treatment", header: "Recommended Treatment" },
+            ]}
+            data={melasmaSubtypes.map(item => ({
+              subtype: item.subtype,
+              triggers: item.triggers,
+              layer: item.layer,
+              appearance: item.appearance,
+              treatment: item.treatment,
+            }))}
+            title="The Melasma Subtype-Trigger-Treatment Matrix"
+            subtitle="Used at every initial consultation at Nexus Clinic KL"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
             <p className="text-brown font-inter text-sm text-center">
@@ -554,34 +482,25 @@ export default function MelasmaLanding({ locale }: MelasmaTreatmentProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The Structured 12-Month Melasma Management Programme</h2>
-            <p className="text-taupe font-inter">At Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Phase</th>
-                  <th className="p-4 text-left font-georgia">Timeline</th>
-                  <th className="p-4 text-left font-georgia">Treatments</th>
-                  <th className="p-4 text-left font-georgia">Goal</th>
-                </tr>
-              </thead>
-              <tbody>
-                {programmePhases.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.phase}</td>
-                    <td className="p-4 text-taupe font-inter">{item.timeline}</td>
-                    <td className="p-4 text-taupe font-inter">{item.treatments}</td>
-                    <td className="p-4 text-taupe font-inter">{item.goal}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          
+          <TableForPages
+              columns={[
+                { key: "phase", header: "Phase", className: "font-semibold text-brown" },
+                { key: "timeline", header: "Timeline" },
+                { key: "treatments", header: "Treatments" },
+                { key: "goal", header: "Goal" },
+              ]}
+              data={programmePhases.map(item => ({
+                phase: item.phase,
+                timeline: item.timeline,
+                treatments: item.treatments,
+                goal: item.goal,
+              }))}
+              title="The Structured 12-Month Melasma Management Programme"
+              subtitle="At Nexus Clinic KL"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-12 px-4"
+            />          
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
             <p className="text-brown font-inter text-sm text-center">
               Stopping treatment at the end of Phase 2 when patches have visibly lightened is the single most predictable path to relapse. The consolidation and maintenance phases are the clinical mechanism by which improvement is stabilised and protected.
@@ -676,47 +595,32 @@ export default function MelasmaLanding({ locale }: MelasmaTreatmentProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Melasma Treatment Cost in Malaysia 2026</h2>
-            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
+          <TableForPages
+            columns={[
+              { key: "treatment", header: "Treatment", className: "font-semibold text-brown" },
+              { key: "bestFor", header: "Best For" },
+              { key: "sessions", header: "Sessions" },
+              { key: "price", header: "Price Range (RM) 2026", className: "font-semibold text-wine" },
+            ]}
+            data={pricingTiers.map(tier => ({
+              treatment: tier.treatment,
+              bestFor: tier.bestFor,
+              sessions: tier.sessions,
+              price: tier.price,
+            }))}
+            title="Melasma Treatment Cost in Malaysia 2026"
+            subtitle="Transparent pricing at Nexus Clinic KL"
+            variant="default"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
+
+          <motion.div variants={fadeInUp} className="text-center mt-4">
+            <p className="text-taupe font-inter text-sm italic">
+              Combination melasma programmes deliver the most durable outcomes. Package pricing available for committed multi-session programmes.
+            </p>
           </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Best For</th>
-                  <th className="p-4 text-left font-georgia">Sessions</th>
-                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter text-brown">{tier.treatment}</td>
-                    <td className="p-4 text-taupe font-inter">{tier.bestFor}</td>
-                    <td className="p-4 text-taupe font-inter">{tier.sessions}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={4} className="p-4 text-taupe font-inter text-sm italic">
-                    Combination melasma programmes deliver the most durable outcomes. Package pricing available for committed multi-session programmes.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          
-          <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Discuss Your Budget and Melasma Programme Options | Free Consultation
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </motion.div>
+
         </motion.div>
       </section>
 
@@ -874,14 +778,15 @@ export default function MelasmaLanding({ locale }: MelasmaTreatmentProps) {
               Melasma is one of the most challenging skin conditions to manage in Malaysia's climate. But it is manageable. The right subtype diagnosis, the right combination of modalities, a structured annual programme and consistent photoprotection produce results that last.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Book Your Free Melasma Assessment Now
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a free consultation for melasma treatment at Nexus Clinic KL. Please let me know available slots."
                 variant="light"

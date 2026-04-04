@@ -33,11 +33,14 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
-import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
+import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import Image from "next/image";
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 
 interface PigmentationTreatmentProps {
   locale: string;
@@ -110,92 +113,25 @@ export default function PigmentationLanding({ locale }: PigmentationTreatmentPro
 
   return (
     <div className="w-full bg-light overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <AlertTriangle className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Doctor-Led Pigmentation Treatment • MOH Registered Clinic</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Stop chasing "brightening."{" "}
-                <span className="text-wine italic">Start treating the cause</span>{" "}
-                of your dark spots.
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Seven types of skin pigmentation. One wrong treatment can make it worse. Nexus Clinic KL diagnoses your exact pigmentation type and builds a precise, doctor-led plan using Pico Laser, Sylfirm X and proven brightening protocols.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                Dark spots, uneven patches, stubborn freckles and melasma that fades then returns. Pigmentation is one of the most searched skin concerns among Malaysians, and also one of the most frequently mistreated. At Nexus Clinic KL, our licensed aesthetic doctors do not treat pigmentation as a single condition but rather as a spectrum requiring tailored approaches.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Over 5,000 Aesthetic Procedures Completed
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  Our doctors are trained in Southeast Asian skin physiology using MOH-approved technologies including Pico Laser, Sylfirm X, Dual Yellow Laser and medical-grade brightening protocols.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Book Free Assessment
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in pigmentation treatment at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/skin/pigmentation-treatment.webp"
-                  alt="Nexus Clinic Kuala Lumpur - Pigmentation Treatment"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown"> Precise Diagnosis</p>
-                <p className="font-inter text-sm text-taupe">Type • Depth • Trigger • Skin Tone</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+        <AllPagesHero
+          badge="Doctor-Led Pigmentation Treatment • MOH Registered Clinic"
+          title="Stop chasing 'brightening.'"
+          highlight="Start treating the cause of your dark spots."
+          description="Seven types of skin pigmentation. One wrong treatment can make it worse. Nexus Clinic KL diagnoses your exact pigmentation type and builds a precise, doctor-led plan using Pico Laser, Sylfirm X and proven brightening protocols."
+          details="Dark spots, uneven patches, stubborn freckles and melasma that fades then returns. Pigmentation is one of the most searched skin concerns among Malaysians, and also one of the most frequently mistreated. At Nexus Clinic KL, our licensed aesthetic doctors do not treat pigmentation as a single condition but rather as a spectrum requiring tailored approaches."
+          note="Over 5,000 Aesthetic Procedures Completed — Our doctors are trained in Southeast Asian skin physiology using MOH-approved technologies including Pico Laser, Sylfirm X, Dual Yellow Laser and medical-grade brightening protocols."
+          image="/images/skin/pigmentation-treatment.webp"
+          imageAlt="Nexus Clinic Kuala Lumpur - Pigmentation Treatment"
+          ctaText="Book Free Assessment"
+          ctaLink="/contact-us"
+          whatsappMessage="Hi, I'm interested in pigmentation treatment at Nexus Clinic KL. I'd like to book a consultation."
+          floatingTitle="Precise Diagnosis"
+          floatingSubtitle="Type • Depth • Trigger • Skin Tone"
+          staggerContainer={staggerContainer}
+          fadeInLeft={fadeInLeft}
+          fadeInRight={fadeInRight}
+          fadeInUp={fadeInUp}
+        />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -333,10 +269,10 @@ export default function PigmentationLanding({ locale }: PigmentationTreatmentPro
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Speak to a Doctor About Your Skin | Free Assessment
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -386,69 +322,64 @@ export default function PigmentationLanding({ locale }: PigmentationTreatmentPro
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Pigmentation-Type-to-Treatment Decision Matrix</h2>
-            <p className="text-taupe font-inter">Used at every initial pigmentation consultation at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Pigmentation Type</th>
-                  <th className="p-4 text-left font-georgia">Key Trigger</th>
-                  <th className="p-4 text-left font-georgia">Skin Layer</th>
-                  <th className="p-4 text-left font-georgia">Responds to Self-Care?</th>
-                  <th className="p-4 text-left font-georgia">Best Treatment at Nexus Clinic KL</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                  <td className="p-4 font-inter font-semibold text-brown">Melasma</td>
-                  <td className="p-4 text-taupe font-inter">Hormones, UV, heat</td>
-                  <td className="p-4 text-taupe font-inter">Mixed (epidermal and dermal)</td>
-                  <td className="p-4 text-taupe font-inter">Partially only</td>
-                  <td className="p-4 text-taupe font-inter">Sylfirm X + Pico Laser + Oral Tranexamic Acid</td>
-                </tr>
-                <tr className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                  <td className="p-4 font-inter font-semibold text-brown">Sunspots / Solar Lentigines</td>
-                  <td className="p-4 text-taupe font-inter">Cumulative UV exposure</td>
-                  <td className="p-4 text-taupe font-inter">Epidermal</td>
-                  <td className="p-4 text-taupe font-inter">No</td>
-                  <td className="p-4 text-taupe font-inter">Pico Laser (1 to 3 sessions)</td>
-                </tr>
-                <tr className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                  <td className="p-4 font-inter font-semibold text-brown">Freckles</td>
-                  <td className="p-4 text-taupe font-inter">Genetics plus UV</td>
-                  <td className="p-4 text-taupe font-inter">Epidermal</td>
-                  <td className="p-4 text-taupe font-inter">No; returns with sun</td>
-                  <td className="p-4 text-taupe font-inter">Pico Laser + SPF50 maintenance</td>
-                </tr>
-                <tr className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                  <td className="p-4 font-inter font-semibold text-brown">Post-Inflammatory Hyperpigmentation (PIH)</td>
-                  <td className="p-4 text-taupe font-inter">Acne, eczema, injury, inflammation</td>
-                  <td className="p-4 text-taupe font-inter">Epidermal to superficial dermal</td>
-                  <td className="p-4 text-taupe font-inter">Slowly, over months</td>
-                  <td className="p-4 text-taupe font-inter">Pico Laser + Chemical Peel + Brightening Topicals</td>
-                </tr>
-                <tr className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                  <td className="p-4 font-inter font-semibold text-brown">ABNOM / Hori's Nevus</td>
-                  <td className="p-4 text-taupe font-inter">Genetic, hormone influence</td>
-                  <td className="p-4 text-taupe font-inter">Deep dermal</td>
-                  <td className="p-4 text-taupe font-inter">No</td>
-                  <td className="p-4 text-taupe font-inter">Pico Laser (multiple sessions, low-fluence protocol)</td>
-                </tr>
-                <tr className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                  <td className="p-4 font-inter font-semibold text-brown">Age Spots / Liver Spots</td>
-                  <td className="p-4 text-taupe font-inter">Ageing plus UV accumulation</td>
-                  <td className="p-4 text-taupe font-inter">Epidermal</td>
-                  <td className="p-4 text-taupe font-inter">No</td>
-                  <td className="p-4 text-taupe font-inter">Pico Laser or Dual Yellow Laser</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          
+          <TableForPages
+              columns={[
+                { key: "type", header: "Pigmentation Type", className: "font-semibold text-brown" },
+                { key: "trigger", header: "Key Trigger" },
+                { key: "layer", header: "Skin Layer" },
+                { key: "selfCare", header: "Responds to Self-Care?" },
+                { key: "treatment", header: "Best Treatment at Nexus Clinic KL" },
+              ]}
+              data={[
+                {
+                  type: "Melasma",
+                  trigger: "Hormones, UV, heat",
+                  layer: "Mixed (epidermal and dermal)",
+                  selfCare: "Partially only",
+                  treatment: "Sylfirm X + Pico Laser + Oral Tranexamic Acid",
+                },
+                {
+                  type: "Sunspots / Solar Lentigines",
+                  trigger: "Cumulative UV exposure",
+                  layer: "Epidermal",
+                  selfCare: "No",
+                  treatment: "Pico Laser (1 to 3 sessions)",
+                },
+                {
+                  type: "Freckles",
+                  trigger: "Genetics plus UV",
+                  layer: "Epidermal",
+                  selfCare: "No; returns with sun",
+                  treatment: "Pico Laser + SPF50 maintenance",
+                },
+                {
+                  type: "Post-Inflammatory Hyperpigmentation (PIH)",
+                  trigger: "Acne, eczema, injury, inflammation",
+                  layer: "Epidermal to superficial dermal",
+                  selfCare: "Slowly, over months",
+                  treatment: "Pico Laser + Chemical Peel + Brightening Topicals",
+                },
+                {
+                  type: "ABNOM / Hori's Nevus",
+                  trigger: "Genetic, hormone influence",
+                  layer: "Deep dermal",
+                  selfCare: "No",
+                  treatment: "Pico Laser (multiple sessions, low-fluence protocol)",
+                },
+                {
+                  type: "Age Spots / Liver Spots",
+                  trigger: "Ageing plus UV accumulation",
+                  layer: "Epidermal",
+                  selfCare: "No",
+                  treatment: "Pico Laser or Dual Yellow Laser",
+                },
+              ]}
+              title="Pigmentation-Type-to-Treatment Decision Matrix"
+              subtitle="Used at every initial pigmentation consultation at Nexus Clinic KL"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-12 px-4"
+            />          
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
               Melasma sits in both epidermal and dermal layers and is driven by hormonal activity and heat. Applying an aggressive ablative laser without addressing the hormonal trigger and vascular component is the most common reason patients report their melasma worsening.
@@ -647,47 +578,25 @@ export default function PigmentationLanding({ locale }: PigmentationTreatmentPro
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Pigmentation Treatment Cost in Malaysia 2026</h2>
-            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Best For</th>
-                  <th className="p-4 text-left font-georgia">Sessions</th>
-                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter text-brown">{tier.treatment}</td>
-                    <td className="p-4 text-taupe font-inter">{tier.bestFor}</td>
-                    <td className="p-4 text-taupe font-inter">{tier.sessions}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={4} className="p-4 text-taupe font-inter text-sm italic">
-                    Combination pigmentation programmes offer the most cost-effective path. Package pricing available for committed multi-session programmes.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          
-          <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Find Out the Right Programme and Price for Your Skin | Free Assessment
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </motion.div>
+            <TableForPages
+              columns={[
+                { key: "depth", header: "Depth Classification", className: "font-semibold text-brown" },
+                { key: "location", header: "Location in Skin" },
+                { key: "identification", header: "How to Identify" },
+                { key: "approach", header: "Treatment Approach" },
+              ]}
+              data={pigmentationDepthData.map(item => ({
+                depth: item.depth,
+                location: item.location,
+                identification: item.identification,
+                approach: item.approach,
+              }))}
+              title="Pigmentation Depth Determines Treatment Choice"
+              subtitle="Beyond the type of pigmentation, its depth within the skin layers is the second most important factor"
+              variant="default"
+              fadeInUp={fadeInUp}
+              className="py-12 px-4"
+            />
         </motion.div>
       </section>
 
@@ -837,14 +746,15 @@ export default function PigmentationLanding({ locale }: PigmentationTreatmentPro
               Pigmentation does not have to be permanent. The right diagnosis, the right combination of treatments and a consistent maintenance plan can produce visible, lasting improvement.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Book Your Free Pigmentation Assessment Now
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a free consultation for pigmentation treatment at Nexus Clinic KL. Please let me know available slots."
                 variant="light"

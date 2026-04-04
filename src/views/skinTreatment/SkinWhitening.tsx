@@ -29,11 +29,14 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import Image from "next/image";
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 
 interface SkinWhiteningProps {
   locale: string;
@@ -109,91 +112,25 @@ export default function SkinWhiteningLanding({ locale }: SkinWhiteningProps) {
 
   return (
     <div className="w-full bg-light overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <AlertTriangle className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Goal-Matched • MOH-Approved</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Proven Skin Whitening Treatment in Malaysia for{" "}
-                <span className="text-wine italic">Brighter, Even-Toned Skin</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Dull skin, uneven patches, dark body areas and persistent pigmentation that returns despite every product tried.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                At Nexus Clinic KL, skin whitening treatment begins with a question: what specifically are you trying to achieve? Overall face brightness, targeted spot removal, body area darkening, melasma management and post-acne mark clearance are five different clinical goals that require five different treatment approaches.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Important Clinical Information
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  Only clinically proven, MOH-approved treatments are offered at Nexus Clinic KL. No mercury, no unregistered hydroquinone, no misleading whitening claims.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Free Assessment
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in skin whitening treatment at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/skin/skin-whitening-treatment.webp"
-                  alt="Nexus Clinic Kuala Lumpur - Skin Whitening Treatment"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown">Goal-Matched Treatment</p>
-                <p className="font-inter text-sm text-taupe">Over 5,000 procedures completed</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+        badge="Goal-Matched • MOH-Approved"
+        title="Proven Skin Whitening Treatment in Malaysia for"
+        highlight="Brighter, Even-Toned Skin"
+        description="Dull skin, uneven patches, dark body areas and persistent pigmentation that returns despite every product tried."
+        details="At Nexus Clinic KL, skin whitening treatment begins with a question: what specifically are you trying to achieve? Overall face brightness, targeted spot removal, body area darkening, melasma management and post-acne mark clearance are five different clinical goals that require five different treatment approaches."
+        note="Only clinically proven, MOH-approved treatments are offered at Nexus Clinic KL. No mercury, no unregistered hydroquinone, no misleading whitening claims."
+        image="/images/skin/skin-whitening-treatment.webp"
+        imageAlt="Nexus Clinic Kuala Lumpur - Skin Whitening Treatment"
+        ctaText="Free Assessment"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in skin whitening treatment at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="Goal-Matched Treatment"
+        floatingSubtitle="Over 5,000 procedures completed"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -352,10 +289,10 @@ export default function SkinWhiteningLanding({ locale }: SkinWhiteningProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Speak to a Doctor About Your Skin Whitening Goal | Free Assessment
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -369,35 +306,27 @@ export default function SkinWhiteningLanding({ locale }: SkinWhiteningProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Skin Whitening Goal-to-Treatment Matching Framework</h2>
-            <p className="text-taupe font-inter">Match your specific goal to the right treatment</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Whitening Goal</th>
-                  <th className="p-4 text-left font-georgia">Recommended Treatment</th>
-                  <th className="p-4 text-left font-georgia">How It Works</th>
-                  <th className="p-4 text-left font-georgia">Timeline to Results</th>
-                  <th className="p-4 text-left font-georgia">Sessions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {whiteningGoals.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.goal}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.treatment}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.mechanism}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.timeline}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.sessions}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "goal", header: "Whitening Goal", className: "font-semibold text-brown" },
+              { key: "treatment", header: "Recommended Treatment" },
+              { key: "mechanism", header: "How It Works" },
+              { key: "timeline", header: "Timeline to Results" },
+              { key: "sessions", header: "Sessions" },
+            ]}
+            data={whiteningGoals.map(item => ({
+              goal: item.goal,
+              treatment: item.treatment,
+              mechanism: item.mechanism,
+              timeline: item.timeline,
+              sessions: item.sessions,
+            }))}
+            title="Skin Whitening Goal-to-Treatment Matching Framework"
+            subtitle="Match your specific goal to the right treatment"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
@@ -416,33 +345,25 @@ export default function SkinWhiteningLanding({ locale }: SkinWhiteningProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">What Actually Works vs What Overpromises</h2>
-            <p className="text-taupe font-inter">Honest evidence comparison for skin whitening treatments</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Evidence Quality</th>
-                  <th className="p-4 text-left font-georgia">What It Genuinely Achieves</th>
-                  <th className="p-4 text-left font-georgia">Realistic Limitation</th>
-                </tr>
-              </thead>
-              <tbody>
-                {evidenceComparison.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.treatment}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.evidence}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.achieves}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.limitation}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "treatment", header: "Treatment", className: "font-semibold text-brown" },
+              { key: "evidence", header: "Evidence Quality" },
+              { key: "achieves", header: "What It Genuinely Achieves" },
+              { key: "limitation", header: "Realistic Limitation" },
+            ]}
+            data={evidenceComparison.map(item => ({
+              treatment: item.treatment,
+              evidence: item.evidence,
+              achieves: item.achieves,
+              limitation: item.limitation,
+            }))}
+            title="What Actually Works vs What Overpromises"
+            subtitle="Honest evidence comparison for skin whitening treatments"
+            variant="default"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl border-l-4 border-wine">
             <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
@@ -465,33 +386,25 @@ export default function SkinWhiteningLanding({ locale }: SkinWhiteningProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Body Skin Whitening at Nexus Clinic KL</h2>
-            <p className="text-taupe font-inter">Areas, causes and treatments</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Body Area</th>
-                  <th className="p-4 text-left font-georgia">Common Cause of Darkening</th>
-                  <th className="p-4 text-left font-georgia">Recommended Treatment</th>
-                  <th className="p-4 text-left font-georgia">Sessions and Timeline</th>
-                </tr>
-              </thead>
-              <tbody>
-                {bodyWhiteningAreas.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.area}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.cause}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.treatment}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.sessions}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+            <TableForPages
+              columns={[
+                { key: "area", header: "Body Area", className: "font-semibold text-brown" },
+                { key: "cause", header: "Common Cause of Darkening" },
+                { key: "treatment", header: "Recommended Treatment" },
+                { key: "sessions", header: "Sessions and Timeline" },
+              ]}
+              data={bodyWhiteningAreas.map(item => ({
+                area: item.area,
+                cause: item.cause,
+                treatment: item.treatment,
+                sessions: item.sessions,
+              }))}
+              title="Body Skin Whitening at Nexus Clinic KL"
+              subtitle="Areas, causes and treatments"
+              variant="default"
+              fadeInUp={fadeInUp}
+              className="py-12 px-4"
+            />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
@@ -680,10 +593,10 @@ export default function SkinWhiteningLanding({ locale }: SkinWhiteningProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-10">
-            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+            <Link href="/contact-us"  className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
               Book Your Free Assessment
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
             <p className="text-taupe text-sm mt-3">Goal-matched skin whitening at Nexus Clinic KL</p>
           </motion.div>
         </motion.div>
@@ -698,46 +611,31 @@ export default function SkinWhiteningLanding({ locale }: SkinWhiteningProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Skin Whitening Treatment Cost in Malaysia 2026</h2>
-            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Best For</th>
-                  <th className="p-4 text-left font-georgia">Sessions</th>
-                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter font-semibold text-brown">{tier.treatment}</td>
-                    <td className="p-4 font-inter text-taupe text-sm">{tier.bestFor}</td>
-                    <td className="p-4 font-inter text-taupe text-sm">{tier.sessions}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={4} className="p-4 text-taupe font-inter text-sm italic">
-                    Combination whitening programmes that incorporate Pico Laser, IV glutathione drip and oral brightening supplements provide the most comprehensive and sustained brightening outcomes. All pricing disclosed before any treatment is booked.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          
-          <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Get Your Full Skin Whitening Programme Pricing
-              <ArrowRight className="w-4 h-4" />
-            </button>
+          <TableForPages
+            columns={[
+              { key: "treatment", header: "Treatment", className: "font-semibold text-brown" },
+              { key: "bestFor", header: "Best For" },
+              { key: "sessions", header: "Sessions" },
+              { key: "price", header: "Price Range (RM) 2026", className: "font-semibold text-wine" },
+            ]}
+            data={pricingTiers.map(tier => ({
+              treatment: tier.treatment,
+              bestFor: tier.bestFor,
+              sessions: tier.sessions,
+              price: tier.price,
+            }))}
+            title="Skin Whitening Treatment Cost in Malaysia 2026"
+            subtitle="Transparent pricing at Nexus Clinic KL"
+            variant="default"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
+
+          {/* Footnote */}
+          <motion.div variants={fadeInUp} className="text-center mt-4">
+            <p className="text-taupe font-inter text-sm italic">
+              Combination whitening programmes that incorporate Pico Laser, IV glutathione drip and oral brightening supplements provide the most comprehensive and sustained brightening outcomes. All pricing disclosed before any treatment is booked.
+            </p>
           </motion.div>
         </motion.div>
       </section>
@@ -768,14 +666,15 @@ export default function SkinWhiteningLanding({ locale }: SkinWhiteningProps) {
               Our licensed aesthetic doctors bring more than 15 years of combined experience, have performed over 5,000 aesthetic procedures, and use only MOH-approved treatments. No banned ingredients, no misleading claims.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Free Assessment
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a consultation for skin whitening treatment at Nexus Clinic KL. Please let me know available slots."
                 variant="light"

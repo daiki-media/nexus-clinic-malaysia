@@ -422,7 +422,7 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
           <motion.div variants={fadeInUp} className="text-center mt-6">
             <Link className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all"
               href="/contact-us">
-              Find Out the Right Approach for Your Age and Goals
+              Find Out the Right Approach
               <ArrowRight className="w-4 h-4" />
             </Link>
           </motion.div>

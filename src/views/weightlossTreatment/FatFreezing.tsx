@@ -26,12 +26,13 @@ import {
   fadeInLeft,
   fadeInRight,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
-
+import AllPagesHero from "@/src/components/AllPagesHero"
+import Link from "next/link";
 const FatFreezingLanding = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "weightLoss/fatFreezing");
 
@@ -98,107 +99,54 @@ const FatFreezingLanding = ({ locale = fallbackLng }: { locale?: string }) => {
 
   return (
     <div className="bg-light font-inter overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-linear-to-b from-cream to-light pt-20">
-        <motion.div
-          className="absolute inset-0 overflow-hidden"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.1 }}
-          transition={{ duration: 1.5 }}
+      <AllPagesHero
+        badge="Best Fat Freezing in Malaysia"
+        title="Best Fat Freezing in Malaysia"
+        highlight="for Sculpted, Permanent Body Contouring"
+        description="No surgery. No needles. No downtime. The number on the scale dropped. The clothes fit better. But the belly pouch, inner thighs, or the soft roll above the bra strap still remain. This is not a willpower problem. It is biology."
+        details="At Nexus Clinic KL, our licensed aesthetic doctors use clinically proven cryolipolysis technology to permanently destroy targeted subcutaneous fat cells and refine body contour naturally over eight to twelve weeks."
+        note="Doctor-led consultation • FDA-cleared technology • 5000+ procedures • 35-60 min per area"
+        image="/images/main/fat-freezing.webp"
+        imageAlt="Fat Freezing Treatment at Nexus Clinic Kuala Lumpur"
+        ctaText="Book Free Assessment"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in fat freezing treatment at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="FDA-Cleared Cryolipolysis"
+        floatingSubtitle="Permanent fat reduction • No downtime"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
+        {/* <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl px-4 -mt-8 relative z-20"
         >
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-rose/10 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-wine/10 rounded-full blur-3xl"></div>
-        </motion.div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            className="max-w-4xl mx-auto text-center"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.h1
-              variants={fadeInUp}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-brown mb-6 leading-tight"
-            >
-              Best Fat Freezing in Malaysia
-              <span className="block text-wine mt-2">
-                for Sculpted, Permanent Body Contouring
-              </span>
-            </motion.h1>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl md:text-2xl text-taupe mb-8 font-georgia italic"
-            >
-              No surgery. No needles. No downtime.
-            </motion.p>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-brown/80 max-w-2xl mx-auto mb-8"
-            >
-              The number on the scale dropped. The clothes fit better. But the
-              belly pouch, inner thighs, or the soft roll above the bra strap
-              still remain. This is not a willpower problem. It is biology.
-            </motion.p>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-brown/80 max-w-2xl mx-auto mb-12"
-            >
-              At Nexus Clinic KL, our licensed aesthetic doctors use clinically
-              proven cryolipolysis technology to permanently destroy targeted
-              subcutaneous fat cells and refine body contour naturally over
-              eight to twelve weeks.
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-wrap justify-center gap-4 mb-12"
-            >
-              <button className="bg-wine text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition">
-                Book Free Assessment
-              </button>
-              <button className="bg-white text-brown px-8 py-4 rounded-full font-medium border border-cream hover:bg-cream transition">
-                View Treatment Guide
-              </button>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <motion.div variants={fadeInUp} className="bg-glass backdrop-blur-sm rounded-xl p-4 border border-cream shadow-md text-center">
+              <Award className="w-6 h-6 text-wine mx-auto mb-2" />
+              <p className="text-sm text-brown">Doctor-led consultation and body assessment</p>
             </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-12"
-            >
-              <div className="bg-glass backdrop-blur-sm rounded-xl p-4 border border-cream">
-                <Award className="w-6 h-6 text-wine mx-auto mb-2" />
-                <p className="text-sm text-brown">
-                  Doctor-led consultation and body assessment
-                </p>
-              </div>
-              <div className="bg-glass backdrop-blur-sm rounded-xl p-4 border border-cream">
-                <Shield className="w-6 h-6 text-wine mx-auto mb-2" />
-                <p className="text-sm text-brown">
-                  FDA-cleared cryolipolysis technology
-                </p>
-              </div>
-              <div className="bg-glass backdrop-blur-sm rounded-xl p-4 border border-cream">
-                <Users className="w-6 h-6 text-wine mx-auto mb-2" />
-                <p className="text-sm text-brown">
-                  5000+ aesthetic procedures by our medical team
-                </p>
-              </div>
-              <div className="bg-glass backdrop-blur-sm rounded-xl p-4 border border-cream">
-                <Clock className="w-6 h-6 text-wine mx-auto mb-2" />
-                <p className="text-sm text-brown">
-                  35 to 60 minutes per area with no downtime
-                </p>
-              </div>
+            
+            <motion.div variants={fadeInUp} className="bg-glass backdrop-blur-sm rounded-xl p-4 border border-cream shadow-md text-center">
+              <Shield className="w-6 h-6 text-wine mx-auto mb-2" />
+              <p className="text-sm text-brown">FDA-cleared cryolipolysis technology</p>
             </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
+            
+            <motion.div variants={fadeInUp} className="bg-glass backdrop-blur-sm rounded-xl p-4 border border-cream shadow-md text-center">
+              <Users className="w-6 h-6 text-wine mx-auto mb-2" />
+              <p className="text-sm text-brown">5000+ aesthetic procedures by our medical team</p>
+            </motion.div>
+            
+            <motion.div variants={fadeInUp} className="bg-glass backdrop-blur-sm rounded-xl p-4 border border-cream shadow-md text-center">
+              <Clock className="w-6 h-6 text-wine mx-auto mb-2" />
+              <p className="text-sm text-brown">35 to 60 minutes per area with no downtime</p>
+            </motion.div>
+          </div>
+        </motion.div> */}
       {/* Treatment At a Glance */}
       <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -1088,9 +1036,9 @@ const FatFreezingLanding = ({ locale = fallbackLng }: { locale?: string }) => {
             </motion.p>
 
             <motion.div variants={fadeInUp}>
-              <button className="bg-white text-wine px-10 py-4 rounded-full font-semibold hover:opacity-90 transition">
+              <Link href="/contact-us" className="bg-white text-wine px-10 py-4 rounded-full font-semibold hover:opacity-90 transition">
                 Book Free Assessment
-              </button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>

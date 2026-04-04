@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Whatsapp from "../../components/Whatsapp";
+import Whatsapp from "@/src/components/Whatsapp";
 import {
   Sparkles,
   Clock,
@@ -46,14 +46,17 @@ import {
   Layers,
   Syringe as SyringeIcon,
 } from "lucide-react";
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 import {
   staggerContainer,
   fadeInLeft,
   fadeInRight,
   scaleIn,
   fadeInUp,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 
@@ -146,88 +149,25 @@ const DermalFillersLanding = ({
   return (
     <>
       <main className="bg-light min-h-screen font-inter overflow-x-hidden">
-        {/* Hero Section */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-          className="relative overflow-hidden bg-linear-to-b from-cream to-light pt-20 pb-16 px-4 md:px-8 lg:px-16"
-        >
-          <div className="absolute top-0 right-0 w-96 h-96 bg-rose/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-wine/5 rounded-full blur-3xl" />
-
-          <motion.div
-            variants={fadeInUp}
-            className="container mx-auto max-w-7xl relative z-10"
-          >
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <motion.div
-                  variants={fadeInUp}
-                  className="inline-block px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-wine text-sm mb-6 border border-taupe/20"
-                >
-                  <span className="flex items-center gap-2">
-                    <Sparkles size={16} /> Nexus Clinic Kuala Lumpur
-                  </span>
-                </motion.div>
-
-                <motion.h1
-                  variants={fadeInUp}
-                  className="font-georgia text-4xl lg:text-5xl xl:text-6xl text-brown leading-tight mb-6"
-                >
-                  {heroData?.title}
-                  <span className="text-wine italic">{heroData?.title2}</span>
-                </motion.h1>
-
-                <motion.p
-                  variants={fadeInUp}
-                  className="text-lg text-taupe mb-6 leading-relaxed"
-                >
-                  {heroData?.description}
-                </motion.p>
-                
-                <motion.div
-                  variants={fadeInUp}
-                  className="bg-wine/10 p-4 rounded-xl mb-6 border-l-4 border-wine"
-                >
-                  <p className="text-wine font-semibold">
-                    {heroData?.experience}
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeInUp}
-                  className="flex flex-wrap gap-4"
-                >
-                  <button className="group bg-wine text-white px-8 py-4 rounded-full hover:bg-rose transition-all duration-300 flex items-center gap-2 shadow-lg shadow-wine/20">
-                    {heroData?.cta || "Book Your Free Dermal Filler Consultation"}
-                    <ArrowRight
-                      className="group-hover:translate-x-1 transition-transform"
-                      size={18}
-                    />
-                  </button>
-                  <Whatsapp message="Hi, I'm interested in dermal filler at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-                </motion.div>
-              </div>
-
-              <motion.div variants={scaleIn} className="relative">
-                <div className="absolute inset-0 bg-linear-to-r from-wine/10 to-rose/10 rounded-3xl blur-2xl" />
-                <div className="relative rounded-3xl shadow-2xl overflow-hidden">
-                  <Image
-                    src="/images/face/dermal-filler.jpeg"
-                    alt="Dermal filler treatment at Nexus Clinic Kuala Lumpur"
-                    width={600}
-                    height={500}
-                    className="w-full h-auto object-cover"
-                    priority
-                  />
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </motion.section>
-
+        <AllPagesHero
+          badge="Nexus Clinic Kuala Lumpur"
+          title={heroData?.title || "Dermal Filler in Malaysia for "}
+          highlight={heroData?.title2 || "Natural, Youthful Restoration"}
+          description={heroData?.description || "Advanced dermal filler treatments tailored to your unique facial anatomy."}
+          details={heroData?.experience || "Our award-winning injectors have performed over 5,000 facial filler procedures using technique built for Southeast Asian bone structure."}
+          note="Always choose a licensed medical professional for dermal filler treatments. Results vary based on individual anatomy and product choice."
+          image="/images/face/dermal-filler.jpeg"
+          imageAlt="Dermal filler treatment at Nexus Clinic Kuala Lumpur"
+          ctaText={heroData?.cta || "Book Your Free Dermal Filler Consultation"}
+          ctaLink="/contact-us"
+          whatsappMessage="Hi, I'm interested in dermal filler at Nexus Clinic KL. I'd like to book a consultation."
+          floatingTitle=" Expert Care"
+          floatingSubtitle="5,000+ procedures • Natural results"
+          staggerContainer={staggerContainer}
+          fadeInLeft={fadeInLeft}
+          fadeInRight={fadeInRight}
+          fadeInUp={fadeInUp}
+        />
         {/* Treatment at a Glance Section */}
         <motion.section
           initial="hidden"
@@ -283,10 +223,10 @@ const DermalFillersLanding = ({
             </motion.div>
 
             <motion.div variants={fadeInUp} className="text-center mt-10">
-              <button className="text-wine font-semibold hover:underline flex items-center gap-2 mx-auto">
+              <Link href="/contact-us" className="text-wine font-semibold hover:underline flex items-center gap-2 mx-auto">
                 {treatmentAtGlance?.cta || "Speak to a Doctor About Your Goals | Book a Free Assessment"}
                 <ArrowRight size={16} />
-              </button>
+              </Link>
             </motion.div>
           </div>
         </motion.section>
@@ -332,9 +272,9 @@ const DermalFillersLanding = ({
                   </p>
                 </div>
                 <motion.div variants={fadeInUp} className="mt-8">
-                  <button className="bg-wine text-white px-6 py-3 rounded-full hover:bg-rose transition-all duration-300">
+                  <Link href="/contact-us" className="bg-wine text-white px-6 py-3 rounded-full hover:bg-rose transition-all duration-300">
                     {howItWorks?.cta || "Find Out If Dermal Filler Is Right for You | Book a Free Consultation"}
-                  </button>
+                  </Link>
                 </motion.div>
               </motion.div>
 
@@ -405,9 +345,9 @@ const DermalFillersLanding = ({
                     </h3>
                     <p className="text-taupe text-sm leading-relaxed">{area.description}</p>
                     {area.cta && (
-                      <button className="text-wine text-sm font-medium hover:underline flex items-center gap-1 mt-3">
+                      <Link href="/contact-us" className="text-wine text-sm font-medium hover:underline flex items-center gap-1 mt-3">
                         Learn More <ArrowRight size={12} />
-                      </button>
+                      </Link>
                     )}
                   </motion.div>
                 );
@@ -415,9 +355,9 @@ const DermalFillersLanding = ({
             </div>
 
             <motion.div variants={fadeInUp} className="text-center mt-12">
-              <button className="bg-wine/10 text-wine px-8 py-3 rounded-full hover:bg-wine/20 transition-all duration-300 font-semibold">
+              <Link href="/contact-us" className="bg-wine/10 text-wine px-8 py-3 rounded-full hover:bg-wine/20 transition-all duration-300 font-semibold">
                 {faceAreas?.cta || "Book a Consultation to Map Your Treatment Areas | Free Assessment Available"}
-              </button>
+              </Link>
             </motion.div>
           </div>
         </motion.section>
@@ -431,38 +371,26 @@ const DermalFillersLanding = ({
           className="py-20 px-4 md:px-8 lg:px-16 bg-linear-to-b from-cream to-light"
         >
           <div className="container mx-auto max-w-7xl">
-            <motion.div variants={fadeInUp} className="text-center mb-12">
-              <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">
-                {products?.title || "Dermal Filler Products Used at Nexus Clinic KL"}
-              </h2>
-              <p className="text-taupe max-w-3xl mx-auto">
-                {products?.description}
-              </p>
-            </motion.div>
 
-            <motion.div variants={fadeInUp} className="overflow-x-auto">
-              <table className="w-full bg-white rounded-2xl overflow-hidden shadow-lg">
-                <thead className="bg-wine text-white">
-                  <tr>
-                    {products?.tableColumns?.map((col: string, idx: number) => (
-                      <th key={idx} className="px-6 py-4 text-left font-semibold">
-                        {col}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-taupe/10">
-                  {products?.products?.map((product: any, idx: number) => (
-                    <tr key={idx} className="hover:bg-cream/30 transition-colors">
-                      <td className="px-6 py-4 font-medium text-brown">{product.name}</td>
-                      <td className="px-6 py-4 text-taupe text-sm">{product.type}</td>
-                      <td className="px-6 py-4 text-taupe text-sm">{product.bestArea}</td>
-                      <td className="px-6 py-4 text-wine font-medium">{product.longevity}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </motion.div>
+            <TableForPages
+              columns={[
+                { key: "name", header: products?.tableColumns?.[0] || "Product Name", className: "font-medium" },
+                { key: "type", header: products?.tableColumns?.[1] || "Type" },
+                { key: "bestArea", header: products?.tableColumns?.[2] || "Best For Area" },
+                { key: "longevity", header: products?.tableColumns?.[3] || "Longevity" },
+              ]}
+              data={products?.products?.map((product: any) => ({
+                name: product.name,
+                type: product.type,
+                bestArea: product.bestArea,
+                longevity: product.longevity,
+              })) || []}
+              title={products?.title || "Dermal Filler Products Used at Nexus Clinic KL"}
+              subtitle= {products?.description}
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-20 px-4"
+            />
 
             <motion.div variants={fadeInUp} className="mt-8">
               <div className="bg-wine/5 p-6 rounded-xl border-l-4 border-wine">
@@ -471,9 +399,9 @@ const DermalFillersLanding = ({
                 </p>
               </div>
               <div className="text-center mt-6">
-                <button className="text-wine font-semibold hover:underline">
+                <Link href="/contact-us" className="text-wine font-semibold hover:underline">
                   {products?.cta || "Ask a Doctor About the Right Product for Your Face | Book a Free Consultation"}
-                </button>
+                </Link>
               </div>
             </motion.div>
           </div>
@@ -505,9 +433,9 @@ const DermalFillersLanding = ({
                   ))}
                 </div>
                 <motion.div variants={fadeInUp} className="mt-8">
-                  <button className="bg-wine text-white px-8 py-3 rounded-full hover:bg-rose transition-all duration-300">
-                    {whyNexus?.cta || "Book Your Consultation at Nexus Clinic KL | Award-Winning Injectors"}
-                  </button>
+                  <Link href="/contact-us" className="bg-wine text-white px-8 py-3 rounded-full hover:bg-rose transition-all duration-300">
+                    {whyNexus?.cta || "Book Your Consultation at Nexus Clinic KL"}
+                  </Link>
                 </motion.div>
               </motion.div>
 
@@ -561,9 +489,9 @@ const DermalFillersLanding = ({
             </div>
 
             <motion.div variants={fadeInUp} className="text-center mt-12">
-              <button className="bg-wine text-white px-8 py-3 rounded-full hover:bg-rose transition-all duration-300">
+              <Link href="/contact-us" className="bg-wine text-white px-8 py-3 rounded-full hover:bg-rose transition-all duration-300">
                 {procedure?.cta || "Ready to Book | Secure Your Appointment at Nexus Clinic KL"}
-              </button>
+              </Link>
             </motion.div>
           </div>
         </motion.section>
@@ -577,37 +505,26 @@ const DermalFillersLanding = ({
           className="py-20 px-4 md:px-8 lg:px-16 bg-white"
         >
           <div className="container mx-auto max-w-7xl">
-            <motion.div variants={fadeInUp} className="text-center mb-12">
-              <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">
-                {pricing?.title || "Dermal Filler Cost in Malaysia | Transparent 2026 Pricing"}
-              </h2>
-              <p className="text-taupe max-w-3xl mx-auto">
-                {pricing?.description}
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="overflow-x-auto mb-8">
-              <table className="w-full bg-white rounded-2xl overflow-hidden shadow-lg">
-                <thead className="bg-gradient-to-r from-wine to-rose text-white">
-                  <tr>
-                    {pricing?.tableColumns?.map((col: string, idx: number) => (
-                      <th key={idx} className="px-6 py-4 text-left font-semibold">
-                        {col}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-taupe/10">
-                  {pricing?.prices?.map((item: any, idx: number) => (
-                    <tr key={idx} className="hover:bg-cream/30 transition-colors">
-                      <td className="px-6 py-4 font-medium text-brown">{item.area}</td>
-                      <td className="px-6 py-4 text-taupe">{item.volume}</td>
-                      <td className="px-6 py-4 text-wine font-semibold">{item.price}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </motion.div>
+            <section className="py-20 px-4 bg-cream">
+              <div className="container mx-auto max-w-4xl">
+                <TableForPages
+                  columns={[
+                    { key: "area", header: pricing?.tableColumns?.[0] || "Treatment Area" },
+                    { key: "volume", header: pricing?.tableColumns?.[1] || "Typical Volume" },
+                    { key: "price", header: pricing?.tableColumns?.[2] || "Price Range (RM)" },
+                  ]}
+                  data={pricing?.prices?.map((item: any) => ({
+                    area: item.area,
+                    volume: item.volume,
+                    price: item.price,
+                  })) || []}
+                  title= {pricing?.title || "Dermal Filler Cost in Malaysia | Transparent 2026 Pricing"}
+                  subtitle={pricing?.description}
+                  variant="detailed"
+                  fadeInUp={fadeInUp}
+                />
+              </div>
+            </section>
 
             <motion.div variants={fadeInUp} className="bg-cream p-8 rounded-xl mb-6">
               <p className="text-brown text-center italic mb-4">
@@ -633,9 +550,9 @@ const DermalFillersLanding = ({
             </motion.div>
 
             <motion.div variants={fadeInUp} className="text-center">
-              <button className="bg-wine text-white px-8 py-3 rounded-full hover:bg-rose transition-all duration-300">
+              <Link href="/contact-us" className="bg-wine text-white px-8 py-3 rounded-full hover:bg-rose transition-all duration-300">
                 {pricing?.cta || "Get Your Personalised Quote | Book a Free Consultation at Nexus Clinic KL"}
-              </button>
+              </Link>
             </motion.div>
           </div>
         </motion.section>
@@ -824,15 +741,16 @@ const DermalFillersLanding = ({
             >
               {finalCta?.experience}
             </motion.p>
-            <motion.button
+            <motion.a
               variants={scaleIn}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              href="/contact-us"
               className="bg-white text-wine px-12 py-4 rounded-full font-semibold hover:bg-cream transition-colors shadow-xl inline-flex items-center gap-2"
             >
               {finalCta?.cta || "Book Your Free Consultation Now | Limited Slots Available This Week"}
               <Calendar size={18} />
-            </motion.button>
+            </motion.a>
           </div>
         </motion.section>
       </main>

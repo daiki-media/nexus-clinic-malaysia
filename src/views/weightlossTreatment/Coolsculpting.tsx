@@ -28,12 +28,12 @@ import {
   fadeInLeft,
   fadeInRight,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
 const CoolSculptingLanding = ({
   locale = fallbackLng,
 }: {
@@ -225,185 +225,25 @@ const CoolSculptingLanding = ({
           fontFamily: "var(--font-inter)",
         }}
       >
-        {/* Hero Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="relative overflow-hidden"
-          style={{
-            background:
-              "linear-gradient(135deg, var(--color-cream) 0%, #FFFFFF 100%)",
-          }}
-        >
-          <div className="absolute inset-0 overflow-hidden">
-            <div
-              className="absolute -top-40 -right-40 w-80 h-80 rounded-full"
-              style={{ backgroundColor: "var(--color-rose)", opacity: 0.1 }}
-            />
-            <div
-              className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full"
-              style={{ backgroundColor: "var(--color-wine)", opacity: 0.1 }}
-            />
-          </div>
-
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <motion.div variants={fadeInLeft} className="space-y-6">
-                <div
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
-                  style={{
-                    backgroundColor: "var(--color-glass)",
-                    backdropFilter: "blur(10px)",
-                    border: "1px solid var(--color-taupe)",
-                  }}
-                >
-                  <ThermometerSnowflake
-                    className="w-4 h-4"
-                    style={{ color: "var(--color-wine)" }}
-                  />
-                  <span
-                    className="text-sm"
-                    style={{ color: "var(--color-brown)" }}
-                  >
-                    FDA-Cleared CoolSculpting in Malaysia
-                  </span>
-                </div>
-
-                <h1
-                  className="text-4xl md:text-3xl lg:text-5xl xl:text-6xl font-bold leading-tight"
-                  style={{
-                    color: "var(--color-brown)",
-                    fontFamily: "var(--font-georgia)",
-                  }}
-                >
-                  Proven CoolSculpting
-                  <br />
-                  <span style={{ color: "var(--color-wine)" }}>
-                    for Permanent Fat Reduction
-                  </span>
-                </h1>
-
-                <p
-                  className="text-md xl:text-lg"
-                  style={{ color: "var(--color-taupe)" }}
-                >
-                  Diet followed for months. Gym sessions done consistently. Yet
-                  the belly, love handles, inner thighs or bra fat refuse to
-                  shift.
-                </p>
-
-                <p className="text-md xl:text-lg text-taupe">
-                  At Nexus Clinic KL, our doctors use precise controlled cooling
-                  to target stubborn fat pockets without surgery, needles or
-                  downtime, with results that develop naturally over 8 to 12
-                  weeks.
-                </p>
-
-                <div className="flex flex-wrap gap-4 pt-4">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-8 py-4 rounded-full text-white font-medium flex items-center gap-2"
-                    style={{ backgroundColor: "var(--color-wine)" }}
-                  >
-                    Book Free Assessment
-                    <ChevronRight className="w-5 h-5" />
-                  </motion.button>
-
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-8 py-4 rounded-full font-medium"
-                    style={{
-                      backgroundColor: "var(--color-glass)",
-                      backdropFilter: "blur(10px)",
-                      color: "var(--color-brown)",
-                      border: "1px solid var(--color-taupe)",
-                    }}
-                  >
-                    View Treatment Overview
-                  </motion.button>
-                </div>
-
-                <motion.div
-                  variants={scaleIn}
-                  className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8"
-                >
-                  {stats.map((stat, index) => (
-                    <div key={index} className="text-center">
-                      <div
-                        className="text-2xl font-bold"
-                        style={{ color: "var(--color-wine)" }}
-                      >
-                        {stat.value}
-                      </div>
-                      <div
-                        className="text-sm flex items-center justify-center gap-1"
-                        style={{ color: "var(--color-taupe)" }}
-                      >
-                        {stat.icon}
-                        {stat.label}
-                      </div>
-                    </div>
-                  ))}
-                </motion.div>
-              </motion.div>
-
-              <motion.div variants={fadeInRight} className="relative">
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                  <img
-                    src="/images/main/coolsculpting.webp"
-                    alt="Luxury clinic interior"
-                    className="w-full h-auto object-cover rounded-2xl"
-                  />
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background:
-                        "linear-gradient(45deg, var(--color-rose) 0%, transparent 100%)",
-                      opacity: 0.2,
-                    }}
-                  />
-                </div>
-
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ repeat: Infinity, duration: 3 }}
-                  className="absolute -bottom-6 -left-6 p-6 rounded-2xl"
-                  style={{
-                    backgroundColor: "var(--color-glass)",
-                    backdropFilter: "blur(10px)",
-                    border: "1px solid var(--color-taupe)",
-                  }}
-                >
-                  <div className="flex items-center gap-3">
-                    <Award
-                      className="w-8 h-8"
-                      style={{ color: "var(--color-wine)" }}
-                    />
-                    <div>
-                      <div
-                        className="font-semibold"
-                        style={{ color: "var(--color-brown)" }}
-                      >
-                        5000+ Procedures
-                      </div>
-                      <div
-                        className="text-sm"
-                        style={{ color: "var(--color-taupe)" }}
-                      >
-                        Trusted aesthetic care at Nexus Clinic KL
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
+        <AllPagesHero
+          badge="FDA-Cleared CoolSculpting in Malaysia"
+          title="Proven CoolSculpting"
+          highlight="for Permanent Fat Reduction"
+          description="Diet followed for months. Gym sessions done consistently. Yet the belly, love handles, inner thighs or bra fat refuse to shift."
+          details="At Nexus Clinic KL, our doctors use precise controlled cooling to target stubborn fat pockets without surgery, needles or downtime, with results that develop naturally over 8 to 12 weeks."
+          note="FDA-cleared cryolipolysis technology with over 5000+ procedures completed at Nexus Clinic KL. Trusted aesthetic care for permanent fat reduction."
+          image="/images/main/coolsculpting.webp"
+          imageAlt="CoolSculpting Treatment at Nexus Clinic Kuala Lumpur"
+          ctaText="Book Free Assessment"
+          ctaLink="/contact-us"
+          whatsappMessage="Hi, I'm interested in CoolSculpting treatment at Nexus Clinic KL. I'd like to book a consultation."
+          floatingTitle="5000+ Procedures"
+          floatingSubtitle="Trusted aesthetic care at Nexus Clinic KL"
+          staggerContainer={staggerContainer}
+          fadeInLeft={fadeInLeft}
+          fadeInRight={fadeInRight}
+          fadeInUp={fadeInUp}
+        />
         {/* Why Choose CoolSculpting */}
         <motion.section
           variants={staggerContainer}
@@ -728,14 +568,15 @@ const CoolSculptingLanding = ({
                 The right applicator, position and treatment plan matter more
                 than simply having the machine.
               </p>
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="px-8 py-3 rounded-full bg-white font-semibold"
                 style={{ color: "var(--color-wine)" }}
               >
                 Check Your Concern Area
-              </motion.button>
+              </motion.a>
             </motion.div>
           </div>
         </motion.section>
@@ -1113,14 +954,15 @@ const CoolSculptingLanding = ({
                       <span>Double chin and selected small pockets</span>
                     </li>
                   </ul>
-                  <motion.button
+                  <motion.a
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    href="/contact-us"
                     className="w-full py-3 rounded-full bg-white font-semibold"
                     style={{ color: "var(--color-wine)" }}
                   >
                     Get Personalised Quote
-                  </motion.button>
+                  </motion.a>
                 </div>
               </motion.div>
             </div>
@@ -1270,15 +1112,16 @@ const CoolSculptingLanding = ({
                 whether CoolSculpting is the right treatment for your concern
                 area.
               </p>
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="px-12 py-4 rounded-full bg-white font-semibold text-lg inline-flex items-center gap-2 mx-auto"
                 style={{ color: "var(--color-wine)" }}
               >
                 Book Free Assessment
                 <ChevronRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <p className="text-sm opacity-75">
                 No obligation. Just expert guidance tailored to your goals.
               </p>

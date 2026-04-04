@@ -32,12 +32,13 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
-import Image from "next/image";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 interface BeardTransplantProps {
   locale: string;
 }
@@ -112,90 +113,25 @@ export default function BeardLanding({ locale }: BeardTransplantProps) {
   return (
     <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <Sparkles className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">FUE • DHI • Permanent Results</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Best Beard Transplant in Malaysia for{" "}
-                <span className="text-wine italic">Permanent, Natural-Looking Facial Hair</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Not every man can grow a beard. Genetics, hormonal factors, or scarring can leave the face with patchy or sparse facial hair that no supplement, oil, or dermaroller will ever fully address.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                The only solution that produces permanent, natural-looking results is a beard transplant: moving individual hair follicles from the back of the scalp to the beard area where growth is absent or insufficient. Nexus Clinic KL is a trusted hair transplant clinic in Malaysia offering beard transplant procedures using FUE and DHI techniques.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Important Clinical Information
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  Every beard transplant at Nexus Clinic KL is performed by a qualified hair transplant surgeon under full medical supervision, not by a technician. The beard design process involves a detailed consultation before any procedure is confirmed.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Free Consultation
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in beard transplant at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/hair/beard-transplant.webp"
-                  alt="Nexus Clinic Kuala Lumpur - Beard Transplant"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown">FUE • DHI</p>
-                <p className="font-inter text-sm text-taupe">90-99% Graft Survival</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+        <AllPagesHero
+          badge="FUE • DHI • Permanent Results"
+          title="Best Beard Transplant in Malaysia for"
+          highlight="Permanent, Natural-Looking Facial Hair"
+          description="Not every man can grow a beard. Genetics, hormonal factors, or scarring can leave the face with patchy or sparse facial hair that no supplement, oil, or dermaroller will ever fully address."
+          details="The only solution that produces permanent, natural-looking results is a beard transplant: moving individual hair follicles from the back of the scalp to the beard area where growth is absent or insufficient. Nexus Clinic KL is a trusted hair transplant clinic in Malaysia offering beard transplant procedures using FUE and DHI techniques."
+          note="Every beard transplant at Nexus Clinic KL is performed by a qualified hair transplant surgeon under full medical supervision, not by a technician. The beard design process involves a detailed consultation before any procedure is confirmed."
+          image="/images/hair/beard-transplant.webp"
+          imageAlt="Nexus Clinic Kuala Lumpur - Beard Transplant"
+          ctaText="Free Consultation"
+          ctaLink="/contact-us"
+          whatsappMessage="Hi, I'm interested in beard transplant at Nexus Clinic KL. I'd like to book a consultation."
+          floatingTitle="FUE • DHI"
+          floatingSubtitle="90-99% Graft Survival"
+          staggerContainer={staggerContainer}
+          fadeInLeft={fadeInLeft}
+          fadeInRight={fadeInRight}
+          fadeInUp={fadeInUp}
+        />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -354,10 +290,10 @@ export default function BeardLanding({ locale }: BeardTransplantProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Speak to a Transplant Surgeon About Your Beard Goals | Free Consultation
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Transplant Surgeon
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -371,33 +307,26 @@ export default function BeardLanding({ locale }: BeardTransplantProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Facial Hair Transplant Zone Guide</h2>
-            <p className="text-taupe font-inter">Graft estimates by beard area</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Beard Zone</th>
-                  <th className="p-4 text-left font-georgia">Coverage Area</th>
-                  <th className="p-4 text-left font-georgia">Typical Grafts Needed</th>
-                  <th className="p-4 text-left font-georgia">Key Design Considerations</th>
-                </tr>
-              </thead>
-              <tbody>
-                {beardZoneGuide.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.zone}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.coverage}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.grafts}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.considerations}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+        {/* Facial Hair Transplant Zone Guide Table */}
+        <TableForPages
+          columns={[
+            { key: "zone", header: "Beard Zone", className: "font-semibold" },
+            { key: "coverage", header: "Coverage Area" },
+            { key: "grafts", header: "Typical Grafts Needed" },
+            { key: "considerations", header: "Key Design Considerations" },
+          ]}
+          data={beardZoneGuide.map((item) => ({
+            zone: item.zone,
+            coverage: item.coverage,
+            grafts: item.grafts,
+            considerations: item.considerations,
+          }))}
+          title="Facial Hair Transplant Zone Guide"
+          subtitle="Graft estimates by beard area"
+          variant="detailed"
+          fadeInUp={fadeInUp}
+          className="py-20 px-4"
+        />
         </motion.div>
       </section>
 
@@ -410,33 +339,25 @@ export default function BeardLanding({ locale }: BeardTransplantProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Donor Hair for Beard Transplant</h2>
-            <p className="text-taupe font-inter">Choosing the right source for natural results</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Donor Source</th>
-                  <th className="p-4 text-left font-georgia">Hair Characteristics</th>
-                  <th className="p-4 text-left font-georgia">Beard Match Quality</th>
-                  <th className="p-4 text-left font-georgia">Best Used For</th>
-                </tr>
-              </thead>
-              <tbody>
-                {donorSources.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.source}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.characteristics}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.matchQuality}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.bestUsed}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "source", header: "Donor Source", className: "font-semibold" },
+              { key: "characteristics", header: "Hair Characteristics" },
+              { key: "matchQuality", header: "Beard Match Quality" },
+              { key: "bestUsed", header: "Best Used For" },
+            ]}
+            data={donorSources.map((item) => ({
+              source: item.source,
+              characteristics: item.characteristics,
+              matchQuality: item.matchQuality,
+              bestUsed: item.bestUsed,
+            }))}
+            title="Donor Hair for Beard Transplant"
+            subtitle="Choosing the right source for natural results"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-20 px-4"
+          />
         </motion.div>
       </section>
 
@@ -449,31 +370,23 @@ export default function BeardLanding({ locale }: BeardTransplantProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">FUE Beard Transplant vs DHI Technique</h2>
-            <p className="text-taupe font-inter">Which is better for your beard goals?</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Factor</th>
-                  <th className="p-4 text-left font-georgia">FUE for Beard Transplant</th>
-                  <th className="p-4 text-left font-georgia">DHI Technique for Beard Transplant</th>
-                </tr>
-              </thead>
-              <tbody>
-                {fueVsDhi.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.factor}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.fue}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.dhi}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "factor", header: "Factor", className: "font-semibold" },
+              { key: "fue", header: "FUE for Beard Transplant" },
+              { key: "dhi", header: "DHI Technique for Beard Transplant" },
+            ]}
+            data={fueVsDhi.map((item) => ({
+              factor: item.factor,
+              fue: item.fue,
+              dhi: item.dhi,
+            }))}
+            title="FUE Beard Transplant vs DHI Technique"
+            subtitle="Which is better for your beard goals?"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-20 px-4"
+          />
         </motion.div>
       </section>
 
@@ -672,10 +585,10 @@ export default function BeardLanding({ locale }: BeardTransplantProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-10">
-            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
-              Book Your Free Consultation
+            <Link href="/contact-us" className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+              Book Your  Consultation
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
             <p className="text-taupe text-sm mt-3">FUE • DHI — Expert facial hair restoration at Nexus Clinic KL</p>
           </motion.div>
         </motion.div>
@@ -728,44 +641,28 @@ export default function BeardLanding({ locale }: BeardTransplantProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Beard Transplant Cost in Malaysia 2026</h2>
-            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Beard Transplant Package</th>
-                  <th className="p-4 text-left font-georgia">Graft / Hair Count</th>
-                  <th className="p-4 text-left font-georgia">Estimated Total Price (RM) 2026</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter font-semibold text-brown">{tier.package}</td>
-                    <td className="p-4 font-inter text-taupe text-sm">{tier.grafts}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
-                    Beard transplant cost in Malaysia is calculated per graft or per hair depending on technique used. All consultations are complimentary at Nexus Clinic KL. Final pricing confirmed after beard design consultation.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          
+          <TableForPages
+            columns={[
+              { key: "package", header: "Beard Transplant Package" },
+              { key: "grafts", header: "Graft / Hair Count" },
+              { key: "price", header: "Estimated Total Price (RM) 2026" },
+            ]}
+            data={pricingTiers.map((tier) => ({
+              package: tier.package,
+              grafts: tier.grafts,
+              price: tier.price,
+            }))}
+            title="Beard Transplant Cost in Malaysia 2026"
+            subtitle="Transparent pricing at Nexus Clinic KL"
+            variant="compact"
+            fadeInUp={fadeInUp}
+          />
+
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Get Your Personalised Beard Transplant Quote
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -796,14 +693,15 @@ export default function BeardLanding({ locale }: BeardTransplantProps) {
               Our licensed doctors bring over 15 years of combined experience, perform every procedure personally, and use only MOH-approved techniques. Nexus Clinic KL serves patients from across Malaysia seeking beard transplant clinics with clinical standards and aesthetic sensibility.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Free Consultation
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a consultation for beard transplant at Nexus Clinic KL. Please let me know available slots."
                 variant="light"

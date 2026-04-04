@@ -30,11 +30,13 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 import Image from "next/image";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 interface UnderEyeFillerProps {
   locale: string;
 }
@@ -141,93 +143,25 @@ export default function UnderEyeFiller({ locale }: UnderEyeFillerProps) {
   return (
     <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <Sparkles className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Natural Under-Eye Rejuvenation</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Natural Under Eye Filler in Malaysia for{" "}
-                <span className="text-wine italic">Eyes That Look Rested, Bright and Years Younger</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                You know the feeling. You slept a full night. You drank enough water. You tried every eye cream on the market. 
-                And you still look tired. The dark hollows and shadows beneath your eyes tell a different story.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                Under eye filler at Nexus Clinic Kuala Lumpur treats the structural reason your eyes look the way they do. 
-                A hollow groove forms beneath the eye as orbital volume depletes, and the shadow this groove casts is what reads as tiredness, dark circles and age.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  The Real Reason Eye Creams Stop Working
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  The hollow under your eyes is not a surface concern. It is a structural one. No topical product can penetrate deep enough to fill a structural hollow.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Book free consultation
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in under eye filler at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/face/Under Eye Filler.png"
-                  alt="Nexus Clinic Kuala Lumpur - Under Eye Filler Treatment"
-                  fill
-                  className="object-cover"
-
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown">✨ Brighter Eyes</p>
-                <p className="font-inter text-sm text-taupe">Natural results • 20-30 minutes</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+        badge="Natural Under-Eye Rejuvenation"
+        title="Natural Under Eye Filler in Malaysia for"
+        highlight="Eyes That Look Rested, Bright and Years Younger"
+        description="You know the feeling. You slept a full night. You drank enough water. You tried every eye cream on the market. And you still look tired. The dark hollows and shadows beneath your eyes tell a different story."
+        details="Under eye filler at Nexus Clinic Kuala Lumpur treats the structural reason your eyes look the way they do. A hollow groove forms beneath the eye as orbital volume depletes, and the shadow this groove casts is what reads as tiredness, dark circles and age."
+        note="The hollow under your eyes is not a surface concern. It is a structural one. No topical product can penetrate deep enough to fill a structural hollow."
+        image="/images/face/Under Eye Filler.png"
+        imageAlt="Nexus Clinic Kuala Lumpur - Under Eye Filler Treatment"
+        ctaText="Book free consultation"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in under eye filler at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="✨ Brighter Eyes"
+        floatingSubtitle="Natural results • 20-30 minutes"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -369,10 +303,10 @@ export default function UnderEyeFiller({ locale }: UnderEyeFillerProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Speak to a Doctor About Your Under-Eye Concern | Free Assessment
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor About
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -386,31 +320,23 @@ export default function UnderEyeFiller({ locale }: UnderEyeFillerProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">How the Under-Eye Area Changes Over Time</h2>
-            <p className="text-taupe font-inter">The aging timeline</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Age Range</th>
-                  <th className="p-4 text-left font-georgia">What Is Happening Structurally</th>
-                  <th className="p-4 text-left font-georgia">What You Notice</th>
-                 </tr>
-              </thead>
-              <tbody>
-                {agingTimeline.map((stage, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{stage.range}</td>
-                    <td className="p-4 text-taupe font-inter">{stage.structural}</td>
-                    <td className="p-4 text-taupe font-inter">{stage.noticeable}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "range", header: "Age Range", className: "font-semibold" },
+              { key: "structural", header: "What Is Happening Structurally" },
+              { key: "noticeable", header: "What You Notice" },
+            ]}
+            data={agingTimeline.map((stage) => ({
+              range: stage.range,
+              structural: stage.structural,
+              noticeable: stage.noticeable,
+            }))}
+            title="How the Under-Eye Area Changes Over Time"
+            subtitle="The aging timeline"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-20 px-4"
+          />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
@@ -419,10 +345,10 @@ export default function UnderEyeFiller({ locale }: UnderEyeFillerProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Find Out What Stage Your Under-Eye Is At | Free Assessment
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Find Out What Stage Your Under-Eye
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -436,33 +362,25 @@ export default function UnderEyeFiller({ locale }: UnderEyeFillerProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Under Eye Filler, Skin Booster or Laser</h2>
-            <p className="text-taupe font-inter">Choosing the right treatment for your concern</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Best Under-Eye Concern</th>
-                  <th className="p-4 text-left font-georgia">How It Works</th>
-                  <th className="p-4 text-left font-georgia">Sessions Needed</th>
-                </tr>
-              </thead>
-              <tbody>
-                {treatmentComparison.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.treatment}</td>
-                    <td className="p-4 text-taupe font-inter">{item.bestFor}</td>
-                    <td className="p-4 text-taupe font-inter">{item.howItWorks}</td>
-                    <td className="p-4 text-taupe font-inter">{item.sessions}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+        <TableForPages
+          columns={[
+            { key: "treatment", header: "Treatment", className: "font-semibold" },
+            { key: "bestFor", header: "Best Under-Eye Concern" },
+            { key: "howItWorks", header: "How It Works" },
+            { key: "sessions", header: "Sessions Needed" },
+          ]}
+          data={treatmentComparison.map((item) => ({
+            treatment: item.treatment,
+            bestFor: item.bestFor,
+            howItWorks: item.howItWorks,
+            sessions: item.sessions,
+          }))}
+          title="Under Eye Filler, Skin Booster or Laser"
+          subtitle="Choosing the right treatment for your concern"
+          variant="detailed"
+          fadeInUp={fadeInUp}
+          className="py-20 px-4"
+        />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
@@ -471,10 +389,10 @@ export default function UnderEyeFiller({ locale }: UnderEyeFillerProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Get the Right Treatment Plan for Your Under-Eyes
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Get the Right Treatment 
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -528,10 +446,10 @@ export default function UnderEyeFiller({ locale }: UnderEyeFillerProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="mt-8 text-center">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Book Your Under Eye Filler Appointment
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Book Your  Appointment
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -572,10 +490,10 @@ export default function UnderEyeFiller({ locale }: UnderEyeFillerProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Ask Which Product Is Right for Your Under-Eyes
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Ask Which Product Is Right 
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -612,10 +530,10 @@ export default function UnderEyeFiller({ locale }: UnderEyeFillerProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-10">
-            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+            <Link href="/contact-us" className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
               Book Your Under Eye Filler Appointment
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
             <p className="text-taupe text-sm mt-3">Same-day results at Nexus Clinic KL</p>
           </motion.div>
         </motion.div>
@@ -630,44 +548,27 @@ export default function UnderEyeFiller({ locale }: UnderEyeFillerProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-4xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Under Eye Filler Price in Malaysia</h2>
-            <p className="text-taupe font-inter">2026 Pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Typical Volume</th>
-                  <th className="p-4 text-left font-georgia">Price Range (2026)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter text-brown">{tier.treatment}</td>
-                    <td className="p-4 font-inter text-taupe">{tier.volume}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
-                    * All treatments are customised based on your under-eye condition. Final pricing confirmed during consultation.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          
+        <TableForPages
+              columns={[
+                { key: "treatment", header: "Treatment" },
+                { key: "volume", header: "Typical Volume" },
+                { key: "price", header: "Price Range (2026)" },
+              ]}
+              data={pricingTiers.map((tier) => ({
+                treatment: tier.treatment,
+                volume: tier.volume,
+                price: tier.price,
+              }))}
+              title="Under Eye Filler Price in Malaysia"
+              subtitle="2026 Pricing at Nexus Clinic KL"
+              variant="compact"
+              fadeInUp={fadeInUp}
+          />
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Get Your Under Eye Filler Quote
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -899,14 +800,15 @@ export default function UnderEyeFiller({ locale }: UnderEyeFillerProps) {
               One consultation. An honest diagnosis. A treatment plan that actually addresses your concern.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Book Your Free Under Eye Consultation Now
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a free consultation for under eye filler at Nexus Clinic KL. Please let me know available slots."
                 variant="light"
@@ -916,9 +818,9 @@ export default function UnderEyeFiller({ locale }: UnderEyeFillerProps) {
               Limited slots available this week | Located at Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
-              <a href="#" className="hover:text-cream transition-colors">Explore Tear Trough Filler</a>
+              <a href="/face/tear-trough-filler-malaysia/" className="hover:text-cream transition-colors">Explore Tear Trough Filler</a>
               <span>•</span>
-              <a href="#" className="hover:text-cream transition-colors">Explore Cheek Filler</a>
+              <a href="/face/cheek-filler-malaysia/" className="hover:text-cream transition-colors">Explore Cheek Filler</a>
             </div>
           </motion.div>
         </motion.div>

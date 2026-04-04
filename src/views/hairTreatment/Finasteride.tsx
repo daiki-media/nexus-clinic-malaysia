@@ -31,12 +31,14 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import Image from "next/image";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 interface FinasterideLandingProps {
   locale: string;
 }
@@ -114,91 +116,25 @@ export default function FinasterideLanding({ locale }: FinasterideLandingProps) 
 
   return (
     <div className="w-full bg-light overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <AlertTriangle className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Prescription Medication • Doctor-Only</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Finasteride for Hair Loss in Malaysia for{" "}
-                <span className="text-wine italic">Male Pattern Baldness Treatment</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Male pattern hair loss affects a significant proportion of Malaysian men and is one of the most treatable forms of hair loss when addressed early. A receding hairline and thinning crown are the visible expressions of a hormone-driven process.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                Finasteride is the most evidence-supported oral prescription medication for hair loss available in Malaysia. Finasteride works by blocking the enzyme that converts testosterone to DHT, reducing DHT levels in the scalp by 60 to 70% and stopping the progression of follicle miniaturisation.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Important Clinical Information
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  Finasteride is a prescription medication regulated by the National Pharmaceutical Regulatory Agency (NPRA) under the Ministry of Health Malaysia. It cannot be purchased at a pharmacy without a prescription. To buy finasteride safely in Malaysia, a medical consultation with a registered doctor is required.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Free Assessment
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in finasteride for hair loss at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/hair/happy-patient-hair.png"
-                  alt="Nexus Clinic Kuala Lumpur - Finasteride Hair Loss Treatment"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown">DHT Blocker</p>
-                <p className="font-inter text-sm text-taupe">60-70% reduction in scalp DHT</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+        badge="Prescription Medication • Doctor-Only"
+        title="Finasteride for Hair Loss in Malaysia for"
+        highlight="Male Pattern Baldness Treatment"
+        description="Male pattern hair loss affects a significant proportion of Malaysian men and is one of the most treatable forms of hair loss when addressed early. A receding hairline and thinning crown are the visible expressions of a hormone-driven process."
+        details="Finasteride is the most evidence-supported oral prescription medication for hair loss available in Malaysia. Finasteride works by blocking the enzyme that converts testosterone to DHT, reducing DHT levels in the scalp by 60 to 70% and stopping the progression of follicle miniaturisation."
+        note="Finasteride is a prescription medication regulated by the National Pharmaceutical Regulatory Agency (NPRA) under the Ministry of Health Malaysia. It cannot be purchased at a pharmacy without a prescription. To buy finasteride safely in Malaysia, a medical consultation with a registered doctor is required."
+        image="/images/hair/happy-patient-hair.png"
+        imageAlt="Nexus Clinic Kuala Lumpur - Finasteride Hair Loss Treatment"
+        ctaText="Free Assessment"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in finasteride for hair loss at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="DHT Blocker"
+        floatingSubtitle="60-70% reduction in scalp DHT"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -357,10 +293,10 @@ export default function FinasterideLanding({ locale }: FinasterideLandingProps) 
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Speak to a Doctor About Finasteride | Free Assessment
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -374,33 +310,25 @@ export default function FinasterideLanding({ locale }: FinasterideLandingProps) 
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">How Finasteride Works</h2>
-            <p className="text-taupe font-inter">DHT, hair follicle miniaturisation and stopping hair loss</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Mechanism Step</th>
-                  <th className="p-4 text-left font-georgia">What Happens Biologically</th>
-                  <th className="p-4 text-left font-georgia">Why This Is Relevant</th>
-                  <th className="p-4 text-left font-georgia">Clinical Implication</th>
-                </tr>
-              </thead>
-              <tbody>
-                {mechanismSteps.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.step}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.biology}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.relevance}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.implication}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "step", header: "Mechanism Step", className: "font-semibold" },
+              { key: "biology", header: "What Happens Biologically" },
+              { key: "relevance", header: "Why This Is Relevant" },
+              { key: "implication", header: "Clinical Implication" },
+            ]}
+            data={mechanismSteps.map((item) => ({
+              step: item.step,
+              biology: item.biology,
+              relevance: item.relevance,
+              implication: item.implication,
+            }))}
+            title="How Finasteride Works"
+            subtitle="DHT, hair follicle miniaturisation and stopping hair loss"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-20 px-4"
+          />
         </motion.div>
       </section>
 
@@ -413,35 +341,27 @@ export default function FinasterideLanding({ locale }: FinasterideLandingProps) 
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Finasteride vs Dutasteride vs Topical Finasteride vs Minoxidil</h2>
-            <p className="text-taupe font-inter">Choosing the right hair loss treatment in Malaysia</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Factor</th>
-                  <th className="p-4 text-left font-georgia">Oral Finasteride 1mg</th>
-                  <th className="p-4 text-left font-georgia">Topical Finasteride</th>
-                  <th className="p-4 text-left font-georgia">Dutasteride</th>
-                  <th className="p-4 text-left font-georgia">Minoxidil</th>
-                </tr>
-              </thead>
-              <tbody>
-                {treatmentComparison.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.factor}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.oralFinasteride}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.topicalFinasteride}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.dutasteride}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.minoxidil}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "factor", header: "Factor", className: "font-semibold" },
+              { key: "oralFinasteride", header: "Oral Finasteride 1mg" },
+              { key: "topicalFinasteride", header: "Topical Finasteride" },
+              { key: "dutasteride", header: "Dutasteride" },
+              { key: "minoxidil", header: "Minoxidil" },
+            ]}
+            data={treatmentComparison.map((item) => ({
+              factor: item.factor,
+              oralFinasteride: item.oralFinasteride,
+              topicalFinasteride: item.topicalFinasteride,
+              dutasteride: item.dutasteride,
+              minoxidil: item.minoxidil,
+            }))}
+            title="Finasteride vs Dutasteride vs Topical Finasteride vs Minoxidil"
+            subtitle="Choosing the right hair loss treatment in Malaysia"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-20 px-4"
+          />
         </motion.div>
       </section>
 
@@ -454,32 +374,23 @@ export default function FinasterideLanding({ locale }: FinasterideLandingProps) 
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Finasteride Side Effects and Risks</h2>
-            <p className="text-taupe font-inter">Honest clinical information for Malaysian men</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Side Effect Category</th>
-                  <th className="p-4 text-left font-georgia">What the Evidence Shows</th>
-                  <th className="p-4 text-left font-georgia">How Nexus Clinic KL Manages This</th>
-                </tr>
-              </thead>
-              <tbody>
-                {sideEffectsProfile.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.category}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.evidence}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.management}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          
+          <TableForPages
+            columns={[
+              { key: "category", header: "Side Effect Category", className: "font-semibold" },
+              { key: "evidence", header: "What the Evidence Shows" },
+              { key: "management", header: "How Nexus Clinic KL Manages This" },
+            ]}
+            data={sideEffectsProfile.map((item) => ({
+              category: item.category,
+              evidence: item.evidence,
+              management: item.management,
+            }))}
+            title="Finasteride Side Effects and Risks"
+            subtitle="Honest clinical information for Malaysian men"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-20 px-4"
+          />
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl border-l-4 border-wine">
             <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
               <AlertCircle className="w-4 h-4" />
@@ -648,31 +559,23 @@ export default function FinasterideLanding({ locale }: FinasterideLandingProps) 
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Comprehensive Hair Loss Treatment Programme</h2>
-            <p className="text-taupe font-inter">Finasteride, Minoxidil, PRP and scalp assessment</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment Component</th>
-                  <th className="p-4 text-left font-georgia">Role in the Hair Loss Programme</th>
-                  <th className="p-4 text-left font-georgia">How Nexus Clinic KL Integrates This</th>
-                </tr>
-              </thead>
-              <tbody>
-                {programmeComponents.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.component}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.role}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.integration}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "component", header: "Treatment Component", className: "font-semibold" },
+              { key: "role", header: "Role in the Hair Loss Programme" },
+              { key: "integration", header: "How Nexus Clinic KL Integrates This" },
+            ]}
+            data={programmeComponents.map((item) => ({
+              component: item.component,
+              role: item.role,
+              integration: item.integration,
+            }))}
+            title="Comprehensive Hair Loss Treatment Programme"
+            subtitle="Finasteride, Minoxidil, PRP and scalp assessment"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-20 px-4"
+          />
         </motion.div>
       </section>
 
@@ -685,44 +588,27 @@ export default function FinasterideLanding({ locale }: FinasterideLandingProps) 
           viewport={{ once: true }}
           className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Finasteride and Hair Loss Treatment Cost in Malaysia 2026</h2>
-            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Service / Treatment</th>
-                  <th className="p-4 text-left font-georgia">Details</th>
-                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter font-semibold text-brown">{tier.service}</td>
-                    <td className="p-4 font-inter text-taupe text-sm">{tier.details}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
-                    Total annual management cost for a comprehensive hair loss programme including finasteride 1mg, topical minoxidil, and three PRP sessions is approximately RM 6,000 to RM 12,000. Men who use only finasteride and minoxidil without PRP have a significantly lower annual cost of approximately RM 1,000 to RM 3,000.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          
+          <TableForPages
+            columns={[
+              { key: "service", header: "Service / Treatment" },
+              { key: "details", header: "Details" },
+              { key: "price", header: "Price Range (RM) 2026" },
+            ]}
+            data={pricingTiers.map((tier) => ({
+              service: tier.service,
+              details: tier.details,
+              price: tier.price,
+            }))}
+            title="Finasteride and Hair Loss Treatment Cost in Malaysia 2026"
+            subtitle="Transparent pricing at Nexus Clinic KL"
+            variant="compact"
+            fadeInUp={fadeInUp}
+          />
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Get Your Hair Loss Programme Pricing
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -753,14 +639,15 @@ export default function FinasterideLanding({ locale }: FinasterideLandingProps) 
               Our licensed doctors bring over 15 years of combined clinical experience and have completed over 5,000 procedures. Keeping your hair is achievable with the right treatment programme started at the right time.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Free Assessment
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a consultation for finasteride hair loss treatment at Nexus Clinic KL. Please let me know available slots."
                 variant="light"

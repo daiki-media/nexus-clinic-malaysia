@@ -36,12 +36,15 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
+} from "@/src/lib/animations";
 
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 import Image from "next/image";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 
 interface AcneScarLandingProps {
   locale: string;
@@ -242,119 +245,25 @@ export default function AcneScarLanding({ locale }: AcneScarLandingProps) {
 
   return (
     <div className="w-full bg-light overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div
-                variants={fadeInUp}
-                className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full"
-              >
-                <AlertTriangle className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">
-                  Doctor-Performed • Scar Mapping Approach
-                </span>
-              </motion.div>
-
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Best Acne Scar Treatment in Malaysia for{" "}
-                <span className="text-wine italic">Smoother, Clearer Skin</span>
-              </motion.h1>
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Stubborn pits, dark marks, and uneven skin texture. Nexus Clinic
-                KL treats every scar type with doctor-performed CO2 Laser, Pico
-                Laser, RF Microneedling and Subcision. Personalised for
-                Malaysian skin.
-              </motion.p>
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                Your skin healed from acne years ago. The scars did not. They
-                sit in the mirror every morning, pitted, dark, or raised, a
-                constant reminder of breakouts that should belong in the past.
-                The reality is that acne scars do not resolve on their own, and
-                no amount of serum or filter changes the texture underneath. At
-                Nexus Clinic KL, our licensed aesthetic doctors assess every
-                scar type individually and build a treatment plan using
-                clinically proven modalities matched precisely to your scarring,
-                skin tone and healing capacity.
-              </motion.p>
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Important Clinical Note
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  Malaysia's Fitzpatrick skin types III to V require a different
-                  clinical approach than protocols used in Western markets. At
-                  Nexus Clinic KL, our doctors are trained in Southeast Asian
-                  facial anatomy and skin physiology, meaning every treatment
-                  setting and aftercare recommendation is calibrated for
-                  Malaysian patients.
-                </p>
-              </motion.div>
-              <motion.div
-                variants={fadeInLeft}
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Book Free Assessment
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp
-                  message="Hi, I'm interested in acne scar treatment at Nexus Clinic KL. I'd like to book a consultation."
-                  variant="light"
-                />
-              </motion.div>
-            </motion.div>
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/skin/acne-scar-treatment.webp"
-                  alt="Nexus Clinic Kuala Lumpur - Acne Scar Treatment Consultation"
-                  fill
-                  className="object-cover"
-                  onError={(e) => {
-                    const img = e.target as HTMLImageElement;
-                    img.src =
-                      "https://placehold.co/600x800/FAF7F2/8B5A2B?text=Acne+Scar+Treatment";
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown">
-                  ✨ Scar Mapping Process
-                </p>
-                <p className="font-inter text-sm text-taupe">
-                  Doctor-led • Personalised Plan
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+        badge="Doctor-Performed • Scar Mapping Approach"
+        title="Best Acne Scar Treatment in Malaysia for"
+        highlight="Smoother, Clearer Skin"
+        description="Stubborn pits, dark marks, and uneven skin texture. Nexus Clinic KL treats every scar type with doctor-performed CO2 Laser, Pico Laser, RF Microneedling and Subcision. Personalised for Malaysian skin."
+        details="Your skin healed from acne years ago. The scars did not. They sit in the mirror every morning, pitted, dark, or raised, a constant reminder of breakouts that should belong in the past. The reality is that acne scars do not resolve on their own, and no amount of serum or filter changes the texture underneath. At Nexus Clinic KL, our licensed aesthetic doctors assess every scar type individually and build a treatment plan using clinically proven modalities matched precisely to your scarring, skin tone and healing capacity."
+        note="Malaysia's Fitzpatrick skin types III to V require a different clinical approach than protocols used in Western markets. At Nexus Clinic KL, our doctors are trained in Southeast Asian facial anatomy and skin physiology, meaning every treatment setting and aftercare recommendation is calibrated for Malaysian patients."
+        image="/images/skin/acne-scar-treatment.webp"
+        imageAlt="Nexus Clinic Kuala Lumpur - Acne Scar Treatment Consultation"
+        ctaText="Book Free Assessment"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in acne scar treatment at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="✨ Scar Mapping Process"
+        floatingSubtitle="Doctor-led • Personalised Plan"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -590,10 +499,10 @@ export default function AcneScarLanding({ locale }: AcneScarLandingProps) {
           </motion.div>
 
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Speak to a Doctor About Your Scar Type | Free Assessment
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -607,56 +516,25 @@ export default function AcneScarLanding({ locale }: AcneScarLandingProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">
-              The Scar-Type-to-Treatment Decision Matrix
-            </h2>
-            <p className="text-taupe font-inter">
-              Used at Nexus Clinic KL for every initial consultation
-            </p>
-          </motion.div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Scar Type</th>
-                  <th className="p-4 text-left font-georgia">Appearance</th>
-                  <th className="p-4 text-left font-georgia">Depth</th>
-                  <th className="p-4 text-left font-georgia">
-                    Best Treatment at Nexus Clinic KL
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {scarTypeData.map((scar, idx) => (
-                  <tr
-                    key={idx}
-                    className="border-t border-taupe/10 hover:bg-cream/30 transition-colors"
-                  >
-                    <td className="p-4 font-inter font-semibold text-brown">
-                      {scar.type}
-                    </td>
-                    <td className="p-4 text-taupe font-inter">
-                      {scar.appearance}
-                    </td>
-                    <td
-                      className={`p-4 font-inter ${
-                        scar.depth === "Deep" || scar.depth === "Moderate to deep"
-                          ? "text-wine font-semibold"
-                          : "text-taupe"
-                      }`}
-                    >
-                      {scar.depth}
-                    </td>
-                    <td className="p-4 text-taupe font-inter">
-                      {scar.bestTreatment}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+            <TableForPages
+              columns={[
+                { key: "type", header: "Scar Type", className: "font-semibold text-brown" },
+                { key: "appearance", header: "Appearance" },
+                { key: "depth", header: "Depth" },
+                { key: "bestTreatment", header: "Best Treatment at Nexus Clinic KL" },
+              ]}
+              data={scarTypeData.map(scar => ({
+                type: scar.type,
+                appearance: scar.appearance,
+                depth: scar.depth,
+                bestTreatment: scar.bestTreatment,
+              }))}
+              title="The Scar-Type-to-Treatment Decision Matrix"
+              subtitle="Used at Nexus Clinic KL for every initial consultation"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-12 px-4"
+            />
 
           <motion.div
             variants={fadeInUp}
@@ -871,46 +749,25 @@ export default function AcneScarLanding({ locale }: AcneScarLandingProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">
-              Subcision vs Laser vs Microneedling
-            </h2>
-            <p className="text-taupe font-inter">
-              Which is better? The answer depends on your scar type
-            </p>
-          </motion.div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Factor</th>
-                  <th className="p-4 text-left font-georgia">Subcision</th>
-                  <th className="p-4 text-left font-georgia">Laser</th>
-                  <th className="p-4 text-left font-georgia">Microneedling</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonData.map((row, idx) => (
-                  <tr
-                    key={idx}
-                    className="border-t border-taupe/10 hover:bg-cream/30 transition-colors"
-                  >
-                    <td className="p-4 font-inter font-semibold text-brown">
-                      {row.factor}
-                    </td>
-                    <td className="p-4 text-taupe font-inter">
-                      {row.subcision}
-                    </td>
-                    <td className="p-4 text-taupe font-inter">{row.laser}</td>
-                    <td className="p-4 text-taupe font-inter">
-                      {row.microneedling}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "factor", header: "Factor", className: "font-semibold text-brown" },
+              { key: "subcision", header: "Subcision" },
+              { key: "laser", header: "Laser" },
+              { key: "microneedling", header: "Microneedling" },
+            ]}
+            data={comparisonData.map(row => ({
+              factor: row.factor,
+              subcision: row.subcision,
+              laser: row.laser,
+              microneedling: row.microneedling,
+            }))}
+            title="Subcision vs Laser vs Microneedling"
+            subtitle="Which is better? The answer depends on your scar type"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
 
           <motion.div
             variants={fadeInUp}
@@ -978,10 +835,10 @@ export default function AcneScarLanding({ locale }: AcneScarLandingProps) {
           </div>
 
           <motion.div variants={fadeInUp} className="text-center mt-10">
-            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+            <Link href="/contact-us" className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
               Book Your Acne Scar Consultation
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
             <p className="text-taupe text-sm mt-3">
               Personalised scar mapping at Nexus Clinic KL
             </p>
@@ -1085,52 +942,25 @@ export default function AcneScarLanding({ locale }: AcneScarLandingProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">
-              Acne Scar Treatment Cost in Malaysia 2026
-            </h2>
-            <p className="text-taupe font-inter">
-              Transparent pricing at Nexus Clinic KL
-            </p>
-          </motion.div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Target Scar Type</th>
-                  <th className="p-4 text-left font-georgia">Sessions Needed</th>
-                  <th className="p-4 text-left font-georgia">Price Range (RM)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr
-                    key={idx}
-                    className="border-t border-taupe/10 hover:bg-cream/30 transition-colors"
-                  >
-                    <td className="p-4 font-inter font-semibold text-brown">
-                      {tier.treatment}
-                    </td>
-                    <td className="p-4 font-inter text-taupe">{tier.target}</td>
-                    <td className="p-4 font-inter text-taupe">{tier.sessions}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">
-                      {tier.price}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={4} className="p-4 text-taupe font-inter text-sm italic">
-                    * Package pricing available for combination programmes of 4 or more sessions.
-                    Final pricing confirmed at consultation after scar mapping.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
+        <TableForPages
+          columns={[
+            { key: "treatment", header: "Treatment", className: "font-semibold text-brown" },
+            { key: "target", header: "Target Scar Type" },
+            { key: "sessions", header: "Sessions Needed" },
+            { key: "price", header: "Price Range (RM)", className: "font-semibold text-wine" },
+          ]}
+          data={pricingTiers.map(tier => ({
+            treatment: tier.treatment,
+            target: tier.target,
+            sessions: tier.sessions,
+            price: tier.price,
+          }))}
+          title="Acne Scar Treatment Cost in Malaysia 2026"
+          subtitle="Transparent pricing at Nexus Clinic KL"
+          variant="compact"
+          fadeInUp={fadeInUp}
+          className="py-12 px-4"
+        />
         </motion.div>
       </section>
 
@@ -1317,14 +1147,15 @@ export default function AcneScarLanding({ locale }: AcneScarLandingProps) {
               with MOH-approved devices and injectables.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Book Your Free Acne Scar Assessment
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp
                 message="Hi, I'd like to book a free consultation for acne scar treatment at Nexus Clinic KL. Please let me know available slots."
                 variant="light"

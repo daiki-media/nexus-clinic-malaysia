@@ -26,12 +26,14 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import Image from "next/image";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 interface HydraFacialProps {
   locale: string;
 }
@@ -96,91 +98,25 @@ export default function HydraFacialLandingPage({ locale }: HydraFacialProps) {
 
   return (
     <div className="w-full bg-light overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <Sparkles className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Zero Downtime • Doctor-Supervised</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Best HydraFacial Treatment in Malaysia for{" "}
-                <span className="text-wine italic">Brighter, Cleaner, Hydrated Skin</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Back-to-back meetings, tropical UV and KL pollution take a visible toll on your skin. Your skin absorbs KL's full daily burden without a break.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                At Nexus Clinic KL, we use only the authentic HydraFacial device with genuine patented Vortex-Fusion technology and the full range of original HydraFacial boosters. Every session begins with a skin assessment so the correct tier and booster for your skin concern that day are selected before treatment begins.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Important Clinical Information
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  HydraFacial is not a standardized facial appointment. It is a personalised, medically supervised skin health session administered by our licensed aesthetic doctors and clinical team, with full aftercare guidance included as standard.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Free Skin Assessment
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in HydraFacial at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/skin/hydrafacial.webp"
-                  alt="Nexus Clinic Kuala Lumpur - HydraFacial Treatment"
-                  fill
-                  className="object-cover object-[90%_30%]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown">Authentic HydraFacial MD</p>
-                <p className="font-inter text-sm text-taupe">Over 5,000 procedures completed</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+        badge="Zero Downtime • Doctor-Supervised"
+        title="Best HydraFacial Treatment in Malaysia for"
+        highlight="Brighter, Cleaner, Hydrated Skin"
+        description="Back-to-back meetings, tropical UV and KL pollution take a visible toll on your skin. Your skin absorbs KL's full daily burden without a break."
+        details="At Nexus Clinic KL, we use only the authentic HydraFacial device with genuine patented Vortex-Fusion technology and the full range of original HydraFacial boosters. Every session begins with a skin assessment so the correct tier and booster for your skin concern that day are selected before treatment begins."
+        note="HydraFacial is not a standardized facial appointment. It is a personalised, medically supervised skin health session administered by our licensed aesthetic doctors and clinical team, with full aftercare guidance included as standard."
+        image="/images/skin/hydrafacial.webp"
+        imageAlt="Nexus Clinic Kuala Lumpur - HydraFacial Treatment"
+        ctaText="Free Skin Assessment"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in HydraFacial at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="Authentic HydraFacial MD"
+        floatingSubtitle="Over 5,000 procedures completed"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -339,10 +275,10 @@ export default function HydraFacialLandingPage({ locale }: HydraFacialProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Speak to Our Team About the Right HydraFacial Tier for Your Skin
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -356,35 +292,27 @@ export default function HydraFacialLandingPage({ locale }: HydraFacialProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Skin-Concern-to-HydraFacial-Tier Decision Matrix</h2>
-            <p className="text-taupe font-inter">Which tier and booster is right for you</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Primary Skin Concern</th>
-                  <th className="p-4 text-left font-georgia">Recommended Tier</th>
-                  <th className="p-4 text-left font-georgia">Key Booster Ingredient</th>
-                  <th className="p-4 text-left font-georgia">Add-On Recommended</th>
-                  <th className="p-4 text-left font-georgia">Expected Outcome</th>
-                </tr>
-              </thead>
-              <tbody>
-                {skinConcernMatrix.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.concern}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.tier}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.booster}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.addOn}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.outcome}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "concern", header: "Primary Skin Concern", className: "font-semibold text-brown" },
+              { key: "tier", header: "Recommended Tier" },
+              { key: "booster", header: "Key Booster Ingredient" },
+              { key: "addOn", header: "Add-On Recommended" },
+              { key: "outcome", header: "Expected Outcome" },
+            ]}
+            data={skinConcernMatrix.map(item => ({
+              concern: item.concern,
+              tier: item.tier,
+              booster: item.booster,
+              addOn: item.addOn,
+              outcome: item.outcome,
+            }))}
+            title="Skin-Concern-to-HydraFacial-Tier Decision Matrix"
+            subtitle="Which tier and booster is right for you"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
@@ -492,33 +420,25 @@ export default function HydraFacialLandingPage({ locale }: HydraFacialProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">HydraFacial as a 12-Month Skin Health Programme</h2>
-            <p className="text-taupe font-inter">Monthly sessions produce sustainable outcomes</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Programme Phase</th>
-                  <th className="p-4 text-left font-georgia">Timeline</th>
-                  <th className="p-4 text-left font-georgia">Sessions and Tier</th>
-                  <th className="p-4 text-left font-georgia">Goal and Expected Outcome</th>
-                </tr>
-              </thead>
-              <tbody>
-                {programmePhases.map((phase, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{phase.phase}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{phase.timeline}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{phase.sessions}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{phase.outcome}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+            <TableForPages
+              columns={[
+                { key: "phase", header: "Programme Phase", className: "font-semibold text-brown" },
+                { key: "timeline", header: "Timeline" },
+                { key: "sessions", header: "Sessions and Tier" },
+                { key: "outcome", header: "Goal and Expected Outcome" },
+              ]}
+              data={programmePhases.map(phase => ({
+                phase: phase.phase,
+                timeline: phase.timeline,
+                sessions: phase.sessions,
+                outcome: phase.outcome,
+              }))}
+              title="HydraFacial as a 12-Month Skin Health Programme"
+              subtitle="Monthly sessions produce sustainable outcomes"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-12 px-4"
+            />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
@@ -561,10 +481,10 @@ export default function HydraFacialLandingPage({ locale }: HydraFacialProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-10">
-            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+            <Link href="/contact-us" className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
               Book Your HydraFacial
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
             <p className="text-taupe text-sm mt-3">Zero downtime • Instant glow</p>
           </motion.div>
         </motion.div>
@@ -632,47 +552,31 @@ export default function HydraFacialLandingPage({ locale }: HydraFacialProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">HydraFacial Price in Malaysia 2026</h2>
-            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">HydraFacial Treatment</th>
-                  <th className="p-4 text-left font-georgia">Includes</th>
-                  <th className="p-4 text-left font-georgia">Session Time</th>
-                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter font-semibold text-brown">{tier.treatment}</td>
-                    <td className="p-4 font-inter text-taupe text-sm">{tier.includes}</td>
-                    <td className="p-4 font-inter text-taupe text-sm">{tier.time}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={4} className="p-4 text-taupe font-inter text-sm italic">
-                    Monthly package pricing available for patients committing to a 4-session programme. All sessions include pre-treatment skin consultation, full device session, and post-treatment SPF application.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          
-          <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Get Your HydraFacial Pricing
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </motion.div>
+          <TableForPages
+              columns={[
+                { key: "treatment", header: "HydraFacial Treatment", className: "font-semibold text-brown" },
+                { key: "includes", header: "Includes" },
+                { key: "time", header: "Session Time" },
+                { key: "price", header: "Price Range (RM) 2026", className: "font-semibold text-wine" },
+              ]}
+              data={pricingTiers.map(tier => ({
+                treatment: tier.treatment,
+                includes: tier.includes,
+                time: tier.time,
+                price: tier.price,
+              }))}
+              title="HydraFacial Price in Malaysia 2026"
+              subtitle="Transparent pricing at Nexus Clinic KL"
+              variant="default"
+              fadeInUp={fadeInUp}
+              className="py-12 px-4"
+            />
+
+            <motion.div variants={fadeInUp} className="text-center mt-4">
+              <p className="text-taupe font-inter text-sm italic">
+                Monthly package pricing available for patients committing to a 4-session programme. All sessions include pre-treatment skin consultation, full device session, and post-treatment SPF application.
+              </p>
+            </motion.div>
         </motion.div>
       </section>
 
@@ -702,14 +606,15 @@ export default function HydraFacialLandingPage({ locale }: HydraFacialProps) {
               Our licensed aesthetic doctors bring more than 15 years of combined experience, have performed over 5,000 aesthetic procedures and operate exclusively with MOH-approved devices and clinical protocols.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Free Skin Assessment
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a consultation for HydraFacial at Nexus Clinic KL. Please let me know available slots."
                 variant="light"

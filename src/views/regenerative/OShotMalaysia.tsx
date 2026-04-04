@@ -29,9 +29,10 @@ import {
   fadeInRight,
   scaleIn,
   fadeInUp,
-} from "../../lib/animations";
+} from "@/src/lib/animations";
 import FAQ from "@/src/components/FAQ";
-
+import Whatsapp from "@/src/components/Whatsapp";
+import TableForPages from "@/src/components/TableForPages";
 const OShotLanding = () => {
   const faqs = [
     {
@@ -180,18 +181,18 @@ const OShotLanding = () => {
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-brown leading-tight font-georgia">
                 O-Shot in Malaysia
-                <span className="block text-wine mt-2">
+                <span className="italic text-wine">
                   Non-Surgical Vaginal Rejuvenation with PRP
                 </span>
               </h1>
 
-              <p className="text-xl leading-relaxed text-brown">
+              <p className="lg:text-xl leading-relaxed text-brown">
                 The O-Shot (Orgasm Shot) uses platelet-rich plasma (PRP) from
                 your own blood to enhance sexual pleasure, improve orgasm intensity,
                 reduce urinary incontinence, and address vaginal dryness.
               </p>
 
-              <p className="text-lg text-brown border-l-4 border-rose pl-6 italic">
+              <p className="lg:text-lg text-brown border-l-4 border-rose pl-6 italic">
                 Because PRP is derived from your own blood, this natural treatment
                 offers a safer option compared to synthetic injectable methods.
                 The most consistent evidence supports its use for urinary incontinence
@@ -202,22 +203,16 @@ const OShotLanding = () => {
                 variants={scaleIn}
                 className="flex flex-wrap gap-4 pt-4"
               >
-                <motion.button
+                <motion.a
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  href="/contact-us"
                   className="px-8 py-4 bg-wine text-white rounded-full font-semibold hover:bg-rose transition-colors shadow-lg"
                 >
-                  Book Your Confidential O-Shot Consultation
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-glass backdrop-blur-sm text-brown rounded-full font-semibold border border-taupe hover:bg-cream transition-colors"
-                >
-                  Call or WhatsApp Today
-                </motion.button>
+                  Book Your O-Shot Consultation
+                </motion.a>
+                <Whatsapp message={"Hi! can i get more info"} />
               </motion.div>
-
               <div className="flex items-center gap-4 text-sm text-brown/70">
                 <div className="flex items-center gap-1">
                   <MapPin className="w-4 h-4 text-wine" />
@@ -524,43 +519,52 @@ const OShotLanding = () => {
         className="py-24 bg-white"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={fadeInUp}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-brown mb-4 font-georgia">
-              O-Shot vs Other Vaginal Rejuvenation Options
-            </h2>
-            <p className="text-taupe">
-              Honest comparison of treatments available in Malaysia
-            </p>
-          </motion.div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full max-w-5xl mx-auto border-collapse">
-              <thead>
-                <tr className="bg-wine text-white">
-                  <th className="p-4 text-left rounded-tl-2xl">Treatment</th>
-                  <th className="p-4 text-left">Mechanism</th>
-                  <th className="p-4 text-left">Best For</th>
-                  <th className="p-4 text-left rounded-tr-2xl">Evidence</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonOptions.map((option, index) => (
-                  <tr
-                    key={index}
-                    className={`border-b border-taupe/20 ${index === comparisonOptions.length - 1 ? "" : ""}`}
-                  >
-                    <td className="p-4 font-semibold text-brown">{option.treatment}</td>
-                    <td className="p-4 text-sm text-brown">{option.mechanism}</td>
-                    <td className="p-4 text-sm text-brown">{option.bestFor}</td>
-                    <td className="p-4 text-sm text-brown">{option.evidence}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          
+              <TableForPages
+                columns={[
+                  { key: "treatment", header: "Treatment", className: "font-semibold" },
+                  { key: "mechanism", header: "Mechanism" },
+                  { key: "bestFor", header: "Best For" },
+                  { key: "evidence", header: "Evidence" },
+                ]}
+                data={[
+                  {
+                    treatment: "O-Shot (PRP Therapy)",
+                    mechanism: "Platelet-rich plasma derived from patient's own blood injected into clitoris, G-spot, and vaginal wall; growth factors stimulate stem cells, regenerate tissue, and enhance vascularity and nerve sensitivity",
+                    bestFor: "Women with stress urinary incontinence, decreased libido, difficulty achieving orgasm, vaginal dryness, or post-menopausal sexual dysfunction; also beneficial for lichen sclerosus",
+                    evidence: "Multiple peer-reviewed studies demonstrate 70-80% patient satisfaction; improvement in female sexual function index (FSFI) scores; durable results 12-18 months; minimal adverse events as autologous product"
+                  },
+                  {
+                    treatment: "Vaginal Laser Therapy (FemTouch, MonaLisa Touch)",
+                    mechanism: "Fractional CO2 or erbium laser energy creates microscopic thermal injury to vaginal epithelium and lamina propria; stimulates collagen remodeling and neocollagenesis; restores vaginal mucosal thickness and glycogen content",
+                    bestFor: "Post-menopausal vaginal atrophy, vaginal dryness, dyspareunia (painful intercourse), recurrent bacterial vaginosis; also for mild stress incontinence; not typically for libido or orgasm enhancement",
+                    evidence: "Strong evidence for genitourinary syndrome of menopause; 3-session protocol with annual maintenance; improvements sustained 12+ months; endorsed by International Society for the Study of Women's Sexual Health (ISSWSH) for GSM"
+                  },
+                  {
+                    treatment: "Radiofrequency (Votiva, ThermiVa)",
+                    mechanism: "Bipolar radiofrequency energy heats deep vaginal tissues to 40-45°C; induces collagen contraction and neocollagenesis; improves tissue laxity without mucosal injury; can be performed on external labia and vaginal introitus",
+                    bestFor: "Vaginal laxity (feeling of looseness), stress urinary incontinence, mild prolapse symptoms, external labial laxity or wrinkling; comfortable, painless, no downtime",
+                    evidence: "Growing body of evidence; 80% satisfaction for laxity and incontinence at 12 months; 3-session initial series; requires annual maintenance; well-tolerated with no serious adverse events reported"
+                  },
+                  {
+                    treatment: "Topical Estrogen Cream/Pessary",
+                    mechanism: "Low-dose local estrogen (estradiol or estriol) applied directly to vaginal tissue; restores vaginal pH, increases epithelial thickness, improves glycogen production and lubrication; negligible systemic absorption",
+                    bestFor: "Post-menopausal vaginal atrophy and dryness; dyspareunia; recurrent UTIs; most cost-effective first-line option for GSM in menopausal women; requires uterus evaluation for progestogen if systemic symptoms present",
+                    evidence: "Gold standard, FDA-approved for genitourinary syndrome of menopause; decades of safety data; no increased breast cancer or VTE risk with local use; 4-8 weeks for full effect; requires ongoing maintenance"
+                  },
+                  {
+                    treatment: "Hyaluronic Acid Fillers (G-Shot)",
+                    mechanism: "Injectable hyaluronic acid (same as dermal filler) injected into G-spot area and anterior vaginal wall; increases volume and prominence of G-spot area; attracts water to enhance sensitivity; temporary effect",
+                    bestFor: "Enhancing G-spot prominence specifically; women who already have good lubrication and arousal but desire more focal stimulation; not for urinary incontinence or generalized vaginal atrophy",
+                    evidence: "Limited large-scale studies; smaller studies show 60-70% short-term satisfaction; effect lasts 4-6 months (faster resorption than dermal fillers); temporary injection-related swelling may contribute to initial effect; requires repeat treatments"
+                  },
+                ]}
+                title="O-Shot vs Other Vaginal Rejuvenation Options"
+                subtitle="Honest comparison of treatments available in Malaysia"
+                variant="detailed"
+                fadeInUp={fadeInUp}
+                className="container mx-auto px-4 md:px-8 py-12"
+              />
 
           <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 p-6 rounded-2xl max-w-4xl mx-auto">
             <h3 className="font-semibold text-wine mb-2">Combination Value at Nexus Clinic KL</h3>

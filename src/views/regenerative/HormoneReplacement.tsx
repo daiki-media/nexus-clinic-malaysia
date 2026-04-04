@@ -25,10 +25,12 @@ import {
   fadeInLeft,
   fadeInRight,
   scaleIn,
-} from "../../lib/animations";
+} from "@/src/lib/animations";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 const HormonReplaceLanding = ({
   locale = fallbackLng,
 }: {
@@ -51,107 +53,25 @@ const HormonReplaceLanding = ({
   return (
     <div className="bg-cream min-h-screen font-inter">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-linear-to-b from-cream to-light pt-16 lg:pt-24">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto px-4 sm:px-6 lg:px-8"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <div className="inline-block bg-wine/10 text-wine px-4 py-2 rounded-full text-sm font-medium mb-4">
-                HRT Malaysia: Hormone Replacement Therapy for Menopausal Women | Nexus Clinic KL
-              </div>
-              <h1 className="font-georgia text-4xl lg:text-5xl xl:text-6xl text-brown leading-tight">
-                HRT Malaysia: Evidence-Based Hormone Replacement Therapy for Menopausal Women and Bioidentical Hormones
-              </h1>
-
-              <div className="space-y-4">
-                <p className="text-xl text-rose font-medium">
-                  Hot flashes that interrupt every meeting. Night sweats that have not allowed a full night's sleep in six months.
-                </p>
-
-                <p className="text-lg text-taupe">
-                  Mood swings and a brain that does not feel like your own. A body that seems to have changed shape, energy and resilience without explanation. These are the menopause symptoms that most menopausal women in Malaysia are told to simply accept.
-                </p>
-
-                <p className="text-lg text-brown font-medium bg-wine/5 p-4 rounded-lg">
-                  They are not exaggerations and they are not simply normal ageing. They are the documented physiological consequences of oestrogen withdrawal at menopause, and hormone replacement therapy is the most effective treatment for them that medical science has produced.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative z-10 bg-glass backdrop-blur-sm p-8 rounded-2xl border border-white/20 shadow-xl">
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <Award className="w-6 h-6 text-wine shrink-0 mt-1" />
-                    <div>
-                      <p className="font-georgia text-brown font-medium">
-                        Doctor-guided, confidential care
-                      </p>
-                      <p className="text-taupe text-sm">
-                        in the heart of Kuala Lumpur
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <Users className="w-6 h-6 text-wine shrink-0 mt-1" />
-                    <div>
-                      <p className="font-georgia text-brown font-medium">
-                        Personalised hormone balancing for men and women
-                      </p>
-                      <p className="text-taupe text-sm">
-                        (not a one-size-fits-all package)
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <MapPin className="w-6 h-6 text-wine shrink-0 mt-1" />
-                    <div>
-                      <p className="font-georgia text-brown font-medium">
-                        Central KL location near KLCC
-                      </p>
-                      <p className="text-taupe text-sm">
-                        LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang,
-                        50450 Kuala Lumpur.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <Phone className="w-6 h-6 text-wine shrink-0 mt-1" />
-                    <div>
-                      <p className="font-georgia text-brown font-medium">
-                        Contact
-                      </p>
-                      <p className="text-taupe text-sm">
-                        016-7025699 / 03-21635699
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <Calendar className="w-6 h-6 text-wine shrink-0 mt-1" />
-                    <div>
-                      <p className="font-georgia text-brown font-medium">
-                        Clear follow-ups and safety monitoring
-                      </p>
-                      <p className="text-taupe text-sm">
-                        because HRT should never be rushed
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+        badge="HRT Malaysia: Hormone Replacement Therapy for Menopausal Women | Nexus Clinic KL"
+        title="HRT Malaysia: Evidence-Based Hormone Replacement Therapy for Menopausal Women and"
+        highlight="Bioidentical Hormones"
+        description="Hot flashes that interrupt every meeting. Night sweats that have not allowed a full night's sleep in six months."
+        details="Mood swings and a brain that does not feel like your own. A body that seems to have changed shape, energy and resilience without explanation. These are the menopause symptoms that most menopausal women in Malaysia are told to simply accept. They are not exaggerations and they are not simply normal ageing. They are the documented physiological consequences of oestrogen withdrawal at menopause, and hormone replacement therapy is the most effective treatment for them that medical science has produced."
+        note="HRT should always be prescribed and monitored by a qualified doctor. At Nexus Clinic KL, we provide doctor-guided, confidential care with personalised hormone balancing and clear follow-ups for safety monitoring."
+        image="/images/regenerative/hematopoietic-stem-cells.webp"
+        imageAlt="Hormone Replacement Therapy at Nexus Clinic Kuala Lumpur"
+        ctaText="Book HRT Assessment"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in hormone replacement therapy (HRT) at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="Doctor-Guided • Confidential"
+        floatingSubtitle="Personalised hormone balancing"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
       {/* Hormone Replacement Therapy in Malaysia at a Glance Table */}
       <section className="py-20 bg-light">
@@ -162,46 +82,43 @@ const HormonReplaceLanding = ({
           viewport={{ once: true }}
           className="container mx-auto px-4 sm:px-6 lg:px-8"
         >
-          <motion.h2 variants={fadeInUp} className="font-georgia text-3xl lg:text-4xl text-brown text-center mb-8">
-            Hormone Replacement Therapy in Malaysia at a Glance: HRT, Hormones and Menopause Symptoms
-          </motion.h2>
-
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white rounded-2xl overflow-hidden shadow-lg">
-              <thead className="bg-wine/20">
-                <tr>
-                  <th className="p-4 text-left text-brown font-georgia">Factor</th>
-                  <th className="p-4 text-left text-brown font-georgia">Details</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-taupe/20">
-                <tr>
-                  <td className="p-4 font-medium text-brown">What HRT Treats</td>
-                  <td className="p-4 text-taupe text-sm">Vasomotor symptoms: hot flashes, night sweats, palpitations | Genitourinary syndrome: vaginal dryness, recurrent UTIs, urinary urgency | Mood and cognitive: mood swings, low mood, brain fog, poor concentration, sleep disturbance | Musculoskeletal: joint aches, reduced muscle mass | Bone: osteoporosis and conditions like osteoporosis prevention in early postmenopause</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">Malaysian Menopausal Age</td>
-                  <td className="p-4 text-taupe text-sm">Menopause is a natural biological stage; median menopausal age of Malaysian women is approximately 50.7 years; the natural menopause range in Malaysia is 42 to 58 years; the ages of 45 and 55 encompass most women's experience of the end of her reproductive years; premature menopause and premature ovarian insufficiency (POI) can occur before age 40 years old; perimenopause can begin 4 to 10 years before the final period</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">Type of HRT</td>
-                  <td className="p-4 text-taupe text-sm">Oestrogen-only HRT: oestrogen-only HRT is usually prescribed to women who have had a hysterectomy and do not need progestogen; combined HRT: oestrogen and progestogen combined, prescribed to women with a uterus; bioidentical hormone replacement therapy: regulated pharmaceutical oestradiol and micronised progesterone; transdermal, oral or local vaginal delivery</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">Who Needs Progestogen</td>
-                  <td className="p-4 text-taupe text-sm">Women with an intact uterus must take progestogen alongside oestrogen to protect the endometrium and reduce the risk of uterine cancer; women with a uterus who take oestrogen without progestogen have significantly elevated risk of uterine cancer; women who have had a hysterectomy can take oestrogen alone; women experiencing combined HRT take oestrogen and progestogen together</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">Formulations Available</td>
-                  <td className="p-4 text-taupe text-sm">Transdermal oestradiol gel or patches (preferred route in women with VTE or cardiovascular risk) | Oral oestradiol tablets | Combined HRT tablets (oestrogen and progestogen) | Vaginal oestrogen cream, ring or pessary (local only) | Therapy with an intrauterine progestin (levonorgestrel IUS as progestogen component) | Micronised progesterone (Utrogestan) as preferred oral progestogen | Oestrogen therapy with an intrauterine system is an option for women who need flexible delivery</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">Hormone Levels and Monitoring</td>
-                  <td className="p-4 text-taupe text-sm">Annual review: symptom assessment, blood pressure, weight, breakthrough bleeding investigation; breast awareness and mammography per schedule; endometrial assessment if unexpected bleeding; the doctor will provide information about HRT's advantages and potential risks and assist in making an informed decision; decide whether to start HRT at any point based on ongoing benefit and risk</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        {/* Hormone Replacement Therapy at a Glance Table */}
+        <TableForPages
+          columns={[
+            { key: "factor", header: "Factor", className: "font-semibold" },
+            { key: "details", header: "Details" },
+          ]}
+          data={[
+            {
+              factor: "What HRT Treats",
+              details: "Vasomotor symptoms: hot flashes, night sweats, palpitations | Genitourinary syndrome: vaginal dryness, recurrent UTIs, urinary urgency | Mood and cognitive: mood swings, low mood, brain fog, poor concentration, sleep disturbance | Musculoskeletal: joint aches, reduced muscle mass | Bone: osteoporosis and conditions like osteoporosis prevention in early postmenopause"
+            },
+            {
+              factor: "Malaysian Menopausal Age",
+              details: "Menopause is a natural biological stage; median menopausal age of Malaysian women is approximately 50.7 years; the natural menopause range in Malaysia is 42 to 58 years; the ages of 45 and 55 encompass most women's experience of the end of her reproductive years; premature menopause and premature ovarian insufficiency (POI) can occur before age 40 years old; perimenopause can begin 4 to 10 years before the final period"
+            },
+            {
+              factor: "Type of HRT",
+              details: "Oestrogen-only HRT: oestrogen-only HRT is usually prescribed to women who have had a hysterectomy and do not need progestogen; combined HRT: oestrogen and progestogen combined, prescribed to women with a uterus; bioidentical hormone replacement therapy: regulated pharmaceutical oestradiol and micronised progesterone; transdermal, oral or local vaginal delivery"
+            },
+            {
+              factor: "Who Needs Progestogen",
+              details: "Women with an intact uterus must take progestogen alongside oestrogen to protect the endometrium and reduce the risk of uterine cancer; women with a uterus who take oestrogen without progestogen have significantly elevated risk of uterine cancer; women who have had a hysterectomy can take oestrogen alone; women experiencing combined HRT take oestrogen and progestogen together"
+            },
+            {
+              factor: "Formulations Available",
+              details: "Transdermal oestradiol gel or patches (preferred route in women with VTE or cardiovascular risk) | Oral oestradiol tablets | Combined HRT tablets (oestrogen and progestogen) | Vaginal oestrogen cream, ring or pessary (local only) | Therapy with an intrauterine progestin (levonorgestrel IUS as progestogen component) | Micronised progesterone (Utrogestan) as preferred oral progestogen | Oestrogen therapy with an intrauterine system is an option for women who need flexible delivery"
+            },
+            {
+              factor: "Hormone Levels and Monitoring",
+              details: "Annual review: symptom assessment, blood pressure, weight, breakthrough bleeding investigation; breast awareness and mammography per schedule; endometrial assessment if unexpected bleeding; the doctor will provide information about HRT's advantages and potential risks and assist in making an informed decision; decide whether to start HRT at any point based on ongoing benefit and risk"
+            },
+          ]}
+          title="Hormone Replacement Therapy in Malaysia at a Glance: HRT, Hormones and Menopause Symptoms"
+          variant="detailed"
+          fadeInUp={fadeInUp}
+          className="py-20 px-4"
+        />
         </motion.div>
       </section>
 
@@ -214,66 +131,67 @@ const HormonReplaceLanding = ({
           viewport={{ once: true }}
           className="container mx-auto px-4 sm:px-6 lg:px-8"
         >
-          <motion.h2 variants={fadeInUp} className="font-georgia text-3xl lg:text-4xl text-brown text-center mb-8">
-            HRT Formulation and Oestrogen Therapy Route: Why the Type of HRT Determines Risk
-          </motion.h2>
+            {/* HRT Formulation and Oestrogen Therapy Route Table */}
+            <TableForPages
+              columns={[
+                { key: "formulation", header: "Formulation / Type of HRT", className: "font-semibold" },
+                { key: "route", header: "Route" },
+                { key: "vte", header: "VTE / Blood Clots Risk" },
+                { key: "breastCancer", header: "Breast Cancer Consideration" },
+                { key: "bestFor", header: "Best For" },
+              ]}
+              data={[
+                {
+                  formulation: "Transdermal Oestradiol Gel (Oestrogel, Sandrena)",
+                  route: "Applied daily to skin of arm, thigh or abdomen; hormone absorbed directly into bloodstream bypassing liver; oestrogen therapy delivered transdermally",
+                  vte: "Low: transdermal oestrogen therapy bypasses first-pass liver metabolism; does not raise clotting factors; no increased blood clots risk; VTE risk similar to non-HRT users; preferred for women with VTE history",
+                  breastCancer: "Associated with lowest breast cancer risk among systemic oestrogen formulations when combined with micronised progesterone; Norwegian cohort of 1.3 million women confirms lower risk vs oral combined HRT; women with family history of breast cancer should discuss potential risks with their doctor",
+                  bestFor: "First choice at Nexus Clinic KL for most menopausal women starting HRT; recommended for women with cardiovascular risk, clotting risk, smokers, overweight or obese women, women with migraine with aura"
+                },
+                {
+                  formulation: "Transdermal Oestradiol Patch (Evorel, FemSeven)",
+                  route: "Applied to skin and changed every 3 to 4 days; consistent transdermal oestrogen therapy delivery; this type of HRT suits women who prefer less frequent application",
+                  vte: "Low: same oestrogen therapy mechanism as gel; bypasses liver first-pass metabolism; no increased blood clots risk; preferred over oral HRT in women with VTE risk; oestrogen-only HRT via patch has good safety data",
+                  breastCancer: "Similar low breast cancer risk profile to gel when combined with micronised progesterone; oestrogen-only HRT is usually the lowest-risk option for hysterectomised women; patch with IUS progestogen component is lowest-risk combined systemic HRT available; potential risks are lower than oral combined HRT",
+                  bestFor: "Women who prefer less frequent application than daily gel; this type of HRT suits women who find daily gel inconvenient; patch adherence can be an issue in Malaysia's humidity; recommended for women in perimenopause and early postmenopause"
+                },
+                {
+                  formulation: "Oral Oestradiol Tablets (Progynova, Estrofem)",
+                  route: "Taken daily by mouth; metabolised in the liver on first pass; oestrogen therapy delivered via hepatic metabolism; raises hepatic clotting factors during metabolism",
+                  vte: "Moderate: oral oestrogen therapy undergoes first-pass hepatic metabolism and raises coagulation factors; VTE risk approximately double that of non-HRT users; blood clots risk means oral route is not preferred in women with clotting risk; not the preferred type of HRT for women with VTE history",
+                  breastCancer: "Estrogen alone in hysterectomised women: the WHI trial of oestrogen alone found a 23% REDUCTION in breast cancer risk; estrogen and progesterone combined oral: higher breast cancer risk than oestrogen alone or oestrogen with micronised progesterone; potential risks should be discussed with healthcare professionals",
+                  bestFor: "Women without VTE risk factors who prefer a tablet; hysterectomised women without cardiovascular risk taking oestrogen-only HRT; less preferred for women with any blood clots or thrombotic risk; this type of HRT should be discussed with a doctor before initiating"
+                },
+                {
+                  formulation: "Micronised Progesterone (Utrogestan)",
+                  route: "Oral capsule taken at night (sleep-promoting effect); bioidentical hormone to body's own progesterone; protects endometrium in women with uterus who are taking systemic oestrogen therapy; a form of bioidentical hormone replacement therapy",
+                  vte: "Neutral to low: micronised progesterone does not carry the blood clots risk associated with synthetic progestogens such as medroxyprogesterone acetate or norethisterone; no additional VTE risk added to transdermal oestradiol; the safest progestogen for women with uterus on HRT",
+                  breastCancer: "Lower breast cancer risk compared to synthetic progestogens; British Journal of Cancer Norway cohort shows higher risk with oral combined synthetic progestogen regimens; bioidentical hormones such as micronised progesterone confer lower breast cancer risk than continuous synthetic progestins; potential risks are lower than with synthetic alternatives",
+                  bestFor: "Preferred progestogen at Nexus Clinic KL for women with a uterus on systemic HRT; bioidentical hormones taken at night improve sleep quality; this oestrogen and progestogen combination represents the lowest-risk combined HRT regimen; oestrogen and progestogen is prescribed to women with an intact uterus"
+                },
+                {
+                  formulation: "Local Vaginal Oestrogen (Vagifem, Ovestin, Estring)",
+                  route: "Applied directly to vaginal tissue; minimal systemic absorption; oestrogen therapy acts locally only; available as pessaries, cream or ring; this type of HRT targets genitourinary symptoms specifically",
+                  vte: "Negligible blood clots risk: systemic absorption is minimal; does not raise systemic hormone levels meaningfully; safe even in women who cannot use systemic HRT; no blood clots risk contribution",
+                  breastCancer: "Negligible breast cancer consideration: no systemic breast cancer risk from local vaginal oestrogen therapy; can be used safely in women with history of breast cancer when quality of life impact of vaginal atrophy is significant; this type of HRT has the most favourable safety profile",
+                  bestFor: "Isolated genitourinary symptoms without significant vasomotor or other systemic symptoms; oestrogen-only HRT in local form; can be added to systemic HRT; prescribed to women with vaginal dryness, pain during intercourse or recurrent UTI; recommended for women experiencing isolated genitourinary symptoms"
+                },
+              ]}
+              title="HRT Formulation and Oestrogen Therapy Route: Why the Type of HRT Determines Risk"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-20 px-4"
+            />
 
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white rounded-2xl overflow-hidden shadow-lg">
-              <thead className="bg-wine/20">
-                <tr>
-                  <th className="p-4 text-left text-brown font-georgia">Formulation / Type of HRT</th>
-                  <th className="p-4 text-left text-brown font-georgia">Route</th>
-                  <th className="p-4 text-left text-brown font-georgia">VTE / Blood Clots Risk</th>
-                  <th className="p-4 text-left text-brown font-georgia">Breast Cancer Consideration</th>
-                  <th className="p-4 text-left text-brown font-georgia">Best For</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-taupe/20">
-                <tr>
-                  <td className="p-4 font-medium text-brown">Transdermal Oestradiol Gel (Oestrogel, Sandrena)</td>
-                  <td className="p-4 text-taupe text-sm">Applied daily to skin of arm, thigh or abdomen; hormone absorbed directly into bloodstream bypassing liver; oestrogen therapy delivered transdermally</td>
-                  <td className="p-4 text-taupe text-sm">Low: transdermal oestrogen therapy bypasses first-pass liver metabolism; does not raise clotting factors; no increased blood clots risk; VTE risk similar to non-HRT users; preferred for women with VTE history</td>
-                  <td className="p-4 text-taupe text-sm">Associated with lowest breast cancer risk among systemic oestrogen formulations when combined with micronised progesterone; Norwegian cohort of 1.3 million women confirms lower risk vs oral combined HRT; women with family history of breast cancer should discuss potential risks with their doctor</td>
-                  <td className="p-4 text-taupe text-sm">First choice at Nexus Clinic KL for most menopausal women starting HRT; recommended for women with cardiovascular risk, clotting risk, smokers, overweight or obese women, women with migraine with aura</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">Transdermal Oestradiol Patch (Evorel, FemSeven)</td>
-                  <td className="p-4 text-taupe text-sm">Applied to skin and changed every 3 to 4 days; consistent transdermal oestrogen therapy delivery; this type of HRT suits women who prefer less frequent application</td>
-                  <td className="p-4 text-taupe text-sm">Low: same oestrogen therapy mechanism as gel; bypasses liver first-pass metabolism; no increased blood clots risk; preferred over oral HRT in women with VTE risk; oestrogen-only HRT via patch has good safety data</td>
-                  <td className="p-4 text-taupe text-sm">Similar low breast cancer risk profile to gel when combined with micronised progesterone; oestrogen-only HRT is usually the lowest-risk option for hysterectomised women; patch with IUS progestogen component is lowest-risk combined systemic HRT available; potential risks are lower than oral combined HRT</td>
-                  <td className="p-4 text-taupe text-sm">Women who prefer less frequent application than daily gel; this type of HRT suits women who find daily gel inconvenient; patch adherence can be an issue in Malaysia's humidity; recommended for women in perimenopause and early postmenopause</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">Oral Oestradiol Tablets (Progynova, Estrofem)</td>
-                  <td className="p-4 text-taupe text-sm">Taken daily by mouth; metabolised in the liver on first pass; oestrogen therapy delivered via hepatic metabolism; raises hepatic clotting factors during metabolism</td>
-                  <td className="p-4 text-taupe text-sm">Moderate: oral oestrogen therapy undergoes first-pass hepatic metabolism and raises coagulation factors; VTE risk approximately double that of non-HRT users; blood clots risk means oral route is not preferred in women with clotting risk; not the preferred type of HRT for women with VTE history</td>
-                  <td className="p-4 text-taupe text-sm">Estrogen alone in hysterectomised women: the WHI trial of oestrogen alone found a 23% REDUCTION in breast cancer risk; estrogen and progesterone combined oral: higher breast cancer risk than oestrogen alone or oestrogen with micronised progesterone; potential risks should be discussed with healthcare professionals</td>
-                  <td className="p-4 text-taupe text-sm">Women without VTE risk factors who prefer a tablet; hysterectomised women without cardiovascular risk taking oestrogen-only HRT; less preferred for women with any blood clots or thrombotic risk; this type of HRT should be discussed with a doctor before initiating</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">Micronised Progesterone (Utrogestan)</td>
-                  <td className="p-4 text-taupe text-sm">Oral capsule taken at night (sleep-promoting effect); bioidentical hormone to body's own progesterone; protects endometrium in women with uterus who are taking systemic oestrogen therapy; a form of bioidentical hormone replacement therapy</td>
-                  <td className="p-4 text-taupe text-sm">Neutral to low: micronised progesterone does not carry the blood clots risk associated with synthetic progestogens such as medroxyprogesterone acetate or norethisterone; no additional VTE risk added to transdermal oestradiol; the safest progestogen for women with uterus on HRT</td>
-                  <td className="p-4 text-taupe text-sm">Lower breast cancer risk compared to synthetic progestogens; British Journal of Cancer Norway cohort shows higher risk with oral combined synthetic progestogen regimens; bioidentical hormones such as micronised progesterone confer lower breast cancer risk than continuous synthetic progestins; potential risks are lower than with synthetic alternatives</td>
-                  <td className="p-4 text-taupe text-sm">Preferred progestogen at Nexus Clinic KL for women with a uterus on systemic HRT; bioidentical hormones taken at night improve sleep quality; this oestrogen and progestogen combination represents the lowest-risk combined HRT regimen; oestrogen and progestogen is prescribed to women with an intact uterus</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">Local Vaginal Oestrogen (Vagifem, Ovestin, Estring)</td>
-                  <td className="p-4 text-taupe text-sm">Applied directly to vaginal tissue; minimal systemic absorption; oestrogen therapy acts locally only; available as pessaries, cream or ring; this type of HRT targets genitourinary symptoms specifically</td>
-                  <td className="p-4 text-taupe text-sm">Negligible blood clots risk: systemic absorption is minimal; does not raise systemic hormone levels meaningfully; safe even in women who cannot use systemic HRT; no blood clots risk contribution</td>
-                  <td className="p-4 text-taupe text-sm">Negligible breast cancer consideration: no systemic breast cancer risk from local vaginal oestrogen therapy; can be used safely in women with history of breast cancer when quality of life impact of vaginal atrophy is significant; this type of HRT has the most favourable safety profile</td>
-                  <td className="p-4 text-taupe text-sm">Isolated genitourinary symptoms without significant vasomotor or other systemic symptoms; oestrogen-only HRT in local form; can be added to systemic HRT; prescribed to women with vaginal dryness, pain during intercourse or recurrent UTI; recommended for women experiencing isolated genitourinary symptoms</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <motion.div variants={fadeInUp} className="mt-8 p-6 bg-wine/10 rounded-2xl">
-            <p className="text-taupe">
-              The practical summary from this type of HRT table for menopausal women in Malaysia is that the safest systemic hormone replacement therapy regimen currently available is transdermal oestradiol gel or patch combined with bioidentical hormones (oral micronised progesterone, Utrogestan) for women with a uterus. This combination carries the lowest blood clots risk (transdermal oestrogen therapy bypasses liver first-pass metabolism), the lowest breast cancer risk among combined regimens (bioidentical hormones such as micronised progesterone do not carry the elevated risk of synthetic progestogens), and provides excellent relief of menopause symptoms.
-            </p>
-          </motion.div>
+            {/* Clinical Summary */}
+            <motion.div 
+              variants={fadeInUp} 
+              className="mt-8 p-6 bg-wine/10 rounded-2xl"
+            >
+              <p className="text-taupe">
+                The practical summary from this type of HRT table for menopausal women in Malaysia is that the safest systemic hormone replacement therapy regimen currently available is transdermal oestradiol gel or patch combined with bioidentical hormones (oral micronised progesterone, Utrogestan) for women with a uterus. This combination carries the lowest blood clots risk (transdermal oestrogen therapy bypasses liver first-pass metabolism), the lowest breast cancer risk among combined regimens (bioidentical hormones such as micronised progesterone do not carry the elevated risk of synthetic progestogens), and provides excellent relief of menopause symptoms.
+              </p>
+            </motion.div>
         </motion.div>
       </section>
 
@@ -286,43 +204,39 @@ const HormonReplaceLanding = ({
           viewport={{ once: true }}
           className="container mx-auto px-4 sm:px-6 lg:px-8"
         >
-          <motion.h2 variants={fadeInUp} className="font-georgia text-3xl lg:text-4xl text-brown text-center mb-8">
-            Taking HRT Safely: The WHI Study and What Updated Evidence Means for Menopausal Women
-          </motion.h2>
-
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white rounded-2xl overflow-hidden shadow-lg">
-              <thead className="bg-wine/20">
-                <tr>
-                  <th className="p-4 text-left text-brown font-georgia">The HRT Fear</th>
-                  <th className="p-4 text-left text-brown font-georgia">What the WHI Actually Studied</th>
-                  <th className="p-4 text-left text-brown font-georgia">What Updated Evidence Says for Menopausal Women in Malaysia</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-taupe/20">
-                <tr>
-                  <td className="p-4 font-medium text-brown">HRT causes heart attacks and strokes</td>
-                  <td className="p-4 text-taupe text-sm">The 2002 WHI trial studied women with a mean age of 63 using oral conjugated equine oestrogen plus medroxyprogesterone acetate. Most participants were 10 or more years past menopause when they started hormone therapy. The WHI investigators confirmed in 2023 that starting HRT within 10 years of menopause significantly decreases coronary heart disease risk.</td>
-                  <td className="p-4 text-taupe text-sm">The timing hypothesis is now established: taking HRT within 10 years of menopause or before age 60 has a favourable cardiovascular risk profile; oestrogen hormone therapy has a cardioprotective effect when started early; the cardiovascular risk seen in WHI was specific to older women starting oral hormone therapy years after menopause; perimenopausal women and women in early postmenopause are the most appropriate candidates</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">HRT always increases breast cancer risk</td>
-                  <td className="p-4 text-taupe text-sm">The WHI study of estrogen alone in hysterectomised women found a 23% REDUCTION in breast cancer risk. The oestrogen and progestogen arm (specifically medroxyprogesterone acetate, a synthetic progestogen) found a small increased risk. The increased risk was specific to combined HRT with synthetic progestogen, not to oestrogen-only HRT or to oestrogen with micronised progesterone.</td>
-                  <td className="p-4 text-taupe text-sm">Risk depends critically on the type of progestogen: combined HRT with synthetic progestogen carries higher breast cancer risk than transdermal oestradiol with bioidentical hormones (micronised progesterone); oestrogen-only HRT is usually lower risk; vaginal oestrogen therapy has no breast cancer risk contribution; the FDA announced in November 2025 it would remove certain black box warning language from HRT products; potential risks are formulation-specific, not a universal HRT label</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">HRT causes blood clots (VTE)</td>
-                  <td className="p-4 text-taupe text-sm">Oral oestrogen therapy, particularly at higher doses, increases hepatic clotting factor production through first-pass metabolism and does modestly increase blood clots risk. This was the route used in WHI. Transdermal oestradiol does not undergo first-pass hepatic metabolism and does not increase blood clots risk above baseline.</td>
-                  <td className="p-4 text-taupe text-sm">Route selection determines blood clots risk: transdermal oestrogen therapy (gel or patches) carries no increased blood clots risk compared to non-HRT users; oral oestrogen therapy carries a modest blood clots risk increase; women with personal or family history of blood clots are prescribed transdermal HRT rather than oral at Nexus Clinic KL; oestrogen and progestogen with micronised progesterone has the lowest combined blood clots risk</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">HRT should be avoided by women with heart disease risk factors</td>
-                  <td className="p-4 text-taupe text-sm">This guidance originated from the WHI findings in older postmenopausal women with pre-existing cardiovascular disease starting oral hormone therapy years after menopause. Updated meta-analyses and a 2025 PMC narrative review confirm the risk-benefit profile is substantially more favourable for symptomatic women under 60 or within 10 years of menopause without contraindications.</td>
-                  <td className="p-4 text-taupe text-sm">Current international guidelines including the British Menopause Society, NICE and the Endocrine Society endorse HRT for symptomatic menopausal women under 60 or within 10 years of menopause; HRT or the combined pill may be appropriate options even for perimenopausal women with cardiovascular risk factors when transdermal hormone therapy is used; healthcare professionals should assess individual potential risks and benefits for each menopausal women</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <TableForPages
+          columns={[
+            { key: "fear", header: "The HRT Fear", className: "font-semibold" },
+            { key: "whatWhi", header: "What the WHI Actually Studied" },
+            { key: "updatedEvidence", header: "What Updated Evidence Says for Menopausal Women in Malaysia" },
+          ]}
+          data={[
+            {
+              fear: "HRT causes heart attacks and strokes",
+              whatWhi: "The 2002 WHI trial studied women with a mean age of 63 using oral conjugated equine oestrogen plus medroxyprogesterone acetate. Most participants were 10 or more years past menopause when they started hormone therapy. The WHI investigators confirmed in 2023 that starting HRT within 10 years of menopause significantly decreases coronary heart disease risk.",
+              updatedEvidence: "The timing hypothesis is now established: taking HRT within 10 years of menopause or before age 60 has a favourable cardiovascular risk profile; oestrogen hormone therapy has a cardioprotective effect when started early; the cardiovascular risk seen in WHI was specific to older women starting oral hormone therapy years after menopause; perimenopausal women and women in early postmenopause are the most appropriate candidates"
+            },
+            {
+              fear: "HRT always increases breast cancer risk",
+              whatWhi: "The WHI study of estrogen alone in hysterectomised women found a 23% REDUCTION in breast cancer risk. The oestrogen and progestogen arm (specifically medroxyprogesterone acetate, a synthetic progestogen) found a small increased risk. The increased risk was specific to combined HRT with synthetic progestogen, not to oestrogen-only HRT or to oestrogen with micronised progesterone.",
+              updatedEvidence: "Risk depends critically on the type of progestogen: combined HRT with synthetic progestogen carries higher breast cancer risk than transdermal oestradiol with bioidentical hormones (micronised progesterone); oestrogen-only HRT is usually lower risk; vaginal oestrogen therapy has no breast cancer risk contribution; the FDA announced in November 2025 it would remove certain black box warning language from HRT products; potential risks are formulation-specific, not a universal HRT label"
+            },
+            {
+              fear: "HRT causes blood clots (VTE)",
+              whatWhi: "Oral oestrogen therapy, particularly at higher doses, increases hepatic clotting factor production through first-pass metabolism and does modestly increase blood clots risk. This was the route used in WHI. Transdermal oestradiol does not undergo first-pass hepatic metabolism and does not increase blood clots risk above baseline.",
+              updatedEvidence: "Route selection determines blood clots risk: transdermal oestrogen therapy (gel or patches) carries no increased blood clots risk compared to non-HRT users; oral oestrogen therapy carries a modest blood clots risk increase; women with personal or family history of blood clots are prescribed transdermal HRT rather than oral at Nexus Clinic KL; oestrogen and progestogen with micronised progesterone has the lowest combined blood clots risk"
+            },
+            {
+              fear: "HRT should be avoided by women with heart disease risk factors",
+              whatWhi: "This guidance originated from the WHI findings in older postmenopausal women with pre-existing cardiovascular disease starting oral hormone therapy years after menopause. Updated meta-analyses and a 2025 PMC narrative review confirm the risk-benefit profile is substantially more favourable for symptomatic women under 60 or within 10 years of menopause without contraindications.",
+              updatedEvidence: "Current international guidelines including the British Menopause Society, NICE and the Endocrine Society endorse HRT for symptomatic menopausal women under 60 or within 10 years of menopause; HRT or the combined pill may be appropriate options even for perimenopausal women with cardiovascular risk factors when transdermal hormone therapy is used; healthcare professionals should assess individual potential risks and benefits for each menopausal women"
+            },
+          ]}
+          title="Taking HRT Safely: The WHI Study and What Updated Evidence Means for Menopausal Women"
+          variant="detailed"
+          fadeInUp={fadeInUp}
+          className="py-20 px-4"
+        />
         </motion.div>
       </section>
 
@@ -335,48 +249,44 @@ const HormonReplaceLanding = ({
           viewport={{ once: true }}
           className="container mx-auto px-4 sm:px-6 lg:px-8"
         >
-          <motion.h2 variants={fadeInUp} className="font-georgia text-3xl lg:text-4xl text-brown text-center mb-8">
-            HRT by Menopause Stage: Reasons for Taking HRT at Different Phases of Menopausal Life
-          </motion.h2>
-
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white rounded-2xl overflow-hidden shadow-lg">
-              <thead className="bg-wine/20">
-                <tr>
-                  <th className="p-4 text-left text-brown font-georgia">Stage</th>
-                  <th className="p-4 text-left text-brown font-georgia">Clinical Definition</th>
-                  <th className="p-4 text-left text-brown font-georgia">Menopause Symptoms</th>
-                  <th className="p-4 text-left text-brown font-georgia">HRT Approach at Nexus Clinic KL</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-taupe/20">
-                <tr>
-                  <td className="p-4 font-medium text-brown">Perimenopause</td>
-                  <td className="p-4 text-taupe text-sm">Periods still occurring but irregular; elevated FSH on blood testing; women transition through menopause beginning here; average Malaysian perimenopausal onset mid-to-late 40s; perimenopausal women may experience symptoms for 4 to 10 years before final period</td>
-                  <td className="p-4 text-taupe text-sm">Irregular periods; hot flashes beginning; night sweats; mood swings; worsening PMS-like symptoms; mood swings; sleep difficulty; periods of brain fog; cycles lengthening or shortening; experiencing menopausal symptoms while still having periods</td>
-                  <td className="p-4 text-taupe text-sm">Cyclical (sequential) combined HRT: oestrogen taken continuously, progestogen added for 12 to 14 days per cycle to produce a regular withdrawal bleed; OR HRT or the combined pill if contraception is also needed; hormonal contraception during perimenopause also treats menopause symptoms while providing contraception; FSH and oestradiol blood test to confirm status; the doctor will provide a personalised plan; women may also decide whether to start HRT during this phase based on symptom severity</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">Menopause Transition (Early Postmenopause)</td>
-                  <td className="p-4 text-taupe text-sm">12 consecutive months without a menstrual period; average Malaysian menopausal age 50.7 years; this marks the end of her reproductive years; menopause is a natural biological event; the ages of 45 and 55 encompass most Malaysian women's experience; the 'window of opportunity' for maximum benefit from hormone therapy is in this phase</td>
-                  <td className="p-4 text-taupe text-sm">Hot flashes and night sweats typically at their most intense in the 1 to 3 years after the final period; sleep significantly disrupted; vaginal dryness and pain during intercourse beginning; cognitive symptoms including brain fog and poor concentration; menopausal symptoms by replacing declining hormone levels can be effectively managed</td>
-                  <td className="p-4 text-taupe text-sm">Continuous combined HRT: oestrogen daily plus progestogen daily (no withdrawal bleeds); OR oestrogen-only HRT for hysterectomised women; transdermal oestrogen therapy preferred as delivery route for most women; bioidentical hormones (micronised progesterone) as preferred progestogen for women with uterus; this phase has the strongest evidence for hormone therapy benefit; start HRT in this phase for maximum benefit; HRT helps mitigate these effects on quality of life and overall health</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">Established Postmenopause</td>
-                  <td className="p-4 text-taupe text-sm">More than 5 years since the final period; woman is fully adapted to the postmenopausal hormonal state; menopause symptoms may have reduced but ongoing genitourinary, bone, mood or cognitive concerns may persist; women experiencing genitourinary syndrome often seek hormone therapy at this stage</td>
-                  <td className="p-4 text-taupe text-sm">Vasomotor menopause symptoms usually reduced; genitourinary syndrome (vaginal dryness, recurrent UTIs, pain during intercourse, urinary urgency) often worsens progressively without oestrogen therapy; osteoporosis risk accumulates; conditions like osteoporosis, cardiovascular disease and cognitive decline risk increase; quality of life affected</td>
-                  <td className="p-4 text-taupe text-sm">Continuation of HRT if well-tolerated and benefits are ongoing; continue HRT is appropriate when quality of life benefits are sustained; initiation of hormone therapy for women presenting for the first time in this phase is possible but requires individualised risk-benefit discussion; local vaginal oestrogen therapy for genitourinary syndrome as a low-risk targeted option; annual review to reassess whether to continue HRT; no arbitrary cut-off age for hormone therapy discontinuation</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">Premature Menopause / POI</td>
-                  <td className="p-4 text-taupe text-sm">Ovarian function loss before age 40 years old; this represents early or premature menopause; affects approximately 1% of women; premature menopause may be spontaneous or following chemotherapy, radiotherapy or bilateral oophorectomy; associated with significant long-term health risks from early hormone deficiency</td>
-                  <td className="p-4 text-taupe text-sm">All symptoms of menopause at a younger age; particularly significant impact on bone density, cardiovascular health and cognitive function; the emotional impact of premature menopause on fertility and identity is significant; menopause symptoms may be more intense than typical menopausal experience for women experiencing early or premature menopause; relieve these symptoms and protect long-term health</td>
-                  <td className="p-4 text-taupe text-sm">HRT is strongly recommended in premature menopause and should be continued at minimum until the average menopausal age of 51 to protect bone density and reduce cardiovascular risk; HRT or the combined pill is recommended for women experiencing early or premature menopause; higher oestrogen doses may be required; HRT helps mitigate these effects of premature oestrogen deficiency; this is not optional treatment for POI: it is bone and cardiovascular health protection for women affected; get in touch with us to book an appointment to book an appointment today if you are experiencing symptoms of premature menopause</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "stage", header: "Stage", className: "font-semibold" },
+              { key: "definition", header: "Clinical Definition" },
+              { key: "symptoms", header: "Menopause Symptoms" },
+              { key: "approach", header: "HRT Approach at Nexus Clinic KL" },
+            ]}
+            data={[
+              {
+                stage: "Perimenopause",
+                definition: "Periods still occurring but irregular; elevated FSH on blood testing; women transition through menopause beginning here; average Malaysian perimenopausal onset mid-to-late 40s; perimenopausal women may experience symptoms for 4 to 10 years before final period",
+                symptoms: "Irregular periods; hot flashes beginning; night sweats; mood swings; worsening PMS-like symptoms; mood swings; sleep difficulty; periods of brain fog; cycles lengthening or shortening; experiencing menopausal symptoms while still having periods",
+                approach: "Cyclical (sequential) combined HRT: oestrogen taken continuously, progestogen added for 12 to 14 days per cycle to produce a regular withdrawal bleed; OR HRT or the combined pill if contraception is also needed; hormonal contraception during perimenopause also treats menopause symptoms while providing contraception; FSH and oestradiol blood test to confirm status; the doctor will provide a personalised plan; women may also decide whether to start HRT during this phase based on symptom severity"
+              },
+              {
+                stage: "Menopause Transition (Early Postmenopause)",
+                definition: "12 consecutive months without a menstrual period; average Malaysian menopausal age 50.7 years; this marks the end of her reproductive years; menopause is a natural biological event; the ages of 45 and 55 encompass most Malaysian women's experience; the 'window of opportunity' for maximum benefit from hormone therapy is in this phase",
+                symptoms: "Hot flashes and night sweats typically at their most intense in the 1 to 3 years after the final period; sleep significantly disrupted; vaginal dryness and pain during intercourse beginning; cognitive symptoms including brain fog and poor concentration; menopausal symptoms by replacing declining hormone levels can be effectively managed",
+                approach: "Continuous combined HRT: oestrogen daily plus progestogen daily (no withdrawal bleeds); OR oestrogen-only HRT for hysterectomised women; transdermal oestrogen therapy preferred as delivery route for most women; bioidentical hormones (micronised progesterone) as preferred progestogen for women with uterus; this phase has the strongest evidence for hormone therapy benefit; start HRT in this phase for maximum benefit; HRT helps mitigate these effects on quality of life and overall health"
+              },
+              {
+                stage: "Established Postmenopause",
+                definition: "More than 5 years since the final period; woman is fully adapted to the postmenopausal hormonal state; menopause symptoms may have reduced but ongoing genitourinary, bone, mood or cognitive concerns may persist; women experiencing genitourinary syndrome often seek hormone therapy at this stage",
+                symptoms: "Vasomotor menopause symptoms usually reduced; genitourinary syndrome (vaginal dryness, recurrent UTIs, pain during intercourse, urinary urgency) often worsens progressively without oestrogen therapy; osteoporosis risk accumulates; conditions like osteoporosis, cardiovascular disease and cognitive decline risk increase; quality of life affected",
+                approach: "Continuation of HRT if well-tolerated and benefits are ongoing; continue HRT is appropriate when quality of life benefits are sustained; initiation of hormone therapy for women presenting for the first time in this phase is possible but requires individualised risk-benefit discussion; local vaginal oestrogen therapy for genitourinary syndrome as a low-risk targeted option; annual review to reassess whether to continue HRT; no arbitrary cut-off age for hormone therapy discontinuation"
+              },
+              {
+                stage: "Premature Menopause / POI",
+                definition: "Ovarian function loss before age 40 years old; this represents early or premature menopause; affects approximately 1% of women; premature menopause may be spontaneous or following chemotherapy, radiotherapy or bilateral oophorectomy; associated with significant long-term health risks from early hormone deficiency",
+                symptoms: "All symptoms of menopause at a younger age; particularly significant impact on bone density, cardiovascular health and cognitive function; the emotional impact of premature menopause on fertility and identity is significant; menopause symptoms may be more intense than typical menopausal experience for women experiencing early or premature menopause; relieve these symptoms and protect long-term health",
+                approach: "HRT is strongly recommended in premature menopause and should be continued at minimum until the average menopausal age of 51 to protect bone density and reduce cardiovascular risk; HRT or the combined pill is recommended for women experiencing early or premature menopause; higher oestrogen doses may be required; HRT helps mitigate these effects of premature oestrogen deficiency; this is not optional treatment for POI: it is bone and cardiovascular health protection for women affected; get in touch with us to book an appointment to book an appointment today if you are experiencing symptoms of premature menopause"
+              },
+            ]}
+            title="HRT by Menopause Stage: Reasons for Taking HRT at Different Phases of Menopausal Life"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-20 px-4"
+          />
         </motion.div>
       </section>
 
@@ -389,53 +299,50 @@ const HormonReplaceLanding = ({
           viewport={{ once: true }}
           className="container mx-auto px-4 sm:px-6 lg:px-8"
         >
-          <motion.h2 variants={fadeInUp} className="font-georgia text-3xl lg:text-4xl text-brown text-center mb-8">
-            The HRT Monitoring Protocol at Nexus Clinic KL: Taking HRT Safely with Structured Follow-Up
-          </motion.h2>
-
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white rounded-2xl overflow-hidden shadow-lg">
-              <thead className="bg-wine/20">
-                <tr>
-                  <th className="p-4 text-left text-brown font-georgia">Parameter</th>
-                  <th className="p-4 text-left text-brown font-georgia">Monitoring Interval</th>
-                  <th className="p-4 text-left text-brown font-georgia">What Is Assessed and Why at Nexus Clinic KL</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-taupe/20">
-                <tr>
-                  <td className="p-4 font-medium text-brown">Symptom and Quality of Life Review</td>
-                  <td className="p-4 text-taupe text-sm">At 3 months after starting HRT; then every 6 to 12 months; annually as a minimum</td>
-                  <td className="p-4 text-taupe text-sm">MENQOL (Menopause-Specific Quality of Life) score or equivalent structured review; confirms HRT helps maintain therapeutic benefit; identifies symptom recurrence that may indicate dose adjustment is needed; determines whether HRT and when to initiate a taper or reduction is appropriate; improving the quality of life of menopausal women affected is the primary goal; women who have been symptom-free for 2 or more years are counselled on gradual dose reduction; the doctor will provide guidance on whether to continue HRT at each review</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">Blood Pressure</td>
-                  <td className="p-4 text-taupe text-sm">At every visit; at minimum annually; required by updated 2025 FDA labeling for all hormone therapy formulations</td>
-                  <td className="p-4 text-taupe text-sm">HRT, particularly oral oestrogen therapy, can modestly increase blood pressure in some women; blood pressure elevation prompts review of oral vs transdermal hormone therapy route; persistent hypertension requires management before or during taking HRT; hypertension alone is not a contraindication to hormone replacement therapy when transdermal hormone therapy is used; healthcare professionals at Nexus Clinic KL monitor blood pressure at every HRT visit</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">Breakthrough or Unexpected Bleeding</td>
-                  <td className="p-4 text-taupe text-sm">Any unscheduled bleeding on continuous combined HRT after the first 3 to 6 months of use; any post-menopausal bleeding in women not on hormone therapy</td>
-                  <td className="p-4 text-taupe text-sm">Breakthrough bleeding in the first 3 months of taking HRT is common; persistent unscheduled bleeding after 6 months requires endometrial investigation (pelvic ultrasound and endometrial biopsy if indicated) to reduce the risk of uterine cancer and exclude endometrial hyperplasia; women with a uterus on oestrogen therapy must have progestogen protection to reduce the risk of uterine cancer; the risk of uterine cancer is significantly elevated in women with an intact uterus taking oestrogen alone; at Nexus Clinic KL, unexplained breakthrough bleeding always prompts investigation</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">Breast Awareness and Mammography</td>
-                  <td className="p-4 text-taupe text-sm">Mammogram as per Malaysia Cancer Society recommendation: women over 40 annually or every 2 years; women on HRT follow the same schedule with no additional mandatory increase in frequency</td>
-                  <td className="p-4 text-taupe text-sm">Women taking HRT are counselled to report any breast changes immediately; breast density may increase on combined HRT, which can reduce mammogram sensitivity; clinical breast examination is included in the annual HRT review; new breast changes prompt urgent referral for investigation; women affected by breast symptoms during hormone therapy should make an appointment today for urgent assessment; healthcare professionals at Nexus Clinic KL include breast assessment in every annual hormone replacement therapy review</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">Bone Density (DEXA Scan)</td>
-                  <td className="p-4 text-taupe text-sm">Baseline DEXA scan recommended if POI, surgical menopause or multiple osteoporosis risk factors; repeat DEXA every 2 to 3 years in high-risk women</td>
-                  <td className="p-4 text-taupe text-sm">HRT is the most effective intervention for maintaining bone density in early postmenopause; hormone therapy protects against conditions like osteoporosis from the first month of use; DEXA confirms baseline bone density and measures response to hormone replacement therapy in women with pre-existing osteopenia; for premature menopause patients, DEXA is a standard part of management; hormone therapy used for women experiencing premature menopause must address bone health as a priority; HRT helps mitigate these effects of early oestrogen deficiency on the skeleton</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-brown">Reassessment of HRT Indication and Duration</td>
-                  <td className="p-4 text-taupe text-sm">Formally reviewed annually at every follow-up consultation; decide whether to start HRT continuation or tapering at each review</td>
-                  <td className="p-4 text-taupe text-sm">There is no mandatory maximum duration of hormone replacement therapy; the decision to continue HRT is based on ongoing benefit versus individual risk at each annual review; women with severe premature menopause may need hormone therapy until age 51 or beyond; the 2025 PMC narrative review confirms benefit-risk is evaluated individually; HRT and when to initiate the next phase is a decision made between each patient and her doctor; women may continue taking HRT when ongoing quality of life benefits outweigh the potential risks at each annual review</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+            {/* HRT Monitoring Protocol Table */}
+            <TableForPages
+              columns={[
+                { key: "parameter", header: "Parameter", className: "font-semibold" },
+                { key: "interval", header: "Monitoring Interval" },
+                { key: "assessment", header: "What Is Assessed and Why at Nexus Clinic KL" },
+              ]}
+              data={[
+                {
+                  parameter: "Symptom and Quality of Life Review",
+                  interval: "At 3 months after starting HRT; then every 6 to 12 months; annually as a minimum",
+                  assessment: "MENQOL (Menopause-Specific Quality of Life) score or equivalent structured review; confirms HRT helps maintain therapeutic benefit; identifies symptom recurrence that may indicate dose adjustment is needed; determines whether HRT and when to initiate a taper or reduction is appropriate; improving the quality of life of menopausal women affected is the primary goal; women who have been symptom-free for 2 or more years are counselled on gradual dose reduction; the doctor will provide guidance on whether to continue HRT at each review"
+                },
+                {
+                  parameter: "Blood Pressure",
+                  interval: "At every visit; at minimum annually; required by updated 2025 FDA labeling for all hormone therapy formulations",
+                  assessment: "HRT, particularly oral oestrogen therapy, can modestly increase blood pressure in some women; blood pressure elevation prompts review of oral vs transdermal hormone therapy route; persistent hypertension requires management before or during taking HRT; hypertension alone is not a contraindication to hormone replacement therapy when transdermal hormone therapy is used; healthcare professionals at Nexus Clinic KL monitor blood pressure at every HRT visit"
+                },
+                {
+                  parameter: "Breakthrough or Unexpected Bleeding",
+                  interval: "Any unscheduled bleeding on continuous combined HRT after the first 3 to 6 months of use; any post-menopausal bleeding in women not on hormone therapy",
+                  assessment: "Breakthrough bleeding in the first 3 months of taking HRT is common; persistent unscheduled bleeding after 6 months requires endometrial investigation (pelvic ultrasound and endometrial biopsy if indicated) to reduce the risk of uterine cancer and exclude endometrial hyperplasia; women with a uterus on oestrogen therapy must have progestogen protection to reduce the risk of uterine cancer; the risk of uterine cancer is significantly elevated in women with an intact uterus taking oestrogen alone; at Nexus Clinic KL, unexplained breakthrough bleeding always prompts investigation"
+                },
+                {
+                  parameter: "Breast Awareness and Mammography",
+                  interval: "Mammogram as per Malaysia Cancer Society recommendation: women over 40 annually or every 2 years; women on HRT follow the same schedule with no additional mandatory increase in frequency",
+                  assessment: "Women taking HRT are counselled to report any breast changes immediately; breast density may increase on combined HRT, which can reduce mammogram sensitivity; clinical breast examination is included in the annual HRT review; new breast changes prompt urgent referral for investigation; women affected by breast symptoms during hormone therapy should make an appointment today for urgent assessment; healthcare professionals at Nexus Clinic KL include breast assessment in every annual hormone replacement therapy review"
+                },
+                {
+                  parameter: "Bone Density (DEXA Scan)",
+                  interval: "Baseline DEXA scan recommended if POI, surgical menopause or multiple osteoporosis risk factors; repeat DEXA every 2 to 3 years in high-risk women",
+                  assessment: "HRT is the most effective intervention for maintaining bone density in early postmenopause; hormone therapy protects against conditions like osteoporosis from the first month of use; DEXA confirms baseline bone density and measures response to hormone replacement therapy in women with pre-existing osteopenia; for premature menopause patients, DEXA is a standard part of management; hormone therapy used for women experiencing premature menopause must address bone health as a priority; HRT helps mitigate these effects of early oestrogen deficiency on the skeleton"
+                },
+                {
+                  parameter: "Reassessment of HRT Indication and Duration",
+                  interval: "Formally reviewed annually at every follow-up consultation; decide whether to start HRT continuation or tapering at each review",
+                  assessment: "There is no mandatory maximum duration of hormone replacement therapy; the decision to continue HRT is based on ongoing benefit versus individual risk at each annual review; women with severe premature menopause may need hormone therapy until age 51 or beyond; the 2025 PMC narrative review confirms benefit-risk is evaluated individually; HRT and when to initiate the next phase is a decision made between each patient and her doctor; women may continue taking HRT when ongoing quality of life benefits outweigh the potential risks at each annual review"
+                },
+              ]}
+              title="The HRT Monitoring Protocol at Nexus Clinic KL: Taking HRT Safely with Structured Follow-Up"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-20 px-4"
+            />
         </motion.div>
       </section>
 
@@ -448,30 +355,55 @@ const HormonReplaceLanding = ({
           viewport={{ once: true }}
           className="container mx-auto px-4 sm:px-6 lg:px-8"
         >
-          <motion.h2 variants={fadeInUp} className="font-georgia text-3xl lg:text-4xl text-brown text-center mb-8">
-            Hormone Replacement Therapy Cost in Malaysia 2026: HRT Pricing at Nexus Clinic KL
-          </motion.h2>
-
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white rounded-2xl overflow-hidden shadow-lg">
-              <thead className="bg-wine/20">
-                <tr>
-                  <th className="p-4 text-left text-brown font-georgia">Service / Item</th>
-                  <th className="p-4 text-left text-brown font-georgia">Details</th>
-                  <th className="p-4 text-left text-brown font-georgia">Price Range (RM) 2026</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-taupe/20">
-                <tr><td className="p-4 font-medium text-brown">Initial HRT Consultation</td><td className="p-4 text-taupe text-sm">Comprehensive symptom assessment (MENQOL), medical history, contraindication screening, blood pressure, physical examination; discuss reasons for taking HRT; doctor will provide personalised guidance; make an appointment today for your HRT assessment</td><td className="p-4 text-taupe text-sm">RM 150 to RM 300</td></tr>
-                <tr><td className="p-4 font-medium text-brown">Pre-HRT Blood Panel</td><td className="p-4 text-taupe text-sm">FSH, LH, oestradiol, progesterone (if perimenopausal), testosterone, SHBG, thyroid function, lipids, fasting glucose, CBC, liver function tests; baseline hormone levels assessment</td><td className="p-4 text-taupe text-sm">RM 300 to RM 550 (laboratory fees)</td></tr>
-                <tr><td className="p-4 font-medium text-brown">Transdermal Oestradiol Gel (per month supply)</td><td className="p-4 text-taupe text-sm">Oestrogel or equivalent; oestrogen therapy applied daily; prescription valid for 1 to 3 months; the most commonly prescribed oestrogen-only HRT delivery route at this clinic</td><td className="p-4 text-taupe text-sm">RM 80 to RM 180 per month</td></tr>
-                <tr><td className="p-4 font-medium text-brown">Micronised Progesterone / Bioidentical Hormones (per month)</td><td className="p-4 text-taupe text-sm">Utrogestan; bioidentical hormone replacement therapy progestogen component; oral capsule taken nightly for women with uterus on systemic oestrogen; oestrogen and progestogen combination; continuous or cyclical depending on menopausal stage</td><td className="p-4 text-taupe text-sm">RM 80 to RM 160 per month</td></tr>
-                <tr><td className="p-4 font-medium text-brown">Oral Combined HRT Tablets (per month)</td><td className="p-4 text-taupe text-sm">Combined HRT (oestrogen and progestogen) tablet; various brands; cyclical or continuous regimen depending on stage; combined HRT is recommended for women with a uterus on systemic oestrogen therapy</td><td className="p-4 text-taupe text-sm">RM 60 to RM 200 per month</td></tr>
-                <tr><td className="p-4 font-medium text-brown">Local Vaginal Oestrogen (per supply)</td><td className="p-4 text-taupe text-sm">Vagifem pessaries, Ovestin cream or Estring ring; oestrogen-only HRT in local form; oestrogen therapy for genitourinary syndrome; used alongside or without systemic hormone replacement therapy</td><td className="p-4 text-taupe text-sm">RM 80 to RM 250 per supply</td></tr>
-                <tr><td className="p-4 font-medium text-brown">Follow-Up HRT Review Consultation</td><td className="p-4 text-taupe text-sm">Annual structured review; symptom assessment, blood pressure, unexpected bleeding evaluation, ongoing indication review, prescription renewal; decide whether to continue HRT; make an appointment for your annual HRT review</td><td className="p-4 text-taupe text-sm">RM 100 to RM 200 per visit</td></tr>
-              </tbody>
-            </table>
-          </div>
+          {/* Hormone Replacement Therapy Cost Table */}
+          <TableForPages
+            columns={[
+              { key: "service", header: "Service / Item", className: "font-semibold" },
+              { key: "details", header: "Details" },
+              { key: "price", header: "Price Range (RM) 2026" },
+            ]}
+            data={[
+              {
+                service: "Initial HRT Consultation",
+                details: "Comprehensive symptom assessment (MENQOL), medical history, contraindication screening, blood pressure, physical examination; discuss reasons for taking HRT; doctor will provide personalised guidance; make an appointment today for your HRT assessment",
+                price: "RM 150 to RM 300"
+              },
+              {
+                service: "Pre-HRT Blood Panel",
+                details: "FSH, LH, oestradiol, progesterone (if perimenopausal), testosterone, SHBG, thyroid function, lipids, fasting glucose, CBC, liver function tests; baseline hormone levels assessment",
+                price: "RM 300 to RM 550 (laboratory fees)"
+              },
+              {
+                service: "Transdermal Oestradiol Gel (per month supply)",
+                details: "Oestrogel or equivalent; oestrogen therapy applied daily; prescription valid for 1 to 3 months; the most commonly prescribed oestrogen-only HRT delivery route at this clinic",
+                price: "RM 80 to RM 180 per month"
+              },
+              {
+                service: "Micronised Progesterone / Bioidentical Hormones (per month)",
+                details: "Utrogestan; bioidentical hormone replacement therapy progestogen component; oral capsule taken nightly for women with uterus on systemic oestrogen; oestrogen and progestogen combination; continuous or cyclical depending on menopausal stage",
+                price: "RM 80 to RM 160 per month"
+              },
+              {
+                service: "Oral Combined HRT Tablets (per month)",
+                details: "Combined HRT (oestrogen and progestogen) tablet; various brands; cyclical or continuous regimen depending on stage; combined HRT is recommended for women with a uterus on systemic oestrogen therapy",
+                price: "RM 60 to RM 200 per month"
+              },
+              {
+                service: "Local Vaginal Oestrogen (per supply)",
+                details: "Vagifem pessaries, Ovestin cream or Estring ring; oestrogen-only HRT in local form; oestrogen therapy for genitourinary syndrome; used alongside or without systemic hormone replacement therapy",
+                price: "RM 80 to RM 250 per supply"
+              },
+              {
+                service: "Follow-Up HRT Review Consultation",
+                details: "Annual structured review; symptom assessment, blood pressure, unexpected bleeding evaluation, ongoing indication review, prescription renewal; decide whether to continue HRT; make an appointment for your annual HRT review",
+                price: "RM 100 to RM 200 per visit"
+              },
+            ]}
+            title="Hormone Replacement Therapy Cost in Malaysia 2026: HRT Pricing at Nexus Clinic KL"
+            variant="compact"
+            fadeInUp={fadeInUp}
+            className="py-20 px-4"
+          />
         </motion.div>
       </section>
 
@@ -582,9 +514,9 @@ const HormonReplaceLanding = ({
                 Phone: 016-7025699 / 03-21635699
               </p>
 
-              <button className="bg-light text-wine px-8 py-4 rounded-lg hover:bg-cream transition-all duration-300 font-medium">
+              <Link href="/contact-us" className="bg-light text-wine px-8 py-4 rounded-lg hover:bg-cream transition-all duration-300 font-medium">
                 Schedule Your Consultation
-              </button>
+              </Link>
             </div>
           </motion.div>
         </motion.div>

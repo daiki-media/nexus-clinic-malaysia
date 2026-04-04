@@ -31,6 +31,7 @@ import FAQ from "../../components/FAQ";
 import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
+import AllPagesHero from "@/src/components/AllPagesHero";
 
 const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "weightLoss/duromine");
@@ -98,152 +99,102 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
 
   return (
     <div className="min-h-screen bg-cream font-inter">
-      {/* Hero Section */}
-      <motion.section
+      <AllPagesHero
+        badge="Doctor-Supervised Phentermine at Nexus Clinic KL"
+        title="Duromine Weight Loss in Kuala Lumpur, Malaysia"
+        highlight="Short-term appetite control with a doctor-led plan built for safe, structured progress."
+        description="Hunger is not a character flaw. For many patients, appetite is the main reason every diet collapses. Duromine is used to quiet appetite long enough to help you build real momentum."
+        details="At Nexus Clinic KL, Duromine is prescribed only after full medical history review, BMI assessment, cardiovascular screening, and suitability confirmation. It is a prescription medicine, and how it is prescribed matters."
+        note="Duromine at a glance: 15mg, 30mg and 40mg once daily. Expected weight loss: 5-10 kg over 12 weeks. Best for BMI 27+ with weight-related conditions, or BMI 30+ without comorbidities."
+        image="/images/treatment/weight-loss.png"
+        imageAlt="Duromine Weight Loss Treatment at Nexus Clinic Kuala Lumpur"
+        ctaText="Book Free Consultation"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in Duromine weight loss treatment at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="Duromine Programme"
+        floatingSubtitle="15mg • 30mg • 40mg | Up to 12 weeks"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
+      {/* Trust Bar Section */}
+      <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
-        className="relative overflow-hidden bg-linear-to-b from-cream to-light pt-20 pb-16 px-4"
+        viewport={{ once: true }}
+        className="container mx-auto max-w-6xl px-4 -mt-8 relative z-20"
       >
-        <div className="container mx-auto max-w-6xl">
-          <motion.div
-            variants={fadeInUp}
-            className="inline-flex items-center gap-2 bg-wine/10 text-wine px-4 py-2 rounded-full mb-6"
-          >
-            <Shield className="w-4 h-4" />
-            <span className="text-sm font-medium">
-              Doctor-Supervised Phentermine at Nexus Clinic KL
-            </span>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <motion.div variants={fadeInUp} className="text-center">
+            <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50 shadow-md">
+              <Shield className="w-6 h-6 text-wine mx-auto mb-2" />
+              <div className="font-medium text-brown text-sm">Prescription-only</div>
+              <div className="text-taupe text-xs">full doctor screening</div>
+            </div>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <motion.div variants={fadeInLeft} className="space-y-6">
-              <h1 className="font-georgia text-5xl lg:text-6xl text-brown leading-tight">
-                Duromine Weight Loss in Kuala Lumpur, Malaysia
-              </h1>
+          <motion.div variants={fadeInUp} className="text-center">
+            <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50 shadow-md">
+              <Pill className="w-6 h-6 text-wine mx-auto mb-2" />
+              <div className="font-medium text-brown text-sm">15mg, 30mg, 40mg</div>
+              <div className="text-taupe text-xs">individualised dosage</div>
+            </div>
+          </motion.div>
 
-              <p className="text-2xl text-wine font-light">
-                Short-term appetite control with a doctor-led plan built for safe, structured progress.
-              </p>
+          <motion.div variants={fadeInUp} className="text-center">
+            <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50 shadow-md">
+              <Clock className="w-6 h-6 text-wine mx-auto mb-2" />
+              <div className="font-medium text-brown text-sm">Up to 12 weeks</div>
+              <div className="text-taupe text-xs">per supervised cycle</div>
+            </div>
+          </motion.div>
 
-              <p className="text-lg text-taupe bg-rose/5 p-6 rounded-2xl border-l-4 border-rose">
-                Hunger is not a character flaw. For many patients, appetite is the main reason every
-                diet collapses. Duromine is used to quiet appetite long enough to help you build real
-                momentum.
-              </p>
+          <motion.div variants={fadeInUp} className="text-center">
+            <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50 shadow-md">
+              <MapPin className="w-6 h-6 text-wine mx-auto mb-2" />
+              <div className="font-medium text-brown text-sm">Kuala Lumpur clinic</div>
+              <div className="text-taupe text-xs">Wisma UOA II</div>
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
 
-              <p className="text-brown/80">
-                At Nexus Clinic KL, Duromine is prescribed only after full medical history review,
-                BMI assessment, cardiovascular screening, and suitability confirmation. It is a
-                prescription medicine, and how it is prescribed matters.
-              </p>
-
-              <div className="flex flex-wrap gap-4">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-medium hover:bg-rose transition-colors shadow-lg shadow-wine/20 inline-flex items-center gap-2"
-                >
-                  Book Free Consultation
-                  <ArrowRight className="w-4 h-4" />
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-brown/20 text-brown px-8 py-4 rounded-full font-medium hover:border-wine hover:text-wine transition-colors"
-                >
-                  View Programme Guide
-                </motion.button>
-              </div>
-
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6">
-                <motion.div variants={fadeInUp} className="text-center">
-                  <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50">
-                    <Shield className="w-6 h-6 text-wine mx-auto mb-2" />
-                    <div className="font-medium text-brown text-sm">
-                      Prescription-only
-                    </div>
-                    <div className="text-taupe text-xs">full doctor screening</div>
-                  </div>
-                </motion.div>
-
-                <motion.div variants={fadeInUp} className="text-center">
-                  <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50">
-                    <Pill className="w-6 h-6 text-wine mx-auto mb-2" />
-                    <div className="font-medium text-brown text-sm">
-                      15mg, 30mg, 40mg
-                    </div>
-                    <div className="text-taupe text-xs">individualised dosage</div>
-                  </div>
-                </motion.div>
-
-                <motion.div variants={fadeInUp} className="text-center">
-                  <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50">
-                    <Clock className="w-6 h-6 text-wine mx-auto mb-2" />
-                    <div className="font-medium text-brown text-sm">
-                      Up to 12 weeks
-                    </div>
-                    <div className="text-taupe text-xs">per supervised cycle</div>
-                  </div>
-                </motion.div>
-
-                <motion.div variants={fadeInUp} className="text-center">
-                  <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50">
-                    <MapPin className="w-6 h-6 text-wine mx-auto mb-2" />
-                    <div className="font-medium text-brown text-sm">
-                      Kuala Lumpur clinic
-                    </div>
-                    <div className="text-taupe text-xs">Wisma UOA II</div>
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="bg-white p-8 rounded-3xl shadow-xl"
-            >
-              <h2 className="font-georgia text-3xl text-brown mb-6">
-                Duromine at a glance
-              </h2>
-
-              <div className="space-y-5">
-                <div>
-                  <p className="font-bold text-wine mb-1">Treatment:</p>
-                  <p className="text-brown">
-                    Duromine (Phentermine) Weight Loss Programme
-                  </p>
-                </div>
-
-                <div>
-                  <p className="font-bold text-wine mb-1">Dosages available:</p>
-                  <p className="text-brown">15mg, 30mg and 40mg once daily in the morning</p>
-                </div>
-
-                <div>
-                  <p className="font-bold text-wine mb-1">Expected weight loss:</p>
-                  <p className="text-brown">About 5 to 10 kg over 12 weeks with diet and exercise support</p>
-                </div>
-
-                <div>
-                  <p className="font-bold text-wine mb-1">Best for:</p>
-                  <p className="text-brown">
-                    BMI 27+ with weight-related conditions, or BMI 30+ without comorbidities
-                  </p>
-                </div>
-
-                <div>
-                  <p className="font-bold text-wine mb-1">Monitoring:</p>
-                  <p className="text-brown">
-                    Fortnightly or monthly doctor check-ins for blood pressure, pulse, side effects and progress
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+      {/* Information Card */}
+      <motion.div
+        variants={fadeInRight}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="container mx-auto max-w-6xl px-4 mt-8"
+      >
+        <div className="bg-white p-8 rounded-3xl shadow-xl mb-5">
+          <h2 className="font-georgia text-3xl text-brown mb-6">Duromine at a glance</h2>
+          <div className="space-y-5">
+            <div>
+              <p className="font-bold text-wine mb-1">Treatment:</p>
+              <p className="text-brown">Duromine (Phentermine) Weight Loss Programme</p>
+            </div>
+            <div>
+              <p className="font-bold text-wine mb-1">Dosages available:</p>
+              <p className="text-brown">15mg, 30mg and 40mg once daily in the morning</p>
+            </div>
+            <div>
+              <p className="font-bold text-wine mb-1">Expected weight loss:</p>
+              <p className="text-brown">About 5 to 10 kg over 12 weeks with diet and exercise support</p>
+            </div>
+            <div>
+              <p className="font-bold text-wine mb-1">Best for:</p>
+              <p className="text-brown">BMI 27+ with weight-related conditions, or BMI 30+ without comorbidities</p>
+            </div>
+            <div>
+              <p className="font-bold text-wine mb-1">Monitoring:</p>
+              <p className="text-brown">Fortnightly or monthly doctor check-ins for blood pressure, pulse, side effects and progress</p>
+            </div>
           </div>
         </div>
-      </motion.section>
-
+      </motion.div>
       {/* What is Duromine Section */}
       <motion.section
         variants={staggerContainer}
@@ -850,14 +801,15 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
               appetite pattern, risk profile, suitability, ideal dosage, and safest next step.
             </p>
 
-            <motion.button
+            <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              href="/contact-us"
               className="bg-light text-wine px-10 py-5 rounded-full font-medium text-lg hover:bg-cream transition-colors shadow-2xl inline-flex items-center gap-2"
             >
               Book Free Consultation
               <ArrowRight className="w-5 h-5" />
-            </motion.button>
+            </motion.a>
           </motion.div>
         </div>
       </motion.section>

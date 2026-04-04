@@ -28,11 +28,13 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 import Image from "next/image";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 interface AcneTreatmentProps {
   locale: string;
 }
@@ -81,91 +83,25 @@ export default function AcneLandingPage({ locale }: AcneTreatmentProps) {
 
   return (
     <div className="w-full bg-light overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <AlertTriangle className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Doctor-Led Acne Treatment • MOH Registered Clinic</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Best Acne Treatment in Malaysia for{" "}
-                <span className="text-wine italic">Clearer, Bright Skin</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Tired of breakouts that won't clear? At Nexus Clinic KL, licensed aesthetic doctors treat acne at the root — from cystic nodules to hormonal flare-ups — using clinically proven procedures.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                Acne is not just "dirty pores". It is stress, hormones, heat, habits, and the wrong routine all mixing together. At Nexus Clinic KL, your plan starts with a doctor-led assessment, then we build a treatment path that fits your acne type, your skin tone, and your lifestyle.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Over 5,000 Skin Treatment Procedures Completed
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  Every acne treatment plan begins with a proper clinical skin assessment by a licensed aesthetic doctor using MOH-approved procedures.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Book Free Skin Assessment
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in acne treatment at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/skin/acne-treatment.webp"
-                  alt="Nexus Clinic Kuala Lumpur - Acne Treatment"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown"> Doctor-Led Care</p>
-                <p className="font-inter text-sm text-taupe">Assessment first, not a sales pitch</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+        badge="Doctor-Led Acne Treatment • MOH Registered Clinic"
+        title="Best Acne Treatment in Malaysia for"
+        highlight="Clearer, Bright Skin"
+        description="Tired of breakouts that won't clear? At Nexus Clinic KL, licensed aesthetic doctors treat acne at the root — from cystic nodules to hormonal flare-ups — using clinically proven procedures."
+        details="Acne is not just 'dirty pores'. It is stress, hormones, heat, habits, and the wrong routine all mixing together. At Nexus Clinic KL, your plan starts with a doctor-led assessment, then we build a treatment path that fits your acne type, your skin tone, and your lifestyle."
+        note="Over 5,000 Skin Treatment Procedures Completed — Every acne treatment plan begins with a proper clinical skin assessment by a licensed aesthetic doctor using MOH-approved procedures."
+        image="/images/skin/acne-treatment.webp"
+        imageAlt="Nexus Clinic Kuala Lumpur - Acne Treatment"
+        ctaText="Book Free Skin Assessment"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in acne treatment at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="🩺 Doctor-Led Care"
+        floatingSubtitle="Assessment first, not a sales pitch"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -316,10 +252,10 @@ export default function AcneLandingPage({ locale }: AcneTreatmentProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Speak to a Doctor About Your Acne | Free Skin Assessment
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -333,54 +269,50 @@ export default function AcneLandingPage({ locale }: AcneTreatmentProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Six Malaysian Skin Stressors That Make Acne Harder to Treat in KL</h2>
-            <p className="text-taupe font-inter">Acne in Malaysia does not behave the same way as acne in London or New York</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Malaysian Skin Stressor</th>
-                  <th className="p-4 text-left font-georgia">How It Triggers Acne</th>
-                  <th className="p-4 text-left font-georgia">Treatment Response at Nexus Clinic KL</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                  <td className="p-4 font-inter font-semibold text-brown">Year-round heat (28 to 34 degrees C)</td>
-                  <td className="p-4 text-taupe font-inter">Increases in sebum output and skin temperature accelerate bacterial growth</td>
-                  <td className="p-4 text-taupe font-inter">Sebum-regulating protocols including peels and laser to control oil production</td>
-                </tr>
-                <tr className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                  <td className="p-4 font-inter font-semibold text-brown">High ambient humidity (70 to 90%)</td>
-                  <td className="p-4 text-taupe font-inter">Creates an environment for Cutibacterium acnes proliferation and clogged pores</td>
-                  <td className="p-4 text-taupe font-inter">Blue light therapy targets bacteria directly at the follicle level</td>
-                </tr>
-                <tr className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                  <td className="p-4 font-inter font-semibold text-brown">Daily indoor air-conditioning cycling</td>
-                  <td className="p-4 text-taupe font-inter">Rapid temperature changes disrupt skin barrier and dehydrate the stratum corneum</td>
-                  <td className="p-4 text-taupe font-inter">Skin barrier repair included in treatment protocol with medical-grade moisturisers</td>
-                </tr>
-                <tr className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                  <td className="p-4 font-inter font-semibold text-brown">Urban pollution (KL city centre)</td>
-                  <td className="p-4 text-taupe font-inter">Particulate matter oxidises sebum, triggering inflammatory acne and PIH</td>
-                  <td className="p-4 text-taupe font-inter">Antioxidant topicals and pico laser to address inflammation and pigmentation</td>
-                </tr>
-                <tr className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                  <td className="p-4 font-inter font-semibold text-brown">Dietary habits (high GI, spice, dairy)</td>
-                  <td className="p-4 text-taupe font-inter">Insulin spikes stimulate androgen-related sebum overproduction</td>
-                  <td className="p-4 text-taupe font-inter">Dietary guidance built into consultation; hormonal acne protocol where indicated</td>
-                </tr>
-                <tr className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                  <td className="p-4 font-inter font-semibold text-brown">Work stress and sleep disruption</td>
-                  <td className="p-4 text-taupe font-inter">Cortisol elevation stimulates sebaceous gland activity</td>
-                  <td className="p-4 text-taupe font-inter">Holistic assessment includes lifestyle factors; combined treatment protocols</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+            <TableForPages
+              columns={[
+                { key: "stressor", header: "Malaysian Skin Stressor", className: "font-semibold text-brown" },
+                { key: "trigger", header: "How It Triggers Acne" },
+                { key: "response", header: "Treatment Response at Nexus Clinic KL" },
+              ]}
+              data={[
+                {
+                  stressor: "Year-round heat (28 to 34 degrees C)",
+                  trigger: "Increases in sebum output and skin temperature accelerate bacterial growth",
+                  response: "Sebum-regulating protocols including peels and laser to control oil production",
+                },
+                {
+                  stressor: "High ambient humidity (70 to 90%)",
+                  trigger: "Creates an environment for Cutibacterium acnes proliferation and clogged pores",
+                  response: "Blue light therapy targets bacteria directly at the follicle level",
+                },
+                {
+                  stressor: "Daily indoor air-conditioning cycling",
+                  trigger: "Rapid temperature changes disrupt skin barrier and dehydrate the stratum corneum",
+                  response: "Skin barrier repair included in treatment protocol with medical-grade moisturisers",
+                },
+                {
+                  stressor: "Urban pollution (KL city centre)",
+                  trigger: "Particulate matter oxidises sebum, triggering inflammatory acne and PIH",
+                  response: "Antioxidant topicals and pico laser to address inflammation and pigmentation",
+                },
+                {
+                  stressor: "Dietary habits (high GI, spice, dairy)",
+                  trigger: "Insulin spikes stimulate androgen-related sebum overproduction",
+                  response: "Dietary guidance built into consultation; hormonal acne protocol where indicated",
+                },
+                {
+                  stressor: "Work stress and sleep disruption",
+                  trigger: "Cortisol elevation stimulates sebaceous gland activity",
+                  response: "Holistic assessment includes lifestyle factors; combined treatment protocols",
+                },
+              ]}
+              title="Six Malaysian Skin Stressors That Make Acne Harder to Treat in KL"
+              subtitle="Acne in Malaysia does not behave the same way as acne in London or New York"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-12 px-4"
+            />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
@@ -414,10 +346,10 @@ export default function AcneLandingPage({ locale }: AcneTreatmentProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Let Our Doctors Identify Your Acne Type and Build Your Plan
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -431,61 +363,57 @@ export default function AcneLandingPage({ locale }: AcneTreatmentProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Acne Treatment Decision Matrix — Matching Your Concern to the Right Procedure</h2>
-            <p className="text-taupe font-inter">Use this as a general guide, though your doctor will always make the final recommendation during your consultation</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Your Concern</th>
-                  <th className="p-4 text-left font-georgia">Recommended Treatment</th>
-                  <th className="p-4 text-left font-georgia">Sessions Needed</th>
-                  <th className="p-4 text-left font-georgia">Expected Result</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-t border-taupe/10">
-                  <td className="p-4 font-inter text-brown">Active papules and pustules</td>
-                  <td className="p-4 text-taupe font-inter">Blue light therapy + topical prescription</td>
-                  <td className="p-4 text-taupe font-inter">4 to 6 sessions</td>
-                  <td className="p-4 text-taupe font-inter">50 to 70% reduction in active acne spots</td>
-                </tr>
-                <tr className="border-t border-taupe/10">
-                  <td className="p-4 font-inter text-brown">Cystic, nodular acne</td>
-                  <td className="p-4 text-taupe font-inter">Corticosteroid injection + oral medication</td>
-                  <td className="p-4 text-taupe font-inter">1 to 3 per active cycle</td>
-                  <td className="p-4 text-taupe font-inter">Rapid deflation within 24 to 48 hours</td>
-                </tr>
-                <tr className="border-t border-taupe/10">
-                  <td className="p-4 font-inter text-brown">Oily skin with blackheads</td>
-                  <td className="p-4 text-taupe font-inter">Salicylic acid chemical peel</td>
-                  <td className="p-4 text-taupe font-inter">4 to 6 sessions</td>
-                  <td className="p-4 text-taupe font-inter">Tighter pores, clearer surface</td>
-                </tr>
-                <tr className="border-t border-taupe/10">
-                  <td className="p-4 font-inter text-brown">Hormonal chin and jaw acne</td>
-                  <td className="p-4 text-taupe font-inter">Combined protocol: prescription + laser therapy</td>
-                  <td className="p-4 text-taupe font-inter">6 to 8 sessions</td>
-                  <td className="p-4 text-taupe font-inter">Cycle-linked breakouts reduced</td>
-                </tr>
-                <tr className="border-t border-taupe/10">
-                  <td className="p-4 font-inter text-brown">Post-acne dark marks (PIH)</td>
-                  <td className="p-4 text-taupe font-inter">Pico laser + brightening topicals</td>
-                  <td className="p-4 text-taupe font-inter">3 to 5 sessions</td>
-                  <td className="p-4 text-taupe font-inter">Significant fading of hyperpigmentation</td>
-                </tr>
-                <tr className="border-t border-taupe/10">
-                  <td className="p-4 font-inter text-brown">Active acne plus early scarring</td>
-                  <td className="p-4 text-taupe font-inter">Laser + peel combination</td>
-                  <td className="p-4 text-taupe font-inter">6 to 10 sessions</td>
-                  <td className="p-4 text-taupe font-inter">Active acne cleared; texture improved</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <TableForPages
+          columns={[
+            { key: "concern", header: "Your Concern", className: "font-semibold text-brown" },
+            { key: "treatment", header: "Recommended Treatment" },
+            { key: "sessions", header: "Sessions Needed" },
+            { key: "result", header: "Expected Result" },
+          ]}
+          data={[
+            {
+              concern: "Active papules and pustules",
+              treatment: "Blue light therapy + topical prescription",
+              sessions: "4 to 6 sessions",
+              result: "50 to 70% reduction in active acne spots",
+            },
+            {
+              concern: "Cystic, nodular acne",
+              treatment: "Corticosteroid injection + oral medication",
+              sessions: "1 to 3 per active cycle",
+              result: "Rapid deflation within 24 to 48 hours",
+            },
+            {
+              concern: "Oily skin with blackheads",
+              treatment: "Salicylic acid chemical peel",
+              sessions: "4 to 6 sessions",
+              result: "Tighter pores, clearer surface",
+            },
+            {
+              concern: "Hormonal chin and jaw acne",
+              treatment: "Combined protocol: prescription + laser therapy",
+              sessions: "6 to 8 sessions",
+              result: "Cycle-linked breakouts reduced",
+            },
+            {
+              concern: "Post-acne dark marks (PIH)",
+              treatment: "Pico laser + brightening topicals",
+              sessions: "3 to 5 sessions",
+              result: "Significant fading of hyperpigmentation",
+            },
+            {
+              concern: "Active acne plus early scarring",
+              treatment: "Laser + peel combination",
+              sessions: "6 to 10 sessions",
+              result: "Active acne cleared; texture improved",
+            },
+          ]}
+          title="Acne Treatment Decision Matrix — Matching Your Concern to the Right Procedure"
+          subtitle="Use this as a general guide, though your doctor will always make the final recommendation during your consultation"
+          variant="detailed"
+          fadeInUp={fadeInUp}
+          className="py-12 px-4"
+        />
         </motion.div>
       </section>
 
@@ -562,42 +490,34 @@ export default function AcneLandingPage({ locale }: AcneTreatmentProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-4xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Acne Treatment Cost in Malaysia — 2026 Pricing Guide</h2>
-            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
+          <TableForPages
+            columns={[
+              { key: "treatment", header: "Treatment", className: "font-semibold text-brown" },
+              { key: "price", header: "Price Per Session (2026)", className: "font-semibold text-wine" },
+            ]}
+            data={pricingTiers.map(tier => ({
+              treatment: tier.treatment,
+              price: tier.price,
+            }))}
+            title="Acne Treatment Cost in Malaysia — 2026 Pricing Guide"
+            subtitle="Transparent pricing at Nexus Clinic KL"
+            variant="compact"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
+
+          {/* Footnote */}
+          <motion.div variants={fadeInUp} className="text-center mt-4">
+            <p className="text-taupe font-inter text-sm italic">
+              Most acne treatments require multiple sessions depending on severity. Package pricing available for full treatment courses (typically 6 to 8 sessions). Prescription medications charged separately at dispensing cost. Consultation fees waived or incorporated once treatment plan agreed.
+            </p>
           </motion.div>
           
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Price Per Session (2026)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter text-brown">{tier.treatment}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={2} className="p-4 text-taupe font-inter text-sm italic">
-                    Most acne treatments require multiple sessions depending on severity. Package pricing available for full treatment courses (typically 6 to 8 sessions). Prescription medications charged separately at dispensing cost. Consultation fees waived or incorporated once treatment plan agreed.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Get a Clear Cost Estimate for Your Acne Treatment | Free Assessment
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -681,30 +601,23 @@ export default function AcneLandingPage({ locale }: AcneTreatmentProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Acne Clinic vs Beauty Facial — What's the Difference?</h2>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Factor</th>
-                  <th className="p-4 text-left font-georgia">Acne Clinic (Medical)</th>
-                  <th className="p-4 text-left font-georgia">Beauty Facial</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonData.map((row, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter font-semibold text-brown">{row.factor}</td>
-                    <td className="p-4 text-taupe font-inter">{row.clinic}</td>
-                    <td className="p-4 text-taupe font-inter">{row.facial}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+            <TableForPages
+              columns={[
+                { key: "factor", header: "Factor", className: "font-semibold text-brown" },
+                { key: "clinic", header: "Acne Clinic (Medical)" },
+                { key: "facial", header: "Beauty Facial" },
+              ]}
+              data={comparisonData.map(row => ({
+                factor: row.factor,
+                clinic: row.clinic,
+                facial: row.facial,
+              }))}
+              title="Acne Clinic vs Beauty Facial — What's the Difference?"
+              subtitle=""
+              variant="default"
+              fadeInUp={fadeInUp}
+              className="py-12 px-4"
+            />
         </motion.div>
       </section>
 
@@ -770,14 +683,15 @@ export default function AcneLandingPage({ locale }: AcneTreatmentProps) {
               Expert Doctors, No Hard Sell. One consultation is all it takes to know exactly what your skin needs, what treatment path makes sense, and what the expected timeline looks like.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Book Your Free Skin Assessment Now
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a free consultation for acne treatment at Nexus Clinic KL. Please let me know available slots."
                 variant="light"

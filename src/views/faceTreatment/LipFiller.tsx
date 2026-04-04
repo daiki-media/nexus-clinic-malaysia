@@ -25,11 +25,14 @@ import {
   fadeInLeft,
   fadeInRight,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 import Whatsapp from "@/src/components/Whatsapp";
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 
 // Import icon mapping for dynamic icons
 const iconMap: Record<string, any> = {
@@ -79,67 +82,26 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
 
   return (
     <main className="w-full overflow-hidden bg-light">
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-rose rounded-full blur-3xl opacity-20"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-wine rounded-full blur-3xl opacity-20"></div>
-        </div>
-
-        <div className="container mx-auto max-w-7xl relative z-10">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="grid lg:grid-cols-2 gap-12 items-center"
-          >
-            <motion.div variants={fadeInUp} className="space-y-6">
-              <div className="inline-flex items-center px-4 py-2 bg-cream rounded-full">
-                <Shield className="w-4 h-4 text-wine mr-2" />
-                <span className="text-sm text-brown">{heroData?.badge}</span>
-              </div>
-
-              <h1 className="font-georgia text-5xl md:text-5xl lg:text-6xl leading-tight text-brown">
-                {heroData?.title}
-                <span className="text-wine italic">{heroData?.title2}</span>
-              </h1>
-
-              <p className="text-lg text-taupe max-w-lg font-inter">
-                {heroData?.description}
-              </p>
-              <div className="flex gap-4">
-                <button className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
-                  Book a Consultation
-                </button> 
-                <Whatsapp message="Hi! can i get more information about lip filler treatment?" />
-              </div>
-
-            </motion.div>
-            <motion.div variants={scaleIn} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/face/Lip Filler.png"
-                  alt={heroData?.imageAlt}
-                  className="w-full h-auto object-cover"
-                  width={600}
-                  height={400}
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-brown/20 to-transparent"> </div>
-              </div>
-
-              {/* Glass card */}
-              <motion.div
-                variants={fadeInUp}
-                className="absolute -bottom-6 -left-6 bg-light/80 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-white/50"
-              >
-                <p className="text-brown font-medium">{heroData?.floatingCard?.text}</p>
-                <p className="text-xl font-bold text-wine">
-                  {heroData?.floatingCard?.location}
-                </p>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Hero Section */}
+      <AllPagesHero
+        badge={heroData?.badge || "Lip Enhancement"}
+        title={heroData?.title || "Lip Filler in Malaysia for "}
+        highlight={heroData?.title2 || "Natural, Beautiful Lips"}
+        description={heroData?.description || "Expert lip enhancement tailored to your facial proportions."}
+        details="Our award-winning injectors specialize in creating natural-looking lip results that enhance your natural beauty without looking overdone."
+        note="Lip filler requires an artistic eye and precise technique. Always choose an experienced injector who understands facial harmony."
+        image="/images/face/Lip Filler.png"
+        imageAlt={heroData?.imageAlt || "Lip filler treatment at Nexus Clinic Kuala Lumpur"}
+        ctaText="Book a Consultation"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi! can i get more information about lip filler treatment?"
+        floatingTitle={heroData?.floatingCard?.text || "✨ Natural Results"}
+        floatingSubtitle={heroData?.floatingCard?.location || "Expert lip enhancement"}
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
     <section className="relative px-4 py-12 overflow-hidden">
       <motion.div
         variants={staggerContainer}
@@ -169,7 +131,7 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
         })}
       </motion.div>
     </section>
-      {/* Treatment Overview Section */}
+    {/* Treatment Overview Section */}
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-7xl">
           <motion.div
@@ -216,26 +178,25 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               )}
             </motion.div>
 
-            {/* Overview Table */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden border border-cream"
-            >
-              <div className="divide-y divide-cream">
-                {Object.entries(treatmentOverview?.overviewTable || {}).map(([key, value]: [string, any]) => (
-                  <div key={key} className="grid grid-cols-2 gap-4 p-4 hover:bg-cream/30 transition-colors">
-                    <div className="font-semibold text-brown">{value.label}</div>
-                    <div className="text-taupe">{value.value}</div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
+            {/* Overview Table - Converted to TableForPages */}
+            <TableForPages
+              columns={[
+                { key: "label", header: "Treatment Information", className: "font-semibold" },
+                { key: "value", header: "Details" },
+              ]}
+              data={Object.entries(treatmentOverview?.overviewTable || {}).map(([key, value]: [string, any]) => ({
+                label: value.label,
+                value: value.value,
+              }))}
+              variant="compact"
+              fadeInUp={fadeInUp}
+              className="max-w-4xl mx-auto"
+            />
             {treatmentOverview?.cta && (
               <motion.div variants={fadeInUp} className="text-center">
-                <button className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
+                <Link href="/contact-us" className="inline-block bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
                   {treatmentOverview.cta.text}
-                </button>
+                </Link>
                 <p className="text-sm text-taupe mt-2">{treatmentOverview.cta.subtext}</p>
               </motion.div>
             )}
@@ -266,9 +227,9 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 {whatIsLipFiller?.products}
               </p>
               {whatIsLipFiller?.cta && (
-                <button className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
+                <Link href="/contact-us" className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
                   {whatIsLipFiller.cta.text}
-                </button>
+                </Link>
               )}
             </motion.div>
 
@@ -341,9 +302,9 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
 
             {lipEnhancementStyles?.cta && (
               <motion.div variants={fadeInUp} className="text-center">
-                <button className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
+                <Link href="/contact-us" className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
                   {lipEnhancementStyles.cta.text}
-                </button>
+                </Link>
                 <p className="text-sm text-taupe mt-2">{lipEnhancementStyles.cta.subtext}</p>
               </motion.div>
             )}
@@ -360,35 +321,23 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
             whileInView="visible"
             className="space-y-12"
           >
-            <motion.div variants={fadeInUp} className="text-center">
-              <h2 className="font-georgia text-4xl text-brown mb-6">
-                {lipFillerVsLipFlip?.title}
-              </h2>
-              <p className="text-taupe">
-                {lipFillerVsLipFlip?.description}
-              </p>
-            </motion.div>
-
-            <div className="overflow-x-auto">
-              <table className="w-full bg-white rounded-2xl shadow-lg border border-cream">
-                <thead className="bg-cream">
-                  <tr>
-                    <th className="p-4 text-left text-brown font-semibold">{lipFillerVsLipFlip?.comparisonTable?.factor}</th>
-                    <th className="p-4 text-left text-wine font-semibold">{lipFillerVsLipFlip?.comparisonTable?.lipFiller}</th>
-                    <th className="p-4 text-left text-wine font-semibold">{lipFillerVsLipFlip?.comparisonTable?.lipFlip}</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-cream">
-                  {lipFillerVsLipFlip?.comparisonTable?.rows?.map((row: any, index: number) => (
-                    <tr key={index} className="hover:bg-cream/30 transition-colors">
-                      <td className="p-4 text-brown font-medium">{row.factor}</td>
-                      <td className="p-4 text-taupe">{row.lipFiller}</td>
-                      <td className="p-4 text-taupe">{row.lipFlip}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <TableForPages
+              columns={[
+                { key: "factor", header: lipFillerVsLipFlip?.comparisonTable?.factor || "Factor", className: "font-semibold" },
+                { key: "lipFiller", header: lipFillerVsLipFlip?.comparisonTable?.lipFiller || "Lip Filler" },
+                { key: "lipFlip", header: lipFillerVsLipFlip?.comparisonTable?.lipFlip || "Lip Flip (Botox)" },
+              ]}
+              data={lipFillerVsLipFlip?.comparisonTable?.rows?.map((row: any) => ({
+                factor: row.factor,
+                lipFiller: row.lipFiller,
+                lipFlip: row.lipFlip,
+              })) || []}
+              title={lipFillerVsLipFlip?.title}
+              subtitle={lipFillerVsLipFlip?.description}
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-20 px-4"
+            />
 
             <motion.div
               variants={fadeInUp}
@@ -399,9 +348,9 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
 
             {lipFillerVsLipFlip?.cta && (
               <motion.div variants={fadeInUp} className="text-center">
-                <button className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
+                <Link href="/contact-us" className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
                   {lipFillerVsLipFlip.cta.text}
-                </button>
+                </Link>
                 <p className="text-sm text-taupe mt-2">{lipFillerVsLipFlip.cta.subtext}</p>
               </motion.div>
             )}
@@ -501,9 +450,9 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
 
             {commonMistakes?.cta && (
               <motion.div variants={fadeInUp} className="text-center">
-                <button className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
+                 <Link href="/contact-us" className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
                   {commonMistakes.cta.text}
-                </button>
+                </Link>
                 <p className="text-sm text-taupe mt-2">{commonMistakes.cta.subtext}</p>
               </motion.div>
             )}
@@ -564,9 +513,9 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
             </motion.div>
 
             <motion.div variants={fadeInUp} className="text-center">
-              <button className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
+              <Link href="/contact-us" className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
                 {whyNexus?.cta?.text}
-              </button>
+              </Link>
               <p className="text-sm text-taupe mt-2">{whyNexus?.cta?.subtext}</p>
             </motion.div>
           </motion.div>
@@ -609,9 +558,9 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
 
             {procedure?.cta && (
               <motion.div variants={fadeInUp} className="text-center">
-                <button className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
+                <Link href="/contact-us" className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
                   {procedure.cta.text}
-                </button>
+                </Link>
                 <p className="text-sm text-taupe mt-2">{procedure.cta.subtext}</p>
               </motion.div>
             )}
@@ -673,9 +622,9 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
 
             {pricing?.cta && (
               <motion.div variants={fadeInUp} className="text-center">
-                <button className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
+                <Link href="/contact-us" className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
                   {pricing.cta.text}
-                </button>
+                </Link>
                 <p className="text-sm text-taupe mt-2">{pricing.cta.subtext}</p>
               </motion.div>
             )}
@@ -763,9 +712,9 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               {finalCta?.stats}
             </motion.p>
             <motion.div variants={fadeInUp}>
-              <button className="bg-white text-wine px-8 py-3 rounded-full font-medium hover:bg-cream transition-colors">
+              <Link href="/contact-us" className="bg-white text-wine px-8 py-3 rounded-full font-medium hover:bg-cream transition-colors">
                 {finalCta?.cta?.text}
-              </button>
+              </Link>
               <p className="text-white/80 text-sm mt-2">{finalCta?.cta?.subtext}</p>
             </motion.div>
             <motion.p variants={fadeInUp} className="text-white/70 text-sm">

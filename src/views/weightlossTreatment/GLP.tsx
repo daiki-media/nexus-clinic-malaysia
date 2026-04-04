@@ -32,7 +32,7 @@ import FAQ from "../../components/FAQ";
 import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
 const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "weightLoss/glp1");
 
@@ -99,126 +99,56 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
 
   return (
     <div className="bg-light font-inter overflow-x-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-br from-cream via-light to-rose/10" />
-        <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-6">
-              <div className="inline-block">
-                <motion.span
-                  variants={scaleIn}
-                  initial="hidden"
-                  whileInView="visible"
-                  className="bg-wine/10 text-wine px-4 py-2 rounded-full text-sm font-medium"
-                >
-                  Doctor-Led GLP-1 Injection Programme at Nexus Clinic KL
-                </motion.span>
-              </div>
+        <AllPagesHero
+          badge="Doctor-Led GLP-1 Injection Programme at Nexus Clinic KL"
+          title="GLP-1 Injection Programme"
+          highlight="in Malaysia"
+          description="A personalised GLP-1 weight loss and appetite-control programme in Kuala Lumpur using clinically proven injectable therapy with proper doctor screening, dose titration, and monthly follow-up."
+          details="At Nexus Clinic KL, this is not a one-off prescription. It is a structured medical programme built around your metabolic health, diabetes status if relevant, weight history, and real lifestyle."
+          note="Trust at Nexus Clinic Kuala Lumpur: Doctor-led weight management • Medications: Ozempic, Wegovy, Mounjaro, Zepbound, Saxenda • Safety-first dose titration • Structured long-term metabolic care"
+          image="/images/main/GLP-programme.webp"
+          imageAlt="GLP-1 Injection Programme at Nexus Clinic Kuala Lumpur"
+          ctaText="Book Free Consultation"
+          ctaLink="/contact-us"
+          whatsappMessage="Hi, I'm interested in the GLP-1 Injection Programme at Nexus Clinic KL. I'd like to book a consultation."
+          floatingTitle="GLP-1 Programme"
+          floatingSubtitle="Ozempic • Wegovy • Mounjaro • Zepbound • Saxenda"
+          staggerContainer={staggerContainer}
+          fadeInLeft={fadeInLeft}
+          fadeInRight={fadeInRight}
+          fadeInUp={fadeInUp}
+        />
 
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-brown leading-tight">
-                GLP-1 Injection Programme
-                <span className="text-wine block mt-2">in Malaysia</span>
-              </h1>
-
-              <p className="text-xl text-taupe leading-relaxed max-w-xl">
-                A personalised GLP-1 weight loss and appetite-control programme
-                in Kuala Lumpur using clinically proven injectable therapy with
-                proper doctor screening, dose titration, and monthly follow-up.
-              </p>
-
-              <p className="text-brown/80 max-w-xl">
-                At Nexus Clinic KL, this is not a one-off prescription. It is a
-                structured medical programme built around your metabolic health,
-                diabetes status if relevant, weight history, and real lifestyle.
-              </p>
-
-              <div className="flex flex-wrap gap-4 pt-4">
-                <motion.button
-                  variants={scaleIn}
-                  initial="hidden"
-                  whileInView="visible"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-medium hover:bg-rose transition-colors shadow-lg hover:shadow-xl inline-flex items-center gap-2"
-                >
-                  Book Free Consultation
-                  <ArrowRight className="w-4 h-4" />
-                </motion.button>
-                <motion.button
-                  variants={scaleIn}
-                  initial="hidden"
-                  whileInView="visible"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-wine text-wine px-8 py-4 rounded-full font-medium hover:bg-wine/5 transition-colors"
-                >
-                  View Programme Guide
-                </motion.button>
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="bg-glass backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20">
-                <h3 className="text-2xl font-serif text-brown mb-6">
-                  Trust at Nexus Clinic Kuala Lumpur
-                </h3>
-                <ul className="space-y-4">
-                  <motion.li
-                    variants={scaleIn}
-                    initial="hidden"
-                    whileInView="visible"
-                    transition={{ delay: 0.1 }}
-                    className="flex items-start gap-3"
-                  >
-                    <Shield className="w-5 h-5 text-wine shrink-0 mt-1" />
-                    <span className="text-brown/80">
-                      Doctor-led weight management with real screening, monthly monitoring and follow-up
-                    </span>
-                  </motion.li>
-                  <motion.li
-                    variants={scaleIn}
-                    initial="hidden"
-                    whileInView="visible"
-                    transition={{ delay: 0.2 }}
-                    className="flex items-start gap-3"
-                  >
-                    <Shield className="w-5 h-5 text-wine shrink-0 mt-1" />
-                    <span className="text-brown/80">
-                      Medication selection across Ozempic, Wegovy, Mounjaro, Zepbound and Saxenda
-                    </span>
-                  </motion.li>
-                  <motion.li
-                    variants={scaleIn}
-                    initial="hidden"
-                    whileInView="visible"
-                    transition={{ delay: 0.3 }}
-                    className="flex items-start gap-3"
-                  >
-                    <Shield className="w-5 h-5 text-wine shrink-0 mt-1" />
-                    <span className="text-brown/80">
-                      Safety-first dose titration with side-effect support, blood tests and review appointments
-                    </span>
-                  </motion.li>
-                  <motion.li
-                    variants={scaleIn}
-                    initial="hidden"
-                    whileInView="visible"
-                    transition={{ delay: 0.4 }}
-                    className="flex items-start gap-3"
-                  >
-                    <Shield className="w-5 h-5 text-wine shrink-0 mt-1" />
-                    <span className="text-brown/80">
-                      Structured long-term weight and metabolic health care, not a one-time jab
-                    </span>
-                  </motion.li>
-                </ul>
-              </div>
-            </motion.div>
+        {/* Trust Features Section */}
+        {/* <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl px-4 -mt-8 relative z-20"
+        >
+          <div className="bg-glass backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20">
+            <h3 className="text-2xl font-serif text-brown mb-6 text-center">Trust at Nexus Clinic Kuala Lumpur</h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              <motion.div variants={fadeInUp} className="flex items-start gap-3">
+                <Shield className="w-5 h-5 text-wine shrink-0 mt-1" />
+                <span className="text-brown/80">Doctor-led weight management with real screening, monthly monitoring and follow-up</span>
+              </motion.div>
+              <motion.div variants={fadeInUp} className="flex items-start gap-3">
+                <Shield className="w-5 h-5 text-wine shrink-0 mt-1" />
+                <span className="text-brown/80">Medication selection across Ozempic, Wegovy, Mounjaro, Zepbound and Saxenda</span>
+              </motion.div>
+              <motion.div variants={fadeInUp} className="flex items-start gap-3">
+                <Shield className="w-5 h-5 text-wine shrink-0 mt-1" />
+                <span className="text-brown/80">Safety-first dose titration with side-effect support, blood tests and review appointments</span>
+              </motion.div>
+              <motion.div variants={fadeInUp} className="flex items-start gap-3">
+                <Shield className="w-5 h-5 text-wine shrink-0 mt-1" />
+                <span className="text-brown/80">Structured long-term weight and metabolic health care, not a one-time jab</span>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
-
+        </motion.div> */}
       {/* Programme At a Glance */}
       <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
@@ -961,22 +891,22 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
               Start with a full assessment at Nexus Clinic Kuala Lumpur so your plan fits
               your body, your risks, your medication profile and your goals.
             </p>
-            <motion.button
+            <motion.a
               variants={scaleIn}
               initial="hidden"
               whileInView="visible"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              href="/contact-us"
               className="bg-light text-wine px-12 py-4 rounded-full font-medium text-lg hover:bg-cream transition-colors shadow-xl inline-flex items-center gap-2"
             >
               Book Free Consultation
               <ArrowRight className="w-5 h-5" />
-            </motion.button>
+            </motion.a>
           </motion.div>
         </div>
       </section>
 
-      {/* Floating Consultation Button */}
       <motion.a
         href="#"
         className="fixed bottom-6 right-6 bg-wine text-light p-4 rounded-full shadow-xl hover:bg-rose transition-colors z-50 flex items-center gap-2"

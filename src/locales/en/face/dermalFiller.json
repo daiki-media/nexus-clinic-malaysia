@@ -19,7 +19,7 @@
       { "label": "Anaesthesia", "value": "Topical numbing cream. Some products contain built-in lidocaine" },
       { "label": "Suitable For", "value": "Volume loss, wrinkles, asymmetry, structural enhancement, contouring" }
     ],
-    "cta": "Speak to a Doctor About Your Goals | Book a Free Assessment"
+    "cta": "Book a Free Assessment"
   },
   "howItWorks": {
     "title": "Dermal Filler | How It Restores Structure and Volume",
@@ -30,7 +30,7 @@
       "second": "Second, it creates structural support that lifts and redefines facial contours from beneath. The result is a face that looks rested and proportioned, not frozen or filled, giving you a youthful look."
     },
     "statistics": "According to the International Society of Aesthetic Plastic Surgery (ISAPS) 2024 Global Statistics Report, hyaluronic acid filler injections ranked as the second most performed non-surgical cosmetic procedure worldwide, with Southeast Asia recording one of the fastest regional growth rates at 31% over two years.",
-    "cta": "Find Out If Dermal Filler Is Right for You | Book a Free Consultation"
+    "cta": "Find Out If Dermal Filler"
   },
   "faceAreas": {
     "title": "Face Areas Treated with Dermal Filler at Nexus Clinic KL",
@@ -89,7 +89,7 @@
       { "name": "Radiesse", "type": "CaHA biostimulator", "bestArea": "Jawline, chin, and hands", "longevity": "12 to 24 months" }
     ],
     "statistics": "Allergan/AbbVie Malaysia reported in 2023 that the Juvedenz range remains the most prescribed dermal filler brand in Malaysia, reflecting both clinician confidence in product consistency and patient preference for predictable, long-lasting results.",
-    "cta": "Ask a Doctor About the Right Product for Your Face | Book a Free Consultation"
+    "cta": "Ask a Doctor About the Right Product"
   },
   "whyNexus": {
     "title": "Nexus Clinic KL | Award-Winning Aesthetic Doctors for Dermal Filler",
@@ -105,7 +105,7 @@
       "MOH-approved products used for every treatment without exception",
       "Serving patients across Kuala Lumpur, Petaling Jaya, Bangsar, KLCC, Ampang, Mont Kiara and throughout Malaysia"
     ],
-    "cta": "Book Your Consultation at Nexus Clinic KL to explore your options for botox and fillers that can enhance your facial contours. | Award-Winning Injectors"
+    "cta": "Book Your Consultation"
   },
   "procedure": {
     "title": "The Dermal Filler Procedure at Nexus Clinic KL",
@@ -127,7 +127,7 @@
         "description": "Results are reviewed immediately after treatment, including dermal fillers. Your doctor explains what to expect as the filler settles over 7 to 14 days, provides full aftercare instructions and confirms the follow-up schedule."
       }
     ],
-    "cta": "Ready to Book | Secure Your Appointment at Nexus Clinic KL"
+    "cta": "Ready to Book"
   },
   "pricing": {
     "title": "Dermal Filler Cost in Malaysia | Transparent 2026 Pricing",
@@ -155,7 +155,7 @@
       ]
     },
     "transparencyNote": "At Nexus Clinic KL, pricing is transparent. You receive a confirmed quote after your consultation. There are no hidden fees and no pressure to proceed with anything discussed, allowing you to make informed decisions about your medical aesthetic treatments.",
-    "cta": "Get Your Personalised Quote | Book a Free Consultation at Nexus Clinic KL"
+    "cta": "Book a Free Consultation"
   },
   "advantagesLimitations": {
     "advantages": {
@@ -266,6 +266,6 @@
     "title": "Book the Best Dermal Filler in Kuala Lumpur at Nexus Clinic KL",
     "description": "One consultation is all it takes to get a clear picture of what dermal filler can do for your face, which areas to address, which products to use and what to expect from the result. No pressure. No upselling. Just an honest clinical assessment and a transparent plan confirmed before you commit to anything, including the use of fillers to address acne scars.",
     "experience": "Over 5,000 filler procedures. Award-winning injectors. A result that looks like you at your very best.",
-    "cta": "Book Your Free Consultation Now | Limited Slots Available This Week"
+    "cta": "Book Your Free Consultation"
   }
 }

@@ -29,12 +29,14 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import Image from "next/image";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 interface RosaceaTreatmentProps {
   locale: string;
 }
@@ -113,91 +115,25 @@ export default function RosaceaTreatmentLanding({ locale }: RosaceaTreatmentProp
 
   return (
     <div className="w-full bg-light overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <AlertTriangle className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Phenotype-Directed Diagnosis • Doctor-Only</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Accurate Rosacea Treatment in Kuala Lumpur for{" "}
-                <span className="text-wine italic">Calmer, Less Reactive Facial Skin</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Rosacea is a chronic skin condition that causes facial redness, broken capillaries, flushing and acne-like breakouts. Most patients with rosacea in KL receive a wrong diagnosis before they receive a correct one.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                At Nexus Clinic KL, we manage rosacea using a phenotype-directed diagnostic approach specifically adapted for Asian skin. Rosacea treatment is built around your specific subtype, not a generic protocol, because different rosacea subtypes respond to fundamentally different treatments.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Important Clinical Information
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  Asian patients spend an average of five years with active rosacea symptoms before receiving effective treatment. Facial redness is masked by melanin in darker Fitzpatrick III and IV skin, leading to misdiagnosis as adult acne.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Free Assessment
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in rosacea treatment at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/skin/rosacea-treatment.webp"
-                  alt="Nexus Clinic Kuala Lumpur - Rosacea Treatment"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown">Phenotype-Directed</p>
-                <p className="font-inter text-sm text-taupe">Over 5,000 procedures completed</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+          <AllPagesHero
+            badge="Phenotype-Directed Diagnosis • Doctor-Only"
+            title="Accurate Rosacea Treatment in Kuala Lumpur for"
+            highlight="Calmer, Less Reactive Facial Skin"
+            description="Rosacea is a chronic skin condition that causes facial redness, broken capillaries, flushing and acne-like breakouts. Most patients with rosacea in KL receive a wrong diagnosis before they receive a correct one."
+            details="At Nexus Clinic KL, we manage rosacea using a phenotype-directed diagnostic approach specifically adapted for Asian skin. Rosacea treatment is built around your specific subtype, not a generic protocol, because different rosacea subtypes respond to fundamentally different treatments."
+            note="Asian patients spend an average of five years with active rosacea symptoms before receiving effective treatment. Facial redness is masked by melanin in darker Fitzpatrick III and IV skin, leading to misdiagnosis as adult acne."
+            image="/images/skin/rosacea-treatment.webp"
+            imageAlt="Nexus Clinic Kuala Lumpur - Rosacea Treatment"
+            ctaText="Free Assessment"
+            ctaLink="/contact-us"
+            whatsappMessage="Hi, I'm interested in rosacea treatment at Nexus Clinic KL. I'd like to book a consultation."
+            floatingTitle="Phenotype-Directed"
+            floatingSubtitle="Over 5,000 procedures completed"
+            staggerContainer={staggerContainer}
+            fadeInLeft={fadeInLeft}
+            fadeInRight={fadeInRight}
+            fadeInUp={fadeInUp}
+          />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -356,10 +292,10 @@ export default function RosaceaTreatmentLanding({ locale }: RosaceaTreatmentProp
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Speak to a Skin Specialist About Your Facial Redness | Free Assessment
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -373,36 +309,27 @@ export default function RosaceaTreatmentLanding({ locale }: RosaceaTreatmentProp
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Types of Rosacea: Subtype-to-Treatment Framework</h2>
-            <p className="text-taupe font-inter">Different subtypes require fundamentally different treatments</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Subtype</th>
-                  <th className="p-4 text-left font-georgia">Key Clinical Features</th>
-                  <th className="p-4 text-left font-georgia">Mechanism</th>
-                  <th className="p-4 text-left font-georgia">First-Line Treatment</th>
-                  <th className="p-4 text-left font-georgia">When to Escalate</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rosaceaSubtypes.map((subtype, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{subtype.subtype}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{subtype.features}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{subtype.mechanism}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{subtype.firstLine}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{subtype.escalate}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          
+          <TableForPages
+            columns={[
+              { key: "subtype", header: "Subtype", className: "font-semibold text-brown" },
+              { key: "features", header: "Key Clinical Features" },
+              { key: "mechanism", header: "Mechanism" },
+              { key: "firstLine", header: "First-Line Treatment" },
+              { key: "escalate", header: "When to Escalate" },
+            ]}
+            data={rosaceaSubtypes.map(item => ({
+              subtype: item.subtype,
+              features: item.features,
+              mechanism: item.mechanism,
+              firstLine: item.firstLine,
+              escalate: item.escalate,
+            }))}
+            title="Types of Rosacea: Subtype-to-Treatment Framework"
+            subtitle="Different subtypes require fundamentally different treatments"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />  
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
               A critical point: Topical metronidazole, azelaic acid and ivermectin have negligible effect on permanently dilated background blood vessels of ETR. Patients applying topical metronidazole for months without improvement in persistent redness likely have ETR where topicals are not appropriate primary treatment.
@@ -420,31 +347,23 @@ export default function RosaceaTreatmentLanding({ locale }: RosaceaTreatmentProp
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Rosacea in Malaysian Skin</h2>
-            <p className="text-taupe font-inter">How a skin specialist diagnoses rosacea accurately in darker skin tones</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Diagnostic Sign</th>
-                  <th className="p-4 text-left font-georgia">Malaysian Presentation</th>
-                  <th className="p-4 text-left font-georgia">What Nexus Clinic KL Looks For</th>
-                </tr>
-              </thead>
-              <tbody>
-                {diagnosticSigns.map((sign, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{sign.sign}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{sign.malaysianPresentation}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{sign.whatNexusLooksFor}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+            <TableForPages
+              columns={[
+                { key: "sign", header: "Diagnostic Sign", className: "font-semibold text-brown" },
+                { key: "malaysianPresentation", header: "Malaysian Presentation" },
+                { key: "whatNexusLooksFor", header: "What Nexus Clinic KL Looks For" },
+              ]}
+              data={diagnosticSigns.map(item => ({
+                sign: item.sign,
+                malaysianPresentation: item.malaysianPresentation,
+                whatNexusLooksFor: item.whatNexusLooksFor,
+              }))}
+              title="Rosacea in Malaysian Skin"
+              subtitle="How a skin specialist diagnoses rosacea accurately in darker skin tones"
+              variant="default"
+              fadeInUp={fadeInUp}
+              className="py-12 px-4"
+            />
         </motion.div>
       </section>
 
@@ -457,33 +376,25 @@ export default function RosaceaTreatmentLanding({ locale }: RosaceaTreatmentProp
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Rosacea-Safe Skincare for Malaysia's Climate</h2>
-            <p className="text-taupe font-inter">Structured guide adapted to rosacea and Malaysia's tropical environment</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Skincare Category</th>
-                  <th className="p-4 text-left font-georgia">Use These</th>
-                  <th className="p-4 text-left font-georgia">Avoid These</th>
-                  <th className="p-4 text-left font-georgia">Why (Malaysian Context)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {skincareFramework.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.category}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.useThese}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.avoidThese}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.why}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "category", header: "Skincare Category", className: "font-semibold text-brown" },
+              { key: "useThese", header: "Use These" },
+              { key: "avoidThese", header: "Avoid These" },
+              { key: "why", header: "Why (Malaysian Context)" },
+            ]}
+            data={skincareFramework.map(item => ({
+              category: item.category,
+              useThese: item.useThese,
+              avoidThese: item.avoidThese,
+              why: item.why,
+            }))}
+            title="Rosacea-Safe Skincare for Malaysia's Climate"
+            subtitle="Structured guide adapted to rosacea and Malaysia's tropical environment"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl border-l-4 border-wine">
             <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
@@ -506,33 +417,25 @@ export default function RosaceaTreatmentLanding({ locale }: RosaceaTreatmentProp
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Triggers of Rosacea in Malaysia</h2>
-            <p className="text-taupe font-inter">Managing environmental factors and reducing flushing</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Trigger</th>
-                  <th className="p-4 text-left font-georgia">Malaysian Context</th>
-                  <th className="p-4 text-left font-georgia">Mechanism</th>
-                  <th className="p-4 text-left font-georgia">Practical Management</th>
-                </tr>
-              </thead>
-              <tbody>
-                {triggerData.map((trigger, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{trigger.trigger}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{trigger.malaysianContext}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{trigger.mechanism}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{trigger.management}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "trigger", header: "Trigger", className: "font-semibold text-brown" },
+              { key: "malaysianContext", header: "Malaysian Context" },
+              { key: "mechanism", header: "Mechanism" },
+              { key: "management", header: "Practical Management" },
+            ]}
+            data={triggerData.map(item => ({
+              trigger: item.trigger,
+              malaysianContext: item.malaysianContext,
+              mechanism: item.mechanism,
+              management: item.management,
+            }))}
+            title="Triggers of Rosacea in Malaysia"
+            subtitle="Managing environmental factors and reducing flushing"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
         </motion.div>
       </section>
 
@@ -715,10 +618,10 @@ export default function RosaceaTreatmentLanding({ locale }: RosaceaTreatmentProp
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-10">
-            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+            <Link href="/contact-us" className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
               Book Your Assessment
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
             <p className="text-taupe text-sm mt-3">Phenotype-directed rosacea care at Nexus Clinic KL</p>
           </motion.div>
         </motion.div>
@@ -733,47 +636,31 @@ export default function RosaceaTreatmentLanding({ locale }: RosaceaTreatmentProp
           viewport={{ once: true }}
           className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Rosacea Treatment Cost in Malaysia 2026</h2>
-            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Best For (Subtype)</th>
-                  <th className="p-4 text-left font-georgia">Sessions</th>
-                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter font-semibold text-brown">{tier.treatment}</td>
-                    <td className="p-4 font-inter text-taupe text-sm">{tier.bestFor}</td>
-                    <td className="p-4 font-inter text-taupe text-sm">{tier.sessions}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={4} className="p-4 text-taupe font-inter text-sm italic">
-                    Combination rosacea programmes incorporating medical management and procedural laser deliver the most comprehensive outcomes for moderate to severe or mixed subtype rosacea. All pricing disclosed before any commitment at the initial consultation.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          
-          <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Get Your Personalised Treatment Cost
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </motion.div>
+              <TableForPages
+                columns={[
+                  { key: "treatment", header: "Treatment", className: "font-semibold text-brown" },
+                  { key: "bestFor", header: "Best For (Subtype)" },
+                  { key: "sessions", header: "Sessions" },
+                  { key: "price", header: "Price Range (RM) 2026", className: "font-semibold text-wine" },
+                ]}
+                data={pricingTiers.map(tier => ({
+                  treatment: tier.treatment,
+                  bestFor: tier.bestFor,
+                  sessions: tier.sessions,
+                  price: tier.price,
+                }))}
+                title="Rosacea Treatment Cost in Malaysia 2026"
+                subtitle="Transparent pricing at Nexus Clinic KL"
+                variant="default"
+                fadeInUp={fadeInUp}
+                className="py-12 px-4"
+              />
+
+              <motion.div variants={fadeInUp} className="text-center mt-4">
+                <p className="text-taupe font-inter text-sm italic">
+                  Combination rosacea programmes incorporating medical management and procedural laser deliver the most comprehensive outcomes for moderate to severe or mixed subtype rosacea. All pricing disclosed before any commitment at the initial consultation.
+                </p>
+              </motion.div>
         </motion.div>
       </section>
 
@@ -803,14 +690,15 @@ export default function RosaceaTreatmentLanding({ locale }: RosaceaTreatmentProp
               Our licensed skin specialist doctors bring over 15 years of combined experience and have completed over 5,000 procedures. We are committed to the diagnostic rigour required to correctly identify rosacea in Asian skin rather than defaulting to an acne or eczema label.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Free Assessment
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a consultation for rosacea treatment at Nexus Clinic KL. Please let me know available slots."
                 variant="light"

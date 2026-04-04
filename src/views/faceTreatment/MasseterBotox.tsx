@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Whatsapp from "../../components/Whatsapp";
+import Whatsapp from "@/src/components/Whatsapp";
 import {
   ChevronRight,
   Shield,
@@ -30,10 +30,13 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 
 // Complete FAQ data with all questions from content
 const faqData = [
@@ -86,98 +89,25 @@ const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
   return (
     <div className="min-h-screen bg-light font-inter overflow-x-hidden">
       {/* Hero Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="relative overflow-hidden bg-cream py-20 px-4 md:px-8 lg:px-16"
-      >
-        <div className="absolute top-20 right-20 w-64 h-64 bg-rose/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-20 w-72 h-72 bg-wine/10 rounded-full blur-3xl" />
-
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-6">
-              <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-taupe/20">
-                <Sparkles className="w-4 h-4 text-wine" />
-                <span className="text-sm text-brown font-medium">
-                  Nexus Clinic Kuala Lumpur
-                </span>
-              </div>
-
-              <h1 className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight">
-                Top Botox Treatment in Malaysia for Natural,
-                <span className="text-wine italic">
-                  Refreshed Results Without the Frozen Look
-                </span>
-              </h1>
-
-              <p className="text-xl text-taupe leading-relaxed">
-                A forehead that looks tense before you even speak. Crow's feet that deepen every year. Frown lines that make you look more serious or tired than you feel. These are not personality traits. They are muscle habits. And they respond precisely to Botox.
-              </p>
-
-              <p className="text-brown/80 text-lg">
-                Botox at Nexus Clinic Kuala Lumpur is about one outcome: a face that looks like yours, but rested, smoother and more relaxed. Not frozen. Not blank. Just you, without the tension that builds over years of expression. We have been delivering Botox treatment in Malaysia since 2001, and our approach has always been the same: precise dosing, honest consultation and results that hold up in real life, not just right after the appointment.
-              </p>
-
-              <div className="flex flex-wrap gap-4 pt-4">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-wine hover:bg-wine/90 text-white px-6 py-3 rounded-full font-medium transition-all shadow-md flex items-center gap-2"
-                >
-                  <Calendar className="w-4 h-4" />
-                  Book Free Consultation
-                </motion.button>
-                <Whatsapp message="Hi, I want to know more about your services" />
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="absolute inset-0 bg-linear-to-br from-wine/20 to-rose/20 rounded-3xl transform rotate-3" />
-              <div className="relative p-8 rounded-3xl shadow-2xl border border-taupe/20 backdrop-blur-sm bg-white/90">
-                <h3 className="font-georgia text-2xl text-brown mb-6">
-                  Botox Treatment at a Glance
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center border-b border-taupe/20 pb-2">
-                    <span className="text-brown font-medium">Treatment</span>
-                    <span className="text-taupe text-sm text-right">Botulinum toxin type A injection for wrinkle relaxation, facial slimming and medical conditions</span>
-                  </div>
-                  <div className="flex justify-between items-center border-b border-taupe/20 pb-2">
-                    <span className="text-brown font-medium">Session Time</span>
-                    <span className="text-taupe text-sm">10 to 20 minutes for most areas</span>
-                  </div>
-                  <div className="flex justify-between items-center border-b border-taupe/20 pb-2">
-                    <span className="text-brown font-medium">Downtime</span>
-                    <span className="text-taupe text-sm">None. Patients return to normal activities immediately</span>
-                  </div>
-                  <div className="flex justify-between items-center border-b border-taupe/20 pb-2">
-                    <span className="text-brown font-medium">Results</span>
-                    <span className="text-taupe text-sm">3 to 7 days. Full effect at 14 days</span>
-                  </div>
-                  <div className="flex justify-between items-center border-b border-taupe/20 pb-2">
-                    <span className="text-brown font-medium">Longevity</span>
-                    <span className="text-taupe text-sm">3 to 6 months depending on treatment area</span>
-                  </div>
-                  <div className="flex justify-between items-center border-b border-taupe/20 pb-2">
-                    <span className="text-brown font-medium">Reversible</span>
-                    <span className="text-taupe text-sm">Results fade naturally over time</span>
-                  </div>
-                  <div className="flex justify-between items-center border-b border-taupe/20 pb-2">
-                    <span className="text-brown font-medium">Anaesthesia</span>
-                    <span className="text-taupe text-sm">None required. Fine needles used</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-brown font-medium">Suitable For</span>
-                    <span className="text-taupe text-sm text-right">Dynamic wrinkles, facial slimming, gummy smile, hyperhidrosis, neck bands, brow lift, preventive treatment</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
+      <AllPagesHero
+        badge="Nexus Clinic Kuala Lumpur"
+        title="Top Botox Treatment in Malaysia for Natural,"
+        highlight="Refreshed Results Without the Frozen Look"
+        description="A forehead that looks tense before you even speak. Crow's feet that deepen every year. Frown lines that make you look more serious or tired than you feel. These are not personality traits. They are muscle habits. And they respond precisely to Botox."
+        details="Botox at Nexus Clinic Kuala Lumpur is about one outcome: a face that looks like yours, but rested, smoother and more relaxed. Not frozen. Not blank. Just you, without the tension that builds over years of expression. We have been delivering Botox treatment in Malaysia since 2001, and our approach has always been the same: precise dosing, honest consultation and results that hold up in real life, not just right after the appointment."
+        note="Botox results vary by individual. Always consult with a licensed medical professional for proper assessment and dosing."
+        image="/images/face/botox-malaysia.jpeg"
+        imageAlt="Botox treatment at Nexus Clinic Kuala Lumpur"
+        ctaText="Book Free Consultation"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I want to know more about your services"
+        floatingTitle="✨ Botox Treatment"
+        floatingSubtitle="Natural results • No frozen look"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
       {/* How Botox Works Section */}
       <motion.section
@@ -207,14 +137,15 @@ const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
               According to the International Society of Aesthetic Plastic Surgery 2024 Global Statistics Report, botulinum toxin injections ranked as the single most performed non-surgical cosmetic procedure worldwide for the seventh consecutive year, with Southeast Asia recording a 29% year-on-year growth in procedure volume among patients aged 25 to 45.
             </p>
             <div className="flex justify-center mt-6">
-              <motion.button
+              <motion.a
+                href="contact-us"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-wine hover:bg-wine/90 text-white px-6 py-3 rounded-full font-medium transition-all shadow-md flex items-center gap-2"
               >
                 <Calendar className="w-4 h-4" />
                 Book Your Botox Assessment
-              </motion.button>
+              </motion.a>
             </div>
           </motion.div>
         </div>
@@ -241,54 +172,45 @@ const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
         className="py-16 px-4 md:px-8 lg:px-16 bg-cream"
       >
         <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-3xl text-brown mb-4"
-          >
-            Dynamic Wrinkles Versus Static Wrinkles | Which Type Botox Treats
-          </motion.h2>
-
-          <motion.p variants={fadeInUp} className="text-brown/80 mb-8">
-            The most common misconception about Botox in Malaysia is that it treats all wrinkles. It does not. Understanding the difference between dynamic and static wrinkles helps you choose the right treatment and set realistic expectations before your appointment.
-          </motion.p>
-
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white rounded-2xl overflow-hidden shadow-sm">
-              <thead className="bg-wine/10">
-                <tr>
-                  <th className="p-4 text-left text-brown font-georgia">Wrinkle Type</th>
-                  <th className="p-4 text-left text-brown font-georgia">What Causes It</th>
-                  <th className="p-4 text-left text-brown font-georgia">Correct Treatment</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-taupe/10">
-                <tr><td className="p-4 text-brown font-medium">Dynamic wrinkles</td><td className="p-4 text-taupe">Muscle movement. Visible when you smile, frown or squint</td><td className="p-4 text-taupe">Botox. Relaxes the muscle and prevents the skin from creasing</td></tr>
-                <tr><td className="p-4 text-brown font-medium">Static wrinkles</td><td className="p-4 text-taupe">Collagen loss, volume depletion, gravity over time. Visible at rest</td><td className="p-4 text-taupe">Dermal filler, skin booster or laser. Botox alone will not fix these</td></tr>
-                <tr><td className="p-4 text-brown font-medium">Mixed wrinkles</td><td className="p-4 text-taupe">Started as dynamic, now present at rest due to skin thinning</td><td className="p-4 text-taupe">Botox combined with filler or skin rejuvenation</td></tr>
-                <tr><td className="p-4 text-brown font-medium">Forehead lines</td><td className="p-4 text-taupe">Frontalis muscle overactivity</td><td className="p-4 text-taupe">Botox. One of the most commonly treated areas in Malaysia</td></tr>
-                <tr><td className="p-4 text-brown font-medium">Crow's feet</td><td className="p-4 text-taupe">Orbicularis oculi muscle contraction around the eye</td><td className="p-4 text-taupe">Botox. High patient satisfaction, very natural result</td></tr>
-                <tr><td className="p-4 text-brown font-medium">Frown lines (11 lines)</td><td className="p-4 text-taupe">Corrugator and procerus muscle movement between brows</td><td className="p-4 text-taupe">Botox. Often the first area treated in Malaysia</td></tr>
-                <tr><td className="p-4 text-brown font-medium">Gummy smile</td><td className="p-4 text-taupe">Overactive upper lip elevator muscle</td><td className="p-4 text-taupe">Botox. Small dose with significant visual impact</td></tr>
-                <tr><td className="p-4 text-brown font-medium">Nasolabial folds</td><td className="p-4 text-taupe">Volume loss and skin descent over time</td><td className="p-4 text-taupe">Dermal filler. Botox does not address this concern</td></tr>
-                <tr><td className="p-4 text-brown font-medium">Marionette lines</td><td className="p-4 text-taupe">Volume loss and soft tissue descent</td><td className="p-4 text-taupe">Dermal filler. Botox not effective here</td></tr>
-                <tr><td className="p-4 text-brown font-medium">Deep static forehead lines</td><td className="p-4 text-taupe">Long-term collagen loss compounded by muscle activity</td><td className="p-4 text-taupe">Botox plus skin booster or filler for best combined result</td></tr>
-              </tbody>
-            </table>
-          </div>
+            <TableForPages
+              columns={[
+                { key: "type", header: "Wrinkle Type", className: "font-semibold" },
+                { key: "cause", header: "What Causes It" },
+                { key: "treatment", header: "Correct Treatment" },
+              ]}
+              data={[
+                { type: "Dynamic wrinkles", cause: "Muscle movement. Visible when you smile, frown or squint", treatment: "Botox. Relaxes the muscle and prevents the skin from creasing" },
+                { type: "Static wrinkles", cause: "Collagen loss, volume depletion, gravity over time. Visible at rest", treatment: "Dermal filler, skin booster or laser. Botox alone will not fix these" },
+                { type: "Mixed wrinkles", cause: "Started as dynamic, now present at rest due to skin thinning", treatment: "Botox combined with filler or skin rejuvenation" },
+                { type: "Forehead lines", cause: "Frontalis muscle overactivity", treatment: "Botox. One of the most commonly treated areas in Malaysia" },
+                { type: "Crow's feet", cause: "Orbicularis oculi muscle contraction around the eye", treatment: "Botox. High patient satisfaction, very natural result" },
+                { type: "Frown lines (11 lines)", cause: "Corrugator and procerus muscle movement between brows", treatment: "Botox. Often the first area treated in Malaysia" },
+                { type: "Gummy smile", cause: "Overactive upper lip elevator muscle", treatment: "Botox. Small dose with significant visual impact" },
+                { type: "Nasolabial folds", cause: "Volume loss and skin descent over time", treatment: "Dermal filler. Botox does not address this concern" },
+                { type: "Marionette lines", cause: "Volume loss and soft tissue descent", treatment: "Dermal filler. Botox not effective here" },
+                { type: "Deep static forehead lines", cause: "Long-term collagen loss compounded by muscle activity", treatment: "Botox plus skin booster or filler for best combined result" },
+              ]}
+              title=" Dynamic Wrinkles Versus Static Wrinkles | Which Type Botox Treats"
+              subtitle="The most common misconception about Botox in Malaysia is that it treats all wrinkles. It does not. Understanding the difference between dynamic and static wrinkles helps you choose the right treatment and set realistic expectations before your appointment."
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-20 px-4"
+            />
 
           <motion.p variants={fadeInUp} className="text-brown/80 mt-6">
             At Nexus Clinic KL, the doctor identifies which wrinkle type you have at consultation before recommending any treatment. Patients who book expecting Botox to fix volume-related concerns leave with a clearer understanding of which treatment actually addresses their concern and a plan that achieves the result they came in for.
           </motion.p>
 
           <div className="flex justify-center mt-6">
-            <motion.button
+            <motion.a
+                href="contact-us"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-wine hover:bg-wine/90 text-white px-6 py-3 rounded-full font-medium transition-all shadow-md flex items-center gap-2"
             >
               <Calendar className="w-4 h-4" />
-              Get the Right Treatment for Your Wrinkle Type
-            </motion.button>
+              Get the Right Treatment
+            </motion.a>
           </div>
         </div>
       </motion.section>
@@ -352,14 +274,15 @@ const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
           </motion.p>
 
           <div className="flex justify-center mt-6">
-            <motion.button
+            <motion.a
+              href="contact-us"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-wine hover:bg-wine/90 text-white px-6 py-3 rounded-full font-medium transition-all shadow-md flex items-center gap-2"
             >
               <Calendar className="w-4 h-4" />
               Find Out Which Botox Type Suits You
-            </motion.button>
+            </motion.a>
           </div>
         </div>
       </motion.section>
@@ -393,14 +316,15 @@ const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
           </div>
 
           <div className="flex justify-center mt-8">
-            <motion.button
+            <motion.a
+              href="contact-us"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-wine hover:bg-wine/90 text-white px-6 py-3 rounded-full font-medium transition-all shadow-md flex items-center gap-2"
             >
               <Calendar className="w-4 h-4" />
               Book Your Treatment Area Assessment
-            </motion.button>
+            </motion.a>
           </div>
         </div>
       </motion.section>
@@ -413,44 +337,41 @@ const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
         className="py-16 px-4 md:px-8 lg:px-16 bg-white"
       >
         <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-3xl text-brown mb-4"
-          >
-            Botox Brands Available at Nexus Clinic KL | Not All Neuromodulators Are Identical
-          </motion.h2>
-
-          <motion.p variants={fadeInUp} className="text-brown/80 mb-8">
-            Botox is a brand name, not a generic term. Several botulinum toxin type A products are available in Malaysia and each has a slightly different molecular structure, unit dosing system and diffusion profile.
-          </motion.p>
-
-          <div className="overflow-x-auto mb-6">
-            <table className="w-full bg-cream rounded-2xl overflow-hidden">
-              <thead className="bg-wine/10">
-                <tr><th className="p-4 text-left text-brown">Brand</th><th className="p-4 text-left text-brown">Manufacturer</th><th className="p-4 text-left text-brown">Unit System</th><th className="p-4 text-left text-brown">Diffusion</th><th className="p-4 text-left text-brown">Notes</th></tr>
-              </thead>
-              <tbody className="divide-y divide-taupe/10">
-                <tr><td className="p-4 text-brown font-medium">Botox</td><td className="p-4 text-taupe">Allergan / AbbVie</td><td className="p-4 text-taupe">Allergan units</td><td className="p-4 text-taupe">Lower. More localised</td><td className="p-4 text-taupe">Most studied brand globally. Standard in Malaysia</td></tr>
-                <tr><td className="p-4 text-brown font-medium">Dysport</td><td className="p-4 text-taupe">Ipsen</td><td className="p-4 text-taupe">Speywood units</td><td className="p-4 text-taupe">Slightly wider spread</td><td className="p-4 text-taupe">Often used for forehead and larger muscle groups</td></tr>
-                <tr><td className="p-4 text-brown font-medium">Xeomin</td><td className="p-4 text-taupe">Merz</td><td className="p-4 text-taupe">Allergan-equivalent</td><td className="p-4 text-taupe">Similar to Botox</td><td className="p-4 text-taupe">Contains no complexing proteins. Lower immunogenicity</td></tr>
-                <tr><td className="p-4 text-brown font-medium">Letybo</td><td className="p-4 text-taupe">Hugel (Korea)</td><td className="p-4 text-taupe">Allergan-equivalent</td><td className="p-4 text-taupe">Similar to Botox</td><td className="p-4 text-taupe">Fast-growing in Malaysia. Comparable safety profile</td></tr>
-              </tbody>
-            </table>
-          </div>
+            <TableForPages
+              columns={[
+                { key: "brand", header: "Brand", className: "font-semibold" },
+                { key: "manufacturer", header: "Manufacturer" },
+                { key: "unitSystem", header: "Unit System" },
+                { key: "diffusion", header: "Diffusion" },
+                { key: "notes", header: "Notes" },
+              ]}
+              data={[
+                { brand: "Botox", manufacturer: "Allergan / AbbVie", unitSystem: "Allergan units", diffusion: "Lower. More localised", notes: "Most studied brand globally. Standard in Malaysia" },
+                { brand: "Dysport", manufacturer: "Ipsen", unitSystem: "Speywood units", diffusion: "Slightly wider spread", notes: "Often used for forehead and larger muscle groups" },
+                { brand: "Xeomin", manufacturer: "Merz", unitSystem: "Allergan-equivalent", diffusion: "Similar to Botox", notes: "Contains no complexing proteins. Lower immunogenicity" },
+                { brand: "Letybo", manufacturer: "Hugel (Korea)", unitSystem: "Allergan-equivalent", diffusion: "Similar to Botox", notes: "Fast-growing in Malaysia. Comparable safety profile" },
+              ]}
+              title="Botox Brands Available at Nexus Clinic KL | Not All Neuromodulators Are Identical"
+              subtitle=" Botox is a brand name, not a generic term. Several botulinum toxin type A products are available in Malaysia and each has a slightly different molecular structure, unit dosing system and diffusion profile."
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-20 px-4"
+            />
 
           <motion.p variants={fadeInUp} className="text-brown/80 italic">
             Allergan/AbbVie Malaysia reported in 2023 that Botox remains the most prescribed neuromodulator brand in Malaysia for both cosmetic and medical indications. Dysport is the second most used, primarily for forehead and masseter treatments.
           </motion.p>
 
           <div className="flex justify-center mt-6">
-            <motion.button
+            <motion.a
+              href="contact-us"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-wine hover:bg-wine/90 text-white px-6 py-3 rounded-full font-medium transition-all shadow-md flex items-center gap-2"
             >
               <Calendar className="w-4 h-4" />
-              Ask About Botox Brands at Your Consultation
-            </motion.button>
+              Ask About Botox Brands
+            </motion.a>
           </div>
         </div>
       </motion.section>
@@ -512,14 +433,15 @@ const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
           </div>
 
           <div className="flex flex-wrap gap-4 mt-8">
-            <motion.button
+            <motion.a
+              href="contact-us"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-wine hover:bg-wine/90 text-white px-6 py-3 rounded-full font-medium transition-all shadow-md flex items-center gap-2"
             >
               <Calendar className="w-4 h-4" />
               Male Botox Consultation
-            </motion.button>
+            </motion.a>
             <Whatsapp message="Hi, I want to know more about your services" />
           </div>
         </div>
@@ -533,26 +455,26 @@ const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
         className="py-16 px-4 md:px-8 lg:px-16 bg-cream"
       >
         <div className="max-w-4xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-3xl text-brown mb-6"
-          >
-            Botox Cost in Malaysia | Transparent 2026 Pricing
-          </motion.h2>
-
-          <div className="overflow-x-auto mb-6">
-            <table className="w-full bg-white rounded-2xl overflow-hidden">
-              <thead className="bg-wine/10">
-                <tr><th className="p-4 text-left text-brown">Treatment Area</th><th className="p-4 text-left text-brown">Price Range (2026)</th></tr>
-              </thead>
-              <tbody className="divide-y divide-taupe/10">
-                <tr><td className="p-4 text-brown">Single area (forehead, frown lines, crow's feet)</td><td className="p-4 text-taupe">RM 588 to RM 800</td></tr>
-                <tr><td className="p-4 text-brown">Multiple areas (2 to 3 areas)</td><td className="p-4 text-taupe">RM 1500 to RM 2160</td></tr>
-                <tr><td className="p-4 text-brown">Jaw slimming (masseter)</td><td className="p-4 text-taupe">RM 1500 to RM 2400</td></tr>
-                <tr><td className="p-4 text-brown">Full face anti-wrinkle plan</td><td className="p-4 text-taupe">RM 1800 to RM 3000+</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <section className="py-20 px-4 bg-cream">
+            <div className="container mx-auto max-w-4xl">
+              <TableForPages
+                columns={[
+                  { key: "area", header: "Treatment Area" },
+                  { key: "price", header: "Price Range (2026)" },
+                ]}
+                data={[
+                  { area: "Single area (forehead, frown lines, crow's feet)", price: "RM 588 to RM 800" },
+                  { area: "Multiple areas (2 to 3 areas)", price: "RM 1500 to RM 2160" },
+                  { area: "Jaw slimming (masseter)", price: "RM 1500 to RM 2400" },
+                  { area: "Full face anti-wrinkle plan", price: "RM 1800 to RM 3000+" },
+                ]}
+                title=" Botox Cost in Malaysia | Transparent 2026 Pricing"
+                subtitle="Transparent 2026 Pricing at Nexus Clinic KL"
+                variant="compact"
+                fadeInUp={fadeInUp}
+              />
+            </div>
+          </section>
 
           <motion.div variants={fadeInUp} className="bg-white p-6 rounded-xl">
             <h3 className="font-georgia text-xl text-brown mb-3">What Affects the Pricing?</h3>
@@ -564,14 +486,15 @@ const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
           </motion.div>
 
           <div className="flex flex-wrap gap-4 mt-8">
-            <motion.button
+            <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              href="contact-us"
               className="bg-wine hover:bg-wine/90 text-white px-6 py-3 rounded-full font-medium transition-all shadow-md flex items-center gap-2"
             >
               <Calendar className="w-4 h-4" />
               Get Personalised Quote
-            </motion.button>
+            </motion.a>
           </div>
         </div>
       </motion.section>
@@ -639,14 +562,15 @@ const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
             variants={fadeInUp}
             className="flex flex-wrap justify-center gap-4"
           >
-            <motion.button
+            <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-white text-wine hover:bg-white/90 px-8 py-3 rounded-full font-medium shadow-lg flex items-center gap-2"
+              href="contact-us"
             >
               <Calendar className="w-4 h-4" />
               Free Consultation
-            </motion.button>
+            </motion.a>
           </motion.div>
           <motion.p variants={fadeInUp} className="text-white/70 text-sm mt-6">
             Limited slots available this week

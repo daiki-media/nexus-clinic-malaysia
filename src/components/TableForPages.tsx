@@ -29,7 +29,7 @@ export default function TableForPages({
   fadeInUp,
   className = "",
 }: TableForPagesProps) {
-  const [expandedRows, setExpandedRows] = useState<number[]>([]);
+  const [expandedRows, setExpandedRows] = useState<number[]>([0]);
 
   const toggleRow = (index: number) => {
     if (expandedRows.includes(index)) {

@@ -28,11 +28,12 @@ import {
   fadeInLeft,
   fadeInRight,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import Link from "next/link";
 export default function HormoneTestLanding({
   locale = fallbackLng,
 }: {
@@ -170,93 +171,26 @@ export default function HormoneTestLanding({
   return (
     <>
       <main className="min-h-screen bg-cream font-['Inter',sans-serif]">
-        {/* Hero Section with Image */}
-        <section className="relative min-h-screen flex items-center overflow-hidden">
-          {/* Background Image with Overlay */}
-          <div className="absolute inset-0">
-            <img
-              src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80"
-              alt="Medical professional consulting with patient"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-linear-to-r from-brown/90 to-wine/80" />
-          </div>
-
-          {/* Decorative Elements */}
-          <motion.div
-            initial={{ opacity: 0, scale: 1.5 }}
-            animate={{ opacity: 0.1, scale: 1 }}
-            transition={{ duration: 1.5 }}
-            className="absolute top-20 right-20 w-64 h-64 rounded-full bg-cream blur-3xl"
-          />
-          <motion.div
-            initial={{ opacity: 0, scale: 1.5 }}
-            animate={{ opacity: 0.1, scale: 1 }}
-            transition={{ duration: 1.5, delay: 0.3 }}
-            className="absolute bottom-20 left-20 w-96 h-96 rounded-full bg-rose blur-3xl"
-          />
-
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              animate="visible"
-              className="max-w-4xl mx-auto text-center text-white"
-            >
-              <motion.div variants={scaleIn} className="mb-6">
-                <span className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full">
-                  <Shield className="w-4 h-4 text-white mr-2" />
-                  <span className="text-sm text-white font-medium">
-                    Hormone Test and Health Screening Malaysia
-                  </span>
-                </span>
-              </motion.div>
-
-              <motion.h2
-                variants={fadeInUp}
-                className="font-['Georgia',serif] text-5xl md:text-6xl lg:text-7xl text-white mb-6 leading-tight"
-              >
-                Comprehensive Female
-                <br />
-                <span className="text-cream">and Male Hormonal</span>
-                <br />
-                Blood Test Packages
-              </motion.h2>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto"
-              >
-                Hormone blood test and health screening in Malaysia. Comprehensive
-                female and male hormonal profiles including thyroid, reproductive
-                hormones and metabolic check. Medical result review and solution by
-                experienced healthcare professionals at Nexus Clinic KL in Kuala Lumpur.
-              </motion.p>
-
-              <motion.div
-                variants={fadeInUp}
-                className="flex flex-col sm:flex-row gap-4 justify-center"
-              >
-                <button className="group bg-white text-wine px-8 py-4 rounded-full hover:bg-cream transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
-                  Book Your Hormone Screening Appointment
-                  <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <button className="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full hover:bg-white/30 transition-all duration-300 border border-white/30 flex items-center justify-center">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call or WhatsApp Today
-                </button>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInUp}
-                className="mt-12 flex items-center justify-center gap-4 text-sm text-white/80"
-              >
-                <MapPin className="w-4 h-4" />
-                <span>Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur</span>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
+      {/* Hero Section */}
+      <AllPagesHero
+        badge="Hormone Test and Health Screening Malaysia"
+        title="Comprehensive Female and Male Hormonal Blood Test Packages"
+        highlight="Hormone blood test and health screening in Malaysia"
+        description="Comprehensive female and male hormonal profiles including thyroid, reproductive hormones and metabolic check. Medical result review and solution by experienced healthcare professionals at Nexus Clinic KL in Kuala Lumpur."
+        details="Our hormone testing packages are designed to identify imbalances that may be affecting your energy, mood, metabolism and overall health. All tests include a medical result review with a qualified doctor."
+        note="Hormone testing should be interpreted by a healthcare professional. Self-diagnosis without medical guidance may lead to incorrect conclusions."
+        image="/images/regenerative/hematopoietic-stem-cells2.webp"
+        imageAlt="Hormone blood test and health screening at Nexus Clinic Kuala Lumpur"
+        ctaText="Book Appointment"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in hormone blood test and health screening at Nexus Clinic KL. I'd like to book an appointment."
+        floatingTitle="Comprehensive Hormonal Profiles"
+        floatingSubtitle="Thyroid • Reproductive • Metabolic"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
         {/* What Is a Hormone Test Section with Image */}
         <section className="py-24 bg-white/50 backdrop-blur-sm">
@@ -911,9 +845,9 @@ export default function HormoneTestLanding({
               </motion.p>
 
               <motion.div variants={fadeInUp} className="space-y-4">
-                <button className="bg-white text-wine px-8 py-4 rounded-full font-medium hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <Link href="/contact-us" className="bg-white text-wine px-8 py-4 rounded-full font-medium hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                   Call or WhatsApp to Schedule
-                </button>
+                </Link>
 
                 <div className="pt-6 text-white/80">
                   <p className="flex items-center justify-center gap-2">

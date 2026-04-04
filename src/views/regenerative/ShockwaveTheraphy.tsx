@@ -28,8 +28,9 @@ import {
   fadeInRight,
   scaleIn,
   fadeInUp,
-} from "../../lib/animations";
+} from "@/src/lib/animations";
 import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 
 const ShockwaveLanding = () => {
   const faqs = [
@@ -150,23 +151,16 @@ const ShockwaveLanding = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <motion.button
+                <motion.a
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  href="/contact-us"
                   className="group bg-wine text-white px-8 py-4 rounded-full font-semibold flex items-center justify-center gap-2 hover:bg-rose transition-all shadow-lg hover:shadow-xl"
                 >
                   Book Your Shockwave Therapy Assessment
                   <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </motion.button>
-
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-wine text-wine px-8 py-4 rounded-full font-semibold flex items-center justify-center gap-2 hover:bg-wine/5 transition-all"
-                >
-                  <Phone className="w-5 h-5" />
-                  Call or WhatsApp Today
-                </motion.button>
+                </motion.a>
+                <Whatsapp message="Hello, I would like to book a shockwave therapy assessment." />
               </div>
 
               <div className="flex items-center gap-4 text-sm text-brown/70">
@@ -762,24 +756,16 @@ const ShockwaveLanding = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-white text-wine px-8 py-4 rounded-full font-semibold flex items-center justify-center gap-2 hover:bg-[--color-cream] transition-all shadow-lg"
               >
                 Book Your Shockwave Therapy Assessment
                 <ChevronRight className="w-5 h-5" />
-              </motion.button>
-
-              <motion.a
-                href="tel:016-7025699"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold flex items-center justify-center gap-2 hover:bg-white/10 transition-all"
-              >
-                <Phone className="w-5 h-5" />
-                016-7025699
               </motion.a>
+                <Whatsapp message="Hello, I would like to book a shockwave therapy assessment." variant="light"/>
             </div>
 
             <div className="mt-8 text-white/80 text-sm">

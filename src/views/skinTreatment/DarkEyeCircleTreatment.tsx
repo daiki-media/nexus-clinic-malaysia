@@ -28,12 +28,14 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import Image from "next/image";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 interface DarkEyeCircleProps {
   locale: string;
 }
@@ -97,91 +99,25 @@ export default function DarkEyeCircleLanding({ locale }: DarkEyeCircleProps) {
 
   return (
     <div className="w-full bg-light overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <AlertTriangle className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Doctor-Assessed • Cause-First Approach</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Dark Eye Circle Treatment in Malaysia for{" "}
-                <span className="text-wine italic">Naturally Brighter, Rested-Looking Eyes</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Eight hours of sleep. Two litres of water. A comprehensive eye cream routine. And the dark circles under the eyes are still there when you look in the mirror.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                At Nexus Clinic KL, our licensed aesthetic doctors assess the type of dark circle before recommending any treatment. The assessment determines whether your circles are pigmented, vascular, structural, allergic or a combination, and the treatment protocol is built from that diagnosis rather than from a menu.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Important Clinical Information
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  The under-eye area is the most delicate and highest-risk injection zone on the face. Clinical precision here matters more than anywhere else. All treatments are doctor-performed at Nexus Clinic KL.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Free Assessment
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in dark eye circle treatment at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/skin/dark-eye-circle-treatment.webp"
-                  alt="Nexus Clinic Kuala Lumpur - Dark Eye Circle Treatment"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown">Type-Assessed Treatment</p>
-                <p className="font-inter text-sm text-taupe">Over 5,000 procedures completed</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+        badge="Doctor-Assessed • Cause-First Approach"
+        title="Dark Eye Circle Treatment in Malaysia for"
+        highlight="Naturally Brighter, Rested-Looking Eyes"
+        description="Eight hours of sleep. Two litres of water. A comprehensive eye cream routine. And the dark circles under the eyes are still there when you look in the mirror."
+        details="At Nexus Clinic KL, our licensed aesthetic doctors assess the type of dark circle before recommending any treatment. The assessment determines whether your circles are pigmented, vascular, structural, allergic or a combination, and the treatment protocol is built from that diagnosis rather than from a menu."
+        note="The under-eye area is the most delicate and highest-risk injection zone on the face. Clinical precision here matters more than anywhere else. All treatments are doctor-performed at Nexus Clinic KL."
+        image="/images/skin/dark-eye-circle-treatment.webp"
+        imageAlt="Nexus Clinic Kuala Lumpur - Dark Eye Circle Treatment"
+        ctaText="Free Assessment"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in dark eye circle treatment at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="Type-Assessed Treatment"
+        floatingSubtitle="Over 5,000 procedures completed"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -340,10 +276,10 @@ export default function DarkEyeCircleLanding({ locale }: DarkEyeCircleProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Speak to a Doctor About Your Dark Circles | Free Under-Eye Assessment
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -357,35 +293,27 @@ export default function DarkEyeCircleLanding({ locale }: DarkEyeCircleProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Dark Circle Type-to-Treatment Decision Matrix</h2>
-            <p className="text-taupe font-inter">Identify your dark circle type before choosing treatment</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Dark Circle Type</th>
-                  <th className="p-4 text-left font-georgia">Appearance</th>
-                  <th className="p-4 text-left font-georgia">At-Home Test</th>
-                  <th className="p-4 text-left font-georgia">Primary Cause</th>
-                  <th className="p-4 text-left font-georgia">First-Line Treatment</th>
-                </tr>
-              </thead>
-              <tbody>
-                {darkCircleTypes.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.type}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.appearance}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.test}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.cause}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.treatment}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "type", header: "Dark Circle Type", className: "font-semibold text-brown" },
+              { key: "appearance", header: "Appearance" },
+              { key: "test", header: "At-Home Test" },
+              { key: "cause", header: "Primary Cause" },
+              { key: "treatment", header: "First-Line Treatment" },
+            ]}
+            data={darkCircleTypes.map(item => ({
+              type: item.type,
+              appearance: item.appearance,
+              test: item.test,
+              cause: item.cause,
+              treatment: item.treatment,
+            }))}
+            title="Dark Circle Type-to-Treatment Decision Matrix"
+            subtitle="Identify your dark circle type before choosing treatment"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
@@ -446,33 +374,25 @@ export default function DarkEyeCircleLanding({ locale }: DarkEyeCircleProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Structured Dark Circle Combination Protocol</h2>
-            <p className="text-taupe font-inter">Sequencing matters as much as the treatments themselves</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Dark Circle Type</th>
-                  <th className="p-4 text-left font-georgia">Phase 1 Treatment</th>
-                  <th className="p-4 text-left font-georgia">Phase 2 Treatment (4 to 8 weeks later)</th>
-                  <th className="p-4 text-left font-georgia">Maintenance</th>
-                </tr>
-              </thead>
-              <tbody>
-                {combinationProtocols.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.type}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.phase1}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.phase2}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.maintenance}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "type", header: "Dark Circle Type", className: "font-semibold text-brown" },
+              { key: "phase1", header: "Phase 1 Treatment" },
+              { key: "phase2", header: "Phase 2 Treatment (4 to 8 weeks later)" },
+              { key: "maintenance", header: "Maintenance" },
+            ]}
+            data={combinationProtocols.map(item => ({
+              type: item.type,
+              phase1: item.phase1,
+              phase2: item.phase2,
+              maintenance: item.maintenance,
+            }))}
+            title="Structured Dark Circle Combination Protocol"
+            subtitle="Sequencing matters as much as the treatments themselves"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
@@ -661,10 +581,10 @@ export default function DarkEyeCircleLanding({ locale }: DarkEyeCircleProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-10">
-            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+            <Link href="/contact-us" className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
               Book Your Free Assessment
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
             <p className="text-taupe text-sm mt-3">Doctor-assessed, cause-first dark circle treatment</p>
           </motion.div>
         </motion.div>
@@ -679,46 +599,30 @@ export default function DarkEyeCircleLanding({ locale }: DarkEyeCircleProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Dark Eye Circle Treatment Cost in Malaysia 2026</h2>
-            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Best For</th>
-                  <th className="p-4 text-left font-georgia">Sessions</th>
-                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter font-semibold text-brown">{tier.treatment}</td>
-                    <td className="p-4 font-inter text-taupe text-sm">{tier.bestFor}</td>
-                    <td className="p-4 font-inter text-taupe text-sm">{tier.sessions}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={4} className="p-4 text-taupe font-inter text-sm italic">
-                    Combination programmes that pair two or more modalities offer the most comprehensive improvement for mixed and complex dark circle presentations. All pricing disclosed before any procedure is booked.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          
-          <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Confirm Your Dark Circle Treatment Pricing
-              <ArrowRight className="w-4 h-4" />
-            </button>
+          <TableForPages
+            columns={[
+              { key: "treatment", header: "Treatment", className: "font-semibold text-brown" },
+              { key: "bestFor", header: "Best For" },
+              { key: "sessions", header: "Sessions" },
+              { key: "price", header: "Price Range (RM) 2026", className: "font-semibold text-wine" },
+            ]}
+            data={pricingTiers.map(tier => ({
+              treatment: tier.treatment,
+              bestFor: tier.bestFor,
+              sessions: tier.sessions,
+              price: tier.price,
+            }))}
+            title="Dark Eye Circle Treatment Cost in Malaysia 2026"
+            subtitle="Transparent pricing at Nexus Clinic KL"
+            variant="compact"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
+
+          <motion.div variants={fadeInUp} className="text-center mt-4">
+            <p className="text-taupe font-inter text-sm italic">
+              Combination programmes that pair two or more modalities offer the most comprehensive improvement for mixed and complex dark circle presentations. All pricing disclosed before any procedure is booked.
+            </p>
           </motion.div>
         </motion.div>
       </section>
@@ -749,14 +653,15 @@ export default function DarkEyeCircleLanding({ locale }: DarkEyeCircleProps) {
               Our licensed aesthetic doctors have performed over 5,000 aesthetic procedures, bring more than 15 years of combined experience in treating Malaysian patients to every consultation, and work exclusively with MOH-approved products and medical-grade devices. All procedures in the periorbital zone are doctor-performed.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Free Assessment
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a consultation for dark eye circle treatment at Nexus Clinic KL. Please let me know available slots."
                 variant="light"

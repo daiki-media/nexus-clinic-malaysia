@@ -23,11 +23,11 @@ import {
   fadeInLeft,
   fadeInRight,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
 export default function DoctorMonitoredLanding({
   locale = fallbackLng,
 }: {
@@ -80,129 +80,68 @@ export default function DoctorMonitoredLanding({
 
   return (
     <div className="min-h-screen bg-light">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-linear-to-b from-cream to-light">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto px-4 py-16 md:py-24"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-6">
-              <div className="inline-flex items-center gap-2 bg-wine/10 px-4 py-2 rounded-full">
-                <Shield className="w-4 h-4 text-wine" />
-                <span className="text-wine font-inter text-sm font-medium">
-                  Expert Doctor-Led Weight Management in Malaysia
-                </span>
-              </div>
+      <AllPagesHero
+        badge="Expert Doctor-Led Weight Management in Malaysia"
+        title="Medically Supervised Weight Loss in Malaysia"
+        highlight="Lasting, Structured Results at Nexus Clinic KL"
+        description="Weight is not just about appearance. It affects your heart, joints, hormones, sleep and long-term health. Our doctor-led programmes are built to treat the biology behind weight gain, not just the symptoms."
+        details="At Nexus Clinic Kuala Lumpur, every programme is supervised by licensed doctors who review your medical history, assess the root causes of weight gain, and build a plan based on your body, your risk profile and your lifestyle."
+        note="Programmes available: GLP-1, Duromine, HCG, Wegovy, Ozempic, Mounjaro — All medically supervised at Nexus Clinic KL."
+        image="/images/main/doctor-monitored-malaysia.webp"
+        imageAlt="Doctor consultation at Nexus Clinic Kuala Lumpur"
+        ctaText="Book Free Consultation"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in weight management treatment at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="Programmes available:"
+        floatingSubtitle="GLP-1, Duromine, HCG, Wegovy, Ozempic, Mounjaro"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
-              <h1 className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight">
-                Medically Supervised Weight Loss in Malaysia
-                <span className="block text-wine text-2xl md:text-3xl mt-2">
-                  Lasting, Structured Results at Nexus Clinic KL
-                </span>
-              </h1>
+      {/* Trust Bar Section */}
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="container mx-auto px-4 -mt-8 relative z-20"
+      >
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <motion.div variants={fadeInUp} className="text-center">
+            <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50 shadow-md">
+              <Shield className="w-6 h-6 text-wine mx-auto mb-2" />
+              <div className="font-inter font-medium text-brown text-sm">Doctor supervised</div>
+              <div className="text-taupe text-xs">licensed medical setting</div>
+            </div>
+          </motion.div>
 
-              <p className="text-lg md:text-xl text-taupe font-inter leading-relaxed">
-                Weight is not just about appearance. It affects your heart,
-                joints, hormones, sleep and long-term health. Our doctor-led
-                programmes are built to treat the biology behind weight gain,
-                not just the symptoms.
-              </p>
+          <motion.div variants={fadeInUp} className="text-center">
+            <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50 shadow-md">
+              <Clock className="w-6 h-6 text-wine mx-auto mb-2" />
+              <div className="font-inter font-medium text-brown text-sm">45-60 min first visit</div>
+              <div className="text-taupe text-xs">20-30 min follow-ups</div>
+            </div>
+          </motion.div>
 
-              <p className="text-brown/80 font-inter">
-                At Nexus Clinic Kuala Lumpur, every programme is supervised by
-                licensed doctors who review your medical history, assess the
-                root causes of weight gain, and build a plan based on your
-                body, your risk profile and your lifestyle.
-              </p>
+          <motion.div variants={fadeInUp} className="text-center">
+            <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50 shadow-md">
+              <Activity className="w-6 h-6 text-wine mx-auto mb-2" />
+              <div className="font-inter font-medium text-brown text-sm">Weekly or fortnightly</div>
+              <div className="text-taupe text-xs">progress tracking</div>
+            </div>
+          </motion.div>
 
-              <div className="flex flex-wrap gap-4 pt-2">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-inter font-medium hover:bg-rose transition-colors shadow-lg shadow-wine/20 inline-flex items-center gap-2"
-                >
-                  Book Free Consultation
-                  <ArrowRight className="w-4 h-4" />
-                </motion.button>
-
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-brown/20 text-brown px-8 py-4 rounded-full font-inter font-medium hover:border-wine hover:text-wine transition-colors"
-                >
-                  View Programme Guide
-                </motion.button>
-              </div>
-
-              {/* Trust Bar */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6">
-                <motion.div variants={fadeInUp} className="text-center">
-                  <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50">
-                    <Shield className="w-6 h-6 text-wine mx-auto mb-2" />
-                    <div className="font-inter font-medium text-brown text-sm">
-                      Doctor supervised
-                    </div>
-                    <div className="text-taupe text-xs">licensed medical setting</div>
-                  </div>
-                </motion.div>
-
-                <motion.div variants={fadeInUp} className="text-center">
-                  <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50">
-                    <Clock className="w-6 h-6 text-wine mx-auto mb-2" />
-                    <div className="font-inter font-medium text-brown text-sm">
-                      45-60 min first visit
-                    </div>
-                    <div className="text-taupe text-xs">20-30 min follow-ups</div>
-                  </div>
-                </motion.div>
-
-                <motion.div variants={fadeInUp} className="text-center">
-                  <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50">
-                    <Activity className="w-6 h-6 text-wine mx-auto mb-2" />
-                    <div className="font-inter font-medium text-brown text-sm">
-                      Weekly or fortnightly
-                    </div>
-                    <div className="text-taupe text-xs">progress tracking</div>
-                  </div>
-                </motion.div>
-
-                <motion.div variants={fadeInUp} className="text-center">
-                  <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50">
-                    <MapPin className="w-6 h-6 text-wine mx-auto mb-2" />
-                    <div className="font-inter font-medium text-brown text-sm">
-                      Kuala Lumpur clinic
-                    </div>
-                    <div className="text-taupe text-xs">Wisma UOA II, Jalan Pinang</div>
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative z-10 bg-linear-to-br from-wine/10 to-rose/10 rounded-3xl p-8 backdrop-blur-sm">
-                <img
-                  src="/images/main/doctor-monitored-malaysia.webp"
-                  alt="Doctor consultation at Nexus Clinic Kuala Lumpur"
-                  className="rounded-2xl shadow-2xl w-full object-cover"
-                />
-                <div className="absolute -bottom-4 -right-4 bg-glass backdrop-blur-md rounded-2xl p-4 border border-white/50">
-                  <p className="font-inter text-sm text-brown">
-                    Programmes available:
-                  </p>
-                  <p className="font-georgia text-wine font-bold">
-                    GLP-1, Duromine, HCG, Wegovy, Ozempic, Mounjaro
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
+          <motion.div variants={fadeInUp} className="text-center">
+            <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50 shadow-md">
+              <MapPin className="w-6 h-6 text-wine mx-auto mb-2" />
+              <div className="font-inter font-medium text-brown text-sm">Kuala Lumpur clinic</div>
+              <div className="text-taupe text-xs">Wisma UOA II, Jalan Pinang</div>
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
       {/* Programme At a Glance */}
       <section className="py-20 bg-light">
         <motion.div
@@ -797,14 +736,15 @@ export default function DoctorMonitoredLanding({
               your risks and your goals.
             </p>
 
-            <motion.button
+            <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              href="/contact-us"
               className="bg-light text-wine px-10 py-5 rounded-full font-inter font-medium text-lg hover:bg-cream transition-colors shadow-2xl inline-flex items-center gap-2"
             >
               Book Free Consultation
               <ArrowRight className="w-5 h-5" />
-            </motion.button>
+            </motion.a>
           </motion.div>
         </motion.div>
       </section>

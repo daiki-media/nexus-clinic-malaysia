@@ -42,12 +42,14 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import Image from "next/image";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 interface MinoxidilLandingProps {
   locale: string;
 }
@@ -204,91 +206,25 @@ export default function MinoxidilLanding({ locale }: MinoxidilLandingProps) {
 
   return (
     <div className="w-full bg-light overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <Sparkles className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Topical • Oral • Doctor-Prescribed</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Minoxidil Hair Loss Treatment in Malaysia for{" "}
-                <span className="text-wine italic">Proven Hair Regrowth Results</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Minoxidil is one of only two FDA-approved medications for hair loss treatment with decades of published clinical evidence behind it.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                Whether applied directly to the scalp as a topical solution or taken as a low-dose oral medication, minoxidil works by improving blood flow to hair follicles, extending the anagen (growth) phase and stimulating hair growth in areas where thinning has occurred.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Important Clinical Information
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  At Nexus Clinic KL, minoxidil is prescribed as part of a personalised hair loss treatment programme that combines the right formulation, finasteride for men with androgenetic alopecia, PRP for growth factor stimulation and structured monitoring.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Book Minoxidil Assessment
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in minoxidil hair loss treatment at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/hair/minoxidil-treatment.webp"
-                  alt="Nexus Clinic Kuala Lumpur - Minoxidil Hair Loss Treatment"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown">Topical • Oral • PRP</p>
-                <p className="font-inter text-sm text-taupe">Proven hair regrowth results</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+        badge="Topical • Oral • Doctor-Prescribed"
+        title="Minoxidil Hair Loss Treatment in Malaysia for"
+        highlight="Proven Hair Regrowth Results"
+        description="Minoxidil is one of only two FDA-approved medications for hair loss treatment with decades of published clinical evidence behind it."
+        details="Whether applied directly to the scalp as a topical solution or taken as a low-dose oral medication, minoxidil works by improving blood flow to hair follicles, extending the anagen (growth) phase and stimulating hair growth in areas where thinning has occurred."
+        note="At Nexus Clinic KL, minoxidil is prescribed as part of a personalised hair loss treatment programme that combines the right formulation, finasteride for men with androgenetic alopecia, PRP for growth factor stimulation and structured monitoring."
+        image="/images/hair/minoxidil-treatment.webp"
+        imageAlt="Nexus Clinic Kuala Lumpur - Minoxidil Hair Loss Treatment"
+        ctaText="Book Minoxidil Assessment"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in minoxidil hair loss treatment at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="Topical • Oral • PRP"
+        floatingSubtitle="Proven hair regrowth results"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -479,33 +415,25 @@ export default function MinoxidilLanding({ locale }: MinoxidilLandingProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">How Minoxidil Works for Hair Loss</h2>
-            <p className="text-taupe font-inter">Blood flow, anagen phase and the shedding sequence explained</p>
-          </motion.div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Mechanism Step</th>
-                  <th className="p-4 text-left font-georgia">What Happens Biologically</th>
-                  <th className="p-4 text-left font-georgia">How This Promotes Hair Growth</th>
-                  <th className="p-4 text-left font-georgia">Clinical Implication</th>
-                </tr>
-              </thead>
-              <tbody>
-                {mechanismTable.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown text-sm">{item.step}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.mechanism}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.effect}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.implication}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+        <TableForPages
+          columns={[
+            { key: "step", header: "Mechanism Step", className: "font-semibold" },
+            { key: "mechanism", header: "What Happens Biologically" },
+            { key: "effect", header: "How This Promotes Hair Growth" },
+            { key: "implication", header: "Clinical Implication" },
+          ]}
+          data={mechanismTable.map((item) => ({
+            step: item.step,
+            mechanism: item.mechanism,
+            effect: item.effect,
+            implication: item.implication,
+          }))}
+          title="How Minoxidil Works for Hair Loss"
+          subtitle="Blood flow, anagen phase and the shedding sequence explained"
+          variant="detailed"
+          fadeInUp={fadeInUp}
+          className="py-20 px-4"
+        />
 
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
             <p className="text-brown font-inter text-sm">
@@ -524,31 +452,23 @@ export default function MinoxidilLanding({ locale }: MinoxidilLandingProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Minoxidil for Men vs Women</h2>
-            <p className="text-taupe font-inter">Concentration, finasteride and best results for hair regrowth in Malaysia</p>
-          </motion.div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Factor</th>
-                  <th className="p-4 text-left font-georgia">Minoxidil for Men</th>
-                  <th className="p-4 text-left font-georgia">Minoxidil for Women</th>
-                </tr>
-              </thead>
-              <tbody>
-                {genderTable.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown text-sm">{item.factor}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.men}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.women}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+            <TableForPages
+              columns={[
+                { key: "factor", header: "Factor", className: "font-semibold" },
+                { key: "men", header: "Minoxidil for Men" },
+                { key: "women", header: "Minoxidil for Women" },
+              ]}
+              data={genderTable.map((item) => ({
+                factor: item.factor,
+                men: item.men,
+                women: item.women,
+              }))}
+              title="Minoxidil for Men vs Women"
+              subtitle="Concentration, finasteride and best results for hair regrowth in Malaysia"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-20 px-4"
+            />
         </motion.div>
       </section>
 
@@ -561,31 +481,24 @@ export default function MinoxidilLanding({ locale }: MinoxidilLandingProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Topical Solution vs Oral Minoxidil</h2>
-            <p className="text-taupe font-inter">Choosing the right formulation in Malaysia</p>
-          </motion.div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Comparison Factor</th>
-                  <th className="p-4 text-left font-georgia">Topical Minoxidil</th>
-                  <th className="p-4 text-left font-georgia">Oral Minoxidil</th>
-                </tr>
-              </thead>
-              <tbody>
-                {formulationTable.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown text-sm">{item.factor}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.topical}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.oral}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+            {/* Topical Solution vs Oral Minoxidil Table */}
+            <TableForPages
+              columns={[
+                { key: "factor", header: "Comparison Factor", className: "font-semibold" },
+                { key: "topical", header: "Topical Minoxidil" },
+                { key: "oral", header: "Oral Minoxidil" },
+              ]}
+              data={formulationTable.map((item) => ({
+                factor: item.factor,
+                topical: item.topical,
+                oral: item.oral,
+              }))}
+              title="Topical Solution vs Oral Minoxidil"
+              subtitle="Choosing the right formulation in Malaysia"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-20 px-4"
+            />
 
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
             <p className="text-brown font-inter text-sm">
@@ -604,31 +517,24 @@ export default function MinoxidilLanding({ locale }: MinoxidilLandingProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Minoxidil, Finasteride and PRP</h2>
-            <p className="text-taupe font-inter">The advanced hair loss treatment programme at Nexus Clinic KL</p>
-          </motion.div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment Component</th>
-                  <th className="p-4 text-left font-georgia">Role in the Combination Programme</th>
-                  <th className="p-4 text-left font-georgia">How Nexus Clinic KL Integrates This</th>
-                </tr>
-              </thead>
-              <tbody>
-                {combinationTable.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown text-sm">{item.component}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.role}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.integration}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+            {/* Minoxidil, Finasteride and PRP Table */}
+            <TableForPages
+              columns={[
+                { key: "component", header: "Treatment Component", className: "font-semibold" },
+                { key: "role", header: "Role in the Combination Programme" },
+                { key: "integration", header: "How Nexus Clinic KL Integrates This" },
+              ]}
+              data={combinationTable.map((item) => ({
+                component: item.component,
+                role: item.role,
+                integration: item.integration,
+              }))}
+              title="Minoxidil, Finasteride and PRP"
+              subtitle="The advanced hair loss treatment programme at Nexus Clinic KL"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-20 px-4"
+            />
         </motion.div>
       </section>
 
@@ -905,38 +811,32 @@ export default function MinoxidilLanding({ locale }: MinoxidilLandingProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Minoxidil Hair Loss Treatment Cost in Malaysia 2026</h2>
-            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
-          </motion.div>
+            {/* Minoxidil Hair Loss Treatment Cost Table */}
+            <TableForPages
+              columns={[
+                { key: "service", header: "Service / Treatment" },
+                { key: "details", header: "Details" },
+                { key: "price", header: "Price Range (RM) 2026" },
+              ]}
+              data={pricingTiers.map((tier) => ({
+                service: tier.service,
+                details: tier.details,
+                price: tier.price,
+              }))}
+              title="Minoxidil Hair Loss Treatment Cost in Malaysia 2026"
+              subtitle="Transparent pricing at Nexus Clinic KL"
+              variant="compact"
+              fadeInUp={fadeInUp}
+              className="py-20 px-4"
+            />
 
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Service / Treatment</th>
-                  <th className="p-4 text-left font-georgia">Details</th>
-                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{tier.service}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{tier.details}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
-                    Annual cost for complete minoxidil, finasteride and PRP programme is approximately RM 6,000 to RM 12,000 for men. Women on minoxidil alone have annual cost of approximately RM 1,000 to RM 3,000. All pricing disclosed at initial consultation.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
+            {/* Footnote */}
+            <motion.p 
+              variants={fadeInUp}
+              className="text-center text-taupe font-inter text-sm italic mt-4"
+            >
+              Annual cost for complete minoxidil, finasteride and PRP programme is approximately RM 6,000 to RM 12,000 for men. Women on minoxidil alone have annual cost of approximately RM 1,000 to RM 3,000. All pricing disclosed at initial consultation.
+            </motion.p>
         </motion.div>
       </section>
 
@@ -966,14 +866,15 @@ export default function MinoxidilLanding({ locale }: MinoxidilLandingProps) {
               Our licensed doctors bring over 15 years of combined clinical experience. Nexus Clinic KL is located at Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur, serving patients from across KL, Petaling Jaya, Bangsar, KLCC, Ampang, Mont Kiara and throughout Malaysia.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Book Your Assessment
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a consultation for minoxidil hair loss treatment at Nexus Clinic KL. Please let me know available slots."
                 variant="light"

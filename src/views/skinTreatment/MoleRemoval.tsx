@@ -40,12 +40,14 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
-import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
+import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import Image from "next/image";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 interface MoleRemovalProps {
   locale: string;
 }
@@ -118,91 +120,25 @@ export default function MoleRemovalLanding({ locale }: MoleRemovalProps) {
 
   return (
     <div className="w-full bg-light overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <AlertTriangle className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Doctor-Led Mole Assessment • MOH Registered Clinic</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Mole Removal in Kuala Lumpur That{" "}
-                <span className="text-wine italic">Looks Natural</span> When It Heals
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Flat moles, raised moles, atypical lesions you are uncertain about. Nexus Clinic KL assesses every mole before removal, selects the right method, and includes histopathology for any lesion with atypical features.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                Every mole that bothers you deserves a proper medical assessment before anything else. The wrong removal method leaves a worse scar than the mole itself. At Nexus Clinic KL, our licensed aesthetic doctors assess every mole before recommending a removal method.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Over 5,000 Aesthetic Procedures Completed
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  Our doctors have more than 15 years of combined clinical experience providing mole removal that is as medically thorough as it is aesthetically precise.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Book Free Mole Assessment
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in mole removal at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/skin/mole-removal.webp"
-                  alt="Nexus Clinic Kuala Lumpur - Mole Removal"
-                  fill
-                  className="object-cover object-[70%_30%]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown"> Precise Removal</p>
-                <p className="font-inter text-sm text-taupe">CO2 Laser • RF • Surgical Excision</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+        <AllPagesHero
+          badge="Doctor-Led Mole Assessment • MOH Registered Clinic"
+          title="Mole Removal in Kuala Lumpur That"
+          highlight="Looks Natural When It Heals"
+          description="Flat moles, raised moles, atypical lesions you are uncertain about. Nexus Clinic KL assesses every mole before removal, selects the right method, and includes histopathology for any lesion with atypical features."
+          details="Every mole that bothers you deserves a proper medical assessment before anything else. The wrong removal method leaves a worse scar than the mole itself. At Nexus Clinic KL, our licensed aesthetic doctors assess every mole before recommending a removal method."
+          note="Over 5,000 Aesthetic Procedures Completed — Our doctors have more than 15 years of combined clinical experience providing mole removal that is as medically thorough as it is aesthetically precise."
+          image="/images/skin/mole-removal.webp"
+          imageAlt="Nexus Clinic Kuala Lumpur - Mole Removal"
+          ctaText="Book Free Mole Assessment"
+          ctaLink="/contact-us"
+          whatsappMessage="Hi, I'm interested in mole removal at Nexus Clinic KL. I'd like to book a consultation."
+          floatingTitle="Precise Removal"
+          floatingSubtitle="CO2 Laser • RF • Surgical Excision"
+          staggerContainer={staggerContainer}
+          fadeInLeft={fadeInLeft}
+          fadeInRight={fadeInRight}
+          fadeInUp={fadeInUp}
+        />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -340,10 +276,10 @@ export default function MoleRemovalLanding({ locale }: MoleRemovalProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link  href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Speak to a Doctor About Your Mole | Free Assessment
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -401,36 +337,27 @@ export default function MoleRemovalLanding({ locale }: MoleRemovalProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Mole-Type-to-Removal-Method Decision Framework</h2>
-            <p className="text-taupe font-inter">Used at every initial mole assessment at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Mole Type</th>
-                  <th className="p-4 text-left font-georgia">Appearance</th>
-                  <th className="p-4 text-left font-georgia">Depth</th>
-                  <th className="p-4 text-left font-georgia">Histopathology Needed?</th>
-                  <th className="p-4 text-left font-georgia">Recommended Method</th>
-                 </tr>
-              </thead>
-              <tbody>
-                {moleTypes.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.type}</td>
-                    <td className="p-4 text-taupe font-inter">{item.appearance}</td>
-                    <td className="p-4 text-taupe font-inter">{item.depth}</td>
-                    <td className="p-4 text-taupe font-inter">{item.histopathology}</td>
-                    <td className="p-4 text-taupe font-inter">{item.method}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          
+          <TableForPages
+              columns={[
+                { key: "type", header: "Mole Type", className: "font-semibold text-brown" },
+                { key: "appearance", header: "Appearance" },
+                { key: "depth", header: "Depth" },
+                { key: "histopathology", header: "Histopathology Needed?" },
+                { key: "method", header: "Recommended Method" },
+              ]}
+              data={moleTypes.map(item => ({
+                type: item.type,
+                appearance: item.appearance,
+                depth: item.depth,
+                histopathology: item.histopathology,
+                method: item.method,
+              }))}
+              title="Mole-Type-to-Removal-Method Decision Framework"
+              subtitle="Used at every initial mole assessment at Nexus Clinic KL"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-12 px-4"
+            />          
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
             <p className="text-brown font-inter text-sm text-center">
               Using surgical excision for a flat mole is the most common method mismatch in Malaysian mole removal. At Nexus Clinic KL, the correct method is selected based on clinical criteria rather than clinic preference.
@@ -495,33 +422,25 @@ export default function MoleRemovalLanding({ locale }: MoleRemovalProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Scar Outcomes by Removal Method and Body Location</h2>
-            <p className="text-taupe font-inter">What to expect based on your mole location and removal method</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Removal Method</th>
-                  <th className="p-4 text-left font-georgia">Scarring Risk</th>
-                  <th className="p-4 text-left font-georgia">Best Locations</th>
-                  <th className="p-4 text-left font-georgia">Expected Healing Timeline</th>
-                </tr>
-              </thead>
-              <tbody>
-                {scarOutcomes.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.method}</td>
-                    <td className="p-4 text-taupe font-inter">{item.risk}</td>
-                    <td className="p-4 text-taupe font-inter">{item.bestLocations}</td>
-                    <td className="p-4 text-taupe font-inter">{item.timeline}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+            <TableForPages
+              columns={[
+                { key: "method", header: "Removal Method", className: "font-semibold text-brown" },
+                { key: "risk", header: "Scarring Risk" },
+                { key: "bestLocations", header: "Best Locations" },
+                { key: "timeline", header: "Expected Healing Timeline" },
+              ]}
+              data={scarOutcomes.map(item => ({
+                method: item.method,
+                risk: item.risk,
+                bestLocations: item.bestLocations,
+                timeline: item.timeline,
+              }))}
+              title="Scar Outcomes by Removal Method and Body Location"
+              subtitle="What to expect based on your mole location and removal method"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-12 px-4"
+            />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
             <p className="text-brown font-inter text-sm text-center">
@@ -680,46 +599,29 @@ export default function MoleRemovalLanding({ locale }: MoleRemovalProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Mole Removal Cost in Malaysia 2026</h2>
-            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment / Method</th>
-                  <th className="p-4 text-left font-georgia">Best Suited For</th>
-                  <th className="p-4 text-left font-georgia">Sessions</th>
-                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter text-brown">{tier.treatment}</td>
-                    <td className="p-4 text-taupe font-inter">{tier.bestFor}</td>
-                    <td className="p-4 text-taupe font-inter">{tier.sessions}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={4} className="p-4 text-taupe font-inter text-sm italic">
-                    Multiple mole removal in a single session offered at package pricing where clinically appropriate. Histopathology fees charged at cost and disclosed transparently before procedure.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          
-          <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Confirm Your Mole Removal Pricing | Free Assessment
-              <ArrowRight className="w-4 h-4" />
-            </button>
+          <TableForPages
+            columns={[
+              { key: "treatment", header: "Treatment / Method", className: "font-semibold text-brown" },
+              { key: "bestFor", header: "Best Suited For" },
+              { key: "sessions", header: "Sessions" },
+              { key: "price", header: "Price Range (RM) 2026", className: "font-semibold text-wine" },
+            ]}
+            data={pricingTiers.map(tier => ({
+              treatment: tier.treatment,
+              bestFor: tier.bestFor,
+              sessions: tier.sessions,
+              price: tier.price,
+            }))}
+            title="Mole Removal Cost in Malaysia 2026"
+            subtitle="Transparent pricing at Nexus Clinic KL"
+            variant="default"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
+          <motion.div variants={fadeInUp} className="text-center mt-4">
+            <p className="text-taupe font-inter text-sm italic">
+              Multiple mole removal in a single session offered at package pricing where clinically appropriate. Histopathology fees charged at cost and disclosed transparently before procedure.
+            </p>
           </motion.div>
         </motion.div>
       </section>
@@ -882,14 +784,15 @@ export default function MoleRemovalLanding({ locale }: MoleRemovalProps) {
               Every mole is assessed before it is removed. The correct method is selected for the specific lesion type. Scar outcomes are discussed honestly based on your skin type and mole location.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Book Your Free Mole Assessment Now
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a free consultation for mole removal at Nexus Clinic KL. Please let me know available slots."
                 variant="light"

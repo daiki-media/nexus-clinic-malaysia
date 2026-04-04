@@ -41,11 +41,14 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
-import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
+import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import Image from "next/image";
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 
 interface PicoLaserProps {
   locale: string;
@@ -117,91 +120,25 @@ export default function PicoLaserLanding({ locale }: PicoLaserProps) {
 
   return (
     <div className="w-full bg-light overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <Sparkles className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Doctor-Led Pico Laser • MOH Registered Clinic</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Sharper Pico Laser in Kuala Lumpur for{" "}
-                <span className="text-wine italic">Pigmentation, Acne Scars and Lasting Skin Clarity</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Skin that has cycled through whitening creams and toning lasers without lasting results needs a different approach. Nexus Clinic KL uses calibrated wavelengths and targeted delivery modes to treat your specific concern precisely.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                Pico Laser is not a single treatment. It is a platform with multiple wavelengths, multiple delivery modes and multiple clinical applications. The results you achieve depend on whether the correct wavelength and mode are matched to your specific skin concern.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Over 5,000 Aesthetic Procedures Completed
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  Our doctors bring more than 15 years of combined clinical experience treating Malaysian Fitzpatrick III to V skin.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Book Free Pico Laser Consultation
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in Pico Laser treatment at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/skin/pico-laser.webp"
-                  alt="Nexus Clinic Kuala Lumpur - Pico Laser Treatment"
-                  fill
-                  className="object-cover object-[70%_30%]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown"> Calibrated Treatment</p>
-                <p className="font-inter text-sm text-taupe">Wavelength • Mode • Energy • Your Skin Type</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+        badge="Doctor-Led Pico Laser • MOH Registered Clinic"
+        title="Sharper Pico Laser in Kuala Lumpur for"
+        highlight="Pigmentation, Acne Scars and Lasting Skin Clarity"
+        description="Skin that has cycled through whitening creams and toning lasers without lasting results needs a different approach. Nexus Clinic KL uses calibrated wavelengths and targeted delivery modes to treat your specific concern precisely."
+        details="Pico Laser is not a single treatment. It is a platform with multiple wavelengths, multiple delivery modes and multiple clinical applications. The results you achieve depend on whether the correct wavelength and mode are matched to your specific skin concern."
+        note="Over 5,000 Aesthetic Procedures Completed — Our doctors bring more than 15 years of combined clinical experience treating Malaysian Fitzpatrick III to V skin."
+        image="/images/skin/pico-laser.webp"
+        imageAlt="Nexus Clinic Kuala Lumpur - Pico Laser Treatment"
+        ctaText="Book Free Pico Laser Consultation"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in Pico Laser treatment at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="Calibrated Treatment"
+        floatingSubtitle="Wavelength • Mode • Energy • Your Skin Type"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -339,10 +276,10 @@ export default function PicoLaserLanding({ locale }: PicoLaserProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Speak to a Doctor About Your Skin Concern | Free Assessment
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor About Your Skin Concern 
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -356,35 +293,28 @@ export default function PicoLaserLanding({ locale }: PicoLaserProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The Pico Laser Wavelength Clinical Decision Framework</h2>
-            <p className="text-taupe font-inter">Used at every initial Pico Laser consultation at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Wavelength</th>
-                  <th className="p-4 text-left font-georgia">Penetration Depth</th>
-                  <th className="p-4 text-left font-georgia">Primary Target</th>
-                  <th className="p-4 text-left font-georgia">Skin Concerns Treated</th>
-                  <th className="p-4 text-left font-georgia">Fitzpatrick Suitability</th>
-                </tr>
-              </thead>
-              <tbody>
-                {wavelengthData.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.wavelength}</td>
-                    <td className="p-4 text-taupe font-inter">{item.penetration}</td>
-                    <td className="p-4 text-taupe font-inter">{item.target}</td>
-                    <td className="p-4 text-taupe font-inter">{item.concerns}</td>
-                    <td className="p-4 text-taupe font-inter">{item.suitability}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+              columns={[
+                { key: "wavelength", header: "Wavelength", className: "font-semibold text-brown" },
+                { key: "penetration", header: "Penetration Depth" },
+                { key: "target", header: "Primary Target" },
+                { key: "concerns", header: "Skin Concerns Treated" },
+                { key: "suitability", header: "Fitzpatrick Suitability" },
+              ]}
+              data={wavelengthData.map(item => ({
+                wavelength: item.wavelength,
+                penetration: item.penetration,
+                target: item.target,
+                concerns: item.concerns,
+                suitability: item.suitability,
+              }))}
+              title="The Pico Laser Wavelength Clinical Decision Framework"
+              subtitle="Used at every initial Pico Laser consultation at Nexus Clinic KL"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-12 px-4"
+            />
+
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
             <p className="text-brown font-inter text-sm text-center">
@@ -403,36 +333,27 @@ export default function PicoLaserLanding({ locale }: PicoLaserProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The Three Pico Laser Delivery Modes Used at Nexus Clinic KL</h2>
-            <p className="text-taupe font-inter">Different modes for different clinical applications</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Delivery Mode</th>
-                  <th className="p-4 text-left font-georgia">Mechanism</th>
-                  <th className="p-4 text-left font-georgia">Best For</th>
-                  <th className="p-4 text-left font-georgia">Downtime</th>
-                  <th className="p-4 text-left font-georgia">Sessions Needed</th>
-                </tr>
-              </thead>
-              <tbody>
-                {deliveryModes.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.mode}</td>
-                    <td className="p-4 text-taupe font-inter">{item.mechanism}</td>
-                    <td className="p-4 text-taupe font-inter">{item.bestFor}</td>
-                    <td className="p-4 text-taupe font-inter">{item.downtime}</td>
-                    <td className="p-4 text-taupe font-inter">{item.sessions}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          
+          <TableForPages
+              columns={[
+                { key: "mode", header: "Delivery Mode", className: "font-semibold text-brown" },
+                { key: "mechanism", header: "Mechanism" },
+                { key: "bestFor", header: "Best For" },
+                { key: "downtime", header: "Downtime" },
+                { key: "sessions", header: "Sessions Needed" },
+              ]}
+              data={deliveryModes.map(item => ({
+                mode: item.mode,
+                mechanism: item.mechanism,
+                bestFor: item.bestFor,
+                downtime: item.downtime,
+                sessions: item.sessions,
+              }))}
+              title="The Three Pico Laser Delivery Modes Used at Nexus Clinic KL"
+              subtitle="Different modes for different clinical applications"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-12 px-4"
+            />          
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
             <p className="text-brown font-inter text-sm text-center">
               Acne scar treatment requires Fractional LIOB mode, not Toning mode. Patients whose acne scar treatment has consisted exclusively of toning mode sessions have been receiving the mode designed for pigmentation maintenance applied to a concern that requires fractional collagen induction.
@@ -450,34 +371,25 @@ export default function PicoLaserLanding({ locale }: PicoLaserProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Pico Laser vs Q-Switched Laser vs Fractional CO2</h2>
-            <p className="text-taupe font-inter">Which is right for your concern?</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Factor</th>
-                  <th className="p-4 text-left font-georgia">Pico Laser</th>
-                  <th className="p-4 text-left font-georgia">Q-Switched Nd:YAG</th>
-                  <th className="p-4 text-left font-georgia">Fractional CO2 Laser</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonData.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.factor}</td>
-                    <td className="p-4 text-taupe font-inter">{item.pico}</td>
-                    <td className="p-4 text-taupe font-inter">{item.qs}</td>
-                    <td className="p-4 text-taupe font-inter">{item.co2}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          
+            <TableForPages
+              columns={[
+                { key: "factor", header: "Factor", className: "font-semibold text-brown" },
+                { key: "pico", header: "Pico Laser" },
+                { key: "qs", header: "Q-Switched Nd:YAG" },
+                { key: "co2", header: "Fractional CO2 Laser" },
+              ]}
+              data={comparisonData.map(item => ({
+                factor: item.factor,
+                pico: item.pico,
+                qs: item.qs,
+                co2: item.co2,
+              }))}
+              title="Pico Laser vs Q-Switched Laser vs Fractional CO2"
+              subtitle="Which is right for your concern?"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-12 px-4"
+            />          
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
             <p className="text-brown font-inter text-sm text-center">
               Pico Laser is the most versatile, safest and lowest-downtime option across the broadest range of skin concerns for Fitzpatrick III to V skin. At Nexus Clinic KL, our doctors make recommendations based on your clinical picture rather than defaulting to whichever laser the clinic owns.
@@ -601,46 +513,30 @@ export default function PicoLaserLanding({ locale }: PicoLaserProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Pico Laser Price in Malaysia 2026</h2>
-            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment / Concern</th>
-                  <th className="p-4 text-left font-georgia">Mode Used</th>
-                  <th className="p-4 text-left font-georgia">Sessions</th>
-                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
-                 </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter text-brown">{tier.treatment}</td>
-                    <td className="p-4 text-taupe font-inter">{tier.mode}</td>
-                    <td className="p-4 text-taupe font-inter">{tier.sessions}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={4} className="p-4 text-taupe font-inter text-sm italic">
-                    Combination programmes covering both pigmentation and acne scar concerns available at package pricing. All session pricing includes pre-treatment numbing cream, doctor-performed session, and post-treatment care.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          
-          <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Get Your Personalised Pico Laser Pricing | Free Consultation
-              <ArrowRight className="w-4 h-4" />
-            </button>
+          <TableForPages
+            columns={[
+              { key: "treatment", header: "Treatment / Concern", className: "font-semibold text-brown" },
+              { key: "mode", header: "Mode Used" },
+              { key: "sessions", header: "Sessions" },
+              { key: "price", header: "Price Range (RM) 2026", className: "font-semibold text-wine" },
+            ]}
+            data={pricingTiers.map(tier => ({
+              treatment: tier.treatment,
+              mode: tier.mode,
+              sessions: tier.sessions,
+              price: tier.price,
+            }))}
+            title="Pico Laser Price in Malaysia 2026"
+            subtitle="Transparent pricing at Nexus Clinic KL"
+            variant="default"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
+
+          <motion.div variants={fadeInUp} className="text-center mt-4">
+            <p className="text-taupe font-inter text-sm italic">
+              Combination programmes covering both pigmentation and acne scar concerns available at package pricing. All session pricing includes pre-treatment numbing cream, doctor-performed session, and post-treatment care.
+            </p>
           </motion.div>
         </motion.div>
       </section>
@@ -799,14 +695,15 @@ export default function PicoLaserLanding({ locale }: PicoLaserProps) {
               Pico Laser delivers its best results when wavelength, mode and energy settings are calibrated to the individual patient's skin concern, Fitzpatrick type and treatment history. The same device used at the wrong wavelength delivers no meaningful result regardless of how many sessions are completed.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Book Your Free Pico Laser Consultation Now
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a free consultation for Pico Laser treatment at Nexus Clinic KL. Please let me know available slots."
                 variant="light"

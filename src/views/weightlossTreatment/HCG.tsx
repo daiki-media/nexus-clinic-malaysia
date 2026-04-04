@@ -28,11 +28,11 @@ import {
   fadeInLeft,
   fadeInRight,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
 const HCGWeightLossLanding = ({
   locale = fallbackLng,
 }: {
@@ -86,98 +86,50 @@ const HCGWeightLossLanding = ({
   return (
     <div className="bg-light font-inter">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-rose/5 to-transparent" />
-        </div>
+      <AllPagesHero
+        badge="Doctor-Guided HCG Diet for Fast, Medically Supervised Fat Loss"
+        title="HCG Weight Loss Program"
+        highlight="in Kuala Lumpur, Malaysia"
+        description="A structured, time-defined programme for rapid fat loss and metabolic reset."
+        details="The HCG weight loss programme at Nexus Clinic KL combines medical-grade injectable HCG with a structured low-calorie phase, weekly doctor monitoring, and a clear exit into stabilisation and maintenance."
+        note="Licensed doctor supervision with weekly check-ins • Fixed-cycle programme with rapid results • Located in Kuala Lumpur with discreet clinic-based medical care"
+        image="/images/main/mounjaro.webp"
+        imageAlt="HCG Weight Loss Program at Nexus Clinic Kuala Lumpur"
+        ctaText="Book Free Consultation"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in the HCG Weight Loss Program at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="HCG Programme"
+        floatingSubtitle="Rapid fat loss • Metabolic reset"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
-        <div className="container mx-auto px-4 py-20 relative">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-5xl mx-auto text-center"
-          >
-            <motion.div variants={fadeInUp} className="mb-6">
-              <span className="inline-block px-4 py-2 bg-wine/10 text-wine rounded-full text-sm font-medium">
-                Doctor-Guided HCG Diet for Fast, Medically Supervised Fat Loss
-              </span>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl px-4 -mt-8 relative z-20"
+        >
+          <div className="grid md:grid-cols-3 gap-6">
+            <motion.div variants={fadeInUp} className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-cream shadow-md text-center">
+              <Shield className="w-8 h-8 text-wine mx-auto mb-3" />
+              <p className="text-brown font-medium">Licensed doctor supervision with weekly check-ins and progress tracking</p>
             </motion.div>
-
-            <motion.h1
-              variants={fadeInUp}
-              className="font-georgia text-5xl md:text-6xl lg:text-7xl text-brown mb-6 leading-tight"
-            >
-              HCG Weight Loss Program
-              <span className="block text-rose mt-2">
-                in Kuala Lumpur, Malaysia
-              </span>
-            </motion.h1>
-
-            <motion.div variants={fadeInUp} className="mb-8">
-              <h2 className="text-2xl md:text-3xl text-taupe font-light italic">
-                A structured, time-defined programme for rapid fat loss and metabolic reset.
-              </h2>
+            
+            <motion.div variants={fadeInUp} className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-cream shadow-md text-center">
+              <Award className="w-8 h-8 text-wine mx-auto mb-3" />
+              <p className="text-brown font-medium">Fixed-cycle programme with rapid results and structured maintenance</p>
             </motion.div>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-brown/80 max-w-3xl mx-auto mb-12"
-            >
-              The HCG weight loss programme at Nexus Clinic KL combines
-              medical-grade injectable HCG with a structured low-calorie phase,
-              weekly doctor monitoring, and a clear exit into stabilisation and
-              maintenance.
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-wrap justify-center gap-4 mb-12"
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-wine text-light px-8 py-4 rounded-full font-medium hover:bg-rose transition-colors shadow-lg"
-              >
-                Book Free Consultation
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="border-2 border-brown/20 text-brown px-8 py-4 rounded-full font-medium hover:border-wine hover:text-wine transition-colors"
-              >
-                View Programme Guide
-              </motion.button>
+            
+            <motion.div variants={fadeInUp} className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-cream shadow-md text-center">
+              <MapPin className="w-8 h-8 text-wine mx-auto mb-3" />
+              <p className="text-brown font-medium">Located in Kuala Lumpur with discreet clinic-based medical care</p>
             </motion.div>
-
-            {/* Trust section */}
-            <motion.div
-              variants={fadeInUp}
-              className="grid md:grid-cols-3 gap-6 mt-12"
-            >
-              <div className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-cream">
-                <Shield className="w-8 h-8 text-wine mb-3" />
-                <p className="text-brown font-medium">
-                  Licensed doctor supervision with weekly check-ins and progress tracking
-                </p>
-              </div>
-              <div className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-cream">
-                <Award className="w-8 h-8 text-wine mb-3" />
-                <p className="text-brown font-medium">
-                  Fixed-cycle programme with rapid results and structured maintenance
-                </p>
-              </div>
-              <div className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-cream">
-                <MapPin className="w-8 h-8 text-wine mb-3" />
-                <p className="text-brown font-medium">
-                  Located in Kuala Lumpur with discreet clinic-based medical care
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
+          </div>
+        </motion.div>
       {/* Programme at a glance */}
       <section className="py-24 bg-cream">
         <div className="container mx-auto px-4">
@@ -693,13 +645,14 @@ const HCGWeightLossLanding = ({
             Structured. Supervised. Honest from the start.
           </motion.p>
 
-          <motion.button
+          <motion.a
             variants={scaleIn}
+            href="/contact-us"
             className="bg-cream text-wine px-10 py-5 rounded-full font-bold text-lg hover:bg-rose hover:text-white transition-all duration-300 shadow-2xl hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center gap-2"
           >
             Book Free Consultation
             <ArrowRight className="w-5 h-5" />
-          </motion.button>
+          </motion.a>
         </motion.div>
       </section>
     </div>

@@ -46,13 +46,15 @@ import {
   fadeInRight,
   scaleIn,
   fadeInLeft,
-} from "../../lib/animations";
+} from "@/src/lib/animations";
 import React from "react";
-import FAQ from "../../components/FAQ";
+import FAQ from "@/src/components/FAQ";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
-
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
+import AllPagesHero from '@/src/components/AllPagesHero'
 const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "regenerative/testosterone");
 
@@ -83,98 +85,18 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
     },
   ];
 
-  const faqs = [
-    { q: t("faq.q1"), a: t("faq.a1") },
-    { q: t("faq.q2"), a: t("faq.a2") },
-    { q: t("faq.q3"), a: t("faq.a3") },
-    { q: t("faq.q4"), a: t("faq.a4") },
-    { q: t("faq.q5"), a: t("faq.a5") },
-    { q: t("faq.q6"), a: t("faq.a6") },
-    { q: t("faq.q7"), a: t("faq.a7") },
-    { q: t("faq.q8"), a: t("faq.a8") },
-    { q: t("faq.q9"), a: t("faq.a9") },
-    { q: t("faq.q10"), a: t("faq.a10") },
-    { q: t("faq.q11"), a: t("faq.a11") },
-    { q: t("faq.q12"), a: t("faq.a12") },
+  // TRT at a Glance Table Data
+  const trtAtGlanceData = [
+    { factor: "What TRT Treats", details: "Hypogonadism (primary and secondary); age-related testosterone deficiency with confirmed low levels AND symptoms; testosterone deficiency syndrome (TDS)" },
+    { factor: "Diagnostic Requirement", details: "Two fasting morning total serum testosterone measurements confirming levels below 10.4 to 12 nmol/L (300 to 350 ng/dL) AND clinical symptoms; both criteria required" },
+    { factor: "TRT Formulations Available", details: "Nebido (testosterone undecanoate) 1000mg injection | Sustanon 250 injection | Testosterone gel (Androgel, Testim) | Testosterone patch | Oral testosterone undecanoate (Andriol) | Clomiphene citrate (fertility-preserving)" },
+    { factor: "Timeline to Restored Vitality", details: "Energy and mood: 2 to 4 weeks | Libido: 3 to 6 weeks | Erectile function: 3 to 6 months | Muscle mass: 3 to 6 months | Bone density: 6 to 12 months" },
+    { factor: "Monitoring Required", details: "Serum testosterone, haematocrit, PSA (men over 40), liver function, lipid panel at 3 and 6 months then every 6 to 12 months" },
+    { factor: "MOH Approved", details: "Yes. All TRT formulations and monitoring protocols conducted under MOH-approved guidelines; prescriptions issued by LCP-certified doctors" },
   ];
 
-  const symptoms = [
-    { icon: <Zap />, text: t("symptoms.s1") },
-    { icon: <Heart />, text: t("symptoms.s2") },
-    { icon: <Activity />, text: t("symptoms.s3") },
-    { icon: <Brain />, text: t("symptoms.s4") },
-    { icon: <Sparkles />, text: t("symptoms.s5") },
-    { icon: <Scale />, text: t("symptoms.s6") },
-    { icon: <Dumbbell />, text: t("symptoms.s7") },
-    { icon: <Moon />, text: t("symptoms.s8") },
-  ];
-
-  const diagnosisSteps = [
-    { icon: <Clock />, text: t("diagnosis.step1") },
-    { icon: <Calendar />, text: t("diagnosis.step2") },
-    { icon: <BarChart3 />, text: t("diagnosis.step3") },
-  ];
-
-  const treatmentOptions = [
-    {
-      icon: <Syringe />,
-      title: t("treatment.opt1Title"),
-      desc: t("treatment.opt1Desc"),
-      price: t("treatment.opt1Price"),
-      image:
-        "https://images.unsplash.com/photo-1584362917165-526a968579e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      icon: <Droplets />,
-      title: t("treatment.opt2Title"),
-      desc: t("treatment.opt2Desc"),
-      price: t("treatment.opt2Price"),
-      image:
-        "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      icon: <Pill />,
-      title: t("treatment.opt3Title"),
-      desc: t("treatment.opt3Desc"),
-      price: t("treatment.opt3Price"),
-      image:
-        "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      icon: <Briefcase />,
-      title: t("treatment.opt4Title"),
-      desc: t("treatment.opt4Desc"),
-      price: t("treatment.opt4Price"),
-      image:
-        "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    },
-  ];
-
-  const benefits = [
-    { icon: <Zap />, text: t("benefits.b1") },
-    { icon: <Heart />, text: t("benefits.b2") },
-    { icon: <Brain />, text: t("benefits.b3") },
-    { icon: <Dumbbell />, text: t("benefits.b4") },
-    { icon: <Scale />, text: t("benefits.b5") },
-    { icon: <Activity />, text: t("benefits.b6") },
-  ];
-
-  const risks = [
-    { icon: <Thermometer />, text: t("risks.r1") },
-    { icon: <Droplets />, text: t("risks.r2") },
-    { icon: <Heart />, text: t("risks.r3") },
-    { icon: <Moon />, text: t("risks.r4") },
-    { icon: <Activity />, text: t("risks.r5") },
-    { icon: <HeartPulse />, text: t("risks.r6") },
-  ];
-
-  const timelineItems = [
-    { time: t("timeline.time1"), desc: t("timeline.time1Desc") },
-    { time: t("timeline.time2"), desc: t("timeline.time2Desc") },
-    { time: t("timeline.time3"), desc: t("timeline.time3Desc") },
-  ];
-
-  const trtFormulations = [
+  // TRT Formulations Table Data
+  const trtFormulationsData = [
     {
       name: "Nebido (Testosterone Undecanoate 1000mg IM)",
       schedule: "Injection every 10 to 14 weeks at the clinic; second injection at 6 weeks after first",
@@ -219,7 +141,56 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
     },
   ];
 
-  const monitoringParameters = [
+  // TRAVERSE Trial Table Data
+  const traverseTrialData = [
+    {
+      question: "Does TRT increase risk of heart attack or stroke?",
+      evidence: "5,246 men aged 45-80 with confirmed low testosterone and pre-existing CVD or high risk. MACE occurred in 7.0% of testosterone group vs 7.3% placebo. Non-inferiority confirmed. TRT did not increase cardiovascular risk.",
+      meaning: "Malaysian men with cardiovascular risk factors previously told they could not safely receive TRT should discuss this updated evidence with their doctor.",
+    },
+    {
+      question: "Did the FDA act on these findings?",
+      evidence: "In February 2025, the FDA issued class-wide labeling changes for all testosterone products, removing the cardiovascular black box warning that had been in place since 2015.",
+      meaning: "The cardiovascular warning that led many clinics in Malaysia to restrict TRT in older men or men with cardiac history has been removed from global product labeling.",
+    },
+    {
+      question: "Are there any remaining cardiovascular cautions?",
+      evidence: "Yes. The trial noted a small increase in atrial fibrillation, blood pressure and acute kidney injury in the testosterone group.",
+      meaning: "TRT may carry residual cardiovascular considerations requiring assessment. At Nexus Clinic KL, comprehensive medical history review and cardiovascular risk assessment is standard.",
+    },
+    {
+      question: "What about prostate cancer risk?",
+      evidence: "The TRAVERSE trial did not find a significant increase in overall prostate cancer incidence. An FDA expert panel in December 2025 recommended removing prostate cancer contraindications.",
+      meaning: "TRT remains contraindicated in men with active prostate cancer at this clinic. Baseline PSA is measured before starting TRT and monitored annually.",
+    },
+  ];
+
+  // Fertility Table Data
+  const fertilityData = [
+    {
+      situation: "Man who has already completed his family",
+      effect: "TRT suppresses HPG axis, reducing LH and FSH, shutting down spermatogenesis; expected and acceptable",
+      approach: "Standard TRT protocol with Nebido or chosen formulation; patient counselled that fertility suppression is expected",
+    },
+    {
+      situation: "Man currently trying to conceive or planning family in 1-2 years",
+      effect: "Standard TRT is contraindicated as it will suppress sperm production to near-zero",
+      approach: "Clomiphene citrate recommended: stimulates endogenous LH and FSH, increases body's own testosterone while maintaining spermatogenesis",
+    },
+    {
+      situation: "Man currently on TRT who wishes to start a family",
+      effect: "Fertility suppressed while on TRT; attempting conception usually unsuccessful",
+      approach: "Options: cessation of TRT with HCG or clomiphene; sperm banking before starting TRT; transition to clomiphene-based protocol",
+    },
+    {
+      situation: "Man uncertain about future fertility with low testosterone symptoms now",
+      effect: "Standard TRT will compromise fertility option during treatment",
+      approach: "Fertility discussion is standard; options include clomiphene first, sperm banking, or TRT with clear understanding of implications",
+    },
+  ];
+
+  // Monitoring Parameters Table Data
+  const monitoringParametersData = [
     {
       parameter: "Total Serum Testosterone",
       interval: "At 3 months, 6 months, then every 6 to 12 months",
@@ -252,7 +223,8 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
     },
   ];
 
-  const pricingItems = [
+  // Pricing Table Data
+  const pricingItemsData = [
     { item: "Initial TRT Consultation", details: "Comprehensive assessment, symptom history, ADAM questionnaire, medical history review, physical examination, contraindication screening, fertility discussion, blood test requisition", price: "RM 150 to RM 300" },
     { item: "Baseline Blood Panel (Pre-TRT)", details: "Fasting morning serum testosterone (x2 separate days), free testosterone, SHBG, LH, FSH, oestradiol, prolactin, CBC, haematocrit, LFTs, lipid panel, PSA (men over 40), fasting glucose and HbA1c", price: "RM 350 to RM 600" },
     { item: "Nebido 1000mg Injection", details: "Testosterone undecanoate long-acting IM injection; every 10 to 14 weeks; 4 to 5 visits per year; includes administration fee", price: "RM 600 to RM 900 per injection" },
@@ -263,98 +235,63 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
     { item: "Clomiphene Citrate", details: "Oral prescription for younger men who want testosterone benefit without spermatogenesis suppression", price: "RM 100 to RM 250 per month" },
   ];
 
+  const faqs = [
+    { q: t("faq.q1"), a: t("faq.a1") },
+    { q: t("faq.q2"), a: t("faq.a2") },
+    { q: t("faq.q3"), a: t("faq.a3") },
+    { q: t("faq.q4"), a: t("faq.a4") },
+    { q: t("faq.q5"), a: t("faq.a5") },
+    { q: t("faq.q6"), a: t("faq.a6") },
+    { q: t("faq.q7"), a: t("faq.a7") },
+    { q: t("faq.q8"), a: t("faq.a8") },
+    { q: t("faq.q9"), a: t("faq.a9") },
+    { q: t("faq.q10"), a: t("faq.a10") },
+    { q: t("faq.q11"), a: t("faq.a11") },
+    { q: t("faq.q12"), a: t("faq.a12") },
+  ];
+
+  const symptoms = [
+    { icon: <Zap />, text: t("symptoms.s1") },
+    { icon: <Heart />, text: t("symptoms.s2") },
+    { icon: <Activity />, text: t("symptoms.s3") },
+    { icon: <Brain />, text: t("symptoms.s4") },
+    { icon: <Sparkles />, text: t("symptoms.s5") },
+    { icon: <Scale />, text: t("symptoms.s6") },
+    { icon: <Dumbbell />, text: t("symptoms.s7") },
+    { icon: <Moon />, text: t("symptoms.s8") },
+  ];
+
+  const benefits = [
+    { icon: <Zap />, text: t("benefits.b1") },
+    { icon: <Heart />, text: t("benefits.b2") },
+    { icon: <Brain />, text: t("benefits.b3") },
+    { icon: <Dumbbell />, text: t("benefits.b4") },
+    { icon: <Scale />, text: t("benefits.b5") },
+    { icon: <Activity />, text: t("benefits.b6") },
+  ];
+
   return (
     <>
       <main className="bg-color-light font-inter overflow-hidden">
-        {/* Hero Section with Image Background */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20"
-          style={{ backgroundColor: "var(--color-cream)" }}
-        >
-          <div className="absolute inset-0 overflow-hidden">
-            <img
-              src={images.clinicInterior}
-              alt="Nexus Clinic Modern Interior"
-              className="w-full h-full object-cover opacity-20"
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(135deg, var(--color-cream) 0%, rgba(243, 239, 238, 0.9) 50%, var(--color-cream) 100%)",
-              }}
-            />
-          </div>
-
-          <div className="relative max-w-7xl mx-auto text-center z-10">
-            <motion.div
-              variants={fadeInUp}
-              className="inline-block p-4 mb-6 rounded-2xl"
-              style={{
-                backgroundColor: "var(--color-glass)",
-                backdropFilter: "blur(10px)",
-                border: "1px solid var(--color-taupe)",
-              }}
-            >
-              <HeartPulse
-                className="w-8 h-8"
-                style={{ color: "var(--color-wine)" }}
-              />
-            </motion.div>
-
-            <motion.h2
-              variants={fadeInUp}
-              className="text-5xl md:text-7xl font-georgia mb-6 leading-tight"
-              style={{ color: "var(--color-brown)" }}
-            >
-              Medically Supervised TRT Clinic in Kuala Lumpur:
-              <br />
-              <span style={{ color: "var(--color-wine)" }}>
-                Testosterone Replacement Therapy Malaysia
-              </span>
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto"
-              style={{ color: "var(--color-taupe)" }}
-            >
-              TRT clinic in malaysia for confirmed low testosterone levels. Testosterone replacement therapy treatment for men experiencing fatigue, low testosterone deficiency, mood changes, reduced libido and hormone imbalance. Medical clinic, Kuala Lumpur. Book your free consultation today.
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-xl text-white font-semibold text-lg"
-                style={{ backgroundColor: "var(--color-wine)" }}
-              >
-                {t("hero.cta1")}
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-xl font-semibold text-lg"
-                style={{
-                  backgroundColor: "var(--color-glass)",
-                  backdropFilter: "blur(10px)",
-                  color: "var(--color-brown)",
-                  border: "1px solid var(--color-taupe)",
-                }}
-              >
-                {t("hero.cta2")}
-              </motion.button>
-            </motion.div>
-          </div>
-        </motion.section>
-
+        <AllPagesHero
+          badge="Medically Supervised TRT Clinic"
+          title="Medically Supervised TRT Clinic in Kuala Lumpur:"
+          highlight="Testosterone Replacement Therapy Malaysia"
+          description="TRT clinic in Malaysia for confirmed low testosterone levels. Testosterone replacement therapy treatment for men experiencing fatigue, low testosterone deficiency, mood changes, reduced libido and hormone imbalance. Medical clinic, Kuala Lumpur. Book your free consultation today."
+          details="Nexus Clinic KL serves patients across Kuala Lumpur, Petaling Jaya, Bangsar, KLCC, Ampang, Mont Kiara and throughout Malaysia. Our hormone health team works with medically supervised protocols and personalised treatment plans built around your health profile and goals."
+          note="Testosterone replacement therapy should only be administered after confirmed low testosterone levels through proper medical diagnosis. All treatments are medically supervised."
+          image="/images/regenerative/testosterone-therapy.webp"
+          imageAlt="Testosterone Replacement Therapy at Nexus Clinic Kuala Lumpur"
+          ctaText="Book Free Consultation"
+          ctaLink="/contact-us"
+          whatsappMessage="Hi, I'm interested in TRT (Testosterone Replacement Therapy) at Nexus Clinic KL. I'd like to book a free consultation."
+          floatingTitle="💪 Restore Your Vitality"
+          floatingSubtitle="Medically supervised • Personalized care"
+          staggerContainer={staggerContainer}
+          fadeInLeft={fadeInLeft}
+          fadeInRight={fadeInRight}
+          fadeInUp={fadeInUp}
+        />
         {/* Trust Section */}
         <motion.section
           variants={staggerContainer}
@@ -380,7 +317,7 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                   key={index}
                   variants={fadeInUp}
                   whileHover={{ y: -5 }}
-                  className="p-6 rounded-2xl"
+                  className="p-6 rounded-2xl transition-all duration-300"
                   style={{
                     backgroundColor: "var(--color-glass)",
                     backdropFilter: "blur(10px)",
@@ -406,67 +343,31 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
           </div>
         </motion.section>
 
-        {/* TRT at a Glance Table */}
+        {/* TRT at a Glance Table - Using TableForPages */}
         <motion.section
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="py-20 px-4 sm:px-6 lg:px-8"
+          className="py-20"
           style={{ backgroundColor: "var(--color-light)" }}
         >
-          <div className="max-w-7xl mx-auto">
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl md:text-5xl font-georgia mb-12 text-center"
-              style={{ color: "var(--color-brown)" }}
-            >
-              TRT Clinic Kuala Lumpur: Testosterone Replacement Therapy at a Glance
-            </motion.h2>
-
-            <div className="overflow-x-auto">
-              <table className="w-full rounded-3xl overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
-                <thead>
-                  <tr style={{ backgroundColor: "var(--color-wine)" }}>
-                    <th className="p-4 text-left text-white font-georgia">Factor</th>
-                    <th className="p-4 text-left text-white font-georgia">Details</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr style={{ backgroundColor: "var(--color-cream)", borderBottom: "1px solid var(--color-taupe)" }}>
-                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>What TRT Treats</td>
-                    <td className="p-4" style={{ color: "var(--color-taupe)" }}>Hypogonadism (primary and secondary); age-related testosterone deficiency with confirmed low levels AND symptoms; testosterone deficiency syndrome (TDS)</td>
-                  </tr>
-                  <tr style={{ backgroundColor: "var(--color-glass)", borderBottom: "1px solid var(--color-taupe)" }}>
-                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Diagnostic Requirement</td>
-                    <td className="p-4" style={{ color: "var(--color-taupe)" }}>Two fasting morning total serum testosterone measurements confirming levels below 10.4 to 12 nmol/L (300 to 350 ng/dL) AND clinical symptoms; both criteria required</td>
-                  </tr>
-                  <tr style={{ backgroundColor: "var(--color-cream)", borderBottom: "1px solid var(--color-taupe)" }}>
-                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>TRT Formulations Available</td>
-                    <td className="p-4" style={{ color: "var(--color-taupe)" }}>Nebido (testosterone undecanoate) 1000mg injection | Sustanon 250 injection | Testosterone gel (Androgel, Testim) | Testosterone patch | Oral testosterone undecanoate (Andriol) | Clomiphene citrate (fertility-preserving)</td>
-                  </tr>
-                  <tr style={{ backgroundColor: "var(--color-glass)", borderBottom: "1px solid var(--color-taupe)" }}>
-                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Timeline to Restored Vitality</td>
-                    <td className="p-4" style={{ color: "var(--color-taupe)" }}>Energy and mood: 2 to 4 weeks | Libido: 3 to 6 weeks | Erectile function: 3 to 6 months | Muscle mass: 3 to 6 months | Bone density: 6 to 12 months</td>
-                  </tr>
-                  <tr style={{ backgroundColor: "var(--color-cream)", borderBottom: "1px solid var(--color-taupe)" }}>
-                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Monitoring Required</td>
-                    <td className="p-4" style={{ color: "var(--color-taupe)" }}>Serum testosterone, haematocrit, PSA (men over 40), liver function, lipid panel at 3 and 6 months then every 6 to 12 months</td>
-                  </tr>
-                  <tr style={{ backgroundColor: "var(--color-glass)" }}>
-                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>MOH Approved</td>
-                    <td className="p-4" style={{ color: "var(--color-taupe)" }}>Yes. All TRT formulations and monitoring protocols conducted under MOH-approved guidelines; prescriptions issued by LCP-certified doctors</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <motion.div variants={fadeInUp} className="mt-8 text-center">
-              <p className="text-lg italic" style={{ color: "var(--color-wine)" }}>
-                Speak to a Doctor About Low Testosterone | Book Your Assessment at This Clinic
-              </p>
-            </motion.div>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "factor", header: "Factor", className: "font-semibold" },
+              { key: "details", header: "Details" },
+            ]}
+            data={trtAtGlanceData}
+            title="TRT Clinic Kuala Lumpur: Testosterone Replacement Therapy at a Glance"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="container mx-auto px-4 sm:px-6 lg:px-8"
+          />
+          <motion.div variants={fadeInUp} className="text-center mt-8">
+            <p className="text-lg italic" style={{ color: "var(--color-wine)" }}>
+              Speak to a Doctor About Low Testosterone | Book Your Assessment at This Clinic
+            </p>
+          </motion.div>
         </motion.section>
 
         {/* What is TRT Section with Image */}
@@ -634,14 +535,14 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                   key={index}
                   variants={fadeInUp}
                   whileHover={{ scale: 1.02 }}
-                  className="p-6 rounded-xl flex items-start gap-4"
+                  className="p-6 rounded-xl flex items-start gap-4 transition-all duration-300"
                   style={{
                     backgroundColor: "var(--color-glass)",
                     backdropFilter: "blur(10px)",
                   }}
                 >
                   <div
-                    className="p-2 rounded-lg"
+                    className="p-2 rounded-lg shrink-0"
                     style={{ backgroundColor: "var(--color-wine)" }}
                   >
                     {React.cloneElement(symptom.icon, {
@@ -655,250 +556,126 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
           </div>
         </motion.section>
 
-        {/* TRT Formulations Table */}
+        {/* TRT Formulations Table - Using TableForPages */}
         <motion.section
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="py-20 px-4 sm:px-6 lg:px-8"
+          className="py-20"
           style={{ backgroundColor: "var(--color-cream)" }}
         >
-          <div className="max-w-7xl mx-auto">
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl md:text-5xl font-georgia mb-6 text-center"
-              style={{ color: "var(--color-brown)" }}
-            >
-              Testosterone Replacement Therapy in Malaysia: Choosing the Right Treatment
-            </motion.h2>
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-center mb-12 max-w-3xl mx-auto"
-              style={{ color: "var(--color-taupe)" }}
-            >
-              Every TRT formulation available, with clinical guidance on which is most appropriate for each patient and why.
-            </motion.p>
-
-            <div className="overflow-x-auto">
-              <table className="w-full rounded-3xl overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
-                <thead>
-                  <tr style={{ backgroundColor: "var(--color-wine)" }}>
-                    <th className="p-4 text-left text-white font-georgia">Formulation</th>
-                    <th className="p-4 text-left text-white font-georgia">Dosing Schedule</th>
-                    <th className="p-4 text-left text-white font-georgia">Testosterone Profile</th>
-                    <th className="p-4 text-left text-white font-georgia">Advantages</th>
-                    <th className="p-4 text-left text-white font-georgia">Best For</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {trtFormulations.map((formulation, idx) => (
-                    <tr key={idx} style={{ backgroundColor: idx % 2 === 0 ? "var(--color-glass)" : "var(--color-cream)", borderBottom: "1px solid var(--color-taupe)" }}>
-                      <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>{formulation.name}</td>
-                      <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>{formulation.schedule}</td>
-                      <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>{formulation.profile}</td>
-                      <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>{formulation.advantages}</td>
-                      <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>{formulation.bestFor}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center" style={{ backgroundColor: "var(--color-brown)" }}>
-              <p className="text-white">
-                Nebido is the most commonly prescribed TRT formulation at this clinic in Malaysia. Requiring only 4 to 5 clinic visits per year, with stable testosterone levels that avoid peak-and-trough variation, Nebido suits the majority of men who want reliable symptom control without daily compliance burden.
-              </p>
-              <p className="text-white mt-4 italic">
-                Discuss the Best TRT Formulation for Your Lifestyle | Book at Nexus Clinic KL
-              </p>
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* TRAVERSE Trial Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="py-20 px-4 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "var(--color-light)" }}
-        >
-          <div className="max-w-7xl mx-auto">
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl md:text-5xl font-georgia mb-6 text-center"
-              style={{ color: "var(--color-brown)" }}
-            >
-              The TRAVERSE Trial: Updated Cardiovascular Evidence for TRT in Malaysia
-            </motion.h2>
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-center mb-12 max-w-3xl mx-auto"
-              style={{ color: "var(--color-taupe)" }}
-            >
-              The most significant development in TRT in the past decade: the TRAVERSE trial (NEJM 2023) and the FDA's removal of the cardiovascular black box warning (February 2025).
-            </motion.p>
-
-            <div className="overflow-x-auto">
-              <table className="w-full rounded-3xl overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
-                <thead>
-                  <tr style={{ backgroundColor: "var(--color-wine)" }}>
-                    <th className="p-4 text-left text-white font-georgia">Clinical Question</th>
-                    <th className="p-4 text-left text-white font-georgia">What the TRAVERSE Trial Found (NEJM 2023)</th>
-                    <th className="p-4 text-left text-white font-georgia">What This Means for Malaysian Men</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr style={{ backgroundColor: "var(--color-cream)", borderBottom: "1px solid var(--color-taupe)" }}>
-                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Does TRT increase risk of heart attack or stroke?</td>
-                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>5,246 men aged 45-80 with confirmed low testosterone and pre-existing CVD or high risk. MACE occurred in 7.0% of testosterone group vs 7.3% placebo. Non-inferiority confirmed. TRT did not increase cardiovascular risk.</td>
-                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>Malaysian men with cardiovascular risk factors previously told they could not safely receive TRT should discuss this updated evidence with their doctor.</td>
-                  </tr>
-                  <tr style={{ backgroundColor: "var(--color-glass)", borderBottom: "1px solid var(--color-taupe)" }}>
-                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Did the FDA act on these findings?</td>
-                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>In February 2025, the FDA issued class-wide labeling changes for all testosterone products, removing the cardiovascular black box warning that had been in place since 2015.</td>
-                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>The cardiovascular warning that led many clinics in Malaysia to restrict TRT in older men or men with cardiac history has been removed from global product labeling.</td>
-                   </tr>
-                  <tr style={{ backgroundColor: "var(--color-cream)", borderBottom: "1px solid var(--color-taupe)" }}>
-                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Are there any remaining cardiovascular cautions?</td>
-                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>Yes. The trial noted a small increase in atrial fibrillation, blood pressure and acute kidney injury in the testosterone group.</td>
-                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>TRT may carry residual cardiovascular considerations requiring assessment. At Nexus Clinic KL, comprehensive medical history review and cardiovascular risk assessment is standard.</td>
-                   </tr>
-                  <tr style={{ backgroundColor: "var(--color-glass)" }}>
-                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>What about prostate cancer risk?</td>
-                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>The TRAVERSE trial did not find a significant increase in overall prostate cancer incidence. An FDA expert panel in December 2025 recommended removing prostate cancer contraindications.</td>
-                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>TRT remains contraindicated in men with active prostate cancer at this clinic. Baseline PSA is measured before starting TRT and monitored annually.</td>
-                   </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center" style={{ backgroundColor: "var(--color-brown)" }}>
-              <p className="text-white">
-                Discuss Your Cardiovascular History and TRT Safety at Nexus Clinic KL | Evidence-Based Assessment
-              </p>
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* Fertility Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="py-20 px-4 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "var(--color-cream)" }}
-        >
-          <div className="max-w-7xl mx-auto">
-            <h2
-              className="text-4xl md:text-5xl font-georgia mb-6 text-center"
-              style={{ color: "var(--color-brown)" }}
-            >
-              Testosterone Replacement Therapy and Fertility: Discreet Guidance for Younger Men
-            </h2>
-            <p className="text-lg text-center mb-12 max-w-3xl mx-auto" style={{ color: "var(--color-taupe)" }}>
-              Every Malaysian TRT page either ignores fertility or mentions briefly that TRT affects sperm production. At Nexus Clinic KL, fertility is a standard agenda item at every TRT consultation for men of reproductive age.
+          <TableForPages
+            columns={[
+              { key: "name", header: "Formulation", className: "font-semibold" },
+              { key: "schedule", header: "Dosing Schedule" },
+              { key: "profile", header: "Testosterone Profile" },
+              { key: "advantages", header: "Advantages" },
+              { key: "bestFor", header: "Best For" },
+            ]}
+            data={trtFormulationsData}
+            title="Testosterone Replacement Therapy in Malaysia: Choosing the Right Treatment"
+            subtitle="Every TRT formulation available, with clinical guidance on which is most appropriate for each patient and why."
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="container mx-auto px-4 sm:px-6 lg:px-8"
+          />
+          <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center max-w-4xl mx-auto" style={{ backgroundColor: "var(--color-brown)" }}>
+            <p className="text-white">
+              Nebido is the most commonly prescribed TRT formulation at this clinic in Malaysia. Requiring only 4 to 5 clinic visits per year, with stable testosterone levels that avoid peak-and-trough variation, Nebido suits the majority of men who want reliable symptom control without daily compliance burden.
             </p>
-
-            <div className="overflow-x-auto">
-              <table className="w-full rounded-3xl overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
-                <thead>
-                  <tr style={{ backgroundColor: "var(--color-wine)" }}>
-                    <th className="p-4 text-left text-white font-georgia">Situation</th>
-                    <th className="p-4 text-left text-white font-georgia">TRT Effect on Fertility</th>
-                    <th className="p-4 text-left text-white font-georgia">Clinical Approach at Nexus Clinic KL</th>
-                   </tr>
-                </thead>
-                <tbody>
-                  <tr style={{ backgroundColor: "var(--color-glass)", borderBottom: "1px solid var(--color-taupe)" }}>
-                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Man who has already completed his family</td>
-                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>TRT suppresses HPG axis, reducing LH and FSH, shutting down spermatogenesis; expected and acceptable</td>
-                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>Standard TRT protocol with Nebido or chosen formulation; patient counselled that fertility suppression is expected</td>
-                   </tr>
-                  <tr style={{ backgroundColor: "var(--color-cream)", borderBottom: "1px solid var(--color-taupe)" }}>
-                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Man currently trying to conceive or planning family in 1-2 years</td>
-                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>Standard TRT is contraindicated as it will suppress sperm production to near-zero</td>
-                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>Clomiphene citrate recommended: stimulates endogenous LH and FSH, increases body's own testosterone while maintaining spermatogenesis</td>
-                   </tr>
-                  <tr style={{ backgroundColor: "var(--color-glass)", borderBottom: "1px solid var(--color-taupe)" }}>
-                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Man currently on TRT who wishes to start a family</td>
-                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>Fertility suppressed while on TRT; attempting conception usually unsuccessful</td>
-                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>Options: cessation of TRT with HCG or clomiphene; sperm banking before starting TRT; transition to clomiphene-based protocol</td>
-                   </tr>
-                  <tr style={{ backgroundColor: "var(--color-cream)" }}>
-                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Man uncertain about future fertility with low testosterone symptoms now</td>
-                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>Standard TRT will compromise fertility option during treatment</td>
-                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>Fertility discussion is standard; options include clomiphene first, sperm banking, or TRT with clear understanding of implications</td>
-                   </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center" style={{ backgroundColor: "var(--color-brown)" }}>
-              <p className="text-white">
-                Discuss TRT and Fertility Options at Nexus Clinic KL | Full Information Before Any Prescription
-              </p>
-            </motion.div>
-          </div>
+            <p className="text-white mt-4 italic">
+              Discuss the Best TRT Formulation for Your Lifestyle | Book at Nexus Clinic KL
+            </p>
+          </motion.div>
         </motion.section>
 
-        {/* Monitoring Protocol Table */}
+        {/* TRAVERSE Trial Table - Using TableForPages */}
         <motion.section
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="py-20 px-4 sm:px-6 lg:px-8"
+          className="py-20"
           style={{ backgroundColor: "var(--color-light)" }}
         >
-          <div className="max-w-7xl mx-auto">
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl md:text-5xl font-georgia mb-6 text-center"
-              style={{ color: "var(--color-brown)" }}
-            >
-              TRT Monitoring Protocol at Our Clinic: Ensuring Safety and Effectiveness
-            </motion.h2>
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-center mb-12 max-w-3xl mx-auto"
-              style={{ color: "var(--color-taupe)" }}
-            >
-              Every TRT clinic page mentions monitoring is needed but none explains what is monitored, at what intervals, and why. At this clinic, monitoring is not optional.
-            </motion.p>
+          <TableForPages
+            columns={[
+              { key: "question", header: "Clinical Question", className: "font-semibold" },
+              { key: "evidence", header: "What the TRAVERSE Trial Found (NEJM 2023)" },
+              { key: "meaning", header: "What This Means for Malaysian Men" },
+            ]}
+            data={traverseTrialData}
+            title="The TRAVERSE Trial: Updated Cardiovascular Evidence for TRT in Malaysia"
+            subtitle="The most significant development in TRT in the past decade: the TRAVERSE trial (NEJM 2023) and the FDA's removal of the cardiovascular black box warning (February 2025)."
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="container mx-auto px-4 sm:px-6 lg:px-8"
+          />
+          <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center max-w-3xl mx-auto" style={{ backgroundColor: "var(--color-brown)" }}>
+            <p className="text-white">
+              Discuss Your Cardiovascular History and TRT Safety at Nexus Clinic KL | Evidence-Based Assessment
+            </p>
+          </motion.div>
+        </motion.section>
 
-            <div className="overflow-x-auto">
-              <table className="w-full rounded-3xl overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
-                <thead>
-                  <tr style={{ backgroundColor: "var(--color-wine)" }}>
-                    <th className="p-4 text-left text-white font-georgia">Parameter Monitored</th>
-                    <th className="p-4 text-left text-white font-georgia">Monitoring Interval</th>
-                    <th className="p-4 text-left text-white font-georgia">Target Range / Action Threshold</th>
-                    <th className="p-4 text-left text-white font-georgia">Why This Is Monitored</th>
-                   </tr>
-                </thead>
-                <tbody>
-                  {monitoringParameters.map((param, idx) => (
-                    <tr key={idx} style={{ backgroundColor: idx % 2 === 0 ? "var(--color-glass)" : "var(--color-cream)", borderBottom: "1px solid var(--color-taupe)" }}>
-                      <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>{param.parameter}</td>
-                      <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>{param.interval}</td>
-                      <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>{param.target}</td>
-                      <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>{param.why}</td>
-                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+        {/* Fertility Table - Using TableForPages */}
+        <motion.section
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="py-20"
+          style={{ backgroundColor: "var(--color-cream)" }}
+        >
+          <TableForPages
+            columns={[
+              { key: "situation", header: "Situation", className: "font-semibold" },
+              { key: "effect", header: "TRT Effect on Fertility" },
+              { key: "approach", header: "Clinical Approach at Nexus Clinic KL" },
+            ]}
+            data={fertilityData}
+            title="Testosterone Replacement Therapy and Fertility: Discreet Guidance for Younger Men"
+            subtitle="Every Malaysian TRT page either ignores fertility or mentions briefly that TRT affects sperm production. At Nexus Clinic KL, fertility is a standard agenda item at every TRT consultation for men of reproductive age."
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="container mx-auto px-4 sm:px-6 lg:px-8"
+          />
+          <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center max-w-3xl mx-auto" style={{ backgroundColor: "var(--color-brown)" }}>
+            <p className="text-white">
+              Discuss TRT and Fertility Options at Nexus Clinic KL | Full Information Before Any Prescription
+            </p>
+          </motion.div>
+        </motion.section>
 
-            <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center" style={{ backgroundColor: "var(--color-brown)" }}>
-              <p className="text-white">
-                Start TRT with Structured Monitoring Built In | Book at Nexus Clinic KL
-              </p>
-            </motion.div>
-          </div>
+        {/* Monitoring Protocol Table - Using TableForPages */}
+        <motion.section
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="py-20"
+          style={{ backgroundColor: "var(--color-light)" }}
+        >
+          <TableForPages
+            columns={[
+              { key: "parameter", header: "Parameter Monitored", className: "font-semibold" },
+              { key: "interval", header: "Monitoring Interval" },
+              { key: "target", header: "Target Range / Action Threshold" },
+              { key: "why", header: "Why This Is Monitored" },
+            ]}
+            data={monitoringParametersData}
+            title="TRT Monitoring Protocol at Our Clinic: Ensuring Safety and Effectiveness"
+            subtitle="Every TRT clinic page mentions monitoring is needed but none explains what is monitored, at what intervals, and why. At this clinic, monitoring is not optional."
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="container mx-auto px-4 sm:px-6 lg:px-8"
+          />
+          <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center max-w-3xl mx-auto" style={{ backgroundColor: "var(--color-brown)" }}>
+            <p className="text-white">
+              Start TRT with Structured Monitoring Built In | Book at Nexus Clinic KL
+            </p>
+          </motion.div>
         </motion.section>
 
         {/* Process Steps */}
@@ -930,7 +707,7 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                   key={index}
                   variants={scaleIn}
                   whileHover={{ y: -5 }}
-                  className="p-6 rounded-2xl"
+                  className="p-6 rounded-2xl transition-all duration-300"
                   style={{
                     backgroundColor: "var(--color-glass)",
                     backdropFilter: "blur(10px)",
@@ -963,58 +740,33 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
           </div>
         </motion.section>
 
-        {/* Pricing Section */}
+        {/* Pricing Section - Using TableForPages */}
         <motion.section
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="py-20 px-4 sm:px-6 lg:px-8"
+          className="py-20"
           style={{ backgroundColor: "var(--color-light)" }}
         >
-          <div className="max-w-7xl mx-auto">
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl md:text-5xl font-georgia mb-6 text-center"
-              style={{ color: "var(--color-brown)" }}
-            >
-              Testosterone Replacement Therapy Cost at Our Clinic in Malaysia 2026
-            </motion.h2>
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-center mb-12 max-w-3xl mx-auto"
-              style={{ color: "var(--color-taupe)" }}
-            >
-              Total annual cost varies by formulation. Nebido-based programmes: RM 5,000 to RM 9,000 per year. Gel-based programmes: RM 7,000 to RM 12,000 per year. All pricing transparent and disclosed before any treatment plan is issued.
-            </motion.p>
-
-            <div className="overflow-x-auto">
-              <table className="w-full rounded-3xl overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
-                <thead>
-                  <tr style={{ backgroundColor: "var(--color-wine)" }}>
-                    <th className="p-4 text-left text-white font-georgia">Service / Item</th>
-                    <th className="p-4 text-left text-white font-georgia">Details</th>
-                    <th className="p-4 text-left text-white font-georgia">Price Range (RM) 2026</th>
-                   </tr>
-                </thead>
-                <tbody>
-                  {pricingItems.map((item, idx) => (
-                    <tr key={idx} style={{ backgroundColor: idx % 2 === 0 ? "var(--color-glass)" : "var(--color-cream)", borderBottom: "1px solid var(--color-taupe)" }}>
-                      <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>{item.item}</td>
-                      <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>{item.details}</td>
-                      <td className="p-4 font-semibold" style={{ color: "var(--color-wine)" }}>{item.price}</td>
-                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center" style={{ backgroundColor: "var(--color-brown)" }}>
-              <p className="text-white">
-                Get Your Full TRT Programme Pricing Before Starting | Book at Nexus Clinic KL
-              </p>
-            </motion.div>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "item", header: "Service / Item", className: "font-semibold" },
+              { key: "details", header: "Details" },
+              { key: "price", header: "Price Range (RM) 2026" },
+            ]}
+            data={pricingItemsData}
+            title="Testosterone Replacement Therapy Cost at Our Clinic in Malaysia 2026"
+            subtitle="Total annual cost varies by formulation. Nebido-based programmes: RM 5,000 to RM 9,000 per year. Gel-based programmes: RM 7,000 to RM 12,000 per year. All pricing transparent and disclosed before any treatment plan is issued."
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="container mx-auto px-4 sm:px-6 lg:px-8"
+          />
+          <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center max-w-3xl mx-auto" style={{ backgroundColor: "var(--color-brown)" }}>
+            <p className="text-white">
+              Get Your Full TRT Programme Pricing Before Starting | Book at Nexus Clinic KL
+            </p>
+          </motion.div>
         </motion.section>
 
         {/* Benefits Section */}
@@ -1041,7 +793,7 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                   key={index}
                   variants={scaleIn}
                   whileHover={{ scale: 1.05 }}
-                  className="p-6 rounded-xl"
+                  className="p-6 rounded-xl transition-all duration-300"
                   style={{
                     backgroundColor: "var(--color-glass)",
                     backdropFilter: "blur(10px)",
@@ -1105,7 +857,7 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
 
             <motion.div
               variants={scaleIn}
-              className="p-8 rounded-3xl max-w-3xl mx-auto"
+              className="p-8 rounded-3xl max-w-3xl mx-auto transition-all duration-300 hover:shadow-xl"
               style={{
                 backgroundColor: "var(--color-glass)",
                 backdropFilter: "blur(10px)",
@@ -1166,15 +918,17 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               Call or WhatsApp today to schedule your confidential consultation.
             </motion.p>
 
-            <motion.button
-              variants={scaleIn}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-12 py-4 rounded-xl text-lg font-semibold"
-              style={{ backgroundColor: "var(--color-wine)", color: "white" }}
-            >
-              Book Your Assessment
-            </motion.button>
+            <Link href="/contact-us">
+              <motion.button
+                variants={scaleIn}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-12 py-4 rounded-xl text-lg font-semibold cursor-pointer transition-all duration-300 hover:shadow-lg"
+                style={{ backgroundColor: "var(--color-wine)", color: "white" }}
+              >
+                Book Your Assessment
+              </motion.button>
+            </Link>
 
             <motion.p
               variants={fadeInUp}
@@ -1188,5 +942,5 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
     </>
   );
 };
- 
+
 export default TestosteroneLanding;

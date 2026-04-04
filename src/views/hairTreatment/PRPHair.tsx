@@ -30,12 +30,14 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import Image from "next/image";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 interface PRPHairTreatmentProps {
   locale: string;
 }
@@ -109,90 +111,25 @@ export default function PRPLandingPage({ locale }: PRPHairTreatmentProps) {
   return (
     <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <Sparkles className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Natural • Non-Surgical • Doctor-Performed</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                PRP Hair Treatment in Malaysia for{" "}
-                <span className="text-wine italic">Hair Loss, Scalp Health and Skin Rejuvenation</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Hair loss responds to your own biology better than to any synthetic drug. PRP therapy harnesses this principle directly: a small blood sample is drawn, processed to concentrate platelets and growth factors, and injected into the scalp.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                At Nexus Clinic KL, PRP hair treatment is delivered as a personalised treatment programme within a fully licensed aesthetic clinic setting, with doctor-administered injections and a structured session schedule matched to your hair loss pattern and severity.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Important Clinical Information
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  PRP uses your own blood, making allergic reactions essentially impossible. It is a completely natural, non-surgical approach that stops hair shedding and promotes new hair growth in patients at early to moderate stages of hair loss.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Free Consultation
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in PRP hair treatment at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/hair/prp-hair-treatment.webp"
-                  alt="Nexus Clinic Kuala Lumpur - PRP Hair Treatment"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown">Natural Growth Factors</p>
-                <p className="font-inter text-sm text-taupe">Your own platelets, concentrated</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+        badge="Natural • Non-Surgical • Doctor-Performed"
+        title="PRP Hair Treatment in Malaysia for"
+        highlight="Hair Loss, Scalp Health and Skin Rejuvenation"
+        description="Hair loss responds to your own biology better than to any synthetic drug. PRP therapy harnesses this principle directly: a small blood sample is drawn, processed to concentrate platelets and growth factors, and injected into the scalp."
+        details="At Nexus Clinic KL, PRP hair treatment is delivered as a personalised treatment programme within a fully licensed aesthetic clinic setting, with doctor-administered injections and a structured session schedule matched to your hair loss pattern and severity."
+        note="PRP uses your own blood, making allergic reactions essentially impossible. It is a completely natural, non-surgical approach that stops hair shedding and promotes new hair growth in patients at early to moderate stages of hair loss."
+        image="/images/hair/prp-hair-treatment.webp"
+        imageAlt="Nexus Clinic Kuala Lumpur - PRP Hair Treatment"
+        ctaText="Free Consultation"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in PRP hair treatment at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="Natural Growth Factors"
+        floatingSubtitle="Your own platelets, concentrated"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -351,10 +288,10 @@ export default function PRPLandingPage({ locale }: PRPHairTreatmentProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Speak to a Doctor About PRP Therapy | Free Consultation
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor 
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -368,33 +305,26 @@ export default function PRPLandingPage({ locale }: PRPHairTreatmentProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">PRP Quality and Platelet Concentration</h2>
-            <p className="text-taupe font-inter">Understanding the difference in treatment outcomes</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">PRP Type</th>
-                  <th className="p-4 text-left font-georgia">Platelet Concentration</th>
-                  <th className="p-4 text-left font-georgia">Growth Factor Density</th>
-                  <th className="p-4 text-left font-georgia">Best Application</th>
-                </tr>
-              </thead>
-              <tbody>
-                {prpComparison.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.type}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.concentration}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.density}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.application}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+        {/* PRP Quality and Platelet Concentration Table */}
+        <TableForPages
+          columns={[
+            { key: "type", header: "PRP Type", className: "font-semibold" },
+            { key: "concentration", header: "Platelet Concentration" },
+            { key: "density", header: "Growth Factor Density" },
+            { key: "application", header: "Best Application" },
+          ]}
+          data={prpComparison.map((item) => ({
+            type: item.type,
+            concentration: item.concentration,
+            density: item.density,
+            application: item.application,
+          }))}
+          title="PRP Quality and Platelet Concentration"
+          subtitle="Understanding the difference in treatment outcomes"
+          variant="detailed"
+          fadeInUp={fadeInUp}
+          className="py-20 px-4"
+        />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
@@ -413,31 +343,24 @@ export default function PRPLandingPage({ locale }: PRPHairTreatmentProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">PRP in Combination with Other Treatments</h2>
-            <p className="text-taupe font-inter">Enhanced results through multi-modal approach</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Combined Treatment</th>
-                  <th className="p-4 text-left font-georgia">How They Work Together</th>
-                  <th className="p-4 text-left font-georgia">Best For</th>
-                </tr>
-              </thead>
-              <tbody>
-                {combinationTreatments.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.combination}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.mechanism}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.bestFor}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          {/* PRP in Combination with Other Treatments Table */}
+          <TableForPages
+            columns={[
+              { key: "combination", header: "Combined Treatment", className: "font-semibold" },
+              { key: "mechanism", header: "How They Work Together" },
+              { key: "bestFor", header: "Best For" },
+            ]}
+            data={combinationTreatments.map((item) => ({
+              combination: item.combination,
+              mechanism: item.mechanism,
+              bestFor: item.bestFor,
+            }))}
+            title="PRP in Combination with Other Treatments"
+            subtitle="Enhanced results through multi-modal approach"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-20 px-4"
+          />
         </motion.div>
       </section>
 
@@ -450,31 +373,24 @@ export default function PRPLandingPage({ locale }: PRPHairTreatmentProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">PRP Aesthetic Applications</h2>
-            <p className="text-taupe font-inter">Beyond hair loss: skin rejuvenation and scar treatment</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Aesthetic Application</th>
-                  <th className="p-4 text-left font-georgia">What PRP Does</th>
-                  <th className="p-4 text-left font-georgia">Typical Sessions Needed</th>
-                </tr>
-              </thead>
-              <tbody>
-                {aestheticApplications.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.application}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.whatItDoes}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.sessions}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+            {/* PRP Aesthetic Applications Table */}
+            <TableForPages
+              columns={[
+                { key: "application", header: "Aesthetic Application", className: "font-semibold" },
+                { key: "whatItDoes", header: "What PRP Does" },
+                { key: "sessions", header: "Typical Sessions Needed" },
+              ]}
+              data={aestheticApplications.map((item) => ({
+                application: item.application,
+                whatItDoes: item.whatItDoes,
+                sessions: item.sessions,
+              }))}
+              title="PRP Aesthetic Applications"
+              subtitle="Beyond hair loss: skin rejuvenation and scar treatment"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-20 px-4"
+            />
         </motion.div>
       </section>
 
@@ -658,10 +574,10 @@ export default function PRPLandingPage({ locale }: PRPHairTreatmentProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-10">
-            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+            <Link href="/contact-us" className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
               Book Your Free Consultation
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
             <p className="text-taupe text-sm mt-3">PRP therapy for hair and skin at Nexus Clinic KL</p>
           </motion.div>
         </motion.div>
@@ -676,44 +592,38 @@ export default function PRPLandingPage({ locale }: PRPHairTreatmentProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">PRP Hair Treatment Cost in Malaysia 2026</h2>
-            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Session Type</th>
-                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter font-semibold text-brown">{tier.treatment}</td>
-                    <td className="p-4 font-inter text-taupe text-sm">{tier.sessionType}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
-                    Package rates for multiple sessions represent the most cost-effective approach for patients committing to a full course of treatment. All consultations are complimentary at Nexus Clinic KL.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
+          {/* PRP Hair Treatment Cost Table */}
+          <TableForPages
+            columns={[
+              { key: "treatment", header: "Treatment" },
+              { key: "sessionType", header: "Session Type" },
+              { key: "price", header: "Price Range (RM) 2026" },
+            ]}
+            data={pricingTiers.map((tier) => ({
+              treatment: tier.treatment,
+              sessionType: tier.sessionType,
+              price: tier.price,
+            }))}
+            title="PRP Hair Treatment Cost in Malaysia 2026"
+            subtitle="Transparent pricing at Nexus Clinic KL"
+            variant="compact"
+            fadeInUp={fadeInUp}
+            className="py-20 px-4"
+          />
+
+          {/* Footnote */}
+          <motion.p 
+            variants={fadeInUp}
+            className="text-center text-taupe font-inter text-sm italic mt-4"
+          >
+            Package rates for multiple sessions represent the most cost-effective approach for patients committing to a full course of treatment. All consultations are complimentary at Nexus Clinic KL.
+          </motion.p>
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Get Your Personalised PRP Treatment Quote
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -744,14 +654,15 @@ export default function PRPLandingPage({ locale }: PRPHairTreatmentProps) {
               Our licensed doctors bring over 15 years of combined experience, perform every procedure personally, and use only MOH-approved techniques. One biological mechanism. Multiple aesthetic results.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Free Consultation
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a consultation for PRP hair treatment at Nexus Clinic KL. Please let me know available slots."
                 variant="light"
@@ -761,9 +672,9 @@ export default function PRPLandingPage({ locale }: PRPHairTreatmentProps) {
               Limited slots available | Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
-              <a href="#" className="hover:text-cream transition-colors">Call: 016-7025699</a>
+              <a href="tel:0167025699" className="hover:text-cream transition-colors">Call: 016-7025699</a>
               <span>•</span>
-              <a href="#" className="hover:text-cream transition-colors">WhatsApp: 03-21635699</a>
+              <a href="https://wa.me/60321635699" className="hover:text-cream transition-colors">WhatsApp: 03-21635699</a>
             </div>
           </motion.div>
         </motion.div>

@@ -43,12 +43,14 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
-import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
+import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import Image from "next/image";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 interface LaserHairRemovalProps {
   locale: string;
 }
@@ -123,91 +125,25 @@ export default function LaserHairRemovalLanding({ locale }: LaserHairRemovalProp
 
   return (
     <div className="w-full bg-light overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <Sparkles className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Doctor-Led Laser Hair Removal • MOH Registered Clinic</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Safe Laser Hair Removal in Kuala Lumpur for{" "}
-                <span className="text-wine italic">All Malaysian Skin Types</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                The best laser hair removal clinic in Malaysia for permanent laser hair removal treatment. Remove unwanted hair safely using diode laser and Nd:YAG technology calibrated for Malaysian skin in Kuala Lumpur and Selangor.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                Waxing every three weeks. Shaving every few days. Ingrown hairs that leave dark marks. For most patients, the question is not whether to start laser hair removal but which clinic to trust with a procedure that, done correctly, delivers safe and permanent hair reduction.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Over 5,000 Aesthetic Procedures Completed
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  Our doctors have more than 15 years of combined experience treating laser hair removal as the medical procedure it is: assessed per skin type, calibrated per session and honest about realistic results.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Book Free Consultation
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in laser hair removal at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/skin/laser-hair-removal.webp"
-                  alt="Nexus Clinic Kuala Lumpur - Laser Hair Removal"
-                  fill
-                  className="object-cover object-[80%_30%]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown"> Safe for All Skin Types</p>
-                <p className="font-inter text-sm text-taupe">Nd:YAG 1064nm • Diode 808nm</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+        badge="Doctor-Led Laser Hair Removal • MOH Registered Clinic"
+        title="Safe Laser Hair Removal in Kuala Lumpur for"
+        highlight="All Malaysian Skin Types"
+        description="The best laser hair removal clinic in Malaysia for permanent laser hair removal treatment. Remove unwanted hair safely using diode laser and Nd:YAG technology calibrated for Malaysian skin in Kuala Lumpur and Selangor."
+        details="Waxing every three weeks. Shaving every few days. Ingrown hairs that leave dark marks. For most patients, the question is not whether to start laser hair removal but which clinic to trust with a procedure that, done correctly, delivers safe and permanent hair reduction."
+        note="Over 5,000 Aesthetic Procedures Completed — Our doctors have more than 15 years of combined experience treating laser hair removal as the medical procedure it is: assessed per skin type, calibrated per session and honest about realistic results."
+        image="/images/skin/laser-hair-removal.webp"
+        imageAlt="Nexus Clinic Kuala Lumpur - Laser Hair Removal"
+        ctaText="Book Free Consultation"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in laser hair removal at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="Safe for All Skin Types"
+        floatingSubtitle="Nd:YAG 1064nm • Diode 808nm"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -345,10 +281,10 @@ export default function LaserHairRemovalLanding({ locale }: LaserHairRemovalProp
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Speak to a Doctor About Laser Hair Removal | Free Assessment
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -362,35 +298,27 @@ export default function LaserHairRemovalLanding({ locale }: LaserHairRemovalProp
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Why Wavelength Selection Determines Safe Laser Hair Removal Results</h2>
-            <p className="text-taupe font-inter">Understanding which laser is safe for your Malaysian skin type</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Wavelength</th>
-                  <th className="p-4 text-left font-georgia">Fitzpatrick Suitability</th>
-                  <th className="p-4 text-left font-georgia">PIH Risk for Malaysian Skin</th>
-                  <th className="p-4 text-left font-georgia">Hair Type Efficacy</th>
-                  <th className="p-4 text-left font-georgia">Recommendation</th>
-                </tr>
-              </thead>
-              <tbody>
-                {wavelengthData.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.wavelength}</td>
-                    <td className="p-4 text-taupe font-inter">{item.suitability}</td>
-                    <td className={`p-4 font-inter ${item.pihRisk.includes("High") ? "text-wine font-semibold" : "text-taupe"}`}>{item.pihRisk}</td>
-                    <td className="p-4 text-taupe font-inter">{item.efficacy}</td>
-                    <td className="p-4 text-taupe font-inter">{item.recommendation}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "wavelength", header: "Wavelength", className: "font-semibold text-brown" },
+              { key: "suitability", header: "Fitzpatrick Suitability" },
+              { key: "pihRisk", header: "PIH Risk for Malaysian Skin" },
+              { key: "efficacy", header: "Hair Type Efficacy" },
+              { key: "recommendation", header: "Recommendation" },
+            ]}
+            data={wavelengthData.map(item => ({
+              wavelength: item.wavelength,
+              suitability: item.suitability,
+              pihRisk: item.pihRisk,
+              efficacy: item.efficacy,
+              recommendation: item.recommendation,
+            }))}
+            title="Why Wavelength Selection Determines Safe Laser Hair Removal Results"
+            subtitle="Understanding which laser is safe for your Malaysian skin type"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
             <p className="text-brown font-inter text-sm text-center">
@@ -456,35 +384,27 @@ export default function LaserHairRemovalLanding({ locale }: LaserHairRemovalProp
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Laser Hair Removal Services by Body Areas</h2>
-            <p className="text-taupe font-inter">Area-specific protocols at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Body Area</th>
-                  <th className="p-4 text-left font-georgia">Session Duration</th>
-                  <th className="p-4 text-left font-georgia">Sessions Needed</th>
-                  <th className="p-4 text-left font-georgia">Interval Between Sessions</th>
-                  <th className="p-4 text-left font-georgia">Clinical Notes</th>
-                </tr>
-              </thead>
-              <tbody>
-                {bodyAreasData.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.area}</td>
-                    <td className="p-4 text-taupe font-inter">{item.duration}</td>
-                    <td className="p-4 text-taupe font-inter">{item.sessions}</td>
-                    <td className="p-4 text-taupe font-inter">{item.interval}</td>
-                    <td className="p-4 text-taupe font-inter">{item.notes}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "area", header: "Body Area", className: "font-semibold text-brown" },
+              { key: "duration", header: "Session Duration" },
+              { key: "sessions", header: "Sessions Needed" },
+              { key: "interval", header: "Interval Between Sessions" },
+              { key: "notes", header: "Clinical Notes" },
+            ]}
+            data={bodyAreasData.map(item => ({
+              area: item.area,
+              duration: item.duration,
+              sessions: item.sessions,
+              interval: item.interval,
+              notes: item.notes,
+            }))}
+            title="Laser Hair Removal Services by Body Areas"
+            subtitle="Area-specific protocols at Nexus Clinic KL"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
         </motion.div>
       </section>
 
@@ -590,47 +510,31 @@ export default function LaserHairRemovalLanding({ locale }: LaserHairRemovalProp
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Cost of Laser Hair Removal in Malaysia 2026</h2>
-            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment Area</th>
-                  <th className="p-4 text-left font-georgia">Session Duration</th>
-                  <th className="p-4 text-left font-georgia">Sessions</th>
-                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026 / Session</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter text-brown">{tier.area}</td>
-                    <td className="p-4 text-taupe font-inter">{tier.duration}</td>
-                    <td className="p-4 text-taupe font-inter">{tier.sessions}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={4} className="p-4 text-taupe font-inter text-sm italic">
-                    Package pricing for 6 to 8 session programmes is available for all body areas. Full body programmes covering multiple areas available at combined programme pricing.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          
-          <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Get Your Full Laser Hair Removal Programme Pricing | Free Assessment
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </motion.div>
+          <TableForPages
+              columns={[
+                { key: "area", header: "Treatment Area", className: "font-semibold text-brown" },
+                { key: "duration", header: "Session Duration" },
+                { key: "sessions", header: "Sessions" },
+                { key: "price", header: "Price Range (RM) 2026 / Session", className: "font-semibold text-wine" },
+              ]}
+              data={pricingTiers.map(tier => ({
+                area: tier.area,
+                duration: tier.duration,
+                sessions: tier.sessions,
+                price: tier.price,
+              }))}
+              title="Cost of Laser Hair Removal in Malaysia 2026"
+              subtitle="Transparent pricing at Nexus Clinic KL"
+              variant="default"
+              fadeInUp={fadeInUp}
+              className="py-12 px-4"
+            />
+
+            <motion.div variants={fadeInUp} className="text-center mt-4">
+              <p className="text-taupe font-inter text-sm italic">
+                Package pricing for 6 to 8 session programmes is available for all body areas. Full body programmes covering multiple areas available at combined programme pricing.
+              </p>
+            </motion.div>
         </motion.div>
       </section>
 
@@ -792,14 +696,15 @@ export default function LaserHairRemovalLanding({ locale }: LaserHairRemovalProp
               Laser hair removal in Malaysia is safe, effective and one of the highest-satisfaction aesthetic treatments when performed with the correct technology on the correctly assessed skin type by a licensed doctor.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Book Free Laser Hair Removal Now
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a free consultation for laser hair removal at Nexus Clinic KL. Please let me know available slots."
                 variant="light"

@@ -28,10 +28,13 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 import Image from "next/image";
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 
 interface SkinBoosterProps {
   locale: string;
@@ -88,82 +91,25 @@ export default function SkinBooster({ locale }: SkinBoosterProps) {
   return (
     <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <Sparkles className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Injectable Skin Quality Treatment</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Best Skin Booster Treatment in Malaysia for{" "}
-                <span className="text-wine italic">Hydrated, Glowing Skin</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Dull skin. Fine lines that skincare cannot reach. A tired, flat complexion that no serum or facial seems to fix.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                Skin booster treatment at Nexus Clinic Kuala Lumpur works from the inside out. Injectable formulations of hyaluronic acid, 
-                polynucleotides, collagen stimulators and growth factors are delivered directly into the dermis where topical skincare cannot reach. 
-                The skin is rehydrated, repaired and restructured at the cellular level.
-              </motion.p>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-4"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Book Skin Booster Consultation
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in skin booster treatment at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/face/Skin Booster Treatment.png"
-                  alt="Nexus Clinic Kuala Lumpur - Skin Booster Treatment"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown">✨ Radiant Results</p>
-                <p className="font-inter text-sm text-taupe">Visible glow • No downtime</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+        badge="Injectable Skin Quality Treatment"
+        title="Best Skin Booster Treatment in Malaysia for"
+        highlight="Hydrated, Glowing Skin"
+        description="Dull skin. Fine lines that skincare cannot reach. A tired, flat complexion that no serum or facial seems to fix."
+        details="Skin booster treatment at Nexus Clinic Kuala Lumpur works from the inside out. Injectable formulations of hyaluronic acid, polynucleotides, collagen stimulators and growth factors are delivered directly into the dermis where topical skincare cannot reach. The skin is rehydrated, repaired and restructured at the cellular level."
+        note="Results vary based on the type of skin booster used and individual skin condition. A series of treatments is typically recommended for optimal results."
+        image="/images/face/Skin Booster Treatment.png"
+        imageAlt="Nexus Clinic Kuala Lumpur - Skin Booster Treatment"
+        ctaText="Book Skin Booster Consultation"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in skin booster treatment at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="✨ Radiant Results"
+        floatingSubtitle="Visible glow • No downtime"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -322,10 +268,10 @@ export default function SkinBooster({ locale }: SkinBoosterProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Not Sure Which Booster Is Right for You | Free Skin Assessment
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Free Skin Assessment
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -387,10 +333,10 @@ export default function SkinBooster({ locale }: SkinBoosterProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Address Your Skin at the Right Level | Book a Consultation
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Book a Consultation
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -435,10 +381,10 @@ export default function SkinBooster({ locale }: SkinBoosterProps) {
                   className="object-cover"
                 />
               </div>
-              <button className="mt-6 text-wine font-inter font-semibold flex items-center gap-2 hover:gap-3 transition-all">
-                Get the Right Booster for Your Skin
+              <Link href="/contact-us" className="mt-6 text-wine font-inter font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                Get the Right Booster 
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </motion.div>
           </div>
         </motion.div>
@@ -453,51 +399,49 @@ export default function SkinBooster({ locale }: SkinBoosterProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Skin Booster Selector</h2>
-            <p className="text-taupe font-inter">Match your skin concern to the right treatment</p>
-          </motion.div>
+              {/* Skin Booster Selector Table */}
+              <TableForPages
+                columns={[
+                  { key: "concern", header: "Skin Concern", className: "font-semibold" },
+                  { key: "bestBooster", header: "Best Booster" },
+                  { key: "why", header: "Why It Works" },
+                ]}
+                data={skinConcerns.slice(0, 6).map((item) => ({
+                  concern: item.concern,
+                  bestBooster: item.bestBooster,
+                  why: item.why,
+                }))}
+                title="Skin Booster Selector"
+                subtitle="Match your skin concern to the right treatment"
+                variant="detailed"
+                fadeInUp={fadeInUp}
+                className="py-20 px-4"
+              />
           
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Skin Concern</th>
-                  <th className="p-4 text-left font-georgia">Best Booster</th>
-                  <th className="p-4 text-left font-georgia">Why It Works</th>
-                 </tr>
-              </thead>
-              <tbody>
-                {skinConcerns.slice(0, 6).map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.concern}</td>
-                    <td className="p-4 text-wine font-inter font-medium">{item.bestBooster}</td>
-                    <td className="p-4 text-taupe font-inter">{item.why}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          
-          <div className="mt-4 overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <tbody>
-                {skinConcerns.slice(6).map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.concern}</td>
-                    <td className="p-4 text-wine font-inter font-medium">{item.bestBooster}</td>
-                    <td className="p-4 text-taupe font-inter">{item.why}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              {/* Skin Booster Selector Table - Complete (All Skin Concerns) */}
+              <TableForPages
+                columns={[
+                  { key: "concern", header: "Skin Concern", className: "font-semibold" },
+                  { key: "bestBooster", header: "Best Booster" },
+                  { key: "why", header: "Why It Works" },
+                ]}
+                data={skinConcerns.map((item) => ({
+                  concern: item.concern,
+                  bestBooster: item.bestBooster,
+                  why: item.why,
+                }))}
+                title="Skin Booster Selector"
+                subtitle="Match your skin concern to the right treatment"
+                variant="detailed"
+                fadeInUp={fadeInUp}
+                className="py-20 px-4"
+              />
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Get Your Personalised Booster Recommendation | Free Skin Assessment
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Get Your Personalised Booster quote
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -511,43 +455,36 @@ export default function SkinBooster({ locale }: SkinBoosterProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Skin Booster Products Comparison</h2>
-            <p className="text-taupe font-inter">All products side by side</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Product</th>
-                  <th className="p-4 text-left font-georgia">Active Ingredient</th>
-                  <th className="p-4 text-left font-georgia">Primary Benefit</th>
-                  <th className="p-4 text-left font-georgia">Sessions</th>
-                  <th className="p-4 text-left font-georgia">Longevity</th>
-                  <th className="p-4 text-left font-georgia">Best Age</th>
-                 </tr>
-              </thead>
-              <tbody>
-                {productComparison.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.product}</td>
-                    <td className="p-4 text-taupe font-inter">{item.active}</td>
-                    <td className="p-4 text-taupe font-inter">{item.benefit}</td>
-                    <td className="p-4 text-taupe font-inter">{item.sessions}</td>
-                    <td className="p-4 text-taupe font-inter">{item.longevity}</td>
-                    <td className="p-4 text-taupe font-inter">{item.bestAge}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+        {/* Skin Booster Products Comparison Table */}
+        <TableForPages
+          columns={[
+            { key: "product", header: "Product", className: "font-semibold" },
+            { key: "active", header: "Active Ingredient" },
+            { key: "benefit", header: "Primary Benefit" },
+            { key: "sessions", header: "Sessions" },
+            { key: "longevity", header: "Longevity" },
+            { key: "bestAge", header: "Best Age" },
+          ]}
+          data={productComparison.map((item) => ({
+            product: item.product,
+            active: item.active,
+            benefit: item.benefit,
+            sessions: item.sessions,
+            longevity: item.longevity,
+            bestAge: item.bestAge,
+          }))}
+          title="Skin Booster Products Comparison"
+          subtitle="All products side by side"
+          variant="detailed"
+          fadeInUp={fadeInUp}
+          className="py-20 px-4"
+        />
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Ask About Products at Your Consultation
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Ask About Products
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -561,33 +498,26 @@ export default function SkinBooster({ locale }: SkinBoosterProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Session Protocols and Results Timeline</h2>
-            <p className="text-taupe font-inter">What to expect from each product</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Product</th>
-                  <th className="p-4 text-left font-georgia">Initial Protocol</th>
-                  <th className="p-4 text-left font-georgia">When to Expect Results</th>
-                  <th className="p-4 text-left font-georgia">Maintenance</th>
-                </tr>
-              </thead>
-              <tbody>
-                {sessionProtocols.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.product}</td>
-                    <td className="p-4 text-taupe font-inter">{item.protocol}</td>
-                    <td className="p-4 text-taupe font-inter">{item.results}</td>
-                    <td className="p-4 text-taupe font-inter">{item.maintenance}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+        {/* Session Protocols and Results Timeline Table */}
+        <TableForPages
+          columns={[
+            { key: "product", header: "Product", className: "font-semibold" },
+            { key: "protocol", header: "Initial Protocol" },
+            { key: "results", header: "When to Expect Results" },
+            { key: "maintenance", header: "Maintenance" },
+          ]}
+          data={sessionProtocols.map((item) => ({
+            product: item.product,
+            protocol: item.protocol,
+            results: item.results,
+            maintenance: item.maintenance,
+          }))}
+          title="Session Protocols and Results Timeline"
+          subtitle="What to expect from each product"
+          variant="detailed"
+          fadeInUp={fadeInUp}
+          className="py-20 px-4"
+        />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter">
@@ -597,10 +527,10 @@ export default function SkinBooster({ locale }: SkinBoosterProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Get a Protocol Recommendation for Your Skin
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Get a Protocol Recommendation 
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -614,38 +544,35 @@ export default function SkinBooster({ locale }: SkinBoosterProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-4xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Skin Booster Price in Malaysia</h2>
-            <p className="text-taupe font-inter">Transparent 2026 Pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Area</th>
-                  <th className="p-4 text-left font-georgia">Price per Session (2026)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter text-brown">{tier.treatment}</td>
-                    <td className="p-4 font-inter text-taupe">{tier.area}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
-                    * Most treatments require multiple sessions depending on skin condition and goals. Final pricing confirmed during consultation.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
+          {/* Skin Booster Pricing Table */}
+          <section className="py-20 px-4 bg-cream">
+            <div className="container mx-auto max-w-4xl">
+              <TableForPages
+                columns={[
+                  { key: "treatment", header: "Treatment" },
+                  { key: "area", header: "Area" },
+                  { key: "price", header: "Price per Session (2026)" },
+                ]}
+                data={pricingTiers.map((tier) => ({
+                  treatment: tier.treatment,
+                  area: tier.area,
+                  price: tier.price,
+                }))}
+                title="Skin Booster Price in Malaysia"
+                subtitle="Transparent 2026 Pricing at Nexus Clinic KL"
+                variant="compact"
+                fadeInUp={fadeInUp}
+              />
+              
+              {/* Footnote */}
+              <motion.p 
+                variants={fadeInUp}
+                className="text-center text-taupe font-inter text-sm italic mt-4"
+              >
+                * Most treatments require multiple sessions depending on skin condition and goals. Final pricing confirmed during consultation.
+              </motion.p>
+            </div>
+          </section>
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
             <h3 className="font-georgia text-lg text-brown mb-2">What Affects Skin Booster Price in Kuala Lumpur</h3>
@@ -666,10 +593,10 @@ export default function SkinBooster({ locale }: SkinBoosterProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Get Your Personalised Skin Booster Price
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -760,14 +687,15 @@ export default function SkinBooster({ locale }: SkinBoosterProps) {
               how many sessions you need and what a realistic result looks like for your skin type.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Book Your Free Consultation Now
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a free consultation for skin booster treatment at Nexus Clinic KL. Please let me know available slots."
                 variant="light"
@@ -777,9 +705,9 @@ export default function SkinBooster({ locale }: SkinBoosterProps) {
               Limited slots available this week | Located at Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
-              <a href="#" className="hover:text-cream transition-colors">Explore Cheek Filler</a>
+              <a href="/face/cheek-filler-malaysia/" className="hover:text-cream transition-colors">Explore Cheek Filler</a>
               <span>•</span>
-              <a href="#" className="hover:text-cream transition-colors">Explore Jawline Filler</a>
+              <a href="/face/jawline-filler-malaysia/" className="hover:text-cream transition-colors">Explore Jawline Filler</a>
             </div>
           </motion.div>
         </motion.div>

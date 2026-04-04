@@ -25,12 +25,12 @@ import {
   fadeInLeft,
   fadeInRight,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
 const IVDripLanding = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "weightLoss/ivDrip");
 
@@ -54,107 +54,75 @@ const IVDripLanding = ({ locale = fallbackLng }: { locale?: string }) => {
 
   return (
     <div className="bg-light font-inter">
-      {/* Hero Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.25 }}
-        className="relative min-h-screen bg-linear-to-b from-cream to-light overflow-hidden"
-      >
-        <div className="absolute top-20 right-0 w-96 h-96 bg-rose/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-wine/5 rounded-full blur-3xl" />
+      <AllPagesHero
+        badge="IV Drip Therapies in Kuala Lumpur"
+        title="IV Drip Therapies in Malaysia for Weight Loss, Energy, Immunity"
+        highlight="(Kuala Lumpur)"
+        description="IV drip therapy delivers nutrients directly into the bloodstream for faster absorption, higher bioavailability, and more noticeable support than standard oral supplements."
+        details="At Nexus Clinic KL, IV drip programmes are designed for weight management support, energy restoration, immunity, hydration, liver detox, and overall wellness using medical-grade formulations under licensed medical supervision. This is personalised intravenous wellness with proper clinical assessment, targeted formulations, and structured follow-up."
+        note="KKM-approved medical-grade solutions • 100% direct bloodstream delivery • Goal-based drip selection: Slimming, Energy, Immunity, Liver Detox, Hydration, Skin Wellness"
+        image="/images/treatment/weight-loss.png"
+        imageAlt="IV Drip Therapy at Nexus Clinic Kuala Lumpur"
+        ctaText="Book Free Consultation"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in IV Drip Therapy at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="IV Drip Therapy"
+        floatingSubtitle="Weight Loss • Energy • Immunity • Hydration"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
+    {/* Features Card Section - can be placed as a separate section */}
+    {/* <motion.div
+      variants={staggerContainer}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className="container mx-auto max-w-6xl px-4 -mt-8 relative z-20"
+    >
+      <div className="bg-glass backdrop-blur-sm p-8 rounded-2xl border border-cream shadow-2xl max-w-md mx-auto lg:mx-0">
+        <h2 className="font-georgia text-2xl text-brown mb-6">IV drip therapy at a glance</h2>
+        <div className="space-y-6">
+          <div className="flex items-start gap-4">
+            <div className="bg-wine/10 p-3 rounded-full">
+              <Shield className="w-6 h-6 text-wine" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-brown">KKM-approved medical-grade solutions</h3>
+              <p className="text-taupe">Administered in a licensed clinical setting</p>
+            </div>
+          </div>
 
-        <div className="container mx-auto px-4 md:px-6 pt-20 pb-16 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <h1 className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight">
-                IV Drip Therapies in Malaysia for Weight Loss, Energy, Immunity
-                <span className="text-wine block mt-2">(Kuala Lumpur)</span>
-              </h1>
+          <div className="flex items-start gap-4">
+            <div className="bg-wine/10 p-3 rounded-full">
+              <Activity className="w-6 h-6 text-wine" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-brown">100% direct bloodstream delivery</h3>
+              <p className="text-taupe">Faster and more efficient than oral supplement absorption</p>
+            </div>
+          </div>
 
-              <p className="text-xl md:text-2xl text-taupe leading-relaxed">
-                IV drip therapy delivers nutrients directly into the bloodstream
-                for faster absorption, higher bioavailability, and more
-                noticeable support than standard oral supplements.
-              </p>
+          <div className="flex items-start gap-4">
+            <div className="bg-wine/10 p-3 rounded-full">
+              <Users className="w-6 h-6 text-wine" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-brown">Goal-based drip selection</h3>
+              <p className="text-taupe">Slimming, energy, immunity, liver detox, hydration, and skin wellness options</p>
+            </div>
+          </div>
 
-              <p className="text-lg text-brown/80 leading-relaxed">
-                At Nexus Clinic KL, IV drip programmes are designed for weight
-                management support, energy restoration, immunity, hydration,
-                liver detox, and overall wellness using medical-grade
-                formulations under licensed medical supervision.
-              </p>
-
-              <p className="text-rose font-semibold text-lg">
-                This is personalised intravenous wellness with proper clinical
-                assessment, targeted formulations, and structured follow-up.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="bg-glass backdrop-blur-sm p-8 rounded-2xl border border-cream shadow-2xl">
-                <h2 className="font-georgia text-2xl text-brown mb-6">
-                  IV drip therapy at a glance
-                </h2>
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-wine/10 p-3 rounded-full">
-                      <Shield className="w-6 h-6 text-wine" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-brown">
-                        KKM-approved medical-grade solutions
-                      </h3>
-                      <p className="text-taupe">
-                        Administered in a licensed clinical setting
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="bg-wine/10 p-3 rounded-full">
-                      <Activity className="w-6 h-6 text-wine" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-brown">
-                        100% direct bloodstream delivery
-                      </h3>
-                      <p className="text-taupe">
-                        Faster and more efficient than oral supplement
-                        absorption
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="bg-wine/10 p-3 rounded-full">
-                      <Users className="w-6 h-6 text-wine" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-brown">
-                        Goal-based drip selection
-                      </h3>
-                      <p className="text-taupe">
-                        Slimming, energy, immunity, liver detox, hydration, and
-                        skin wellness options
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="pt-4 border-t border-cream">
-                    <p className="text-taupe flex items-center gap-2">
-                      <MapPin className="w-5 h-5 text-rose" />
-                      Wisma UOA II, Jalan Pinang, Kuala Lumpur
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+          <div className="pt-4 border-t border-cream">
+            <p className="text-taupe flex items-center gap-2">
+              <MapPin className="w-5 h-5 text-rose" />
+              Wisma UOA II, Jalan Pinang, Kuala Lumpur
+            </p>
           </div>
         </div>
-      </motion.section>
-
+      </div>
+    </motion.div> */}
       {/* Intro Expansion Section */}
       <motion.section
         variants={staggerContainer}
@@ -1161,14 +1129,15 @@ const IVDripLanding = ({ locale = fallbackLng }: { locale?: string }) => {
             most suitable clinical pathway for your goals.
           </motion.p>
 
-          <motion.button
+          <motion.a
             variants={scaleIn}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            href="/contact-us"
             className="bg-light text-wine px-12 py-4 rounded-full font-semibold text-lg hover:bg-cream transition-colors shadow-xl"
           >
             Book Free Consultation
-          </motion.button>
+          </motion.a>
         </div>
       </motion.section>
     </div>

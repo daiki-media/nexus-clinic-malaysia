@@ -29,12 +29,14 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import Image from "next/image";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 interface KeloidTreatmentProps {
   locale: string;
 }
@@ -114,91 +116,25 @@ export default function KeloidLandingPage({ locale }: KeloidTreatmentProps) {
 
   return (
     <div className="w-full bg-light overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <AlertTriangle className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Combination Therapy • Doctor-Only</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Effective Keloid Removal Treatment in Malaysia for{" "}
-                <span className="text-wine italic">Lasting Keloid Scar Control</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Raised, itchy scars that keep growing and do not respond to creams alone. Keloids are one of the most difficult skin conditions to manage because they resist simple solutions and frequently recur after treatment.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                Malaysian patients of Malay, Chinese and Indian ethnicity carry a significantly elevated genetic risk of keloid formation. At Nexus Clinic KL, keloid management begins with accurate diagnosis whether your scar is a true keloid, a hypertrophic scar, or a BCG vaccination keloid on your deltoid.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Important Clinical Information
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  The BCG vaccination scar on the left upper arm is one of the most uniquely prevalent keloid presentations in Malaysia. Thousands of Malaysians have keloids from their childhood immunisation triggering excessive collagen deposition.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Free Assessment
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in keloid treatment at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/skin/keloid-treatment.webp"
-                  alt="Nexus Clinic Kuala Lumpur - Keloid Treatment"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown">Evidence-Based Protocols</p>
-                <p className="font-inter text-sm text-taupe">Over 5,000 procedures completed</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+        badge="Combination Therapy • Doctor-Only"
+        title="Effective Keloid Removal Treatment in Malaysia for"
+        highlight="Lasting Keloid Scar Control"
+        description="Raised, itchy scars that keep growing and do not respond to creams alone. Keloids are one of the most difficult skin conditions to manage because they resist simple solutions and frequently recur after treatment."
+        details="Malaysian patients of Malay, Chinese and Indian ethnicity carry a significantly elevated genetic risk of keloid formation. At Nexus Clinic KL, keloid management begins with accurate diagnosis whether your scar is a true keloid, a hypertrophic scar, or a BCG vaccination keloid on your deltoid."
+        note="The BCG vaccination scar on the left upper arm is one of the most uniquely prevalent keloid presentations in Malaysia. Thousands of Malaysians have keloids from their childhood immunisation triggering excessive collagen deposition."
+        image="/images/skin/keloid-treatment.webp"
+        imageAlt="Nexus Clinic Kuala Lumpur - Keloid Treatment"
+        ctaText="Free Assessment"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in keloid treatment at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="Evidence-Based Protocols"
+        floatingSubtitle="Over 5,000 procedures completed"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
       {/* Trust Section */}
       <section className="py-12 px-4 bg-light">
@@ -357,10 +293,10 @@ export default function KeloidLandingPage({ locale }: KeloidTreatmentProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
               Speak to a Doctor About Your Keloid | Free Assessment
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -374,34 +310,25 @@ export default function KeloidLandingPage({ locale }: KeloidTreatmentProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Keloid vs Hypertrophic Scar</h2>
-            <p className="text-taupe font-inter">The diagnosis that changes your treatment plan</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Feature</th>
-                  <th className="p-4 text-left font-georgia">Keloid</th>
-                  <th className="p-4 text-left font-georgia">Hypertrophic Scar</th>
-                  <th className="p-4 text-left font-georgia">Clinical Significance</th>
-                </tr>
-              </thead>
-              <tbody>
-                {keloidVsHypertrophic.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.feature}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.keloid}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.hypertrophic}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.significance}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          
+          <TableForPages
+            columns={[
+              { key: "feature", header: "Feature", className: "font-semibold text-brown" },
+              { key: "keloid", header: "Keloid" },
+              { key: "hypertrophic", header: "Hypertrophic Scar" },
+              { key: "significance", header: "Clinical Significance" },
+            ]}
+            data={keloidVsHypertrophic.map(item => ({
+              feature: item.feature,
+              keloid: item.keloid,
+              hypertrophic: item.hypertrophic,
+              significance: item.significance,
+            }))}
+            title="Keloid vs Hypertrophic Scar"
+            subtitle="The diagnosis that changes your treatment plan"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
               The growth pattern is the single most reliable distinguishing feature. If the raised scar has expanded beyond the area of the original wound into surrounding skin, it is a keloid. At Nexus Clinic KL, this distinction is confirmed clinically at the initial assessment.
@@ -419,33 +346,25 @@ export default function KeloidLandingPage({ locale }: KeloidTreatmentProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Honest Keloid Treatment Recurrence Rate Data</h2>
-            <p className="text-taupe font-inter">Published evidence for each treatment approach</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment Approach</th>
-                  <th className="p-4 text-left font-georgia">Published Recurrence Rate</th>
-                  <th className="p-4 text-left font-georgia">Sessions Required</th>
-                  <th className="p-4 text-left font-georgia">Recommended For</th>
-                </tr>
-              </thead>
-              <tbody>
-                {recurrenceData.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.treatment}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.recurrence}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.sessions}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.recommendedFor}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+                columns={[
+                  { key: "treatment", header: "Treatment Approach", className: "font-semibold text-brown" },
+                  { key: "recurrence", header: "Published Recurrence Rate" },
+                  { key: "sessions", header: "Sessions Required" },
+                  { key: "recommendedFor", header: "Recommended For" },
+                ]}
+                data={recurrenceData.map(item => ({
+                  treatment: item.treatment,
+                  recurrence: item.recurrence,
+                  sessions: item.sessions,
+                  recommendedFor: item.recommendedFor,
+                }))}
+                title="Honest Keloid Treatment Recurrence Rate Data"
+                subtitle="Published evidence for each treatment approach"
+                variant="default"
+                fadeInUp={fadeInUp}
+                className="py-12 px-4"
+              />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
@@ -464,33 +383,25 @@ export default function KeloidLandingPage({ locale }: KeloidTreatmentProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Keloid Site-Specific Treatment Protocols</h2>
-            <p className="text-taupe font-inter">Protocols differ meaningfully by location</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Keloid Site</th>
-                  <th className="p-4 text-left font-georgia">Typical Cause in Malaysia</th>
-                  <th className="p-4 text-left font-georgia">Site-Specific Clinical Notes</th>
-                  <th className="p-4 text-left font-georgia">Recommended Protocol at Nexus Clinic KL</th>
-                </tr>
-              </thead>
-              <tbody>
-                {siteSpecificProtocols.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.site}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.typicalCause}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.clinicalNotes}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.protocol}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+              columns={[
+                { key: "site", header: "Keloid Site", className: "font-semibold text-brown" },
+                { key: "typicalCause", header: "Typical Cause in Malaysia" },
+                { key: "clinicalNotes", header: "Site-Specific Clinical Notes" },
+                { key: "protocol", header: "Recommended Protocol at Nexus Clinic KL" },
+              ]}
+              data={siteSpecificProtocols.map(item => ({
+                site: item.site,
+                typicalCause: item.typicalCause,
+                clinicalNotes: item.clinicalNotes,
+                protocol: item.protocol,
+              }))}
+              title="Keloid Site-Specific Treatment Protocols"
+              subtitle="Protocols differ meaningfully by location"
+              variant="detailed"
+              fadeInUp={fadeInUp}
+              className="py-12 px-4"
+            />
         </motion.div>
       </section>
 
@@ -650,32 +561,24 @@ export default function KeloidLandingPage({ locale }: KeloidTreatmentProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Keloid Prevention Protocol</h2>
-            <p className="text-taupe font-inter">For keloid-prone patients before the next wound occurs</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Prevention Measure</th>
-                  <th className="p-4 text-left font-georgia">When to Apply</th>
-                  <th className="p-4 text-left font-georgia">Instructions and Evidence</th>
-                </tr>
-              </thead>
-              <tbody>
-                {preventionMeasures.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.measure}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.when}</td>
-                    <td className="p-4 text-taupe font-inter text-sm">{item.instructions}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          
+          <TableForPages
+            columns={[
+              { key: "measure", header: "Prevention Measure", className: "font-semibold text-brown" },
+              { key: "when", header: "When to Apply" },
+              { key: "instructions", header: "Instructions and Evidence" },
+            ]}
+            data={preventionMeasures.map(item => ({
+              measure: item.measure,
+              when: item.when,
+              instructions: item.instructions,
+            }))}
+            title="Keloid Prevention Protocol"
+            subtitle="For keloid-prone patients before the next wound occurs"
+            variant="default"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
+
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl border-l-4 border-wine">
             <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
               <AlertCircle className="w-4 h-4" />
@@ -720,10 +623,10 @@ export default function KeloidLandingPage({ locale }: KeloidTreatmentProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-10">
-            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+            <Link href="/contact-us" className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
               Book Your Keloid Assessment
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
             <p className="text-taupe text-sm mt-3">Evidence-based keloid management at Nexus Clinic KL</p>
           </motion.div>
         </motion.div>
@@ -738,47 +641,30 @@ export default function KeloidLandingPage({ locale }: KeloidTreatmentProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Keloid Treatment Cost in Malaysia 2026</h2>
-            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Best For</th>
-                  <th className="p-4 text-left font-georgia">Sessions</th>
-                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter font-semibold text-brown">{tier.treatment}</td>
-                    <td className="p-4 font-inter text-taupe text-sm">{tier.bestFor}</td>
-                    <td className="p-4 font-inter text-taupe text-sm">{tier.sessions}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={4} className="p-4 text-taupe font-inter text-sm italic">
-                    Combination programmes that incorporate steroid injection plus laser across a 3 to 5 session series offer the best-evidence approach for moderate to large or treatment-resistant keloids. All pricing disclosed at initial assessment.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          
-          <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Get Your Keloid Treatment Pricing
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </motion.div>
+          <TableForPages
+            columns={[
+              { key: "treatment", header: "Treatment", className: "font-semibold text-brown" },
+              { key: "bestFor", header: "Best For" },
+              { key: "sessions", header: "Sessions" },
+              { key: "price", header: "Price Range (RM) 2026", className: "font-semibold text-wine" },
+            ]}
+            data={pricingTiers.map(tier => ({
+              treatment: tier.treatment,
+              bestFor: tier.bestFor,
+              sessions: tier.sessions,
+              price: tier.price,
+            }))}
+            title="Keloid Treatment Cost in Malaysia 2026"
+            subtitle="Transparent pricing at Nexus Clinic KL"
+            variant="default"
+            fadeInUp={fadeInUp}
+            className="py-12 px-4"
+          />
+            <motion.div variants={fadeInUp} className="text-center mt-4">
+              <p className="text-taupe font-inter text-sm italic">
+                Combination programmes that incorporate steroid injection plus laser across a 3 to 5 session series offer the best-evidence approach for moderate to large or treatment-resistant keloids. All pricing disclosed at initial assessment.
+              </p>
+            </motion.div>
         </motion.div>
       </section>
 
@@ -843,14 +729,15 @@ export default function KeloidLandingPage({ locale }: KeloidTreatmentProps) {
               Our licensed aesthetic doctors bring over 15 years of combined experience treating Malaysian Fitzpatrick III to V skin, have performed over 5,000 procedures and follow evidence-based protocols calibrated specifically for the keloid predisposition profile of the Malaysian patient population.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Free Assessment
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a consultation for keloid treatment at Nexus Clinic KL. Please let me know available slots."
                 variant="light"
