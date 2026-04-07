@@ -75,226 +75,68 @@ const HeroSection = ({ t }: { t: (key: string) => string }) => {
 
   return (
     <section className="relative min-h-screen pt-12 md:pt-24 lg:pt-0 overflow-hidden bg-cream">
-      {/* Subtle Background Pattern */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-0 right-0 w-200 h-100 rounded-full blur-3xl bg-linear-radial from-rose/20 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-150 h-150 rounded-full blur-3xl bg-linear-radial from-taupe/15 to-transparent" />
+<section className="relative h-screen w-full overflow-hidden">
+
+  {/* Background Image */}
+  <img
+    src="/images/treatment/nexus-team-hero.jpeg"
+    alt="Nexus Clinic Team"
+    className="absolute inset-0 w-full h-full object-cover object-center"
+  />
+
+  {/* LEFT Soft Overlay (IMPORTANT for text readability) */}
+  <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent" />
+
+  {/* Content */}
+  <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 h-full flex items-center">
+
+    <div className="max-w-xl">
+
+      {/* Quote */}
+      <span className="text-6xl lg:text-7xl text-wine/30 font-georgia block mb-4">
+        &ldquo;
+      </span>
+
+      {/* Heading */}
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-georgia text-brown leading-tight mb-6">
+        Redefine Your
+        <span className="block">
+          Natural Beauty
+        </span>
+      </h1>
+
+      {/* Description */}
+      <p className="text-base lg:text-lg text-taupe leading-relaxed mb-8">
+        At Nexus Clinic, we offer doctor-led aesthetic treatments focused on the face,
+        skin, and medical weight loss. Our approach is simple — natural-looking results,
+        personalized care, and treatments designed to help you feel confident in your own skin.
+      </p>
+
+      {/* CTA */}
+      <div className="flex items-center gap-6">
+
+        <a
+          href="#"
+          className="px-6 py-3 rounded-full bg-brown text-white text-sm tracking-wide hover:bg-wine transition shadow-lg"
+        >
+          Book Consultation
+        </a>
+
+        <a
+          href="#"
+          className="flex items-center gap-3 text-brown text-sm"
+        >
+          <span className="w-10 h-10 rounded-full border border-brown flex items-center justify-center">
+            ▶
+          </span>
+          View Treatment
+        </a>
+
       </div>
+    </div>
+  </div>
+</section>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-screen py-0 md:py-12">
-          {/* Left Content */}
-          <div className="order-2 lg:order-1 text-center lg:text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            >
-              {/* Decorative Quote */}
-              <motion.span
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.3 }}
-                className="md:inline-block hidden text-6xl lg:text-8xl mb-4 opacity-20 font-georgia text-wine"
-              >
-                &ldquo;
-              </motion.span>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight mb-6 font-georgia text-brown">
-                <motion.span
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.8 }}
-                  className="block"
-                >
-                  <motion.span
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.3 }}
-                    className="inline-block md:hidden text-6xl lg:text-8xl mb-4 opacity-20 font-georgia text-wine"
-                  >
-                    &ldquo;
-                  </motion.span>
-                  {t("hero.heading1")}
-                </motion.span>
-                <motion.span
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
-                  className="block text-wine"
-                >
-                  {t("hero.heading2")}
-                </motion.span>
-              </h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-                className="text-base lg:text-lg mb-10 max-w-md mx-auto lg:mx-0 text-taupe leading-relaxed"
-              >
-                {t("hero.description")}
-              </motion.p>
-
-              {/* CTA Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.8 }}
-                className="flex sm:flex-row items-center justify-center lg:justify-start gap-4"
-              >
-                <motion.a
-                  whileHover={{
-                    scale: 1.02,
-                    boxShadow: "0 20px 40px rgba(140, 79, 88, 0.25)",
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                  href="https://api.leadconnectorhq.com/widget/booking/tQwUF5MSxWFBM1ymiizk/"
-                  className=" px-4 py-2 lg:px-8 lg:py-4 rounded-full text-white text-sm tracking-wider flex items-center gap-3 bg-brown hover:bg-wine transition-colors"
-                >
-                  {t("hero.cta1")}
-                </motion.a>
-
-                <motion.a
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  href="/consultation"
-                  className="flex items-center gap-3 text-sm tracking-wider text-brown"
-                >
-                  <span className="w-12 h-12 rounded-full border-2 border-brown flex items-center justify-center hover:bg-brown hover:text-white transition-colors">
-                    <Play size={16} className="fill-current" />
-                  </span>
-                  {t("hero.cta2")}
-                </motion.a>
-              </motion.div>
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.8 }}
-              className="flex items-center justify-center lg:justify-start gap-12 mt-4 lg:mt-16"
-            >
-              <div className="text-center lg:text-left">
-                <span className="text-5xl lg:text-6xl font-light font-georgia text-brown">
-                  {t("hero.stat1Value")}
-                </span>
-                <p className="text-sm mt-2 text-taupe">
-                  {t("hero.stat1Label1")}
-                  <br />
-                  {t("hero.stat1Label2")}
-                </p>
-              </div>
-              <div className="w-px h-16 bg-taupe/30" />
-              <div className="text-center lg:text-left">
-                <span className="text-5xl lg:text-6xl font-light font-georgia text-brown">
-                  {t("hero.stat2Value")}
-                </span>
-                <p className="text-sm mt-2 text-taupe">
-                  {t("hero.stat2Label1")}
-                  <br />
-                  {t("hero.stat2Label2")}
-                </p>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Right - Hero Image with Floating Elements */}
-          <div className="order-1 lg:order-2 relative">
-            <motion.div
-              className="relative"
-              transition={{ type: "spring", stiffness: 150, damping: 15 }}
-            >
-              {/* Main Image */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                className="relative mx-auto max-w-md lg:max-w-full"
-              >
-                <div className="relative rounded-[40px] lg:rounded-[60px] overflow-hidden">
-                  <img
-                    src="/images/treatment/nexus-team-hero.jpeg"
-                    alt="Nexus Team "
-                    className="w-full h-full object-contain"
-                  />
-
-                  {/* Overlay linear */}
-                  <div className="absolute inset-0 bg-linear-to-t from-cream/40 to-transparent" />
-                </div>
-
-                {/* Floating Cards */}
-
-                {/* <GlassCard
-                  className="absolute bottom md:bottom-10 -left-4 lg:-left-12 p-3 lg:p-5"
-                  delay={0.5}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="flex">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          size={16}
-                          className="text-wine fill-wine"
-                        />
-                      ))}
-                    </div>
-                    <span className="font-semibold text-brown">5.0</span>
-                    <span className="text-sm text-taupe">
-                      {t("testimonials.reviews")}
-                    </span>
-                  </div>
-                  <div className="text-sm text-taupe mt-2">
-                    {count.toLocaleString()}+ {t("hero.customersVisited")}
-                  </div>
-                </GlassCard> */}
-
-                {/* Treatment Gallery Card */}
-                <GlassCard
-                  className="absolute -top-4 lg:top-80 -right-4 lg:-right-12 p-2 lg:p-5 max-w-70 hidden md:block"
-                  delay={1.6}
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="font-semibold text-brown">
-                      {t("hero.skinTreatment")}
-                    </span>
-                    <ChevronRight size={18} className="text-taupe" />
-                  </div>
-                  <div className="flex gap-2 mb-3">
-                    {[1, 2, 3, 4].map((i) => (
-                      <motion.div
-                        key={i}
-                        whileHover={{ scale: 1.1, y: -5 }}
-                        className="w-12 h-12 rounded-xl overflow-hidden"
-                      >
-                        <img
-                          src={`/images/treatment/${
-                            [
-                              "face-filler.png",
-                              "weight-loss.png",
-                              "facial.png",
-                              "hair-restoration.png",
-                            ][i - 1]
-                          }?w=100&auto=format&fit=crop`}
-                          alt=""
-                          className="w-full h-full object-cover"
-                        />
-                      </motion.div>
-                    ))}
-                  </div>
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    className="w-full py-2 rounded-full text-sm border border-taupe text-brown text-center hover:bg-brown hover:text-white hover:border-brown transition-colors"
-                  >
-                    {t("hero.viewRecommendations")}
-                  </motion.button>
-                </GlassCard>
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-      </div>
 
       {/* Scroll Indicator */}
       <motion.div
