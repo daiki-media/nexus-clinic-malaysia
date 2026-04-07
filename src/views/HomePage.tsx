@@ -74,71 +74,43 @@ const HeroSection = ({ t }: { t: (key: string) => string }) => {
   }, []);
 
   return (
-    <section className="relative min-h-screen pt-12 md:pt-24 lg:pt-0 overflow-hidden bg-cream">
-<section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden">
+        <img
+          src="/images/treatment/nexus-team-hero.jpeg"
+          alt="Nexus Clinic Team"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 h-full flex items-center">
 
-  {/* Background Image */}
-  <img
-    src="/images/treatment/nexus-team-hero.jpeg"
-    alt="Nexus Clinic Team"
-    className="absolute inset-0 w-full h-full object-cover object-center"
-  />
+          <div className="max-w-xl">
+            <span className="text-6xl lg:text-7xl text-wine/30 font-georgia block"> &ldquo;</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-georgia text-brown leading-tight mb-6">
+             {t("hero.heading1")}
+                <span className="text-wine italic"> {t("hero.heading2")} </span>
+            </h1>
+              <p className="text-base lg:text-lg text-taupe leading-relaxed mb-8">{t("hero.description")}</p>
+            <div className="flex items-center gap-6">
+              <a
+                href="https://api.leadconnectorhq.com/widget/booking/tQwUF5MSxWFBM1ymiizk/"
+                className="px-6 py-3 rounded-full bg-brown text-white text-sm tracking-wide hover:bg-wine transition shadow-lg"
+              >
+                Book Consultation
+              </a>
 
-  {/* LEFT Soft Overlay (IMPORTANT for text readability) */}
-  <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent" />
+              <a
+                href="/consultation"
+                className="flex items-center gap-3 text-brown text-sm"
+              >
+                <span className="w-10 h-10 rounded-full border border-brown flex items-center justify-center">
+                  ▶
+                </span>
+                View Treatment
+              </a>
 
-  {/* Content */}
-  <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 h-full flex items-center">
-
-    <div className="max-w-xl">
-
-      {/* Quote */}
-      <span className="text-6xl lg:text-7xl text-wine/30 font-georgia block mb-4">
-        &ldquo;
-      </span>
-
-      {/* Heading */}
-      <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-georgia text-brown leading-tight mb-6">
-        Redefine Your
-        <span className="block">
-          Natural Beauty
-        </span>
-      </h1>
-
-      {/* Description */}
-      <p className="text-base lg:text-lg text-taupe leading-relaxed mb-8">
-        At Nexus Clinic, we offer doctor-led aesthetic treatments focused on the face,
-        skin, and medical weight loss. Our approach is simple — natural-looking results,
-        personalized care, and treatments designed to help you feel confident in your own skin.
-      </p>
-
-      {/* CTA */}
-      <div className="flex items-center gap-6">
-
-        <a
-          href="#"
-          className="px-6 py-3 rounded-full bg-brown text-white text-sm tracking-wide hover:bg-wine transition shadow-lg"
-        >
-          Book Consultation
-        </a>
-
-        <a
-          href="#"
-          className="flex items-center gap-3 text-brown text-sm"
-        >
-          <span className="w-10 h-10 rounded-full border border-brown flex items-center justify-center">
-            ▶
-          </span>
-          View Treatment
-        </a>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-
-      {/* Scroll Indicator */}
+            </div>
+          </div>
+        </div>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
