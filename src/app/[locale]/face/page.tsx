@@ -1,3 +1,4 @@
+export const dynamic = "force-static";
 import FaceHub from '@/src/views/faceTreatment/FaceHub';
 import { Metadata } from "next";
 

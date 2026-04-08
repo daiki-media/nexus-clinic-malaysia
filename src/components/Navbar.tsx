@@ -15,6 +15,7 @@ import {
   Search,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import "@/src/lib/vibration.css";
 
 const navItems = [
   {
@@ -643,14 +644,13 @@ const Navbar = ({ locale }: { locale?: string }) => {
       >
         {/* Top Bar */}
         <AnimatePresence>
-          {!isScrolled && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="hidden lg:block bg-brown text-light/90 text-xs"
+              className="hidden lg:block bg-brown text-light/90 text-xs fixed top-0 left-0 right-0 z-50"
             >
-              <div className="max-w-5xl mx-auto px-6 lg:px-8 p">
+              <div className="max-w-5xl mx-auto px-6 lg:px-8">
                 <div className="flex items-center justify-between py-2">
                   <div className="flex items-center gap-6">
                     <a
@@ -664,24 +664,34 @@ const Navbar = ({ locale }: { locale?: string }) => {
                     <span className="text-light/70">
                       Mon - Sat: 9:00 AM - 6:00 PM
                     </span>
+
+                    {/* <span className="text-light/40">|</span>
+                      <span className="flex items-center gap-1.5">
+                        <Sparkles size={12} className="text-rose" />
+                        <span>
+                          Doctor is {isActive ? "Available" : "Close"} Now
+                        </span>
+                      </span> */}
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className="flex items-center gap-1.5">
-                      <Sparkles size={12} className="text-rose" />
-                      <span>
-                        Doctor is {isActive ? "Available" : "Close"} Now
-                      </span>
-                    </span>
+                      <a
+                        href="https://api.whatsapp.com/send?phone=60168245699&text=Any%20Dr%20Available%20%3F%20(%20HB%20)"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-white border border-brown text-wine hover:bg-transparent hover:text-white hover:border-white font-semibold text-sm px-5 py-2 rounded-full transition-all duration-300 animate-vibration-slow"
+                      >
+                        Consult with experts now
+                      </a>
                   </div>
                 </div>
               </div>
             </motion.div>
-          )}
         </AnimatePresence>
 
         {/* Main Nav */}
-        <div className="max-w-screen mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center h-16 lg:h-20 gap-3">
+        {!isScrolled && (
+        <div className="max-w-screen mx-auto px-4 sm:px-6 lg:px-8 bg-white">
+          <div className="flex items-center h-16 lg:h-20 gap-3 mt-16">
             {/* Logo */}
             <AnimatePresence>
               {!isMobileSearchOpen && (
@@ -1015,7 +1025,7 @@ const Navbar = ({ locale }: { locale?: string }) => {
             </div>
           </div>
         </div>
-
+           )}
         {/* Mobile Menu */}
         <AnimatePresence>
           {isMenuOpen && (

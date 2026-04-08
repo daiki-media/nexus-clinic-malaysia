@@ -228,7 +228,7 @@ const MonopauseLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                   <div className="space-y-6">
                     <div className="flex items-center gap-4 pb-4 border-b border-cream">
                       <MapPin className="w-5 h-5 text-wine" />
-                      <span className="text-brown">LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur</span>
+                      <span className="text-brown">LG 10, Lower Ground Floor, Wisma UOA 2, Kuala Lumpur, 50450 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia</span>
                     </div>
 
                     <div className="grid gap-4">
@@ -606,7 +606,7 @@ const MonopauseLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               className="text-white/80 mt-8 flex items-center justify-center gap-2"
             >
               <MapPin className="w-5 h-5" />
-              LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur
+              LG 10, Lower Ground Floor, Wisma UOA 2, Kuala Lumpur, 50450 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia
             </motion.p>
           </div>
         </motion.section>

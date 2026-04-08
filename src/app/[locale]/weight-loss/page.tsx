@@ -1,4 +1,4 @@
-
+export const dynamic = "force-static";
 import WeightLossHub from '@/src/views/weightlossTreatment/WeightLossHub';
 import { Metadata } from "next";
 

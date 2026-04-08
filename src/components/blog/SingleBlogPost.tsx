@@ -433,47 +433,51 @@ export function SingleBlogPost({ content, faqs, postSlug }: SingleBlogPostProps)
         }
       });
     };
+    
     const processFAQs = () => {
       const container = contentRef.current;
       if (!container) return;
 
-      const faqQuestions = Array.from(container.querySelectorAll('p')).filter(p => {
+      // ✅ Step 1: Convert "FAQs" title to H2
+      const paragraphs = Array.from(container.querySelectorAll('p'));
+
+      paragraphs.forEach(p => {
+        const text = p.textContent?.trim().toLowerCase();
+
+        if (text === 'faqs') {
+          const h2 = document.createElement('h2');
+          h2.className = 'font-serif font-bold text-3xl lg:text-4xl mt-10 mb-4 text-[#8c4f58]';
+          h2.textContent = 'FAQs';
+
+          p.parentNode?.replaceChild(h2, p);
+        }
+      });
+
+      // ✅ Step 2: Convert numbered questions to H3
+      const faqQuestions = paragraphs.filter(p => {
         const strong = p.querySelector('strong');
         if (!strong) return false;
         const text = strong.textContent || '';
         return /^\d+\./.test(text.trim());
       });
 
-      faqQuestions.forEach((p, index) => {
+      faqQuestions.forEach((p) => {
         const strong = p.querySelector('strong');
         if (!strong) return;
 
         const questionText = strong.textContent || '';
         const cleanQuestionText = questionText.replace(/^\d+\.\s*/, '');
+
         const h3 = document.createElement('h3');
-        h3.className = 'font-bold text-xl lg:text-2xl mt-8';
+        h3.className = 'font-bold text-xl lg:text-2xl mt-8 text-brown';
         h3.textContent = cleanQuestionText;
+
         p.parentNode?.insertBefore(h3, p);
-        
-        // const answer = p.nextElementSibling;
-        // if (answer && answer.tagName === 'P') {
-        //   answer.classList.add(
-        //     'faq-answer',
-        //     'ml-6',
-        //     'mb-6',
-        //     'p-4',
-        //     'bg-cream/30',
-        //     'rounded-xl',
-        //     'border-l-4',
-        //     'border-rose',
-        //     'text-brown/80',
-        //     'relative'
-        //   );
-        // }
+
         strong.remove();
       });
-      
     };
+
 
     addAnimationStyles();
     processImages();

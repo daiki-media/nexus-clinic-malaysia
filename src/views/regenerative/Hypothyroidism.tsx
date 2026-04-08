@@ -153,7 +153,7 @@ const HypothyroidLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                     </div>
                     <div className="flex items-start gap-3">
                       <MapPin className="w-6 h-6 text-wine shrink-0 mt-1" />
-                      <p className="text-brown">LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur</p>
+                      <p className="text-brown">LG 10, Lower Ground Floor, Wisma UOA 2, Kuala Lumpur, 50450 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia</p>
                     </div>
                     <div className="flex items-start gap-3">
                       <CheckCircle2 className="w-6 h-6 text-wine shrink-0 mt-1" />
@@ -538,7 +538,7 @@ const HypothyroidLanding = ({ locale = fallbackLng }: { locale?: string }) => {
             </motion.div>
             <motion.div variants={fadeInUp} className="mt-8 text-white">
               <p className="font-semibold text-xl">Nexus Clinic Kuala Lumpur</p>
-              <p className="mt-2">LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur</p>
+              <p className="mt-2">LG 10, Lower Ground Floor, Wisma UOA 2, Kuala Lumpur, 50450 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia</p>
               <p className="mt-2">Phone: 016-7025699 / 03-21635699</p>
             </motion.div>
           </motion.div>

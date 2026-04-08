@@ -1,3 +1,4 @@
+export const revalidate = 3600;
 import { wordpressService } from "@/src/services/wordpress";
 import { adaptWordPressPost } from "@/src/utils/blogAdapter";
 import { notFound } from "next/navigation";
@@ -6,17 +7,20 @@ import { SingleBlogPost } from "@/src/components/blog/SingleBlogPost";
 import Link from "next/link";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import { ShareButton } from "@/src/components/blog/ShareButton"; 
+import { FloatingWhatsapp } from "@/src/components/Whatsapp";
+import Image from "next/image";
 
     const baseUrl = process.env.BASE_URL|| "https://www.nexus-clinic.com/";
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ slug: string }> 
-}): Promise<Metadata> {
-  if (!params) {
-    return {
-      title: "Blog Post Not Found",
-    };
+
+  export async function generateMetadata({ 
+      params 
+    }: { 
+      params: Promise<{ slug: string }> 
+    }): Promise<Metadata> {
+    if (!params) {
+      return {
+        title: "Blog Post Not Found",
+      };
   }
   
   try {
@@ -92,9 +96,9 @@ export async function generateMetadata({
 
 export default async function Page({ 
   params 
-}: { 
-  params: Promise<{ slug: string }> 
-}) {
+  }: { 
+    params: Promise<{ slug: string }> 
+  }) {
   if (!params) {
     notFound();
   }
@@ -129,7 +133,7 @@ export default async function Page({
     } : null;
     return (
       <>
-            {faqSchema && (
+      {faqSchema && (
         <script
           type="application/ld+json"
           id="faq-schema"
@@ -139,22 +143,27 @@ export default async function Page({
 
         <main className="min-h-screen bg-cream">
           <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
-            <img 
+            <Image 
               src={post.image} 
               alt={post.title.replace(/<[^>]*>/g, '')}
+              fill
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
             
             <div className="absolute bottom-0 left-0 right-0 max-w-4xl mx-auto px-6 lg:px-12 pb-16">
-              <Link 
-                href="/blogs" 
-                className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors"
-              >
-                <ArrowLeft size={18} />
-                Back to all articles
-              </Link>
-              
+              <div className="flex w-full justify-between items-center">
+                <Link 
+                  href="/blogs" 
+                  className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors"
+                >
+                  <ArrowLeft size={18} />
+                  Back to all articles
+                </Link>
+                <span className="px-4 py-2 bg-wine text-white text-xs font-semibold rounded-full">
+                  {post.tag}
+                </span>
+              </div>
               <div className="flex items-center gap-4 text-white/70 mb-4">
                 <span className="flex items-center gap-1.5 text-sm">
                   <Calendar size={14} />
@@ -172,10 +181,28 @@ export default async function Page({
                 dangerouslySetInnerHTML={{ __html: post.title }}
               />
               
-              <div className="flex items-center gap-2">
-                <span className="px-4 py-2 bg-wine text-white text-xs font-semibold rounded-full">
-                  {post.tag}
-                </span>
+              <div className="mt-10">
+                <Link href="/author/anum-jawed">
+                  <div className="flex items-center gap-4 p-4 rounded-2xl bg-cream/10 hover:bg-cream/40 transition-all duration-300 cursor-pointer group shadow-sm hover:shadow-md">
+                    <div className="relative w-16 h-16 rounded-full overflow-hidden">
+                      <Image
+                        src="/images/Anum_img.png"
+                        alt="Dr. Anum Jawed"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-white">
+                        Dr. Anum Jawed
+                      </h4>
+                      <p className="text-sm text-white">
+                        Pharm-D, MPhil (Pharmaceutics)
+                      </p>
+                    </div>
+
+                  </div>
+                </Link>
               </div>
             </div>
           </section>
@@ -214,6 +241,7 @@ export default async function Page({
             </div>
           </section>
         </main>
+        <FloatingWhatsapp isActive={true} hideOnMobile={false} />
       </>
     );
   } catch (error) {

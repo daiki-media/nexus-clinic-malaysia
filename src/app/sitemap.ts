@@ -10,7 +10,7 @@ import { weightlossTreatmentsMetadata } from "@/src/config/weightlossTreatments"
 import { wordpressService } from "@/src/services/wordpress";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.BASE_URL|| "https://www.nexus-clinic.com/";
+  const baseUrl = process.env.BASE_URL|| "https://www.nexus-clinic.com";
 
   const staticRoutes = [
     "",
@@ -27,6 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/regenerative",
     "/weight-loss",
     "/blogs",
+    "/consultation",
     // content relavant pages
     "/acne-and-acne-scars",
     "/chemical-peel",
@@ -45,7 +46,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   );
 
-  // ✅ Helper for dynamic sections
+  // const staticUrls = staticRoutes.map((route) => ({
+  //   url: `${baseUrl}${route}`,
+  //   lastModified: new Date(),
+  //   alternates: {
+  //     languages: Object.fromEntries(
+  //       languages.map((locale) => [
+  //         locale,
+  //         locale === "en"
+  //           ? `${baseUrl}${route}`
+  //           : `${baseUrl}/${locale}${route}`,
+  //       ])
+  //     ),
+  //   },
+  // }));
+  // 
   const generateDynamicUrls = (
     items: { slug: string }[],
     basePath: string
@@ -61,7 +76,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     );
   };
 
-  // ✅ All dynamic sections
   const faceUrls = generateDynamicUrls(faceTreatmentsMetadata, "face");
   const hairUrls = generateDynamicUrls(hairTreatmentsMetadata, "hair");
   const skinUrls = generateDynamicUrls(skinTreatmentsMetadata, "skin");
@@ -71,12 +85,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let blogUrls: MetadataRoute.Sitemap = [];
 
   try {
-    const posts = await wordpressService.getAllPosts();
+      const posts = await wordpressService.getAllPosts();
 
-    blogUrls = posts.map((post: any) => ({
-      url: `${baseUrl}/blogs/${post.slug}`,
-      lastModified: new Date(post.modified || post.date),
-    }));
+      blogUrls = posts.map((post) => ({
+        url: `${baseUrl}/blogs/${post.slug}`,
+        lastModified: new Date(post.modified || post.date),
+      }));
   } catch (err) {
     console.error("Blog sitemap error:", err);
   }

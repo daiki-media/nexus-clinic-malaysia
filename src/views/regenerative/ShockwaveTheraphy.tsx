@@ -186,8 +186,7 @@ const ShockwaveLanding = () => {
                     <div>
                       <h3 className="font-semibold text-brown">Visit Us</h3>
                       <p className="text-sm text-taupe">
-                        LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang,
-                        50450 Kuala Lumpur
+                          LG 10, Lower Ground Floor, Wisma UOA 2, Kuala Lumpur, 50450 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia
                       </p>
                     </div>
                   </div>
@@ -771,7 +770,7 @@ const ShockwaveLanding = () => {
             <div className="mt-8 text-white/80 text-sm">
               <p>Nexus Clinic Kuala Lumpur</p>
               <p>
-                LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur
+                LG 10, Lower Ground Floor, Wisma UOA 2, Kuala Lumpur, 50450 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia
               </p>
               <p className="mt-2">Mobile: 016-7025699 / 03-21635699</p>
             </div>

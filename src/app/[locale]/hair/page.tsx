@@ -1,4 +1,5 @@
- import HairHub from '@/src/views/hairTreatment/HairHub';
+export const dynamic = "force-static";
+import HairHub from '@/src/views/hairTreatment/HairHub';
 import { Metadata } from "next";
 
 const baseurl = process.env.BASE_URL || "https://www.nexus-clinic.com/"

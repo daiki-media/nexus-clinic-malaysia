@@ -597,8 +597,7 @@ const StemCellLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 Nexus Clinic Kuala Lumpur
               </p>
               <p className="text-white/80">
-                LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450
-                Kuala Lumpur
+              LG 10, Lower Ground Floor, Wisma UOA 2, Kuala Lumpur, 50450 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia
               </p>
               <p className="text-white text-lg">
                 Phone: 016-7025699 / 03-21635699

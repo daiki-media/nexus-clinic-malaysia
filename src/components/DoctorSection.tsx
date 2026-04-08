@@ -333,7 +333,7 @@ export function DoctorsSection() {
             { value: "12+", label: "Years of Excellence" },
             { value: "8,000+", label: "Treatments Performed" },
             { value: "98%", label: "Patient Satisfaction" },
-            { value: "3", label: "Award-Winning Physicians" },
+            { value: "3", label: "Award-Winning Doctors" },
           ].map((stat) => (
             <div
               key={stat.label}

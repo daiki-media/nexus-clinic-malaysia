@@ -1,9 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Keep src/ directory structure
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  images: {
+    domains: ['blog.nexus-clinic.com'],
   },
 };
 

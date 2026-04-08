@@ -9,7 +9,10 @@ class WordPressService {
     const url = `${API_BASE_URL}${endpoint}${separator}_embed=true&yoast_head=1`;
     // console.log('Fetching from WordPress:', url);
     
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      next: { revalidate: 3600 },
+    });
+    
     if (!response.ok) {
       throw new Error(`WordPress API error: ${response.statusText}`);
     }
@@ -74,31 +77,37 @@ class WordPressService {
     return this.getPosts({ ...params, categories: [category.id] });
   }
   //  for SEO sitemap generation
-  async getAllPosts(): Promise<WordPressPost[]> {
-  let allPosts: WordPressPost[] = [];
-  let page = 1;
-  const perPage = 100;
+  async getAllPosts(): Promise<Pick<WordPressPost, "slug" | "modified" | "date">[]> {
+    const perPage = 100;
 
-  while (true) {
-    const response = await fetch(
-      `${API_BASE_URL}/posts?page=${page}&per_page=${perPage}`,
+    const firstResponse = await fetch(
+      `${API_BASE_URL}/posts?page=1&per_page=${perPage}&_fields=slug,modified,date`,
       {
-        next: { revalidate: 3600 }, // cache 1 hour
+        next: { revalidate: 3600 },
       }
     );
 
-    if (!response.ok) break;
+    if (!firstResponse.ok) return [];
 
-    const data: WordPressPost[] = await response.json();
+    const totalPages = Number(firstResponse.headers.get("X-WP-TotalPages") || 1);
+    const allPosts = await firstResponse.json();
 
-    if (!data.length) break;
+    for (let page = 2; page <= totalPages; page++) {
+      const response = await fetch(
+        `${API_BASE_URL}/posts?page=${page}&per_page=${perPage}&_fields=slug,modified,date`,
+        {
+          next: { revalidate: 3600 },
+        }
+      );
 
-    allPosts = [...allPosts, ...data];
-    page++;
+      if (!response.ok) continue;
+
+      const data = await response.json();
+      allPosts.push(...data);
+    }
+
+    return allPosts;
   }
-
-  return allPosts;
-}
 
 }
 

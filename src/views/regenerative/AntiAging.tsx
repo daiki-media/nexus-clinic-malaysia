@@ -131,7 +131,7 @@ const AntiAgingLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                       Central Kuala Lumpur Location (KLCC Area)
                     </h3>
                     <p className="text-taupe leading-relaxed">
-                      LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur.
+                      LG 10, Lower Ground Floor, Wisma UOA 2, Kuala Lumpur, 50450 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia
                     </p>
                     <div className="flex items-center gap-2 mt-3">
                       <div className="bg-rose/10 p-2 rounded-full">
@@ -496,8 +496,7 @@ const AntiAgingLanding = ({ locale = fallbackLng }: { locale?: string }) => {
           <motion.p variants={fadeInUp} className="mt-8 text-light/80">
             Nexus Clinic Kuala Lumpur
             <br />
-            LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala
-            Lumpur
+            LG 10, Lower Ground Floor, Wisma UOA 2, Kuala Lumpur, 50450 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia
             <br />
             Phone: 016- 702 5699 / 03- 2163 5699
           </motion.p>

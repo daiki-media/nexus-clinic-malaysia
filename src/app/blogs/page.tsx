@@ -1,5 +1,5 @@
-// src/app/blogs/page.tsx
 import BlogPage from "@/src/components/blog/BlogsPage";
+import { FloatingWhatsapp } from "@/src/components/Whatsapp";
 import { languages } from "@/src/i18n/settings";
 
 export async function generateStaticParams() {
@@ -7,5 +7,10 @@ export async function generateStaticParams() {
 }
 
 export default function Page() {
-  return <BlogPage />;
+  return (
+    <>
+      <BlogPage />
+      <FloatingWhatsapp isActive={true} hideOnMobile={false} />
+    </>
+  );
 }

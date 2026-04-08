@@ -1,3 +1,4 @@
+export const dynamic = "force-static";
 import SkinHub from '@/src/views/skinTreatment/SkinHub'
 import { Metadata } from "next";
 

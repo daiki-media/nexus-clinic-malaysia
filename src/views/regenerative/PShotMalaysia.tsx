@@ -253,8 +253,7 @@ const PShotLanding = () => {
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-wine shrink-0 mt-1" />
                   <p className="text-brown font-inter">
-                    LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450
-                    Kuala Lumpur
+                    LG 10, Lower Ground Floor, Wisma UOA 2, Kuala Lumpur, 50450 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia
                   </p>
                 </div>
                 <div className="flex items-center gap-3">
@@ -429,8 +428,7 @@ const PShotLanding = () => {
               Nexus Clinic Kuala Lumpur
             </p>
             <p className="font-inter mb-2">
-              LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala
-              Lumpur
+              LG 10, Lower Ground Floor, Wisma UOA 2, Kuala Lumpur, 50450 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia
             </p>
             <p className="font-inter text-2xl font-bold">
               016-7025699 / 03-21635699

@@ -1,3 +1,4 @@
+export const dynamic = "force-static";
 import RegenerativeHub from '@/src/views/regenerative/RegenerativeHub'
 import { Metadata } from "next";
 

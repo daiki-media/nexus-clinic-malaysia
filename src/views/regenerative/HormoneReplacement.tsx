@@ -507,8 +507,7 @@ const HormonReplaceLanding = ({
                 Book Your HRT Assessment at Nexus Clinic KL | Wisma UOA II, Kuala Lumpur | Call or WhatsApp Today
               </p>
               <p className="text-cream/90 mb-2">
-                LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450
-                Kuala Lumpur
+              LG 10, Lower Ground Floor, Wisma UOA 2, Kuala Lumpur, 50450 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia
               </p>
               <p className="text-cream/90 mb-6">
                 Phone: 016-7025699 / 03-21635699
