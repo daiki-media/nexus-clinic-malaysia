@@ -8,7 +8,7 @@ export async function GET() {
     const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=name,rating,reviews,user_ratings_total&key=${apiKey}`;
 
     const res = await fetch(url, {
-      next: { revalidate: 3600 }, // cache for 1 hour
+      next: { revalidate: 7200 }, 
     });
 
     const data = await res.json();
