@@ -653,18 +653,20 @@ const Navbar = ({ locale }: { locale?: string }) => {
               <div className="max-w-5xl mx-auto px-6 lg:px-8">
                 <div className="flex items-center justify-between py-2">
                   <div className="">
-                    {isScrolled && (
-                      <motion.img
-                        key="scroll-logo"
-                        src="/images/logo_nexus_white.webp"
-                        alt="Nexus Logo"
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.3 }}
-                        className="h-15 object-contain"
-                      />
-                    )}
+                    <a href="/">
+                      {isScrolled && (
+                        <motion.img
+                          key="scroll-logo"
+                          src="/images/logo_nexus_white.webp"
+                          alt="Nexus Logo"
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.3 }}
+                          className="h-15 object-contain"
+                        />
+                      )}
+                    </a>
                     {!isScrolled && (
                       <div className="hidden lg:flex items-center gap-6">
                         <a
