@@ -96,8 +96,8 @@ export const galleryItems: GalleryItem[] = [
       "Patient before FUE hair transplant showing thinning hair and visible scalp in the donor area at the back of the head",
     altAfter:
       "Patient after FUE hair transplant at Nexus Clinic Malaysia — hair smoothed and skin texture refined",
-    beforeSrc: "/images/B&A-hair/B&A-hair-transplant1.webp",
-    afterSrc: "/images/B&A-hair/B&A-hair-transplant1.webp",
+    beforeSrc: "/images/B&A-hair/B&A-hair-transplant-men.jpeg",
+    afterSrc: "/images/B&A-hair/B&A-hair-transplant-men.jpeg",
     sessions: 1,
     tag: "Most Popular",
     sessionsN: "1",
