@@ -25,19 +25,19 @@ const navItems = [
     submenu: {
       weightLoss: {
         items: [
-        { key: "submenu.weightLoss.ozempic", fallback: "ozempic-weight-loss-malaysia" },
-        { key: "submenu.weightLoss.wegovy", fallback: "wegovy-weight-loss-malaysia" },
-        { key: "submenu.weightLoss.mounjaro", fallback: "mounjaro-weight-loss-malaysia" },
-        { key: "submenu.weightLoss.duromine", fallback: "duromine-weight-loss-malaysia" },
+        { key: "submenu.weightLoss.ozempic", fallback: "ozempic-malaysia" },
+        { key: "submenu.weightLoss.wegovy", fallback: "wegovy-malaysia" },
+        { key: "submenu.weightLoss.mounjaro", fallback: "mounjaro-malaysia" },
+        { key: "submenu.weightLoss.duromine", fallback: "duromine-malaysia" },
         { key: "submenu.weightLoss.doctorMonitored", fallback: "doctor-monitored-weight-loss-malaysia" },
-        { key: "submenu.weightLoss.hcgWeightLoss", fallback: "hcg-weight-loss-malaysia" },
+        { key: "submenu.weightLoss.hcgWeightLoss", fallback: "hcg-programme-malaysia" },
         { key: "submenu.weightLoss.fatFreezing", fallback: "fat-freezing-malaysia" },
         { key: "submenu.weightLoss.coolSculpting", fallback: "coolsculpting-malaysia" },
         { key: "submenu.weightLoss.glp1", fallback: "glp-1-programme-malaysia" },
-        { key: "submenu.weightLoss.zepbound", fallback: "zepbound-weight-loss-malaysia" },
-        // { key: "submenu.weightLoss.semaglutide", fallback: "wegovy-weight-loss-malaysia" }, // or create separate
-        // { key: "submenu.weightLoss.tirzepatide", fallback: "mounjaro-weight-loss-malaysia" }, // or create separate
-        { key: "submenu.weightLoss.ivDrip", fallback: "iv-drip-weight-loss-malaysia" },
+        { key: "submenu.weightLoss.zepbound", fallback: "zepbound-malaysia" },
+        // { key: "submenu.weightLoss.semaglutide", fallback: "wegovy-malaysia" }, // or create separate
+        // { key: "submenu.weightLoss.tirzepatide", fallback: "mounjaro-malaysia" }, // or create separate
+        { key: "submenu.weightLoss.ivDrip", fallback: "iv-drip-malaysia" },
         ],
       },
     },

@@ -55,25 +55,25 @@ export default function WeightLossHub({ locale }: WeightLossHubProps) {
       {
         name: "Ozempic Weight Loss Malaysia",
         description: "A doctor-led guide to Ozempic for weight loss in Malaysia, including how it works, who it may suit, expected progress, pricing and treatment planning.",
-        slug: "ozempic-weight-loss-malaysia",
+        slug: "ozempic-malaysia",
         imageUrl: "/images/weight-loss/Ozempic Weight Loss Treatment.png",
       },
       {
         name: "Wegovy Weight Loss Malaysia",
         description: "Learn how Wegovy supports appetite control and structured medical weight loss, with consultation guidance, candidacy review and realistic expectations.",
-        slug: "wegovy-weight-loss-malaysia",
+        slug: "wegovy-malaysia",
         imageUrl: "/images/weight-loss/Wegovy Weight Loss Treatment.png",
       },
       {
         name: "Mounjaro Weight Loss Malaysia",
         description: "Comprehensive information on Mounjaro weight loss treatment in Malaysia, including doctor assessment, treatment suitability and progress support.",
-        slug: "mounjaro-weight-loss-malaysia",
+        slug: "mounjaro-malaysia",
         imageUrl: "/images/weight-loss/Mounjaro Weight Loss Treatment.png",
       },
       {
         name: "Duromine Weight Loss Malaysia",
         description: "Explore short term doctor monitored Duromine weight loss programmes, how they are prescribed, who they may suit and what monitoring is needed.",
-        slug: "duromine-weight-loss-malaysia",
+        slug: "duromine-malaysia",
         imageUrl: "/images/weight-loss/Duromine Weight Loss Treatment.png",
       },
       {
@@ -85,7 +85,7 @@ export default function WeightLossHub({ locale }: WeightLossHubProps) {
       {
         name: "HCG Weight Loss Malaysia",
         description: "Understand the role, claims and clinical considerations around HCG related weight loss plans, with honest doctor guidance on suitability.",
-        slug: "hcg-weight-loss-malaysia",
+        slug: "hcg-programme-malaysia",
         imageUrl: "/images/weight-loss/HCG Weight Loss Program Treatment.png",
       },
       {
@@ -109,25 +109,25 @@ export default function WeightLossHub({ locale }: WeightLossHubProps) {
       {
         name: "Zepbound Weight Loss Malaysia",
         description: "Doctor-led information on Zepbound weight loss treatment, including how it compares with other options and who may benefit from medical review.",
-        slug: "zepbound-weight-loss-malaysia",
+        slug: "zepbound-malaysia",
         imageUrl: "/images/weight-loss/ZepBound Weight Loss Treatment.png",
       },
       {
         name: "IV Drip Weight Loss Malaysia",
         description: "Supportive wellness and hydration focused IV drip options that may be added to a broader weight management plan when clinically appropriate.",
-        slug: "iv-drip-weight-loss-malaysia",
+        slug: "iv-drip-malaysia",
         imageUrl: "/images/weight-loss/IV Drip for Weight Loss Treatment.png",
       },
     ];
   const concernMapping = [
-    { concern: "Need medical help to reduce appetite and control cravings", treatment: "Ozempic, Wegovy, Mounjaro or GLP 1 Programme", link: "/weight-loss/ozempic-weight-loss-malaysia" },
+    { concern: "Need medical help to reduce appetite and control cravings", treatment: "Ozempic, Wegovy, Mounjaro or GLP 1 Programme", link: "/weight-loss/ozempic-malaysia" },
     { concern: "Need a structured clinical plan with regular follow up", treatment: "Doctor Monitored Weight Loss", link: "/weight-loss/doctor-monitored-weight-loss-malaysia" },
-    { concern: "Need support for short term doctor supervised weight loss", treatment: "Duromine Weight Loss", link: "/weight-loss/duromine-weight-loss-malaysia" },
+    { concern: "Need support for short term doctor supervised weight loss", treatment: "Duromine Weight Loss", link: "/weight-loss/duromine-malaysia" },
     { concern: "Want to target stubborn fat in specific body areas", treatment: "Fat Freezing or CoolSculpting", link: "/weight-loss/fat-freezing-malaysia" },
-    { concern: "Want to compare injectable medication options", treatment: "Ozempic, Wegovy, Mounjaro or Zepbound", link: "/weight-loss/ozempic-weight-loss-malaysia" },
+    { concern: "Want to compare injectable medication options", treatment: "Ozempic, Wegovy, Mounjaro or Zepbound", link: "/weight-loss/ozempic-malaysia" },
     { concern: "Want body contouring without surgery", treatment: "Fat Freezing or CoolSculpting", link: "/weight-loss/coolsculpting-malaysia" },
     { concern: "Need a broader programme instead of one treatment", treatment: "GLP 1 Programme or Doctor Monitored Weight Loss", link: "/weight-loss/glp-1-programme-malaysia" },
-    { concern: "Looking for supportive wellness add ons", treatment: "IV Drip Weight Loss", link: "/weight-loss/iv-drip-weight-loss-malaysia" },
+    { concern: "Looking for supportive wellness add ons", treatment: "IV Drip Weight Loss", link: "/weight-loss/iv-drip-malaysia" },
     { concern: "Want to understand all options before deciding", treatment: "Weight Loss Overview Consultation", link: "/weight-loss/book-consultation" },
   ];
 
