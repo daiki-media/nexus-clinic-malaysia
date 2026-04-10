@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-import { redirectsList } from "./redirects";
+import { redirectsList, blogStandaloneRedirects } from "./redirects";
 
 const isDev = process.env.NODE_ENV !== "production";
 
@@ -86,19 +86,17 @@ const nextConfig: NextConfig = {
       if (!redirectsList || redirectsList.length === 0) return [];
 
       return [
-        // ✅ Specific blog folder
-        {
-          source: "/en/blog/:slug*",
-          destination: "/blogs/:slug*",
-          permanent: true,
-        },
-
-        // ✅ Blog-like standalone slugs (ONLY these)
-        {
-          source: "/en/:slug((penis-discoloration-in-malaysia-all-you-need-to-know|purple-penis-definition-and-treatment-malaysia|where-to-buy-mounjaro-in-malaysia-safely-and-legally|duromine-for-weight-loss-in-malaysia-evidence-safety-real-patient-insights|everything-you-need-to-know-about-testosterone-replacement-therapy-in-malaysia|liver-disease-and-stem-cell-therapy-what-you-should-know).*)",
-          destination: "/blogs/:slug",
-          permanent: true,
-        },
+          // Blog folder
+          {
+            source: "/en/blog/:slug*",
+            destination: "/blogs/:slug*",
+            permanent: true,
+          },
+          ...blogStandaloneRedirects.map(([source, destination]) => ({
+              source,
+              destination,
+              permanent: true,
+            })),
 
         // ✅ Your manual redirects
         ...redirectsList.map(([source, destination]) => ({
