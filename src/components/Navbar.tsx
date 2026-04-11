@@ -35,9 +35,9 @@ const navItems = [
         { key: "submenu.weightLoss.coolSculpting", fallback: "coolsculpting-malaysia" },
         { key: "submenu.weightLoss.glp1", fallback: "glp-1-programme-malaysia" },
         { key: "submenu.weightLoss.zepbound", fallback: "zepbound-malaysia" },
+        { key: "submenu.weightLoss.ivDrips", fallback: "iv-drip-malaysia" },
         // { key: "submenu.weightLoss.semaglutide", fallback: "wegovy-malaysia" }, // or create separate
         // { key: "submenu.weightLoss.tirzepatide", fallback: "mounjaro-malaysia" }, // or create separate
-        { key: "submenu.weightLoss.ivDrip", fallback: "iv-drip-malaysia" },
         ],
       },
     },
