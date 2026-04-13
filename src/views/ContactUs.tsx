@@ -30,12 +30,16 @@ import {
   scaleIn,
 } from "@/src/lib/animations";
 import Whatsapp from "@/src/components/Whatsapp";
+import FAQ from "@/src/components/FAQ";
 import SocialIcons from "@/src/components/SocialIcons";
 import Link from "next/link";
 import { useState } from "react";
-// interface ContactUsProps {
-//   locale: string;
-// }
+
+// Updated contact information
+const CLINIC_ADDRESS = "LG 10, Lower Ground Floor, Wisma UOA 2, Kuala Lumpur, 50450 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia";
+const CLINIC_PHONE = "+60167745699";
+const CLINIC_EMAIL = "contact@nexus-clinic.com";
+const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CLINIC_ADDRESS)}`;
 
 export default function ContactUs() {
   const [formState, setFormState] = useState({
@@ -85,25 +89,32 @@ export default function ContactUs() {
     setIsSubmitting(false);
   };
 
-
   const contactInfo = [
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Visit Us",
-      details: ["Wisma UOA II, Jalan Pinang", "50450 Kuala Lumpur", "Malaysia"],
-      action: { text: "Get Directions", link: "https://maps.google.com" },
+      details: [
+        "LG 10, Lower Ground Floor, Wisma UOA 2",
+        "Jalan Pinang, 50450 Kuala Lumpur",
+        "Malaysia"
+      ],
+      action: { 
+        text: "Get Directions", 
+        link: MAPS_URL,
+        external: true 
+      },
     },
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Call Us",
-      details: ["Main: 016-702 5699", "WhatsApp: 016-702 5699"],
-      action: { text: "Call Now", link: "tel:0167025699" },
+      details: [`Main: ${CLINIC_PHONE}`, `WhatsApp: ${CLINIC_PHONE}`],
+      action: { text: "Call Now", link: `tel:${CLINIC_PHONE}`, external: false },
     },
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email Us",
-      details: ["info@nexusclinic.com.my", "care@nexusclinic.com.my"],
-      action: { text: "Send Email", link: "mailto:info@nexusclinic.com.my" },
+      details: [CLINIC_EMAIL],
+      action: { text: "Send Email", link: `mailto:${CLINIC_EMAIL}`, external: false },
     },
     {
       icon: <Clock className="w-6 h-6" />,
@@ -124,7 +135,7 @@ export default function ContactUs() {
     { q: "Do I need an appointment to visit Nexus Clinic?", a: "Yes, we recommend booking an appointment to ensure our doctors can give you proper attention. Walk-ins are welcome but may have waiting time." },
     { q: "Is parking available at the clinic?", a: "Yes, Wisma UOA II has basement parking. We validate parking tickets for patients." },
     { q: "What is the nearest LRT station?", a: "KLCC LRT station is a 5-minute walk from our clinic. Ampang Park station is also nearby." },
-    { q: "Can I book a consultation via WhatsApp?", a: "Yes! You can reach us on WhatsApp at 016-702 5699 for appointments and enquiries." },
+    { q: "Can I book a consultation via WhatsApp?", a: "Yes! You can reach us on WhatsApp for appointments and enquiries." },
     { q: "Do you offer online consultations?", a: "Yes, we offer virtual consultations for certain treatments. Please contact us to arrange." },
     { q: "What languages do your doctors speak?", a: "Our doctors speak English, Bahasa Malaysia, Mandarin, Cantonese, and Tamil." },
   ];
@@ -206,8 +217,8 @@ export default function ContactUs() {
                 {info.action && (
                   <a
                     href={info.action.link}
-                    target={info.action.link.startsWith("http") ? "_blank" : undefined}
-                    rel={info.action.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                    target={info.action.external ? "_blank" : undefined}
+                    rel={info.action.external ? "noopener noreferrer" : undefined}
                     className="inline-flex items-center gap-1 text-wine font-inter text-sm mt-4 hover:gap-2 transition-all"
                   >
                     {info.action.text}
@@ -230,63 +241,39 @@ export default function ContactUs() {
           className="container mx-auto max-w-6xl"
         >
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Left - Map & Location Info */}
             <motion.div variants={fadeInLeft}>
               <h2 className="font-georgia text-2xl md:text-3xl text-brown mb-6">Find Us Here</h2>
               
-              {/* Map Container */}
-              <div className="rounded-2xl overflow-hidden shadow-lg mb-6">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.720939743111!2d101.715592!3d3.158475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc37c4b7f2c3e3%3A0x8f5c5c5c5c5c5c5c!2sWisma%20UOA%20II!5e0!3m2!1sen!2smy!4v1700000000000!5m2!1sen!2smy"
-                  width="100%"
-                  height="300"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full"
-                />
+              {/* Static Map Image - Responsive height */}
+              <div className="rounded-2xl overflow-hidden shadow-lg mb-6 group">
+                <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="block overflow-hidden">
+                  <img
+                    src="/images/map.png"
+                    alt="Nexus Clinic location map at Wisma UOA 2, Kuala Lumpur"
+                    className="w-full h-[180px] sm:h-[200px] md:h-[400px] object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                </a>
               </div>
-
-              {/* Transportation Options */}
               <div className="bg-cream rounded-2xl p-6 mb-6">
-                <h3 className="font-georgia text-lg text-brown mb-4">How to Get Here</h3>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {transportationOptions.map((option, idx) => (
-                    <div key={idx} className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 text-wine">
-                        {option.icon}
-                      </div>
-                      <div>
-                        <p className="font-inter font-semibold text-brown text-sm">{option.title}</p>
-                        <p className="text-taupe font-inter text-xs">{option.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Nearby Landmarks */}
-              <div className="bg-cream rounded-2xl p-6">
-                <h3 className="font-georgia text-lg text-brown mb-4">Nearby Landmarks</h3>
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-3 text-taupe font-inter text-sm">
-                    <div className="w-1.5 h-1.5 bg-wine rounded-full" />
-                    KLCC Suria Mall - 5 minute walk
-                  </li>
-                  <li className="flex items-center gap-3 text-taupe font-inter text-sm">
-                    <div className="w-1.5 h-1.5 bg-wine rounded-full" />
-                    Petronas Twin Towers - 8 minute walk
-                  </li>
-                  <li className="flex items-center gap-3 text-taupe font-inter text-sm">
-                    <div className="w-1.5 h-1.5 bg-wine rounded-full" />
-                    Kuala Lumpur Convention Centre - 6 minute walk
-                  </li>
-                  <li className="flex items-center gap-3 text-taupe font-inter text-sm">
-                    <div className="w-1.5 h-1.5 bg-wine rounded-full" />
-                    Avenue K Shopping Mall - 3 minute walk
-                  </li>
-                </ul>
+                <h3 className="font-georgia text-lg text-brown mb-4">Our Location</h3>
+                <a
+                  href={MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-taupe font-inter text-sm mb-4 hover:text-wine transition-colors"
+                >
+                  {CLINIC_ADDRESS}
+                </a>
+                <a
+                  href={MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-wine font-inter text-sm hover:gap-3 transition-all"
+                >
+                  <MapPin className="w-4 h-4" />
+                  Open in Google Maps
+                  <ChevronRight className="w-3 h-3" />
+                </a>
               </div>
             </motion.div>
 
@@ -436,151 +423,10 @@ export default function ContactUs() {
           </div>
         </motion.div>
       </section>
+      <FAQ data={faqData}/>
 
-      {/* WhatsApp & Quick Contact Section */}
-      <section className="py-16 px-4 bg-cream">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-5xl text-center"
-        >
-          <motion.div variants={fadeInUp}>
-            <MessageCircle className="w-12 h-12 text-wine mx-auto mb-4" />
-            <h2 className="font-georgia text-3xl text-brown mb-4">Prefer WhatsApp?</h2>
-            <p className="text-taupe font-inter max-w-2xl mx-auto mb-6">
-              We understand that sometimes a quick message is easier. 
-              Reach out to us on WhatsApp for faster responses.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Whatsapp 
-                message="Hi, I'd like to enquire about treatments at Nexus Clinic KL. Please help me with more information."
-              />
-              <Link href="tel:0167025699">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-8 py-3 rounded-full border-2 border-wine text-wine font-inter font-semibold hover:bg-wine hover:text-light transition-all flex items-center justify-center gap-2"
-                >
-                  <Phone className="w-4 h-4" />
-                  Call 016-702 5699
-                </motion.button>
-              </Link>
-            </div>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-20 px-4 bg-light">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <span className="text-sm tracking-widest uppercase mb-4 block text-wine font-inter">
-              Common Questions
-            </span>
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">
-              Frequently Asked Questions
-            </h2>
-            <div className="w-20 h-0.5 bg-wine mx-auto mt-4"></div>
-          </motion.div>
-
-          <div className="space-y-4">
-            {faqData.map((faq, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeInUp}
-                className="bg-cream p-6 rounded-xl border border-taupe/10"
-              >
-                <h3 className="font-georgia text-lg text-brown mb-3">{faq.q}</h3>
-                <p className="text-taupe font-inter text-sm leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Business Hours & Emergency Contact */}
-      <section className="py-16 px-4 bg-wine">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-4xl"
-        >
-          <div className="grid md:grid-cols-2 gap-8">
-            <motion.div variants={fadeInLeft} className="text-center md:text-left">
-              <ClockIcon className="w-10 h-10 text-cream mb-4" />
-              <h3 className="font-georgia text-2xl text-light mb-2">Business Hours</h3>
-              <div className="space-y-2 mt-4">
-                <div className="flex justify-between items-center text-cream/90 font-inter">
-                  <span>Monday - Friday</span>
-                  <span>9:00 AM - 6:00 PM</span>
-                </div>
-                <div className="flex justify-between items-center text-cream/90 font-inter">
-                  <span>Saturday</span>
-                  <span>9:00 AM - 6:00 PM</span>
-                </div>
-                <div className="flex justify-between items-center text-cream/70 font-inter">
-                  <span>Sunday</span>
-                  <span>Closed</span>
-                </div>
-                <div className="flex justify-between items-center text-cream/70 font-inter">
-                  <span>Public Holidays</span>
-                  <span>By Appointment</span>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="text-center md:text-left">
-              <Heart className="w-10 h-10 text-cream mb-4" />
-              <h3 className="font-georgia text-2xl text-light mb-2">Emergency Contact</h3>
-              <p className="text-cream/80 font-inter mb-4">
-                For urgent medical concerns outside business hours, please contact:
-              </p>
-              <div className="space-y-2">
-                <p className="text-cream/90 font-inter">
-                  <span className="font-semibold">Emergency Hotline:</span> 016-702 5699
-                </p>
-                <p className="text-cream/80 font-inter text-sm">
-                  For life-threatening emergencies, please call 999 immediately.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Social Media Section */}
-      <section className="py-16 px-4 bg-light">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-4xl text-center"
-        >
-          <motion.div variants={fadeInUp}>
-            <h2 className="font-georgia text-2xl md:text-3xl text-brown mb-4">Follow Us</h2>
-            <p className="text-taupe font-inter mb-8">
-              Stay connected with us on social media for updates, promotions, and educational content.
-            </p>
-            <div className="flex items-center justify-center gap-6">
-              <SocialIcons />
-            </div>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-4 bg-brown">
+      {/* CTA Section - Updated WhatsApp link */}
+      <section className="py-20 px-4 bg-wine">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -596,7 +442,7 @@ export default function ContactUs() {
               Book your consultation today and take the first step toward achieving your aesthetic goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Link href="/contact-us/book-consultation">
+              <Link href="/consultation">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -606,51 +452,11 @@ export default function ContactUs() {
                   <ArrowRight className="w-5 h-5" />
                 </motion.button>
               </Link>
-              <Whatsapp 
-                message="Hi, I'd like to book a consultation at Nexus Clinic KL. Please let me know available slots."
-                variant="light"
-              />
+              <Whatsapp message={"can i get more info"} variant="light"/>
             </div>
-            <p className="text-cream/80 font-inter text-sm">
-              Limited Slots Available This Week | Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur
-            </p>
           </motion.div>
         </motion.div>
       </section>
-
-      {/* Footer Brand Content */}
-      <section className="py-12 px-4 bg-wine/90">
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-4xl text-center"
-        >
-          <p className="text-cream/70 font-inter text-sm leading-relaxed">
-            Nexus Clinic is an advanced aesthetic and medical clinic in Kuala Lumpur offering doctor-led treatments 
-            for face, skin, hair, and weight loss. We focus on clear diagnosis, natural-looking outcomes, and treatment 
-            plans built around long-term confidence and wellbeing.
-          </p>
-          <div className="flex items-center justify-center gap-4 mt-6">
-            <Link href="/privacy-policy" className="text-cream/50 hover:text-cream text-xs transition-colors">
-              Privacy Policy
-            </Link>
-            <span className="text-cream/30">|</span>
-            <Link href="/terms-conditions" className="text-cream/50 hover:text-cream text-xs transition-colors">
-              Terms & Conditions
-            </Link>
-            <span className="text-cream/30">|</span>
-            <Link href="/sitemap" className="text-cream/50 hover:text-cream text-xs transition-colors">
-              Sitemap
-            </Link>
-          </div>
-          <p className="text-cream/40 font-inter text-xs mt-6">
-            © 2024 Nexus Clinic Kuala Lumpur. All rights reserved.
-          </p>
-        </motion.div>
-      </section>
-
     </div>
   );
 }
