@@ -120,11 +120,18 @@ export const Footer = ({ locale }: { locale?: string }) => {
           <div>
             <h4 className="font-semibold mb-6 text-brown">{getText("footer.contactTitle", "Contact")}</h4>
             <ul className="space-y-3 text-taupe">
-              <li>{getText("footer.address", "LG 10, Lower Ground Floor, Wisma UOA 2, Kuala Lumpur, 50450 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia")}</li>
+              <li><a 
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Nexus Clinic Wisma UOA 2 Kuala Lumpur")}`}
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-wine cursor-pointer transition-colors"
+                >
+                  {getText("footer.address", "LG 10, Lower Ground Floor, Wisma UOA 2, Kuala Lumpur, 50450 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia")}
+                </a></li>
               <li>
                 <a 
                   href={`tel:${getText("footer.phone", "+016-774 5699").replace(/\s/g, '')}`} 
-                  className="hover:text-wine transition-colors"
+                  className="hover:text-wine cursor-pointer transition-colors"
                 >
                   {getText("footer.phone", "+016‑774 5699")}
                 </a>
@@ -132,7 +139,7 @@ export const Footer = ({ locale }: { locale?: string }) => {
               <li>
                 <a 
                   href={`mailto:${getText("footer.email", "contact@nexus-clinic.com")}`} 
-                  className="hover:text-wine transition-colors"
+                  className="hover:text-wine cursor-pointer transition-colors"
                 >
                   {getText("footer.email", "contact@nexus-clinic.com")}
                 </a>
