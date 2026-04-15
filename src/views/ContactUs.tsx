@@ -277,149 +277,34 @@ export default function ContactUs() {
               </div>
             </motion.div>
 
-            {/* Right - Contact Form */}
-            <motion.div variants={fadeInRight}>
-              <div className="bg-cream rounded-2xl p-6 md:p-8 shadow-lg border border-taupe/10">
-                <h2 className="font-georgia text-2xl md:text-3xl text-brown mb-2">Send Us a Message</h2>
-                <p className="text-taupe font-inter text-sm mb-6">
-                  Fill in the form below and we will get back to you within 24 hours.
-                </p>
-
-                {isSubmitted ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="bg-green-50 border border-green-200 rounded-xl p-6 text-center"
-                  >
-                    <CheckCircleIcon className="w-12 h-12 text-green-500 mx-auto mb-3" />
-                    <h3 className="font-georgia text-xl text-brown mb-2">Message Sent!</h3>
-                    <p className="text-taupe font-inter text-sm">
-                      Thank you for reaching out. We will contact you shortly.
-                    </p>
-                  </motion.div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    <div className="grid sm:grid-cols-2 gap-5">
-                      <div>
-                        <label className="block text-brown font-inter text-sm mb-2">
-                          Your Name <span className="text-wine">*</span>
-                        </label>
-                        <div className="relative">
-                          <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-taupe" />
-                          <input
-                            type="text"
-                            name="name"
-                            value={formState.name}
-                            onChange={handleChange}
-                            required
-                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-taupe/20 bg-light focus:outline-none focus:border-wine transition-colors text-brown font-inter"
-                            placeholder="John Tan"
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <label className="block text-brown font-inter text-sm mb-2">
-                          Email Address <span className="text-wine">*</span>
-                        </label>
-                        <div className="relative">
-                          <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-taupe" />
-                          <input
-                            type="email"
-                            name="email"
-                            value={formState.email}
-                            onChange={handleChange}
-                            required
-                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-taupe/20 bg-light focus:outline-none focus:border-wine transition-colors text-brown font-inter"
-                            placeholder="john@example.com"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="grid sm:grid-cols-2 gap-5">
-                      <div>
-                        <label className="block text-brown font-inter text-sm mb-2">
-                          Phone Number
-                        </label>
-                        <div className="relative">
-                          <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-taupe" />
-                          <input
-                            type="tel"
-                            name="phone"
-                            value={formState.phone}
-                            onChange={handleChange}
-                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-taupe/20 bg-light focus:outline-none focus:border-wine transition-colors text-brown font-inter"
-                            placeholder="012-345 6789"
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <label className="block text-brown font-inter text-sm mb-2">
-                          Preferred Treatment
-                        </label>
-                        <div className="relative">
-                          <Target className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-taupe" />
-                          <select
-                            name="treatment"
-                            value={formState.treatment}
-                            onChange={handleChange}
-                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-taupe/20 bg-light focus:outline-none focus:border-wine transition-colors text-brown font-inter appearance-none"
-                          >
-                            {treatmentOptions.map((option, idx) => (
-                              <option key={idx} value={option}>
-                                {option}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-brown font-inter text-sm mb-2">
-                        Your Message
-                      </label>
-                      <div className="relative">
-                        <MessageSquare className="absolute left-3 top-4 w-4 h-4 text-taupe" />
-                        <textarea
-                          name="message"
-                          value={formState.message}
-                          onChange={handleChange}
-                          rows={5}
-                          className="w-full pl-10 pr-4 py-3 rounded-xl border border-taupe/20 bg-light focus:outline-none focus:border-wine transition-colors text-brown font-inter resize-none"
-                          placeholder="Tell us about your concerns or questions..."
-                        />
-                      </div>
-                    </div>
-
-                    <motion.button
-                      type="submit"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      disabled={isSubmitting}
-                      className="w-full bg-wine text-light py-3 rounded-xl font-inter font-semibold hover:bg-wine/90 transition-all flex items-center justify-center gap-2 disabled:opacity-70"
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <div className="w-5 h-5 border-2 border-light/30 border-t-light rounded-full animate-spin" />
-                          Sending...
-                        </>
-                      ) : (
-                        <>
-                          Send Message
-                          <SendHorizontal className="w-4 h-4" />
-                        </>
-                      )}
-                    </motion.button>
-
-                    <p className="text-taupe font-inter text-xs text-center">
-                      By submitting this form, you agree to our privacy policy. 
-                      We will never share your information.
-                    </p>
-                  </form>
-                )}
-              </div>
-            </motion.div>
+              {/* Right - Contact Form */}
+              <motion.div variants={fadeInRight}>
+                <div className="">
+                  <h2 className="font-georgia text-2xl md:text-3xl text-brown mb-2">Book Your Appointment</h2>
+                  <p className="text-taupe font-inter text-sm mb-6">
+                    Fill in the form below to schedule your consultation. We'll confirm your appointment within 24 hours.
+                  </p>
+                    <iframe
+                      src="https://api.leadconnectorhq.com/widget/form/UKxErVKYDJqN3CowpP09"
+                      style={{ width: '100%', height: '738px', border: 'none', borderRadius: '12px' }}
+                      id="inline-UKxErVKYDJqN3CowpP09"
+                      data-layout="{'id':'INLINE'}"
+                      data-trigger-type="alwaysShow"
+                      data-trigger-value=""
+                      data-activation-type="alwaysActivated"
+                      data-activation-value=""
+                      data-deactivation-type="neverDeactivate"
+                      data-deactivation-value=""
+                      data-form-name="Calender Form Neuxs v2"
+                      data-height="738"
+                      data-layout-iframe-id="inline-UKxErVKYDJqN3CowpP09"
+                      data-form-id="UKxErVKYDJqN3CowpP09"
+                      title="Appointment Booking Form - Nexus Clinic"
+                      className="w-full h-full"
+                      loading="lazy"
+                    />
+                </div>
+              </motion.div>
           </div>
         </motion.div>
       </section>

@@ -1,19 +1,21 @@
 import { motion } from "framer-motion";
-
+import Image from "next/image";
 const HeroSection = ({ t }: { t: (key: string) => string }) => {
   return (
     <section className="relative h-[700px] w-full overflow-hidden">
       {/* Desktop Image */}
-      <img
-        src="/images/hero_image.png"
+      <Image
+        src="/images/hero_image.webp"
         alt="Clinic treatment"
+        fill
         className="absolute inset-0 w-full h-full object-cover object-center hidden md:block"
       />
 
       {/* Mobile Image */}
-      <img
-        src="/images/hero_image_mobile.png"
+      <Image
+        src="/images/hero_image_mobile.webp"
         alt="Clinic treatment"
+        fill
         className="absolute inset-0 w-full h-full object-cover object-center md:hidden"
       />
 

@@ -20,8 +20,8 @@ import {
 } from "lucide-react";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
-import GalleryPage from "./SliderGallery";
-import { DoctorsSection } from "@/src/components/DoctorSection";
+// import GalleryPage from "./SliderGallery";
+// import { DoctorsSection } from "@/src/components/DoctorSection";
 import FAQ from "@/src/components/FAQ";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import SocialIcons from "@/src/components/SocialIcons";
