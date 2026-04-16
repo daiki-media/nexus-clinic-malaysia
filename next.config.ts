@@ -16,19 +16,19 @@ const securityHeaders = [
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       img-src 'self' https: data:;
       font-src 'self' https://fonts.gstatic.com data:;
-      connect-src 'self' 
-        https://blog.nexus-clinic.com 
-        https://api.leadconnectorhq.com 
-        https://maps.googleapis.com 
-        https://places.googleapis.com 
-        https://www.googleapis.com 
-        https://wa.me 
-        https://api.whatsapp.com 
-      frame-src https://api.leadconnectorhq.com https://app.leadconnectorhq.com;
+      connect-src 'self'
+        https://blog.nexus-clinic.com
+        https://api.leadconnectorhq.com
+        https://maps.googleapis.com
+        https://places.googleapis.com
+        https://www.googleapis.com
+        https://wa.me
+        https://api.whatsapp.com;
+      frame-src 'self' https://api.leadconnectorhq.com https://app.leadconnectorhq.com;
       upgrade-insecure-requests;
       block-all-mixed-content;
     `.replace(/\n/g, "").trim(),
-  },
+  }
 ];
 
 const nextConfig: NextConfig = {
