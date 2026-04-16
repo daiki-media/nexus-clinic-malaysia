@@ -9,6 +9,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link
+            rel="preload"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
         {/* Google Tag Manager - Script */}
         <Script
           id="gtm-script"

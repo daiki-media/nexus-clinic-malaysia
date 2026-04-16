@@ -37,7 +37,7 @@ import { useState } from "react";
 
 // Updated contact information
 const CLINIC_ADDRESS = "LG 10, Lower Ground Floor, Wisma UOA 2, Kuala Lumpur, 50450 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia";
-const CLINIC_PHONE = "+60167745699";
+const CLINIC_PHONE = "+0167025699";
 const CLINIC_EMAIL = "contact@nexus-clinic.com";
 const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CLINIC_ADDRESS)}`;
 
@@ -107,7 +107,7 @@ export default function ContactUs() {
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Call Us",
-      details: [`Main: ${CLINIC_PHONE}`, `WhatsApp: ${CLINIC_PHONE}`],
+      details: [`Main: ${CLINIC_PHONE}`],
       action: { text: "Call Now", link: `tel:${CLINIC_PHONE}`, external: false },
     },
     {

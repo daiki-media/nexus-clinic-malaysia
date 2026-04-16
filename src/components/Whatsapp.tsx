@@ -26,7 +26,7 @@ interface WhatsappProps {
 
 // Regular WhatsApp button component
 const Whatsapp = ({ message, variant = "dark" }: WhatsappProps) => {
-  const whatsappNumber = "60123456789";
+  const whatsappNumber = "60168245699";
 
   const encodedMessage = encodeURIComponent(message);
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
@@ -61,7 +61,7 @@ interface FloatingWhatsappProps {
 }
 
 const FloatingWhatsapp = ({ 
-  phoneNumber = "60167025699", 
+  phoneNumber = "60168245699", 
   isActive = true,
   hideOnMobile = true 
 }: FloatingWhatsappProps) => {

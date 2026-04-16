@@ -15,7 +15,7 @@ const securityHeaders = [
       script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       img-src 'self' https: data:;
-      font-src 'self' https://fonts.gstatic.com data:;
+      font-src 'self' https://fonts.gstatic.com data: https://fonts.googleapis.com;
       connect-src 'self'
         https://blog.nexus-clinic.com
         https://api.leadconnectorhq.com
@@ -57,5 +57,19 @@ const nextConfig: NextConfig = {
     ];
   },
 };
-
+module.exports = {
+  async headers() {
+    return [
+      {
+        source: '/images/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
+};
 export default nextConfig;

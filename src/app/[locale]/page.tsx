@@ -4,8 +4,8 @@ import { Metadata } from "next";
 
 const baseurl = process.env.BASE_URL || "https://www.nexus-clinic.com"
 export const metadata: Metadata = {
-  title: " Nexus Clinic Kuala Lumpur – MOH Certified Award-Winning Aesthetic & Weight Loss Clinic",
-  description: "MOH-certified, award-winning aesthetic and weight loss clinic in Malaysia offering safe, advanced, and personalized treatments designed to help you achieve beauty and wellness goals.",
+  title: "Aesthetic Clinic Kuala Lumpur (KL) | Doctor-Led Skin & Weight Loss Treatments",
+  description: "Doctor-led aesthetic clinic in Kuala Lumpur with certified injectors and natural-looking results for skin & weight loss.",
   alternates: {
     canonical: `${baseurl}`,
   },
