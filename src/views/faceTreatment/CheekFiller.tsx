@@ -60,7 +60,14 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
       volume: "1 to 2.5ml per side. More volume needed for structural definition",
       product: "Juvederm Volux or Radiesse for firmer structural angularity",
       avoid: "Submalar softness that feminises the midface",
-      combine: "Jawline filler, chin filler for complete masculine structure",
+      combine: (
+            <>
+              Cheek  filler, Jawline filler{" "}
+              <Link href="/face/jawline-filler-malaysia/" className="font-bold text-wine">
+                in Malaysia can effectively restore volume and improve facial contour.
+              </Link>
+            </>
+      ),
       outcome: "Face looks strong, defined, and structured without looking overdone",
     },
   ];
@@ -414,8 +421,7 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
           
           <motion.div variants={fadeInUp} className="mt-8 p-5 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter">
-              Patients who start cheek filler maintenance in their late 20s or early 30s typically require less volume at each session 
-              and maintain a natural, youthful appearance with minimal intervention over time.
+              Patients wanting to address under-eye hollowing alongside their cheek concerns often combine treatment with <Link href="/face/tear-trough-filler-malaysia/" className="font-bold text-wine">tear trough filler </Link> at Nexus Clinic KL for a complete midface result.
             </p>
           </motion.div>
           
@@ -562,7 +568,7 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
           </motion.div>
           
           <motion.p variants={fadeInUp} className="text-center text-sm text-taupe mt-6 italic">
-            All pricing at Nexus Clinic KL is confirmed after consultation. There are no hidden fees and no pressure to proceed.
+            For patients wanting a full overview of all filler treatments and pricing at the clinic, our <Link href="/face/dermal-filler-malaysia/" className="font-bold text-wine" >dermal filler Malaysia </Link> page covers every treatment area.
           </motion.p>
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
@@ -631,6 +637,9 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
                 </div>
               ))}
             </div>
+              <p className="text-center py-4">Patients who combine cheek filler with skin quality improvement often explore 
+               <Link href="/face/skin-booster-malaysia/" className="font-bold text-wine"> skin booster treatment in KL </Link>
+                at Nexus Clinic to address both structure and skin quality in the midface.</p>
           </motion.div>
         </motion.div>
       </section>
