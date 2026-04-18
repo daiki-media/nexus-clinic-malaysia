@@ -12,7 +12,7 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: `
       default-src 'self';
-      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://static.cloudflareinsights.com https://www.googletagmanager.com;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       img-src 'self' https: data:;
       font-src 'self' https://fonts.gstatic.com data: https://fonts.googleapis.com;
@@ -32,7 +32,7 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  poweredByHeader: false, // Security: Don't tell hackers we use Next.js
+  poweredByHeader: false,
   reactStrictMode: true,
   trailingSlash: true,
 

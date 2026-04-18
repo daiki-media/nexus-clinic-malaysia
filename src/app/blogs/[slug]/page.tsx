@@ -11,29 +11,19 @@ import Image from "next/image";
 
 const baseUrl = process.env.BASE_URL || "https://www.nexus-clinic.com";
 
-// Metadata generation
-export const revalidate = 3600;
-
+// export const revalidate = 3600;
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   try {
     const { slug } = await params;
-
-    // If slug is missing, return default metadata
     if (!slug) {
       return { title: "Blog Post Not Found" };
     }
-
-    // Fetch the WordPress post using the slug
     const wordPressPost = await wordpressService.getPost(slug);
-
-    // If post not found, return default metadata
     if (!wordPressPost) {
       return { title: "Blog Post Not Found" };
     }
 
     const post = adaptWordPressPost(wordPressPost, 0);
-
-    // Use post's SEO data if available
     if (post.seo) {
       return {
         title: post.seo.title,
@@ -84,8 +74,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return { title: "Blog Post Not Found" };
   }
 }
-
-// Main Page Component
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   try {
     const { slug } = await params;
@@ -94,23 +82,18 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       notFound();
       return null;
     }
-
     const wordPressPost = await wordpressService.getPost(slug);
-
-    // Handle missing post
     if (!wordPressPost) {
       notFound();
       return null;
     }
 
     const post = adaptWordPressPost(wordPressPost, 0);
-
-    // Handle missing or empty post data
     if (!post.title || !post.content) {
       notFound();
       return null;
     }
-
+    console.log(post);
     const faqSchema =
       post.faqs && post.faqs.length > 0
         ? {
@@ -220,6 +203,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   } catch (error) {
     console.error("Error fetching blog post:", error);
     notFound();
-    return null; // Handle the error gracefully
+    return null;
   }
 }
