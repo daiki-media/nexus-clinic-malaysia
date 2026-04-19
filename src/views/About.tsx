@@ -102,30 +102,6 @@ const doctors = [
     bio: "Dr. Ashvinia combines aesthetic medicine with wellness and sustainability, providing personalized care for natural, confident results.",
     image: "/images/main/Dr-Ashvinia-bala.webp",
   },
-  {
-    name: "Dr. Charmaine Grace",
-    role: "Expert in Advanced Laser Treatments",
-    specialty: "Advanced Laser Treatments & Skincare",
-    experience: "6+ years",
-    bio: "Dr. Charmaine specializes in advanced laser treatments including Pico Laser for pigmentation, acne scars, and uneven skin tone.",
-    image: "/images/main/Dr.-Charmaine-Image.webp",
-  },
-  {
-    name: "Dr. Sanskara Babu Gorle",
-    role: "Clinical Pharmacologist",
-    specialty: "Clinical Pharmacology & Personalized Medicine",
-    experience: "10+ years",
-    bio: "Dr. Sanskara focuses on drug safety, personalized medicine, and optimizing treatment plans with over a decade of experience.",
-    image: "/images/main/dr-sanskara-babu-gorle.webp",
-  },
-  {
-    name: "Phr. Anum Jawed",
-    role: "Clinical Pharmacist",
-    specialty: "Drug Formulation & Medication Therapy Management",
-    experience: "8+ years",
-    bio: "Phr. Anum specializes in optimizing medication formulations and ensuring safe, effective medication therapy for patients.",
-    image: "/images/main/anum-jawed.webp",
-  },
 ];
 
   const stats = [
