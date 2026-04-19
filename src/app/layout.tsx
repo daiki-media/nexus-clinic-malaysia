@@ -9,6 +9,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="preload" as="image" href="/images/hero_image.webp" />
+        <link rel="preload" as="image" href="/images/hero_image_mobile.webp" />
         <link
             rel="preload"
             href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"

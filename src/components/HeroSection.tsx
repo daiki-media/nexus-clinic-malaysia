@@ -8,6 +8,8 @@ const HeroSection = ({ t }: { t: (key: string) => string }) => {
         src="/images/hero_image.webp"
         alt="Clinic treatment"
         fill
+        priority
+        sizes="100vw"
         className="absolute inset-0 w-full h-full object-cover object-center hidden md:block"
       />
 
@@ -16,6 +18,8 @@ const HeroSection = ({ t }: { t: (key: string) => string }) => {
         src="/images/hero_image_mobile.webp"
         alt="Clinic treatment"
         fill
+        priority
+        sizes="100vw"
         className="absolute inset-0 w-full h-full object-cover object-center md:hidden"
       />
 
