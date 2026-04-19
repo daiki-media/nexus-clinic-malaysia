@@ -138,7 +138,7 @@ const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
             </p>
             <div className="flex justify-center mt-6">
               <motion.a
-                href="contact-us"
+                href="/contact-us"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-wine hover:bg-wine/90 text-white px-6 py-3 rounded-full font-medium transition-all shadow-md flex items-center gap-2"
@@ -203,7 +203,7 @@ const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
 
           <div className="flex justify-center mt-6">
             <motion.a
-                href="contact-us"
+                href="/contact-us"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-wine hover:bg-wine/90 text-white px-6 py-3 rounded-full font-medium transition-all shadow-md flex items-center gap-2"
@@ -275,7 +275,7 @@ const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
 
           <div className="flex justify-center mt-6">
             <motion.a
-              href="contact-us"
+              href="/contact-us"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-wine hover:bg-wine/90 text-white px-6 py-3 rounded-full font-medium transition-all shadow-md flex items-center gap-2"
@@ -317,7 +317,7 @@ const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
 
           <div className="flex justify-center mt-8">
             <motion.a
-              href="contact-us"
+              href="/contact-us"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-wine hover:bg-wine/90 text-white px-6 py-3 rounded-full font-medium transition-all shadow-md flex items-center gap-2"
@@ -364,7 +364,7 @@ const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
 
           <div className="flex justify-center mt-6">
             <motion.a
-              href="contact-us"
+              href="/contact-us"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-wine hover:bg-wine/90 text-white px-6 py-3 rounded-full font-medium transition-all shadow-md flex items-center gap-2"
@@ -434,7 +434,7 @@ const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
 
           <div className="flex flex-wrap gap-4 mt-8">
             <motion.a
-              href="contact-us"
+              href="/contact-us"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-wine hover:bg-wine/90 text-white px-6 py-3 rounded-full font-medium transition-all shadow-md flex items-center gap-2"
@@ -489,7 +489,7 @@ const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="contact-us"
+              href="/contact-us"
               className="bg-wine hover:bg-wine/90 text-white px-6 py-3 rounded-full font-medium transition-all shadow-md flex items-center gap-2"
             >
               <Calendar className="w-4 h-4" />
@@ -566,7 +566,7 @@ const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-white text-wine hover:bg-white/90 px-8 py-3 rounded-full font-medium shadow-lg flex items-center gap-2"
-              href="contact-us"
+              href="/contact-us"
             >
               <Calendar className="w-4 h-4" />
               Free Consultation
