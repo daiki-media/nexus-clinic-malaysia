@@ -12,7 +12,13 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: `
       default-src 'self';
-      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://static.cloudflareinsights.com https://www.googletagmanager.com;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+        https://maps.googleapis.com 
+        https://static.cloudflareinsights.com 
+        https://www.googletagmanager.com
+        https://www.google-analytics.com
+        https://www.gstatic.com
+      ;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       img-src 'self' https: data:;
       font-src 'self' https://fonts.gstatic.com data: https://fonts.googleapis.com;
@@ -24,7 +30,9 @@ const securityHeaders = [
         https://www.googleapis.com
         https://wa.me
         https://api.whatsapp.com;
-      frame-src 'self' https://api.leadconnectorhq.com https://app.leadconnectorhq.com;
+      frame-src 'self' https://api.leadconnectorhq.com 
+        https://app.leadconnectorhq.com
+        ;
       upgrade-insecure-requests;
       block-all-mixed-content;
     `.replace(/\n/g, "").trim(),
