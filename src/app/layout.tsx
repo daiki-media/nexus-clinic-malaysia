@@ -23,14 +23,13 @@ export default function RootLayout({
       "addressRegion": "Federal Territory of Kuala Lumpur",
       "addressCountry": "MY"
     },
-    "sameAs": [
-      "https://www.facebook.com/",
-      "https://www.instagram.com/"
-    ],
-    "openingHours": [
-      "Mon-Fri 10:00-19:00",
-      "Sat 10:00-17:00"
-    ]
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": 4.7,
+      "reviewCount": 483,
+      "bestRating": 5,
+      "worstRating": 1
+    }
   };
 
   return (
