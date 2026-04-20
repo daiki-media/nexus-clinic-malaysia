@@ -30,7 +30,7 @@
       "name": "Face Treatments in Malaysia",
       "url": "https://www.nexus-clinic.com/face/",
       "description": "Enhance facial features with Botox, fillers & lifting treatments in KL. Doctor-led care for natural, balanced and refined results.",
-      "procedureType": "Aesthetic",
+      "procedureType": "http://schema.org/NoninvasiveProcedure",
       "recognizingAuthority": {
         "@type": "Organization",
         "name": "Nexus"

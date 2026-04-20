@@ -30,7 +30,7 @@
       "name": "吉隆坡最佳皮肤填充剂，打造自然丰盈 与专业轮廓塑形",
       "url": "https://www.nexus-clinic.com/face/dermal-filler-malaysia/",
       "description": "Trusted results. Award-winning injectors and aesthetic doctors at Nexus Clinic KL deliver expert dermal filler in Kuala Lumpur. Natural volume, sharper contours, zero surgery. Book your free consultation today.",
-      "procedureType": "Aesthetic",
+      "procedureType": "http://schema.org/NoninvasiveProcedure",
       "recognizingAuthority": {
         "@type": "Organization",
         "name": "Nexus Clinic"

@@ -10,7 +10,7 @@
       "serviceType": "Top Botox Treatment in Malaysia for Natural, Refreshed Results Without the Frozen Look",
       "provider": {
         "@type": "MedicalClinic",
-        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "@id": "https://www.nexus-clinic.com/#medicalclinic",
         "name": "Nexus Clinic",
         "url": "https://www.nexus-clinic.com"
       },
@@ -30,7 +30,7 @@
       "name": "Top Botox Treatment in Malaysia for Natural, Refreshed Results Without the Frozen Look",
       "url": "https://www.nexus-clinic.com/face/botox-malaysia/",
       "description": "Lines that appear when you talk, smile or frown are fixable in under 20 minutes. Nexus Clinic KL has delivered Botox treatment in Malaysia since 2001. Precise dosing, natural results, zero frozen look. Book your free consultation in Kuala Lumpur today.",
-      "procedureType": "Aesthetic",
+      "procedureType": "http://schema.org/NoninvasiveProcedure",
       "recognizingAuthority": {
         "@type": "Organization",
         "name": "Nexus Clinic"

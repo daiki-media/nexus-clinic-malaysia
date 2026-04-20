@@ -30,7 +30,7 @@
       "name": "Precise Nose Filler in Malaysia for a Higher Bridge, Sharper Tip and Balanced Profile",
       "url": "https://www.nexus-clinic.com/face/nose-filler-malaysia/",
       "description": "Enhance nose shape & profile with non-surgical nose filler in Kuala Lumpur. Natural-looking results by experienced aesthetic doctors. Schedule your consultation today.",
-      "procedureType": "Aesthetic",
+      "procedureType": "http://schema.org/NoninvasiveProcedure",
       "recognizingAuthority": {
         "@type": "Organization",
         "name": "Nexus Clinic"

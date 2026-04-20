@@ -30,7 +30,7 @@
       "name": "Tear Trough Filler in Malaysia for Brighter, Refreshed Under-Eyes That Look Rested",
       "url": "https://www.nexus-clinic.com/face/tear-trough-filler-malaysia/",
       "description": "Reduce under-eye hollows & dark circles with tear trough filler in Kuala Lumpur. Safe, natural-looking results by expert aesthetic doctors. Schedule today.",
-      "procedureType": "Aesthetic",
+      "procedureType": "http://schema.org/NoninvasiveProcedure",
       "recognizingAuthority": {
         "@type": "Organization",
         "name": "Nexus Clinic"

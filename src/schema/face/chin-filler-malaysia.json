@@ -30,7 +30,7 @@
       "name": "Chin Dermal Filler in Malaysia for a Sharper, Defined Profile",
       "url": "https://www.nexus-clinic.com/face/chin-filler-malaysia/",
       "description": "Trusted by thousands. Award-winning injectors and aesthetic doctors at Nexus Clinic KL deliver precise chin filler Kuala Lumpur results. Sharper profile, restored facial balance. No surgery. No downtime. Book today.",
-      "procedureType": "Aesthetic",
+      "procedureType": "http://schema.org/NoninvasiveProcedure",
       "recognizingAuthority": {
         "@type": "Organization",
         "name": "Nexus Clinic"

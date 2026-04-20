@@ -30,7 +30,7 @@
       "name": "Expert Lip Filler in Malaysia for Natural Volume and a Beautiful, Defined Pout",
       "url": "https://www.nexus-clinic.com/face/lip-filler-malaysia/",
       "description": "Instant, beautiful results. Award-winning injectors and aesthetic doctors at Nexus Clinic KL deliver natural lip filler in Malaysia. Fuller lips, defined pout, zero surgery. Book your free consultation in Kuala Lumpur today.",
-      "procedureType": "Aesthetic",
+      "procedureType": "http://schema.org/NoninvasiveProcedure",
       "recognizingAuthority": {
         "@type": "Organization",
         "name": "Nexus Clinic"

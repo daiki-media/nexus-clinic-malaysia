@@ -30,7 +30,7 @@
       "name": "Best Skin Booster Treatment in Malaysia for Hydrated, Glowing Skin",
       "url": "https://www.nexus-clinic.com/face/skin-booster-malaysia/",
       "description": "Get radiant, hydrated skin with skin booster treatment in Malaysia. Improve skin hydration & elasticity, reduce wrinkles for a youthful glow.",
-      "procedureType": "Aesthetic",
+      "procedureType": "http://schema.org/NoninvasiveProcedure",
       "recognizingAuthority": {
         "@type": "Organization",
         "name": "Nexus Clinic"

@@ -30,7 +30,7 @@
       "name": "Sculpted Cheek Filler in Malaysia for a Lifted, Youthful Midface",
       "url": "https://www.nexus-clinic.com/face/cheek-filler-malaysia/",
       "description": "Add volume & definition to your cheeks with professional cheek filler in Kuala Lumpur. Safe, natural results by skilled clinicians. Book a consultation now.",
-      "procedureType": "Aesthetic",
+      "procedureType": "http://schema.org/NoninvasiveProcedure",
       "recognizingAuthority": {
         "@type": "Organization",
         "name": "Nexus Clinic"
