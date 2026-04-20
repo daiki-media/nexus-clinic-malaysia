@@ -9,16 +9,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="preload" as="image" href="/images/hero_image.webp" />
-        <link rel="preload" as="image" href="/images/hero_image_mobile.webp" />
-        <link
-            rel="preload"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-        {/* Google Tag Manager - Script */}
         <Script
           id="gtm-script"
           strategy="afterInteractive"
@@ -32,7 +22,6 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-PRRSXZ2"
