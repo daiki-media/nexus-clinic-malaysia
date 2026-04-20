@@ -3,12 +3,11 @@ import { useEffect, useRef } from 'react';
 import { FAQItem } from '@/src/utils/faqExtractor'; 
 interface SingleBlogPostProps {
   content: string;
-  faqs?: FAQItem[];
   postSlug?: string;
 
 }
 
-export function SingleBlogPost({ content, faqs, postSlug }: SingleBlogPostProps) {
+export function SingleBlogPost({ content, postSlug }: SingleBlogPostProps) {
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -434,59 +433,12 @@ export function SingleBlogPost({ content, faqs, postSlug }: SingleBlogPostProps)
       });
     };
     
-    const processFAQs = () => {
-      const container = contentRef.current;
-      if (!container) return;
-
-      // ✅ Step 1: Convert "FAQs" title to H2
-      const paragraphs = Array.from(container.querySelectorAll('p'));
-
-      paragraphs.forEach(p => {
-        const text = p.textContent?.trim().toLowerCase();
-
-        if (text === 'faqs') {
-          const h2 = document.createElement('h2');
-          h2.className = 'font-serif font-bold text-3xl lg:text-4xl mt-10 mb-4 text-[#8c4f58]';
-          h2.textContent = 'FAQs';
-
-          p.parentNode?.replaceChild(h2, p);
-        }
-      });
-
-      // ✅ Step 2: Convert numbered questions to H3
-      const faqQuestions = paragraphs.filter(p => {
-        const strong = p.querySelector('strong');
-        if (!strong) return false;
-        const text = strong.textContent || '';
-        return /^\d+\./.test(text.trim());
-      });
-
-      faqQuestions.forEach((p) => {
-        const strong = p.querySelector('strong');
-        if (!strong) return;
-
-        const questionText = strong.textContent || '';
-        const cleanQuestionText = questionText.replace(/^\d+\.\s*/, '');
-
-        const h3 = document.createElement('h3');
-        h3.className = 'font-bold text-xl lg:text-2xl mt-8 text-brown';
-        h3.textContent = cleanQuestionText;
-
-        p.parentNode?.insertBefore(h3, p);
-
-        strong.remove();
-      });
-    };
-
-
     addAnimationStyles();
     processImages();
     processHeadings();
     processFancyHeadings();
     processLists();
     processParagraphs();
-    processFAQs();
-
   }, [content]);
 
   return (

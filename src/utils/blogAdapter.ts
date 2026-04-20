@@ -1,6 +1,6 @@
 import type { WordPressPost } from '../types/wordpress';
 import type { Post, CategoryValue } from '../types/blog';
-import { extractFAQsForYourSite , FAQItem } from './faqExtractor';
+import { processFAQs } from './faqExtractor';
 
 const categoryMapping: Record<string, CategoryValue> = {
   'skincare': 'skincare',
@@ -60,13 +60,14 @@ export function adaptWordPressPost(post: WordPressPost, index: number): Post {
     twitterImage: post.yoast_head_json.twitter_image || featuredImage,
     robots: post.yoast_head_json.robots ? `${post.yoast_head_json.robots.index}, ${post.yoast_head_json.robots.follow}` : 'index, follow'
   } : undefined;
-  const faqs = extractFAQsForYourSite(post.content.rendered);
+    const { items: faqs, html: contentWithProcessedFAQs } = processFAQs(post.content.rendered);
+    // console.log(faqs);
   return {
     id: post.id,
     category: getCategoryFromWordPress(post),
     tag: getTagFromWordPress(post),
     title: post.title.rendered,
-    content: post.content.rendered,
+    content: contentWithProcessedFAQs,
     date: formatDate(post.date),
     readTime: getReadTime(post.content.rendered),
     image: featuredImage,

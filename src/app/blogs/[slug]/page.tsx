@@ -8,10 +8,10 @@ import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import { ShareButton } from "@/src/components/blog/ShareButton"; 
 import { FloatingWhatsapp } from "@/src/components/Whatsapp";
 import Image from "next/image";
-
+import { generateFAQSchema } from '@/src/utils/faqExtractor';
 const baseUrl = process.env.BASE_URL || "https://www.nexus-clinic.com";
 
-// export const revalidate = 3600;
+export const revalidate = 3600;
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   try {
     const { slug } = await params;
@@ -49,8 +49,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         robots: post.seo.robots || "index, follow",
       };
     }
-
-    // Default metadata if SEO data is not available
     return {
       title: post.title.replace(/<[^>]*>/g, ""),
       description: post.content ? post.content.substring(0, 300).replace(/<[^>]*>/g, "") : "Read our latest blog post",
@@ -93,24 +91,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       notFound();
       return null;
     }
-    console.log(post);
-    const faqSchema =
-      post.faqs && post.faqs.length > 0
-        ? {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: post.faqs.map((faq) => ({
-              "@type": "Question",
-              name: faq.question || "No question provided",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: faq.answer || "No answer provided",
-              },
-            })),
-            url: `${baseUrl}/blogs/${slug}`,
-          }
-        : null;
-
+    const faqSchema = post.faqs?.length ? generateFAQSchema(post.faqs, `${baseUrl}/blogs/${slug}`) : null;
     return (
       <>
         {faqSchema && (
@@ -175,7 +156,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
           <section className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
             <article>
-              <SingleBlogPost content={post.content || ""} faqs={post.faqs} postSlug={slug} />
+              <SingleBlogPost content={post.content || ""} postSlug={slug} />
             </article>
 
             <div className="mt-16 pt-8 border-t border-taupe/20">

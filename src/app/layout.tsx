@@ -6,38 +6,44 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    "@id": "https://www.nexus-clinic.com/#medicalclinic",
+    "name": "Nexus Clinic - Weight Loss & Aesthetic Clinic Kuala Lumpur",
+    "url": "https://www.nexus-clinic.com/",
+    "telephone": "+60167745699",
+    "image": "https://www.nexus-clinic.com/logo.png",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
+      "addressLocality": "Kuala Lumpur",
+      "postalCode": "50450",
+      "addressRegion": "Federal Territory of Kuala Lumpur",
+      "addressCountry": "MY"
+    },
+    "sameAs": [
+      "https://www.facebook.com/",
+      "https://www.instagram.com/"
+    ],
+    "openingHours": [
+      "Mon-Fri 10:00-19:00",
+      "Sat 10:00-17:00"
+    ]
+  };
+
   return (
     <html lang="en">
-      <body>
-        <Script
-          id="schema-org"
+      <head>
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "MedicalClinic",
-              "@id": "https://www.nexus-clinic.com/#medicalclinic",
-              "name": "Nexus Clinic - Weight Loss & Aesthetic Clinic Kuala Lumpur",
-              "url": "https://www.nexus-clinic.com/",
-              "telephone": "+60-16-774-5699",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-                "addressLocality": "Kuala Lumpur",
-                "postalCode": "50450",
-                "addressRegion": "Federal Territory of Kuala Lumpur",
-                "addressCountry": "MY"
-              },
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": 4.7,
-                "reviewCount": 483,
-                "bestRating": 5,
-                "worstRating": 1
-              }
-            })
+            __html: JSON.stringify(schemaData),
           }}
         />
+      </head>
+      <body>
         <Script
           id="gtm-script"
           strategy="afterInteractive"
@@ -57,7 +63,7 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        
+
         {children}
       </body>
     </html>
