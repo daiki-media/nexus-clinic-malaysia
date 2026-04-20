@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/skin/pigmentation-treatment-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/skin/pigmentation-treatment-malaysia/#service",
+        "@id": "https://www.nexus-clinic.com/skin/pigmentation-treatment-malaysia/",
         "name": "Stop chasing 'brightening.' Start treating the cause of your dark spots."
       },
       "ratingValue": 4.8,

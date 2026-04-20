@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/skin/rosacea-treatment-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/skin/rosacea-treatment-malaysia/#service",
+        "@id": "https://www.nexus-clinic.com/skin/rosacea-treatment-malaysia/",
         "name": "Accurate Rosacea Treatment in Kuala Lumpur for Calmer, Less Reactive Facial Skin"
       },
       "ratingValue": 4.7,

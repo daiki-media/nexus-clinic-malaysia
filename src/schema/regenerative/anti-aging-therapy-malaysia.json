@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/regenerative/anti-aging-therapy-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/regenerative/anti-aging-therapy-malaysia/#service",
+        "@id": "https://www.nexus-clinic.com/regenerative/anti-aging-therapy-malaysia/",
         "name": "Top Anti-Aging Treatments with Stem Cells, Therapies and Regenerative Medicine in Kuala Lumpur"
       },
       "ratingValue": 4.8,

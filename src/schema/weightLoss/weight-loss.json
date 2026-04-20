@@ -45,7 +45,7 @@
       "@id": "https://www.nexus-clinic.com/weight-loss/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/weight-loss/#service",
+        "@id": "https://www.nexus-clinic.com/weight-loss/",
         "name": "Weight Loss Treatments in Malaysia"
       },
       "ratingValue": 4.8,

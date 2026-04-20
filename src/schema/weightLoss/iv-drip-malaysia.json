@@ -45,7 +45,7 @@
       "@id": "https://www.nexus-clinic.com/weight-loss/iv-drip-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/weight-loss/iv-drip-malaysia/#service",
+        "@id": "https://www.nexus-clinic.com/weight-loss/iv-drip-malaysia/",
         "name": "IV Drip Therapies in Malaysia for Weight Loss, Energy, Immunity (Kuala Lumpur)"
       },
       "ratingValue": 4.9,

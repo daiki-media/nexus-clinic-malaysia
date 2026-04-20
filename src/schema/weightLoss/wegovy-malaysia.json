@@ -45,7 +45,7 @@
       "@id": "https://www.nexus-clinic.com/weight-loss/wegovy-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/weight-loss/wegovy-malaysia/#service",
+        "@id": "https://www.nexus-clinic.com/weight-loss/wegovy-malaysia/",
         "name": "Wegovy Malaysia Programme Weight Loss and Heart Protection Under Doctor Supervision"
       },
       "ratingValue": 5.0,

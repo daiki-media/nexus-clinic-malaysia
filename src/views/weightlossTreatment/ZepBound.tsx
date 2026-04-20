@@ -28,11 +28,11 @@ import {
   fadeInRight,
   scaleIn,
 } from "@/src/lib/animations";
-import FAQ from "@/src/components/FAQ";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 import AllPagesHero from "@/src/components/AllPagesHero";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 const ZepboundLanding = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "weightLoss/zepbound");
 
@@ -52,6 +52,20 @@ const ZepboundLanding = ({ locale = fallbackLng }: { locale?: string }) => {
       before: "/images/B&A-w/B&A-zepbound3.webp",
       after: "/images/B&A-w/B&A-zepbound3.webp",
     },
+  ];
+  const faqData = [
+    { q: "What is the difference between Mounjaro and Zepbound?", a: "Both contain the same tirzepatide molecule at the same doses using the same KwikPen device. The main difference is the approved indication and availability pathway." },
+    { q: "How much weight can I realistically expect to lose?", a: "In SURMOUNT-1, average loss over 72 weeks was 15.0% at 5mg, 19.5% at 10mg, and 20.9% at 15mg. Individual results vary by dose reached, adherence, starting weight, and lifestyle changes." },
+    { q: "Is Mounjaro available in Malaysia and do I need a prescription?", a: "Yes. Mounjaro received NPRA approval in Malaysia on 30 August 2025 and is prescription-only. Tirzepatide should be sourced only through licensed clinics and verified supply channels." },
+    { q: "How does tirzepatide reduce appetite and regulate blood sugar?", a: "It activates both GLP-1 and GIP receptor pathways, combining delayed gastric emptying, fullness signalling, improved insulin response, and better insulin sensitivity." },
+    { q: "Who is eligible for weight management treatment?", a: "Adults with BMI 30 or above, or BMI 27 or above with at least one weight-related condition, may be eligible after full medical assessment." },
+    { q: "What side effects should I expect?", a: "Nausea, constipation, diarrhoea, and reduced appetite are among the most common effects, especially during dose escalation. Slow titration helps reduce discomfort." },
+    { q: "How does Mounjaro compare with Ozempic for weight loss?", a: "SURMOUNT-5 reported 20.2% average weight loss with tirzepatide versus 13.7% with semaglutide over 72 weeks, showing stronger weight loss performance in that direct comparison." },
+    { q: "Can tirzepatide be combined with other treatments?", a: "It can be combined with lifestyle support and selected non-pharmacological body contouring treatments for suitable patients, but the order and safety plan should be doctor-led." },
+    { q: "How long will I need to stay on treatment?", a: "Duration depends on your goals, your response, and how well long-term lifestyle and maintenance strategies are established. Obesity management is usually not a short-term issue." },
+    { q: "What happens if I stop?", a: "SURMOUNT-4 showed that patients who stopped tirzepatide regained a meaningful portion of lost weight, which is why maintenance planning should be built into the programme from the start." },
+    { q: "Is long-term use considered safe?", a: "Long-term safety has been studied across the SURMOUNT and SURPASS programmes, with generally well-tolerated results when treatment is prescribed appropriately and monitored properly." },
+    { q: "How is tirzepatide taken?", a: "It is taken once weekly by subcutaneous injection using the KwikPen into the abdomen, thigh, or upper arm, with the dose usually increased every four weeks as tolerated." }
   ];
   return (
     <div className="bg-light overflow-hidden">
@@ -947,159 +961,7 @@ const ZepboundLanding = ({ locale = fallbackLng }: { locale?: string }) => {
           </motion.p>
         </div>
       </motion.section>
-
-      {/* FAQs Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.25 }}
-        className="py-24 bg-light"
-      >
-        <div className="container mx-auto px-4 md:px-6">
-          <h2 className="font-georgia text-4xl text-brown text-center mb-4">
-            Frequently asked questions
-          </h2>
-          <p className="text-center text-taupe mb-12">
-            Common patient questions before starting a tirzepatide programme.
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                What is the difference between Mounjaro and Zepbound?
-              </h3>
-              <p className="text-taupe text-sm">
-                Both contain the same tirzepatide molecule at the same doses
-                using the same KwikPen device. The main difference is the
-                approved indication and availability pathway.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                How much weight can I realistically expect to lose?
-              </h3>
-              <p className="text-taupe text-sm">
-                In SURMOUNT-1, average loss over 72 weeks was 15.0% at 5mg,
-                19.5% at 10mg, and 20.9% at 15mg. Individual results vary by
-                dose reached, adherence, starting weight, and lifestyle changes.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                Is Mounjaro available in Malaysia and do I need a prescription?
-              </h3>
-              <p className="text-taupe text-sm">
-                Yes. Mounjaro received NPRA approval in Malaysia on 30 August
-                2025 and is prescription-only. Tirzepatide should be sourced
-                only through licensed clinics and verified supply channels.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                How does tirzepatide reduce appetite and regulate blood sugar?
-              </h3>
-              <p className="text-taupe text-sm">
-                It activates both GLP-1 and GIP receptor pathways, combining
-                delayed gastric emptying, fullness signalling, improved insulin
-                response, and better insulin sensitivity.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                Who is eligible for weight management treatment?
-              </h3>
-              <p className="text-taupe text-sm">
-                Adults with BMI 30 or above, or BMI 27 or above with at least
-                one weight-related condition, may be eligible after full medical
-                assessment.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                What side effects should I expect?
-              </h3>
-              <p className="text-taupe text-sm">
-                Nausea, constipation, diarrhoea, and reduced appetite are among
-                the most common effects, especially during dose escalation. Slow
-                titration helps reduce discomfort.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                How does Mounjaro compare with Ozempic for weight loss?
-              </h3>
-              <p className="text-taupe text-sm">
-                SURMOUNT-5 reported 20.2% average weight loss with tirzepatide
-                versus 13.7% with semaglutide over 72 weeks, showing stronger
-                weight loss performance in that direct comparison.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                Can tirzepatide be combined with other treatments?
-              </h3>
-              <p className="text-taupe text-sm">
-                It can be combined with lifestyle support and selected
-                non-pharmacological body contouring treatments for suitable
-                patients, but the order and safety plan should be doctor-led.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                How long will I need to stay on treatment?
-              </h3>
-              <p className="text-taupe text-sm">
-                Duration depends on your goals, your response, and how well
-                long-term lifestyle and maintenance strategies are established.
-                Obesity management is usually not a short-term issue.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                What happens if I stop?
-              </h3>
-              <p className="text-taupe text-sm">
-                SURMOUNT-4 showed that patients who stopped tirzepatide regained
-                a meaningful portion of lost weight, which is why maintenance
-                planning should be built into the programme from the start.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                Is long-term use considered safe?
-              </h3>
-              <p className="text-taupe text-sm">
-                Long-term safety has been studied across the SURMOUNT and
-                SURPASS programmes, with generally well-tolerated results when
-                treatment is prescribed appropriately and monitored properly.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                How is tirzepatide taken?
-              </h3>
-              <p className="text-taupe text-sm">
-                It is taken once weekly by subcutaneous injection using the
-                KwikPen into the abdomen, thigh, or upper arm, with the dose
-                usually increased every four weeks as tolerated.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
+      <FAQWithSchema data={faqData} />
       {/* Competitor Snapshot */}
       <motion.section
         variants={staggerContainer}

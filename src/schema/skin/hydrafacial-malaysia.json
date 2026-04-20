@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/skin/hydrafacial-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/skin/hydrafacial-malaysia/#service",
+        "@id": "https://www.nexus-clinic.com/skin/hydrafacial-malaysia/",
         "name": "Best HydraFacial Treatment in Malaysia for Brighter, Cleaner, Hydrated Skin"
       },
       "ratingValue": 4.9,

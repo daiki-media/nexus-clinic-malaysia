@@ -45,7 +45,7 @@
       "@id": "https://www.nexus-clinic.com/weight-loss/hcg-programme-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/weight-loss/hcg-programme-malaysia/#service",
+        "@id": "https://www.nexus-clinic.com/weight-loss/hcg-programme-malaysia/",
         "name": "HCG Weight Loss Program in Kuala Lumpur, Malaysia"
       },
       "ratingValue": 4.9,

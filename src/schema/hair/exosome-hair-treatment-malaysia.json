@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/hair/exosome-hair-treatment-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/hair/exosome-hair-treatment-malaysia/#service",
+        "@id": "https://www.nexus-clinic.com/hair/exosome-hair-treatment-malaysia/",
         "name": "Exosome Hair Loss Treatment in Malaysia for Advanced Hair Regeneration"
       },
       "ratingValue": 4.7,

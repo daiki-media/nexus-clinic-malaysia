@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/skin/keloid-treatment-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/skin/keloid-treatment-malaysia/#service",
+        "@id": "https://www.nexus-clinic.com/skin/keloid-treatment-malaysia/",
         "name": "Effective Keloid Removal Treatment in Malaysia for Lasting Keloid Scar Control"
       },
       "ratingValue": 5.0,

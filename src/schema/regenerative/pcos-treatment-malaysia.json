@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/regenerative/pcos-treatment-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/regenerative/pcos-treatment-malaysia/#service",
+        "@id": "https://www.nexus-clinic.com/regenerative/pcos-treatment-malaysia/",
         "name": "PCOS Treatment Malaysia: Polycystic Ovary Syndrome Treatment Matched to Your Phenotype | Nexus Clinic KL"
       },
       "ratingValue": 5.0,

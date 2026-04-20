@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/regenerative/shockwave-therapy-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/regenerative/shockwave-therapy-malaysia/#service",
+        "@id": "https://www.nexus-clinic.com/regenerative/shockwave-therapy-malaysia/",
         "name": "Shockwave Therapy in Malaysia: ESWT for ED and Pain Relief"
       },
       "ratingValue": 4.9,

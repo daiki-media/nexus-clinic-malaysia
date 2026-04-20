@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/skin/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/skin/#service",
+        "@id": "https://www.nexus-clinic.com/skin/",
         "name": "Skin Treatments in Malaysia"
       },
       "ratingValue": 4.9,

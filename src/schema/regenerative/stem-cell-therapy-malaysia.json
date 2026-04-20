@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/regenerative/stem-cell-therapy-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/regenerative/stem-cell-therapy-malaysia/#service",
+        "@id": "https://www.nexus-clinic.com/regenerative/stem-cell-therapy-malaysia/",
         "name": "Stem Cell Therapies : Repair with Advanced Regenerative Medicine at Nexus Clinic KL"
       },
       "ratingValue": 4.9,

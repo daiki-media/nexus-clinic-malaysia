@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/regenerative/testosterone-therapy-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/regenerative/testosterone-therapy-malaysia/#service",
+        "@id": "https://www.nexus-clinic.com/regenerative/testosterone-therapy-malaysia/",
         "name": "Medically Supervised TRT Clinic in Kuala Lumpur: Testosterone Replacement Therapy Malaysia"
       },
       "ratingValue": 4.9,

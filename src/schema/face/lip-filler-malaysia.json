@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/face/lip-filler-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/face/lip-filler-malaysia/#service",
+        "@id": "https://www.nexus-clinic.com/face/lip-filler-malaysia/",
         "name": "Expert Lip Filler in Malaysia for Natural Volume and a Beautiful, Defined Pout"
       },
       "ratingValue": 4.8,

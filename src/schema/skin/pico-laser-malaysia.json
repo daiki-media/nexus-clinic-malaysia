@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/skin/pico-laser-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/skin/pico-laser-malaysia/#service",
+        "@id": "https://www.nexus-clinic.com/skin/pico-laser-malaysia/",
         "name": "Sharper Pico Laser in Kuala Lumpur for Pigmentation, Acne Scars and Lasting Skin Clarity"
       },
       "ratingValue": 4.9,

@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/hair/fue-hair-transplant-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/hair/fue-hair-transplant-malaysia/#service",
+        "@id": "https://www.nexus-clinic.com/hair/fue-hair-transplant-malaysia/",
         "name": "FUE Hair Transplant in Malaysia for Natural, Permanent Results"
       },
       "ratingValue": 4.7,

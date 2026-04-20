@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/skin/acne-treatment-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/skin/acne-treatment-malaysia/#service",
+        "@id": "https://www.nexus-clinic.com/skin/acne-treatment-malaysia/",
         "name": "Best Acne Treatment in Malaysia for Clearer, Bright Skin"
       },
       "ratingValue": 4.8,

@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/hair/prp-hair-treatment-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/hair/prp-hair-treatment-malaysia/#service",
+        "@id": "https://www.nexus-clinic.com/hair/prp-hair-treatment-malaysia/",
         "name": "PRP Hair Treatment in Malaysia for Hair Loss, Scalp Health and Skin Rejuvenation"
       },
       "ratingValue": 4.8,

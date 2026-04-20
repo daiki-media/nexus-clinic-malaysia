@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/skin/tattoo-removal-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/skin/tattoo-removal-malaysia/#service",
+        "@id": "https://www.nexus-clinic.com/skin/tattoo-removal-malaysia/",
         "name": "Laser Tattoo Removal in Malaysia Using Advanced Pico Laser Technology for All Skin Types"
       },
       "ratingValue": 4.8,
