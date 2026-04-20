@@ -1,6 +1,8 @@
 export const dynamic = "force-static";
 import HairHub from '@/src/views/hairTreatment/HairHub';
 import { Metadata } from "next";
+import { hairSchema } from "@/src/lib/loadSchema";
+import Script from "next/script";
 
 const baseurl = process.env.BASE_URL || "https://www.nexus-clinic.com"
 export const metadata: Metadata = {
@@ -15,5 +17,15 @@ export default async function HairPage({
 }: {    params: Promise<{ locale: string }>;       
 }) {
   const { locale } = await params;
-  return <HairHub locale={locale} />;
+    const schema = hairSchema('hair');
+    return (
+    <>
+      <Script
+        id="ServicesSchema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <HairHub locale={locale} />
+    </>
+  );
 }       

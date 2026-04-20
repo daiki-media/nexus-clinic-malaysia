@@ -1,0 +1,67 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/weight-loss/iv-drip-malaysia/#service",
+      "name": "IV Drip Therapies in Malaysia for Weight Loss, Energy, Immunity (Kuala Lumpur)",
+      "url": "https://www.nexus-clinic.com/weight-loss/iv-drip-malaysia/",
+      "description": "our body absorbs far more from an IV drip than from any oral supplement. Nexus Clinic KL offers KKM-approved IV drip therapies in Malaysia including slimming, energy boost, immunity, and wellness formulations. Vitamin drip and nutrient IV drip sessions in Kuala Lumpur and Selangor. Boost your health from the inside. Book your consultation today.",
+      "serviceType": "IV Drip Therapies in Malaysia for Weight Loss, Energy, Immunity (Kuala Lumpur)",
+      "telephone": "+016-774 5699",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
+        "addressLocality": "Kuala Lumpur",
+        "postalCode": "50450",
+        "addressRegion": "Federal Territory of Kuala Lumpur",
+        "addressCountry": "MY"
+      },
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/weight-loss/iv-drip-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/weight-loss/iv-drip-malaysia/#medicalprocedure",
+      "name": "IV Drip Therapies in Malaysia for Weight Loss, Energy, Immunity (Kuala Lumpur)",
+      "url": "https://www.nexus-clinic.com/weight-loss/iv-drip-malaysia/",
+      "description": "our body absorbs far more from an IV drip than from any oral supplement. Nexus Clinic KL offers KKM-approved IV drip therapies in Malaysia including slimming, energy boost, immunity, and wellness formulations. Vitamin drip and nutrient IV drip sessions in Kuala Lumpur and Selangor. Boost your health from the inside. Book your consultation today.",
+     "procedureType": "http://schema.org/NoninvasiveProcedure",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/weight-loss/iv-drip-malaysia/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/weight-loss/iv-drip-malaysia/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/weight-loss/iv-drip-malaysia/#service",
+        "name": "IV Drip Therapies in Malaysia for Weight Loss, Energy, Immunity (Kuala Lumpur)"
+      },
+      "ratingValue": 4.9,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 62
+    }
+  ]
+}

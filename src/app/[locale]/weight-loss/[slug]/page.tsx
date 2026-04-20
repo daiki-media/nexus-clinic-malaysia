@@ -1,5 +1,7 @@
 import { languages } from "@/src/i18n/settings";
 import type { Metadata } from "next";
+import { weightLossSchema } from "@/src/lib/loadSchema";
+import Script from "next/script";
 
 import { weightlossTreatmentsMetadata } from "@/src/config/weightlossTreatments";
 import CoolSculpting from "@/src/views/weightlossTreatment/Coolsculpting";
@@ -94,11 +96,21 @@ export default async function WeightLossTreatmentPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
+  const schema = weightLossSchema(slug);
 
   const treatment = weightlossTreatmentsMetadata.find((t) => t.slug === slug);
   if (!treatment) notFound();
   const Component = components[treatment.component];
   
     if (!Component) notFound();
-  return <Component locale={locale} />;
+   return (
+    <>
+      <Script
+        id="ServicesSchema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <Component locale={locale} />
+    </>
+  );
 }

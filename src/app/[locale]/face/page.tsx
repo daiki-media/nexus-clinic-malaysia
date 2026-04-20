@@ -1,4 +1,4 @@
-import { loadSchema } from "@/src/lib/loadSchema";
+import { faceSchema } from "@/src/lib/loadSchema";
 import Script from "next/script";
 import FaceHub from '@/src/views/faceTreatment/FaceHub';
 import { Metadata } from "next";
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default async function FacePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
 
-  const schema = loadSchema('face');
+  const schema = faceSchema('face');
 
   return (
     <>

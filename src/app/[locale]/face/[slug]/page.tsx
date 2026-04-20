@@ -1,7 +1,7 @@
 import { languages } from "@/src/i18n/settings";
 import { faceTreatmentsMetadata } from "@/src/config/faceTreatments";
 import { Metadata } from "next";
-import { loadSchema } from "@/src/lib/loadSchema";
+import { faceSchema } from "@/src/lib/loadSchema";
 import Script from "next/script";
 
 import DermalFiller from "@/src/views/faceTreatment/DermalFiller";
@@ -76,7 +76,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function FaceTreatmentPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
 
-  const schema = loadSchema(slug);
+  const schema = faceSchema(slug);
   if (!schema) notFound();
 
   const treatment = faceTreatmentsMetadata.find(t => t.slug === slug);

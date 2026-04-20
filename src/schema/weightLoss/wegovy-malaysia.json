@@ -1,0 +1,67 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/weight-loss/wegovy-malaysia/#service",
+      "name": "Wegovy Malaysia Programme Weight Loss and Heart Protection Under Doctor Supervision",
+      "url": "https://www.nexus-clinic.com/weight-loss/wegovy-malaysia/",
+      "description": "Wegovy semaglutide injection for weight loss in Kuala Lumpur, Malaysia. Compare to Ozempic & Saxenda. A weight loss injection pen option.",
+      "serviceType": "Wegovy Malaysia Programme Weight Loss and Heart Protection Under Doctor Supervision",
+      "telephone": "+016-774 5699",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
+        "addressLocality": "Kuala Lumpur",
+        "postalCode": "50450",
+        "addressRegion": "Federal Territory of Kuala Lumpur",
+        "addressCountry": "MY"
+      },
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/weight-loss/wegovy-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/weight-loss/wegovy-malaysia/#medicalprocedure",
+      "name": "Wegovy Malaysia Programme Weight Loss and Heart Protection Under Doctor Supervision",
+      "url": "https://www.nexus-clinic.com/weight-loss/wegovy-malaysia/",
+      "description": "Wegovy semaglutide injection for weight loss in Kuala Lumpur, Malaysia. Compare to Ozempic & Saxenda. A weight loss injection pen option.",
+     "procedureType": "http://schema.org/NoninvasiveProcedure",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/weight-loss/wegovy-malaysia/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/weight-loss/wegovy-malaysia/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/weight-loss/wegovy-malaysia/#service",
+        "name": "Wegovy Malaysia Programme Weight Loss and Heart Protection Under Doctor Supervision"
+      },
+      "ratingValue": 5.0,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 142
+    }
+  ]
+}

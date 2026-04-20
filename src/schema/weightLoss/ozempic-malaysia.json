@@ -1,0 +1,67 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/weight-loss/ozempic-malaysia/#service",
+      "name": "Ozempic Weight Loss Malaysia Programme",
+      "url": "https://www.nexus-clinic.com/weight-loss/ozempic-malaysia/",
+      "description": "Semaglutide injections for weight loss in Malaysia. Learn about GLP-1, find dosage info, and explore the benefits in Kuala Lumpur.",
+      "serviceType": "Ozempic Weight Loss Malaysia Programme",
+      "telephone": "+016-774 5699",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
+        "addressLocality": "Kuala Lumpur",
+        "postalCode": "50450",
+        "addressRegion": "Federal Territory of Kuala Lumpur",
+        "addressCountry": "MY"
+      },
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/weight-loss/ozempic-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/weight-loss/ozempic-malaysia/#medicalprocedure",
+      "name": "Ozempic Weight Loss Malaysia Programme",
+      "url": "https://www.nexus-clinic.com/weight-loss/ozempic-malaysia/",
+      "description": "Semaglutide injections for weight loss in Malaysia. Learn about GLP-1, find dosage info, and explore the benefits in Kuala Lumpur.",
+     "procedureType": "http://schema.org/NoninvasiveProcedure",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/weight-loss/ozempic-malaysia/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/weight-loss/ozempic-malaysia/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/weight-loss/ozempic-malaysia/#service",
+        "name": "Ozempic Weight Loss Malaysia Programme"
+      },
+      "ratingValue": 4.9,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 98
+    }
+  ]
+}

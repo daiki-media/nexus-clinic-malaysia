@@ -1,0 +1,67 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/skin/acne-scar-treatment-malaysia/#service",
+      "name": "Best Acne Scar Treatment in Malaysia for Smoother, Clearer Skin",
+      "url": "https://www.nexus-clinic.com/skin/acne-scar-treatment-malaysia/",
+      "description": "Minimize acne scars and improve skin texture with professional treatment in Kuala Lumpur. Safe, expert care for natural-looking results. Schedule now.",
+      "serviceType": "Best Acne Scar Treatment in Malaysia for Smoother, Clearer Skin",
+      "telephone": "+016-774 5699",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
+        "addressLocality": "Kuala Lumpur",
+        "postalCode": "50450",
+        "addressRegion": "Federal Territory of Kuala Lumpur",
+        "addressCountry": "MY"
+      }, 
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/skin/acne-scar-treatment-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/skin/acne-scar-treatment-malaysia/#medicalprocedure",
+      "name": "Best Acne Scar Treatment in Malaysia for Smoother, Clearer Skin",
+      "url": "https://www.nexus-clinic.com/skin/acne-scar-treatment-malaysia/",
+      "description": "Minimize acne scars and improve skin texture with professional treatment in Kuala Lumpur. Safe, expert care for natural-looking results. Schedule now.",
+     "procedureType": "http://schema.org/NoninvasiveProcedure",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/skin/acne-scar-treatment-malaysia/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/skin/acne-scar-treatment-malaysia/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/skin/acne-scar-treatment-malaysia/#service",
+        "name": "Best Acne Scar Treatment in Malaysia for Smoother, Clearer Skin"
+      },
+      "ratingValue": 4.8,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 79
+    }
+  ]
+}

@@ -11,6 +11,8 @@ import ExosomeHair from "@/src/views/hairTreatment/ExosomeHair";
 import MinoxidilTreatment from "@/src/views/hairTreatment/MinoxidilTreatment";
 import Finasteride from "@/src/views/hairTreatment/Finasteride";
 import { notFound } from "next/navigation";
+import { hairSchema } from "@/src/lib/loadSchema";
+import Script from "next/script";
 
 const components: Record<string, React.ComponentType<{ locale: string }>> = {
   HairTransplant,
@@ -81,11 +83,22 @@ export default async function HairTreatmentPage({
   params: Promise<{ locale: string; slug: string }> 
 }) {
   const { locale, slug } = await params;
+    const schema = hairSchema(slug);
+    if (!schema) notFound();
   
   const treatment = hairTreatmentsMetadata.find(t => t.slug === slug);
   if (!treatment) notFound();
   
   const Component = components[treatment.component];
    if (!Component) notFound();
-  return <Component locale={locale} />;
+   return (
+    <>
+      <Script
+        id="ServicesSchema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <Component locale={locale} />
+    </>
+  );
 }

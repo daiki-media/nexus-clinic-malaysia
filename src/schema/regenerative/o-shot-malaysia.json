@@ -1,0 +1,67 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/regenerative/o-shot-malaysia/#service",
+      "name": "O-Shot in Malaysia Non-Surgical Vaginal Rejuvenation with PRP",
+      "url": "https://www.nexus-clinic.com/regenerative/o-shot-malaysia/",
+      "description": "O-Shot (O-Shot Injections) in Malaysia using platelet-rich plasma (PRP) for vaginal rejuvenation, improved orgasm and urinary incontinence. This clinic in Malaysia offers non-surgical O-Shot treatment in KL including G-spot injection. Consultation available at Nexus Clinic KL. Book your O-Shot in Malaysia today.",
+      "serviceType": "O-Shot in Malaysia Non-Surgical Vaginal Rejuvenation with PRP",
+      "telephone": "+016-774 5699",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
+        "addressLocality": "Kuala Lumpur",
+        "postalCode": "50450",
+        "addressRegion": "Federal Territory of Kuala Lumpur",
+        "addressCountry": "MY"
+      },
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/regenerative/o-shot-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/regenerative/o-shot-malaysia/#medicalprocedure",
+      "name": "O-Shot in Malaysia Non-Surgical Vaginal Rejuvenation with PRP",
+      "url": "https://www.nexus-clinic.com/regenerative/o-shot-malaysia/",
+      "description": "O-Shot (O-Shot Injections) in Malaysia using platelet-rich plasma (PRP) for vaginal rejuvenation, improved orgasm and urinary incontinence. This clinic in Malaysia offers non-surgical O-Shot treatment in KL including G-spot injection. Consultation available at Nexus Clinic KL. Book your O-Shot in Malaysia today.",
+     "procedureType": "http://schema.org/NoninvasiveProcedure",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/regenerative/o-shot-malaysia/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/regenerative/o-shot-malaysia/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/regenerative/o-shot-malaysia/#service",
+        "name": "O-Shot in Malaysia Non-Surgical Vaginal Rejuvenation with PRP"
+      },
+      "ratingValue": 4.8,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 96
+    }
+  ]
+}

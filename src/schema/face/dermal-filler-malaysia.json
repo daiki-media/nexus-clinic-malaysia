@@ -4,10 +4,20 @@
     {
       "@type": "Service",
       "@id": "https://www.nexus-clinic.com/face/dermal-filler-malaysia/#service",
-      "name": "吉隆坡最佳皮肤填充剂，打造自然丰盈 与专业轮廓塑形",
+      "name": "The Best Dermal Fillers in Kuala Lumpur, Creating Natural Fullness and Professional Contour Shaping",
       "url": "https://www.nexus-clinic.com/face/dermal-filler-malaysia/",
       "description": "Trusted results. Award-winning injectors and aesthetic doctors at Nexus Clinic KL deliver expert dermal filler in Kuala Lumpur. Natural volume, sharper contours, zero surgery. Book your free consultation today.",
-      "serviceType": "吉隆坡最佳皮肤填充剂，打造自然丰盈 与专业轮廓塑形",
+      "serviceType": "The Best Dermal Fillers in Kuala Lumpur, Creating Natural Fullness and Professional Contour Shaping",
+      "telephone": "+016-774 5699",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
+        "addressLocality": "Kuala Lumpur",
+        "postalCode": "50450",
+        "addressRegion": "Federal Territory of Kuala Lumpur",
+        "addressCountry": "MY"
+      },
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",
@@ -27,7 +37,7 @@
     {
       "@type": "MedicalProcedure",
       "@id": "https://www.nexus-clinic.com/face/dermal-filler-malaysia/#medicalprocedure",
-      "name": "吉隆坡最佳皮肤填充剂，打造自然丰盈 与专业轮廓塑形",
+      "name": "The Best Dermal Fillers in Kuala Lumpur, Creating Natural Fullness and Professional Contour Shaping",
       "url": "https://www.nexus-clinic.com/face/dermal-filler-malaysia/",
       "description": "Trusted results. Award-winning injectors and aesthetic doctors at Nexus Clinic KL deliver expert dermal filler in Kuala Lumpur. Natural volume, sharper contours, zero surgery. Book your free consultation today.",
       "procedureType": "http://schema.org/NoninvasiveProcedure",
@@ -46,7 +56,7 @@
       "itemReviewed": {
         "@type": "Service",
         "@id": "https://www.nexus-clinic.com/face/dermal-filler-malaysia/#service",
-        "name": "吉隆坡最佳皮肤填充剂，打造自然丰盈 与专业轮廓塑形"
+        "name": "The Best Dermal Fillers in Kuala Lumpur, Creating Natural Fullness and Professional Contour Shaping"
       },
       "ratingValue": 5.0,
       "bestRating": 5,

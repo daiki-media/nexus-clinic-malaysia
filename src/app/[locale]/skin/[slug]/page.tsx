@@ -1,7 +1,8 @@
 import { languages } from "@/src/i18n/settings";
 import { skinTreatmentsMetadata } from "@/src/config/skinTreatments";
 import type { Metadata } from "next";
-
+import { skinSchema } from "@/src/lib/loadSchema";
+import Script from "next/script";
 // Import all components (create these files with minimal return)
 import AcneTreatment from "@/src/views/skinTreatment/AcneTreatment";
 import AcneScarTreatment from "@/src/views/skinTreatment/AcneScarTreatment";
@@ -92,11 +93,20 @@ export default async function SkinTreatmentPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-
+  const schema = skinSchema(slug);
   const treatment = skinTreatmentsMetadata.find((t) => t.slug === slug);
   if (!treatment) notFound();
 
   const Component = components[treatment.component];
   if (!Component) notFound();
-  return <Component locale={locale} />;
+   return (
+    <>
+      <Script
+        id="ServicesSchema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <Component locale={locale} />
+    </>
+  );
 }

@@ -8,10 +8,20 @@
       "url": "https://www.nexus-clinic.com/hair/",
       "description": "Treat hair loss with PRP, mesotherapy & doctor-led solutions in KL. Restore thicker, healthier hair with personalised treatment plans.",
       "serviceType": "Hair Treatments in Malaysia",
+      "telephone": "+016-774 5699",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
+        "addressLocality": "Kuala Lumpur",
+        "postalCode": "50450",
+        "addressRegion": "Federal Territory of Kuala Lumpur",
+        "addressCountry": "MY"
+      },
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",
-        "name": "Nexus",
+        "name": "Nexus clinic",
         "url": "https://www.nexus-clinic.com"
       },
       "areaServed": {
@@ -30,7 +40,7 @@
       "name": "Hair Treatments in Malaysia",
       "url": "https://www.nexus-clinic.com/hair/",
       "description": "Treat hair loss with PRP, mesotherapy & doctor-led solutions in KL. Restore thicker, healthier hair with personalised treatment plans.",
-      "procedureType": "Aesthetic",
+     "procedureType": "http://schema.org/NoninvasiveProcedure",
       "recognizingAuthority": {
         "@type": "Organization",
         "name": "Nexus"

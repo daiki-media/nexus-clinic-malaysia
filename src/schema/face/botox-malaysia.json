@@ -8,6 +8,16 @@
       "url": "https://www.nexus-clinic.com/face/botox-malaysia/",
       "description": "Lines that appear when you talk, smile or frown are fixable in under 20 minutes. Nexus Clinic KL has delivered Botox treatment in Malaysia since 2001. Precise dosing, natural results, zero frozen look. Book your free consultation in Kuala Lumpur today.",
       "serviceType": "Top Botox Treatment in Malaysia for Natural, Refreshed Results Without the Frozen Look",
+      "telephone": "+016-774 5699",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
+        "addressLocality": "Kuala Lumpur",
+        "postalCode": "50450",
+        "addressRegion": "Federal Territory of Kuala Lumpur",
+        "addressCountry": "MY"
+      },
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com/#medicalclinic",

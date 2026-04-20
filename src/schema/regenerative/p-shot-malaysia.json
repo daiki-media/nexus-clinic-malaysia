@@ -1,0 +1,67 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/regenerative/p-shot-malaysia/#service",
+      "name": "P-Shot in Malaysia: Priapus Shot PRP Treatment to Enhance Performance and Support Sexual Health at Nexus Clinic KL in Kuala Lumpur",
+      "url": "https://www.nexus-clinic.com/regenerative/p-shot-malaysia/",
+      "description": "P-Shot (Priapus Shot) clinic in Malaysia offering PRP treatment to boost sexual performance and support erectile dysfunction management in Kuala Lumpur. This clinic offers a non-surgical, minimally invasive P-Shot in Malaysia using the patient's own blood for enhanced erection quality and sensitivity. Book your confidential consultation today.",
+      "serviceType": "P-Shot in Malaysia: Priapus Shot PRP Treatment to Enhance Performance and Support Sexual Health at Nexus Clinic KL in Kuala Lumpur",
+      "telephone": "+016-774 5699",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
+        "addressLocality": "Kuala Lumpur",
+        "postalCode": "50450",
+        "addressRegion": "Federal Territory of Kuala Lumpur",
+        "addressCountry": "MY"
+      },
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/regenerative/p-shot-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/regenerative/p-shot-malaysia/#medicalprocedure",
+      "name": "P-Shot in Malaysia: Priapus Shot PRP Treatment to Enhance Performance and Support Sexual Health at Nexus Clinic KL in Kuala Lumpur",
+      "url": "https://www.nexus-clinic.com/regenerative/p-shot-malaysia/",
+      "description": "P-Shot (Priapus Shot) clinic in Malaysia offering PRP treatment to boost sexual performance and support erectile dysfunction management in Kuala Lumpur. This clinic offers a non-surgical, minimally invasive P-Shot in Malaysia using the patient's own blood for enhanced erection quality and sensitivity. Book your confidential consultation today.",
+     "procedureType": "http://schema.org/NoninvasiveProcedure",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/regenerative/p-shot-malaysia/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/regenerative/p-shot-malaysia/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/regenerative/p-shot-malaysia/#service",
+        "name": "P-Shot in Malaysia: Priapus Shot PRP Treatment to Enhance Performance and Support Sexual Health at Nexus Clinic KL in Kuala Lumpur"
+      },
+      "ratingValue": 4.9,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 99
+    }
+  ]
+}

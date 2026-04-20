@@ -15,7 +15,8 @@ import PShotMalaysia from "@/src/views/regenerative/PShotMalaysia";
 import OShotMalaysia from "@/src/views/regenerative/OShotMalaysia";
 import ShockwaveTheraphy from "@/src/views/regenerative/ShockwaveTheraphy";
 import { notFound } from "next/navigation";
-
+import { regenerativeSchema } from "@/src/lib/loadSchema";
+import Script from "next/script";
 
 const components: Record<string, React.ComponentType<{ locale: string }>> = {
   Testosterone,
@@ -89,11 +90,20 @@ export default async function RegenerativeTreatmentPage({
   params: Promise<{ locale: string; slug: string }> 
 }) {
   const { locale, slug } = await params;
-  
+  const schema = regenerativeSchema(slug);
   const treatment = regenerativeTreatmentsMetadata.find(t => t.slug === slug);
   if (!treatment) notFound();
   
   const Component = components[treatment.component];
    if (!Component) notFound();
-  return <Component locale={locale} />;
+   return (
+    <>
+      <Script
+        id="ServicesSchema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <Component locale={locale} />
+    </>
+  );
 }

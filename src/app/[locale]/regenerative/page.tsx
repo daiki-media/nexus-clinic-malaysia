@@ -1,6 +1,9 @@
 export const dynamic = "force-static";
 import RegenerativeHub from '@/src/views/regenerative/RegenerativeHub'
 import { Metadata } from "next";
+import { regenerativeSchema } from "@/src/lib/loadSchema";
+import Script from "next/script";
+
 
 const baseurl = process.env.BASE_URL || "https://www.nexus-clinic.com"
 export const metadata: Metadata = {
@@ -15,5 +18,15 @@ export default async function RegenerativePage({
 }: {    params: Promise<{ locale: string }>;       
 }) {
   const { locale } = await params;
-  return <RegenerativeHub locale={locale} />;
-}
+    const schema = regenerativeSchema('regenerative');
+    return (
+    <>
+      <Script
+        id="ServicesSchema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <RegenerativeHub locale={locale} />
+    </>
+  );
+}       

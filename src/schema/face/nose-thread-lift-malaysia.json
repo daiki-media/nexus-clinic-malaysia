@@ -8,6 +8,16 @@
       "url": "https://www.nexus-clinic.com/face/nose-thread-lift-malaysia/",
       "description": "Get a higher nose bridge & sharper tip with a non-surgical nose thread lift in Malaysia. Minimal downtime, instant contour. Learn about nose threads!",
       "serviceType": "Instant Nose Thread Lift in Malaysia for a Higher Bridge, Sharper Tip and Better Profile",
+      "telephone": "+016-774 5699",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
+        "addressLocality": "Kuala Lumpur",
+        "postalCode": "50450",
+        "addressRegion": "Federal Territory of Kuala Lumpur",
+        "addressCountry": "MY"
+      },
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",
