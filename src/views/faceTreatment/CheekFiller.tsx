@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import Whatsapp from "@/src/components/Whatsapp";
 import AllPagesHero from "@/src/components/AllPagesHero";
 import TableForPages from "@/src/components/TableForPages";
@@ -645,7 +645,7 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
       </section>
 
       {/* FAQ Section */}
-      <FAQ data={faqData} />
+      <FAQWithSchema data={faqData} />
       
       {/* CTA Section */}
       <section className="py-20 px-4 bg-wine">

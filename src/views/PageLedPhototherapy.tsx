@@ -22,7 +22,7 @@ import {
   scaleIn,
 } from "../lib/animations";
 import BeforeAfterFaceSection from "../components/BeforeAfterFace";
-import FAQ from "../components/FAQ";
+import FAQWithSchema from "../components/FAQWithSchema";
 
 const PageLEDPhototherapy = () => {
   const benefits = [
@@ -491,7 +491,7 @@ const PageLEDPhototherapy = () => {
         </section>
 
         {/* FAQ Section */}
-        <FAQ data={faqs} />
+        <FAQWithSchema data={faqs} />
       </main>
     </>
   );

@@ -18,7 +18,7 @@ import {
   fadeInRight,
   scaleIn,
 } from "../lib/animations";
-import FAQ from "../components/FAQ";
+import FAQWithSchema from "../components/FAQWithSchema";
 
 const HeroSection = () => {
   return (
@@ -527,7 +527,7 @@ const PageMidlite = () => {
         <AdvantagesSection />
         <TreatmentsSection />
         <TestimonialsSection />
-        <FAQ data={faqs} />
+        <FAQWithSchema data={faqs} />
         <CTASection />
       </main>
     </>

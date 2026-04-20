@@ -30,7 +30,7 @@ import {
   scaleIn,
   fadeInUp,
 } from "@/src/lib/animations";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import Whatsapp from "@/src/components/Whatsapp";
 import TableForPages from "@/src/components/TableForPages";
 const OShotLanding = () => {
@@ -771,7 +771,7 @@ const OShotLanding = () => {
       </motion.section>
 
       {/* FAQ Section */}
-      <FAQ data={faqs} />
+      <FAQWithSchema data={faqs} />
 
       {/* CTA Section */}
       <motion.section

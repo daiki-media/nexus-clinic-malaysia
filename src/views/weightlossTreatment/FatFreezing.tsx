@@ -27,7 +27,7 @@ import {
   fadeInRight,
   scaleIn,
 } from "@/src/lib/animations";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
@@ -1005,7 +1005,7 @@ const FatFreezingLanding = ({ locale = fallbackLng }: { locale?: string }) => {
         </div>
       </section>
 
-      <FAQ data={faqs} />
+      <FAQWithSchema data={faqs} />
 
       {/* Final CTA */}
       <section className="py-20 bg-wine relative overflow-hidden">

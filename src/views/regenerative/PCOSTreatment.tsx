@@ -51,7 +51,7 @@ import {
   fadeInRight,
   scaleIn,
 } from "@/src/lib/animations";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 import TableForPages from "@/src/components/TableForPages";
@@ -619,7 +619,7 @@ const PCOSPage = ({ locale = fallbackLng }: { locale?: string }) => {
       </motion.section>
 
       {/* FAQ Section */}
-      <FAQ data={faqs} />
+      <FAQWithSchema data={faqs} />
 
       {/* CTA Section */}
       <motion.section

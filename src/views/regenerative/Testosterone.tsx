@@ -48,7 +48,7 @@ import {
   fadeInLeft,
 } from "@/src/lib/animations";
 import React from "react";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
@@ -819,7 +819,7 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
         <SectionBeforeAfter transformations={transformations} />
 
         {/* FAQ Section */}
-        <FAQ data={faqs} />
+        <FAQWithSchema data={faqs} />
 
         {/* Why Nexus Section */}
         <motion.section

@@ -56,7 +56,7 @@ import {
   scaleIn,
   fadeInUp,
 } from "@/src/lib/animations";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 
@@ -713,7 +713,7 @@ const DermalFillersLanding = ({
           </div>
         </motion.section>
 
-        <FAQ data={faqs} />
+        <FAQWithSchema data={faqs} />
         {/* Final CTA Section */}
         <motion.section
           initial="hidden"

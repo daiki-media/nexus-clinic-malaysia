@@ -21,7 +21,7 @@ import {
   fadeInRight,
   fadeInUp,
 } from "@/src/lib/animations";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import Whatsapp from "@/src/components/Whatsapp";
 import TableForPages from "@/src/components/TableForPages";
 import ClinicTrustSection from "@/src/components/ClinicTrustSection";
@@ -668,7 +668,7 @@ export default function TearTroughFiller({ locale }: TearTroughFillerProps) {
       </section>
 
       {/* FAQ Section */}
-      <FAQ data={faqData} />
+      <FAQWithSchema data={faqData} />
       
       {/* CTA Section */}
       <section className="py-20 px-4 bg-wine">

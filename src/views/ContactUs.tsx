@@ -30,7 +30,7 @@ import {
   scaleIn,
 } from "@/src/lib/animations";
 import Whatsapp from "@/src/components/Whatsapp";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import SocialIcons from "@/src/components/SocialIcons";
 import Link from "next/link";
 import { useState } from "react";
@@ -308,7 +308,7 @@ export default function ContactUs() {
           </div>
         </motion.div>
       </section>
-      <FAQ data={faqData}/>
+      <FAQWithSchema data={faqData}/>
 
       {/* CTA Section - Updated WhatsApp link */}
       <section className="py-20 px-4 bg-wine">

@@ -22,7 +22,7 @@ import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 // import GalleryPage from "./SliderGallery";
 // import { DoctorsSection } from "@/src/components/DoctorSection";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import SocialIcons from "@/src/components/SocialIcons";
 import HeroSection from '@/src/components/HeroSection'
@@ -673,7 +673,7 @@ export default function HomePageNexus({
       <TestimonialsSection t={t} />
       <GoogleReviews />
       <ContactSection t={t} />
-      <FAQ data={faqData} />
+      <FAQWithSchema data={faqData} />
     </div>
   );
 }

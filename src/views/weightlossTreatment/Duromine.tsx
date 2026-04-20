@@ -27,7 +27,7 @@ import {
   Activity,
   ArrowRight,
 } from "lucide-react";
-import FAQ from "../../components/FAQ";
+import FAQWithSchema from "../../components/FAQWithSchema";
 import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
@@ -780,7 +780,7 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
       </motion.section>
 
       {/* FAQ Section */}
-      <FAQ data={faqs} />
+      <FAQWithSchema data={faqs} />
 
       {/* CTA Section */}
       <motion.section

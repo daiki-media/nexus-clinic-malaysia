@@ -26,7 +26,7 @@ import {
   scaleIn,
   fadeInUp,
 } from "@/src/lib/animations";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 import TableForPages from "@/src/components/TableForPages";
@@ -556,7 +556,7 @@ const MonopauseLanding = ({ locale = fallbackLng }: { locale?: string }) => {
           />
         </motion.section>
 
-        <FAQ data={faqData}/>
+        <FAQWithSchema data={faqData}/>
         {/* CTA Section */}
         <motion.section
           variants={staggerContainer}

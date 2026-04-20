@@ -25,7 +25,7 @@
 //   fadeInRight,
 //   scaleIn,
 // } from "../../lib/animations";
-// import FAQ from "../../components/FAQ";
+// import FAQWithSchema from "../../components/FAQWithSchema";
 // import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
 // import { useTranslation } from "@/src/i18n/client";
 // import { fallbackLng } from "@/src/i18n/settings";
@@ -816,7 +816,7 @@
 //         </section>
 // 
 //         {/* FAQ Section */}
-//         <FAQ data={faqs} />
+//         <FAQWithSchema data={faqs} />
 // 
 //         {/* Final CTA Section */}
 //         <section className="py-24 bg-wine relative overflow-hidden">

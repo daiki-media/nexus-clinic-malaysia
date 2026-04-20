@@ -21,7 +21,7 @@ import {
   fadeInRight,
   scaleIn,
 } from "../lib/animations";
-import FAQ from "../components/FAQ";
+import FAQWithSchema from "../components/FAQWithSchema";
 
 const cardHover = {
   rest: { scale: 1, y: 0 },
@@ -473,7 +473,7 @@ const PagePeelChemical = () => {
         </section>
 
         {/* FAQ Section */}
-        <FAQ data={faqs} />
+        <FAQWithSchema data={faqs} />
 
         {/* Decorative Bottom Section */}
         {/* <section className="py-16 px-4 bg-cream">

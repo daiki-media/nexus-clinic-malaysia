@@ -54,7 +54,7 @@ import {
 } from "@/src/lib/animations";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import AllPagesHero from "@/src/components/AllPagesHero";
 import TableForPages from "@/src/components/TableForPages";
 export default function EDTreatment({
@@ -802,7 +802,7 @@ export default function EDTreatment({
         </motion.section>
 
         {/* FAQ Section */}
-        <FAQ data={faqs} />
+        <FAQWithSchema data={faqs} />
 
         {/* CTA Section */}
         <motion.section

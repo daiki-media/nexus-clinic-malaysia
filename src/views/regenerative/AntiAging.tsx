@@ -16,7 +16,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { staggerContainer, fadeInUp, fadeInRight, fadeInLeft } from "@/src/lib/animations";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
@@ -460,7 +460,7 @@ const AntiAgingLanding = ({ locale = fallbackLng }: { locale?: string }) => {
       </section>
 
       <SectionBeforeAfter transformations={transformations} />
-    <FAQ data={faqData} />
+    <FAQWithSchema data={faqData} />
 
       {/* Final CTA Section */}
       <section className="py-20 bg-linear-to-br from-wine to-rose text-light">

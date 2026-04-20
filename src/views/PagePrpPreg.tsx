@@ -21,7 +21,7 @@ import {
   fadeInRight,
   scaleIn,
 } from "../lib/animations";
-import FAQ from "../components/FAQ";
+import FAQWithSchema from "../components/FAQWithSchema";
 
 const TestimonialCard = ({ name, review, rating }: any) => (
   <motion.div
@@ -727,7 +727,7 @@ const PagePRPTreatment = () => {
         </section>
 
         {/* FAQ Section */}
-        <FAQ data={faqs} />
+        <FAQWithSchema data={faqs} />
       </main>
     </>
   );

@@ -22,7 +22,7 @@ import {
   scaleIn,
   staggerContainer,
 } from "../lib/animations";
-import FAQ from "../components/FAQ";
+import FAQWithSchema from "../components/FAQWithSchema";
 
 function useCounter(target: number, isVisible: boolean) {
   const [count, setCount] = useState(0);
@@ -845,7 +845,7 @@ export default function MesotherapyPage() {
         <ConditionsSection />
         <ProcessSection />
         <TestimonialsSection />
-        <FAQ data={faqs} />
+        <FAQWithSchema data={faqs} />
         <CTABanner />
       </main>
     </>

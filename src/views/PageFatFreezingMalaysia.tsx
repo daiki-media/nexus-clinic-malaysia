@@ -22,7 +22,7 @@ import {
   containerVariants,
   rowVariants,
 } from "../lib/animations";
-import FAQ from "../components/FAQ";
+import FAQWithSchema from "../components/FAQWithSchema";
 import BeforeAfterSection from "../components/BeforeAfter";
 
 const PageFatFreezingMalaysia = () => {
@@ -777,7 +777,7 @@ const PageFatFreezingMalaysia = () => {
         </section>
 
         {/* FAQ */}
-        <FAQ data={faqs} />
+        <FAQWithSchema data={faqs} />
 
         {/* CTA Section */}
         <section className="py-20 px-4 bg-linear-to-br from-wine to-brown">

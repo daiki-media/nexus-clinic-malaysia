@@ -89,7 +89,7 @@ import {
 import Whatsapp from "@/src/components/Whatsapp";
 import Image from "next/image";
 import Link from "next/link";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 
 interface RegenerativeHubProps {
   locale: string;
@@ -480,7 +480,7 @@ export default function RegenerativeHub({ locale }: RegenerativeHubProps) {
         </motion.div>
       </section>
 
-      <FAQ data={faqData} />
+      <FAQWithSchema data={faqData} />
 
       {/* Final Booking Section */}
       <section className="py-20 px-4 bg-wine">

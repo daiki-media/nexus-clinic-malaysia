@@ -58,7 +58,7 @@ import {
 import Whatsapp from "@/src/components/Whatsapp";
 import Image from "next/image";
 import Link from "next/link";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 interface SkinHubProps {
   locale: string;
 }
@@ -548,7 +548,7 @@ export default function SkinHub({ locale }: SkinHubProps) {
         </motion.div>
       </section>
 
-      <FAQ data={faqData} />
+      <FAQWithSchema data={faqData} />
       {/* CTA Section */}
       <section className="py-20 px-4 bg-wine">
         <motion.div

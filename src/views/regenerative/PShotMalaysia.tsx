@@ -29,7 +29,7 @@ import {
   fadeInRight,
   scaleIn,
 } from "@/src/lib/animations";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import TableForPages from "@/src/components/TableForPages";
 import Link from "next/link";
 
@@ -376,37 +376,7 @@ const PShotLanding = () => {
           className="max-w-7xl mx-auto"
         />
       </section>
-
-      {/* FAQ Section - 10 Questions */}
-      <section className="py-20 px-4 bg-light">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="font-georgia text-4xl text-brown text-center mb-12">
-            Frequently Asked Questions About P-Shot Treatment in Malaysia (FAQs)
-          </h2>
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <motion.details
-                key={index}
-                variants={fadeInUp}
-                initial="hidden"
-                whileInView="visible"
-                className="group bg-white rounded-lg"
-              >
-                <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                  <span className="font-georgia text-brown font-medium">
-                    {index + 1}) {faq.q}
-                  </span>
-                  <ChevronDown className="w-5 h-5 text-wine group-open:rotate-180 transition-transform shrink-0" />
-                </summary>
-                <div className="px-6 pb-6 text-taupe">
-                  {faq.a}
-                </div>
-              </motion.details>
-            ))}
-          </div>
-        </div>
-      </section>
-
+          <FAQWithSchema data={faqs} />
       {/* CTA Section */}
       <section className="py-20 px-4 bg-linear-to-r from-wine to-rose">
         <motion.div

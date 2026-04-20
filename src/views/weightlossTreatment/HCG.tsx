@@ -29,7 +29,7 @@ import {
   fadeInRight,
   scaleIn,
 } from "@/src/lib/animations";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 import AllPagesHero from "@/src/components/AllPagesHero";
@@ -605,7 +605,7 @@ const HCGWeightLossLanding = ({
       </section>
 
       {/* FAQ */}
-      <FAQ data={faqs} />
+      <FAQWithSchema data={faqs} />
 
       {/* Closing CTA */}
       <section className="py-24 bg-wine relative overflow-hidden">

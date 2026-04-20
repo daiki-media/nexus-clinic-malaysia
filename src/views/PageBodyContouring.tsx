@@ -22,7 +22,7 @@ import {
   Activity,
 } from "lucide-react";
 import BeforeAfterSection from "../components/BeforeAfter";
-import FAQ from "../components/FAQ";
+import FAQWithSchema from "../components/FAQWithSchema";
 
 const HeroSection = () => {
   return (
@@ -822,7 +822,7 @@ const PageBodyContouring = () => {
         <TreatmentJourneySection />
         <ComparisonSection />
         <PricingSection />
-        <FAQ data={faqs} />
+        <FAQWithSchema data={faqs} />
       </main>
     </>
   );

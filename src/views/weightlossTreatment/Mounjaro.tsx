@@ -26,7 +26,7 @@ import {
   fadeInRight,
   scaleIn,
 } from "@/src/lib/animations";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
@@ -793,7 +793,7 @@ const MounjaroLanding = ({ locale = fallbackLng }: { locale?: string }) => {
       </motion.section>
 
       {/* FAQ Section */}
-      <FAQ data={faqs} />
+      <FAQWithSchema data={faqs} />
 
       {/* Book a consult */}
       <motion.section

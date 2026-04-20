@@ -11,7 +11,7 @@ import {
   Heart,
   Users,
 } from "lucide-react";
-import FAQ from "../components/FAQ";
+import FAQWithSchema from "../components/FAQWithSchema";
 
 const PageMicroderMabrasion = () => {
   const benefits = [
@@ -430,7 +430,7 @@ const PageMicroderMabrasion = () => {
         </section>
 
         {/* FAQ Section */}
-        <FAQ data={faqs} />
+        <FAQWithSchema data={faqs} />
 
         {/* CTA Section */}
         <section className="py-24 bg-wine relative overflow-hidden">

@@ -13,7 +13,7 @@ import {
   fadeInRight,
   scaleIn,
 } from "@/src/lib/animations";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
@@ -567,7 +567,7 @@ const StemCellLanding = ({ locale = fallbackLng }: { locale?: string }) => {
         </motion.div>
       </section>
 
-      <FAQ data={faqData} />
+      <FAQWithSchema data={faqData} />
 
       {/* CTA Section */}
       <section className="py-20 bg-wine relative overflow-hidden">

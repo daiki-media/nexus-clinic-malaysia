@@ -28,7 +28,7 @@ import {
   fadeInRight,
   scaleIn,
 } from "@/src/lib/animations";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
@@ -985,7 +985,7 @@ const IVDripLanding = ({ locale = fallbackLng }: { locale?: string }) => {
           </motion.p>
         </div>
       </motion.section>
-      <FAQ data={faqData} />
+      <FAQWithSchema data={faqData} />
       {/* Differentiation Section */}
       <motion.section
         variants={staggerContainer}

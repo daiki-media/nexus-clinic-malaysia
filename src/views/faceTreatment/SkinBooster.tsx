@@ -29,7 +29,7 @@ import {
   fadeInUp,
   scaleIn,
 } from "@/src/lib/animations";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import Whatsapp from "@/src/components/Whatsapp";
 import Image from "next/image";
 import AllPagesHero from "@/src/components/AllPagesHero";
@@ -663,7 +663,7 @@ export default function SkinBooster({ locale }: SkinBoosterProps) {
       </section>
 
       {/* FAQ Section */}
-      <FAQ data={faqData} />
+      <FAQWithSchema data={faqData} />
       
       {/* CTA Section */}
       <section className="py-20 px-4 bg-wine">

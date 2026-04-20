@@ -19,7 +19,7 @@ import {
   fadeInRight,
   scaleIn,
 } from "../lib/animations";
-import FAQ from "../components/FAQ";
+import FAQWithSchema from "../components/FAQWithSchema";
 
 const HeroSection = () => (
   <section className="relative min-h-[90vh] bg-linear-to-br from-brown to-wine overflow-hidden">
@@ -665,7 +665,7 @@ const PageMesoBrightening = () => {
         <BenefitsSection />
         <IngredientsSection />
         <TestimonialsSection />
-        <FAQ data={faqs} />
+        <FAQWithSchema data={faqs} />
         <AftercareSection />
       </div>
     </>

@@ -30,7 +30,7 @@ import {
   fadeInRight,
   scaleIn,
 } from "@/src/lib/animations";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 import TableForPages from "@/src/components/TableForPages";
@@ -500,7 +500,7 @@ const HypothyroidLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               </motion.div>
           </motion.div>
         </section>
-          <FAQ data={faqData}/>
+          <FAQWithSchema data={faqData}/>
         {/* CTA with Background Image */}
         <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0">

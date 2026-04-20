@@ -22,7 +22,7 @@ import {
   scaleIn,
 } from "../lib/animations";
 import { ContactSection } from "../components/ContactUs";
-import FAQ from "../components/FAQ";
+import FAQWithSchema from "../components/FAQWithSchema";
 
 const HeroSection = () => {
   return (
@@ -489,7 +489,7 @@ const PageHCGMalaysia = () => {
       <AboutSection />
       <PricingSection />
       <TestimonialsSection />
-      <FAQ data={faqs} />
+      <FAQWithSchema data={faqs} />
       <ContactSection />
     </div>
   );

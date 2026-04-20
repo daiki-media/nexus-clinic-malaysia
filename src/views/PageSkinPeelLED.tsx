@@ -18,7 +18,7 @@ import {
   fadeInRight,
   scaleIn,
 } from "../lib/animations";
-import FAQ from "../components/FAQ";
+import FAQWithSchema from "../components/FAQWithSchema";
 const benefits = [
   {
     icon: Sparkles,
@@ -522,7 +522,7 @@ export default function PageSkinPeelLED() {
         </section>
 
         {/* ── FAQ ──────────────────────────────────────────────────────── */}
-        <FAQ data={faqs} />
+        <FAQWithSchema data={faqs} />
 
         {/* ── CTA BANNER ───────────────────────────────────────────────── */}
         <section className="py-28 px-6 bg-wine relative overflow-hidden">

@@ -23,7 +23,7 @@ import {
   fadeInUp,
   staggerContainer,
 } from "../lib/animations";
-import FAQ from "../components/FAQ";
+import FAQWithSchema from "../components/FAQWithSchema";
 import { fallbackLng } from "@/src/i18n/settings";
 import { useTranslation } from "@/src/i18n/client";
 
@@ -719,7 +719,7 @@ export default function PageDermalFiler({ locale = fallbackLng }: { locale?: str
         </section>
 
         {/* ── FAQ ────────────── */}
-        <FAQ data={faqs} />
+        <FAQWithSchema data={faqs} />
 
         {/* ── CTA BANNER ─────── */}
         <section

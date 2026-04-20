@@ -23,7 +23,7 @@ import {
   fadeInRight,
   scaleIn,
 } from "../lib/animations";
-import FAQ from "../components/FAQ";
+import FAQWithSchema from "../components/FAQWithSchema";
 import BeforeAfterFaceSection from "../components/BeforeAfterFace";
 
 const PageFraqtionalLaser = () => {
@@ -496,7 +496,7 @@ const PageFraqtionalLaser = () => {
         </section>
 
         {/* FAQ Section */}
-        <FAQ data={faqs} />
+        <FAQWithSchema data={faqs} />
 
         {/* CTA Section */}
         <section className="py-20 bg-brown">

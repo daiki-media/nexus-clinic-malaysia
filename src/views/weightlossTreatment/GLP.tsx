@@ -28,7 +28,7 @@ import {
   fadeInRight,
   scaleIn,
 } from "../../lib/animations";
-import FAQ from "../../components/FAQ";
+import FAQWithSchema from "../../components/FAQWithSchema";
 import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
@@ -869,7 +869,7 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
       </section>
 
       {/* FAQ */}
-      <FAQ data={faqs} />
+      <FAQWithSchema data={faqs} />
 
       {/* CTA Section */}
       <section className="py-20 bg-wine relative overflow-hidden">

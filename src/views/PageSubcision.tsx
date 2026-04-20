@@ -20,7 +20,7 @@ import {
   fadeInRight,
   scaleIn,
 } from "../lib/animations";
-import FAQ from "../components/FAQ";
+import FAQWithSchema from "../components/FAQWithSchema";
 
 const PageSubcision = () => {
   const treatmentStats = [
@@ -585,7 +585,7 @@ const PageSubcision = () => {
         </section>
 
         {/* FAQ Section */}
-        <FAQ data={faqs} />
+        <FAQWithSchema data={faqs} />
       </main>
     </>
   );

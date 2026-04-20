@@ -21,7 +21,7 @@
 //   fadeInRight,
 //   scaleIn,
 // } from "../../lib/animations";
-// import FAQ from "../../components/FAQ";
+// import FAQWithSchema from "../../components/FAQWithSchema";
 // import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
 // import { useTranslation } from "@/src/i18n/client";
 // import { fallbackLng } from "@/src/i18n/settings";
@@ -701,7 +701,7 @@
 //         </motion.section>
 // 
 //         {/* FAQs Section */}
-//         <FAQ data={faqs} />
+//         <FAQWithSchema data={faqs} />
 // 
 //         {/* CTA Section */}
 //         <motion.section

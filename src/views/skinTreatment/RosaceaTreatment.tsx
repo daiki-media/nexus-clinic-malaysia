@@ -30,7 +30,7 @@ import {
   fadeInUp,
   scaleIn,
 } from "@/src/lib/animations";
-import FAQ from "@/src/components/FAQ";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 import Whatsapp from "@/src/components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import Image from "next/image";
@@ -668,7 +668,7 @@ export default function RosaceaTreatmentLanding({ locale }: RosaceaTreatmentProp
       <SectionBeforeAfter transformations={transformations} />
 
       {/* FAQ Section */}
-      <FAQ data={faqData} />
+      <FAQWithSchema data={faqData} />
       
       {/* CTA Section */}
       <section className="py-20 px-4 bg-wine">
