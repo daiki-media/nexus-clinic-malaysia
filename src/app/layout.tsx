@@ -35,13 +35,15 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body>
-        <Script
+      <head>
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(schemaData),
           }}
         />
+      </head>
+      <body>
         <Script
           id="gtm-script"
           strategy="afterInteractive"
