@@ -18,6 +18,7 @@ const securityHeaders = [
         https://www.googletagmanager.com
         https://www.google-analytics.com
         https://www.gstatic.com
+        https://googleads.g.doubleclick.net
       ;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       img-src 'self' https: data:;
@@ -29,10 +30,18 @@ const securityHeaders = [
         https://places.googleapis.com
         https://www.googleapis.com
         https://wa.me
-        https://api.whatsapp.com;
+        https://api.whatsapp.com
+        https://www.google.com
+        https://googleads.g.doubleclick.net
+        https://analytics.google.com
+        https://www.googleadservices.com
+        https://www.googletagmanager.com
+        https://www.google-analytics.com
+      ;
       frame-src 'self' https://api.leadconnectorhq.com 
         https://app.leadconnectorhq.com
-        ;
+        https://www.googletagmanager.com
+      ;
       upgrade-insecure-requests;
       block-all-mixed-content;
     `.replace(/\n/g, "").trim(),

@@ -44,11 +44,6 @@
     {
       "@type": "AggregateRating",
       "@id": "https://www.nexus-clinic.com/face/cheek-filler-malaysia/#aggregaterating",
-      "itemReviewed": {
-        "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/face/cheek-filler-malaysia/#service",
-        "name": "Sculpted Cheek Filler in Malaysia for a Lifted, Youthful Midface"
-      },
       "ratingValue": 4.9,
       "bestRating": 5,
       "worstRating": 1,

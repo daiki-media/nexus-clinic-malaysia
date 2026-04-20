@@ -44,11 +44,6 @@
     {
       "@type": "AggregateRating",
       "@id": "https://www.nexus-clinic.com/face/under-eye-filler-malaysia/#aggregaterating",
-      "itemReviewed": {
-        "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/face/under-eye-filler-malaysia/#service",
-        "name": "Natural Under Eye Filler in Malaysia for Eyes That Look Rested, Bright and Years Younger"
-      },
       "ratingValue": 4.9,
       "bestRating": 5,
       "worstRating": 1,

@@ -44,11 +44,6 @@
     {
       "@type": "AggregateRating",
       "@id": "https://www.nexus-clinic.com/face/dermal-filler-malaysia/#aggregaterating",
-      "itemReviewed": {
-        "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/face/dermal-filler-malaysia/#service",
-        "name": "The Best Dermal Fillers in Kuala Lumpur, Creating Natural Fullness and Professional Contour Shaping"
-      },
       "ratingValue": 5.0,
       "bestRating": 5,
       "worstRating": 1,

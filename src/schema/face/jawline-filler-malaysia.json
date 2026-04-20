@@ -44,11 +44,6 @@
     {
       "@type": "AggregateRating",
       "@id": "https://www.nexus-clinic.com/face/jawline-filler-malaysia/#aggregaterating",
-      "itemReviewed": {
-        "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/face/jawline-filler-malaysia/#service",
-        "name": "Sharper Jawline Filler in Malaysia for Defined Contours and a Sculpted Lower Face"
-      },
       "ratingValue": 5.0,
       "bestRating": 5,
       "worstRating": 1,

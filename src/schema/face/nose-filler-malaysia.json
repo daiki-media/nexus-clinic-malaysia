@@ -44,11 +44,6 @@
     {
       "@type": "AggregateRating",
       "@id": "https://www.nexus-clinic.com/face/nose-filler-malaysia/#aggregaterating",
-      "itemReviewed": {
-        "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/face/nose-filler-malaysia/#service",
-        "name": "Precise Nose Filler in Malaysia for a Higher Bridge, Sharper Tip and Balanced Profile"
-      },
       "ratingValue": 5.0,
       "bestRating": 5,
       "worstRating": 1,
