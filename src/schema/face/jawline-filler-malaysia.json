@@ -40,14 +40,6 @@
         "@type": "WebPage",
         "@id": "https://www.nexus-clinic.com/face/jawline-filler-malaysia/"
       }
-    },
-    {
-      "@type": "AggregateRating",
-      "@id": "https://www.nexus-clinic.com/face/jawline-filler-malaysia/#aggregaterating",
-      "ratingValue": 5.0,
-      "bestRating": 5,
-      "worstRating": 1,
-      "reviewCount": 25
     }
   ]
 }

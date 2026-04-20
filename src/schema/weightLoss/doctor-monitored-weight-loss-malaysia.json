@@ -39,19 +39,6 @@
         "@type": "WebPage",
         "@id": "https://www.nexus-clinic.com/weight-loss/doctor-monitored-weight-loss-malaysia/"
       }
-    },
-    {
-      "@type": "AggregateRating",
-      "@id": "https://www.nexus-clinic.com/weight-loss/doctor-monitored-weight-loss-malaysia/#aggregaterating",
-      "itemReviewed": {
-        "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/weight-loss/doctor-monitored-weight-loss-malaysia/#service",
-        "name": "Medically Supervised Weight Loss in Malaysia Lasting, Structured Results at Nexus Clinic KL"
-      },
-      "ratingValue": 4.8,
-      "bestRating": 5,
-      "worstRating": 1,
-      "reviewCount": 113
     }
   ]
 }

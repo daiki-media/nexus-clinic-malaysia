@@ -40,19 +40,6 @@
         "@type": "WebPage",
         "@id": "https://www.nexus-clinic.com/skin/stretch-mark-removal-malaysia/"
       }
-    },
-    {
-      "@type": "AggregateRating",
-      "@id": "https://www.nexus-clinic.com/skin/stretch-mark-removal-malaysia/#aggregaterating",
-      "itemReviewed": {
-        "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/skin/stretch-mark-removal-malaysia/#service",
-        "name": "Best Stretch Mark Removal in Malaysia Using Laser Treatment for All Skin Types"
-      },
-      "ratingValue": 4.9,
-      "bestRating": 5,
-      "worstRating": 1,
-      "reviewCount": 86
     }
   ]
 }

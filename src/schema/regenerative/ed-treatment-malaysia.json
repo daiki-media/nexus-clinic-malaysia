@@ -40,19 +40,6 @@
         "@type": "WebPage",
         "@id": "https://www.nexus-clinic.com/regenerative/ed-treatment-malaysia/"
       }
-    },
-    {
-      "@type": "AggregateRating",
-      "@id": "https://www.nexus-clinic.com/regenerative/ed-treatment-malaysia/#aggregaterating",
-      "itemReviewed": {
-        "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/regenerative/ed-treatment-malaysia/#service",
-        "name": "Erectile Dysfunction Treatment in Malaysia: Cause-Matched ED Treatment Kuala Lumpur"
-      },
-      "ratingValue": 4.8,
-      "bestRating": 5,
-      "worstRating": 1,
-      "reviewCount": 96
     }
   ]
 }

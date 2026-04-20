@@ -40,19 +40,6 @@
         "@type": "WebPage",
         "@id": "https://www.nexus-clinic.com/hair/"
       }
-    },
-    {
-      "@type": "AggregateRating",
-      "@id": "https://www.nexus-clinic.com/hair/#aggregaterating",
-      "itemReviewed": {
-        "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/hair/#service",
-        "name": "Hair Treatments in Malaysia"
-      },
-      "ratingValue": 4.8,
-      "bestRating": 5,
-      "worstRating": 1,
-      "reviewCount": 93
     }
   ]
 }

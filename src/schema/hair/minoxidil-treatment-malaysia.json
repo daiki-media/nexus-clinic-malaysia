@@ -40,19 +40,6 @@
         "@type": "WebPage",
         "@id": "https://www.nexus-clinic.com/hair/minoxidil-treatment-malaysia/"
       }
-    },
-    {
-      "@type": "AggregateRating",
-      "@id": "https://www.nexus-clinic.com/hair/minoxidil-treatment-malaysia/#aggregaterating",
-      "itemReviewed": {
-        "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/hair/minoxidil-treatment-malaysia/#service",
-        "name": "Minoxidil Hair Loss Treatment in Malaysia for Proven Hair Regrowth Results"
-      },
-      "ratingValue": 4.9,
-      "bestRating": 5,
-      "worstRating": 1,
-      "reviewCount": 41
     }
   ]
 }

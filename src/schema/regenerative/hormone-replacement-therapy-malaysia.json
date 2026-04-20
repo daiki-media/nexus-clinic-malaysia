@@ -40,19 +40,6 @@
         "@type": "WebPage",
         "@id": "https://www.nexus-clinic.com/regenerative/hormone-replacement-therapy-malaysia/"
       }
-    },
-    {
-      "@type": "AggregateRating",
-      "@id": "https://www.nexus-clinic.com/regenerative/hormone-replacement-therapy-malaysia/#aggregaterating",
-      "itemReviewed": {
-        "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/regenerative/hormone-replacement-therapy-malaysia/#service",
-        "name": "HRT Malaysia: Evidence-Based Hormone Replacement Therapy for Menopausal Women and Bioidentical Hormones"
-      },
-      "ratingValue": 4.8,
-      "bestRating": 5,
-      "worstRating": 1,
-      "reviewCount": 116
     }
   ]
 }

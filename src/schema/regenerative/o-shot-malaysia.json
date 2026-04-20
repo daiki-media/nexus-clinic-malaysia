@@ -40,19 +40,6 @@
         "@type": "WebPage",
         "@id": "https://www.nexus-clinic.com/regenerative/o-shot-malaysia/"
       }
-    },
-    {
-      "@type": "AggregateRating",
-      "@id": "https://www.nexus-clinic.com/regenerative/o-shot-malaysia/#aggregaterating",
-      "itemReviewed": {
-        "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/regenerative/o-shot-malaysia/#service",
-        "name": "O-Shot in Malaysia Non-Surgical Vaginal Rejuvenation with PRP"
-      },
-      "ratingValue": 4.8,
-      "bestRating": 5,
-      "worstRating": 1,
-      "reviewCount": 96
     }
   ]
 }

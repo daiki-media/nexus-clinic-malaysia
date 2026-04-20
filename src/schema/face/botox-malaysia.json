@@ -39,17 +39,6 @@
         "@type": "WebPage",
         "@id": "https://www.nexus-clinic.com/face/botox-malaysia/"
       }
-    },
-    {
-      "@type": "AggregateRating",
-      "@id": "https://www.nexus-clinic.com/face/botox-malaysia/#aggregaterating",
-      "itemReviewed": {
-        "@id": "https://www.nexus-clinic.com/face/botox-malaysia/#service"
-      },
-      "ratingValue": 4.9,
-      "bestRating": 5,
-      "worstRating": 1,
-      "reviewCount": 113
     }
   ]
 }

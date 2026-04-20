@@ -40,19 +40,6 @@
         "@type": "WebPage",
         "@id": "https://www.nexus-clinic.com/skin/eczema-treatment-malaysia/"
       }
-    },
-    {
-      "@type": "AggregateRating",
-      "@id": "https://www.nexus-clinic.com/skin/eczema-treatment-malaysia/#aggregaterating",
-      "itemReviewed": {
-        "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/skin/eczema-treatment-malaysia/#service",
-        "name": "Trusted Eczema Treatment in Malaysia for Long-Term Skin Comfort and Fewer Flares"
-      },
-      "ratingValue": 4.8,
-      "bestRating": 5,
-      "worstRating": 1,
-      "reviewCount": 29
     }
   ]
 }

@@ -40,19 +40,6 @@
         "@type": "WebPage",
         "@id": "https://www.nexus-clinic.com/skin/skin-whitening-treatment-malaysia/"
       }
-    },
-    {
-      "@type": "AggregateRating",
-      "@id": "https://www.nexus-clinic.com/skin/skin-whitening-treatment-malaysia/#aggregaterating",
-      "itemReviewed": {
-        "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/skin/skin-whitening-treatment-malaysia/#service",
-        "name": "Proven Skin Whitening Treatment in Malaysia for Brighter, Even-Toned Skin"
-      },
-      "ratingValue": 4.9,
-      "bestRating": 5,
-      "worstRating": 1,
-      "reviewCount": 65
     }
   ]
 }

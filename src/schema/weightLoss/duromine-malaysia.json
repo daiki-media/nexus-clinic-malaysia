@@ -39,19 +39,6 @@
         "@type": "WebPage",
         "@id": "https://www.nexus-clinic.com/weight-loss/duromine-malaysia/"
       }
-    },
-    {
-      "@type": "AggregateRating",
-      "@id": "https://www.nexus-clinic.com/weight-loss/duromine-malaysia/#aggregaterating",
-      "itemReviewed": {
-        "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/weight-loss/duromine-malaysia/#service",
-        "name": "Duromine Weight Loss in Kuala Lumpur, Malaysia Short-term appetite control with a doctor-led plan built for safe, structured progress."
-      },
-      "ratingValue": 4.8,
-      "bestRating": 5,
-      "worstRating": 1,
-      "reviewCount": 84
     }
   ]
 }

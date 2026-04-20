@@ -40,19 +40,6 @@
         "@type": "WebPage",
         "@id": "https://www.nexus-clinic.com/regenerative/"
       }
-    },
-    {
-      "@type": "AggregateRating",
-      "@id": "https://www.nexus-clinic.com/regenerative/#aggregaterating",
-      "itemReviewed": {
-        "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/regenerative/#service",
-        "name": "Regenerative Treatments in Malaysia"
-      },
-      "ratingValue": 4.7,
-      "bestRating": 5,
-      "worstRating": 1,
-      "reviewCount": 111
     }
   ]
 }

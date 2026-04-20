@@ -39,14 +39,6 @@
         "@type": "WebPage",
         "@id": "https://www.nexus-clinic.com/face/"
       }
-    },
-    {
-      "@type": "AggregateRating",
-      "@id": "https://www.nexus-clinic.com/face/#aggregaterating",
-      "ratingValue": 4.9,
-      "bestRating": 5,
-      "worstRating": 1,
-      "reviewCount": 135
     }
   ]
 }

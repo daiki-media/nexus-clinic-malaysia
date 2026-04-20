@@ -40,19 +40,6 @@
         "@type": "WebPage",
         "@id": "https://www.nexus-clinic.com/hair/beard-transplant-malaysia/"
       }
-    },
-    {
-      "@type": "AggregateRating",
-      "@id": "https://www.nexus-clinic.com/hair/beard-transplant-malaysia/#aggregaterating",
-      "itemReviewed": {
-        "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/hair/beard-transplant-malaysia/#service",
-        "name": "Best Beard Transplant in Malaysia for Permanent, Natural-Looking Facial Hair"
-      },
-      "ratingValue": 5.0,
-      "bestRating": 5,
-      "worstRating": 1,
-      "reviewCount": 86
     }
   ]
 }
