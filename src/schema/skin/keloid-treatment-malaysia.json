@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/skin/keloid-treatment-malaysia/",
       "description": "Raised, itchy scars that keep growing and do not respond to creams alone. Nexus Clinic KL diagnoses whether you have a true keloid or a hypertrophic scar and builds a combination treatment programme matched to your site, size and skin type. Book your free assessment today.",
       "serviceType": "Effective Keloid Removal Treatment in Malaysia for Lasting Keloid Scar Control",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

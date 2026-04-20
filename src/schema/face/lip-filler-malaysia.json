@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/face/lip-filler-malaysia/",
       "description": "Instant, beautiful results. Award-winning injectors and aesthetic doctors at Nexus Clinic KL deliver natural lip filler in Malaysia. Fuller lips, defined pout, zero surgery. Book your free consultation in Kuala Lumpur today.",
       "serviceType": "Expert Lip Filler in Malaysia for Natural Volume and a Beautiful, Defined Pout",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

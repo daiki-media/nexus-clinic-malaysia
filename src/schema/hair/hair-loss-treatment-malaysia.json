@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/hair/hair-loss-treatment-malaysia/",
       "description": "Hair loss treatment in Malaysia for all types of alopecia including alopecia areata and androgenetic alopecia. PRP, finasteride and hair growth treatment to promote hair growth and restore thin hair and hair follicles. Effective hair loss and hair transplant consultation at this specialist in Malaysia. Book today.",
       "serviceType": "Hair Loss Treatment in Malaysia for All Types of Alopecia",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

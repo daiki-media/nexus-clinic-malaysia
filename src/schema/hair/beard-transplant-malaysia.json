@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/hair/beard-transplant-malaysia/",
       "description": "Some men cannot grow a beard. Nexus Clinic KL changes that. Our beard transplant in Malaysia uses FUE to move hair follicles from the back of your scalp to your face for a permanent, natural-looking result. Eyebrow transplant also available. Expert transplant clinic in Malaysia. Book your consultation in Kuala Lumpur today.",
       "serviceType": "Best Beard Transplant in Malaysia for Permanent, Natural-Looking Facial Hair",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

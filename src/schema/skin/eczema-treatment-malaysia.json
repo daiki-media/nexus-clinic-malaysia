@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/skin/eczema-treatment-malaysia/",
       "description": "Red, cracked, endlessly itchy skin that flares every few weeks and never fully settles. Nexus Clinic KL diagnoses the type and severity of your eczema and builds a structured treatment plan designed for Malaysia's specific triggers. Book your free assessment today.",
       "serviceType": "Trusted Eczema Treatment in Malaysia for Long-Term Skin Comfort and Fewer Flares",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

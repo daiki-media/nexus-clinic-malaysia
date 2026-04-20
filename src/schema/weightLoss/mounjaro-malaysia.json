@@ -8,16 +8,6 @@
       "url": "https://www.nexus-clinic.com/weight-loss/mounjaro-malaysia/",
       "description": "Mounjaro injection for weight loss in Kuala Lumpur, Malaysia. Tirzepatide injection helps manage blood sugar levels & diabetes. Discover Mounjaro now!",
       "serviceType": "Mounjaro Malaysia Programme Tirzepatide Injections for Maximum Weight Loss",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

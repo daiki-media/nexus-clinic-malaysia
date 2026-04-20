@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/regenerative/shockwave-therapy-malaysia/",
       "description": "Shockwave therapy (ESWT) in Malaysia: non-invasive extracorporeal shockwave therapy for erectile dysfunction and musculoskeletal conditions. Acoustic shockwave technology delivers non-invasive treatment for ED, plantar fasciitis, tennis elbow and tendinopathy at Nexus Clinic KL. Shockwave therapy in Malaysia with doctor-performed sessions and honest outcome expectations. Book your assessment today.",
       "serviceType": "Shockwave Therapy in Malaysia: ESWT for ED and Pain Relief",
-       "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+ 
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

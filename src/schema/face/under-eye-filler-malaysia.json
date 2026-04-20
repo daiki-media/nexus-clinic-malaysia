@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/face/under-eye-filler-malaysia/",
       "description": "Refresh tired eyes with under eye filler in Kuala Lumpur. Smooth lines, restore volume & achieve youthful results with professional care. Book your consultation now.",
       "serviceType": "Natural Under Eye Filler in Malaysia for Eyes That Look Rested, Bright and Years Younger",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

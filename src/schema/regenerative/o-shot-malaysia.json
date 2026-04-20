@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/regenerative/o-shot-malaysia/",
       "description": "O-Shot (O-Shot Injections) in Malaysia using platelet-rich plasma (PRP) for vaginal rejuvenation, improved orgasm and urinary incontinence. This clinic in Malaysia offers non-surgical O-Shot treatment in KL including G-spot injection. Consultation available at Nexus Clinic KL. Book your O-Shot in Malaysia today.",
       "serviceType": "O-Shot in Malaysia Non-Surgical Vaginal Rejuvenation with PRP",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

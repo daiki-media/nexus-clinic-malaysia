@@ -8,16 +8,6 @@
       "url": "https://www.nexus-clinic.com/weight-loss/duromine-malaysia/",
       "description": "Malaysia's obesity rates keep rising and appetite is at the centre of it. Nexus Clinic KL prescribes Duromine 30mg and other phentermine dosages as a short-term weight loss medication under full doctor supervision. Ubat kurus yang selamat. Book your klinik consultation today.",
       "serviceType": "Duromine Weight Loss in Kuala Lumpur, Malaysia Short-term appetite control with a doctor-led plan built for safe, structured progress.",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

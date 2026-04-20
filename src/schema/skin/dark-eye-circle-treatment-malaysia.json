@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/skin/dark-eye-circle-treatment-malaysia/",
       "description": "Eight hours of sleep and still look exhausted. At Nexus Clinic KL, our doctors identify whether your dark circles are pigmented, vascular, structural or allergy-driven before recommending a single treatment. Book your free under-eye assessment today.",
       "serviceType": "Dark Eye Circle Treatment in Malaysia for Naturally Brighter, Rested-Looking Eyes",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

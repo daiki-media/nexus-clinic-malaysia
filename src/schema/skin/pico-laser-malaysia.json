@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/skin/pico-laser-malaysia/",
       "description": "Skin that has cycled through whitening creams and toning lasers without lasting results needs a different approach. Nexus Clinic KL uses calibrated wavelengths and targeted delivery modes to treat your specific concern precisely. Book your free Pico Laser consultation today.",
       "serviceType": "Sharper Pico Laser in Kuala Lumpur for Pigmentation, Acne Scars and Lasting Skin Clarity",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

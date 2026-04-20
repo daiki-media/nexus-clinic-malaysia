@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/face/chin-filler-malaysia/",
       "description": "Trusted by thousands. Award-winning injectors and aesthetic doctors at Nexus Clinic KL deliver precise chin filler Kuala Lumpur results. Sharper profile, restored facial balance. No surgery. No downtime. Book today.",
       "serviceType": "Chin Dermal Filler in Malaysia for a Sharper, Defined Profile",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

@@ -8,16 +8,6 @@
       "url": "https://www.nexus-clinic.com/weight-loss/zepbound-malaysia/",
       "description": "Clinical trial data does not lie. Mounjaro and Zepbound (tirzepatide) produce up to 20.9% body weight loss, outperforming Ozempic in head-to-head comparisons. Nexus Clinic KL offers this weight loss injection programme in Malaysia for type 2 diabetes management and chronic weight management. GLP-1 and GIP dual-action appetite control. Personalised treatment. Book your consultation in Kuala Lumpur.",
       "serviceType": "Mounjaro and Zepbound Weight Loss Injection Programme in Malaysia (Kuala Lumpur)",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

@@ -8,16 +8,6 @@
       "url": "https://www.nexus-clinic.com/weight-loss/wegovy-malaysia/",
       "description": "Wegovy semaglutide injection for weight loss in Kuala Lumpur, Malaysia. Compare to Ozempic & Saxenda. A weight loss injection pen option.",
       "serviceType": "Wegovy Malaysia Programme Weight Loss and Heart Protection Under Doctor Supervision",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

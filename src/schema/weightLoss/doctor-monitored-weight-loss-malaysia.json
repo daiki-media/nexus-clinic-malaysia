@@ -8,16 +8,6 @@
       "url": "https://www.nexus-clinic.com/weight-loss/doctor-monitored-weight-loss-malaysia/",
       "description": "Carrying excess weight affects far more than your reflection. Nexus Clinic KL offers doctor-led weight loss programs in Malaysia, supervised by licensed doctors who personalize every treatment for sustainable weight loss. Book your consultation in Kuala Lumpur today.",
       "serviceType": "Medically Supervised Weight Loss in Malaysia Lasting, Structured Results at Nexus Clinic KL",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

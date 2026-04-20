@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/face/jawline-filler-malaysia/",
       "description": "Over 5,000 filler procedures and counting. Nexus Clinic KL delivers precise jawline filler in Malaysia built for Southeast Asian bone structure. Real definition, no surgery, same-day results. Book your consultation in Kuala Lumpur today.",
       "serviceType": "Sharper Jawline Filler in Malaysia for Defined Contours and a Sculpted Lower Face",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

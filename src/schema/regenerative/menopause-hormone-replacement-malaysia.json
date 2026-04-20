@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/regenerative/menopause-hormone-replacement-malaysia/",
       "description": "Hormone replacement therapy (HRT) for menopause in Malaysia. Managing menopausal symptoms for menopausal women with evidence-based HRT in Kuala Lumpur. Menopause and HRT consultation at Nexus Clinic KL; towards HRT initiation with safety and efficacy for all menopausal symptoms. Using HRT correctly with guidance from experienced healthcare professionals. Book your assessment today.",
       "serviceType": "Menopause Hormone Replacement Therapy Malaysia: HRT and Menopause Management in Kuala Lumpur",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

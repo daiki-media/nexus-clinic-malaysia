@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/face/nose-filler-malaysia/",
       "description": "Enhance nose shape & profile with non-surgical nose filler in Kuala Lumpur. Natural-looking results by experienced aesthetic doctors. Schedule your consultation today.",
       "serviceType": "Precise Nose Filler in Malaysia for a Higher Bridge, Sharper Tip and Balanced Profile",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

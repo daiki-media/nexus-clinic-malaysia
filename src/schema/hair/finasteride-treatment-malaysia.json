@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/hair/finasteride-treatment-malaysia/",
       "description": "Finasteride hair loss treatment in Malaysia. Finasteride 1mg prescribed by doctors to treat male pattern hair loss by blocking DHT and reducing hair follicle miniaturisation. Topical and oral finasteride, minoxidil, PRP and dutasteride available. Thin hair, receding hairline and hair regrowth treatment at Nexus Clinic KL. Book your consultation today.",
       "serviceType": "Finasteride for Hair Loss in Malaysia for Male Pattern Baldness Treatment",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

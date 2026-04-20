@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/regenerative/ed-treatment-malaysia/",
       "description": "Erectile dysfunction treatment in Malaysia matched to your cause. ED treatment Kuala Lumpur clinic offering treatment options for erection problems including oral medications, shockwave therapy and blood flow restoration. Erectile dysfunction treatment in malaysia with honest outcomes. Near Penang. Book your confidential assessment today.",
       "serviceType": "Erectile Dysfunction Treatment in Malaysia: Cause-Matched ED Treatment Kuala Lumpur",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/regenerative/hormone-replacement-therapy-malaysia/",
       "description": "Hormone replacement therapy (HRT) in Malaysia for menopausal women experiencing menopause symptoms including hot flashes, night sweats and mood swings. Bioidentical hormone replacement therapy and bioidentical hormones available. Women may benefit from HRT when menopausal symptoms affect quality of life. Book your free assessment today.",
       "serviceType": "HRT Malaysia: Evidence-Based Hormone Replacement Therapy for Menopausal Women and Bioidentical Hormones",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

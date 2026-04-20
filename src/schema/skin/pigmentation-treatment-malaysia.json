@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/skin/pigmentation-treatment-malaysia/",
       "description": "Seven types of skin pigmentation. One wrong treatment can make it worse. Nexus Clinic KL diagnoses your exact pigmentation type and builds a precise, doctor-led plan using Pico Laser, Sylfirm X and proven brightening protocols. Book your free skin assessment today.",
       "serviceType": "Stop chasing 'brightening.' Start treating the cause of your dark spots.",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

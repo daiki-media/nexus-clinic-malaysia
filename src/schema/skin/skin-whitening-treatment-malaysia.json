@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/skin/skin-whitening-treatment-malaysia/",
       "description": "Dull skin, uneven patches, dark body areas and persistent pigmentation that returns despite every product tried. Nexus Clinic KL matches your specific whitening goal to the right treatment using only MOH-approved, clinically proven methods. Book your free assessment today.",
       "serviceType": "Proven Skin Whitening Treatment in Malaysia for Brighter, Even-Toned Skin",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

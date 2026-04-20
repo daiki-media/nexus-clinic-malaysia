@@ -8,16 +8,6 @@
       "url": "https://www.nexus-clinic.com/weight-loss/fat-freezing-malaysia/",
       "description": "Best fat freezing treatment in Malaysia! Get non-invasive cryolipolysis fat reduction to sculpt away stubborn fat. Target fat cells with this cool treatment.",
       "serviceType": "Best Fat Freezing in Malaysia for Sculpted, Permanent Body Contouring",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

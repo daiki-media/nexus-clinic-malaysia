@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/regenerative/hormone-test-malaysia/",
       "description": "Hormone blood test and health screening in Malaysia. Comprehensive female and male hormonal profiles including thyroid, reproductive hormones and metabolic check. Medical result review and solution by experienced healthcare professionals at Nexus Clinic KL in Kuala Lumpur.",
       "serviceType": "Comprehensive Female and Male Hormonal Blood Test Packages Hormone blood test and health screening in Malaysia",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

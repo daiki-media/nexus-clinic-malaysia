@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/regenerative/stem-cell-therapy-malaysia/",
       "description": "Stem cells hold the promise of true cellular repair. Nexus Clinic KL offers evidence-based stem cell therapies in Malaysia using MSC protocols for anti-aging, rejuvenation, and regenerative treatment. Book your consultation in Kuala Lumpur today.",
       "serviceType": "Stem Cell Therapies : Repair with Advanced Regenerative Medicine at Nexus Clinic KL",
-       "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+ 
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

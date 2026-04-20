@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/regenerative/anti-aging-therapy-malaysia/",
       "description": "Anti-aging treatment in Malaysia using stem cells, stem cell therapies and advanced regenerative medicine. Pico laser, PRP, exosomes and cellular therapies available in Kuala Lumpur. Rejuvenate at the cellular level and address visible aging, elasticity loss and saggy skin at Nexus Clinic KL. Book your anti-aging assessment today.",
       "serviceType": "Top Anti-Aging Treatments with Stem Cells, Therapies and Regenerative Medicine in Kuala Lumpur",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/skin/laser-hair-removal-malaysia/",
       "description": "The best laser hair removal clinic in Malaysia for permanent laser hair removal treatment. Remove unwanted hair safely using diode laser and Nd:YAG technology calibrated for Malaysian skin in Kuala Lumpur and Selangor. No wax, no ingrown hairs, no PIH. Book your free consultation today.",
       "serviceType": "Safe Laser Hair Removal in Kuala Lumpur for All Malaysian Skin Types",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

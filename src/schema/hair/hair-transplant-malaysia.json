@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/hair/hair-transplant-malaysia/",
       "description": "Every graft counts. Nexus Clinic KL is a trusted hair transplant clinic in Malaysia offering FUE, DHI, and FUT hair restoration by licensed doctors. Expert hair transplant in Malaysia for natural-looking, permanent results. Clinics in Malaysia serving KL and beyond. Book your consultation today.",
       "serviceType": "Expert Hair Transplant in Malaysia for Natural, Permanent Results",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/skin/stretch-mark-removal-malaysia/",
       "description": "Stretch marks removal clinics in Malaysia that actually address the middle layer of the skin. Marks removal clinics in Malaysia using laser treatment to reduce stretch marks caused by pregnancy, weight changes and puberty. Nexus Clinic KL, Kuala Lumpur. Book your free assessment today.",
       "serviceType": "Best Stretch Mark Removal in Malaysia Using Laser Treatment for All Skin Types",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",

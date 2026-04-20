@@ -8,16 +8,7 @@
       "url": "https://www.nexus-clinic.com/regenerative/pcos-treatment-malaysia/",
       "description": "PCOS (polycystic ovary syndrome) treatment in Malaysia for women with polycystic ovaries experiencing hormonal imbalance, insulin resistance, irregular periods and fertility challenges. Women with PCOS deserve hormonal treatment matched to their specific pcos symptoms. Book your free assessment today.",
       "serviceType": "PCOS Treatment Malaysia: Polycystic Ovary Syndrome Treatment Matched to Your Phenotype | Nexus Clinic KL",
-      "telephone": "+016-774 5699",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "LG 10, Lower Ground Floor, Wisma UOA 2",
-        "addressLocality": "Kuala Lumpur",
-        "postalCode": "50450",
-        "addressRegion": "Federal Territory of Kuala Lumpur",
-        "addressCountry": "MY"
-      },
+
       "provider": {
         "@type": "MedicalClinic",
         "@id": "https://www.nexus-clinic.com#medicalclinic",
