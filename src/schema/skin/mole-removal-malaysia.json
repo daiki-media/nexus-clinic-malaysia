@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/skin/mole-removal-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/skin/mole-removal-malaysia/",
+        "@id": "https://www.nexus-clinic.com/skin/mole-removal-malaysia/#service",
         "name": "Mole Removal in Kuala Lumpur That Looks Natural When It Heals"
       },
       "ratingValue": 4.9,

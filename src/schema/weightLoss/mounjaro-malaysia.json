@@ -45,7 +45,7 @@
       "@id": "https://www.nexus-clinic.com/weight-loss/mounjaro-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/weight-loss/mounjaro-malaysia/",
+        "@id": "https://www.nexus-clinic.com/weight-loss/mounjaro-malaysia/#service",
         "name": "Mounjaro Malaysia Programme Tirzepatide Injections for Maximum Weight Loss"
       },
       "ratingValue": 4.9,

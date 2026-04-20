@@ -45,7 +45,7 @@
       "@id": "https://www.nexus-clinic.com/weight-loss/ozempic-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/weight-loss/ozempic-malaysia/",
+        "@id": "https://www.nexus-clinic.com/weight-loss/ozempic-malaysia/#service",
         "name": "Ozempic Weight Loss Malaysia Programme"
       },
       "ratingValue": 4.9,

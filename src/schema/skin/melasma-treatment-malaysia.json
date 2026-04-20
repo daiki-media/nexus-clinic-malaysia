@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/skin/melasma-treatment-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/skin/melasma-treatment-malaysia/",
+        "@id": "https://www.nexus-clinic.com/skin/melasma-treatment-malaysia/#service",
         "name": "Precise Melasma Treatment in Malaysia for Lasting Clarity Without Rebound"
       },
       "ratingValue": 4.9,

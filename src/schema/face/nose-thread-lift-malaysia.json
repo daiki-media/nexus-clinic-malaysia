@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/face/nose-thread-lift-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/face/nose-thread-lift-malaysia/",
+        "@id": "https://www.nexus-clinic.com/face/nose-thread-lift-malaysia/#service",
         "name": "Instant Nose Thread Lift in Malaysia for a Higher Bridge, Sharper Tip and Better Profile"
       },
       "ratingValue": 4.8,

@@ -45,7 +45,7 @@
       "@id": "https://www.nexus-clinic.com/face/botox-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/face/botox-malaysia/",
+        "@id": "https://www.nexus-clinic.com/face/botox-malaysia/#service",
         "name": "Top Botox Treatment in Malaysia for Natural, Refreshed Results Without the Frozen Look"
       },
       "ratingValue": 4.9,

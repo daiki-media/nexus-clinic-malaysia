@@ -45,7 +45,7 @@
       "@id": "https://www.nexus-clinic.com/face/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/face/",
+        "@id": "https://www.nexus-clinic.com/face/#service",
         "name": "Face Treatments in Malaysia"
       },
       "ratingValue": 4.9,

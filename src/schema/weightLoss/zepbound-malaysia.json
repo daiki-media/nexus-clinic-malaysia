@@ -45,7 +45,7 @@
       "@id": "https://www.nexus-clinic.com/weight-loss/zepbound-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/weight-loss/zepbound-malaysia/",
+        "@id": "https://www.nexus-clinic.com/weight-loss/zepbound-malaysia/#service",
         "name": "Mounjaro and Zepbound Weight Loss Injection Programme in Malaysia (Kuala Lumpur)"
       },
       "ratingValue": 4.9,

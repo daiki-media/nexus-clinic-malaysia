@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/hair/finasteride-treatment-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/hair/finasteride-treatment-malaysia/",
+        "@id": "https://www.nexus-clinic.com/hair/finasteride-treatment-malaysia/#service",
         "name": "Finasteride for Hair Loss in Malaysia for Male Pattern Baldness Treatment"
       },
       "ratingValue": 4.8,

@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/skin/laser-hair-removal-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/skin/laser-hair-removal-malaysia/",
+        "@id": "https://www.nexus-clinic.com/skin/laser-hair-removal-malaysia/#service",
         "name": "Safe Laser Hair Removal in Kuala Lumpur for All Malaysian Skin Types"
       },
       "ratingValue": 4.9,

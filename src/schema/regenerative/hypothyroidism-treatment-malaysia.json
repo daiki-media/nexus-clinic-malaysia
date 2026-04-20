@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/regenerative/hypothyroidism-treatment-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/regenerative/hypothyroidism-treatment-malaysia/",
+        "@id": "https://www.nexus-clinic.com/regenerative/hypothyroidism-treatment-malaysia/#service",
         "name": "Hypothyroidism Treatment Malaysia: Underactive Thyroid and Endocrine Thyroid Disorder Management"
       },
       "ratingValue": 4.9,

@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/face/chin-filler-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/face/chin-filler-malaysia/",
+        "@id": "https://www.nexus-clinic.com/face/chin-filler-malaysia/#service",
         "name": "Chin Dermal Filler in Malaysia for a Sharper, Defined Profile"
       },
       "ratingValue": 4.8,

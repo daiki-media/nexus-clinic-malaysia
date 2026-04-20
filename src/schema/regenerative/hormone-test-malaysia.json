@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/regenerative/hormone-test-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/regenerative/hormone-test-malaysia/",
+        "@id": "https://www.nexus-clinic.com/regenerative/hormone-test-malaysia/#service",
         "name": "Comprehensive Female and Male Hormonal Blood Test Packages Hormone blood test and health screening in Malaysia"
       },
       "ratingValue": 4.8,

@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/face/skin-booster-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/face/skin-booster-malaysia/",
+        "@id": "https://www.nexus-clinic.com/face/skin-booster-malaysia/#service",
         "name": "Best Skin Booster Treatment in Malaysia for Hydrated, Glowing Skin"
       },
       "ratingValue": 4.8,

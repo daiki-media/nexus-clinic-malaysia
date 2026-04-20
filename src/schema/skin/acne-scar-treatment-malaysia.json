@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/skin/acne-scar-treatment-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/skin/acne-scar-treatment-malaysia/",
+        "@id": "https://www.nexus-clinic.com/skin/acne-scar-treatment-malaysia/#service",
         "name": "Best Acne Scar Treatment in Malaysia for Smoother, Clearer Skin"
       },
       "ratingValue": 4.8,

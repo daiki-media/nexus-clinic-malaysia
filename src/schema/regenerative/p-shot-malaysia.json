@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/regenerative/p-shot-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/regenerative/p-shot-malaysia/",
+        "@id": "https://www.nexus-clinic.com/regenerative/p-shot-malaysia/#service",
         "name": "P-Shot in Malaysia: Priapus Shot PRP Treatment to Enhance Performance and Support Sexual Health at Nexus Clinic KL in Kuala Lumpur"
       },
       "ratingValue": 4.9,

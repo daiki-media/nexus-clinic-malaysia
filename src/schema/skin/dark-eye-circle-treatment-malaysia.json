@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/skin/dark-eye-circle-treatment-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/skin/dark-eye-circle-treatment-malaysia/",
+        "@id": "https://www.nexus-clinic.com/skin/dark-eye-circle-treatment-malaysia/#service",
         "name": "Dark Eye Circle Treatment in Malaysia for Naturally Brighter, Rested-Looking Eyes"
       },
       "ratingValue": 5.0,

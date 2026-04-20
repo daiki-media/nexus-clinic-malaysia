@@ -46,7 +46,7 @@
       "@id": "https://www.nexus-clinic.com/hair/mesotherapy-hair-loss-malaysia/#aggregaterating",
       "itemReviewed": {
         "@type": "Service",
-        "@id": "https://www.nexus-clinic.com/hair/mesotherapy-hair-loss-malaysia/",
+        "@id": "https://www.nexus-clinic.com/hair/mesotherapy-hair-loss-malaysia/#service",
         "name": "Mesotherapy Hair Loss Treatment in Malaysia for Thinning Hair & Scalp Rejuvenation"
       },
       "ratingValue": 4.8,
