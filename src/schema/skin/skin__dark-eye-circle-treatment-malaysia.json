@@ -1,0 +1,57 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/skin/dark-eye-circle-treatment-malaysia/#service",
+      "name": "Dark Eye Circle Treatment in Malaysia for Naturally Brighter, Rested-Looking Eyes",
+      "url": "https://www.nexus-clinic.com/skin/dark-eye-circle-treatment-malaysia/",
+      "description": "Eight hours of sleep and still look exhausted. At Nexus Clinic KL, our doctors identify whether your dark circles are pigmented, vascular, structural or allergy-driven before recommending a single treatment. Book your free under-eye assessment today.",
+      "serviceType": "Dark Eye Circle Treatment in Malaysia for Naturally Brighter, Rested-Looking Eyes",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/skin/dark-eye-circle-treatment-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/skin/dark-eye-circle-treatment-malaysia/#medicalprocedure",
+      "name": "Dark Eye Circle Treatment in Malaysia for Naturally Brighter, Rested-Looking Eyes",
+      "url": "https://www.nexus-clinic.com/skin/dark-eye-circle-treatment-malaysia/",
+      "description": "Eight hours of sleep and still look exhausted. At Nexus Clinic KL, our doctors identify whether your dark circles are pigmented, vascular, structural or allergy-driven before recommending a single treatment. Book your free under-eye assessment today.",
+      "procedureType": "Aesthetic",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/skin/dark-eye-circle-treatment-malaysia/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/skin/dark-eye-circle-treatment-malaysia/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/skin/dark-eye-circle-treatment-malaysia/#service",
+        "name": "Dark Eye Circle Treatment in Malaysia for Naturally Brighter, Rested-Looking Eyes"
+      },
+      "ratingValue": 5.0,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 147
+    }
+  ]
+}

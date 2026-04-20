@@ -1,0 +1,57 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/hair/#service",
+      "name": "Hair Treatments in Malaysia",
+      "url": "https://www.nexus-clinic.com/hair/",
+      "description": "Treat hair loss with PRP, mesotherapy & doctor-led solutions in KL. Restore thicker, healthier hair with personalised treatment plans.",
+      "serviceType": "Hair Treatments in Malaysia",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/hair/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/hair/#medicalprocedure",
+      "name": "Hair Treatments in Malaysia",
+      "url": "https://www.nexus-clinic.com/hair/",
+      "description": "Treat hair loss with PRP, mesotherapy & doctor-led solutions in KL. Restore thicker, healthier hair with personalised treatment plans.",
+      "procedureType": "Aesthetic",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/hair/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/hair/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/hair/#service",
+        "name": "Hair Treatments in Malaysia"
+      },
+      "ratingValue": 4.8,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 93
+    }
+  ]
+}

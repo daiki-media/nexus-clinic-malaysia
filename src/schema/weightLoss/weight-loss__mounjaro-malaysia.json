@@ -1,0 +1,57 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/weight-loss/mounjaro-malaysia/#service",
+      "name": "Mounjaro Malaysia Programme Tirzepatide Injections for Maximum Weight Loss",
+      "url": "https://www.nexus-clinic.com/weight-loss/mounjaro-malaysia/",
+      "description": "Mounjaro injection for weight loss in Kuala Lumpur, Malaysia. Tirzepatide injection helps manage blood sugar levels & diabetes. Discover Mounjaro now!",
+      "serviceType": "Mounjaro Malaysia Programme Tirzepatide Injections for Maximum Weight Loss",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/weight-loss/mounjaro-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/weight-loss/mounjaro-malaysia/#medicalprocedure",
+      "name": "Mounjaro Malaysia Programme Tirzepatide Injections for Maximum Weight Loss",
+      "url": "https://www.nexus-clinic.com/weight-loss/mounjaro-malaysia/",
+      "description": "Mounjaro injection for weight loss in Kuala Lumpur, Malaysia. Tirzepatide injection helps manage blood sugar levels & diabetes. Discover Mounjaro now!",
+      "procedureType": "Aesthetic",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/weight-loss/mounjaro-malaysia/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/weight-loss/mounjaro-malaysia/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/weight-loss/mounjaro-malaysia/#service",
+        "name": "Mounjaro Malaysia Programme Tirzepatide Injections for Maximum Weight Loss"
+      },
+      "ratingValue": 4.9,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 143
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/face/#service",
+      "name": "Face Treatments in Malaysia",
+      "url": "https://www.nexus-clinic.com/face/",
+      "description": "Enhance facial features with Botox, fillers & lifting treatments in KL. Doctor-led care for natural, balanced and refined results.",
+      "serviceType": "Face Treatments in Malaysia",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/face/#medicalprocedure",
+      "name": "Face Treatments in Malaysia",
+      "url": "https://www.nexus-clinic.com/face/",
+      "description": "Enhance facial features with Botox, fillers & lifting treatments in KL. Doctor-led care for natural, balanced and refined results.",
+      "procedureType": "Aesthetic",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/face/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/face/#service",
+        "name": "Face Treatments in Malaysia"
+      },
+      "ratingValue": 4.9,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 135
+    }
+  ]
+}

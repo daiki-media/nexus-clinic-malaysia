@@ -1,0 +1,57 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/face/tear-trough-filler-malaysia/#service",
+      "name": "Tear Trough Filler in Malaysia for Brighter, Refreshed Under-Eyes That Look Rested",
+      "url": "https://www.nexus-clinic.com/face/tear-trough-filler-malaysia/",
+      "description": "Reduce under-eye hollows & dark circles with tear trough filler in Kuala Lumpur. Safe, natural-looking results by expert aesthetic doctors. Schedule today.",
+      "serviceType": "Tear Trough Filler in Malaysia for Brighter, Refreshed Under-Eyes That Look Rested",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/tear-trough-filler-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/face/tear-trough-filler-malaysia/#medicalprocedure",
+      "name": "Tear Trough Filler in Malaysia for Brighter, Refreshed Under-Eyes That Look Rested",
+      "url": "https://www.nexus-clinic.com/face/tear-trough-filler-malaysia/",
+      "description": "Reduce under-eye hollows & dark circles with tear trough filler in Kuala Lumpur. Safe, natural-looking results by expert aesthetic doctors. Schedule today.",
+      "procedureType": "Aesthetic",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/tear-trough-filler-malaysia/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/face/tear-trough-filler-malaysia/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/face/tear-trough-filler-malaysia/#service",
+        "name": "Tear Trough Filler in Malaysia for Brighter, Refreshed Under-Eyes That Look Rested"
+      },
+      "ratingValue": 4.8,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 75
+    }
+  ]
+}

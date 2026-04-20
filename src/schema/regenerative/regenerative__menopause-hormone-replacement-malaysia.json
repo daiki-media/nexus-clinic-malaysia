@@ -1,0 +1,57 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/regenerative/menopause-hormone-replacement-malaysia/#service",
+      "name": "Menopause Hormone Replacement Therapy Malaysia: HRT and Menopause Management in Kuala Lumpur",
+      "url": "https://www.nexus-clinic.com/regenerative/menopause-hormone-replacement-malaysia/",
+      "description": "Hormone replacement therapy (HRT) for menopause in Malaysia. Managing menopausal symptoms for menopausal women with evidence-based HRT in Kuala Lumpur. Menopause and HRT consultation at Nexus Clinic KL; towards HRT initiation with safety and efficacy for all menopausal symptoms. Using HRT correctly with guidance from experienced healthcare professionals. Book your assessment today.",
+      "serviceType": "Menopause Hormone Replacement Therapy Malaysia: HRT and Menopause Management in Kuala Lumpur",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/regenerative/menopause-hormone-replacement-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/regenerative/menopause-hormone-replacement-malaysia/#medicalprocedure",
+      "name": "Menopause Hormone Replacement Therapy Malaysia: HRT and Menopause Management in Kuala Lumpur",
+      "url": "https://www.nexus-clinic.com/regenerative/menopause-hormone-replacement-malaysia/",
+      "description": "Hormone replacement therapy (HRT) for menopause in Malaysia. Managing menopausal symptoms for menopausal women with evidence-based HRT in Kuala Lumpur. Menopause and HRT consultation at Nexus Clinic KL; towards HRT initiation with safety and efficacy for all menopausal symptoms. Using HRT correctly with guidance from experienced healthcare professionals. Book your assessment today.",
+      "procedureType": "Aesthetic",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/regenerative/menopause-hormone-replacement-malaysia/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/regenerative/menopause-hormone-replacement-malaysia/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/regenerative/menopause-hormone-replacement-malaysia/#service",
+        "name": "Menopause Hormone Replacement Therapy Malaysia: HRT and Menopause Management in Kuala Lumpur"
+      },
+      "ratingValue": 4.8,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 121
+    }
+  ]
+}

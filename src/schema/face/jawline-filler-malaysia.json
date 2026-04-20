@@ -1,0 +1,57 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/face/jawline-filler-malaysia/#service",
+      "name": "Sharper Jawline Filler in Malaysia for Defined Contours and a Sculpted Lower Face",
+      "url": "https://www.nexus-clinic.com/face/jawline-filler-malaysia/",
+      "description": "Over 5,000 filler procedures and counting. Nexus Clinic KL delivers precise jawline filler in Malaysia built for Southeast Asian bone structure. Real definition, no surgery, same-day results. Book your consultation in Kuala Lumpur today.",
+      "serviceType": "Sharper Jawline Filler in Malaysia for Defined Contours and a Sculpted Lower Face",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/jawline-filler-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/face/jawline-filler-malaysia/#medicalprocedure",
+      "name": "Sharper Jawline Filler in Malaysia for Defined Contours and a Sculpted Lower Face",
+      "url": "https://www.nexus-clinic.com/face/jawline-filler-malaysia/",
+      "description": "Over 5,000 filler procedures and counting. Nexus Clinic KL delivers precise jawline filler in Malaysia built for Southeast Asian bone structure. Real definition, no surgery, same-day results. Book your consultation in Kuala Lumpur today.",
+      "procedureType": "Aesthetic",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/jawline-filler-malaysia/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/face/jawline-filler-malaysia/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/face/jawline-filler-malaysia/#service",
+        "name": "Sharper Jawline Filler in Malaysia for Defined Contours and a Sculpted Lower Face"
+      },
+      "ratingValue": 5.0,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 25
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/skin/hydrafacial-malaysia/#service",
+      "name": "Best HydraFacial Treatment in Malaysia for Brighter, Cleaner, Hydrated Skin",
+      "url": "https://www.nexus-clinic.com/skin/hydrafacial-malaysia/",
+      "description": "Back-to-back meetings, tropical UV and KL pollution take a visible toll on your skin. Nexus Clinic KL uses the authentic HydraFacial device with targeted boosters to cleanse, extract, hydrate and glow in one 40-minute session with zero downtime. Book today.",
+      "serviceType": "Best HydraFacial Treatment in Malaysia for Brighter, Cleaner, Hydrated Skin",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/skin/hydrafacial-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/skin/hydrafacial-malaysia/#medicalprocedure",
+      "name": "Best HydraFacial Treatment in Malaysia for Brighter, Cleaner, Hydrated Skin",
+      "url": "https://www.nexus-clinic.com/skin/hydrafacial-malaysia/",
+      "description": "Back-to-back meetings, tropical UV and KL pollution take a visible toll on your skin. Nexus Clinic KL uses the authentic HydraFacial device with targeted boosters to cleanse, extract, hydrate and glow in one 40-minute session with zero downtime. Book today.",
+      "procedureType": "Aesthetic",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/skin/hydrafacial-malaysia/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/skin/hydrafacial-malaysia/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/skin/hydrafacial-malaysia/#service",
+        "name": "Best HydraFacial Treatment in Malaysia for Brighter, Cleaner, Hydrated Skin"
+      },
+      "ratingValue": 4.9,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 42
+    }
+  ]
+}

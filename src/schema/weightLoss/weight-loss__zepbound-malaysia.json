@@ -1,0 +1,57 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/weight-loss/zepbound-malaysia/#service",
+      "name": "Mounjaro and Zepbound Weight Loss Injection Programme in Malaysia (Kuala Lumpur)",
+      "url": "https://www.nexus-clinic.com/weight-loss/zepbound-malaysia/",
+      "description": "Clinical trial data does not lie. Mounjaro and Zepbound (tirzepatide) produce up to 20.9% body weight loss, outperforming Ozempic in head-to-head comparisons. Nexus Clinic KL offers this weight loss injection programme in Malaysia for type 2 diabetes management and chronic weight management. GLP-1 and GIP dual-action appetite control. Personalised treatment. Book your consultation in Kuala Lumpur.",
+      "serviceType": "Mounjaro and Zepbound Weight Loss Injection Programme in Malaysia (Kuala Lumpur)",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/weight-loss/zepbound-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/weight-loss/zepbound-malaysia/#medicalprocedure",
+      "name": "Mounjaro and Zepbound Weight Loss Injection Programme in Malaysia (Kuala Lumpur)",
+      "url": "https://www.nexus-clinic.com/weight-loss/zepbound-malaysia/",
+      "description": "Clinical trial data does not lie. Mounjaro and Zepbound (tirzepatide) produce up to 20.9% body weight loss, outperforming Ozempic in head-to-head comparisons. Nexus Clinic KL offers this weight loss injection programme in Malaysia for type 2 diabetes management and chronic weight management. GLP-1 and GIP dual-action appetite control. Personalised treatment. Book your consultation in Kuala Lumpur.",
+      "procedureType": "Aesthetic",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/weight-loss/zepbound-malaysia/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/weight-loss/zepbound-malaysia/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/weight-loss/zepbound-malaysia/#service",
+        "name": "Mounjaro and Zepbound Weight Loss Injection Programme in Malaysia (Kuala Lumpur)"
+      },
+      "ratingValue": 4.9,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 121
+    }
+  ]
+}

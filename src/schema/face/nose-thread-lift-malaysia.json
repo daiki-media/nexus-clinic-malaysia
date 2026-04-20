@@ -1,0 +1,57 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/face/nose-thread-lift-malaysia/#service",
+      "name": "Instant Nose Thread Lift in Malaysia for a Higher Bridge, Sharper Tip and Better Profile",
+      "url": "https://www.nexus-clinic.com/face/nose-thread-lift-malaysia/",
+      "description": "Get a higher nose bridge & sharper tip with a non-surgical nose thread lift in Malaysia. Minimal downtime, instant contour. Learn about nose threads!",
+      "serviceType": "Instant Nose Thread Lift in Malaysia for a Higher Bridge, Sharper Tip and Better Profile",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/nose-thread-lift-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/face/nose-thread-lift-malaysia/#medicalprocedure",
+      "name": "Instant Nose Thread Lift in Malaysia for a Higher Bridge, Sharper Tip and Better Profile",
+      "url": "https://www.nexus-clinic.com/face/nose-thread-lift-malaysia/",
+      "description": "Get a higher nose bridge & sharper tip with a non-surgical nose thread lift in Malaysia. Minimal downtime, instant contour. Learn about nose threads!",
+      "procedureType": "Aesthetic",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/nose-thread-lift-malaysia/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/face/nose-thread-lift-malaysia/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/face/nose-thread-lift-malaysia/#service",
+        "name": "Instant Nose Thread Lift in Malaysia for a Higher Bridge, Sharper Tip and Better Profile"
+      },
+      "ratingValue": 4.8,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 141
+    }
+  ]
+}

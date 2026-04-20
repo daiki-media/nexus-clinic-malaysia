@@ -1,0 +1,57 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/regenerative/anti-aging-therapy-malaysia/#service",
+      "name": "Top Anti-Aging Treatments with Stem Cells, Therapies and Regenerative Medicine in Kuala Lumpur",
+      "url": "https://www.nexus-clinic.com/regenerative/anti-aging-therapy-malaysia/",
+      "description": "Anti-aging treatment in Malaysia using stem cells, stem cell therapies and advanced regenerative medicine. Pico laser, PRP, exosomes and cellular therapies available in Kuala Lumpur. Rejuvenate at the cellular level and address visible aging, elasticity loss and saggy skin at Nexus Clinic KL. Book your anti-aging assessment today.",
+      "serviceType": "Top Anti-Aging Treatments with Stem Cells, Therapies and Regenerative Medicine in Kuala Lumpur",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/regenerative/anti-aging-therapy-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/regenerative/anti-aging-therapy-malaysia/#medicalprocedure",
+      "name": "Top Anti-Aging Treatments with Stem Cells, Therapies and Regenerative Medicine in Kuala Lumpur",
+      "url": "https://www.nexus-clinic.com/regenerative/anti-aging-therapy-malaysia/",
+      "description": "Anti-aging treatment in Malaysia using stem cells, stem cell therapies and advanced regenerative medicine. Pico laser, PRP, exosomes and cellular therapies available in Kuala Lumpur. Rejuvenate at the cellular level and address visible aging, elasticity loss and saggy skin at Nexus Clinic KL. Book your anti-aging assessment today.",
+      "procedureType": "Aesthetic",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/regenerative/anti-aging-therapy-malaysia/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/regenerative/anti-aging-therapy-malaysia/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/regenerative/anti-aging-therapy-malaysia/#service",
+        "name": "Top Anti-Aging Treatments with Stem Cells, Therapies and Regenerative Medicine in Kuala Lumpur"
+      },
+      "ratingValue": 4.8,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 20
+    }
+  ]
+}

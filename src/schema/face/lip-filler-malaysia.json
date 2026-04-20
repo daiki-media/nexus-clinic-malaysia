@@ -1,0 +1,57 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/face/lip-filler-malaysia/#service",
+      "name": "Expert Lip Filler in Malaysia for Natural Volume and a Beautiful, Defined Pout",
+      "url": "https://www.nexus-clinic.com/face/lip-filler-malaysia/",
+      "description": "Instant, beautiful results. Award-winning injectors and aesthetic doctors at Nexus Clinic KL deliver natural lip filler in Malaysia. Fuller lips, defined pout, zero surgery. Book your free consultation in Kuala Lumpur today.",
+      "serviceType": "Expert Lip Filler in Malaysia for Natural Volume and a Beautiful, Defined Pout",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/lip-filler-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/face/lip-filler-malaysia/#medicalprocedure",
+      "name": "Expert Lip Filler in Malaysia for Natural Volume and a Beautiful, Defined Pout",
+      "url": "https://www.nexus-clinic.com/face/lip-filler-malaysia/",
+      "description": "Instant, beautiful results. Award-winning injectors and aesthetic doctors at Nexus Clinic KL deliver natural lip filler in Malaysia. Fuller lips, defined pout, zero surgery. Book your free consultation in Kuala Lumpur today.",
+      "procedureType": "Aesthetic",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/lip-filler-malaysia/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/face/lip-filler-malaysia/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/face/lip-filler-malaysia/#service",
+        "name": "Expert Lip Filler in Malaysia for Natural Volume and a Beautiful, Defined Pout"
+      },
+      "ratingValue": 4.8,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 101
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/face/chin-filler-malaysia/#service",
+      "name": "Chin Dermal Filler in Malaysia for a Sharper, Defined Profile",
+      "url": "https://www.nexus-clinic.com/face/chin-filler-malaysia/",
+      "description": "Trusted by thousands. Award-winning injectors and aesthetic doctors at Nexus Clinic KL deliver precise chin filler Kuala Lumpur results. Sharper profile, restored facial balance. No surgery. No downtime. Book today.",
+      "serviceType": "Chin Dermal Filler in Malaysia for a Sharper, Defined Profile",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/chin-filler-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/face/chin-filler-malaysia/#medicalprocedure",
+      "name": "Chin Dermal Filler in Malaysia for a Sharper, Defined Profile",
+      "url": "https://www.nexus-clinic.com/face/chin-filler-malaysia/",
+      "description": "Trusted by thousands. Award-winning injectors and aesthetic doctors at Nexus Clinic KL deliver precise chin filler Kuala Lumpur results. Sharper profile, restored facial balance. No surgery. No downtime. Book today.",
+      "procedureType": "Aesthetic",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/chin-filler-malaysia/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/face/chin-filler-malaysia/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/face/chin-filler-malaysia/#service",
+        "name": "Chin Dermal Filler in Malaysia for a Sharper, Defined Profile"
+      },
+      "ratingValue": 4.8,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 92
+    }
+  ]
+}

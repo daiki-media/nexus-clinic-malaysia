@@ -1,0 +1,57 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/regenerative/stem-cell-therapy-malaysia/#service",
+      "name": "Stem Cell Therapies : Repair with Advanced Regenerative Medicine at Nexus Clinic KL",
+      "url": "https://www.nexus-clinic.com/regenerative/stem-cell-therapy-malaysia/",
+      "description": "Stem cells hold the promise of true cellular repair. Nexus Clinic KL offers evidence-based stem cell therapies in Malaysia using MSC protocols for anti-aging, rejuvenation, and regenerative treatment. Book your consultation in Kuala Lumpur today.",
+      "serviceType": "Stem Cell Therapies : Repair with Advanced Regenerative Medicine at Nexus Clinic KL",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/regenerative/stem-cell-therapy-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/regenerative/stem-cell-therapy-malaysia/#medicalprocedure",
+      "name": "Stem Cell Therapies : Repair with Advanced Regenerative Medicine at Nexus Clinic KL",
+      "url": "https://www.nexus-clinic.com/regenerative/stem-cell-therapy-malaysia/",
+      "description": "Stem cells hold the promise of true cellular repair. Nexus Clinic KL offers evidence-based stem cell therapies in Malaysia using MSC protocols for anti-aging, rejuvenation, and regenerative treatment. Book your consultation in Kuala Lumpur today.",
+      "procedureType": "Aesthetic",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/regenerative/stem-cell-therapy-malaysia/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/regenerative/stem-cell-therapy-malaysia/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/regenerative/stem-cell-therapy-malaysia/#service",
+        "name": "Stem Cell Therapies : Repair with Advanced Regenerative Medicine at Nexus Clinic KL"
+      },
+      "ratingValue": 4.9,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 124
+    }
+  ]
+}

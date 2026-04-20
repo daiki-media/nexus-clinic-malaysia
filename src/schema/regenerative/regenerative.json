@@ -1,0 +1,57 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/regenerative/#service",
+      "name": "Regenerative Treatments in Malaysia",
+      "url": "https://www.nexus-clinic.com/regenerative/",
+      "description": "Boost collagen and repair skin with regenerative treatments in KL like PRP and exosomes. Doctor-led solutions for long-term rejuvenation.",
+      "serviceType": "Regenerative Treatments in Malaysia",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Skin & Hair Repair",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/regenerative/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/regenerative/#medicalprocedure",
+      "name": "Regenerative Treatments in Malaysia",
+      "url": "https://www.nexus-clinic.com/regenerative/",
+      "description": "Boost collagen and repair skin with regenerative treatments in KL like PRP and exosomes. Doctor-led solutions for long-term rejuvenation.",
+      "procedureType": "Aesthetic",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Skin & Hair Repair"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/regenerative/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/regenerative/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/regenerative/#service",
+        "name": "Regenerative Treatments in Malaysia"
+      },
+      "ratingValue": 4.7,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 111
+    }
+  ]
+}

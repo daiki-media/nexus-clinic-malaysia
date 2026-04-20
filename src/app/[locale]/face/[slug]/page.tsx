@@ -1,6 +1,8 @@
 import { languages } from "@/src/i18n/settings";
 import { faceTreatmentsMetadata } from "@/src/config/faceTreatments";
-import type { Metadata } from "next";
+import { Metadata } from "next";
+import { loadSchema } from "@/src/lib/loadSchema";
+import Script from "next/script";
 
 import DermalFiller from "@/src/views/faceTreatment/DermalFiller";
 import LipFiller from "@/src/views/faceTreatment/LipFiller";
@@ -39,14 +41,10 @@ export async function generateStaticParams() {
   return paths;
 }
 
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ locale: string; slug: string }> 
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
   const { locale, slug } = await params;
   const treatment = faceTreatmentsMetadata.find(t => t.slug === slug);
-  
+
   if (!treatment) {
     return {
       title: "Page Not Found",
@@ -56,7 +54,7 @@ export async function generateMetadata({
       },
     };
   }
-  
+
   const baseUrl = process.env.BASE_URL || "https://www.nexus-clinic.com";
   const url = locale === 'en' 
     ? `${baseUrl}/face/${slug}` 
@@ -75,17 +73,25 @@ export async function generateMetadata({
   };
 }
 
-export default async function FaceTreatmentPage({ 
-  params 
-}: { 
-  params: Promise<{ locale: string; slug: string }> 
-}) {
+export default async function FaceTreatmentPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
-  
+
+  const schema = loadSchema(slug);
+  if (!schema) notFound();
+
   const treatment = faceTreatmentsMetadata.find(t => t.slug === slug);
   if (!treatment) notFound();
-  
+
   const Component = components[treatment.component as keyof typeof components];
-   if (!Component) notFound();
-  return <Component locale={locale} />;
+  if (!Component) notFound();
+  return (
+    <>
+      <Script
+        id="ServicesSchema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <Component locale={locale} />
+    </>
+  );
 }

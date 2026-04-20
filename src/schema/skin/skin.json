@@ -1,0 +1,57 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/skin/#service",
+      "name": "Skin Treatments in Malaysia",
+      "url": "https://www.nexus-clinic.com/skin/",
+      "description": "Treat acne, scars, pigmentation & dull skin with advanced laser and medical treatments in KL. Safe, effective and personalised care.",
+      "serviceType": "Skin Treatments in Malaysia",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/skin/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/skin/#medicalprocedure",
+      "name": "Skin Treatments in Malaysia",
+      "url": "https://www.nexus-clinic.com/skin/",
+      "description": "Treat acne, scars, pigmentation & dull skin with advanced laser and medical treatments in KL. Safe, effective and personalised care.",
+      "procedureType": "Aesthetic",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/skin/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/skin/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/skin/#service",
+        "name": "Skin Treatments in Malaysia"
+      },
+      "ratingValue": 4.9,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 50
+    }
+  ]
+}

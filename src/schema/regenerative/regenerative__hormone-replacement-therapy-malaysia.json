@@ -1,0 +1,57 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/regenerative/hormone-replacement-therapy-malaysia/#service",
+      "name": "HRT Malaysia: Evidence-Based Hormone Replacement Therapy for Menopausal Women and Bioidentical Hormones",
+      "url": "https://www.nexus-clinic.com/regenerative/hormone-replacement-therapy-malaysia/",
+      "description": "Hormone replacement therapy (HRT) in Malaysia for menopausal women experiencing menopause symptoms including hot flashes, night sweats and mood swings. Bioidentical hormone replacement therapy and bioidentical hormones available. Women may benefit from HRT when menopausal symptoms affect quality of life. Book your free assessment today.",
+      "serviceType": "HRT Malaysia: Evidence-Based Hormone Replacement Therapy for Menopausal Women and Bioidentical Hormones",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/regenerative/hormone-replacement-therapy-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/regenerative/hormone-replacement-therapy-malaysia/#medicalprocedure",
+      "name": "HRT Malaysia: Evidence-Based Hormone Replacement Therapy for Menopausal Women and Bioidentical Hormones",
+      "url": "https://www.nexus-clinic.com/regenerative/hormone-replacement-therapy-malaysia/",
+      "description": "Hormone replacement therapy (HRT) in Malaysia for menopausal women experiencing menopause symptoms including hot flashes, night sweats and mood swings. Bioidentical hormone replacement therapy and bioidentical hormones available. Women may benefit from HRT when menopausal symptoms affect quality of life. Book your free assessment today.",
+      "procedureType": "Aesthetic",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/regenerative/hormone-replacement-therapy-malaysia/"
+      }
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://www.nexus-clinic.com/regenerative/hormone-replacement-therapy-malaysia/#aggregaterating",
+      "itemReviewed": {
+        "@type": "Service",
+        "@id": "https://www.nexus-clinic.com/regenerative/hormone-replacement-therapy-malaysia/#service",
+        "name": "HRT Malaysia: Evidence-Based Hormone Replacement Therapy for Menopausal Women and Bioidentical Hormones"
+      },
+      "ratingValue": 4.8,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": 116
+    }
+  ]
+}
