@@ -1,0 +1,44 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/face/karisma-malaysia/#service",
+      "name": "Best Karisma Malaysia | Collagen Skin Booster Treatment at Nexus Clinic Kuala Lumpur",
+      "url": "https://www.nexus-clinic.com/face/karisma-malaysia/",
+      "description": "Improve skin firmness, elasticity and glow with Karisma in Malaysia. Nexus Clinic KL offers doctor-led Karisma Rh Collagen treatment for natural skin rejuvenation. Book your free consultation today.",
+      "serviceType": "Collagen-based injectable for skin rejuvenation and firmness",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com/#medicalclinic",
+        "name": "Nexus Clinic Kuala Lumpur",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/karisma-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/face/karisma-malaysia/#medicalprocedure",
+      "name": "Karisma Collagen Skin Booster Treatment",
+      "url": "https://www.nexus-clinic.com/face/karisma-malaysia/",
+      "description": "Karisma is a collagen-focused injectable skin rejuvenation treatment designed to improve skin quality, firmness, elasticity, and texture by stimulating collagen renewal.",
+      "procedureType": "http://schema.org/InjectableSkinTreatment",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic Kuala Lumpur"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/karisma-malaysia/"
+      }
+    }
+  ]
+}

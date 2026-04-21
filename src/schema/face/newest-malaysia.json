@@ -1,0 +1,44 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/face/newest-malaysia/#service",
+      "name": "Best NEWEST Skin Booster Treatment in Malaysia for Hydrated, Firmer, and Youthful Skin",
+      "url": "https://www.nexus-clinic.com/face/newest-malaysia/",
+      "description": "Improve skin hydration, elasticity, glow, and overall skin quality with NEWEST, the latest polynucleotide-based skin booster in Malaysia. Nexus Clinic KL offers doctor-led NEWEST treatment for smoother, firmer, and healthier-looking skin. Book your free consultation today.",
+      "serviceType": "Polynucleotide-based Skin Booster Treatment for Hydrated, Firmer, and Youthful Skin",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com/#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/newest-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/face/newest-malaysia/#medicalprocedure",
+      "name": "NEWEST Skin Booster Treatment for Hydrated, Firmer, and Youthful Skin",
+      "url": "https://www.nexus-clinic.com/face/newest-malaysia/",
+      "description": "NEWEST is a polynucleotide-based injectable skin booster that improves skin hydration, elasticity, radiance, and overall quality. It revitalizes your skin naturally, without the need for heavy fillers. Book your consultation at Nexus Clinic KL to restore your skin’s health from within.",
+      "procedureType": "http://schema.org/NoninvasiveProcedure",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/newest-malaysia/"
+      }
+    }
+  ]
+}

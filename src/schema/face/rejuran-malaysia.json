@@ -1,0 +1,44 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/face/rejuran-malaysia/#service",
+      "name": "Best Rejuran Malaysia | Polynucleotide Skin Healing Treatment at Nexus Clinic KL",
+      "url": "https://www.nexus-clinic.com/face/rejuran-malaysia/",
+      "description": "Improve skin texture, pores, acne scars and fine lines with Rejuran in Malaysia. Nexus Clinic KL offers doctor-led Rejuran treatment for smoother, healthier and more youthful-looking skin. Book your free consultation today.",
+      "serviceType": "Polynucleotide-based injectable skin healing and rejuvenation",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com/#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/rejuran-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/face/rejuran-malaysia/#medicalprocedure",
+      "name": "Rejuran Polynucleotide Skin Healing Treatment",
+      "url": "https://www.nexus-clinic.com/face/rejuran-malaysia/",
+      "description": "Rejuran is a polynucleotide-based injectable treatment designed to improve skin texture, pores, acne scars, fine lines, and overall skin recovery.",
+      "procedureType": "http://schema.org/NoninvasiveProcedure",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/rejuran-malaysia/"
+      }
+    }
+  ]
+}

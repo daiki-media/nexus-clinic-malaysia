@@ -36,14 +36,15 @@
       "moleRemoval": "Mole Removal",
       "hydrafacial": "HydraFacial",
       "picoLaser": "Pico Laser",
-      "darkCircle": "Dark Eye Circle Treatment",
-      "whitening": "Skin Whitening Treatment",
+      "darkCircle": "Dark Eye Circle",
+      "whitening": "Skin Whitening",
       "eczema": "Eczema Treatment",
       "keloid": "Keloid Treatment",
       "rosacea": "Rosacea Treatment",
       "stretchMark": "Stretch Mark Removal",
       "laserHair": "Laser Hair Removal",
-      "tattooRemoval": "Tattoo Removal"
+      "tattooRemoval": "Tattoo Removal",
+      "chemicalPeel": "Chemical Peel"
     },
     "face": {
       "botox": "Botox",
@@ -57,7 +58,12 @@
       "skinBooster": "Skin Booster",
       "tearTrough": "Tear Trough Filler",
       "underEye": "Under Eye Filler",
-      "fatFreezing": "Fat Freezing"
+      "newestML": "Newest",
+      "profhiloML": "Profhilo",
+      "sculptra": "Sculptra",
+      "karisma": "karisma",
+      "plinest": "Plinest",
+      "rejuran": "Rejuran"
     },
     "hair": {
       "transplant": "Hair Transplant",

@@ -53,7 +53,6 @@ const navItems = [
         items: [
           { key: "submenu.skin.acneTreatment", fallback: "acne-treatment-malaysia" },
           { key: "submenu.skin.acneScar", fallback: "acne-scar-treatment-malaysia" },
-          { key: "submenu.skin.pigmentation", fallback: "pigmentation-treatment-malaysia" },
           { key: "submenu.skin.melasma", fallback: "melasma-treatment-malaysia" },
           { key: "submenu.skin.moleRemoval", fallback: "mole-removal-malaysia" },
           { key: "submenu.skin.hydrafacial", fallback: "hydrafacial-malaysia" },
@@ -63,9 +62,11 @@ const navItems = [
           { key: "submenu.skin.eczema", fallback: "eczema-treatment-malaysia" },
           { key: "submenu.skin.keloid", fallback: "keloid-treatment-malaysia" },
           { key: "submenu.skin.rosacea", fallback: "rosacea-treatment-malaysia" },
-          { key: "submenu.skin.stretchMark", fallback: "stretch-mark-removal-malaysia" },
           { key: "submenu.skin.laserHair", fallback: "laser-hair-removal-malaysia" },
           { key: "submenu.skin.tattooRemoval", fallback: "tattoo-removal-malaysia" },
+          { key: "submenu.skin.chemicalPeel", fallback: "chemical-peel-malaysia" },
+          { key: "submenu.skin.pigmentation", fallback: "pigmentation-treatment-malaysia" },
+          { key: "submenu.skin.stretchMark", fallback: "stretch-mark-removal-malaysia" },
         ],
       },
       face: {
@@ -83,6 +84,12 @@ const navItems = [
               { key: "submenu.face.skinBooster", fallback: "skin-booster-malaysia" },
               { key: "submenu.face.tearTrough", fallback: "tear-trough-filler-malaysia" },
               { key: "submenu.face.underEye", fallback: "under-eye-filler-malaysia" },
+              { key: "submenu.face.newestML", fallback: "newest-malaysia" },
+              { key: "submenu.face.profhiloML", fallback: "profhilo-malaysia" },
+              { key: "submenu.face.sculptra", fallback: "sculptra-malaysia" },
+              { key: "submenu.face.karisma", fallback: "karisma-malaysia" },
+              { key: "submenu.face.plinest", fallback: "plinest-malaysia" },
+              { key: "submenu.face.rejuran", fallback: "rejuran-malaysia" },
         ],
       },
       hair: {

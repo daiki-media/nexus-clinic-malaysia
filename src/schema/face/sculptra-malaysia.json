@@ -1,0 +1,44 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/face/sculptra-malaysia/#service",
+      "name": "Best Sculptra Malaysia | Collagen-Stimulating Treatment at Nexus Clinic Kuala Lumpur",
+      "url": "https://www.nexus-clinic.com/face/sculptra-malaysia/",
+      "description": "Restore facial volume and improve skin firmness with Sculptra in Malaysia. Nexus Clinic KL offers doctor-led Sculptra treatment for natural, gradual, long-lasting results. Book your free consultation today.",
+      "serviceType": "Collagen-stimulating injectable for gradual skin improvement",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com/#medicalclinic",
+        "name": "Nexus Clinic Kuala Lumpur",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/sculptra-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/face/sculptra-malaysia/#medicalprocedure",
+      "name": "Sculptra Collagen-Stimulating Treatment",
+      "url": "https://www.nexus-clinic.com/face/sculptra-malaysia/",
+      "description": "Sculptra is a poly-L-lactic acid (PLLA) biostimulatory injectable used for gradual collagen restoration, improving facial wrinkles, sunken cheeks, and restoring structure.",
+      "procedureType": "http://schema.org/InjectableSkinTreatment",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic Kuala Lumpur"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/sculptra-malaysia/"
+      }
+    }
+  ]
+}

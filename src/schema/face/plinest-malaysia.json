@@ -1,0 +1,44 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/face/plinest-malaysia/#service",
+      "name": "Best Plinest Malaysia | Polynucleotide Skin Rejuvenation at Nexus Clinic KL",
+      "url": "https://www.nexus-clinic.com/face/plinest-malaysia/",
+      "description": "Improve skin texture, hydration, elasticity and overall skin quality with Plinest in Malaysia. Nexus Clinic KL offers doctor-led Plinest polynucleotide treatment for natural skin rejuvenation. Book your free consultation today.",
+      "serviceType": "Polynucleotide-based injectable skin rejuvenation",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com/#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/plinest-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/face/plinest-malaysia/#medicalprocedure",
+      "name": "Plinest Polynucleotide Skin Rejuvenation",
+      "url": "https://www.nexus-clinic.com/face/plinest-malaysia/",
+      "description": "Plinest is a polynucleotide-based injectable treatment designed to improve skin texture, wrinkles, elasticity, hydration, and overall skin quality.",
+      "procedureType": "http://schema.org/NoninvasiveProcedure",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/plinest-malaysia/"
+      }
+    }
+  ]
+}

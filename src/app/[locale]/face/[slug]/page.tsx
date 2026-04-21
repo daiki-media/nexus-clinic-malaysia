@@ -15,6 +15,12 @@ import NoseFiller from "@/src/views/faceTreatment/NoseFiller";
 import CheekFiller from "@/src/views/faceTreatment/CheekFiller";
 import TearTroughFiller from "@/src/views/faceTreatment/TearTroughFiller";
 import UnderEyeFiller from "@/src/views/faceTreatment/UnderEyeFiller";
+import NewestMalaysia from "@/src/views/faceTreatment/NewestMalaysia";
+import ProfhiloMalaysia from "@/src/views/faceTreatment/ProfhiloMalaysia";
+import SculptraMalaysia from "@/src/views/faceTreatment/SculptraMalaysia";
+import KarismaMalaysia from "@/src/views/faceTreatment/KarismaMalaysia";
+import PlinestMalaysia from "@/src/views/faceTreatment/PlinestMalaysia";
+import RejuranMalaysia from "@/src/views/faceTreatment/RejuranMalaysia";
 import { notFound } from "next/navigation";
 
 const components = {
@@ -29,6 +35,13 @@ const components = {
   CheekFiller,
   TearTroughFiller,
   UnderEyeFiller,
+  NewestMalaysia,
+  ProfhiloMalaysia,
+  SculptraMalaysia,
+  KarismaMalaysia,
+  PlinestMalaysia,
+  RejuranMalaysia,
+  
 } as const;
 
 export async function generateStaticParams() {

@@ -71,5 +71,41 @@ export const faceTreatmentsMetadata: TreatmentMetadata[] = [
     component: 'UnderEyeFiller',
     title: 'Under Eye Filler Malaysia | Brighten & Rejuvenate KL',
     description: 'Refresh tired eyes with under eye filler in Kuala Lumpur. Smooth lines, restore volume & achieve youthful results with professional care. Book your consultation now.',
-  }
+  },
+  {
+    slug: 'newest-malaysia',
+    component: 'NewestMalaysia',
+    title: 'Best NEWEST Malaysia | Polynucleotide Skin Booster Treatment at Nexus Clinic KL',
+    description: 'Improve skin hydration, elasticity, glow and overall skin quality with NEWEST in Malaysia. Nexus Clinic KL offers doctor-led NEWEST polynucleotide treatment for smoother, firmer and healthier-looking skin. Book your free consultation today.',
+  },
+  {
+    slug: 'profhilo-malaysia',
+    component: 'ProfhiloMalaysia',
+    title: 'Best Profhilo Malaysia | Skin Hydration & Firmness Treatment at Nexus Clinic KL',
+    description: 'Improve skin hydration, firmness and glow with Profhilo in Malaysia. Nexus Clinic KL offers doctor-led Profhilo treatment for dull, thin and ageing skin. Book your free consultation today.',
+  },
+  {
+    slug: 'sculptra-malaysia',
+    component: 'SculptraMalaysia',
+    title: 'Best Sculptra Malaysia | Collagen-Stimulating Treatment at Nexus Clinic Kuala Lumpur',
+    description: 'Restore facial volume and improve skin firmness with Sculptra in Malaysia. Nexus Clinic KL offers doctor-led Sculptra treatment for natural, gradual, long-lasting results. Book your free consultation today.',
+  },
+  {
+    slug: 'karisma-malaysia',
+    component: 'KarismaMalaysia',
+    title: 'Best Karisma Malaysia | Collagen Skin Booster Treatment at Nexus Clinic Kuala Lumpur',
+    description: 'Improve skin firmness, elasticity and glow with Karisma in Malaysia. Nexus Clinic KL offers doctor-led Karisma Rh Collagen treatment for natural skin rejuvenation. Book your free consultation today.',
+  },
+  {
+    slug: 'plinest-malaysia',
+    component: 'PlinestMalaysia',
+    title: 'Best Plinest Malaysia | Polynucleotide Skin Rejuvenation at Nexus Clinic KL',
+    description: 'Improve skin texture, hydration, elasticity and overall skin quality with Plinest in Malaysia. Nexus Clinic KL offers doctor-led Plinest polynucleotide treatment for natural skin rejuvenation. Book your free consultation today.',
+  },
+  {
+    slug: 'rejuran-malaysia',
+    component: 'RejuranMalaysia',
+    title: 'Best Rejuran Malaysia | Polynucleotide Skin Healing Treatment at Nexus Clinic KL',
+    description: 'Improve skin texture, pores, acne scars and fine lines with Rejuran in Malaysia. Nexus Clinic KL offers doctor-led Rejuran treatment for smoother, healthier and more youthful-looking skin. Book your free consultation today.',
+  },
 ];

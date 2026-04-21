@@ -70,12 +70,9 @@ export const redirectsList: [string, string][] = [
 
   // Face
   ["/en/belotero-malaysia/", "/face/dermal-filler-malaysia/"],
-  ["/en/sculptra-malaysia/", "/face/dermal-filler-malaysia/"],
-  ["/en/sculptra-malaysia/ellanse-vs-sculptra-2/", "/face/dermal-filler-malaysia/"],
   ["/en/lip-enhancement-malaysia/", "/face/lip-filler-malaysia/"],
   ["/en/hydrodeluxe-malaysia/", "/face/skin-booster-malaysia/"],
   ["/en/pdrn-injection-treatment-malaysia/", "/face/skin-booster-malaysia/"],
-  ["/en/profhilo-malaysia/", "/face/skin-booster-malaysia/"],
   ["/en/skinvive-treatment-malaysia/", "/face/skin-booster-malaysia/"],
   ["/en/our-services/skin-boosting-iv-drips-malaysia/", "/face/skin-booster-malaysia/"],
   ["/en/dermal-fillers-malaysia/tear-trough/", "/face/tear-trough-filler-malaysia/"],
@@ -94,6 +91,24 @@ export const redirectsList: [string, string][] = [
   ["/en/category/penis-filler/", "/face/dermal-filler-malaysia/"],
   ["/en/blog/how-do-dermal-fillers-work/", "/face/dermal-filler-malaysia/"],
   ["/en/profhilo-vs-botox-key-differences-benefits-and-results/", "/face/botox-malaysia/"],
+  ["/en/profhilo-malaysia/", "/face/profhilo-malaysia/"],
+  ["/en/profhilo-malaysia/benefits", "/face/profhilo-malaysia/"],
+  ["/en/profhilo-malaysia-2/side-effects/", "/face/profhilo-malaysia/"],
+  ["/en/profhilo-malaysia/side-effects/", "/face/profhilo-malaysia/"],
+  // Sculptra Redirects
+  ["/en/sculptra-malaysia/", "/face/sculptra-malaysia/"],
+  ["/en/sculptra-malaysia/sculptra-cost/", "/face/sculptra-malaysia/"],
+  ["/en/sculptra-malaysia/treatment/", "/face/sculptra-malaysia/"],
+  ["/sculptra-malaysia/benefits/", "/face/sculptra-malaysia/"],
+  ["/sculptra-malaysia/side-effects/", "/face/sculptra-malaysia/"],
+  ["/en/sculptra-malaysia/radiesse-vs-sculptra/", "/face/sculptra-malaysia/"],
+  ["/en/sculptra-malaysia/ellanse-vs-sculptra-2", "/face/sculptra-malaysia/"],
+  ["/sculptra-malaysia/juvelook-vs-sculptra/", "/face/sculptra-malaysia/"],
+  ["/en/sculptra-malaysia/near-me/", "/face/sculptra-malaysia/"],
+  // Rejuran Redirects
+  ["/en/rejuran-malaysia/", "/face/rejuran-malaysia/"],
+  ["/en/rejuran-malaysia/treatment/", "/face/rejuran-malaysia/"],
+  ["/en/rejuran-malaysia/benefits/", "/face/rejuran-malaysia/"],
 
   // Skin
   ["/en/tattoo-removal-malaysia/", "/skin/tattoo-removal-malaysia/"],
@@ -122,6 +137,9 @@ export const redirectsList: [string, string][] = [
   ["/en/category/tattoo-removal/", "/skin/tattoo-removal-malaysia/"],
   ["/en/pico-discovery-laser/tattoo-removal/", "/skin/tattoo-removal-malaysia/"],
   ["/en/milia-oil-seeds-mole-wart-removal/", "/skin/mole-removal-malaysia/"],
+  ["/en/chemical-peel-malaysia/", "/skin/chemical-peel-malaysia/"],
+  ["/en/chemical-peel-malaysia/cost/", "/skin/chemical-peel-malaysia/"],
+  ["/en/our-services/carbon-laser-peel/", "/skin/chemical-peel-malaysia/"],
 
   // Hair
   ["/en/hair-transplant-malaysia/", "/hair/hair-transplant-malaysia/"],
@@ -168,12 +186,9 @@ export const redirectsList: [string, string][] = [
   ["/en/doctor/dr-ahmad-zulkifli/", "/doctors/"],
   ["/en/doctors/dr-preetha/", "/doctors/"],
   ["/en/our-services/", "/"],
-  ["/en/chemical-peel-malaysia/", "/chemical-peel/"],
   ["/en/home/", "/"],
   ["/en/fractional-laser-resurfacing-malaysia/", "/fraqtional-laser-resurfacing/"],
   ["/en/fraxel-laser-treatment-in-malaysia/", "/fraqtional-laser-resurfacing/"],
-  ["/en/chemical-peel-malaysia/cost/", "/chemical-peel/"],
-  ["/en/our-services/carbon-laser-peel/", "/chemical-peel/"],
   ["/en/blog/5-most-popular-fraxel-laser-treatment-clinic-in-kuala-lumpur/", "/fraqtional-laser-resurfacing/"],
 ];
 

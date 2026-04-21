@@ -1,0 +1,44 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/face/chemical-peel-malaysia/#service",
+      "name": "Best Chemical Peel Malaysia | Clearer, Brighter Skin Treatment",
+      "url": "https://www.nexus-clinic.com/face/chemical-peel-malaysia/",
+      "description": "Improve acne marks, dull skin, uneven tone and fine lines with chemical peel treatment in Malaysia. Nexus Clinic KL offers doctor-led peels for smoother, brighter skin. Book your free consultation today.",
+      "serviceType": "Chemical Peel Treatment",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com/#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/chemical-peel-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/face/chemical-peel-malaysia/#medicalprocedure",
+      "name": "Best Chemical Peel Malaysia | Clearer, Brighter Skin Treatment",
+      "url": "https://www.nexus-clinic.com/face/chemical-peel-malaysia/",
+      "description": "Improve acne marks, dull skin, uneven tone and fine lines with chemical peel treatment in Malaysia. Nexus Clinic KL offers doctor-led peels for smoother, brighter skin. Book your free consultation today.",
+      "procedureType": "http://schema.org/NoninvasiveProcedure",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/chemical-peel-malaysia/"
+      }
+    }
+  ]
+}

@@ -20,6 +20,7 @@ import LaserHairRemoval from "@/src/views/skinTreatment/LaserHairRemoval";
 import TattooRemoval from "@/src/views/skinTreatment/TattooRemoval";
 import Hydrafacial from "@/src/views/skinTreatment/Hrdrafracial";
 import StretchMarkRemoval from "@/src/views/skinTreatment/StretchMarkTreatment";
+import ChemicalPeelMalaysia from "@/src/views/skinTreatment/ChemicalPeelMalaysia";
 import { notFound } from "next/navigation";
 
 const components: Record<string, React.ComponentType<{ locale: string }>> = {
@@ -38,6 +39,7 @@ const components: Record<string, React.ComponentType<{ locale: string }>> = {
   StretchMarkRemoval,
   LaserHairRemoval,
   TattooRemoval,
+  ChemicalPeelMalaysia,
 };
 
 export async function generateStaticParams() {

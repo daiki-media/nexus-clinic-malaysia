@@ -1,0 +1,44 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.nexus-clinic.com/face/profhilo-malaysia/#service",
+      "name": "Best Profhilo Skin Hydration & Firmness Treatment in Malaysia",
+      "url": "https://www.nexus-clinic.com/face/profhilo-malaysia/",
+      "description": "Improve skin hydration, firmness, and glow with Profhilo in Malaysia. Nexus Clinic KL offers doctor-led Profhilo treatment for dull, thin, and ageing skin. Book your free consultation today.",
+      "serviceType": "Profhilo Injectable Skin Remodelling Treatment for Hydration, Firmness, and Skin Glow",
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://www.nexus-clinic.com/#medicalclinic",
+        "name": "Nexus Clinic",
+        "url": "https://www.nexus-clinic.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/profhilo-malaysia/"
+      },
+      "image": "https://www.nexus-clinic.com/images/logo.png"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.nexus-clinic.com/face/profhilo-malaysia/#medicalprocedure",
+      "name": "Profhilo Skin Hydration & Firmness Treatment",
+      "url": "https://www.nexus-clinic.com/face/profhilo-malaysia/",
+      "description": "Profhilo is an injectable skin remodelling treatment that improves skin hydration, firmness, and texture. Unlike dermal fillers, it doesn't change the shape of the face but works on overall skin quality. Book a free consultation at Nexus Clinic KL today.",
+      "procedureType": "http://schema.org/NoninvasiveProcedure",
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "Nexus Clinic"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.nexus-clinic.com/face/profhilo-malaysia/"
+      }
+    }
+  ]
+}

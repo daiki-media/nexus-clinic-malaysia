@@ -95,5 +95,11 @@ export const skinTreatmentsMetadata: TreatmentMetadata[] = [
     component: 'TattooRemoval',
     title: 'Laser Tattoo Removal in Malaysia: Pico Laser Technology for All Skin Types | Nexus Clinic KL',
     description: 'Laser tattoo removal in Malaysia using advanced pico laser technology including picosecond laser and yellow laser for all tattoo ink colours. The best laser tattoo removal clinic in Kuala Lumpur with honest session counts and transparent pricing. Book your free assessment today.',
+  },
+  {
+    slug: 'chemical-peel-malaysia',
+    component: 'ChemicalPeelMalaysia',
+    title: 'Best Chemical Peel Malaysia | Clearer, Brighter Skin Treatment at Nexus Clinic Kuala KL',
+    description: 'Improve acne marks, dull skin, uneven tone and fine lines with chemical peel treatment in Malaysia. Nexus Clinic KL offers doctor-led peels for smoother, brighter skin. Book your free consultation today.',
   }
 ];

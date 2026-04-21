@@ -30,7 +30,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/consultation",
     // content relavant pages
     "/acne-and-acne-scars",
-    "/chemical-peel",
     "/dermal-fillers",
     "/fraqtional-laser-resurfacing",
     
