@@ -24,7 +24,7 @@ import FAQWithSchema from "../components/FAQWithSchema";
 
 const PageSubcision = () => {
   const treatmentStats = [
-    { icon: Users, label: "Treated Areaa", value: "Face" },
+    { icon: Users, label: "Treated Area", value: "Face" },
     { icon: Clock, label: "Duration", value: "30 minutes" },
     { icon: CalendarDays, label: "Frequency", value: "1 session/month" },
     { icon: Timer, label: "Downtime", value: "Minimal" },
