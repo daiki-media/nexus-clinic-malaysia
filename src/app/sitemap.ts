@@ -11,7 +11,9 @@ import { wordpressService } from "@/src/services/wordpress";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.BASE_URL|| "https://www.nexus-clinic.com";
-
+  const withSlash = (url: string) => {
+    return url.endsWith("/") ? url : `${url}/`;
+  };
   const staticRoutes = [
     "",
     "/about-us",
@@ -26,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/skin",
     "/regenerative",
     "/weight-loss",
-    "/blogs",
+    // "/blogs",
     "/consultation",
     // content relavant pages
     "/acne-and-acne-scars",
@@ -34,42 +36,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/fraqtional-laser-resurfacing",
     
   ];
-
   const staticUrls = languages.flatMap((locale) =>
     staticRoutes.map((route) => ({
-      url:
+      url: withSlash(
         locale === "en"
           ? `${baseUrl}${route}`
-          : `${baseUrl}/${locale}${route}`,
+          : `${baseUrl}/${locale}${route}`
+      ),
       lastModified: new Date(),
     }))
   );
 
-  // const staticUrls = staticRoutes.map((route) => ({
-  //   url: `${baseUrl}${route}`,
-  //   lastModified: new Date(),
-  //   alternates: {
-  //     languages: Object.fromEntries(
-  //       languages.map((locale) => [
-  //         locale,
-  //         locale === "en"
-  //           ? `${baseUrl}${route}`
-  //           : `${baseUrl}/${locale}${route}`,
-  //       ])
-  //     ),
-  //   },
-  // }));
-  // 
   const generateDynamicUrls = (
     items: { slug: string }[],
     basePath: string
   ) => {
     return languages.flatMap((locale) =>
       items.map((item) => ({
-        url:
+        url: withSlash(
           locale === "en"
             ? `${baseUrl}/${basePath}/${item.slug}`
-            : `${baseUrl}/${locale}/${basePath}/${item.slug}`,
+            : `${baseUrl}/${locale}/${basePath}/${item.slug}`
+        ),
         lastModified: new Date(),
       }))
     );
@@ -85,16 +73,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   try {
       const posts = await wordpressService.getAllPosts();
-
       blogUrls = posts.map((post) => ({
-        url: `${baseUrl}/blogs/${post.slug}`,
+        url: withSlash(`${baseUrl}/blogs/${post.slug}`),
         lastModified: new Date(post.modified || post.date),
       }));
   } catch (err) {
     console.error("Blog sitemap error:", err);
   }
-
-  // ✅ FINAL MERGE
   return [
     ...staticUrls,
     ...faceUrls,

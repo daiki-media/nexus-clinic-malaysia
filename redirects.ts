@@ -187,6 +187,7 @@ export const redirectsList: [string, string][] = [
   ["/en/doctors/dr-preetha/", "/doctors/"],
   ["/en/our-services/", "/"],
   ["/en/home/", "/"],
+  ["/fractional-laser-resurfacing-malaysia/", "/fraqtional-laser-resurfacing/"],
   ["/en/fractional-laser-resurfacing-malaysia/", "/fraqtional-laser-resurfacing/"],
   ["/en/fraxel-laser-treatment-in-malaysia/", "/fraqtional-laser-resurfacing/"],
   ["/en/blog/5-most-popular-fraxel-laser-treatment-clinic-in-kuala-lumpur/", "/fraqtional-laser-resurfacing/"],

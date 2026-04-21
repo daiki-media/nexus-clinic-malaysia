@@ -384,28 +384,28 @@ export default function Products({ locale = fallbackLng }: { locale?: string }) 
                       <div className="flex -space-x-2">
                         <div className="flex -space-x-4 rtl:space-x-reverse">
                           <Image
-                            className="border-2 border-buffer rounded-full"
+                            className="border-2 border-rose rounded-full"
                             src="/images/profile1.png"
                             alt="p1"
                             width={50}
                             height={50}
                             />
                           <Image
-                            className="border-2 border-buffer rounded-full"
+                            className="border-2 border-rose rounded-full"
                             src="/images/profile2.png"
                             alt="p2"
                             width={50}
                             height={50}
                             />
                           <Image
-                            className="border-2 border-buffer rounded-full"
+                            className="border-2 border-rose rounded-full"
                             src="/images/profile3.png"
                             alt="p3"
                             width={50}
                             height={50}
                             />
                           <Image
-                            className="border-2 border-buffer rounded-full"
+                            className="border-2 border-rose rounded-full"
                             src="/images/profile4.png"
                             alt="p4"
                             width={50}

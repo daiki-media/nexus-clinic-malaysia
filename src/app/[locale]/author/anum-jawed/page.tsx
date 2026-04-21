@@ -85,7 +85,9 @@ export default function AuthorPage() {
           </p>
 
           <p className="text-brown/90 leading-relaxed">
-            She has professional experience working with <span className="text-wine font-medium">DoctorOnCall</span>, a Malaysian digital healthcare platform, and has also contributed to healthcare initiatives associated with the Ministry of Health Malaysia (MOH).
+            She has professional experience working with 
+            <a href="https://www.doctoroncall.com/" target="_blank" className="text-wine font-bold italic"> DoctorOnCall</a >, 
+            a Malaysian digital healthcare platform, and has also contributed to healthcare initiatives associated with the Ministry of Health Malaysia (MOH).
           </p>
 
           <div className="bg-cream/20 rounded-xl p-5 my-4 border-l-4 border-wine">
