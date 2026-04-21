@@ -24,7 +24,8 @@ import {
 } from "lucide-react";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
-
+import Image from "next/image";
+import FAQWithSchema from "@/src/components/FAQWithSchema";
 function DecorLine({ className = "" }) {
   return (
     <motion.div
@@ -79,6 +80,7 @@ function TreatmentCard({ t: treatment, bodyWeight, learnMore }: { t: (typeof tre
           </div>
           <motion.a
             href={treatment.href}
+            target="_blank"
             animate={{ x: hovered ? 4 : 0 }}
             transition={{ type: "spring", stiffness: 400 }}
             className="flex items-center gap-1 text-xs font-semibold text-wine hover:text-brown transition-colors"
@@ -90,34 +92,39 @@ function TreatmentCard({ t: treatment, bodyWeight, learnMore }: { t: (typeof tre
     </motion.div>
   );
 }
+const phone = "60168245699";
+const createWhatsAppLink = (productName: string) => {
+  const message = `Hi Nexus Clinic, I'm interested in ${productName}. Could you please share the price, availability, and how I can purchase it?`;
+  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+};
 
 const treatmentsDef = [
   {
     id: 1,
     name: "Mounjaro",
     price: "RM 1,588",
-    href: "https://www.nexus-clinic.comen/buy-mounjaro-malaysia-2-5mg-pre-filled-pen-4s-box/",
+    href: createWhatsAppLink("Mounjaro"),
     linear: "from-wine to-brown",
   },
   {
     id: 2,
     name: "Ozempic",
     price: "RM 1,800",
-    href: "https://www.nexus-clinic.comen/buy-ozempic-online-malaysia-1mg-dose-pre-filled-pen/",
+    href: createWhatsAppLink("Ozempic"),
     linear: "from-taupe to-wine",
   },
   {
     id: 3,
     name: "Wegovy",
     price: "RM 1,850",
-    href: "https://www.nexus-clinic.comen/buy-wegovy-malaysia-0-25mg-pre-filled-pen/",
+    href: createWhatsAppLink("Wegovy"),
     linear: "from-rose to-brown",
   },
   {
     id: 4,
     name: "Saxenda",
     price: "RM 1,650",
-    href: "https://www.nexus-clinic.comen/buy-saxenda-flextouch-malaysia-6mg-pre-filled-pen-3ml-x3/",
+    href: createWhatsAppLink("Saxenda"),
     linear: "from-brown to-taupe",
   },
 ];
@@ -143,34 +150,6 @@ function StatCard({
   );
 }
 
-function FaqItem({ item }: { item: { q: string; a: string } }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <motion.div variants={fadeInUp} className="border-b border-taupe/20 py-5">
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between text-left gap-4"
-      >
-        <span className="font-georgia text-brown text-base">{item.q}</span>
-        <motion.div
-          animate={{ rotate: open ? 45 : 0 }}
-          transition={{ duration: 0.2 }}
-          className="shrink-0 w-7 h-7 rounded-full border border-wine/40 flex items-center justify-center text-wine"
-        >
-          <ChevronRight size={14} className="rotate-90" />
-        </motion.div>
-      </button>
-      <motion.div
-        initial={false}
-        animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="overflow-hidden"
-      >
-        <p className="text-taupe text-sm leading-relaxed pt-3">{item.a}</p>
-      </motion.div>
-    </motion.div>
-  );
-}
 
 export default function Products({ locale = fallbackLng }: { locale?: string }) {
   const { t } = useTranslation(locale, "products");
@@ -231,7 +210,7 @@ export default function Products({ locale = fallbackLng }: { locale?: string }) 
     { num: t("howItWorks.s4Num"), title: t("howItWorks.s4Title"), desc: t("howItWorks.s4Desc") },
   ];
 
-  const faqs = [
+  const faqdata = [
     { q: t("faq.q1"), a: t("faq.a1") },
     { q: t("faq.q2"), a: t("faq.a2") },
     { q: t("faq.q3"), a: t("faq.a3") },
@@ -404,25 +383,33 @@ export default function Products({ locale = fallbackLng }: { locale?: string }) 
                     <div className="flex items-center gap-3">
                       <div className="flex -space-x-2">
                         <div className="flex -space-x-4 rtl:space-x-reverse">
-                          <img
-                            className="w-10 h-10 border-2 border-buffer rounded-full"
+                          <Image
+                            className="border-2 border-buffer rounded-full"
                             src="/images/profile1.png"
                             alt="p1"
-                          />
-                          <img
-                            className="w-10 h-10 border-2 border-buffer rounded-full"
+                            width={50}
+                            height={50}
+                            />
+                          <Image
+                            className="border-2 border-buffer rounded-full"
                             src="/images/profile2.png"
                             alt="p2"
-                          />
-                          <img
-                            className="w-10 h-10 border-2 border-buffer rounded-full"
+                            width={50}
+                            height={50}
+                            />
+                          <Image
+                            className="border-2 border-buffer rounded-full"
                             src="/images/profile3.png"
                             alt="p3"
-                          />
-                          <img
-                            className="w-10 h-10 border-2 border-buffer rounded-full"
+                            width={50}
+                            height={50}
+                            />
+                          <Image
+                            className="border-2 border-buffer rounded-full"
                             src="/images/profile4.png"
                             alt="p4"
+                            width={50}
+                            height={50}
                           />
                         </div>
                       </div>
@@ -595,45 +582,7 @@ export default function Products({ locale = fallbackLng }: { locale?: string }) 
             </motion.div>
           </div>
         </section>
-
-        {/* ── FAQ ───────────────────────────────────────────────────────────── */}
-        <section className="py-28 px-6">
-          <div className="max-w-3xl mx-auto">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="mb-12 text-center"
-            >
-              <motion.p
-                variants={fadeInUp}
-                className="text-taupe text-xs tracking-[0.3em] uppercase mb-4"
-              >
-                {t("faq.badge")}
-              </motion.p>
-              <motion.h2
-                variants={fadeInUp}
-                className="font-georgia text-4xl text-brown"
-              >
-                {t("faq.title")}
-              </motion.h2>
-            </motion.div>
-
-            <DecorLine className="mb-4" />
-
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              {faqs.map((item, i) => (
-                <FaqItem key={i} item={item} />
-              ))}
-            </motion.div>
-          </div>
-        </section>
+          <FAQWithSchema data={faqdata}/>
 
         {/* ── FINAL CTA ─────────────────────────────────────────────────────── */}
         <section className="py-28 px-6 bg-wine">
