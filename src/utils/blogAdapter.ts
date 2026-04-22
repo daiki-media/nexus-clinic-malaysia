@@ -71,7 +71,7 @@ export function adaptWordPressPost(post: WordPressPost, index: number): Post {
     date: formatDate(post.date),
     readTime: getReadTime(post.content.rendered),
     image: featuredImage,
-    href: `https://nexus-clinic-malaysia.vercel.app/${post.slug}/`,
+    href: `https://www.nexus-clinic.com/${post.slug}/`,
     featured: index === 0,
     seo,
     faqs: faqs.length > 0 ? faqs : undefined

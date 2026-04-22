@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         title: post.seo.title,
         description: post.seo.description,
         alternates: {
-          canonical: post.seo.canonical || `${baseUrl}/blogs/${slug}`,
+          canonical: `${baseUrl}/blogs/${slug}`,
         },
         openGraph: {
           title: post.seo.ogTitle,
@@ -52,6 +52,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {
       title: post.title.replace(/<[^>]*>/g, ""),
       description: post.content ? post.content.substring(0, 300).replace(/<[^>]*>/g, "") : "Read our latest blog post",
+      alternates: {
+        canonical: `${baseUrl}/blogs/${slug}`,
+      },
       openGraph: {
         title: post.title.replace(/<[^>]*>/g, ""),
         description: post.content ? post.content.substring(0, 400).replace(/<[^>]*>/g, "") : "Read our latest blog post",
@@ -131,7 +134,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                 </span>
               </div>
 
-              <span className="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight" dangerouslySetInnerHTML={{ __html: post.title }} />
+              <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight" dangerouslySetInnerHTML={{ __html: post.title }} />
 
               <div className="mt-10">
                 <Link href="/author/anum-jawed">
