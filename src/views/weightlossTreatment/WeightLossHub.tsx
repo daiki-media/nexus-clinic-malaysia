@@ -128,7 +128,7 @@ export default function WeightLossHub({ locale }: WeightLossHubProps) {
     { concern: "Want body contouring without surgery", treatment: "Fat Freezing or CoolSculpting", link: "/weight-loss/coolsculpting-malaysia" },
     { concern: "Need a broader programme instead of one treatment", treatment: "GLP 1 Programme or Doctor Monitored Weight Loss", link: "/weight-loss/glp-1-programme-malaysia" },
     { concern: "Looking for supportive wellness add ons", treatment: "IV Drip Weight Loss", link: "/weight-loss/iv-drip-malaysia" },
-    { concern: "Want to understand all options before deciding", treatment: "Weight Loss Overview Consultation", link: "/weight-loss/book-consultation" },
+    { concern: "Want to understand all options before deciding", treatment: "Weight Loss Overview Consultation", link: "/consultation" },
   ];
 
   const faqData = [

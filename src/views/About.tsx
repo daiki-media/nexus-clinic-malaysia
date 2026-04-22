@@ -663,7 +663,7 @@ const doctors = [
               Book a consultation with our doctors today. No commitment, just honest advice about what may work for you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Link href="/about-us/book-consultation">
+              <Link href="/consultation">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

@@ -84,7 +84,7 @@ const doctors = [
     id: 5,
     name: "Phr. Anum Jawed",
     title: "Pharm-D, MPhil – Pharmaceutics | Clinical Pharmacist",
-    photo: "/images/main/anum-jawed.webp",
+    photo: "/images/Anum_img.png",
     specialisation: "Drug Formulation & Medication Therapy Management",
     qualifications: [
       "Pharm-D: International Islamic University Malaysia (IIUM)",

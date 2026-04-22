@@ -55,6 +55,7 @@ export const redirectsList: [string, string][] = [
   ["/en/category/iv-drip/", "/weight-loss/iv-drip-malaysia/"],
   ["/en/category/hcg/", "/weight-loss/hcg-programme-malaysia/"],
   ["/en/hcg-weight-loss-malaysia2/", "/weight-loss/hcg-programme-malaysia/"],
+    // ["", ""],
   // Melay (ms) // Indonesian (id) Arabic (ar) Hong Kong (zh_hk)  (zh)
   ["/ms/duromine-untuk-penurunan-berat-badan-di-malaysia-bukti-keselamatan-pandangan-pesakit-sebenar/", "/weight-loss/duromine-malaysia/"],
   ["/ms/buy-duromine-30mg-online-malaysia/", "/weight-loss/duromine-malaysia/"],
@@ -67,6 +68,7 @@ export const redirectsList: [string, string][] = [
   ["/zh_hk/buy-mounjaro-malaysia-2-5mg-pre-filled-pen-4s-box/", "/weight-loss/mounjaro-malaysia/"],
   ["/zh_hk/在馬來西亞線上購買杜羅明30毫克/", "/weight-loss/duromine-malaysia/"],
   ["/zh/马来西亚去胎记/", "/"],
+    // ["", ""],
 
   // Face
   ["/en/belotero-malaysia/", "/face/dermal-filler-malaysia/"],
@@ -92,9 +94,12 @@ export const redirectsList: [string, string][] = [
   ["/en/blog/how-do-dermal-fillers-work/", "/face/dermal-filler-malaysia/"],
   ["/en/profhilo-vs-botox-key-differences-benefits-and-results/", "/face/botox-malaysia/"],
   ["/en/profhilo-malaysia/", "/face/profhilo-malaysia/"],
+  ["/profhilo-malaysia/", "/face/profhilo-malaysia/"],
   ["/en/profhilo-malaysia/benefits", "/face/profhilo-malaysia/"],
   ["/en/profhilo-malaysia-2/side-effects/", "/face/profhilo-malaysia/"],
   ["/en/profhilo-malaysia/side-effects/", "/face/profhilo-malaysia/"],
+  ["/cheek-filler-malaysia/", "/face/cheek-filler-malaysia/"],
+    // ["", ""],
   // Sculptra Redirects
   ["/en/sculptra-malaysia/", "/face/sculptra-malaysia/"],
   ["/en/sculptra-malaysia/sculptra-cost/", "/face/sculptra-malaysia/"],
@@ -140,6 +145,7 @@ export const redirectsList: [string, string][] = [
   ["/en/chemical-peel-malaysia/", "/skin/chemical-peel-malaysia/"],
   ["/en/chemical-peel-malaysia/cost/", "/skin/chemical-peel-malaysia/"],
   ["/en/our-services/carbon-laser-peel/", "/skin/chemical-peel-malaysia/"],
+    // ["", ""],
 
   // Hair
   ["/en/hair-transplant-malaysia/", "/hair/hair-transplant-malaysia/"],
@@ -177,6 +183,16 @@ export const redirectsList: [string, string][] = [
   ["/en/stem-cell-therapy-for-anti-aging-skincare-in-kuala-lumpur/", "/regenerative/stem-cell-therapy-malaysia/"],
   ["/en/stem-cells-for-stroke/", "/regenerative/stem-cell-therapy-malaysia/"],
   ["/en/category/testosterone-therapy/", "/regenerative/testosterone-therapy-malaysia/"],
+  ["/regenerative-treatments/menopause-hormone-replacement-malaysia/", "/regenerative/menopause-hormone-replacement-malaysia/"],
+  ["/regenerative-treatments/hormone-test-malaysia/", "/regenerative/hormone-test-malaysia/"],
+  ["/regenerative-treatments/hypothyroidism-treatment-malaysia/", "/regenerative/hypothyroidism-treatment-malaysia/"],
+  ["/regenerative-treatments/pcos-treatment-malaysia/", "/regenerative/pcos-treatment-malaysia/"],
+  ["/regenerative-treatments/anti-aging-therapy-malaysia/", "/regenerative/anti-aging-therapy-malaysia/"],
+  ["/regenerative-treatments/p-shot-malaysia/", "/regenerative/p-shot-malaysia/"],
+  ["/regenerative-treatments/testosterone-therapy-malaysia/", "/regenerative/testosterone-therapy-malaysia/"],
+  ["/regenerative-treatments/stem-cell-therapy-malaysia/", "/regenerative/stem-cell-therapy-malaysia/"],
+  ["/regenerative-treatments/ed-treatment-malaysia/", "/regenerative/ed-treatment-malaysia/"],
+  // ["", ""],
 
   // Doctors / Author
   ["/en/doctors/", "/doctors/"],
@@ -191,6 +207,7 @@ export const redirectsList: [string, string][] = [
   ["/en/fractional-laser-resurfacing-malaysia/", "/fraqtional-laser-resurfacing/"],
   ["/en/fraxel-laser-treatment-in-malaysia/", "/fraqtional-laser-resurfacing/"],
   ["/en/blog/5-most-popular-fraxel-laser-treatment-clinic-in-kuala-lumpur/", "/fraqtional-laser-resurfacing/"],
+    // ["", ""],
 ];
 
 
@@ -421,4 +438,5 @@ export const blogStandaloneRedirects: [string, string][] = [
   ["/ms/patient-experiences-mounjaro-treatment-journey-in-johor-bahru/", "/blogs/patient-experiences-mounjaro-treatment-journey-in-johor-bahru/"],
   ["/id/top-clinics-offering-mounjaro-injections-in-johor-bahru/", "/blogs/top-clinics-offering-mounjaro-injections-in-johor-bahru/"],
   ["/ar/everything-you-need-to-know-about-testosterone-replacement-therapy-in-malaysia/", "/blogs/everything-you-need-to-know-about-testosterone-replacement-therapy-in-malaysia/"],
+    // ["", ""],
 ];
