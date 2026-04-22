@@ -34,6 +34,7 @@ import FAQWithSchema from "@/src/components/FAQWithSchema";
 import SocialIcons from "@/src/components/SocialIcons";
 import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image";
 
 // Updated contact information
 const CLINIC_ADDRESS = "LG 10, Lower Ground Floor, Wisma UOA 2, Kuala Lumpur, 50450 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia";
@@ -247,9 +248,10 @@ export default function ContactUs() {
               {/* Static Map Image - Responsive height */}
               <div className="rounded-2xl overflow-hidden shadow-lg mb-6 group">
                 <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="block overflow-hidden">
-                  <img
+                  <Image
                     src="/images/map.png"
                     alt="Nexus Clinic location map at Wisma UOA 2, Kuala Lumpur"
+                    fill
                     className="w-full h-[180px] sm:h-[200px] md:h-[400px] object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 </a>

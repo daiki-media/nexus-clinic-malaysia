@@ -267,7 +267,7 @@ const FatFreezingLanding = ({ locale = fallbackLng }: { locale?: string }) => {
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="/images/weight-loss/Fat Freezing Treatment.png"
+                  src="/images/weight-loss/Fat Freezing Treatment.webp"
                   alt="Fat freezing treatment procedure at Nexus Clinic Kuala Lumpur"
                   className="w-full h-auto object-cover"
                 />

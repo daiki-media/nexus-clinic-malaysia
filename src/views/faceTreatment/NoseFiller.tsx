@@ -86,7 +86,7 @@ export default function NoseFiller({ locale }: NoseFillerProps) {
         description="The nose is the most structurally central feature on the face. A flat bridge draws the eyes apart and makes the face look wider. A drooping tip ages the profile."
         details="Nose filler at Nexus Clinic Kuala Lumpur is performed by licensed aesthetic doctors with specific training in nasal vascular anatomy and emergency complication management. Every nose filler treatment is performed with hyaluronidase on hand, precise low-volume technique, and clear emergency protocols in place before the first injection."
         note="The nose is the highest-risk area for filler injection on the entire face due to its proximity to the ophthalmic artery. All nose filler treatments at Nexus Clinic KL follow strict vascular safety protocols."
-        image="/images/face/Nose Filler Treatment.png"
+        image="/images/face/Nose Filler Treatment.webp"
         imageAlt="Nexus Clinic Kuala Lumpur - Nose Filler Treatment"
         ctaText="Book Free Consultation"
         ctaLink="/contact-us"

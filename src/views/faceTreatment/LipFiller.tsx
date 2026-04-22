@@ -90,7 +90,7 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
         description={heroData?.description || "Expert lip enhancement tailored to your facial proportions."}
         details="Our award-winning injectors specialize in creating natural-looking lip results that enhance your natural beauty without looking overdone."
         note="Lip filler requires an artistic eye and precise technique. Always choose an experienced injector who understands facial harmony."
-        image="/images/face/Lip Filler.png"
+        image="/images/face/Lip Filler.webp"
         imageAlt={heroData?.imageAlt || "Lip filler treatment at Nexus Clinic Kuala Lumpur"}
         ctaText="Book a Consultation"
         ctaLink="/contact-us"

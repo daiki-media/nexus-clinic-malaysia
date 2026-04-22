@@ -443,7 +443,7 @@ const DermalFillersLanding = ({
                 <div className="absolute inset-0 bg-linear-to-r from-wine/10 to-rose/10 rounded-3xl blur-2xl" />
                 <div className="relative rounded-2xl shadow-2xl overflow-hidden">
                   <Image
-                    src="/images/face/Dermal Filler Area.png"
+                    src="/images/face/Dermal Filler Area.webp"
                     alt="Nexus Clinic KL Award-Winning Aesthetic Doctors"
                     width={500}
                     height={400}

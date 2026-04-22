@@ -1,4 +1,4 @@
-import PageFraqtional from "@/src/views/PageFractionalLaser";
+import PageFractionalLaser from "@/src/views/PageFractionalLaser";
 import { languages } from "@/src/i18n/settings";
 import { Metadata } from "next";
 
@@ -15,5 +15,5 @@ export async function generateStaticParams() {
 }
 
 export default function Page() {
-  return <PageFraqtional />;
+  return <PageFractionalLaser />;
 }

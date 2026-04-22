@@ -21,18 +21,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/doctors",
     "/gallery",
     "/products",
-    "/privacy-policy",
-    "/terms-of-use",
     "/face",
     "/hair",
     "/skin",
     "/regenerative",
     "/weight-loss",
-    // "/blogs",
     "/consultation",
-    // content relavant pages
-    "/acne-and-acne-scars",
-    "/dermal-fillers",
+
     "/fraqtional-laser-resurfacing",
     
   ];

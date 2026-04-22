@@ -150,7 +150,7 @@ export default function UnderEyeFiller({ locale }: UnderEyeFillerProps) {
         description="You know the feeling. You slept a full night. You drank enough water. You tried every eye cream on the market. And you still look tired. The dark hollows and shadows beneath your eyes tell a different story."
         details="Under eye filler at Nexus Clinic Kuala Lumpur treats the structural reason your eyes look the way they do. A hollow groove forms beneath the eye as orbital volume depletes, and the shadow this groove casts is what reads as tiredness, dark circles and age."
         note="The hollow under your eyes is not a surface concern. It is a structural one. No topical product can penetrate deep enough to fill a structural hollow."
-        image="/images/face/Under Eye Filler.png"
+        image="/images/face/Under Eye Filler.webp"
         imageAlt="Nexus Clinic Kuala Lumpur - Under Eye Filler Treatment"
         ctaText="Book free consultation"
         ctaLink="/contact-us"

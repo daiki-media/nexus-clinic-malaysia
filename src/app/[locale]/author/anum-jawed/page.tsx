@@ -1,6 +1,6 @@
+export const dynamic = "force-static";
 import Image from "next/image";
 import { Linkedin, Award, BookOpen, Users } from "lucide-react";
-
 export default function AuthorPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 md:py-16">

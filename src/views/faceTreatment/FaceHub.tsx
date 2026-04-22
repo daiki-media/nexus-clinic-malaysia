@@ -28,16 +28,16 @@ interface FaceHubProps {
 export default function FaceHub({ locale }: FaceHubProps) {
   const treatments = [
     { name: "Botox Malaysia", slug: "botox-malaysia", description: "Wrinkle relaxation, jaw slimming, gummy smile & more.", imageUrl: "/images/face/botox-malaysia.jpeg" },
-    { name: "Cheek Filler Malaysia", slug: "cheek-filler-malaysia", description: "Restore midface volume & lift the lower face.", imageUrl: "/images/face/Cheek Filler Treatment.png" },
-    { name: "Chin Filler Malaysia", slug: "chin-filler-malaysia", description: "Correct projection & restore facial balance.", imageUrl: "/images/face/Chin Dermal Filler.png" },
+    { name: "Cheek Filler Malaysia", slug: "cheek-filler-malaysia", description: "Restore midface volume & lift the lower face.", imageUrl: "/images/face/Cheek Filler Treatment.webp" },
+    { name: "Chin Filler Malaysia", slug: "chin-filler-malaysia", description: "Correct projection & restore facial balance.", imageUrl: "/images/face/Chin Dermal Filler.webp" },
     { name: "Dermal Filler Malaysia", slug: "dermal-filler-malaysia", description: "Volume restoration & facial contouring.", imageUrl: "/images/face/dermal-filler.jpeg" },
-    { name: "Jawline Filler Malaysia", slug: "jawline-filler-malaysia", description: "Define jaw border & sharpen your profile.", imageUrl: "/images/face/Jawline Filler.png" },
-    { name: "Lip Filler Malaysia", slug: "lip-filler-malaysia", description: "Fuller lips & defined Cupid's bow.", imageUrl: "/images/face/Lip Filler.png" },
-    { name: "Nose Filler Malaysia", slug: "nose-filler-malaysia", description: "Higher bridge, hump camouflage & tip definition.", imageUrl: "/images/face/Nose Filler Treatment.png" },
-    { name: "Nose Thread Lift Malaysia", slug: "nose-thread-lift-malaysia", description: "Higher bridge, sharper tip & better profile.", imageUrl: "/images/face/Nose Thread Lift.png" },
-    { name: "Skin Booster Malaysia", slug: "skin-booster-malaysia", description: "Hydration, collagen & glow from within.", imageUrl: "/images/face/Skin Booster Treatment.png" },
-    { name: "Tear Trough Filler Malaysia", slug: "tear-trough-filler-malaysia", description: "Under-eye treatment for dark circles & hollows.", imageUrl: "/images/face/Tear Trough Filler.png" },
-    { name: "Under Eye Filler Malaysia", slug: "under-eye-filler-malaysia", description: "Patient-first guide to under-eye treatment.", imageUrl: "/images/face/Under Eye Filler.png" },
+    { name: "Jawline Filler Malaysia", slug: "jawline-filler-malaysia", description: "Define jaw border & sharpen your profile.", imageUrl: "/images/face/Jawline Filler.webp" },
+    { name: "Lip Filler Malaysia", slug: "lip-filler-malaysia", description: "Fuller lips & defined Cupid's bow.", imageUrl: "/images/face/Lip Filler.webp" },
+    { name: "Nose Filler Malaysia", slug: "nose-filler-malaysia", description: "Higher bridge, hump camouflage & tip definition.", imageUrl: "/images/face/Nose Filler Treatment.webp" },
+    { name: "Nose Thread Lift Malaysia", slug: "nose-thread-lift-malaysia", description: "Higher bridge, sharper tip & better profile.", imageUrl: "/images/face/Nose Thread Lift.webp" },
+    { name: "Skin Booster Malaysia", slug: "skin-booster-malaysia", description: "Hydration, collagen & glow from within.", imageUrl: "/images/face/Skin Booster Treatment.webp" },
+    { name: "Tear Trough Filler Malaysia", slug: "tear-trough-filler-malaysia", description: "Under-eye treatment for dark circles & hollows.", imageUrl: "/images/face/Tear Trough Filler.webp" },
+    { name: "Under Eye Filler Malaysia", slug: "under-eye-filler-malaysia", description: "Patient-first guide to under-eye treatment.", imageUrl: "/images/face/Under Eye Filler.webp" },
   ];
 
   const concernMapping = [

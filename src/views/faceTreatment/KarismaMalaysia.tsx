@@ -419,7 +419,7 @@ export default function KarismaMalaysia({ locale }: KarismaMalaysiaProps) {
             <motion.div variants={fadeInLeft} className="relative order-2 md:order-1">
               <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
                 <Image
-                  src="/images/face/Karisma/Skin Booster Treatment.png"
+                  src="/images/face/Karisma/Skin Booster Treatment.webp"
                   alt="Doctor-led Karisma treatment at Nexus Clinic KL"
                   fill
                   className="object-cover"

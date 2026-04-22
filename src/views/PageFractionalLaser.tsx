@@ -26,7 +26,7 @@ import {
 import FAQWithSchema from "../components/FAQWithSchema";
 import BeforeAfterFaceSection from "../components/BeforeAfterFace";
 
-const PageFraqtionalLaser = () => {
+const PageFractionalLaser = () => {
   const treatmentStats = [
     { icon: Target, label: "Treated Area", value: "Face & Body" },
     { icon: Clock, label: "Duration", value: "30-60 mins" },
@@ -533,4 +533,4 @@ const PageFraqtionalLaser = () => {
   );
 };
 
-export default PageFraqtionalLaser;
+export default PageFractionalLaser;

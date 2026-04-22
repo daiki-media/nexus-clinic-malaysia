@@ -1,3 +1,4 @@
+export const dynamic = "force-static";
 import Products from "@/src/views/Products";
 import { languages } from "@/src/i18n/settings";
 import { Metadata } from "next";

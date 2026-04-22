@@ -77,7 +77,7 @@ const ZepboundLanding = ({ locale = fallbackLng }: { locale?: string }) => {
         description="Clinical trial data does not lie. Tirzepatide delivered 20.2% average body weight loss versus 13.7% with semaglutide in the 72-week SURMOUNT-5 head-to-head trial."
         details="At Nexus Clinic KL, medically supervised Mounjaro and Zepbound programmes are structured around the right dose, monthly monitoring, and lifestyle support that fits real Malaysian life. This is evidence-led weight management with proper medical assessment, dose titration oversight, and long-term planning."
         note="Programme at a glance: Mounjaro approved in Malaysia (NPRA approval 30 Aug 2025) • Dual GIP and GLP-1 action • Structured doctor monitoring • Wisma UOA II, Jalan Pinang, Kuala Lumpur"
-        image="/images/weight-loss/ZepBound Weight Loss Treatment.png"
+        image="/images/weight-loss/ZepBound Weight Loss Treatment.webp"
         imageAlt="Mounjaro and Zepbound Weight Loss Programme at Nexus Clinic Kuala Lumpur"
         ctaText="Book Free Consultation"
         whatsappMessage="Hi, I'm interested in the Mounjaro or Zepbound weight loss programme at Nexus Clinic KL. I'd like to book a consultation."

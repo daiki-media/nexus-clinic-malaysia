@@ -1,3 +1,4 @@
+export const dynamic = "force-static";
 import { languages } from "@/src/i18n/settings";
 import type { Metadata } from "next";
 import { weightLossSchema } from "@/src/lib/loadSchema";

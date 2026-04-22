@@ -162,7 +162,7 @@ export default function JawlineFiller({ locale }: JawlineFillerProps) {
         description="A defined jawline does not just change how you look in photographs. It changes how your entire face reads. The jaw is the structural frame of the lower face."
         details="Jawline filler at Nexus Clinic Kuala Lumpur reshapes that frame without surgery, stitches or recovery time. Our doctors have performed over 5,000 facial filler procedures using technique specifically built for Southeast Asian facial anatomy. The result is a sharper, more defined lower face that looks completely natural."
         note="Jawline filler requires precise placement along the mandible. Results depend on individual bone structure and the amount of volume needed."
-        image="/images/face/Jawline Filler.png"
+        image="/images/face/Jawline Filler.webp"
         imageAlt="Nexus Clinic Kuala Lumpur - Jawline Filler Treatment"
         ctaText="Book Jawline Assessment"
         ctaLink="/contact-us"

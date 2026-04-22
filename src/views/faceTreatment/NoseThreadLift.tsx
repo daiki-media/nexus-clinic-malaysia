@@ -102,7 +102,7 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
         description="Your nose sits in the exact centre of your face. Everything else radiates outward from it. A flat bridge makes the face look broader. A drooping tip takes years off the profile."
         details="Nose thread lift at Nexus Clinic Kuala Lumpur is the non-surgical solution built specifically for Asian nasal anatomy. Using the Korean HIKO technique with MDA-registered White Medience PDO and PCL threads, our doctors reshape the nose bridge and tip in a single 20 to 30-minute session. No surgery, no general anaesthesia, no incisions, no weeks of recovery."
         note="The result is visible immediately. The structural support improves further over the following six to eight weeks as the body's collagen response builds around the threads."
-        image="/images/face/Nose Thread Lift.png"
+        image="/images/face/Nose Thread Lift.webp"
         imageAlt="Nexus Clinic Kuala Lumpur - Nose Thread Lift Treatment"
         ctaText="Book Free Consultation"
         ctaLink="/contact-us"

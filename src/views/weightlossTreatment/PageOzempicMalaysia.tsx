@@ -102,7 +102,7 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
           description="Ozempic is one of the most clinically validated GLP-1 injections used in Malaysia for doctor-supervised weight management. At Nexus Clinic KL, every programme is prescribed and monitored by licensed doctors."
           details="The goal is not guesswork. It is measurable, medically guided weight reduction with a structured dosing plan, regular reviews, and an exit strategy designed to reduce rebound risk."
           note="Treatment at a glance: Semaglutide 0.25 mg to 1 mg once weekly, prescription only, doctor-monitored, and commonly used off-label for weight management in suitable patients."
-          image="/images/weight-loss/Ozempic Weight Loss Treatment.png"
+          image="/images/weight-loss/Ozempic Weight Loss Treatment.webp"
           imageAlt="Nexus Clinic KL - Professional medical consultation for weight loss"
           ctaText="Book Free Assessment"
           whatsappMessage="Hi, I'm interested in the Ozempic weight loss programme at Nexus Clinic KL. I'd like to book a consultation."

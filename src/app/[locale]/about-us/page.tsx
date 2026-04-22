@@ -1,5 +1,5 @@
+export const dynamic = "force-static";
 import AboutUs from "@/src/views/About";
-
 import { Metadata } from "next";
 
 const baseurl = process.env.BASE_URL || "https://www.nexus-clinic.com"

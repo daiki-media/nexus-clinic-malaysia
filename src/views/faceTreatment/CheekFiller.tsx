@@ -163,7 +163,7 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
         description="Your cheeks are the structural foundation of your face. When they are full and well-positioned, the eyes look brighter, the nasolabial folds stay shallow and the lower face holds its definition."
         details="Cheek filler at Nexus Clinic Kuala Lumpur works at that structural level, enhancing skin texture and volume. Using high-density hyaluronic acid products placed precisely at the cheekbone and in the midface fat compartments, our doctors restore the volume and lift that the face needs to look balanced, rested and defined."
         note="Not all cheek fillers are created equal. The product choice and placement technique significantly affect your results and safety."
-        image="/images/face/Cheek Filler Treatment.png"
+        image="/images/face/Cheek Filler Treatment.webp"
         imageAlt="Nexus Clinic Kuala Lumpur - Cheek Filler Treatment"
         ctaText="Book free consultation"
         ctaLink="/contact-us"

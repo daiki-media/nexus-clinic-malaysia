@@ -1,3 +1,4 @@
+export const dynamic = "force-static";
 import { languages } from "@/src/i18n/settings";
 import GalleryPage from "@/src/views/SliderGallery";
 import React from "react";

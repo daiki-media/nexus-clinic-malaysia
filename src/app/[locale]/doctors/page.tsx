@@ -1,3 +1,4 @@
+export const dynamic = "force-static";
 import { languages } from "@/src/i18n/settings";
 import PageProfileDoctor from "@/src/views/HomeLanding/PageDoctors";
 import React from "react";

@@ -104,7 +104,7 @@ const MounjaroLanding = ({ locale = fallbackLng }: { locale?: string }) => {
         description="Powerful dual-agonist support for medically supervised weight reduction."
         details="Mounjaro is the strongest injectable weight loss option available in Malaysia in 2026, with average weight reductions of 15 to 22.5% in clinical programmes when used appropriately. At Nexus Clinic KL, every tirzepatide programme is prescribed and monitored by licensed doctors with bloodwork, dose titration, protein-first guidance and exit planning built in."
         note="15 to 22.5% average weight loss in trials • Once-weekly subcutaneous self-injection • Prescription-only with blood panel and screening • Structured titration from 2.5 mg to 15 mg"
-        image="/images/weight-loss/Mounjaro Weight Loss Treatment.png"
+        image="/images/weight-loss/Mounjaro Weight Loss Treatment.webp"
         imageAlt="Mounjaro Tirzepatide Programme at Nexus Clinic Kuala Lumpur"
         ctaText="Book Free Assessment"
         whatsappMessage="Hi, I'm interested in the Mounjaro/Tirzepatide weight loss programme at Nexus Clinic KL. I'd like to book a consultation."

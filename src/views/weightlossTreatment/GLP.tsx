@@ -257,7 +257,7 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
             <motion.div variants={fadeInRight}>
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="/images/weight-loss/GLP-1 Injection Treatment.png"
+                  src="/images/weight-loss/GLP-1 Injection Treatment.webp"
                   alt="Doctor consultation at Nexus Clinic Kuala Lumpur"
                   className="w-full h-auto object-cover"
                 />

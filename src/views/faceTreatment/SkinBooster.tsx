@@ -98,7 +98,7 @@ export default function SkinBooster({ locale }: SkinBoosterProps) {
         description="Dull skin. Fine lines that skincare cannot reach. A tired, flat complexion that no serum or facial seems to fix."
         details="Skin booster treatment at Nexus Clinic Kuala Lumpur works from the inside out. Injectable formulations of hyaluronic acid, polynucleotides, collagen stimulators and growth factors are delivered directly into the dermis where topical skincare cannot reach. The skin is rehydrated, repaired and restructured at the cellular level."
         note="Results vary based on the type of skin booster used and individual skin condition. A series of treatments is typically recommended for optimal results."
-        image="/images/face/Skin Booster Treatment.png"
+        image="/images/face/Skin Booster Treatment.webp"
         imageAlt="Nexus Clinic Kuala Lumpur - Skin Booster Treatment"
         ctaText="Book Skin Booster Consultation"
         ctaLink="/contact-us"

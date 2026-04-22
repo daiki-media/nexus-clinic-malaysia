@@ -1,3 +1,4 @@
+export const dynamic = "force-static";
 import ContactUs from "@/src/views/ContactUs";
 import { Metadata } from "next";
 

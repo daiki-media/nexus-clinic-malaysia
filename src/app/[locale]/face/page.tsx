@@ -1,3 +1,4 @@
+export const dynamic = "force-static";
 import { faceSchema } from "@/src/lib/loadSchema";
 import Script from "next/script";
 import FaceHub from '@/src/views/faceTreatment/FaceHub';

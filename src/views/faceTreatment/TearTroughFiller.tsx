@@ -106,7 +106,7 @@ export default function TearTroughFiller({ locale }: TearTroughFillerProps) {
           floatingTitle = "✨ Refreshed Look"
           floatingSubtitle = "Restored brightness • Natural results"
           note="Not every dark circle or eye bag responds to filler."
-          image="/images/face/Tear Trough Filler.png"
+          image="/images/face/Tear Trough Filler.webp"
           imageAlt="Tear Trough Filler"
           ctaText="Book Under-Eye Assessment"
           ctaLink="/contact-us"

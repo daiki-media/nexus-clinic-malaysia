@@ -105,7 +105,7 @@ const IVDripLanding = ({ locale = fallbackLng }: { locale?: string }) => {
         description="IV drip therapy delivers nutrients directly into the bloodstream for faster absorption, higher bioavailability, and more noticeable support than standard oral supplements."
         details="At Nexus Clinic KL, IV drip programmes are designed for weight management support, energy restoration, immunity, hydration, liver detox, and overall wellness using medical-grade formulations under licensed medical supervision. This is personalised intravenous wellness with proper clinical assessment, targeted formulations, and structured follow-up."
         note="KKM-approved medical-grade solutions • 100% direct bloodstream delivery • Goal-based drip selection: Slimming, Energy, Immunity, Liver Detox, Hydration, Skin Wellness"
-        image="/images/weight-loss/IV Drip for Weight Loss Treatment.png"
+        image="/images/weight-loss/IV Drip for Weight Loss Treatment.webp"
         imageAlt="IV Drip Therapy at Nexus Clinic Kuala Lumpur"
         ctaText="Book Free Consultation"
         whatsappMessage="Hi, I'm interested in IV Drip Therapy at Nexus Clinic KL. I'd like to book a consultation."

@@ -153,7 +153,7 @@ const MasseterBotoxPage = ({ locale = fallbackLng }: { locale?: string }) => {
       <div className="w-full mx-auto">
         <div className="flex flex-col items-center justify-center">
           <Image
-            src="/images/face/Botox Treatment Area.png"
+            src="/images/face/Botox Treatment Area.webp"
             alt="Botox Treatment Areas Diagram"
             width={1200}
             height={800}

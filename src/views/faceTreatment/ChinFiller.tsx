@@ -318,7 +318,7 @@ export default function ChinFillerLanding({ locale }: ChinFillerProps) {
             <motion.div variants={fadeInRight} className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
                 <Image
-                  src="/images/face/Chin Dermal Filler.png"
+                  src="/images/face/Chin Dermal Filler.webp"
                   alt="Chin Dermal Filler Treatment at Nexus Clinic Kuala Lumpur"
                   fill
                   className="object-cover"

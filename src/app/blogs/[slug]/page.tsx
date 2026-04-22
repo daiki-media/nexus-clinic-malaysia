@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const post = adaptWordPressPost(wordPressPost, 0);
     if (post.seo) {
       return {
+        metadataBase: new URL(baseUrl), 
         title: post.seo.title,
         description: post.seo.description,
         alternates: {
@@ -50,6 +51,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       };
     }
     return {
+      metadataBase: new URL(baseUrl), 
       title: post.title.replace(/<[^>]*>/g, ""),
       description: post.content ? post.content.substring(0, 300).replace(/<[^>]*>/g, "") : "Read our latest blog post",
       alternates: {

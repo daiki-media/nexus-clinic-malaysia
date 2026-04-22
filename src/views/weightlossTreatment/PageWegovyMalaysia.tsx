@@ -106,7 +106,7 @@ export default function PageWegovyMalaysia({
           description="Wegovy is the only weight loss injection in Malaysia approved specifically for chronic weight management and supported by landmark cardiovascular protection data."
           details="At Nexus Clinic KL, Wegovy is prescribed through a fully supervised doctor-led programme with screening, bloodwork, titration and monthly follow-up."
           note="Higher-dose semaglutide with weight-management approval, structured titration, and doctor-led oversight at Nexus Clinic Kuala Lumpur."
-          image="/images/weight-loss/Wegovy Weight Loss Treatment.png"
+          image="/images/weight-loss/Wegovy Weight Loss Treatment.webp"
           imageAlt="Wegovy weight loss treatment in Kuala Lumpur"
           ctaText="Book Free Assessment"
           whatsappMessage="Hi, I'm interested in the Wegovy weight loss programme at Nexus Clinic KL. I'd like to book a consultation."

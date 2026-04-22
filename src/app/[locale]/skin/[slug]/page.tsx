@@ -1,3 +1,4 @@
+export const dynamic = "force-static";
 import { languages } from "@/src/i18n/settings";
 import { skinTreatmentsMetadata } from "@/src/config/skinTreatments";
 import type { Metadata } from "next";
