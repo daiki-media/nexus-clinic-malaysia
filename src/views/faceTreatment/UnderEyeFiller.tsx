@@ -340,8 +340,9 @@ export default function UnderEyeFiller({ locale }: UnderEyeFillerProps) {
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
-              The best time to address under-eye hollowing is when you first notice it. A smaller volume of filler placed at an earlier stage produces a more natural result and requires less correction over time.
-            </p>
+              Most patients presenting at Nexus Clinic KL with under-eye concerns benefit from a combination of two approaches. Filler for the structural hollow is the most common starting point, often paired with a skin booster to address skin quality and vascular visibility in the same zone. Patients with significant brown pigmentation as well as hollowing are advised to treat the structural component first, then address pigmentation with laser once the filler has settled.
+              
+              Patients wanting to understand the full range of skin booster options that work alongside under eye filler can read about <Link  href='/face/skin-booster-malaysia/' className='font-bold text-wine italic'> skin booster treatment in Malaysia </Link> at Nexus Clinic KL.            </p>
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
@@ -384,7 +385,9 @@ export default function UnderEyeFiller({ locale }: UnderEyeFillerProps) {
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
-              Most patients benefit from a combination of two approaches. Filler for the structural hollow is the most common starting point, often paired with a skin booster to address skin quality in the same zone.
+             The best time to address under-eye hollowing is when you first notice it. A smaller volume of filler placed at an earlier stage produces a more natural result and requires less correction over time than waiting until the hollow has become deep and settled.
+            Patients who also notice cheek descent alongside their under-eye hollowing often benefit from combining under eye filler with <Link  href='/face/cheek-filler-malaysia/' className='font-bold text-wine italic'>cheek filler treatment </Link> at Nexus Clinic KL for a more complete result.
+
             </p>
           </motion.div>
           
@@ -481,12 +484,11 @@ export default function UnderEyeFiller({ locale }: UnderEyeFillerProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
-            <p className="text-taupe text-sm">
-              According to the International Society of Aesthetic Plastic Surgery 2024 Global Statistics Report, 
-              under-eye and periorbital treatments ranked as the third most searched aesthetic concern in Southeast Asia, 
-              with filler being the most requested non-surgical option.
-            </p>
-            <p className="text-taupe text-xs mt-1">[ISAPS Global Statistics Report 2024]</p>
+              <p className="text-taupe text-sm">
+                According to the <a href="https://www.isaps.org/discover/about-isaps/global-statistics/" target="_blank" rel="nofollow" className="font-bold text-wine italic">International Society of Aesthetic Plastic Surgery (ISAPS) 2024 Global Statistics Report</a>, 
+                under-eye and periorbital concerns remain among the most common aesthetic treatment areas in Southeast Asia, 
+                with dermal fillers being one of the most frequently requested non-surgical options.
+              </p>
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
@@ -565,10 +567,8 @@ export default function UnderEyeFiller({ locale }: UnderEyeFillerProps) {
               fadeInUp={fadeInUp}
           />
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Get Your Under Eye Filler Quote
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+            <p>All pricing at Nexus Clinic KL is confirmed after consultation. No treatment is recommended or priced before the doctor has assessed whether it is appropriate for your specific concern.
+                Patients wanting to understand the full range of facial filler pricing at Nexus Clinic can visit the <Link  href='/face/dermal-filler-malaysia/'  className='font-bold text-wine italic'> dermal filler Malaysia </Link> pricing overview.</p>
           </motion.div>
         </motion.div>
       </section>
@@ -772,6 +772,7 @@ export default function UnderEyeFiller({ locale }: UnderEyeFillerProps) {
                 </div>
               ))}
             </div>
+            <p className="text-center mt-4">Patients who want to address fine lines and skin quality around the eyes alongside filler can explore <Link  href='/face/skin-booster-malaysia/'  className='font-bold text-wine italic'>skin booster treatment </Link> as a complementary treatment at Nexus Clinic KL.</p>
           </motion.div>
         </motion.div>
       </section>

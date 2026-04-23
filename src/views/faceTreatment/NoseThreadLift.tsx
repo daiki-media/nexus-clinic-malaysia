@@ -502,8 +502,8 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
           
           <motion.div variants={fadeInUp} className="mt-8 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-taupe text-sm">
-              The most complete non-surgical nose result is often achieved by combining nose thread lift with a small amount of nose filler. 
-              The threads provide structural lift and tip definition while filler addresses bridge height and any remaining volume deficit.
+            The most complete non-surgical nose result is often achieved by combining nose thread lift with a small amount of nose filler. The threads provide structural lift and tip definition while filler addresses bridge height and any remaining volume deficit. Your doctor will assess which approach or combination best addresses your nasal profile at consultation, including options for lifting effect.
+            Patients exploring nose filler alongside a thread lift can read about<Link  href='/face/nose-filler-malaysia/' className='font-bold text-wine italic'> nose filler in Malaysia </Link> and compare both options in detail at Nexus Clinic KL.
             </p>
           </motion.div>
           
@@ -548,10 +548,8 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="mt-8 text-center">
-            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Find Out If You Are a Suitable Candidate
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+            <p>Nose thread lift is not appropriate for patients with significant structural nasal deformity, breathing obstruction, very thin nasal skin that increases thread extrusion risk, or active skin infection in the nasal area. Patients who have had rhinoplasty previously are assessed case by case.
+                Patients who want to address their full facial profile alongside the nose often combine nose thread lift with <Link  href='/face/chin-filler-malaysia/' className='font-bold text-wine italic'>chin filler </Link> for a more balanced front and side profile.</p>
           </motion.div>
         </motion.div>
       </section>
@@ -633,11 +631,10 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-taupe text-sm">
-              According to the International Society of Aesthetic Plastic Surgery 2024 Global Statistics Report, 
+              According to the <a href='https://www.isaps.org/medical-professionals/isaps-global-statistics/' rel='nofollow' target='_blank' className='text-taupe hover:underline font-bold'>International Society of Aesthetic Plastic Surgery 2024 Global Statistics Report</a>, 
               non-surgical nose procedures including thread lift and nose filler saw a 33% increase in Southeast Asia, 
               with Malaysia among the top three markets by procedure volume in the region.
             </p>
-            <p className="text-taupe text-xs mt-1">[ISAPS Global Statistics Report 2024]</p>
           </motion.div>
         </motion.div>
       </section>
@@ -723,6 +720,7 @@ export default function NoseThreadLift({ locale }: NoseThreadLiftProps) {
               Nexus Clinic KL uses White Medience threads certified by Korean GMP and ISO quality standard and 
               registered with Malaysia's Medical Device Authority. All nose thread lift procedures are performed by 
               licensed medical doctors using sterile technique in a clinical environment.
+              Patients who combine their nose treatment with cheek or midface enhancement often explore <Link  href='/face/cheek-filler-malaysia/' className='font-bold text-wine italic'>cheek filler </Link> for improved facial balance at Nexus Clinic KL.
             </p>
             <p className="text-taupe text-xs mt-1">[MDA Registration Reference: White Medience Korea. GMP and ISO-certified thread manufacturer]</p>
           </motion.div>

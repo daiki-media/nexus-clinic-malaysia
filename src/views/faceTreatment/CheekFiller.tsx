@@ -465,13 +465,19 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
             ))}
           </div>
           
-          <motion.div variants={fadeInUp} className="mt-8 p-4 bg-wine/5 rounded-xl text-center">
-            <p className="text-brown font-inter text-sm">
-              According to the International Society of Aesthetic Plastic Surgery 2024 Global Statistics Report, cheek and midface augmentation 
-              was the second most performed non-surgical facial filler procedure in Southeast Asia, with a 32% year-on-year increase.
-            </p>
-            <p className="text-taupe text-xs mt-2">[ISAPS Global Statistics Report 2024]</p>
-          </motion.div>
+            <motion.div variants={fadeInUp} className="mt-8 p-4 bg-wine/5 rounded-xl text-center">
+              <p className="text-brown font-inter text-sm">
+                According to the  <a 
+                  href="https://www.isaps.org/discover/about-isaps/global-statistics/reports-and-press-releases/global-statistics-2024/" 
+                  target="_blank" 
+                  rel="nofollow noopener noreferrer"
+                  className="font-bold hover:text-underline text-wine"> International Society of Aesthetic Plastic Surgery 2024 </a>
+                 Global Statistics Report, cheek and midface augmentation 
+                was the second most performed non-surgical facial filler procedure in Southeast Asia, with a 32% year-on-year increase. 
+              </p>
+              <p className="text-taupe text-xs mt-2">ISAPS Global Statistics Report 2024</p>
+            </motion.div>
+
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
             <Link className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all"

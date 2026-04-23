@@ -385,9 +385,7 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               <p className="text-sm text-taupe">
                 {whoIsItFor?.suitability}
               </p>
-              <p className="text-sm text-wine">
-                {whoIsItFor?.combinationNote}
-              </p>
+              <p className="text-sm text-wine" dangerouslySetInnerHTML={{ __html: whoIsItFor?.combinationNote }}/>
             </motion.div>
 
             <motion.div variants={fadeInRight} className="bg-wine p-8 rounded-2xl text-white">
@@ -508,8 +506,9 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               variants={fadeInUp}
               className="bg-wine/10 p-6 rounded-xl"
             >
-              <p className="text-brown italic">{whyNexus?.citation}</p>
+              <p className="text-brown italic" dangerouslySetInnerHTML={{ __html: whyNexus?.citation }} />
               <p className="text-sm text-taupe mt-2">— {whyNexus?.citationSource}</p>
+               <p className="text-sm text-wine" dangerouslySetInnerHTML={{ __html: whyNexus?.combinationNote }}/>
             </motion.div>
 
             <motion.div variants={fadeInUp} className="text-center">
@@ -606,7 +605,7 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 {pricing?.factors?.items?.map((factor: any, index: number) => (
                   <div key={index}>
                     <p className="font-semibold text-brown">{factor.title}</p>
-                    <p className="text-sm text-taupe">{factor.description}</p>
+                    <p className="text-sm text-taupe" dangerouslySetInnerHTML={{ __html: factor.description }} />
                   </div>
                 ))}
               </div>
@@ -683,9 +682,7 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               </div>
             </motion.div>
 
-            <motion.p variants={fadeInUp} className="text-center text-taupe">
-              {sideEffectsAndAftercare?.combinationNote}
-            </motion.p>
+            <motion.p variants={fadeInUp} className="text-center text-taupe" dangerouslySetInnerHTML={{ __html: sideEffectsAndAftercare?.combinationNote }} />
           </motion.div>
         </div>
       </section>

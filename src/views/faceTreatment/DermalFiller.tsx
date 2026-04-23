@@ -267,15 +267,8 @@ const DermalFillersLanding = ({
                   </ul>
                 </div>
                 <div className="bg-wine/5 p-6 rounded-xl border-l-4 border-wine">
-                  <p className="text-taupe text-sm italic">
-                    {howItWorks?.statistics}
-                  </p>
+                    <p className="text-taupe text-sm italic" dangerouslySetInnerHTML={{ __html: howItWorks?.statistics }} />
                 </div>
-                <motion.div variants={fadeInUp} className="mt-8">
-                  <Link href="/contact-us" className="bg-wine text-white px-6 py-3 rounded-full hover:bg-rose transition-all duration-300">
-                    {howItWorks?.cta || "Find Out If Dermal Filler Is Right for You | Book a Free Consultation"}
-                  </Link>
-                </motion.div>
               </motion.div>
 
               <motion.div variants={fadeInRight} className="relative">
@@ -345,7 +338,7 @@ const DermalFillersLanding = ({
                     </h3>
                     <p className="text-taupe text-sm leading-relaxed">{area.description}</p>
                     {area.cta && (
-                      <Link href="/contact-us" className="text-wine text-sm font-medium hover:underline flex items-center gap-1 mt-3">
+                      <Link href={area.cta} className="text-wine text-sm font-medium hover:underline flex items-center gap-1 mt-3">
                         Learn More <ArrowRight size={12} />
                       </Link>
                     )}
