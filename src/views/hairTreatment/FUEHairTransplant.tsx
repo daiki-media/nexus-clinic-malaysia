@@ -315,6 +315,18 @@ export default function FUEHairTransplant({ locale }: FUEHairTransplantProps) {
             fadeInUp={fadeInUp}
             className="py-20 px-4"
           />
+            <p className="text-sm text-taupe text-center max-w-2xl mx-auto">
+              Harris JA. New Methodology and Instrumentation for Follicular Unit Extraction: Lower Follicle Transection Rates and Expanded Patient Candidacy. 
+              <a 
+                href="https://pubmed.ncbi.nlm.nih.gov/16393599/" 
+                target="_blank" 
+                rel="nofollow" 
+                className="text-wine font-bold italic"
+              >
+                Dermatologic Surgery
+              </a>. 
+              2006;32(1):56-61. Documents the clinical improvement in graft survival achieved by motorised FUE extraction tools over manual methods, establishing the modern standard for FUE hair transplant surgery.
+            </p>
         </motion.div>
       </section>
 
@@ -348,9 +360,18 @@ export default function FUEHairTransplant({ locale }: FUEHairTransplantProps) {
           />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
-            <p className="text-brown font-inter text-sm">
-              At Nexus Clinic KL, donor area density is assessed at the initial consultation using dermoscopic magnification. The surgeon maps the safe donor zone and calculates extractable grafts without compromising donor appearance.
-            </p>
+              <p className="text-center">
+                Patients with limited donor supply may benefit from combining FUE with{' '}
+                <Link 
+                  href="/hair/prp-hair-treatment-malaysia/" 
+                  className="text-wine font-bold italic"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  PRP hair treatment
+                </Link>{' '}
+                to optimise the existing hair follicles and strengthen the scalp environment before and after surgery.
+              </p>
           </motion.div>
         </motion.div>
       </section>
@@ -616,10 +637,23 @@ export default function FUEHairTransplant({ locale }: FUEHairTransplantProps) {
             fadeInUp={fadeInUp}
           />
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <Link href="/contact-us" className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
-              Get Your Personalised FUE Hair Transplant Quote
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+            <p className="text-taupe">
+                  Hair transplant cost in Malaysia is calculated per graft, meaning the total investment is proportional to the number of grafts the patient requires. Hair transplant cost at Nexus Clinic KL is competitive with the best hair transplant clinics in Kuala Lumpur and significantly more cost-effective than equivalent procedures in Australia, the UK, or Singapore. All consultations are complimentary and a full itemised cost breakdown is provided before any procedure is confirmed. Patients combining FUE with post-operative hair preservation treatments may also benefit from{' '}
+                  <a 
+                    href="/hair/exosome-hair-treatment-malaysia/" 
+                    className="text-wine font-bold italic"
+                  >
+                    exosome hair treatment
+                  </a>{' '}
+                  or{' '}
+                  <a 
+                    href="/hair/mesotherapy-hair-loss-malaysia/" 
+                    className="text-wine font-bold italic"
+                  >
+                    mesotherapy hair loss treatment
+                  </a>{' '}
+                  to support graft integration and protect the surrounding existing hair.
+                </p>
           </motion.div>
         </motion.div>
       </section>
@@ -663,14 +697,6 @@ export default function FUEHairTransplant({ locale }: FUEHairTransplantProps) {
                 message="Hi, I'd like to book a consultation for FUE hair transplant at Nexus Clinic KL. Please let me know available slots."
                 variant="light"
               />
-            </div>
-            <p className="text-cream/80 font-inter text-sm">
-              Limited slots available | Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
-            </p>
-            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
-              <a href="#" className="hover:text-cream transition-colors">Call: 016-7025699</a>
-              <span>•</span>
-              <a href="#" className="hover:text-cream transition-colors">WhatsApp: 03-21635699</a>
             </div>
           </motion.div>
         </motion.div>

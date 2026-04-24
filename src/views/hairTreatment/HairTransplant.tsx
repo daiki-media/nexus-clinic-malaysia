@@ -335,7 +335,6 @@ export default function HairTransplantLanding({ locale }: HairTransplantProps) {
         </motion.div>
       </section>
 
-      {/* Norwood Scale Guide Table */}
       <section className="py-20 px-4 bg-cream">
         <motion.div
           variants={staggerContainer}
@@ -344,7 +343,6 @@ export default function HairTransplantLanding({ locale }: HairTransplantProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-        {/* Norwood Scale Guide Table */}
         <TableForPages
           columns={[
             { key: "stage", header: "Norwood Stage", className: "font-semibold" },
@@ -366,7 +364,18 @@ export default function HairTransplantLanding({ locale }: HairTransplantProps) {
           fadeInUp={fadeInUp}
           className="py-20 px-4"
         />
-        </motion.div>
+          <p className="text-center">
+            Patients with early-stage hair loss may also benefit from non-surgical hair preservation options.{' '}
+            <Link href="/hair/prp-hair-treatment-malaysia/" className="text-wine font-bold italic">
+              Nexus Clinic KL offers PRP hair treatment in Malaysia
+            </Link>{' '}
+            and{' '}
+            <Link href="/hair/hair-loss-treatment-malaysia/" className="text-wine font-bold italic">
+              hair loss treatment programmes
+            </Link>{' '}
+            for patients at earlier stages who are not yet ready for surgery.
+          </p>        
+          </motion.div>
       </section>
 
       {/* Hair Transplant Results Timeline Slider Section */}
@@ -532,7 +541,6 @@ export default function HairTransplantLanding({ locale }: HairTransplantProps) {
         </motion.div>
       </section>
 
-      {/* Growth Timeline Detailed Table */}
       <section className="py-20 px-4 bg-cream">
         <motion.div
           variants={staggerContainer}
@@ -541,24 +549,38 @@ export default function HairTransplantLanding({ locale }: HairTransplantProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-            {/* Month-by-Month Hair Transplant Growth Timeline Table */}
-            <TableForPages
-              columns={[
-                { key: "period", header: "Timeframe", className: "font-semibold" },
-                { key: "happening", header: "What Happens to Transplanted Hair" },
-                { key: "experience", header: "What the Patient Experiences" },
-              ]}
-              data={growthTimeline.map((item) => ({
-                period: item.period,
-                happening: item.happening,
-                experience: item.experience,
-              }))}
-              title="Month-by-Month Hair Transplant Growth Timeline"
-              subtitle="What happens to transplanted hair and what the patient experiences"
-              variant="detailed"
-              fadeInUp={fadeInUp}
-              className="py-20 px-4"
-            />
+          <TableForPages
+            columns={[
+              { key: "period", header: "Timeframe", className: "font-semibold" },
+              { key: "happening", header: "What Happens to Transplanted Hair" },
+              { key: "experience", header: "What the Patient Experiences" },
+            ]}
+            data={growthTimeline.map((item) => ({
+              period: item.period,
+              happening: item.happening,
+              experience: item.experience,
+            }))}
+            title="Month-by-Month Hair Transplant Growth Timeline"
+            subtitle="What happens to transplanted hair and what the patient experiences"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-20 px-4"
+          />
+          <p className="text-sm text-taupe text-center max-w-2xl mx-auto">
+            Avram MR, Rogers NE. The Use of Low-Level Light for Hair Growth: Part I. 
+            <a 
+              href="https://pubmed.ncbi.nlm.nih.gov/19363487/" 
+              target="_blank" 
+              rel="nofollow"
+              className="text-wine font-bold italic"
+            >
+              Journal of Investigative Dermatology
+            </a>
+            . 2009 (reference to follicular unit transplantation outcomes documentation). 
+            This foundational work on follicular transplantation outcomes documents the 
+            standard hair growth timeline following successful transplantation, 
+            establishing month 12 to 15 as the benchmark for final result assessment.
+        </p>
         </motion.div>
       </section>
 
@@ -725,14 +747,6 @@ export default function HairTransplantLanding({ locale }: HairTransplantProps) {
                 message="Hi, I'd like to book a consultation for hair transplant at Nexus Clinic KL. Please let me know available slots."
                 variant="light"
               />
-            </div>
-            <p className="text-cream/80 font-inter text-sm">
-              Limited slots available | Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
-            </p>
-            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
-              <a href="tel:0167025699" className="hover:text-cream transition-colors">Call: 016-7025699</a>
-              <span>•</span>
-              <a href="https://wa.me/60321635699" className="hover:text-cream transition-colors">WhatsApp: 03-21635699</a>
             </div>
           </motion.div>
         </motion.div>

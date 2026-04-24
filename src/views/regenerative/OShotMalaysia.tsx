@@ -1,15 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
 import {
-  Droplets,
   Heart,
   Shield,
-  Clock,
-  Sparkles,
-  AlertCircle,
   CheckCircle2,
   XCircle,
-  Users,
   Activity,
   Eye,
   HeartPulse,
@@ -19,8 +14,6 @@ import {
   MapPin,
   ChevronDown,
   Syringe,
-  Scissors,
-  Calendar,
   TrendingUp,
 } from "lucide-react";
 
@@ -256,7 +249,7 @@ const OShotLanding = () => {
                   </div>
 
                   <div className="bg-wine bg-opacity-5 p-4 rounded-xl">
-                    <p className="text-brown text-sm italic">
+                    <p className="text-light text-sm italic">
                       <span className="font-semibold">Clear expectations:</span>{" "}
                       The O-Shot is an emerging regenerative therapy. Sexual pleasure
                       and orgasm enhancement benefits are reported by many women who
@@ -507,7 +500,15 @@ const OShotLanding = () => {
               <span className="font-semibold">Sexual activity:</span> Resume 3 days after treatment
             </p>
           </motion.div>
-        </div>
+
+          <p className="text-center">
+          For women whose O-Shot concerns are also connected to hormonal changes from perimenopause or menopause including vaginal dryness and reduced sexual drive, our{' '}
+          <a href="/regenerative/hormone-replacement-therapy-malaysia/" className="text-wine font-bold italic">
+            hormone replacement therapy in Malaysia
+          </a>{' '}
+          provides the full hormonal context that often needs to be addressed alongside vaginal rejuvenation treatment.
+        </p>
+                </div>
       </motion.section>
 
       {/* O-Shot vs Other Options Comparison */}
@@ -572,6 +573,18 @@ const OShotLanding = () => {
               approach for postmenopausal women with both vaginal atrophy and reduced sexual pleasure.
               The oestrogen provides hormonal restoration while PRP delivers growth factor stimulation.
             </p>
+            <p className="text-sm text-taupe">
+              Runels C et al. A Pilot Study of the Effect of Localized Injections of Autologous Platelet Rich Plasma (PRP) for the Treatment of Female Sexual Dysfunction. 
+              <a 
+                href="https://www.longdom.org/open-access/a-pilot-study-of-the-effect-of-localized-injections-of-autologous-platelet-rich-plasma-prp-for-the-treatment-of-female-sexual-dysfunction-2167-0420.1000169.pdf" 
+                target="_blank" 
+                rel="nofollow" 
+                className="text-wine font-bold italic"
+              >
+                Journal of Women's Health Care
+              </a>. 
+              2014;3(4):169. This pilot study explored the use of localized PRP injections to improve sexual response and treat dysfunction in women, concluding that the growth factors in PRP successfully enhanced arousal and overall sexual satisfaction scores.
+            </p>
           </motion.div>
         </div>
       </motion.section>
@@ -634,6 +647,14 @@ const OShotLanding = () => {
               </div>
             </motion.div>
           </div>
+
+          <p className="text-center">
+          For women whose sexual health concerns also intersect with PCOS-related hormonal imbalance, our{' '}
+          <a href="/regenerative/pcos-treatment-malaysia/" className="text-wine font-bold italic">
+            PCOS treatment in Malaysia
+          </a>{' '}
+          provides context on how PCOS affects women's sexual health and how hormonal management integrates with vaginal rejuvenation treatment.
+        </p>
         </div>
       </motion.section>
 

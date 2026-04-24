@@ -12,10 +12,8 @@ import {
   Zap,
   FileText,
   MapPin,
-  Phone,
   ChevronRight,
   Info,
-  Thermometer,
   Footprints,
   Hand,
   Bone,
@@ -140,7 +138,7 @@ const ShockwaveLanding = () => {
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-georgia text-brown leading-tight">
                 Shockwave Therapy in Malaysia:{" "}
-                <span className="text-wine">ESWT for ED and Pain Relief</span>
+                <span className="text-wine italic">ESWT for ED and Pain Relief</span>
               </h1>
 
               <p className="text-lg text-taupe leading-relaxed max-w-lg">
@@ -239,7 +237,7 @@ const ShockwaveLanding = () => {
             <motion.div variants={fadeInLeft} className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold font-georgia text-brown">
                 What is{" "}
-                <span className="text-wine">Extracorporeal Shockwave Therapy (ESWT)</span>
+                <span className="text-wine italic">Extracorporeal Shockwave Therapy (ESWT)</span>
               </h2>
 
               <p className="text-lg text-brown/80 leading-relaxed">
@@ -311,7 +309,7 @@ const ShockwaveLanding = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold font-georgia text-brown mb-4">
-              How <span className="text-wine">Extracorporeal Shockwave Therapy Works</span>
+              How <span className="text-wine italic">Extracorporeal Shockwave Therapy Works</span>
             </h2>
             <p className="text-lg text-brown/80 max-w-3xl mx-auto">
               ESWT stimulates the body's natural self-healing response through four distinct
@@ -344,6 +342,27 @@ const ShockwaveLanding = () => {
             The fibrous scar tissue disruption mechanism explains why ESWT is most effective
             for conditions present for more than 3-6 months where normal healing has stalled.
           </motion.p>
+          <p className="text-sm text-taupe text-center max-w-2xl mx-auto">
+              Chung E et al. A systematic review of the evidence for low-intensity extracorporeal shockwave therapy in the treatment of erectile dysfunction. 
+              <a 
+                href="https://pubmed.ncbi.nlm.nih.gov/25294541/" 
+                target="_blank" 
+                rel="nofollow" 
+                className="text-wine font-bold italic"
+              >
+                BJU International
+              </a>. 
+              2015;116(3):360-369. This systematic review establishes the efficacy of shockwave therapy in promoting neo-angiogenesis, while 
+              <a 
+                href="https://pubmed.ncbi.nlm.nih.gov/19794248/" 
+                target="_blank" 
+                rel="nofollow" 
+                className="text-wine font-bold italic"
+              >
+                Rompe JD et al.
+              </a> 
+              (JOSPT, 2010) highlights its foundational role in musculoskeletal tissue repair and chronic pain management.
+            </p>
         </div>
       </motion.section>
 
@@ -395,6 +414,13 @@ const ShockwaveLanding = () => {
               1 to 2 weeks apart. Combination with targeted rehabilitation exercise programme
               produces superior outcomes to shockwave therapy alone.
             </p>
+            <p className="text-center">
+            For patients whose musculoskeletal pain is also associated with hormonal or metabolic factors, our{' '}
+            <a href="/regenerative/pcos-treatment-malaysia/" className="text-wine font-bold italic">
+              PCOS treatment in Malaysia
+            </a>{' '}
+            provides context on how hormonal imbalances can contribute to tendinopathy and connective tissue vulnerability.
+          </p>
           </motion.div>
         </div>
       </motion.section>

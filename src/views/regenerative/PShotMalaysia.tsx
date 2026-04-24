@@ -1,26 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
 import {
-  Droplet,
   HeartPulse,
   Shield,
-  Clock,
-  Zap,
   AlertCircle,
-  CheckCircle2,
-  XCircle,
-  TrendingUp,
-  Users,
-  Award,
-  FileText,
-  Star,
-  Sparkles,
-  Syringe,
-  Microscope,
   Phone,
-  Mail,
   MapPin,
-  ChevronDown,
 } from "lucide-react";
 import {
   fadeInUp,
@@ -296,7 +281,6 @@ const PShotLanding = () => {
         </motion.div>
       </section>
 
-      {/* P-Shot Treatment in Malaysia at a Glance Table - Using TableForPages */}
       <section className="py-20 px-4 bg-white">
         <TableForPages
           columns={[
@@ -309,6 +293,19 @@ const PShotLanding = () => {
           fadeInUp={fadeInUp}
           className="max-w-7xl mx-auto"
         />
+
+        <p className="text-sm text-taupe text-center max-w-2xl mx-auto mt-4">
+            Anastasiadis E et al. Erectile dysfunction: Is platelet-rich plasma the new frontier for treatment in patients with erectile dysfunction? A review of the existing evidence. 
+            <a 
+              href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8900600/" 
+              target="_blank" 
+              rel="nofollow" 
+              className="text-wine font-bold italic"
+            >
+              PMC (PubMed Central)
+            </a>. 
+            2022;24(1):21-25. This review evaluates the clinical transition of PRP into male sexual medicine, analyzing how concentrated growth factors promote tissue regeneration and angiogenesis to improve erectile function and penile health.
+          </p>
       </section>
 
       {/* The P-Shot Procedure at Nexus Clinic KL Table - Using TableForPages */}
@@ -342,6 +339,14 @@ const PShotLanding = () => {
           fadeInUp={fadeInUp}
           className="max-w-7xl mx-auto"
         />
+
+        <p className="text-center max-w-2xl mx-auto mt-4">
+          For men whose sexual health concerns include erectile dysfunction driven by vascular causes, our{' '}
+          <Link href="/regenerative/ed-treatment-malaysia/" className="text-wine font-bold italic">
+            ED treatment in Malaysia
+          </Link>{' '}
+          provides the comprehensive erectile dysfunction assessment and treatment framework that forms the foundation of any sexual health programme at Nexus Clinic KL.
+        </p>
       </section>
 
       {/* P-Shot vs Shockwave Therapy vs ED Medication Comparison Table - Using TableForPages */}
@@ -359,6 +364,13 @@ const PShotLanding = () => {
           fadeInUp={fadeInUp}
           className="max-w-7xl mx-auto"
         />
+        <p className="text-center">
+          For the complete shockwave therapy framework including patient selection criteria and protocol details, our{' '}
+          <Link href="/regenerative/shockwave-therapy-malaysia/" className="text-wine font-bold italic">
+            shockwave therapy in Malaysia
+          </Link>{' '}
+          provides full clinical guidance on Li-ESWT for erectile dysfunction.
+        </p>
       </section>
 
       {/* P-Shot Cost in Malaysia 2026 Table - Using TableForPages */}
