@@ -3,7 +3,6 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  ChevronRight,
   Star,
   Phone,
   MapPin,
@@ -12,11 +11,8 @@ import {
   Heart,
   Award,
   Shield,
-  MessageCircle,
   ArrowRight,
-  Play,
   Quote,
-  Scan,
 } from "lucide-react";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
@@ -27,6 +23,8 @@ import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import SocialIcons from "@/src/components/SocialIcons";
 import HeroSection from '@/src/components/HeroSection'
 import GoogleReviews from '@/src/components/GoogleReviews'
+import Image from "next/image";
+const MotionImage = motion(Image);
 
 const GlassCard = ({
   children,
@@ -128,9 +126,10 @@ const ServicesSection = ({ t }: { t: (key: string) => string }) => {
               }}
             >
               {/* Background Image */}
-              <motion.img
+              <MotionImage
                 src={service.image}
                 alt={service.title}
+                fill
                 className="absolute inset-0 w-full h-full object-cover"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.6 }}
@@ -213,11 +212,13 @@ const WhyChooseSection = ({ t }: { t: (key: string) => string }) => {
                 whileHover={{ scale: 1.02 }}
                 className="rounded-3xl lg:rounded-[40px] overflow-hidden"
               >
-                <img
-                  src="/images/treatment/face-filler.png"
-                  alt="Clinic Interior"
-                  className="w-full aspect-4/5 object-cover"
-                />
+                <Image
+                    src="/images/treatment/face-filler.png"
+                    alt="Clinic Interior"
+                    width={800}
+                    height={1000}
+                    className="w-full aspect-[4/5] object-cover"
+                  />
               </motion.div>
 
               {/* Floating Experience Card */}
@@ -381,10 +382,12 @@ const TestimonialsSection = ({ t }: { t: (key: string) => string }) => {
             className="relative"
           >
             <div className="rounded-3xl lg:rounded-[40px] overflow-hidden">
-              <img
+              <Image
                 src="/images/treatment/happy-patient.png"
                 alt="Happy Patient"
-                className="w-full aspect-square object-cover"
+                width={800}
+                height={1000}
+                className="w-full aspect-[4/5] object-cover"
               />
             </div>
 
