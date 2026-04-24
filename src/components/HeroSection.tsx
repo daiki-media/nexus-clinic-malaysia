@@ -33,7 +33,7 @@ const HeroSection = ({ t }: { t: (key: string) => string }) => {
               Award Winnig LCP Certified Aesthetic Clinic
             </p>
             <h1 className="text-3xl lg:text-5xl font-georgia text-brown leading-tight mb-6">
-              Natural-Looking Results with Personalized Medical Aesthetic Care
+              Natural Looking Results with Personalized Medical Aesthetic Care
             </h1>
             <p className="text-base lg:text-lg text-gray-600 leading-relaxed mb-8">
               {t("hero.description")}
