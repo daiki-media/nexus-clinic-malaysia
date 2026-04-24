@@ -51,5 +51,12 @@ export function useTranslation(
     i18n.changeLanguage(lng);
   }
 
-  return ret;
+  // Bind `t` to the requested locale + namespace explicitly so it is immune
+  // to the shared singleton i18next instance's current language. This prevents
+  // SSG/SSR language bleed between concurrently-rendered locale variants
+  // (e.g. /ms/ accidentally rendering with Arabic strings).
+  return {
+    ...ret,
+    t: i18n.getFixedT(lng, ns ?? null, options?.keyPrefix),
+  };
 }

@@ -24,11 +24,18 @@ const securityHeaders = [
         ${isDev ? "'unsafe-eval'" : ""}
         https://www.googletagmanager.com
         https://www.google-analytics.com
+        https://analytics.google.com
+        https://www.google.com
+        https://www.googleapis.com
         https://www.gstatic.com
         https://googleads.g.doubleclick.net
         https://maps.googleapis.com
-        https://static.cloudflareinsights.com;
-
+        https://static.cloudflareinsights.com
+        https://www.googleadservices.com
+        https://api.leadconnectorhq.com
+        https://app.leadconnectorhq.com
+        https://api.whatsapp.com
+      ;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
 
       img-src 'self' https: data: blob:;
