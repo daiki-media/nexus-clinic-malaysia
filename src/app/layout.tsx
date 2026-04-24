@@ -1,5 +1,6 @@
 import "./globals.css";
 import Script from "next/script";
+
 export default function RootLayout({
   children,
 }: {
@@ -34,22 +35,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* JSON-LD Schema */}
-        <Script
-          id="schema-medicalclinic"
+        <meta name="google-site-verification" content="m2Jx5XHGk5VfQM86pq0VleG_ctP1wwrtGNvsy2jT86o" />
+        <script
           type="application/ld+json"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(schemaData),
           }}
         />
-      </head>
-
-      <body>
-        {/* Google Tag Manager */}
-        <Script
-          id="gtm-script"
-          strategy="afterInteractive"
+        <script
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -59,8 +52,9 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-PRRSXZ2');`,
           }}
         />
+      </head>
 
-        {/* GTM NoScript (important for SEO + tracking fallback) */}
+      <body>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-PRRSXZ2"
