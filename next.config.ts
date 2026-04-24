@@ -6,55 +6,46 @@ const securityHeaders = [
   { key: "X-Frame-Options", value: "DENY" },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-  {
-    key: "Permissions-Policy",
-    value: "camera=(), microphone=(), geolocation=()",
-  },
-  {
-    key: "Strict-Transport-Security",
-    value: "max-age=31536000; includeSubDomains; preload",
-  },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
+  { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains; preload" },
   {
     key: "Content-Security-Policy",
     value: `
       default-src 'self';
-      base-uri 'self';
-      form-action 'self';
-
-      script-src 'self' 'unsafe-inline'
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+        https://maps.googleapis.com 
+        https://static.cloudflareinsights.com 
         https://www.googletagmanager.com
         https://www.google-analytics.com
         https://www.gstatic.com
         https://googleads.g.doubleclick.net
-        https://maps.googleapis.com
-        https://static.cloudflareinsights.com;
-
+      ;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-
-      img-src 'self' https: data: blob:;
-
-      font-src 'self' https://fonts.gstatic.com data:;
-
+      img-src 'self' https: data:;
+      font-src 'self' https://fonts.gstatic.com data: https://fonts.googleapis.com;
       connect-src 'self'
         https://blog.nexus-clinic.com
         https://api.leadconnectorhq.com
         https://maps.googleapis.com
         https://places.googleapis.com
         https://www.googleapis.com
+        https://wa.me
+        https://api.whatsapp.com
         https://www.google.com
+        https://googleads.g.doubleclick.net
         https://analytics.google.com
         https://www.googleadservices.com
         https://www.googletagmanager.com
-        https://www.google-analytics.com;
-
-      frame-src 'self'
-        https://www.googletagmanager.com
+        https://www.google-analytics.com
+      ;
+      frame-src 'self' https://api.leadconnectorhq.com 
         https://app.leadconnectorhq.com
-        https://api.leadconnectorhq.com;
-
+        https://www.googletagmanager.com
+      ;
       upgrade-insecure-requests;
+      block-all-mixed-content;
     `.replace(/\n/g, "").trim(),
-  },
+  }
 ];
 
 const nextConfig: NextConfig = {

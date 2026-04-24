@@ -1,40 +1,5 @@
 import "./globals.css";
 import Script from "next/script";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  metadataBase: new URL("https://www.nexus-clinic.com"),
-  title: {
-    default: "Nexus Clinic - Weight Loss & Aesthetic Clinic Kuala Lumpur",
-    template: "%s | Nexus Clinic",
-  },
-  description:
-    "Nexus Clinic Kuala Lumpur offers advanced weight loss and aesthetic treatments including Ozempic, Mounjaro, Profhilo and more.",
-  verification: {
-    google: "m2Jx5XHGk5VfQM86pq0VleG_ctP1wwrtGNvsy2jT86o",
-  },
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    title: "Nexus Clinic Kuala Lumpur",
-    description:
-      "Professional weight loss and aesthetic clinic in Kuala Lumpur.",
-    url: "https://www.nexus-clinic.com/",
-    siteName: "Nexus Clinic",
-    images: [
-      {
-        url: "/logo.png",
-        width: 800,
-        height: 600,
-        alt: "Nexus Clinic",
-      },
-    ],
-    locale: "en_MY",
-    type: "website",
-  },
-};
-
 export default function RootLayout({
   children,
 }: {
@@ -61,17 +26,19 @@ export default function RootLayout({
       "@type": "AggregateRating",
       ratingValue: 4.7,
       reviewCount: 483,
+      bestRating: 5,
+      worstRating: 1,
     },
   };
 
   return (
     <html lang="en">
       <head>
-        {/* Structured Data */}
+        {/* JSON-LD Schema */}
         <Script
           id="schema-medicalclinic"
           type="application/ld+json"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(schemaData),
           }}
@@ -93,7 +60,7 @@ export default function RootLayout({
           }}
         />
 
-        {/* GTM fallback */}
+        {/* GTM NoScript (important for SEO + tracking fallback) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-PRRSXZ2"
