@@ -547,6 +547,12 @@ const Navbar = ({ locale }: { locale?: string }) => {
     setSearchIndex(newSearchIndex);
   }, [getText]); // Only depend on getText, remove isBlogsPage
 
+  // Persist selected locale in the i18next cookie so the middleware remembers
+  // the user's preference across navigations to unlocalized URLs.
+  const handleLangClick = useCallback((langCode: string) => {
+    document.cookie = `i18next=${langCode}; path=/; max-age=31536000; SameSite=Lax`;
+  }, []);
+
   // Build locale-aware href for language switcher
   const getLocaleHref = useCallback((langCode: string) => {
     const localePrefix = /^\/(en|id|ar|ms|zh)(\/|$)/;
@@ -929,6 +935,7 @@ const Navbar = ({ locale }: { locale?: string }) => {
                             <motion.a
                               key={lang.code}
                               href={getLocaleHref(lang.code.toLowerCase())}
+                              onClick={() => handleLangClick(lang.code.toLowerCase())}
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: idx * 0.03 }}
@@ -1185,6 +1192,7 @@ const Navbar = ({ locale }: { locale?: string }) => {
                           <motion.a
                             key={lang.code}
                             href={getLocaleHref(lang.code.toLowerCase())}
+                            onClick={() => handleLangClick(lang.code.toLowerCase())}
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.35 + idx * 0.03 }}
