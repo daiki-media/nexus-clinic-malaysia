@@ -52,7 +52,30 @@ export default function SkinBooster({ locale }: SkinBoosterProps) {
     { concern: "Ageing skin with collagen loss", bestBooster: "Juvelook or combination", why: "PDLLA triggers fibroblast activity to produce new collagen, improving firmness and density in skin that has lost structural integrity" },
     { concern: "All-round rejuvenation", bestBooster: "Profhilo + Rejuran combo", why: "Addresses hydration, elasticity and repair simultaneously. Popular protocol for patients wanting comprehensive skin quality improvement" },
   ];
+    const skinConcernsLinks: Record<string, string> = {
+      "Profhilo": "/face/profhilo-malaysia/",
+      "Rejuran Healer": "/face/rejuran-malaysia/",
+      "Plinest": "/face/plinest-malaysia/",
+    };
 
+    interface LinkedTextProps {
+      text: string;
+      link?: string;
+    }
+
+    const LinkedText: React.FC<LinkedTextProps> = ({ text, link }) => {
+      if (!link) return <>{text}</>;
+      return (
+        <a 
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-bold hover:underline text-wine"
+        >
+          {text}
+        </a>
+      );
+    };
   const productComparison = [
     { product: "Profhilo", active: "Ultra-high HA", benefit: "Deep hydration and bio-remodelling", sessions: "2 sessions", longevity: "6 months", bestAge: "30 to 55+" },
     { product: "Rejuran", active: "Salmon DNA PN", benefit: "Repair, texture, acne scars", sessions: "3 to 4 sessions", longevity: "6 to 9 months", bestAge: "25 to 50" },
@@ -406,26 +429,12 @@ export default function SkinBooster({ locale }: SkinBoosterProps) {
                 ]}
                 data={skinConcerns.slice(0, 6).map((item) => ({
                   concern: item.concern,
-                  bestBooster: item.bestBooster,
-                  why: item.why,
-                }))}
-                title="Skin Booster Selector"
-                subtitle="Match your skin concern to the right treatment"
-                variant="detailed"
-                fadeInUp={fadeInUp}
-                className="py-20 px-4"
-              />
-          
-              {/* Skin Booster Selector Table - Complete (All Skin Concerns) */}
-              <TableForPages
-                columns={[
-                  { key: "concern", header: "Skin Concern", className: "font-semibold" },
-                  { key: "bestBooster", header: "Best Booster" },
-                  { key: "why", header: "Why It Works" },
-                ]}
-                data={skinConcerns.map((item) => ({
-                  concern: item.concern,
-                  bestBooster: item.bestBooster,
+                  bestBooster: (
+                    <LinkedText 
+                      text={item.bestBooster}
+                      link={skinConcernsLinks[item.bestBooster]}
+                    />
+                  ),
                   why: item.why,
                 }))}
                 title="Skin Booster Selector"

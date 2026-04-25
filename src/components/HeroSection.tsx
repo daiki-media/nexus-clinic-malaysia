@@ -30,7 +30,7 @@ const HeroSection = ({ t }: { t: (key: string) => string }) => {
         <div className="w-full p-4 lg:p-12 rounded-sm bg-gradient-to-r from-white/90 via-[0_8px_40px_rgba(0,0,0,0.12)] to-transparent">
           <div className="max-w-xl">
             <p className="text-sm tracking-wide text-green mb-4 uppercase">
-              Award Winnig LCP Certified Aesthetic Clinic
+              Award Winning LCP Certified Aesthetic Clinic
             </p>
             <h1 className="text-3xl lg:text-5xl font-georgia text-brown leading-tight mb-6">
               Natural Looking Results with Personalized Medical Aesthetic Care

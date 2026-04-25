@@ -74,6 +74,7 @@ export const redirectsList: [string, string][] = [
   ["/en/belotero-malaysia/", "/face/dermal-filler-malaysia/"],
   ["/en/lip-enhancement-malaysia/", "/face/lip-filler-malaysia/"],
   ["/en/hydrodeluxe-malaysia/", "/face/skin-booster-malaysia/"],
+  ["/hydrodeluxe-malaysia/", "/face/skin-booster-malaysia/"],
   ["/en/pdrn-injection-treatment-malaysia/", "/face/skin-booster-malaysia/"],
   ["/en/skinvive-treatment-malaysia/", "/face/skin-booster-malaysia/"],
   ["/en/our-services/skin-boosting-iv-drips-malaysia/", "/face/skin-booster-malaysia/"],
@@ -99,6 +100,7 @@ export const redirectsList: [string, string][] = [
   ["/en/profhilo-malaysia-2/side-effects/", "/face/profhilo-malaysia/"],
   ["/en/profhilo-malaysia/side-effects/", "/face/profhilo-malaysia/"],
   ["/cheek-filler-malaysia/", "/face/cheek-filler-malaysia/"],
+  ["/nose-thread-lift-malaysia/", "/face/nose-thread-lift-malaysia/"],
     // ["", ""],
   // Sculptra Redirects
   ["/en/sculptra-malaysia/", "/face/sculptra-malaysia/"],
@@ -108,6 +110,7 @@ export const redirectsList: [string, string][] = [
   ["/sculptra-malaysia/side-effects/", "/face/sculptra-malaysia/"],
   ["/en/sculptra-malaysia/radiesse-vs-sculptra/", "/face/sculptra-malaysia/"],
   ["/en/sculptra-malaysia/ellanse-vs-sculptra-2", "/face/sculptra-malaysia/"],
+  ["/sculptra-malaysia/ellanse-vs-sculptra-2", "/face/sculptra-malaysia/"],
   ["/sculptra-malaysia/juvelook-vs-sculptra/", "/face/sculptra-malaysia/"],
   ["/en/sculptra-malaysia/near-me/", "/face/sculptra-malaysia/"],
   // Rejuran Redirects
@@ -429,6 +432,7 @@ export const blogStandaloneRedirects: [string, string][] = [
   ["/en/what-is-hgh-therapy/", "/blogs/what-is-stem-cell-therapy-boost-energy/"],
   ["/en/5-most-popular-laser-large-pore-treatment-clinic-in-kuala-lumpur/", "/blogs/5-most-popular-laser-large-pore-treatment-clinic-in-kuala-lumpur/"],
   ["/en/exilis-treatment-in-malaysiadiabetes-weight-management-in-malaysia-2/", "/blogs/how-mounjaro-and-ozempic-work-for-diabetes-and-weight-loss/"],
+  ["/what-to-expect-from-your-first-sculptra-treatment-in-malaysia/", "/blogs/what-to-expect-from-your-first-sculptra-treatment-in-malaysia/"],
     // language varies /blogs/
   ["/en/best-acne-scar-treatments-in-kuala-lumpur/", "/blogs/best-acne-scar-treatments-in-kuala-lumpur/"],
   ["/en/hydrogen-treatment-malaysia/", "/blogs/the-benefits-of-hydrogen-antioxidant-therapy-for-anti-aging-in-malaysia/"],

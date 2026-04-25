@@ -19,7 +19,7 @@ import { fallbackLng } from "@/src/i18n/settings";
 // import GalleryPage from "./SliderGallery";
 // import { DoctorsSection } from "@/src/components/DoctorSection";
 import FAQWithSchema from "@/src/components/FAQWithSchema";
-import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
+// import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import SocialIcons from "@/src/components/SocialIcons";
 import HeroSection from '@/src/components/HeroSection'
 import GoogleReviews from '@/src/components/GoogleReviews'
@@ -648,31 +648,31 @@ export default function HomePageNexus({
     return () => clearInterval(interval);
   }, []);
 
-  const transformations = [
-    {
-      id: 1,
-      before: "/images/B&A-w/B&A-ozempic-malaysia3.webp",
-      after: "/images/B&A-w/B&A-ozempic-malaysia3.webp",
-    },
-    {
-      id: 2,
-      before: "/images/B&A-hair/B&A-prp-hair-treatment2.webp",
-      after: "/images/B&A-hair/B&A-prp-hair-treatment2.webp",
-    },
-    {
-      id: 3,
-      before: "/images/B&A-skin/B&A-hydrafacial1.webp",
-      after: "/images/B&A-skin/B&A-hydrafacial1.webp",
-    },
-  ];
+  // const transformations = [
+  //   {
+  //     id: 1,
+  //     before: "/images/B&A-w/B&A-ozempic-malaysia3.webp",
+  //     after: "/images/B&A-w/B&A-ozempic-malaysia3.webp",
+  //   },
+  //   {
+  //     id: 2,
+  //     before: "/images/B&A-hair/B&A-prp-hair-treatment2.webp",
+  //     after: "/images/B&A-hair/B&A-prp-hair-treatment2.webp",
+  //   },
+  //   {
+  //     id: 3,
+  //     before: "/images/B&A-skin/B&A-hydrafacial1.webp",
+  //     after: "/images/B&A-skin/B&A-hydrafacial1.webp",
+  //   },
+  // ];
   return (
     <div className="min-h-screen overflow-hidden bg-cream font-inter">
       <HeroSection t={t} />
       {/* <GalleryPage /> */}
       {/* <DoctorsSection /> */}
-      <SectionBeforeAfter transformations={transformations} t={t} />
-      <ServicesSection t={t} />
+      {/* <SectionBeforeAfter transformations={transformations} t={t} /> */}
       <WhyChooseSection t={t} />
+      <ServicesSection t={t} />
       <TestimonialsSection t={t} />
       <GoogleReviews />
       <ContactSection t={t} />
