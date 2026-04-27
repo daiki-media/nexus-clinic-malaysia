@@ -98,7 +98,6 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
-      { source: "/en/blog/:slug*", destination: "/blogs/:slug*", permanent: true },
       ...blogStandaloneRedirects.map(([src, dest]) => ({ source: src, destination: dest, permanent: true })),
       ...redirectsList.map(([src, dest]) => ({ source: src, destination: dest, permanent: true })),
     ];
