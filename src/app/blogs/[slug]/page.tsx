@@ -10,6 +10,7 @@ import { FloatingWhatsapp } from "@/src/components/Whatsapp";
 import Image from "next/image";
 import { generateFAQSchema } from '@/src/utils/faqExtractor';
 const baseUrl = process.env.BASE_URL || "https://www.nexus-clinic.com";
+import Script from "next/script";
 
 export const revalidate = 3600;
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -100,7 +101,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     return (
       <>
         {faqSchema && (
-          <script
+          <Script
             type="application/ld+json"
             id="faq-schema"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema, null, 2) }}
